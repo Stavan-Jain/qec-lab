@@ -1,4 +1,3 @@
-/.lake
 .gauss/
 .DS_Store
 
@@ -29,12 +28,6 @@ pipeline/cache/eczoo_data/
 
 # Learned preferences/facts (optional: keep local only)
 AGENTS.md
-
-# Personal toolchain-upgrade runbook (not part of published docs)
-TOOLCHAIN_UPGRADE.md
-
-# Local maintenance scripts (kept local)
-scripts/prune-stale-ileans.sh
 
 project_aristotle
 

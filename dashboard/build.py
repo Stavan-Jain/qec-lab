@@ -10,6 +10,7 @@ Run: python3 dashboard/build.py
 from __future__ import annotations
 
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -37,6 +38,11 @@ RESEARCH_LOG_PATH = REPO_ROOT / "pipeline" / "research_log.md"
 QUEUE_MD_PATH = REPO_ROOT / "pipeline" / "queue.md"
 
 GITHUB_REPO = "Stavan-Jain/QECLean"
+LAB_GITHUB_REPO = "Stavan-Jain/qec-lab"
+
+# Sibling QECLean checkout (Lean library lives there since the repo split).
+# Optional: used only for the recent-activity panel's QEC/ commits.
+QECLEAN_ROOT = Path(os.environ.get("QECLEAN_ROOT", REPO_ROOT.parent / "QECLean"))
 
 # Manually curated map of done codes → their primary Lean file(s) in the
 # repo. Used to render reliable source links on the /done/ page. Some
@@ -201,16 +207,16 @@ def merge_entries(catalog: list[dict[str, Any]],
     return entries
 
 
-def recent_commits(n: int = 8) -> list[dict[str, str]]:
-    paths = ["pipeline/", "catalog/", "QEC/Stabilizer/Codes/", "QEC/Stabilizer/Homological/"]
+def _git_log(repo_root: Path, paths: list[str], github_repo: str,
+             n: int) -> list[dict[str, str]]:
     try:
         out = subprocess.check_output(
             ["git", "log", f"-{n}", "--pretty=format:%h%x09%ad%x09%s",
              "--date=short", "--"] + paths,
-            cwd=REPO_ROOT,
+            cwd=repo_root,
             stderr=subprocess.DEVNULL,
         ).decode()
-    except subprocess.CalledProcessError:
+    except (subprocess.CalledProcessError, OSError):
         return []
     commits = []
     for line in out.strip().splitlines():
@@ -222,9 +228,24 @@ def recent_commits(n: int = 8) -> list[dict[str, str]]:
             "sha": sha,
             "date": date,
             "subject": subject,
-            "url": f"https://github.com/{GITHUB_REPO}/commit/{sha}",
+            "url": f"https://github.com/{github_repo}/commit/{sha}",
         })
     return commits
+
+
+def recent_commits(n: int = 8) -> list[dict[str, str]]:
+    commits = _git_log(REPO_ROOT, ["pipeline/", "catalog/"], LAB_GITHUB_REPO, n)
+    if (QECLEAN_ROOT / ".git").exists():
+        commits += _git_log(
+            QECLEAN_ROOT,
+            ["QEC/Stabilizer/Codes/", "QEC/Stabilizer/Homological/"],
+            GITHUB_REPO, n)
+    # Shared pre-split history: a commit touching both repos' filter paths
+    # shows up in both logs — keep the first (qec-lab) occurrence.
+    seen: set[str] = set()
+    deduped = [c for c in commits if not (c["sha"] in seen or seen.add(c["sha"]))]
+    deduped.sort(key=lambda c: c["date"], reverse=True)
+    return deduped[:n]
 
 
 # ---------------------------------------------------------------------------

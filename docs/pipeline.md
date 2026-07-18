@@ -1,7 +1,10 @@
 # Formalization pipeline (architecture)
 
 A catalog-driven pipeline for prioritizing and formalizing quantum
-error-correcting codes in this repo. Source-of-truth: the
+error-correcting codes. Research artifacts (catalog, queue, attempts) live
+in this repo (qec-lab); the Lean library lives in the sibling QECLean
+checkout (`QECLEAN_ROOT`, default `../QECLean`), where all Lean edits,
+`lake build`s, and formalization worktrees happen. Source-of-truth: the
 [Error Correction Zoo](https://errorcorrectionzoo.org/). Heavy automation
 via Claude Code; tight human review at the high-leverage gates.
 
@@ -49,7 +52,7 @@ candidates**, **3 moonshot candidates**, **14 deferred**, **173 skipped**.
         pipeline/attempts/<name>/   pipeline/attempts/<moonshot>/
                   │                   │
                   ▼                   ▼
-              merged into QEC/   research_log entry
+              PR'd to QECLean    research_log entry
                   └───────┬──────────┘
                           ▼
                   update CLAUDE.md
@@ -99,7 +102,7 @@ Six axes, each 0–10:
 | `canonicality` | In textbooks, syllabi, foundational |
 | `hardware` | Used in real published demos, 2023–2026 |
 | `tractability` | Known clean distance proof (homological / algebraic) — *not* SAT-only |
-| `prerequisites` | No missing abstractions in this repo (10 = none missing) |
+| `prerequisites` | No missing abstractions in the Lean library (QECLean) (10 = none missing) |
 | `effort` | Cheap to formalize (10 = days; 0 = months) |
 
 Composite formula:
@@ -135,31 +138,29 @@ markers. Does **not** attempt proofs.
 ### Invocation
 
 Spawn with `subagent_type: "general-purpose"` (the project-scoped agent
-definition is loaded by reference) and `isolation: "worktree"`:
+definition is loaded by reference). Lean work happens in a dedicated
+worktree of the sibling QECLean checkout (under
+`$QECLEAN_ROOT/.claude/worktrees/`), not a qec-lab worktree:
 
 ```
 Agent(
   description: "Skeleton: <code_id>",
   subagent_type: "general-purpose",
-  isolation: "worktree",
-  prompt: "<read .claude/agents/qec-skeleton-drafter.md; target = <code_id>>"
+  prompt: "<read .claude/agents/qec-skeleton-drafter.md; target = <code_id>;
+           create the Lean skeleton in a QECLean worktree>"
 )
 ```
 
 ### Worktree → main sync
 
-The agent runs in an isolated worktree, so all outputs (including
-`pipeline/attempts/<code-name>/`) initially live there. After completion,
-**copy the attempt-metadata directory back to main** so it's visible
-during weekly triage:
-
-```bash
-cp -r .claude/worktrees/<branch>/pipeline/attempts/<code-name> \
-      pipeline/attempts/
-```
-
-The Lean skeleton file stays in the worktree branch (`worktree-agent-<sha>`)
-until Stage 5 merge. The `state.yaml` records the worktree branch name.
+The Lean skeleton lands on a QECLean worktree branch (under
+`$QECLEAN_ROOT/.claude/worktrees/`); the attempt metadata
+(`pipeline/attempts/<code-name>/`) is written directly in qec-lab, so no
+copy-back is needed. The Lean skeleton file stays on the worktree branch
+until Stage 5, when the branch is PR'd to QECLean `main`. The `state.yaml`
+records the worktree branch name. WIP branches can be backed up to the
+qec-lab remote via `git push lab <branch>` (the repos share pre-split
+ancestry).
 
 ### What Stage 2 produces
 
@@ -173,7 +174,7 @@ pipeline/attempts/<code-name>/
   reuse_audit.md      # what existing repo APIs apply
   gap_audit.md        # missing abstractions in repo + mathlib
 
-<worktree>/QEC/Stabilizer/Codes/<CodeName>.lean   # parses with sorry-markers
+<QECLean worktree>/QEC/Stabilizer/Codes/<CodeName>.lean   # parses with sorry-markers
 ```
 
 ## Stage 3 — spec review (human)
@@ -191,7 +192,8 @@ the skeleton patterns:
 
 - Leverages existing `lean4:autoprove`, `lean4:sorry-filler-deep`,
   `lean4:proof-repair`, `lean4:proof-golfer` skills.
-- Closes structured `TODO(<code-id>-T<n>)` sorries in the worktree branch.
+- Closes structured `TODO(<code-id>-T<n>)` sorries in the QECLean worktree
+  branch.
 
 ## Moonshot track (implemented)
 
@@ -237,7 +239,7 @@ pipeline/attempts/<moonshot>/
   approaches/
     <approach-1>/
       plan.md
-      attempt.lean              # in worktree
+      attempt.lean              # in the QECLean worktree
       daily_log.md
       obstacle_diary.md
       final_writeup.md          # mandatory

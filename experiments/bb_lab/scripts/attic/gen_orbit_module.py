@@ -1,4 +1,7 @@
-"""Emit the per-orbit Lean module `MImFloorO<oi>.lean` (zrep support + seam offsets oL/oR),
+"""ATTIC (pre-split, pre-restructure): output paths assume the old single-repo
+layout where QEC/ lived in this tree; the live successor is gen_yrep_module.py.
+
+Emit the per-orbit Lean module `MImFloorO<oi>.lean` (zrep support + seam offsets oL/oR),
 a thin instantiation of `floor_of_data`.  Offsets are computed here (never transcribed):
 oL = ch(w[:nb]) (side 0 = repo rightHalf), oR = ch(w[nb:]) (side 1 = leftHalf), w = D2C0·zrep.
 

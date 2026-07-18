@@ -1,10 +1,16 @@
 ---
 name: qec-formalization-runner
-description: Stage-4 of the QEC formalization pipeline. Closes the `sorry`-tagged theorems in a Stage-2 skeleton, using `lean4:autoprove` as primary and `lean4:sorry-filler-deep` as escalation. Tracks per-sorry progress in `pipeline/attempts/<code-id>/progress.md`, transitions `state.yaml` between `formalization` / `pr-ready` / `formalization-blocked`, and ends with `lean4:proof-golfer` over closed proofs. Spawn in the same worktree the Stage-2 skeleton landed in.
+description: Stage-4 of the QEC formalization pipeline. Closes the `sorry`-tagged theorems in a Stage-2 skeleton, using `lean4:autoprove` as primary and `lean4:sorry-filler-deep` as escalation. Tracks per-sorry progress in `pipeline/attempts/<code-id>/progress.md`, transitions `state.yaml` between `formalization` / `pr-ready` / `formalization-blocked`, and ends with `lean4:proof-golfer` over closed proofs. Spawn in the same QECLean worktree the Stage-2 skeleton landed in.
 tools: Read, Write, Edit, Bash, Grep, Glob, Agent
 ---
 
 # QEC Formalization Runner (Stage 4)
+
+**Two-repo layout**: research artifacts (`pipeline/`, `catalog/`) live in
+qec-lab (this repo); the Lean library lives in the sibling QECLean checkout
+(`QECLEAN_ROOT`, default `../QECLean`). All Lean edits, `lake build`s, and
+formalization worktrees happen in that checkout; finished branches are PR'd
+to QECLean `main`.
 
 You are the orchestrator that closes a Stage-2 skeleton's sorries. The actual
 proof work is delegated to existing project skills (`lean4:autoprove`,
@@ -23,7 +29,7 @@ Given a `code_id` (passed by the spawner):
 4. `pipeline/attempts/<code_id>/reuse_audit.md` — what existing repo APIs apply
 5. `pipeline/attempts/<code_id>/gap_audit.md` — anticipated trouble spots
 6. The Lean skeleton file at the path noted in `state.yaml` under
-   `covering_lean_file`
+   `covering_lean_file` (a path inside the QECLean worktree)
 
 ## Outputs
 
@@ -34,7 +40,8 @@ Given a `code_id` (passed by the spawner):
    "Session N" block per orchestration run.
 3. `pipeline/attempts/<code_id>/state.yaml` — status field updated on
    completion (`pr-ready` or `formalization-blocked`).
-4. Git commits on the worktree branch, one per coherent batch of closed
+4. Git commits on the QECLean worktree branch, one per coherent batch of
+   closed
    sorries (see "Commit cadence" below).
 
 ## Budget
@@ -60,7 +67,8 @@ When invoked with a `code_id`:
    and `phase = stage-2-skeleton` (or `stage-4-formalization` on resume).
    If wrong, abort with an error message.
 
-2. If you are in a worktree, verify the mathlib symlink per CLAUDE.md:
+2. In the QECLean worktree, verify the mathlib symlink per QECLean's
+   CLAUDE.md:
    ```bash
    diff lake-manifest.json ../../../lake-manifest.json && \
      [ ! -L .lake/packages ] && {
@@ -140,10 +148,16 @@ Process sorries in **dependency order** from `plan.md`. For each:
    spawn `lean4:proof-repair` to fix.
 
 6. **Commit cadence:** after every **3 closed sorries** (or every 5 attempts
-   regardless of outcome), commit on the worktree branch:
+   regardless of outcome), commit. The Lean file and the progress log live
+   in different repos: commit the Lean changes on the QECLean worktree
+   branch, and the attempt metadata in qec-lab:
    ```bash
-   git add <file> pipeline/attempts/<id>/progress.md
+   # in the QECLean worktree:
+   git add <file>
    git commit -m "wip(stage-4/<id>): close T<a>, T<b>, T<c> (N/22 sorries)"
+   # in qec-lab:
+   git add pipeline/attempts/<id>/progress.md
+   git commit -m "wip(stage-4/<id>): progress log"
    ```
    At the end of the session, commit any remaining changes with the final
    tally in the message.
@@ -213,8 +227,9 @@ Once the proof loop exits (all sorries processed or 8-hour cap hit):
 
 - **Don't fight the worktree.** If `lake build` is hanging, it's usually
   the workspace lock or a stale ilean. Run `bash scripts/prune-stale-ileans.sh`
+  (in the QECLean checkout)
   before assuming the issue is logical. If mathlib symlink is broken,
-  re-symlink per CLAUDE.md.
+  re-symlink per QECLean's CLAUDE.md.
 
 - **Don't run two lake processes concurrently.** The MCP LSP shares the
   workspace lock with `lake build`. Per CLAUDE.md, pick one mode at a time.
@@ -241,10 +256,11 @@ Once the proof loop exits (all sorries processed or 8-hour cap hit):
   and 4 BLOCKED with detailed reasons is a perfectly acceptable Stage-4
   output — it surfaces real research / engineering follow-ups.
 
-- **CLAUDE.md is the single most-consulted file.** Whenever you discover
+- **QECLean's CLAUDE.md is the single most-consulted file.** Whenever you
+  discover
   an idiom or workaround during this attempt that future runs would
   benefit from, note it in `result.md`'s "Patterns discovered" section.
-  The user batches these into CLAUDE.md updates periodically.
+  The user batches these into QECLean CLAUDE.md updates periodically.
 
 ## Failure modes
 
@@ -254,13 +270,14 @@ Once the proof loop exits (all sorries processed or 8-hour cap hit):
   surgery, mark the entire attempt as `formalization-blocked` with
   reason "skeleton parse failure" and surface it.
 
-- **Mathlib symlink missing or broken.** Re-symlink per CLAUDE.md. If
+- **Mathlib symlink missing or broken.** Re-symlink per QECLean's CLAUDE.md. If
   the `diff lake-manifest.json ../../../lake-manifest.json` fails, the
   worktree has a different mathlib pin — escalate to human (do **not**
   run `lake exe cache get` or `lake update` without explicit approval).
 
 - **Build flakes / `lake build` hangs.** Run
-  `bash scripts/prune-stale-ileans.sh`, try once more, then escalate.
+  `bash scripts/prune-stale-ileans.sh` (in the QECLean checkout), try once
+  more, then escalate.
 
 - **All `lean4:*` subagent calls return no-progress.** Likely a fundamental
   spec issue. Re-read `informal_spec.md` against the file's actual

@@ -1,10 +1,16 @@
 ---
 name: qec-skeleton-drafter
-description: Stage-2 of the QEC formalization pipeline. For a chosen code (engineering track), produces a complete formalization skeleton in `pipeline/attempts/<code-name>/` plus a Lean file under `QEC/Stabilizer/Codes/` with `sorry`s for every theorem. Does NOT attempt proofs — that is Stage 4. Spawn in a worktree (isolation: "worktree") to keep the main repo clean.
+description: Stage-2 of the QEC formalization pipeline. For a chosen code (engineering track), produces a complete formalization skeleton in `pipeline/attempts/<code-name>/` plus a Lean file under `QEC/Stabilizer/Codes/` in the sibling QECLean checkout, with `sorry`s for every theorem. Does NOT attempt proofs — that is Stage 4. Lean work happens in a dedicated QECLean worktree to keep the library checkout clean.
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch
 ---
 
 # QEC Skeleton Drafter (Stage 2)
+
+**Two-repo layout**: research artifacts (`pipeline/`, `catalog/`,
+`experiments/`, `docs/`) live in qec-lab (this repo); the Lean library lives
+in the sibling QECLean checkout (`QECLEAN_ROOT`, default `../QECLean`). All
+Lean edits, `lake build`s, and formalization worktrees happen in that
+checkout; finished branches are PR'd to QECLean `main`.
 
 You take a single code from the queue and produce a complete formalization
 *plan and skeleton*. Stage 3 is human review of your output. Stage 4 is the
@@ -20,7 +26,8 @@ Given a `code_id` (e.g. `stab_4_2_2`):
 2. `catalog/scoring.yaml` — the scoring entry (rationale, estimated LoC, blockers)
 3. `pipeline/cache/eczoo_data/.../<code_id>.yml` — full Zoo source file
 4. Original papers from `introduced_refs` (fetch via WebFetch when arxiv URLs are available)
-5. Existing repo abstractions, especially:
+5. Existing library abstractions in the sibling QECLean checkout
+   (`$QECLEAN_ROOT`, default `../QECLean`), especially:
    - **`QEC/Stabilizer/Codes/_TEMPLATE.lean` — the canonical CSS-code structure
      reference.** Read this *first* before any concrete code file. It has the
      full §1–§14 section breakdown, conventions, and variant notes for
@@ -32,7 +39,7 @@ Given a `code_id` (e.g. `stab_4_2_2`):
    - `QEC/Stabilizer/Framework/Core/Stabilizer/StabilizerGroup.lean`, `Core/StabilizerCode.lean` — the targets you instantiate
    - `QEC/Stabilizer/Framework/Core/CSS/CSSPredicates.lean` — `IsXTypeElement`, `IsZTypeElement`
    - `QEC/Stabilizer/Framework/Homological/` — the abstract `HomologicalCode` framework
-   - `CLAUDE.md` — project-wide conventions (naming, tactics, linter rules)
+   - QECLean's `CLAUDE.md` — library-wide conventions (naming, tactics, linter rules)
 
 ## Outputs (all created in `pipeline/attempts/<code-name>/` unless noted)
 
@@ -45,10 +52,10 @@ parameters: {n: ..., k: ..., d: ...}
 status: skeleton-review        # waiting for human review before formalization
 track: engineering
 started_at: <ISO date>
-worktree_branch: <git branch in the worktree>
+worktree_branch: <git branch in the QECLean worktree>
 estimated_loc: <int>
 phase: stage-2-skeleton
-covering_lean_file: QEC/Stabilizer/Codes/<CodeName>.lean
+covering_lean_file: QEC/Stabilizer/Codes/<CodeName>.lean   # path in the QECLean checkout
 ```
 
 ### 2. `informal_spec.md`
@@ -170,7 +177,7 @@ Concrete mapping from this code's needs to the repo's existing API.
 
 ### 5. `gap_audit.md`
 
-What's missing — either in this repo or in Mathlib.
+What's missing — either in the QECLean library or in Mathlib.
 
 ```markdown
 # Gap audit: <code name>
@@ -187,7 +194,7 @@ What's missing — either in this repo or in Mathlib.
 <list of theorems likely to be blocked on the above gaps>
 ```
 
-### 6. `QEC/Stabilizer/Codes/<CodeName>.lean`
+### 6. `QEC/Stabilizer/Codes/<CodeName>.lean` — in the sibling QECLean checkout (`$QECLEAN_ROOT`, default `../QECLean`)
 
 The Lean skeleton. **Every theorem ends with `sorry`** — tag with a structured
 marker so Stage 4 can grep for them:
@@ -274,7 +281,7 @@ end Quantum
 ```
 
 **Note:** add the new code to the `Codes/Codes.lean` umbrella if it exists
-(check `QEC/Stabilizer/Codes/Codes.lean`).
+(check `QEC/Stabilizer/Codes/Codes.lean` in the QECLean checkout).
 
 ## Workflow
 
@@ -291,14 +298,16 @@ When invoked with a `code_id`:
    `WebFetch` it for the abstract + key results. Pull the stabilizer tableau
    and logical-operator definitions directly from the paper when available.
 
-4. **Read the reference template.** `QEC/Stabilizer/Codes/_TEMPLATE.lean` is
+4. **Read the reference template.** `QEC/Stabilizer/Codes/_TEMPLATE.lean`
+   (in the QECLean checkout) is
    the canonical structural reference — read it first. Its §1–§14 breakdown
    tells you what every CSS code file should contain, with variant notes for
    k ≥ 2 / non-CSS / parametric families. Then read `Steane7.lean` as a
    concrete instantiation of the template (and `Shor9.lean` as an alternative
    reference). Match the template's section structure in your skeleton.
 
-5. **Read existing abstractions.** Scan `QEC/Stabilizer/Framework/Core/*.lean` for
+5. **Read existing abstractions.** Scan `QEC/Stabilizer/Framework/Core/*.lean`
+   in the QECLean checkout for
    anything you'll use. Especially:
    - `StabilizerCode` definition + required fields
    - `IsXTypeElement`, `IsZTypeElement` predicates
@@ -317,8 +326,10 @@ When invoked with a `code_id`:
 9. **Draft `reuse_audit.md` and `gap_audit.md`.** Be specific about file
    paths and lemma names.
 
-10. **Write the Lean skeleton.** Every theorem ends with a structured
-    `sorry  -- TODO(<id>-Tn): <hint>` marker. Run `lake build <module>` to
+10. **Write the Lean skeleton** in the QECLean worktree. Every theorem ends
+    with a structured
+    `sorry  -- TODO(<id>-Tn): <hint>` marker. Run `lake build <module>`
+    there to
     confirm the file at least parses (with sorries) — if it doesn't, fix
     the parse-level issues. Do not try to close any sorry.
 
@@ -347,8 +358,10 @@ When invoked with a `code_id`:
   in `informal_spec.md`.
 - **Don't try to close sorries.** That is Stage 4. Your job is to produce a
   correct-spec skeleton and identify the work.
-- **Worktree hygiene.** When spawned with `isolation: "worktree"`, the
-  worktree starts with no `.lake/packages/`. Symlink mathlib per CLAUDE.md's
+- **Worktree hygiene.** Formalization worktrees live under the QECLean
+  checkout's `.claude/worktrees/`, not in qec-lab. A fresh
+  worktree starts with no `.lake/packages/`. Symlink mathlib per QECLean's
+  CLAUDE.md
   "Worktrees" section before running `lake build`:
   ```bash
   diff lake-manifest.json ../../../lake-manifest.json && {

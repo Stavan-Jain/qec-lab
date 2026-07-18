@@ -1,4 +1,7 @@
-"""Emit MImAssembly.lean: the y-orbit dispatch (floor_kcombo, 64 cases) + mimBound_holds.
+"""ATTIC (pre-split, pre-restructure): output paths assume the old single-repo
+layout where QEC/ lived in this tree; the live successor is gen_yrep_module.py.
+
+Emit MImAssembly.lean: the y-orbit dispatch (floor_kcombo, 64 cases) + mimBound_holds.
 Each nonzero combo maps to (y-orbit rep i, shift k) with kcombo(combo)=translate(0,k)(kcombo rep_i)
 (verified). fin_cases order is c0 MSB .. c5 LSB. Usage: PYTHONPATH=src python scripts/gen_assembly.py
 """

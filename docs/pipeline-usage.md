@@ -29,10 +29,11 @@ Stage-5 PR reviews. Claude does the rest, including overnight.
 Before doing anything else in a session, run:
 
 ```bash
-cd /Users/stavanjain/Code/QuantumErrorCorrectionLean-fresh
+cd /Users/stavanjain/Code/qec-lab
 git status                                 # nothing critical uncommitted?
 ls catalog/ pipeline/                      # catalog + scoring present?
 ls pipeline/attempts/ 2>/dev/null          # what's in flight?
+ls "${QECLEAN_ROOT:-../QECLean}"/QEC 2>/dev/null   # sibling QECLean checkout present?
 git -C pipeline/cache/eczoo_data rev-parse HEAD 2>/dev/null  # snapshot pinned?
 ```
 
@@ -104,42 +105,47 @@ deliberating too long on `SKIP` candidates — when in doubt, defer.
    Agent({
      description: "Skeleton: <code_id>",
      subagent_type: "general-purpose",
-     isolation: "worktree",
      prompt: "You are the QEC skeleton drafter. Operating spec in
               .claude/agents/qec-skeleton-drafter.md. Target: <code_id>.
 
-              Mathlib symlink: [ ! -L .lake/packages ] && \
+              Lean work happens in a dedicated worktree of the sibling
+              QECLean checkout ($QECLEAN_ROOT, default ../QECLean) —
+              create it under $QECLEAN_ROOT/.claude/worktrees/.
+
+              Mathlib symlink (from the worktree root):
+              [ ! -L .lake/packages ] && \
                 diff lake-manifest.json ../../../lake-manifest.json && {
                   rm -rf .lake/packages
                   ln -s ../../../../.lake/packages .lake/packages
                 }
 
-              Catalog/scoring inputs at the absolute paths under the main
-              repo. Reference template: QEC/Stabilizer/Codes/_TEMPLATE.lean.
+              Catalog/scoring inputs live in qec-lab. Reference template:
+              QECLean:QEC/Stabilizer/Codes/_TEMPLATE.lean.
 
               Produce: pipeline/attempts/<code_id>/{state.yaml,
               informal_spec.md, plan.md, reuse_audit.md, gap_audit.md}
-              + QEC/Stabilizer/Codes/<CodeName>.lean that parses with sorries."
+              in qec-lab + QEC/Stabilizer/Codes/<CodeName>.lean in the
+              QECLean worktree that parses with sorries."
    })
    ```
 
    No `run_in_background: true` — skeleton drafting is fast (5–20 min) so
    foreground is fine. You'll get the worktree path in the agent's result.
 
-2. **Sync the attempt-metadata back to main.** After the agent finishes:
+2. **No metadata sync needed.** The attempt metadata
+   (`pipeline/attempts/<code_id>/`) is written directly in qec-lab; the
+   Lean skeleton stays on the QECLean worktree branch until Stage 5.
+   Optionally back the branch up to the qec-lab remote:
 
    ```bash
-   cp -r .claude/worktrees/<agent-branch>/pipeline/attempts/<code_id> \
-         pipeline/attempts/
+   git -C "${QECLEAN_ROOT:-../QECLean}" push lab <agent-branch>
    ```
-
-   The Lean skeleton stays in the worktree until Stage 5.
 
 3. **Verify the skeleton parses:** the agent should have already done this,
    but spot-check:
 
    ```bash
-   cd .claude/worktrees/<agent-branch>
+   cd "${QECLEAN_ROOT:-../QECLean}"/.claude/worktrees/<agent-branch>
    lake build QEC.Stabilizer.Codes.<CodeName>
    ```
 
@@ -148,7 +154,7 @@ deliberating too long on `SKIP` candidates — when in doubt, defer.
 4. **Update queue tracker.** The new attempt should appear in
    `pipeline/attempts/<code_id>/` with `state.yaml.status: skeleton-review`.
 
-**Expected outcome:** A new worktree with a parsing Lean skeleton, plus
+**Expected outcome:** A new QECLean worktree with a parsing Lean skeleton, plus
 five metadata files in `pipeline/attempts/<code_id>/`. Status:
 `skeleton-review`. Ready for Stage 3.
 
@@ -229,13 +235,14 @@ proof effort downstream.
 **Prerequisites:**
 - `pipeline/attempts/<code_id>/state.yaml` has `status: skeleton-review`
   or `formalization`.
-- The worktree from Stage 2 still exists.
+- The QECLean worktree from Stage 2 still exists.
 
 **Steps:**
 
 1. **Identify the worktree path.** From `state.yaml`, read
-   `worktree_branch`. The path is typically
-   `.claude/worktrees/<agent-...>/`. If you can't find it, see
+   `worktree_branch`. Worktrees live in the QECLean checkout; the path is
+   typically
+   `$QECLEAN_ROOT/.claude/worktrees/<agent-...>/`. If you can't find it, see
    [#troubleshooting](#troubleshooting) → worktree lost.
 
 2. **Spawn the formalization-runner agent.** Run in background since
@@ -249,7 +256,8 @@ proof effort downstream.
      prompt: "You are the QEC formalization runner. Operating spec in
               .claude/agents/qec-formalization-runner.md. Target: <code_id>.
 
-              Work inside the worktree at .claude/worktrees/<branch>/.
+              Work inside the QECLean worktree at
+              $QECLEAN_ROOT/.claude/worktrees/<branch>/.
               Verify mathlib symlink. Commit Stage-2 skeleton as baseline
               before starting.
 
@@ -294,7 +302,7 @@ partially-closed file with structured BLOCKED markers + a detailed
 
 **Prerequisites:**
 - All sorries closed (or zero BLOCKED).
-- `lake build` clean in the worktree.
+- `lake build` clean in the QECLean worktree.
 
 **Steps:**
 
@@ -302,10 +310,10 @@ partially-closed file with structured BLOCKED markers + a detailed
    Especially the "Patterns discovered" section — these may need to land
    in `CLAUDE.md`.
 
-2. **Review the Lean file directly** in the worktree:
+2. **Review the Lean file directly** in the QECLean worktree:
 
    ```bash
-   cd .claude/worktrees/<branch>
+   cd "${QECLEAN_ROOT:-../QECLean}"/.claude/worktrees/<branch>
    git log --oneline main..HEAD                  # commit history
    git diff main -- QEC/Stabilizer/Codes/<CodeName>.lean | less
    ```
@@ -317,10 +325,11 @@ partially-closed file with structured BLOCKED markers + a detailed
    - No surprising changes to other files (the agent should have only
      touched `Codes/<CodeName>.lean` and the umbrella)
 
-3. **Open the PR:**
+3. **Open the PR** (against QECLean `main` — run from the QECLean
+   worktree):
 
    ```bash
-   cd .claude/worktrees/<branch>
+   cd "${QECLEAN_ROOT:-../QECLean}"/.claude/worktrees/<branch>
    git push -u origin <branch-name>
 
    gh pr create \
@@ -332,14 +341,14 @@ partially-closed file with structured BLOCKED markers + a detailed
    ## Code
    - New file: \`QEC/Stabilizer/Codes/<CodeName>.lean\` (<LoC> lines, N theorems)
    - Updated: \`QEC/Stabilizer/Codes.lean\` umbrella
-   - Pipeline state: \`pipeline/attempts/<code_id>/\`
+   - Pipeline state: \`qec-lab:pipeline/attempts/<code_id>/\`
 
    ## Test plan
    - [ ] \`lake build QEC.Stabilizer.Codes.<CodeName>\` clean
    - [ ] No new linter warnings
    - [ ] Theorem statements match \`informal_spec.md\`
 
-   See \`pipeline/attempts/<code_id>/result.md\` for full details.
+   See \`qec-lab:pipeline/attempts/<code_id>/result.md\` for full details.
 
    🤖 Pipeline: Stage 4 — qec-formalization-runner
    EOF
@@ -378,7 +387,7 @@ partially-closed file with structured BLOCKED markers + a detailed
    - **`docs/mathlib-version-quirks.md`**: mathlib API drift you worked
      around during the formalization (deprecations, renames, signature
      changes). Date the entry.
-   - **`CLAUDE.md`** (highest bar): only patterns that either generalize
+   - **QECLean's `CLAUDE.md`** (highest bar): only patterns that either generalize
      across ≥ 2 different code shapes OR are pure codebase-wide
      policy/style. If you're tempted to add to CLAUDE.md, ask whether
      `lean-patterns.md` would be the better home — usually yes.
@@ -397,18 +406,18 @@ partially-closed file with structured BLOCKED markers + a detailed
    shifts `reuse` scores — see [#rescoring](#recipe-re-score-the-queue).
    Typically only needed every 3–5 merges, not after every one.
 
-4. **(Optional)** Delete the worktree:
+4. **(Optional)** Delete the worktree (in the QECLean checkout):
 
    ```bash
-   git worktree remove .claude/worktrees/<branch>
-   git branch -d <branch-name>   # or -D if not merged
+   git -C "${QECLEAN_ROOT:-../QECLean}" worktree remove .claude/worktrees/<branch>
+   git -C "${QECLEAN_ROOT:-../QECLean}" branch -d <branch-name>   # or -D if not merged
    ```
 
    Or leave it — the disk space is small and an in-place worktree is
    sometimes useful for follow-ups.
 
-5. **(Periodic) Audit CLAUDE.md size.** Every ~5 merges, or when
-   CLAUDE.md crosses ~500 lines, scan for entries that haven't been
+5. **(Periodic) Audit QECLean's CLAUDE.md size.** Every ~5 merges, or when
+   it crosses ~500 lines, scan for entries that haven't been
    referenced in subsequent `result.md` files and consider moving them
    to `lean-patterns.md` or pruning. The point of the split is to keep
    CLAUDE.md sustainably small.
@@ -517,10 +526,13 @@ committing approach-execution budget.
    Agent({
      description: "Moonshot <name>: hypothesis",
      subagent_type: "general-purpose",
-     isolation: "worktree",
      run_in_background: true,
      prompt: "You are the QEC Moonshot Runner. Operating spec in
               .claude/agents/qec-moonshot.md. Target: <moonshot_name>.
+
+              Any Lean work happens in a dedicated worktree of the sibling
+              QECLean checkout ($QECLEAN_ROOT, default ../QECLean), under
+              $QECLEAN_ROOT/.claude/worktrees/.
 
               CRITICAL: this is a hypothesis-setup-only invocation.
               Do NOT start any approach execution. Stop after drafting
@@ -594,7 +606,7 @@ budget, success criteria, partial value, and the literature scan.
               the approaches in pipeline/attempts/<name>/hypothesis.md
               in order. Per-approach budget per budget.yaml.
 
-              Work inside the existing worktree where the hypothesis
+              Work inside the existing QECLean worktree where the hypothesis
               was drafted. Continue committing on the same branch.
 
               After each approach, write final_writeup.md regardless
@@ -648,7 +660,8 @@ write-ups in `approaches/`.
 5. **If `paper_draft_seed.md` exists:** decide whether to develop it into
    a workshop / journal submission. This is your call as research lead.
 
-6. **Update CLAUDE.md** with any new idioms or patterns discovered.
+6. **Update QECLean's CLAUDE.md** with any new idioms or patterns
+   discovered.
 
 **Expected outcome:** Research log updated; if applicable, PR open with
 new repo additions.
@@ -659,8 +672,10 @@ new repo additions.
 
 ### Worktree symlink to `.lake/packages` is broken
 
+(Worktrees live in the QECLean checkout.)
+
 ```bash
-cd .claude/worktrees/<branch>
+cd "${QECLEAN_ROOT:-../QECLean}"/.claude/worktrees/<branch>
 diff lake-manifest.json ../../../lake-manifest.json   # must succeed
 rm -rf .lake/packages
 ln -s ../../../../.lake/packages .lake/packages
@@ -672,15 +687,17 @@ If `diff` fails (worktree has a different mathlib pin), do **not**
 symlink — that would silently mix mathlib versions. Either:
 - Reset the worktree's mathlib pin to match main:
   `git checkout main -- lake-manifest.json lakefile.toml lean-toolchain`
-- Or run `lake exe cache get` (requires user approval per CLAUDE.md).
+- Or run `lake exe cache get` (requires user approval per QECLean's
+  CLAUDE.md).
 
 ### Worktree lost (deleted or unfindable)
 
-If a worktree was deleted but its branch still exists:
+If a worktree was deleted but its branch still exists (run in the QECLean
+checkout):
 ```bash
-git worktree list                          # check known worktrees
-git branch -a | grep <agent-id>            # find the branch
-git worktree add .claude/worktrees/<new-name> <branch>
+git -C "${QECLEAN_ROOT:-../QECLean}" worktree list         # check known worktrees
+git -C "${QECLEAN_ROOT:-../QECLean}" branch -a | grep <agent-id>   # find the branch
+git -C "${QECLEAN_ROOT:-../QECLean}" worktree add .claude/worktrees/<new-name> <branch>
 ```
 
 If the branch was also deleted: the work is lost. Re-spawn the relevant
@@ -689,7 +706,7 @@ Stage-2 or Stage-4 agent.
 ### LSP / `lake build` hangs
 
 ```bash
-bash scripts/prune-stale-ileans.sh
+(cd "${QECLEAN_ROOT:-../QECLean}" && bash scripts/prune-stale-ileans.sh)
 ```
 
 If still hanging, no other `lake` process should be running. Check:
@@ -743,9 +760,9 @@ showing the compiling proof, treat as `negative-result` until verified.
 
 - `docs/pipeline.md` — architectural overview, scoring rubric, stage
   diagrams
-- `CLAUDE.md` — project-wide naming/tactic/linter conventions
+- QECLean's `CLAUDE.md` — library-wide naming/tactic/linter conventions
 - `.claude/agents/qec-prioritizer.md` — Stage-0 scoring agent
 - `.claude/agents/qec-skeleton-drafter.md` — Stage-2 agent
 - `.claude/agents/qec-formalization-runner.md` — Stage-4 agent
 - `.claude/agents/qec-moonshot.md` — research-track agent
-- `QEC/Stabilizer/Codes/_TEMPLATE.lean` — canonical CSS code structure
+- `QECLean:QEC/Stabilizer/Codes/_TEMPLATE.lean` — canonical CSS code structure

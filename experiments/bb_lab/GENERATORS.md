@@ -1,21 +1,26 @@
 # bb_lab → QEC generators
 
 Python scripts that emit (parts of) tracked Lean files under
-`QEC/Stabilizer/Codes/BivariateBicycle/`. The Lean-side inventory (which
+`QEC/Stabilizer/Codes/BivariateBicycle/` in the sibling QECLean checkout
+(env var `QECLEAN_ROOT`, default `../QECLean` relative to the qec-lab repo
+root). The Lean-side inventory (which
 files are generated, class G/F/H taxonomy) lives in
-`QEC/Stabilizer/Codes/BivariateBicycle/README.md`; this file is the
+`QECLean:QEC/Stabilizer/Codes/BivariateBicycle/README.md`; this file is the
 operational side.
 
 **Environment**: `cd experiments/bb_lab && uv sync` (Python 3.11, deps in
 `pyproject.toml`; dev group for pytest). Run generators as
 `uv run python <script> [args]`.
 
-**Clobber policy**: every generator that writes into `QEC/` must (a) emit the
-`GENERATED FILE — DO NOT HAND-EDIT` banner naming itself, its data source and
+**Clobber policy**: every generator that writes into the QECLean checkout's
+`QEC/` must (a) emit the
+`GENERATED FILE — DO NOT HAND-EDIT` banner naming itself (as a
+`qec-lab:experiments/...` path), its data source and
 the regen command, and (b) refuse to overwrite an existing target without
 `--force` (pattern: `gen_pair72_packaging_data.py`). A hand-edit found in a
-Class-G file is a bug: move the change into the generator and land generator +
-regenerated output in the same PR.
+Class-G file is a bug: move the change into the generator and land the
+generator change (qec-lab) and the regenerated output (QECLean) together,
+as cross-referencing PRs.
 
 ## Live generators
 

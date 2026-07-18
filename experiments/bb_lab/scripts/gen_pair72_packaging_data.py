@@ -20,10 +20,17 @@
 # unless --force).
 #
 # Run from experiments/bb_lab/:  uv run python scripts/gen_pair72_packaging_data.py [--emit-lean [--force]]
+# The emitted Lean lands in the sibling QECLean checkout (env QECLEAN_ROOT;
+# default: the QECLean directory sibling to this qec-lab repo, resolved from
+# the script's own location).
 
 import json
 import os
 import sys
+
+_here = os.path.dirname(os.path.abspath(__file__))
+QECLEAN_ROOT = os.environ.get(
+    "QECLEAN_ROOT", os.path.normpath(os.path.join(_here, "..", "..", "..", "..", "QECLean")))
 
 NA, NB = 6, 6
 K_EXPECT = 4          # logical qubits
@@ -481,7 +488,7 @@ Mirrors the gross Phase-5 packaging
 (`QEC/Stabilizer/Codes/BivariateBicycle/Gross/StabilizerCode.lean`) at pair72 scale.
 
 This file embeds offline-validated `𝔽₂` linear-algebra data
-(`experiments/bb_lab/scripts/gen_pair72_packaging_data.py`, ALL-PASS gate):
+(`qec-lab:experiments/bb_lab/scripts/gen_pair72_packaging_data.py`, ALL-PASS gate):
 * `dropSet` — 2 faces / 2 vertices dropped to trim 72 generators to 68;
 * `redP2` / `redCM` — reduced bases of `ker ∂₂` / `ker cutMap` (2 each),
   satisfying `redP2 j (dropSet i) = [i=j]`, giving both the closure relations
@@ -619,7 +626,11 @@ if "--emit-lean" in sys.argv:
     if dropFaces != dropVtx:
         print("dropFaces != dropVtx — the skeleton's single `dropSet` is wrong; adapt the template first.")
         sys.exit(1)
-    target = "../../QEC/Stabilizer/Codes/BivariateBicycle/Z3Z6/StabilizerCode.lean"
+    if not os.path.isdir(QECLEAN_ROOT):
+        sys.exit(f"no QECLean checkout at {QECLEAN_ROOT!r} — set QECLEAN_ROOT "
+                 "or clone QECLean as a sibling of qec-lab")
+    target = os.path.join(
+        QECLEAN_ROOT, "QEC/Stabilizer/Codes/BivariateBicycle/Z3Z6/StabilizerCode.lean")
     if os.path.exists(target) and "--force" not in sys.argv:
         print("refusing to clobber existing", target, "(use --force)")
         sys.exit(1)

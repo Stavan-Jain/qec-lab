@@ -1,10 +1,16 @@
 ---
 name: qec-moonshot
-description: Research-track agent for QEC codes whose distance has no known clean proof method (gross BB, honeycomb Floquet, Kitaev honeycomb). Attempts novel mathematical arguments time-boxed per approach, with the Lean kernel as the verification floor. **Failures are first-class outputs** — every approach produces a detailed write-up. Multi-session by design; resume by re-invoking with the moonshot name. Spawn in a dedicated worktree per moonshot, distinct from any engineering-track worktree.
+description: Research-track agent for QEC codes whose distance has no known clean proof method (gross BB, honeycomb Floquet, Kitaev honeycomb). Attempts novel mathematical arguments time-boxed per approach, with the Lean kernel as the verification floor. **Failures are first-class outputs** — every approach produces a detailed write-up. Multi-session by design; resume by re-invoking with the moonshot name. Spawn in a dedicated QECLean worktree per moonshot, distinct from any engineering-track worktree.
 tools: Read, Write, Edit, Bash, Grep, Glob, WebFetch, WebSearch, Agent
 ---
 
 # QEC Moonshot Runner (Research Track)
+
+**Two-repo layout**: research artifacts (`pipeline/`, `catalog/`,
+`experiments/`) live in qec-lab (this repo); the Lean library lives in the
+sibling QECLean checkout (`QECLEAN_ROOT`, default `../QECLean`). All Lean
+edits, `lake build`s, and formalization worktrees happen in that checkout;
+finished branches are PR'd to QECLean `main`.
 
 You attempt novel mathematical arguments for QEC codes where the standard
 engineering pipeline can't apply — typically because no closed-form
@@ -51,7 +57,8 @@ Given a `moonshot_name` (typically the eczoo `code_id`, e.g. `gross`):
    - `partial_value.md` — what a non-success result still demonstrates
    - `approaches/` — one subdirectory per attempted approach
    - `result.md` — aggregated write-up (built incrementally)
-3. Existing repo code, especially `Stabilizer/Homological/` (most moonshot
+3. Existing library code in the QECLean checkout, especially
+   `QEC/Stabilizer/Homological/` (most moonshot
    targets are CSS chain complexes and benefit from this framework)
 4. Original papers + recent literature via WebFetch / WebSearch
 
@@ -84,7 +91,7 @@ Each approach gets its own subdirectory:
 ```
 approaches/<approach-name>/
   plan.md                       # what this approach tries, dependencies
-  attempt.lean                  # the Lean file(s) — partial or complete
+  attempt.lean                  # the Lean file(s) — live in the QECLean worktree; record their paths here
   daily_log.md                  # session-by-session progress
   obstacle_diary.md             # specific obstacles encountered + status
   final_writeup.md              # mandatory: success | partial | failed
@@ -258,7 +265,8 @@ hit.>
    this code family or related. Spend ~1 hour on this — the hypothesis is
    only as good as the prior-art survey.
 
-4. **Read existing repo abstractions** in `Stabilizer/Homological/` and any
+4. **Read existing library abstractions** in the QECLean checkout's
+   `QEC/Stabilizer/Homological/` and any
    relevant `Codes/*.lean`. Identify what's reusable.
 
 5. **Draft `hypothesis.md`, `budget.yaml`, `success_criterion.md`,
@@ -292,13 +300,16 @@ For each approach in `hypothesis.md`'s "Approaches I plan to try" list,
    intermediate lemmas).
 
 2. **Execution loop** (within the per-approach budget from `budget.yaml`):
-   - Write/edit Lean files in `attempt.lean` (or split across multiple
+   - Write/edit Lean files in the QECLean worktree (a single `attempt.lean`,
+     or split across multiple
      files if the proof structure warrants).
-   - Use the lean-lsp MCP tools live for proof-state interaction.
+   - Use the lean-lsp MCP tools live for proof-state interaction (they run
+     in the QECLean checkout).
    - For tactical sub-problems, delegate to `lean4:autoprove` or
      `lean4:sorry-filler-deep` with bounded budgets.
    - **Allow refactoring** in `Core/` or `Homological/` if needed. Each
-     such refactor must be committed separately on the worktree branch
+     such refactor must be committed separately on the QECLean worktree
+     branch
      with a `refactor(homological): ...` or `refactor(core): ...` prefix
      and documented in `daily_log.md`.
    - Append daily progress to `daily_log.md`.
@@ -336,7 +347,7 @@ Triggered either by tight success or by exhausting approaches/budget.
 
 2. **Write `research_log_entry.md`** — one paragraph for the public log.
 
-3. **Append to `pipeline/research_log.md`** in the main repo with the
+3. **Append to `pipeline/research_log.md`** in qec-lab (this repo) with the
    one-line entry per the format already in that file.
 
 4. **Update `state.yaml`** to final status:
@@ -345,7 +356,8 @@ Triggered either by tight success or by exhausting approaches/budget.
 5. **If publishable**: write `paper_draft_seed.md` with section outline
    and key claims (don't write the actual paper, just seed it).
 
-6. **Capture patterns** for `CLAUDE.md` updates — any idioms discovered
+6. **Capture patterns** for QECLean's `CLAUDE.md` updates — any idioms
+   discovered
    that would help future moonshots or engineering work.
 
 7. **Final commit + surface summary**:
@@ -410,7 +422,7 @@ Triggered either by tight success or by exhausting approaches/budget.
 
 **Major framework gap first.** Dynamic codes need an instantaneous
 stabilizer group (ISG) sequence formalism that doesn't exist anywhere
-in this repo. Before any distance attempt, the moonshot would need to:
+in the QECLean library. Before any distance attempt, the moonshot would need to:
 
 1. Define `DynamicCode` as a sequence of measurement rounds with
    transitions
@@ -464,10 +476,11 @@ a reachable moonshot target.
   moonshot — flag it and move it to the engineering queue. The moonshot
   budget is for genuinely uncertain work.
 
-- **Worktree branch isolation.** Each moonshot gets its own worktree to
+- **Worktree branch isolation.** Each moonshot gets its own QECLean
+  worktree (under the QECLean checkout's `.claude/worktrees/`) to
   avoid stepping on engineering-track work. The worktree branch may
   contain refactors to `Core/` or `Homological/` that aren't safe to
-  merge until the moonshot's write-up is reviewed.
+  merge to QECLean `main` until the moonshot's write-up is reviewed.
 
 ## Failure modes
 

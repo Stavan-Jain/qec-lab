@@ -3,18 +3,22 @@
 Reads `experiments/bb_lab/phase5/data.json` and emits ONLY the seven pure
 data defs (`dropSet`, `redP2`, `redCM`, `phiX`, `phiZ`, `logX`, `logZ`).
 The proofs that consume them live in the hand-maintained
-`QEC/Stabilizer/Codes/BivariateBicycle/Gross/StabilizerCode.lean` and are
-NEVER touched by this script.
+`QEC/Stabilizer/Codes/BivariateBicycle/Gross/StabilizerCode.lean` (in the
+QECLean repo) and are NEVER touched by this script.
 
-Run from the repo root:  uv run --project experiments/bb_lab \
-    python experiments/bb_lab/phase5/gen_file.py [--force]
+The output lands in the sibling QECLean checkout (env `QECLEAN_ROOT`,
+default `../QECLean`). Run from the qec-lab repo root:
+    uv run --project experiments/bb_lab \
+        python experiments/bb_lab/phase5/gen_file.py [--force]
 """
 import argparse
 import json
 import os
 import sys
 
-OUT = "QEC/Stabilizer/Codes/BivariateBicycle/Gross/StabilizerCodeData.lean"
+QECLEAN_ROOT = os.environ.get("QECLEAN_ROOT", os.path.join("..", "QECLean"))
+OUT = os.path.join(QECLEAN_ROOT,
+                   "QEC/Stabilizer/Codes/BivariateBicycle/Gross/StabilizerCodeData.lean")
 
 def wrap(body: str, width: int = 96, indent: str = "  ") -> str:
     """Greedy-wrap a one-line Lean list literal at ', ' boundaries (<=width)."""
@@ -46,10 +50,11 @@ logZ = '[' + ', '.join(Elist(c) for c in d['logZ']) + ']'
 
 TEMPLATE = '''/-
 GENERATED FILE — DO NOT HAND-EDIT (edits WILL be clobbered by regen).
-Generator : experiments/bb_lab/phase5/gen_file.py
-Data      : experiments/bb_lab/phase5/data.json (offline-validated 𝔽₂ linear algebra)
-Regen     : uv run --project experiments/bb_lab python experiments/bb_lab/phase5/gen_file.py --force
-To change this file, change the generator/data and regenerate — in the same PR.
+Generator : qec-lab:experiments/bb_lab/phase5/gen_file.py
+Data      : qec-lab:experiments/bb_lab/phase5/data.json (offline-validated 𝔽₂ linear algebra)
+Regen     : from a sibling qec-lab checkout (QECLEAN_ROOT points here):
+            uv run --project experiments/bb_lab python experiments/bb_lab/phase5/gen_file.py --force
+To change this file, change the generator/data in qec-lab and regenerate — land both repos' changes together.
 -/
 /-
 # Gross packaging data (§1 of the `StabilizerCode 144 12` packaging)
@@ -68,7 +73,7 @@ import QEC.Stabilizer.Codes.BivariateBicycle.Gross.Defs
 
 namespace Quantum.Stabilizer.Homological.BB
 
-/-! ## §1  Offline-validated data (see `experiments/bb_lab/phase5/data.json`) -/
+/-! ## §1  Offline-validated data (see `qec-lab:experiments/bb_lab/phase5/data.json`) -/
 
 /-- The 6 faces / 6 vertices dropped to trim 144 generators down to 132. -/
 def dropSet : List GrossGroup :=
@@ -107,6 +112,11 @@ def main() -> int:
     ap.add_argument("--force", action="store_true",
                     help="overwrite an existing StabilizerCodeData.lean")
     args = ap.parse_args()
+    if not os.path.isdir(os.path.dirname(OUT)):
+        print(f"no QECLean checkout at {os.path.dirname(OUT)!r} — "
+              "set QECLEAN_ROOT or clone QECLean as a sibling of qec-lab",
+              file=sys.stderr)
+        return 1
     if os.path.exists(OUT) and not args.force:
         print(f"refusing to overwrite {OUT} (pass --force)", file=sys.stderr)
         return 1

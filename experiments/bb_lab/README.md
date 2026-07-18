@@ -80,6 +80,7 @@ uv run bb-lab verify-cert certificates/bb_72_12_6.cert.json   # full re-check
 ## The Lean handshake
 
 The Lab agrees with `QEC/Stabilizer/Framework/Homological/BBChainComplex.lean`
+in the sibling QECLean checkout (`QECLEAN_ROOT`, default `../QECLean`)
 on the convolution convention:
 
 > `conv A f g = ∑_h A(h) · f(g − h)` over F₂[G]
@@ -94,7 +95,7 @@ The full bridge: `pipeline/attempts/<id>/state.yaml` (polynomial strings) →
 (`schema_version: bb-instance/v1`) → `emit_skeleton` → compilable
 Lean file importing `BBChainComplex`. See `tests/test_lean_roundtrip.py`
 for the round-trip property test (compiles the emitted file under
-`lake env lean`).
+`lake env lean` in the QECLean checkout).
 
 ## CI gate
 
@@ -111,7 +112,8 @@ passes iff all four suites are green:
 3. `test_bravyi_sat` — SAT distance matches `{6, 10, 10}` for the three
    smallest instances.
 4. `test_lean_roundtrip` — `gross` state.yaml → Lab → emitted `.lean`
-   compiles cleanly under `lake env lean`.
+   compiles cleanly under `lake env lean` (requires the sibling QECLean
+   checkout).
 5. `test_drat_emission` — `cadical` CLI subprocess emits well-formed
    DRAT + CNF pairs; certificate JSON records SHA256-stable references;
    **`drat-trim` independently verifies every proof** (skipped if the

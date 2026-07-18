@@ -1,7 +1,9 @@
 # Pipeline
 
 Working state for the QEC-code formalization pipeline. See `docs/pipeline.md`
-for the full architecture.
+for the full architecture. Everything under `pipeline/` is research metadata
+and stays in this repo; the Lean outputs of attempts live in the sibling
+QECLean checkout (`QECLEAN_ROOT`, default `../QECLean`).
 
 ## Files
 

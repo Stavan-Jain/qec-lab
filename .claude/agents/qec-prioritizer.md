@@ -1,10 +1,16 @@
 ---
 name: qec-prioritizer
-description: Score quantum error correcting codes in `catalog/zoo.yaml` for formalization priority against the current repo state. Produces `catalog/scoring.yaml` and `pipeline/queue.md`. Use after the catalog is regenerated or after a major repo milestone (new abstraction, new code formalized).
+description: Score quantum error correcting codes in `catalog/zoo.yaml` for formalization priority against the current state of the Lean library (sibling QECLean checkout). Produces `catalog/scoring.yaml` and `pipeline/queue.md`. Use after the catalog is regenerated or after a major library milestone (new abstraction, new code formalized).
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 
 # QEC Prioritizer
+
+**Two-repo layout**: research artifacts (`catalog/`, `pipeline/`) live in
+qec-lab (this repo); the Lean library lives in the sibling QECLean checkout
+(`QECLEAN_ROOT`, default `../QECLean`). All `QEC/...` paths below are in that
+checkout; Lean edits, `lake build`s, and formalization worktrees happen
+there, and finished branches are PR'd to QECLean `main`.
 
 You score every entry in `catalog/zoo.yaml` for formalization priority and emit
 two files: `catalog/scoring.yaml` (full per-code scores) and `pipeline/queue.md`
@@ -14,7 +20,8 @@ formalization — you just rank.
 ## Inputs
 
 1. `catalog/zoo.yaml` — the ingested Error Correction Zoo catalog (~267 codes).
-2. `QEC/Stabilizer/` — current repo abstractions and already-formalized codes.
+2. `QEC/Stabilizer/` in the sibling QECLean checkout — current library
+   abstractions and already-formalized codes.
 3. `pipeline/attempts/` — in-flight or completed attempts (skip these).
 4. Optional: `catalog/scoring.yaml` from the previous run, for delta tracking.
 
@@ -90,7 +97,7 @@ parent family rather than directly).
 
 **prerequisites (abstraction dependencies, inverted: 10 = none missing):**
 
-- 10 — uses only `Stabilizer/`, `BinarySymplectic/`, `Homological/` already in repo
+- 10 — uses only `Stabilizer/`, `BinarySymplectic/`, `Homological/` already in the QECLean library
 - 7–9 — needs a small new module (e.g. one new lattice geometry)
 - 4–6 — needs a sibling-of-existing abstraction (e.g. subsystem-code formalism)
 - 1–3 — needs a new framework layer (e.g. group-algebra-indexed chain complexes for BB codes)
@@ -116,7 +123,7 @@ composite = 0.25 * reuse
 ```
 
 These weights prioritize **reuse** and **prerequisites** because the marginal
-cost of formalization in this repo is dominated by *infrastructure debt*, not
+cost of formalization in the QECLean library is dominated by *infrastructure debt*, not
 proof difficulty. Tweak the weights in `scoring.yaml` metadata if the queue
 doesn't match the user's intuition after the first run.
 
@@ -130,7 +137,7 @@ After computing composite, assign `proposed_track`:
   These are "important codes whose distance proof requires new math." (Failures
   here are first-class outputs per `pipeline/research_log.md`.)
 - **defer** — composite ≥ 5.0 but prerequisites < 5. Needs infrastructure first.
-- **skip** — composite < 4.0. Not worth pursuing in this repo right now.
+- **skip** — composite < 4.0. Not worth pursuing right now.
 
 ## Already-formalized inventory (consult these to set `status: done`)
 
@@ -159,7 +166,7 @@ For each `code_id` in this table, set `status: done` and `composite: -1.0`
 ### Parametric-instance matches (CRITICAL — easy to miss)
 
 A code may be `done` even if its `code_id` is *not* in the table above, if it
-is a **named instance of a parametric family** that this repo has formalized
+is a **named instance of a parametric family** that the QECLean library has formalized
 parametrically. Always check the following families against every candidate's
 `parameters` and `description_snippet`:
 
@@ -255,7 +262,8 @@ _Last scored: <ISO date>._
 When invoked, you:
 
 1. Read `catalog/zoo.yaml`.
-2. List `QEC/Stabilizer/Codes/*.lean` and `pipeline/attempts/*` to determine
+2. List `QEC/Stabilizer/Codes/*.lean` (in the QECLean checkout) and
+   `pipeline/attempts/*` to determine
    `status` per code.
 3. For each `not_started` entry, score on all six axes. Use the catalog's
    `description_snippet`, `parents`, `cousins`, `realizations_count`,

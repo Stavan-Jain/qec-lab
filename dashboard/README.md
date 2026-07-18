@@ -4,6 +4,11 @@ Static HTML dashboard for the formalization pipeline. Reads
 `catalog/zoo.yaml`, `catalog/scoring.yaml`, `pipeline/attempts/*/`, and
 `pipeline/research_log.md` from the repo root; writes to `dashboard/dist/`.
 
+The recent-activity panel also reads git history from the sibling
+[QECLean](https://github.com/Stavan-Jain/QECLean) checkout (env
+`QECLEAN_ROOT`, default `../QECLean`) when present; the build degrades
+gracefully without it.
+
 ## Build
 
 ```bash
