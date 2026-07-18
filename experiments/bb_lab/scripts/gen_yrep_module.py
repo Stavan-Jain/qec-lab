@@ -65,6 +65,11 @@ def ch(v, j):
 def offs(w): return {j: (ch(w[:nb], j), ch(w[nb:], j)) for j in range(5)}
 
 i = int(sys.argv[1])
+if i in (11, 12) and "--force" not in sys.argv:
+    sys.exit(f"refusing arg {i}: MImFloorY{i}.lean diverged from this generator "
+             "(hand-evolved to the analytic Tier-3 form in QECLean PR #58; "
+             "regenerating would revert it). Pass --force only if you really "
+             "mean to overwrite the analytic proof with the engine form.")
 rc = reps[i]
 zrep = c2z[rc]
 o = offs((D2C0 @ zrep) % 2)
