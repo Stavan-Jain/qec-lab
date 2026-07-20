@@ -514,3 +514,56 @@ Census totals this arc: ~21.5M candidate right-sides across 41
 members, ZERO matches anywhere. The natural E20 assembly: ONE
 overlay/lattice enumeration engine ((C)-table machinery) serving
 P-K4, P-26, and P-33, plus the three profile-capped layers.
+
+## 13. E20 — the overlay engine + the P-33 terminal table
+
+**The engine** (`a17_e20_overlay_engine.py`): abstract 8-coordinate
+systems (a₁..a₄, b₁..b₄; a₀ = b₀ = 0 gauge), integer relations in a
+ℤ-echelon lattice with EXACT membership denominators; sound kills
+only — d = 1 equality kills (collisions, Sidon repeats, D2,
+forbidden memberships), d = 2 kills on difference-class forms
+(no-2-torsion, D1-generic), NO rank kill and NO d ≥ 3 kill (odd
+torsion is realizable). Mod-p screening (p = 2³¹−1), exact
+confirmation of every kill, exhaustive exact re-verification of
+every terminal — incremental speedups cannot affect soundness.
+Fraction-free denominators (6.7× speedup). Validations: unit
+selftest; INJECTION — the 4,641 realized shift-grids mapped into
+the abstract gauge with every relation asserted concretely in the
+group; 286/286 (cap) survive; count matches the τ-census exactly.
+
+**P-33 run: COMPLETE and finite.** 1,630,585 nodes, uncapped, 680s:
+**555 terminal patterns** — P-33 is FALSE at the pure D1∧D2 level
+(injective abstract patterns exist); the class extras are
+load-bearing, exactly as in A16's hardest sections. Classification
+(`a17_e20_p33_classify.py`) under the class-frame reductions
+(rank 2, 4∤ ⟹ v₂(ord) ≤ 1):
+* **R1 (2-power kill): 226 dead** — a difference-class form forced
+  at d = 2^k has order | 2 on class frames.
+* **ZONE: 189** — ALL both-side torsion-confined with equal
+  exponents d̃ ∈ {15, 49, 51, 55, 69, 85} (= 3·5, 7², 3·17, 5·11,
+  3·23, 5·17; counts 36/36/36/36/36/9 — a witness-symmetry orbit
+  structure: ~6 underlying families). Both dA and dB (disjoint,
+  20 each) must embed in T_d̃ ∖ {0} ⟹ **|T_d̃(G)| ≥ 41** ⟹ heavy
+  frame-divisibility demands. Cyclic-axis sub-zones (T inside one
+  axis) are DEAD by (iii): A confined to one row has y-pattern (5),
+  forbidden for the A side. The surviving sub-zones are Z_p²-type
+  confinements — the w = 5 analog of A16's pentagonal/F-tri-5
+  exceptional-ambient program (note: Z₅² has 120 Sidon 5-sets,
+  Z₇² has 58,800 — bare existence does NOT empty the zones; the
+  kills must use D2-cardinality + (iii) + component-field
+  structure).
+* **FREE: 140** — all rank 7, one-parameter families (96 with no
+  unit torsion at all). Realizable-looking at D1∧D2 level; the
+  (iii)-necessity frontier for (3,3).
+
+**Program of record for P-33 closure:** (1) symmetry-dedupe the
+zone families (expect ~6) and the free families; (2) cyclic-axis
+kills are done; Z_p² sub-zone analyses per exponent (Smith-form
+solution enumeration where small; (iii)-shape + component-field
+arguments); (3) free families: extract the 1-parameter solution
+lines, test (iii)-compatibility — expected outcome: every family
+violates the mirrored shape table, turning (iii)-necessity into a
+theorem. Then port the engine to P-K4 (terminals expected to
+classify as the proven-dead sub-±B configurations) and P-26.
+Files: `a17_e20_overlay_engine.py`, `a17_e20_p33_classify.py`,
+`data/a17/e20_p33_table.json`, `e20_p33_families.json`.

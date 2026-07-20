@@ -2129,3 +2129,30 @@ redo (`a17_e19_o4_tau.py`): 1,847,445 τ-trials, TRUE population =
 P-33's statement stand, now with full-population support; O1–O3
 and all E18 censuses used translation-invariant matching and are
 unaffected. Abstract P-33 enumeration in flight.
+
+## Entry 20b (2026-07-20) — P-33 terminal table COMPLETE: 555
+## abstract survivors ⟹ P-33 false at D1∧D2 level; classified into
+## 226 frame-dead + ~6 torsion-zone families + 140 (iii)-frontier
+## free families
+
+The full abstract enumeration is FINITE and DONE (1.63M nodes,
+uncapped, 11 min after the fraction-free denominator rewrite —
+6.7× — with identical branch statistics). The verdict reshapes
+P-33: injective patterns EXIST abstractly, so (3,3) genuinely
+needs the class extras — the same lesson A16 §6/App-B taught at
+w = 3. Classification: R1 (2-power torsion ⟹ 2-torsion on 4∤
+frames) kills 226/555. The 189 zone terminals are ALL both-side
+confined at equal exponents d̃ ∈ {15,49,51,55,69,85} in 36-orbits
+(~6 true families): D2 forces |T_d̃| ≥ 41 (40 disjoint differences
+must fit), cyclic-axis sub-zones die by (iii) (one-row A has the
+forbidden (5) y-pattern), and the Z_p² sub-zones are the w = 5
+pentagonal-analog program (Z₅²/Z₇² Sidon censuses: 120/58,800 —
+existence alone does NOT empty them). The 140 free terminals are
+all rank-7 one-parameter families — realizable-looking at D1∧D2,
+i.e. the exact frontier where (iii) becomes load-bearing for
+(3,3); killing them = proving (iii)-necessity. Engine soundness:
+every kill exact-confirmed, every terminal exactly re-verified,
+injection-validated against 286 realized grids (relation-level
+concrete assertions in-group). Files: a17_e20_overlay_engine.py,
+a17_e20_p33_classify.py, data/a17/e20_p33_table.json,
+e20_p33_families.json.

@@ -63,7 +63,7 @@ import sys
 import time
 from fractions import Fraction
 from itertools import combinations
-from math import lcm
+from math import gcd, lcm
 from pathlib import Path
 
 import numpy as np
@@ -148,18 +148,31 @@ class ZLattice:
 
     def forced_denom(self, f) -> int | None:
         """Smallest d with d·f in the Z-span (unique echelon combo),
-        or None if f is outside the Q-span."""
-        v = [Fraction(x) for x in f]
-        dens = 1
+        or None if f is outside the Q-span. Fraction-free: the state
+        (v, den) represents the true vector v/den; each elimination
+        multiplies through by the pivot, and the combo coefficient
+        for a row is v[c]/(den·r[c]), whose reduced denominator
+        feeds the lcm."""
+        v = list(f)
+        den = 1
+        dmax = 1
         for r in self.rows:
             c = self._piv(r)
             if v[c]:
-                k = v[c] / r[c]
-                dens = lcm(dens, k.denominator)
-                v = [x - k * y for x, y in zip(v, r)]
+                rc = r[c]
+                dk = den * rc
+                dk //= gcd(v[c], dk)
+                dmax = lcm(dmax, abs(dk))
+                vc = v[c]
+                v = [rc * x - vc * y for x, y in zip(v, r)]
+                den *= rc
+                g = gcd(den, *(abs(x) for x in v)) if any(v) else den
+                if g > 1:
+                    den //= g
+                    v = [x // g for x in v]
         if any(v):
             return None
-        return dens
+        return dmax
 
     def basis_modp(self) -> tuple:
         rows, pivs = [], []
