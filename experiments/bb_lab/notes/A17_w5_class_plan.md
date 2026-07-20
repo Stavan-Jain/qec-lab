@@ -61,3 +61,116 @@
 
 (filled by a17_w5_identities_probe.py runs — see A5_goal2_log.md
 Entry 16.)
+
+## 4. E17 results — lemma statements and proofs of record
+
+**Notation.** For a Sidon 5-set B and an s-set T, the product B·T in
+F₂[G] has cell multiplicities m(g) = #{t ∈ T : g − t ∈ B} ≤ s; write
+n_j = #{g : m(g) = j}. Let a(T) = #{unordered pairs {t,t′} ⊆ T with
+t − t′ ∈ dB} ≤ C(s,2). Sidon gives, for each unordered pair {t,t′}
+with δ = t − t′ ∈ dB, EXACTLY ONE collision cell-pair: the unique
+(u,v) ∈ B² with u − v = δ yields v + t = u + t′, and the reverse
+orientation reproduces the same unordered pair. Hence
+
+    Σ_g C(m(g), 2) = a(T).                                   (†)
+
+(The wrong count 2a — both orientations counted separately — is
+refuted by the Frobenius class itself: T ~ B has a = 10 and
+Σ C(m,2) = 10.)
+
+**Lemma V ((1,3)-vacuity).** For any Sidon 5-set B and any 3-set T:
+|B·T| = 15 − 2(n₂ + n₃) ≥ 15 − 2a(T) ≥ 9. In particular |B·T| ≠ 5
+and the (1,3)/(3,1) splits are VACUOUS at w = 5.
+*Proof.* Σ m = 15 gives n₁ = 15 − 2n₂ − 3n₃ and |B·T| = n₁ + n₃ =
+15 − 2(n₂ + n₃). By (†), n₂ + 3n₃ = a ≤ C(3,2) = 3, so
+n₂ + n₃ ≤ a ≤ 3 and |B·T| ≥ 9. ∎
+
+**Remark (why w = 3 was rich).** The same computation for weight-w
+Sidon B and s-set T gives |B·T| ≥ ws − 2a(T) ≥ ws − s(s−1). At (w,s) = (3,3) the bound is 3 =
+|A|, TIGHT — the O3/PROG triangle zoo lives exactly in the equality
+case. At (5,3) the bound is 9 > 5 with slack: the extra Sidon room
+starves the coincidence structures. At (5,5) the bound is 5 = |A|,
+tight again — the (1,5) split is where the w = 5 structure
+concentrates, and equality is rigid:
+
+**Lemma S ((1,5) structure).** If |B·T| = 5 for a 5-set T, then:
+ (i) a(T) = 10 and dT = dB exactly (so T is itself Sidon);
+ (ii) every collision is a simple pair: n₃ = n₄ = n₅ = 0, n₂ = 10,
+     n₁ = 5;
+ (iii) for each t ∈ T the four tails v(t, t′) (t′ ≠ t) are distinct,
+     leaving a unique non-tail φ(t) ∈ B, and
+     B·T = {φ(t) + t : t ∈ T};
+ (iv) if φ is NOT injective, then some difference of B·T lies in dB —
+     so a (1,5) MATCH (B·T = A + c) would violate D2. Hence any
+     surviving match has φ : T → B bijective and
+     dA ⊆ dB + dB (sumset), with the Frobenius class T = B + c
+     (φ = translation, dA = 2·dB) as its translation-structured case.
+*Proof.* Σ m = 25 gives |B·T| = 25 − 2n₂ − 2n₃ − 4n₄ − 4n₅ ≥
+25 − 2(n₂ + 3n₃ + 6n₄ + 10n₅) = 25 − 2a ≥ 5, with equality forcing
+n₃ = n₄ = n₅ = 0 and a = 10, i.e. every T-pair difference in dB with
+Sidon-distinct representations — (i), (ii). For (iii): a repeated
+tail v(t,t′) = v(t,t″) would place three cells at one point
+(m ≥ 3, dead by (ii)); the collision for {t,t′} pairs cell
+(v(t,t′), t) with (v(t′,t), t′), so cell (x, t) is uncollided iff
+x = φ(t), and the n₁ = 5 singletons are exactly (φ(t), t). For (iv):
+φ(t) = φ(t′) gives the image difference (φ(t)+t) − (φ(t′)+t′) =
+t − t′ ∈ dB; a match transports it into dA, contradicting D2. ∎
+
+**Open items (E17b, census-true, proofs pending).**
+ (C) Completeness: φ injective ⟹ T = B + c. Census: all (1,5) hits
+     across 41 members are B-translates (E16 C5); the V3 5-clique
+     census (all T with dT ⊆ dB) finds only ±B-translates, and
+     (−B)-translates fail Lemma S(ii) (the 0-cell has m = 5). Proof
+     route: the tail relations v(t′,t) − v(t,t′) = t − t′ around
+     T-triangles.
+ (J5) Frobenius exclusion at w = 5: the class T = B + c forces
+     dA = 2·dB; kill under (iii) across the w = 5 shape table. The
+     w = 3 route (y = 0 zero-pattern clash) needs recasting since
+     w = 5 mono-side shapes with same-coordinate pairs/triples CAN
+     carry y = 0 differences; candidate invariants: y = 0 difference
+     COUNTS per shape vs the doubling image, and 2-adic structure of
+     2·dB on 4∤ frames.
+With (C) + (J5), the (1,k) tower through k = 5 is closed by Lemmas
+V + S alone. Verification battery: `a17_e17_lemma_checks.py`
+(V1 = Lemma V bookkeeping over members + random Sidon sets;
+V2 = Lemma S invariants on all image-5 hits; V3 = clique census).
+
+## 5. E17b — the J5 kill (Frobenius exclusion at w = 5)
+
+**Theorem J5-odd (PROVEN; ℓ, m both odd).** Under D1 ∧ (iii) alone:
+no mono-x Sidon 5-set A and mono-y Sidon 5-set B have dA = 2·dB.
+*Proof.* Count ordered y-free differences (δ_y = 0). A is not mono-y
+(iii "exactly"), so its y-count multiset has ≥ 3 odd counts — the
+partitions of 5 are (1,1,3), (1,1,1,2), (1,1,1,1,1) — giving
+Z_y(dA) = 6, 2, 0 respectively (ordered same-y pairs). B is mono-y,
+so its y-count multiset has exactly one odd count — (5), (4,1),
+(3,2), (2,2,1) — giving Z_y(dB) = 20, 12, 8, 4. On odd frames x ↦ 2x
+is a group automorphism that preserves and reflects {δ_y = 0}, so
+|2·dB ∩ {y = 0}| = Z_y(dB), while dA = 2·dB would force
+Z_y(dA) = |2·dB ∩ {y = 0}|. But {0, 2, 6} ∩ {4, 8, 12, 20} = ∅. ∎
+The census's max overlap 18 = 20 − 2 is exactly this theorem's
+boundary (minimal y-free gap 6 vs 4).
+
+**Proposition J5-even (partial; ℓ ≡ 2 mod 4 and/or m ≡ 2 mod 4).**
+(a) B-(5) is dead on all frames: dA = 2·dB ⊆ {y = 0} forces A into a
+single row, making A mono-y — contradicting (iii).
+(b) B-(4,1) is dead: with m odd the count 12 − k₀ ∈ {0,2,6} forces
+k₀ = 6 = full τ-closure of the 4-row's x-difference set; writing
+P₁ = (a+b)−(c+d), P₂ = (a+c)−(b+d), P₃ = (a+d)−(b+c), the three
+disjoint-pair matchings realize τ ∈ {±P₂,±P₃} ∩ {±P₁,±P₃} ∩
+{±P₁,±P₂}, and any two P's equal force 2(x−y) = 0 for two row
+elements — a 2-torsion difference, D1-dead. (Shared-point
+realizations die immediately: they force a difference equal to τ.)
+(c) Z₂²-part frames: 2·dB ⊆ 2G ∖ {0}, so dA = 2·dB requires
+ℓm ≥ 84; all smaller frames dead by counting (this is the census's
+|2·dB| ≤ 14 on Z₆×Z₁₀).
+(d) **P-item J5e′ (open, census-true):** the residual even-frame
+cases (B-(3,2), B-(2,2,1), and ℓm ≥ 84 for Z₂²) reduce to the
+τ-collapse claim: every mono-y Sidon B on an even frame has
+dB ∩ (dB + τ) ≠ ∅ for some involution τ (then |2·dB| < 20 = |dA|).
+Census: 1080/1080 (Z₆×Z₉, k ≥ 4) and 848/848 (Z₆×Z₁₀). Known
+sub-kills: cross-row 2×2 difference sets exceed the τ-free capacity
+of Z₆ (Sidon-distinct 4 > ℓ/2 = 3); the general ℓ ≥ 10 case is
+open. Verification: `a17_j5_probe.py` (universal census, 3 frames,
+0 hits) + `a17_j5_shape_checks.py` (Z_y tables + the odd-frame
+disjointness on pools).

@@ -1844,3 +1844,89 @@ sequence); `scripts/a17_w5_identities_probe.py`;
 `data/a17/e16_census_{7x9,6x9_6x10}.{jsonl,log}` (+ regenerated
 member lists). Next: E17 (the two lemmas), then the even-split
 σ-formula censuses (E18).
+
+## Entry 17 (2026-07-18) — A17/E17: Lemma V ((1,3) VACUOUS, proven) +
+## Lemma S ((1,5) structure, proven) — the (1,k) tower reduces to two
+## census-true polish items
+
+**Lemma V ((1,3)-vacuity, PROVEN).** For any Sidon 5-set B and any
+3-set T: |B·T| = 15 − 2(n₂+n₃) ≥ 15 − 2a(T) ≥ 9. The (1,3)/(3,1)
+splits are vacuous at w = 5 — with slack 4, not by cancellation
+accident. Proof = the collision identity Σ C(m,2) = a(T) (each
+in-dB T-pair yields EXACTLY ONE collision cell-pair; the both-
+orientations double-count is refuted by the Frobenius class's own
+tally) + Σm = 15 bookkeeping; a ≤ C(3,2) = 3 < 5 ≤ n₂+n₃ needed for
+image 5. The general bound |B·T| ≥ ws − 2a ≥ ws − s(s−1) explains
+the w-3/w-5 asymmetry structurally: (3,3) is TIGHT (the O3/PROG zoo
+= the equality case), (5,3) has slack (vacuity), (5,5) is tight
+again — the w = 5 action concentrates entirely in (1,5).
+
+**Lemma S ((1,5) structure, PROVEN).** |B·T| = 5 forces: dT = dB
+exactly (T Sidon), all collisions simple pairs (n₃ = n₄ = n₅ = 0),
+image = {φ(t) + t} with φ(t) the unique non-tail of t; and if φ is
+non-injective the image carries a dB-difference, so a MATCH violates
+D2. Surviving matches have φ bijective and dA ⊆ dB + dB, with
+T = B + c (Frobenius; dA = 2·dB) as the translation-structured case.
+Bonus structure: the 10 collisions biject unordered T-pairs with
+unordered B-pairs matching ±difference classes, and |B + T| = 15 =
+|B + B| while |B + (−B)| = 21 — the reflection branch dies at the
+sumset level.
+
+**Verification** (`a17_e17_lemma_checks.py`): V1 — 105 Sidon 5-sets
+(30 member sides + 75 random over 7×9/6×9/6×10) × exhaustive
+3-sets: 0 violations of any identity; min image = 9 EXACTLY (the
+bound is tight — dB-triangles exist at w = 5 and give 9-cell images,
+never 5). V3 — 5-clique census in Cay(G, dB): every one of the 105
+B's has exactly 10 Sidon 5-cliques = 5 B-translates + 5
+(−B)-translates, ZERO exotics — completeness is census-true beyond
+members. V2 — Lemma S invariants on all image-5 hits: 30 member sides, 150 hits (5 generic B-translates each), every hit satisfies dT = dB ∧ n₃=n₄=n₅=0 ∧ image = {φ(t)+t} with φ well-formed; all are B-translates. 0 deviations.
+
+**Open (E17b).** (C) completeness (φ injective ⟹ T = B+c):
+reformulated as the coincidence of the five tail-bijections
+ψ̂_t : T → B under ψ̂_{t′}(t) − ψ̂_t(t′) = t − t′; the T3
+triangle-relation attack is set up but not closed — parked
+census-true, A16-P-item style. (J5) the Frobenius exclusion at
+w = 5 (dA = 2·dB vs the (iii) shape table — the w = 3 y = 0 clash
+needs recasting since w = 5 mono shapes can carry same-coordinate
+pairs/triples; candidate invariant = zero-coordinate difference
+COUNTS per shape vs the doubling image). With (C) + (J5): the
+(1,k) tower through k = 5 closes on Lemmas V + S. Then: (1,7),
+even splits (E18), (3,3)/(3,5) (E19), (a′) engines (deferred).
+
+**E17b addendum — the J5 kill lands (same day).** Census first
+(`a17_j5_probe.py`, full pools, D1 ∧ (iii) only, no pairing):
+dA = 2·dB has ZERO realizations on 7×9 (5004 × 4419 dA-classes),
+6×9, 6×10; max overlap 18/20 on the odd frame, |2·dB| ≤ 16 / ≤ 14 on
+the Z₂ / Z₂² frames. Then the proofs (`A17_w5_class_plan.md` §5):
+
+* **Theorem J5-odd (PROVEN, all odd 4∤ frames, D1 ∧ (iii) alone):**
+  count ordered y-free differences. A not-mono-y ⟹ Z_y(dA) ∈
+  {0, 2, 6}; B mono-y ⟹ Z_y(dB) ∈ {4, 8, 12, 20}; doubling is an
+  automorphism preserving y-free on odd frames, so dA = 2·dB forces
+  equality of y-free counts — but the value sets are DISJOINT. ∎
+  The census's 18/20 max overlap is exactly the theorem's boundary
+  (minimal gap 6 vs 4). Refinement observed and explained: y-free
+  differences carry distinct x-parts (Sidon), so Z_y(dB) ≤ ℓ − 1 —
+  only the (2,2,1) B-shape survives ℓ ≤ 7.
+* **Prop J5-even:** B-(5) dead on all frames (dA ⊆ {y=0} would make
+  A mono-y); B-(4,1) dead for m odd (the count forces FULL τ-closure
+  of the 4-row's difference set, and the P₁/P₂/P₃ matching analysis
+  shows full closure ⟹ a 2-torsion difference, D1-dead); Z₂²-part
+  frames dead below ℓm = 84 (2·dB ⊆ 2G ∖ {0}). Residual = **P-item
+  J5e′**: B-(3,2)/(2,2,1) on even frames via the τ-collapse claim
+  (dB meets dB + τ; census 1928/1928 with k ≥ 4).
+* Verification `a17_j5_shape_checks.py`: W1 (the two Z_y value
+  tables + the Z_x mirror) and W2 (doubling transport, 0/5004
+  deviations) PASS on all three frames; W3 (no fully-τ-closed
+  4-rows) vacuous-true at ℓ = 6 (row capacity r(r−1) ≤ ℓ−1 — the
+  same Sidon-capacity bound, noted as a shape-table trim). One
+  harness axis-bug caught by its own failure (the B-side counts came
+  back {0,2,6} = the MIRROR table — accidental confirmation of the
+  symmetric analysis) and fixed.
+
+**State of the (1,k) tower:** (1,1) generic-dead; (1,3)/(3,1)
+VACUOUS (Lemma V); (1,5)/(5,1) dead modulo (C) completeness
+[census-true, ψ̂-coincidence formulation set up] with J5-odd proven
+and J5-even reduced to J5e′ [census-true]. Next: (C) triangle
+analysis, J5e′ τ-collapse, then the even splits (E18) and
+(1,7)/(3,3)/(3,5) (E19).
