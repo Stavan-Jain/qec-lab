@@ -612,3 +612,43 @@ capped layers, J5e″, and (a′). The engine + endgame pipeline
 (enumerate → classify → confine → screen) is the template for
 P-K4/P-26. Files: `a17_e20_p33_endgame.py`,
 `data/a17/e20_p33_endgame.json`.
+
+## 15. E20 — P-K4 RESOLVED: the (2,4) split is CLOSED, at the
+## D1 ∧ D2 level
+
+**Theorem ((2,4) vacuous; P-K4).** For Sidon 5-sets A, B with
+dA ∩ dB = ∅ over ANY abelian ambient: A·u_L = B·u_R ≠ 0 has no
+solution with |u_L| = 2, |u_R| = 4. Neither (iii), (a′), nor any
+frame condition is used — this is the strongest closure of the
+program so far ((3,3) needed (iii); here D1 ∧ D2 alone suffice).
+
+*Proof of record* = Theorem E18.2 + Lemma C2 + the §8 endgames
+(hand-proven, frame-free: any match forces the 4×2 grid with
+part1/part2 transversals, K₄ u_R, six distinct collision cells)
++ the P-K4 fixed table (`a17_e20_pk4_engine.py`): the COMPLETE
+abstract enumeration over the same gauged 8-coordinate space
+(t_j = a_{j−1} − b_j¹ and g₂ = a₄ − a₃ eliminate; branching = π₂ ×
+witness pairs × 6 edge witnesses; incremental battery = static
+Sidon/D2 + t-distinctness + m_A + m_B; terminals exact-verified
+INCLUDING the collision-cell forms) is **EMPTY: 478,631 nodes,
+uncapped, 0 terminals** — every branch dies on sound d ∈ {1, 2}
+kills (the d = 2 kill is the D1-generic no-2-torsion lemma, so the
+whole table is frame-free).
+
+**Over-kill validation (the 0-terminal burden of proof).** The
+part2-relaxed half-system (drop R_j and all part2 forms — the
+remaining structure IS realized by the eight concrete K3
+transversal grids and by sub-B half-configurations) finds **832
+terminals within a 3M-node cap, including 80 lattice-FORCED sub-B
+patterns** — precisely the family whose full-system death is the
+fifth-translate argument, which needs both parts. The gauges,
+canonicalizations, choice sets, and kill batteries demonstrably
+admit realizable structures; the empty full table is mathematics.
+Consistency: K2's 1.25M-candidate census (0 matches), the N_A cap
+(26 < 30), and 0/8 transversal complements all pointed here.
+
+**Scorecard: SIXTH split closed** — (1,1), (1,3), (1,5)-tower
+(mod J5e″), (2,2), (3,3), (2,4)/(4,2). Remaining: P-26 ((2,6) —
+next engine port; per-profile near-clique drivers), (4,4), (3,5),
+(1,7), J5e″, (a′). Files: `a17_e20_pk4_engine.py`,
+`data/a17/e20_pk4_table.json`.

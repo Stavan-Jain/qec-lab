@@ -1,21 +1,98 @@
 # A13 L2 — formalizing the rank corollary `dim (1+σ)H₁ = k̃ − k`
 
-**Status: in progress (2026-07-04). ALL LINEAR-ALGEBRA WIRING DONE. The
-inequality `E ≥ k̃ − k` is a Lean theorem for every `XDoubleCoverData`;
-the *equality* `E = k̃ − k` (plus `dim ker ε_* = k` and `ε_*² = 0`, i.e.
-the full deck-module rank picture) is a Lean theorem conditional on the
-single clean criterion `BocksteinVanishes D` (`ker τ_* ≤ range p_*` on
-`H₁`, = `δ₁∘δ₂ = 0`). `EpsFree (1 + x^σ) (2^r)` is a Lean theorem for
-every 2-power-order deck (any abelian `G`, any char-2 base), and composing
-it with L1 gives the element form `δ₁δ₂ = 0` in every order-4 deck group
-algebra (`bockstein_element_form_group_algebra`). The SOLE remaining gap
-is the homological transport identifying that element fact with
-`BocksteinVanishes` (the seam↔connecting-map bridge) — which is the
-paper's main theorem, not wiring. See Execution status below.**
+**Status: CLOSED (2026-07-20). The seamC↔δ₂ homological transport — the
+sole remaining gap — is now a Lean theorem (`BBBocksteinTransport.lean`,
+branch `claude/a13-seamc-delta2-transport`, axiom-clean): the element
+fact `δ₁δ₂ = 0` implies `BocksteinVanishes`, hence `E = k̃ − k`,
+`E + k = k̃`, `dim ker ε_* = k` — conditional only on the named
+`BocksteinElementForm`, which is itself discharged (i) for every deck
+admitting an order-4 lift `(Ĝ, σ̂, q)` and (ii) **unconditionally** for
+every doubled-axis cover group `ZMod (2n) × ZMod m` with deck `(n, t)`
+(twists included) — i.e. for every free-ℤ₂ BB doubling cover of the
+program. The only remaining L2 item is the structure *iso*
+`H₁ ≅ D^{k̃−k} ⊕ F₂^{2k−k̃}` (needs the f.g. `F₂[ε]/(ε²)`-module
+classification, a separate algebra task; all its rank inputs are now
+Lean theorems). See Execution status below.**
 Branch `claude/a13-bockstein-equality` (off PR #53, rebased —
-`BBDeckTower.lean` from the merged OQ1 PR #54 is now on-branch). Prereq
-reading: [`A13_result.md`](A13_result.md) (§1 defect identity, §5 the L2
-scope note), `BocksteinLift.lean` (L1, done).
+`BBDeckTower.lean` from the merged OQ1 PR #54 is now on-branch); the
+transport continuation on `claude/a13-seamc-delta2-transport` (off main
+@ 1f72e14). Prereq reading: [`A13_result.md`](A13_result.md) (§1 defect
+identity, §5 the L2 scope note), `BocksteinLift.lean` (L1, done).
+
+## Execution status (2026-07-20) — the transport, CLOSED
+
+**Landed (`QEC/…/Homological/BBBocksteinTransport.lean`, axiom-clean —
+`propext`/`Classical.choice`/`Quot.sound` only, no `native_decide`):**
+
+- **Level-0 transfer identities**: `pull0_push0` (`τ₀p₀ = 1 + σ`),
+  `push0_pull0_eq_zero`, and the multiplication-operator form
+  **`pull0_eq_conv_deckPoly_liftC2`** (`τ₀ u = ε ⋆ lift u`,
+  `ε := deckPoly = 1 + x^σ`) — the identity that converts transfer
+  statements into `ε`-divisibility statements.
+- **`BocksteinElementForm D`** (def): the A13 §1 claim-4 element fact in
+  the repo's convolution language — `A⋆z, B⋆z ∈ εR̃ ⟹
+  A⋆b + B⋆a = ε⋆(A⋆r + B⋆s)` for some `r, s`.
+- **`conv_Ac_liftC2_seamC` / `conv_Bc_liftC2_seamC`**: reading
+  `τ₁(seamC ζ) = liftStab ζ` (`pull1_seamC`) through `τ₀ = ε·lift`
+  componentwise gives exactly the element form's hypotheses with
+  `z = liftC2 ζ` and `ã, b̃` the sheet-0 lifts of `seamC ζ`'s halves.
+- **`exists_cycle_push_eq_seamC` (the transport core)**: under the
+  element form, every seam chain `seamC ζ` (`ζ ∈ ker ∂₂`) is the
+  pushforward of a cover 1-cycle **on the nose**: the corrected lift
+  `v = (ã + ε⋆s | b̃ + ε⋆r)` is a cycle (the two boundary defects are
+  equal by the element form and cancel in char 2) and `p₁ v = seamC ζ`
+  (`p₀` kills `ε`-multiples). **This bypasses `δ₁` and `H₀` entirely** —
+  no LES exactness at the `p`-side is ever needed; the element form's
+  Bezout witnesses directly produce a chain-level section of `p₁` over
+  the seam classes. A genuine simplification over the paper's defect
+  identity bookkeeping.
+- **`bocksteinVanishes_of_elementForm` (capstone)**: with
+  `ker τ₁ = im δ₂` already in Lean
+  (`pull1_mem_boundaries_iff_seamCoset`), the core gives
+  `ker τ_* ≤ range p_*` on `H₁` — `BocksteinVanishes`. Composed rank
+  corollaries: `finrank_range_epsH1_eq_of_elementForm`
+  (`E = k̃ − k`), additive form, `dim ker ε_* = k`.
+- **`bockstein_span_of_ringHom`** (abstract ring core): the element-form
+  span descends along any surjective `ρ : R̂ → R` with
+  `ker ρ ⊆ (ε̂²)`, `ρ ε̂ = ε`, `ε² = 0`, char-2 `R̂`, `Ann(ε̂) = (ε̂³)` —
+  `BocksteinLift.bockstein_element_form` transported *without*
+  constructing the quotient isomorphism (hypotheses lifted through
+  surjectivity, conclusion unpacked by `Ideal.mem_span_pair`, witnesses
+  descended along `ρ`; the `(ε̂²)`-ambiguity dies since `ρ(ε̂²) = ε² = 0`).
+- **`elementForm_of_orderFourLift`**: an order-4 lift of the deck —
+  `Ĝ` finite, `σ̂` of exact order 4, `q : Ĝ →+ G` surjective, `q σ̂ = σ`,
+  `ker q = {0, 2σ̂}` — implies `BocksteinElementForm`. The kernel
+  computation `ker(𝔽₂[Ĝ] → 𝔽₂[G]) = (ε̂²)` reuses the repo's own
+  fiber-sum exactness applied to the *hat cover packaged as an
+  `XDoubleCoverData Ĝ G` with zero polynomials* (`liftCoverData`) — so
+  `pull0_eq_conv_deckPoly_liftC2` instantiated on the hat cover is
+  literally the statement `ker ρ = ε̂²·R̂`, read through `convEquiv`
+  (`convEquiv_mapDomainRingHom`, `convEquiv_one_add_single`).
+  `Ann(ε̂) = (ε̂³)` comes from L2a's `EpsFree` at `2²`.
+- **`elementForm_of_zmod_double` / `bocksteinVanishes_of_zmod_double` /
+  `finrank_range_epsH1_eq_of_zmod_double`**: the concrete lift
+  `Ĝ = ZMod (4n) × ZMod m`, `σ̂ = (n, t)`, `q = cast × id` for cover
+  groups `ZMod (2n) × ZMod m` with deck `(n, t)`, any order-2 twist `t`
+  (`t = 0` = the standard doubled-axis deck of every program bundle) —
+  **the rank equality is unconditional for the concrete BB doubling
+  family**. (Second-axis decks, e.g. A19's `y`-deck lifts, are covered by
+  the generic `elementForm_of_orderFourLift`; only the concrete `ZMod`
+  constructor is first-axis-shaped — the mirrored constructor is a
+  10-minute follow-up if a second-axis Lean bundle ever materializes.)
+
+**Lean traps hit (recorded):** (a) `rw [map_zero]`/`map_add` fail to
+match through the `AddMonoidAlgebra`/`Finsupp` type-synonym boundary
+after `Finsupp.induction_linear` — use `AddMonoidAlgebra.induction_linear`
+(same case names, statement at the right type) so bundled-hom lemmas
+match; (b) long `rw` chains mixing `map_add`/`convEquiv_mul` hit
+traversal-order surprises (`map_add` split `convEquiv (1 + single σ 1)`
+instead of the intended factor) — restate as two targeted `have`-bridges
+and rewrite with `← hL, ← hR`; (c) the `unusedSectionVars` linter fires
+on instance binders used only in proofs — `[Fintype Ĝ]` weakens to
+`[Finite Ĝ]` + `Fintype.ofFinite`, `[DecidableEq Ĝ]` drops via
+`classical` (the linter's own suggestions, both strict improvements);
+(d) `omega` cannot see `2*n*c` (nonlinear) — factor the bound through
+`Nat.lt_of_mul_lt_mul_left` before case-splitting.
 
 ## Execution status (2026-07-03)
 
@@ -224,18 +301,17 @@ axiom-clean)** — the "standard but verbose" transport of §2.3 decision 2:
 So L2a's `EpsFree (1 + x^σ)` and the element form now speak, through
 `convEquiv`, about the repo's actual chain-level convolution/deck action.
 
-**Remaining (the hard part, NOT wiring):** the homological transport
-identifying `bockstein_element_form_group_algebra` with
-`BBTransferH1.BocksteinVanishes` (`ker τ_* ≤ range p_*` on `H₁`). With the
-ring bridge in hand this reduces to the `seamC`↔connecting-map δ₂
-identification (`BBCover.lean:558` `seamC_mem_cycles` is already δ₂ at
-chain level): read `cycles / boundaries / H₁` as `convEquiv`-modules
-where `∂ᵢ = mul`, so `[u] ∈ ker τ_*` unpacks to an `A z = ε a`,
-`B z = ε b` instance the element form kills, placing `[u]` in
-`range p_*`. This is the paper's main theorem (the toy free-`D` self-dual
-counterexample shows it is *false* for generic 3-term complexes —
-liftability, supplied by the order-4 lift behind the element form, is the
-content), so it is genuinely open, not plumbing.
+**Remaining (the hard part, NOT wiring) — ✅ CLOSED 2026-07-20** (see
+"Execution status (2026-07-20)" above): the homological transport
+identifying the element form with `BBTransferH1.BocksteinVanishes` landed
+in `BBBocksteinTransport.lean`, exactly along the predicted seam route —
+`[u] ∈ ker τ_*` unpacks through `pull1_mem_boundaries_iff_seamCoset` to a
+seam class, whose `A z = ε a`, `B z = ε b` instance
+(`conv_Ac/Bc_liftC2_seamC`) the element form corrects into a cover cycle
+pushing onto it (`exists_cycle_push_eq_seamC`). The prediction that this
+is the content, not plumbing, held: the toy free-`D` obstruction is dodged
+precisely by the order-4 lift's Bezout witnesses, and no `δ₁`/`H₀`
+formalization was needed at all.
 
 ### Phase 3 — L2a: `EpsFree` (⟹ `Ann(ε̂) = (ε̂³)`), general — ✅ DONE
 Core (`BBEpsFree.lean`): `epsFree_quotXpow` + `epsFree_of_free` +
@@ -349,10 +425,12 @@ risk can't strand the rest.
 | Phase | Effort | Wildcard? | Status |
 |---|---|---|---|
 | 0 — per-code `native_decide` equality | S–M | no | deprioritized (only trivial `E=0` corner on real codes) |
-| 1 — unconditional inequality `E ≥ k̃−k` | M–L | no | **core done** (`BBBocksteinRank`); only the homology instantiation (induced maps + exactness chase) left |
-| 2 — bridge + element-form wiring | M | no | not started |
-| 3 — L2a general `EpsFree`/`Ann(ε̂)=(ε̂³)` | L | **yes** (no mathlib support) | **core done** (`BBEpsFree`); only coset-basis freeness left |
-| 4 — equality + structure thm + write-up | S–M | no | not started |
+| 1 — unconditional inequality `E ≥ k̃−k` | M–L | no | ✅ done (`BBBocksteinRank` + `BBTransferH1`) |
+| 2 — bridge + element-form wiring | M | no | ✅ done (`BBConvRing` + `BBEpsFreeGroupAlgebra` §7) |
+| 2′ — **the seamC↔δ₂ transport** (the paper's main theorem) | L | **yes** (toy counterexample shows it isn't formal) | ✅ done (`BBBocksteinTransport`, 2026-07-20) |
+| 3 — L2a general `EpsFree`/`Ann(ε̂)=(ε̂³)` | L | **yes** (no mathlib support) | ✅ done (`BBEpsFree` + `BBEpsFreeGroupAlgebra`) |
+| 4 — equality + rank picture | S–M | no | ✅ done (conditional on `BocksteinElementForm`, discharged for order-4 lifts + unconditionally for `ZMod (2n) × ZMod m` doubled-axis decks) |
+| 5 — structure *iso* `H₁ ≅ D^{k̃−k} ⊕ F₂^{2k−k̃}` | M | no | open (needs f.g. `F₂[ε]/(ε²)`-module classification; all rank inputs in Lean) |
 
 Full abstract theorem: ≈ 1.5–2.5 weeks, dominated by Phase 3. Pragmatic
 milestone (flagship codes + homological inequality, Phases 0–1): ≈ 3–4

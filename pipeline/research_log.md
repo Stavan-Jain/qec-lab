@@ -13,6 +13,27 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-20 — a13-seamc-delta2-transport (A13 L2 continuation) — success —
+  **The seamC↔δ₂ homological transport — A13 L2's sole remaining gap and
+  the paper's main-theorem bridge — is now an axiom-clean Lean theorem**
+  (`BBBocksteinTransport.lean`, branch `claude/a13-seamc-delta2-transport`):
+  the element fact `δ₁δ₂ = 0` (`BocksteinElementForm`, in convolution
+  language) implies `BocksteinVanishes`, closing `dim (1+σ)H₁ = k̃ − k`,
+  `E + k = k̃`, and `dim ker ε_* = k` for every `XDoubleCoverData`. The
+  proof route is *simpler than the paper's*: no `δ₁`/`H₀`/LES exactness —
+  the element form's Bezout witnesses directly correct the sheet-0 lift
+  of `seamC ζ` into a cover cycle with the same pushforward
+  (`exists_cycle_push_eq_seamC`), so `im δ₂ ⊆ im p_*` is chain-level
+  explicit. The element form is discharged from any order-4 deck lift
+  (`elementForm_of_orderFourLift`; kernel of `𝔽₂[Ĝ] → 𝔽₂[G]` computed by
+  the repo's own fiber-sum exactness on a zero-polynomial hat bundle) and
+  **unconditionally for every doubled-axis cover `ZMod (2n) × ZMod m`
+  with deck `(n, t)`, twists included** — i.e. for the program's entire
+  free-ℤ₂ BB doubling family (`finrank_range_epsH1_eq_of_zmod_double`).
+  Remaining from A13: only the `D`-module structure *iso* (f.g.
+  `𝔽₂[ε]/(ε²)`-module classification).
+  [details](../experiments/bb_lab/notes/A13_L2_formalization_plan.md)
+
 - 2026-07-20 — bravyi360-deck-nontrivial-tower (A19) — partial —
   **Bravyi's [[360,12,≤24]] flagship fails deck condition (R) on all
   three decks (x¹⁵, y³, diagonal) in every monomial presentation —

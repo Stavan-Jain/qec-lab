@@ -2180,3 +2180,23 @@ under D1 ∧ D2 ∧ (iii) on rank-2 4∤ frames — (a′) unused. Fifth
 split closed.** The enumerate→classify→confine→screen pipeline is
 the P-K4/P-26 template. Files: a17_e20_p33_endgame.py,
 data/a17/e20_p33_endgame.json.
+
+## Entry 21 (2026-07-20) — 🎉 P-K4 RESOLVED: (2,4) CLOSED at the
+## D1 ∧ D2 level — the fixed table is EMPTY
+
+The engine port took one session-arc: same 8-coordinate gauge
+(t_j, g₂ eliminate), branching π₂ × b-witness pairs × 6 K₄-edge
+witnesses, incremental m_A/m_B/t-distinctness battery, collision-
+cell forms at terminal time (P-33's lesson, pre-applied). Result:
+**COMPLETE table, 478,631 nodes, ZERO terminals** — not even the
+sub-±B families (coherent: they die before the grid stage, and the
+engine enumerates post-E18.2 grid structure). Since every kill is
+d = 1 equality or the D1-generic 2-torsion kill, the theorem is
+frame-free: **(2,4) is vacuous under D1 ∧ D2 alone** — stronger
+than (3,3), which needed (iii). Over-kill validation (the
+zero-terminal burden of proof): the part2-relaxed half-system —
+realized concretely by the 8 K3 transversal grids and sub-B
+half-configs — finds 832 terminals in 3M nodes including 80
+lattice-forced sub-B patterns; the machinery admits realizable
+structures, so the empty full table is a fact. Sixth split closed.
+Files: a17_e20_pk4_engine.py, data/a17/e20_pk4_table.json.

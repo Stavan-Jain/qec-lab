@@ -24,7 +24,7 @@ A11 line, not A8).
 | A10 | Descent-cover twist screen (doubling-existence question) | `A10_descent_twist_screen.md` | merged 2026-07-18 (annotated) |
 | A11 | Literal-lift doubling criterion (C-safe ∧ C-danger) | `A11_*` | merged 2026-07-18 (annotated) |
 | A12 | Deck homotopy (R) ⟺ k-preservation ⟺ Bezout | `A12_deck_homotopy_R.md` | done |
-| A13 | Deck towers (OQ1) + Bockstein equality (OQ2) + L2 Lean wiring | `A13_deck_tower_plan.md`, `A13_bockstein_equality_plan.md`, `A13_result.md`, `A13_L2_formalization_plan.md` | done (seamC↔δ₂ transport open) |
+| A13 | Deck towers (OQ1) + Bockstein equality (OQ2) + L2 Lean wiring | `A13_deck_tower_plan.md`, `A13_bockstein_equality_plan.md`, `A13_result.md`, `A13_L2_formalization_plan.md` | done (seamC↔δ₂ transport CLOSED 2026-07-20; only the `D`-module structure iso remains) |
 | A14 | Safe-floor criterion (OQ4): screens S0–S4, tower bottleneck | `A14_safe_floor_criterion_plan.md` | done |
 | A15 | Base-floor generalization: the class small-cycle theorem | `A15_base_floor_class_plan.md` | active (w=5 kills in flight) |
 | A16 | Class small-cycle theorem — statement and proof of record | `A16_class_theorem_writeup.md` | done (unconditional) |

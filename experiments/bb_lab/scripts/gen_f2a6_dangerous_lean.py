@@ -562,8 +562,15 @@ import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.WindowEngine
 # Z5Z15F2A6 window sweep leaves ({name})
 
 The per-class sweep certificates in the exact hypothesis shapes of
-`window_sound_t1/t2/t3` ({content}).  One `native_decide` per theorem;
-files are parallel build leaves.
+`window_sound_t1/t2/t3` ({content}).
+
+Each sweep's `native_decide` core is stated in split form — `∀ hi, ∀ lo`
+over the high/low halves of the mask space — because the flat
+`∀ lam : Fin (2 ^ L)` decidability instance recurses to depth `2 ^ L`
+on the C stack and aborts beyond about `2 ^ 23`.  The split caps the
+depth at `2 ^ 13`; the public flat-form theorem (the shape the
+`window_sound_*` wrappers consume) is recovered through `ball_split`.
+Files are parallel build leaves.
 -/
 
 namespace Quantum
@@ -585,50 +592,129 @@ end Quantum
 """
 
 
-def sweep0_thm(i: int) -> str:
+def _split(L: int) -> tuple[int, int]:
+    """High/low split exponents (a, b) with a + b = L, b = L // 2."""
+    b = L // 2
+    return L - b, b
+
+
+def _body0(i: int, v: str) -> str:
     K = f"({i} : Fin 113)"
-    return f"""theorem win_sweep0_{i} :
-    ∀ lam : Fin (2 ^ (winCellList {K}).length),
-      syndFold (winCellList {K}) lam.val = 0 →
-      (tableEntries {K} 150).any
-        (fun pr => lam.val == localMaskOf (winCellList {K}) pr.2)
-        = true := by
+    return (f"syndFold (winCellList {K}) {v} = 0 →\n"
+            f"      (tableEntries {K} 150).any\n"
+            f"        (fun pr => {v} == localMaskOf (winCellList {K}) pr.2)\n"
+            f"        = true")
+
+
+def _bodyE(i: int, v: str) -> str:
+    K = f"({i} : Fin 113)"
+    return (f"syndFold (winCellList {K} ++ [cellIdx e]) {v} = 0 →\n"
+            f"        (tableEntries {K} (cellIdx e)).any (fun pr =>\n"
+            f"          {v} == localMaskOf (winCellList {K} ++ [cellIdx e]) pr.2)\n"
+            f"          = true")
+
+
+def _bodyP(i: int, v: str) -> str:
+    K = f"({i} : Fin 113)"
+    return (f"syndFold ((winCellList {K} ++ [cellIdx e₁]) ++ [cellIdx e₂])\n"
+            f"          {v} = 0 →\n"
+            f"        ((tableEntries {K} (cellIdx e₁))\n"
+            f"            ++ tableEntries {K} (cellIdx e₂)).any\n"
+            f"          (fun pr => {v} == localMaskOf\n"
+            f"            ((winCellList {K} ++ [cellIdx e₁]) ++ [cellIdx e₂]) pr.2)\n"
+            f"          = true")
+
+
+def win_len_thm(i: int, w: int) -> str:
+    return (f"private theorem win_len_{i} :\n"
+            f"    (winCellList ({i} : Fin 113)).length = {w} := by\n"
+            f"  native_decide\n\n")
+
+
+def sweep0_thm(i: int, w: int) -> str:
+    K = f"({i} : Fin 113)"
+    a, b = _split(w)
+    sv = f"(2 ^ {b} * hi.val + lo.val)"
+    return f"""private theorem win_sweep0_{i}_core :
+    ∀ hi : Fin (2 ^ {a}), ∀ lo : Fin (2 ^ {b}),
+      {_body0(i, sv)} := by
   native_decide
+
+theorem win_sweep0_{i} :
+    ∀ lam : Fin (2 ^ (winCellList {K}).length),
+      {_body0(i, "lam.val")} := by
+  have hlen : (winCellList {K}).length = {a} + {b} := by
+    have h := win_len_{i}; omega
+  rw [hlen]
+  exact ball_split
+    (p := fun v =>
+      {_body0(i, "v")})
+    win_sweep0_{i}_core
 
 """
 
 
-def sweepE_thm(i: int) -> str:
+def sweepE_thm(i: int, w: int) -> str:
     K = f"({i} : Fin 113)"
-    return f"""theorem win_sweepE_{i} :
+    a, b = _split(w + 1)
+    sv = f"(2 ^ {b} * hi.val + lo.val)"
+    return f"""private theorem win_sweepE_{i}_core :
+    ∀ e : G150 × Fin 2, winMem {K} e = false →
+      survivorB {K} (cellIdx e) = true →
+      ∀ hi : Fin (2 ^ {a}), ∀ lo : Fin (2 ^ {b}),
+        {_bodyE(i, sv)} := by
+  native_decide
+
+theorem win_sweepE_{i} :
     ∀ e : G150 × Fin 2, winMem {K} e = false →
       survivorB {K} (cellIdx e) = true →
       ∀ lam : Fin (2 ^ (winCellList {K} ++ [cellIdx e]).length),
-        syndFold (winCellList {K} ++ [cellIdx e]) lam.val = 0 →
-        (tableEntries {K} (cellIdx e)).any (fun pr =>
-          lam.val == localMaskOf (winCellList {K} ++ [cellIdx e]) pr.2)
-          = true := by
-  native_decide
+        {_bodyE(i, "lam.val")} := by
+  intro e he hs
+  have hlen : (winCellList {K} ++ [cellIdx e]).length = {a} + {b} := by
+    have h := win_len_{i}
+    rw [List.length_append, List.length_singleton]
+    omega
+  rw [hlen]
+  exact ball_split
+    (p := fun v =>
+      {_bodyE(i, "v")})
+    (win_sweepE_{i}_core e he hs)
 
 """
 
 
-def sweepP_thm(i: int) -> str:
+def sweepP_thm(i: int, w: int) -> str:
     K = f"({i} : Fin 113)"
-    return f"""theorem win_sweepP_{i} :
+    a, b = _split(w + 2)
+    sv = f"(2 ^ {b} * hi.val + lo.val)"
+    return f"""private theorem win_sweepP_{i}_core :
+    ∀ e₁ e₂ : G150 × Fin 2, winMem {K} e₁ = false →
+      winMem {K} e₂ = false → e₁ ≠ e₂ →
+      pairSurvivorB {K} (cellIdx e₁) (cellIdx e₂) = true →
+      ∀ hi : Fin (2 ^ {a}), ∀ lo : Fin (2 ^ {b}),
+        {_bodyP(i, sv)} := by
+  native_decide
+
+theorem win_sweepP_{i} :
     ∀ e₁ e₂ : G150 × Fin 2, winMem {K} e₁ = false →
       winMem {K} e₂ = false → e₁ ≠ e₂ →
       pairSurvivorB {K} (cellIdx e₁) (cellIdx e₂) = true →
       ∀ lam : Fin (2 ^ ((winCellList {K} ++ [cellIdx e₁])
           ++ [cellIdx e₂]).length),
-        syndFold ((winCellList {K} ++ [cellIdx e₁]) ++ [cellIdx e₂])
-          lam.val = 0 →
-        ((tableEntries {K} (cellIdx e₁))
-            ++ tableEntries {K} (cellIdx e₂)).any
-          (fun pr => lam.val == localMaskOf
-            ((winCellList {K} ++ [cellIdx e₁]) ++ [cellIdx e₂]) pr.2)
-          = true := by
-  native_decide
+        {_bodyP(i, "lam.val")} := by
+  intro e₁ e₂ h₁ h₂ hne hp
+  have hlen : ((winCellList {K} ++ [cellIdx e₁]) ++ [cellIdx e₂]).length
+      = {a} + {b} := by
+    have h := win_len_{i}
+    rw [List.length_append, List.length_append, List.length_singleton,
+      List.length_singleton]
+    omega
+  rw [hlen]
+  exact ball_split
+    (p := fun v =>
+      {_bodyP(i, "v")})
+    (win_sweepP_{i}_core e₁ e₂ h₁ h₂ hne hp)
 
 """
 
@@ -639,39 +725,41 @@ def emit_leaves(force: bool):
     t1 = sorted([w for w in win_classes if w[2] == 1],
                 key=lambda w: -(2 ** w[3]))
     t2plus = [w for w in win_classes if w[2] >= 2]
-    # greedy balance the t1 classes into two leaves by 2^|W|
-    a, b, ca, cb = [], [], 0, 0
+    # Greedy-balance the t=1 classes into four leaves by 2^|W| (the mask
+    # count is the interpreter cost); the t>=2 classes (base + extra-cell
+    # + pair sweeps) form the fifth leaf.  Five leaves ≈ the parallelism
+    # a 16 GB machine sustains at ~2 GB per lean worker.
+    N_T1 = 4
+    bins: list[list] = [[] for _ in range(N_T1)]
+    load = [0] * N_T1
     for w in t1:
-        if ca <= cb:
-            a.append(w)
-            ca += 2 ** w[3]
-        else:
-            b.append(w)
-            cb += 2 ** w[3]
-    print(f"leaf split: A={len(a)} classes (2^sum~{ca:.3g}), "
-          f"B={len(b)} (~{cb:.3g}), C={len(t2plus)} t>=2 classes")
-    fa = LEAF_HEADER.format(name="1 of 3",
-                            content=f"base sweeps, t = 1 classes "
-                                    f"{sorted(w[0] for w in a)}")
-    for w in sorted(a):
-        fa += sweep0_thm(w[0])
-    fb = LEAF_HEADER.format(name="2 of 3",
-                            content=f"base sweeps, t = 1 classes "
-                                    f"{sorted(w[0] for w in b)}")
-    for w in sorted(b):
-        fb += sweep0_thm(w[0])
-    fc = LEAF_HEADER.format(name="3 of 3",
-                            content="the t >= 2 classes: base + "
-                                    "single-extra sweeps, and the t = 3 "
-                                    "pair sweep")
+        j = load.index(min(load))
+        bins[j].append(w)
+        load[j] += 2 ** w[3]
+    print("leaf split: " + ", ".join(
+        f"L{k + 1}={len(bins[k])} t1 classes (~{load[k]:.3g} masks)"
+        for k in range(N_T1))
+        + f", L{N_T1 + 1}={len(t2plus)} t>=2 classes")
+    for k in range(N_T1):
+        body = LEAF_HEADER.format(
+            name=f"{k + 1} of {N_T1 + 1}",
+            content=f"base sweeps, t = 1 classes "
+                    f"{sorted(w[0] for w in bins[k])}")
+        for w in sorted(bins[k]):
+            body += win_len_thm(w[0], w[3])
+            body += sweep0_thm(w[0], w[3])
+        write(OUT_DIR / f"SweepWin{k + 1}.lean", body + LEAF_FOOTER, force)
+    body = LEAF_HEADER.format(
+        name=f"{N_T1 + 1} of {N_T1 + 1}",
+        content="the t >= 2 classes: base + single-extra sweeps, and "
+                "the t = 3 pair sweep")
     for w in sorted(t2plus):
-        fc += sweep0_thm(w[0])
-        fc += sweepE_thm(w[0])
+        body += win_len_thm(w[0], w[3])
+        body += sweep0_thm(w[0], w[3])
+        body += sweepE_thm(w[0], w[3])
         if w[2] == 3:
-            fc += sweepP_thm(w[0])
-    write(OUT_DIR / "SweepWin1.lean", fa + LEAF_FOOTER, force)
-    write(OUT_DIR / "SweepWin2.lean", fb + LEAF_FOOTER, force)
-    write(OUT_DIR / "SweepWin3.lean", fc + LEAF_FOOTER, force)
+            body += sweepP_thm(w[0], w[3])
+    write(OUT_DIR / f"SweepWin{N_T1 + 1}.lean", body + LEAF_FOOTER, force)
 
 
 def main():

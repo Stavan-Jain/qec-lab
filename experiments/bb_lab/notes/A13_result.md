@@ -5,9 +5,14 @@ below) is a machine-checked Lean theorem — axiom-clean, unconditional on
 the ℤ/4 chain block and abstract-modulo-one-ring-hypothesis in general —
 and the full OQ2 danger zone is now swept EXHAUSTIVELY clean (every
 `(A,B)` pair over the `|P| = 16` two-generator 2-groups and the F₄/F₈
-residue blocks). The homological repackaging (`δ₁∘δ₂ = 0`, the rank
-corollary `E = k̃−k`) and the general-group instantiation remain on paper
-(standard, and independently sweep-verified). The three independent W0
+residue blocks). UPDATE 2026-07-20: the homological repackaging is now
+ALSO a Lean theorem (`BBBocksteinTransport.lean`, L2 continuation,
+axiom-clean): `δ₁∘δ₂ = 0` ⟹ `BocksteinVanishes` ⟹ the rank corollary
+`E = k̃−k` (claims 1–2 below), discharged unconditionally for every
+doubled-axis cover group `ZMod (2n) × ZMod m` (twisted decks included)
+via the Frattini lift `ZMod (4n) × ZMod m`, and for any deck admitting
+an order-4 lift in general. Only claim 3's *iso* form (the `D`-module
+classification input) remains paper-only. The three independent W0
 red-team agents were cut off by an account session limit before
 reporting; per the project decision, the Lean kernel is now the referee
 of record for the formalized core.**
