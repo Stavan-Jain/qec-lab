@@ -75,10 +75,12 @@ identity, §5 the L2 scope note), `BocksteinLift.lean` (L1, done).
   groups `ZMod (2n) × ZMod m` with deck `(n, t)`, any order-2 twist `t`
   (`t = 0` = the standard doubled-axis deck of every program bundle) —
   **the rank equality is unconditional for the concrete BB doubling
-  family**. (Second-axis decks, e.g. A19's `y`-deck lifts, are covered by
-  the generic `elementForm_of_orderFourLift`; only the concrete `ZMod`
-  constructor is first-axis-shaped — the mirrored constructor is a
-  10-minute follow-up if a second-axis Lean bundle ever materializes.)
+  family**. The second-axis mirror (`*_of_zmod_double_right`,
+  `ZMod m × ZMod (2n)` with deck `(t, n)` — the y-deck orientation for
+  A19-type covers) is also landed. Applicability smoke-tested against
+  `grossCoverData` (`n := 6, m := 6`, `decide`-closed side goals) —
+  unifies directly against the real bundle; not landed as a Codes-layer
+  corollary since gross sits at the trivial `k̃ = k` corner.
 
 **Lean traps hit (recorded):** (a) `rw [map_zero]`/`map_add` fail to
 match through the `AddMonoidAlgebra`/`Finsupp` type-synonym boundary
