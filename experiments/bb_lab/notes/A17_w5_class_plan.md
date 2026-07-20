@@ -236,44 +236,130 @@ including the boundary frame Z₆×Z₁₄ (census: 2616/2616 B-classes
 collapse, 0 hits) and Z₁₀×Z₁₀-type frames. Open only for both-axes
 ≥ 14 Z₂² frames (|G| ≥ 196), outside the program's populated range.
 
-## 7. E18 — the (2,2) kill (atoms force the diagonal; fiber-size
-## periodicity kills it)
+## 7. E18 — the (2,2) kill: the D2 pigeonhole (four lines, no
+## branches)
 
-**Lemma A5 (w = 5 atoms; PROVEN).** For δ_L ∉ dA (the size-10
-stratum): mult_{d(σ_L)}(δ_L) = 5 + [2δ_L ∈ dA] (+5 if 2δ_L = 0),
-while for δ_L ≠ ±δ_R:
-mult_{d(σ_R)}(δ_L) ≤ 2·[δ_L ∈ dB] + [δ_L − δ_R ∈ dB] +
-[δ_L + δ_R ∈ dB] ≤ 4 < 5. Hence every (2,2) match has δ_L = ±δ_R:
-**branch 2b (the w = 3 S2/funnel, all of A16 Theorem G) is VACUOUS
-at w = 5.** (Size-8 strata: δ_L ∈ dA raises the atom count further;
-the cap argument is unchanged.) Verified: E1, 1200 samples, 0
-deviations; E3 direct match census 0/15 members.
+**Theorem E18.1 ((2,2) vacuous).** |A| = |B| = 5, B Sidon (D1),
+dA ∩ dB = ∅ (D2) ⟹ A·u_L = B·u_R ≠ 0 has no solution with
+|u_L| = |u_R| = 2.
 
-**Branch 2a (dB = dA + δ = dA − δ ⟹ dA 2δ-periodic).** Kills:
-* δ = τ (2δ = 0): Z_y(dB) = Z_y(dA + τ) = Z_y(dA) — the E17
-  disjointness {4,8,12,20} vs {0,2,6}. Dead.
-* 2δ ≠ 0, ord(2δ) = 2: 4δ = 0 has no solutions on 4∤ frames (every
-  2-torsion element has an odd coordinate ℓ/2 or m/2; 2δ has even
-  coordinates). Dead.
-* 2δ ≠ 0 general: **fiber-size periodicity.** dA 2δ-periodic makes
-  the x- and y-fiber-size functions of dA invariant under the
-  2δ-shift; but the fiber-size functions determined by the (iii)
-  shapes are NON-CONSTANT on their supports (x-side, per mono-x
-  shape: (5): {20@0}; (1,4): {12@0, 4, 4}; (3,2): {8@0, 6, 6};
-  (2,2,1): {4@0, 4, 4, 2, 2, 2, 2} up to coincidence merges), and
-  shift-invariance forces constant sizes along each ⟨2δ⟩-orbit of
-  the support — contradiction in every shape, with the coincidence-
-  merged variants (AP rows, midpoint patterns, even-m 2-torsion
-  values) handled by the same argument on their smaller supports.
-  STATUS: main cases proven; the y-side coincidence sub-case table
-  (E18b) is being enumerated — same technique, finitely many merge
-  patterns.
-* Census (E2): dB is NEVER a translate of dA across the full pools
-  (0 hits, 3 frames) — branch 2a's precondition has no realizations
-  at all on censused frames.
+*Proof.* u_L = {g₁, g₂}, u_R = {r₁, r₂};
+σ := supp(A·u_L) = (A+g₁) Δ (A+g₂) = supp(B·u_R) =
+(B+r₁) Δ (B+r₂). Every cell of σ lies in exactly one of A+g₁,
+A+g₂ (symmetric difference). |(B+r₁) ∩ (B+r₂)| =
+[r₂−r₁ ∈ dB] ≤ 1 (B Sidon), so (B+r₁) ∩ σ = (B+r₁) ∖ (B+r₂) has
+≥ 4 cells. Pigeonhole: two of them, y ≠ y′, share an A-translate,
+so 0 ≠ y − y′ ∈ dA ∩ dB = ∅. ∎
 
-Verification: `a17_e18_even_census.py` (E1 atoms, E2 translate-class,
-E3 direct). Remaining in E18: the (2,4)/(2,6)/(4,4) splits — the
-Sidon image bound gives |B·u_R| ≥ 8 at |u_R| = 4 (tight ⟹ 4-clique
-rigidity, the Lemma-S machinery one level down) and ≥ 0 at 6 (near-
-clique analysis); (4,4) needs the new σ-formula layer.
+Notes. (i) Only D2 + B-Sidon are used — Sidon only to cap the
+translate overlap at 1 (multiplicity ≤ 2 would do); (iii), (a′),
+and the frame conditions play no role. (ii) The w = 3 comparison:
+the pigeonhole needs w − [δ_R ∈ dB] ≥ 3, i.e. w ≥ 4. **All of A16
+§6 (formulas, atoms, funnel, S2 — the hardest section of the w = 3
+proof) is the w = 3 shadow of this pigeonhole sitting one cell
+short of turning on.** At w = 5 there is a cell to spare.
+
+**Historical route (superseded, retained for the record).**
+Lemma A5 (w = 5 atoms): for δ_L ∉ dA,
+mult_{d(σ_L)}(δ_L) = 5 + [2δ_L ∈ dA] (+5 if 2δ_L = 0), while for
+δ_L ≠ ±δ_R the off-diagonal cap is 2 + 1 + 1 = 4 < 5 — so any
+match would have δ_L = ±δ_R (branch 2b/funnel vacuous), reducing
+to a translate-coincidence branch 2a attacked by fiber-size
+periodicity, with a y-side sub-case table (E18b) left open.
+Theorem E18.1 closes the split outright — **E18b is resolved by
+obsolescence**; no sub-case table exists to enumerate. The censuses
+stand as verification: E1 (atom identity: 1200 samples, 0
+deviations), E2 (dB is never a translate of dA over full pools — a
+fortiori empty), E3 (direct (2,2) match census: 0/15 members —
+a complete conclusion-level check of Theorem E18.1 on the live
+population). Files: `a17_e18_even_census.py`,
+`data/a17/e18_census.json`.
+
+## 8. E18 (cont.) — (2,4): translate cap + grid rigidity; Lemma K
+## refuted; the transversal demand
+
+Mirror convention: (4,2) is the x↔y mirror of (2,4) (the class is
+mirror-closed), so only (2,4) is analyzed.
+
+**Lemma C2 (translate cap — (2,k)-universal).** In any match
+σ = (A+g₁) Δ (A+g₂) = supp(B·u_R): for EVERY g ∈ G,
+|(B+g) ∩ σ| ≤ 2 and |(−B+g) ∩ σ| ≤ 2.
+*Proof.* Two cells of (B+g) ∩ σ in the same A-part differ by an
+element of dB (resp. d(−B) = dB) and of dA — D2. So ≤ 1 cell per
+A-part. ∎
+
+**Theorem E18.2 ((2,4) reduction).** Let |u_L| = 2, |u_R| = 4,
+m(y) := #{j : y ∈ B + r_j}, n_i := #{y : m(y) = i}. Any match
+forces: a(u_R) = 6 — **u_R is a K₄ in Cay(G, dB)** — with
+n₂ = 6 (the six pairwise collision cells distinct, all off σ),
+n₃ = n₄ = 0, |σ| = n₁ = 8, hence δ_L ∈ dA; each B+r_j meets σ in
+exactly 2 cells, one per A-part (a 4×2 incidence grid); each
+A-part's 4 cells hit the 4 translates one each (transversals).
+*Proof.* Σ_y m(y) = 20; Σ_y C(m(y),2) = a(u_R) ≤ 6 by (†) (each
+translate pair shares [Δ ∈ dB] ≤ 1 cells, Sidon). By C2:
+n₁ + 3n₃ = Σ_j |(B+r_j) ∩ σ| ≤ 8. But n₁ + 3n₃ =
+20 − 2(n₂ + 2n₄), so n₂ + 2n₄ ≥ 6, while n₂ + 2n₄ ≤
+n₂ + 3n₃ + 6n₄ = a ≤ 6. Equality throughout: a = 6, n₃ = n₄ = 0,
+n₂ = 6, n₁ = 8, |σ| = 8 (the δ_L ∉ dA stratum, |σ_L| = 10, is
+impossible), and equality in C2 pins the grid. ∎
+
+**Endgames (proven).** If u_R ⊆ B + g (wlog (B ∖ {b*}) + g):
+B·u_R = (B² + (B + b*)) + g (chirality I1), and
+c* := |B² ∩ (B + b*)| ≥ 1 always (the cell 2b* = b* + b*).
+|σ| = 10 − 2c* = 8 forces c* = 1, whence the FIFTH translate
+B + b* + g meets σ in 5 − c* = 4 > 2 cells — dead by C2 (c* ≥ 2 is
+size-dead outright). If u_R ⊆ −B + g (wlog (−B ∖ {−b̂}) + g): the
+cell g has m(g) = 4, dead by n₄ = 0. So sub-±B K₄s never match.
+
+**Lemma K REFUTED (falsify-first catch #1).** "Every K₄ of
+Cay(G, dB) lies in a ±B-translate" is FALSE: census K1 over full
+mono-y pools finds 114,928 exotic K₄ classes across 3 frames
+(sub-B and sub-(−B) are exactly 5 + 5 per class, c* ≡ 1; exotics
+ride column structure, e.g. y-APs over a column of B). The K₄
+level is NOT rigid; rigidity enters only at the σ-form level.
+
+**The transversal demand (the kill frame).** From the L side,
+σ = (A ∖ {a₂}) ⊔ ((A ∖ {a₁}) + δ) where a₂ − a₁ = δ = δ_L ∈ dA
+(the overlap cell a₂ ∉ σ). Hence a match forces, inside the 4×2
+grid:
+1. two COMPLEMENTARY transversals that are both K₄s of Cay(G, dA)
+   (within-part differences; a dA-K₄ in σ must be a transversal —
+   two cells per translate differ by dB, D2);
+2. a 3-fold δ-linkage: exactly 3 cells y of part 1 with
+   y + δ ∈ part 2, δ ∈ dA fixed (the a ∈ A ∖ {a₁, a₂}); the
+   arrows occupy 3 distinct ordered translate pairs (Sidon);
+3. totals: N_A(σ) := #{ordered (y,y′) ∈ σ², y−y′ ∈ dA} ≥
+   12 + 12 + 6 = 30, all supplied by the 48 cross-translate slots
+   (within-translate pairs are dB — D2 gives them 0).
+
+**Census (K2/K3 — falsify-first catch #2).** End-to-end K2: every
+weight-4 u_R on every member (1,249,040 triples / 41 members):
+0 matches; size-8 σ_R's = 1036 = exactly the distinct-cell a = 6
+population (the n-profile of E18.2 verified exactly); 0 annihilator
+hits ((a′) consistent). K3 on all 259 viable grids: N_A supply
+histogram tops out at **26 < 30** (comfortable margin); 8/259
+grids admit a single dA-K₄ transversal — so transversal-EXISTENCE
+alone is NOT the kill — but 0/8 have a K₄ complement and the
+δ-linkage never exceeds 1 (demand: 3). Every layer of the demand
+fails independently on the live population.
+
+**Remaining gap (P-K4).** Prove analytically one of: (a) the
+supply cap N_A(σ) ≤ 29 for every viable grid, or (b) no
+complementary dA-K₄ transversal pair with a 3-fold δ-linkage.
+Route: the finite overlay patterns — 3 non-fixed-point arrows on 4
+translates × per-translate-pair rectangle configurations
+(U_ij ≤ 4 corners of an e_i × e_j rectangle in dA, e ∈ dB) — via
+the exact-lattice degeneracy machinery of the (C) table. Entirely
+finite; the census margins (26 vs 30, 0/8, 1 vs 3) say the
+patterns die early.
+
+**(2,6) forward note (proven opener).** Lemma C2 already kills
+every u_R ⊇ (B + g) ⊔ {v}: B·u_R = B² + (B + v) (+ rest), and
+B + v meets σ in ≥ 5 − c_v ≥ 3 cells for the viable sizes. With
+|u_R| = 6 > 5, u_R never fits inside one translate, so the (2,6)
+survivors are a(T) ≥ 10 near-cliques containing NO full
+±B-translate (the A-side cap forces a(u_R) ≥ 10 by the same
+counting as E18.2: n₁ + 3n₃ + 5n₅ ≤ 12 = 6 translates × 2).
+Census next. Files: `a17_e18_k4_census.py`,
+`a17_e18_k3_transversal.py`, `data/a17/e18_k4_census.json`,
+`data/a17/e18_k3_transversal.json`.

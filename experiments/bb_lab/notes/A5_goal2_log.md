@@ -1992,3 +1992,41 @@ translate-class(dA) has ZERO realizations across full pools (3
 frames); 0/15 direct matches. The w = 5 theorem keeps getting
 SMALLER than w = 3's: (1,3) vacuous, S2 vacuous — the two
 richest w = 3 structures both starve in the extra Sidon room.
+
+## Entry 18b (2026-07-20) — the (2,2) split falls to a FOUR-LINE D2
+## pigeonhole (E18b obsolete); (2,4) reduced to grid rigidity with
+## two falsify-first catches
+
+**The (2,2) proof of record is now Theorem E18.1**: ≥ 4 survivors
+of one B-translate inside σ, each in exactly one A-part, pigeonhole
+two into the same part, their difference sits in dA ∩ dB = ∅. Four
+lines, D2 + B-Sidon only; (iii)/(a′)/frames unused. Lemma A5, both
+branches, and the pending E18b fiber-size sub-case table are
+SUPERSEDED — resolved by obsolescence. Structural punchline: the
+pigeonhole needs w ≥ 4, so **all of A16 §6 — the hardest section of
+the w = 3 proof — is the w = 3 shadow of this argument sitting one
+cell short of firing.** The "everything hard at w = 3 starves at
+w = 5" pattern now has a mechanism.
+
+**(2,4): Theorem E18.2** (translate cap C2 + the (†) collision
+identity ⟹ equality chain): any match forces u_R = K₄ in
+Cay(G, dB), six distinct collision cells off σ, |σ| = 8, δ_L ∈ dA,
+and a pinned 4×2 incidence grid with the two A-parts as
+complementary transversals. Endgames proven: u_R ⊆ B + g dies by
+the FIFTH-translate cap (c* = 1 forced by size, then 4 > 2 cells);
+u_R ⊆ −B + g dies by an m = 4 cell. Falsify-first caught two dead
+lemmas before proof effort: **Lemma K refuted** (K₄s ⊄ ±B-translates:
+114,928 exotic classes — K₄-level rigidity is a mirage) and
+**transversal-existence refuted** (8/259 live grids admit a dA-K₄
+transversal). The surviving demand — complementary dA-K₄ transversal
+PAIR + 3-fold δ-linkage, N_A(σ) ≥ 30 — fails at every layer on
+census: N_A supply max 26 < 30, complements 0/8, linkage max 1 < 3.
+K2 end-to-end: 1,249,040 weight-4 u_R across 41 members, 0 matches;
+the size-8 population (1036) coincides EXACTLY with the
+distinct-cell K₄ count — E18.2's multiplicity profile verified to
+the last case. Open: P-K4 (prove the supply cap or the overlay
+non-existence; finite pattern enumeration, (C)-table machinery).
+Bonus: C2 already beheads (2,6) — any u_R containing a full
+±B-translate is dead, and the A-side count forces a(u_R) ≥ 10.
+Files: a17_e18_k4_census.py, a17_e18_k3_transversal.py,
+data/a17/e18_k4_census.json, e18_k3_transversal.json.
