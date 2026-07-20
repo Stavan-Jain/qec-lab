@@ -1973,3 +1973,22 @@ boundary). Remaining for the full theorem: (1,7), even splits
 (a′) engines. Files: `a17_c_matching_table.py`,
 `a17_c_reclassify.py`, `data/a17/e17_c_table_raw.json`,
 `e17_j5_6x14.json`, updated `A17_w5_class_plan.md` §§5–6.
+
+## Entry 18 (2026-07-19) — E18 opens: the (2,2) split collapses —
+## w = 5 atoms kill the S2 funnel OUTRIGHT; branch 2a reduced to
+## fiber-size periodicity (main cases proven)
+
+The atom recount at w = 5 (Lemma A5): floor 5 + [2δ ∈ dA] against
+an off-diagonal cap of 2+1+1 = 4 — **δ_L = ±δ_R is forced by pure
+counting, and the entire w = 3 S2/funnel apparatus (A16 Theorem G)
+has no w = 5 analog.** Branch 2a (dB = dA ± δ ⟹ dA 2δ-periodic)
+dies by: the E17 count disjointness (δ = τ), the 4δ = 0
+insolvability on 4∤ frames (ord(2δ) = 2), and fiber-size
+periodicity (general: the (iii) shapes force NON-CONSTANT fiber-size
+functions, incompatible with 2δ-shift invariance) — y-side
+coincidence sub-cases (E18b) in progress, same technique. Census
+(a17_e18_even_census.py): atoms 0/1200 deviations; dB ∈
+translate-class(dA) has ZERO realizations across full pools (3
+frames); 0/15 direct matches. The w = 5 theorem keeps getting
+SMALLER than w = 3's: (1,3) vacuous, S2 vacuous — the two
+richest w = 3 structures both starve in the extra Sidon room.

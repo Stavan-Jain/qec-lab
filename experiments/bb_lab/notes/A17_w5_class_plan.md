@@ -235,3 +235,45 @@ Hence **J5e″ is EMPTY for every Z₂² frame with an even axis ≤ 10** —
 including the boundary frame Z₆×Z₁₄ (census: 2616/2616 B-classes
 collapse, 0 hits) and Z₁₀×Z₁₀-type frames. Open only for both-axes
 ≥ 14 Z₂² frames (|G| ≥ 196), outside the program's populated range.
+
+## 7. E18 — the (2,2) kill (atoms force the diagonal; fiber-size
+## periodicity kills it)
+
+**Lemma A5 (w = 5 atoms; PROVEN).** For δ_L ∉ dA (the size-10
+stratum): mult_{d(σ_L)}(δ_L) = 5 + [2δ_L ∈ dA] (+5 if 2δ_L = 0),
+while for δ_L ≠ ±δ_R:
+mult_{d(σ_R)}(δ_L) ≤ 2·[δ_L ∈ dB] + [δ_L − δ_R ∈ dB] +
+[δ_L + δ_R ∈ dB] ≤ 4 < 5. Hence every (2,2) match has δ_L = ±δ_R:
+**branch 2b (the w = 3 S2/funnel, all of A16 Theorem G) is VACUOUS
+at w = 5.** (Size-8 strata: δ_L ∈ dA raises the atom count further;
+the cap argument is unchanged.) Verified: E1, 1200 samples, 0
+deviations; E3 direct match census 0/15 members.
+
+**Branch 2a (dB = dA + δ = dA − δ ⟹ dA 2δ-periodic).** Kills:
+* δ = τ (2δ = 0): Z_y(dB) = Z_y(dA + τ) = Z_y(dA) — the E17
+  disjointness {4,8,12,20} vs {0,2,6}. Dead.
+* 2δ ≠ 0, ord(2δ) = 2: 4δ = 0 has no solutions on 4∤ frames (every
+  2-torsion element has an odd coordinate ℓ/2 or m/2; 2δ has even
+  coordinates). Dead.
+* 2δ ≠ 0 general: **fiber-size periodicity.** dA 2δ-periodic makes
+  the x- and y-fiber-size functions of dA invariant under the
+  2δ-shift; but the fiber-size functions determined by the (iii)
+  shapes are NON-CONSTANT on their supports (x-side, per mono-x
+  shape: (5): {20@0}; (1,4): {12@0, 4, 4}; (3,2): {8@0, 6, 6};
+  (2,2,1): {4@0, 4, 4, 2, 2, 2, 2} up to coincidence merges), and
+  shift-invariance forces constant sizes along each ⟨2δ⟩-orbit of
+  the support — contradiction in every shape, with the coincidence-
+  merged variants (AP rows, midpoint patterns, even-m 2-torsion
+  values) handled by the same argument on their smaller supports.
+  STATUS: main cases proven; the y-side coincidence sub-case table
+  (E18b) is being enumerated — same technique, finitely many merge
+  patterns.
+* Census (E2): dB is NEVER a translate of dA across the full pools
+  (0 hits, 3 frames) — branch 2a's precondition has no realizations
+  at all on censused frames.
+
+Verification: `a17_e18_even_census.py` (E1 atoms, E2 translate-class,
+E3 direct). Remaining in E18: the (2,4)/(2,6)/(4,4) splits — the
+Sidon image bound gives |B·u_R| ≥ 8 at |u_R| = 4 (tight ⟹ 4-clique
+rigidity, the Lemma-S machinery one level down) and ≥ 0 at 6 (near-
+clique analysis); (4,4) needs the new σ-formula layer.
