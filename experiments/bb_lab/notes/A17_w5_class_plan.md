@@ -477,17 +477,27 @@ injectivity. Files: `a17_e19_odd_census.py`,
 matches / 0 annihilator hits either side. O2: 17,279,533 u_R
 (3,684,137 dense) / 0 matches. O3: 232,314 candidates (super-dense
 7-sets are PLENTIFUL, ~5,700 per member — the a ≥ 15 threshold is
-not self-killing) / 0 matches. O4: |B − A| = 25 held 41/41 (the D2
-bijection); 1,104 dA-triangles × 1,177 dB-triangles → 31,688 grid
-pairs → **807 shift-passes** — falsify-first catch #4: a
-"no rank-1 triangle grid in S" lemma would be FALSE — but
-**0/807 pass forced-witness injectivity**. Two of the four
-injectivity constraints are automatic by D2 (β-row and α-column
-collisions would equate a dA- with a dB-element), so the whole
-(3,3) residue is: **P-33 — prove every shift-passing triangle grid
-has an α-row or β-column collision** (each collision is a single
-Sidon-forced membership event g_i + b_Δ − r_j ∈ A, resp. the
-mirror; 18 events per grid, census says ≥ 1 always fires).
+not self-killing) / 0 matches.
+
+**O4 ERRATUM + τ-corrected redo (same day).** The original O4
+compared canon triangle REPRESENTATIVES at a fixed alignment; but
+the 9-shift demand is invariant only under JOINT translation of
+(u_L, u_R) — the relative offset τ is a free parameter the census
+never scanned (the E20 injection validator exposed this: 14 grids
+at one convention vs 807 at the other, where a negation bijection
+says the true counts must agree). Also the correct witness set is
+S = A − B (r − g = a − b), |S| = 25 by D2. Corrected census
+(`a17_e19_o4_tau.py`): all class pairs × all τ ∈ G — 1,847,445
+τ-trials, **4,641 shift-passes** (the true population; the old 807
+was an arbitrary alignment slice), **witness_pass = 0/4,641**, and
+the two D2-automatic injectivities held in all 4,641 (0
+auto-violations — the forced parts of the theory verified in
+vivo). Catch #4 stands a fortiori (shift-level demand satisfiable);
+the P-33 statement is unchanged: **prove every shift-passing
+triangle grid has an α-row or β-column collision** — now with
+full-population empirical support. O1–O3 used canon-form matching
+throughout and are unaffected by the alignment bug; K1–K3 (E18)
+likewise (translation-invariant statistics only).
 
 ## 12. E19 scorecard — the full split map of the theorem
 

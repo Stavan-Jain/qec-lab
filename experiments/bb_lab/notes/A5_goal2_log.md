@@ -2095,3 +2095,37 @@ gap [P-K4, P-26, P-33] or profile-capped clean [(4,4), (3,5),
 (1,7)]; ~21.5M candidates, zero matches. E20 = one overlay engine
 for the three P-gaps + the three capped layers.** Files:
 a17_e19_odd_census.py, data/a17/e19_odd_census.json.
+
+## Entry 20 (2026-07-20) — E20 opens: the overlay engine, validated;
+## O4 erratum (alignment bug caught by the engine's own validator)
+
+The (C)-table machinery generalized: `a17_e20_overlay_engine.py` —
+abstract 8-coordinate systems (a1..a4, b1..b4 after translation
+gauges), ℤ-echelon lattices with EXACT membership denominators
+(d = 1 equality kills; d = 2 kills only on difference-class forms
+via no-2-torsion; d ≥ 3 and full ℚ-rank are NOT kills — the class
+frames have odd torsion), mod-p screening (p = 2³¹−1) with exact
+confirmation of every kill and exhaustive exact re-verification of
+every terminal — incremental bookkeeping can affect speed only,
+never soundness. P-33 driver: row-1 gauge (S₅×S₅ relabel) kills 6
+of 16 variables; 4 cell relations + 6 membership witnesses; all
+four injectivities imposed (proven necessary); first-use +
+row-swap canonicalization. Validations: unit selftest; INJECTION —
+realized shift-passing grids from members mapped into the gauge,
+every abstract relation asserted concretely in the group, engine
+must not kill them: **286/286 survive** (validation cap; 4,641
+found = the τ-census count exactly, two scripts cross-validating).
+
+**O4 ERRATUM (falsify-first catch #5, on MY OWN tooling).** The
+injection validator exposed an alignment bug in Entry 19's O4: the
+9-shift demand is invariant only under JOINT translation, but O4
+compared canon triangle representatives at a fixed relative offset
+— an arbitrary alignment slice (and with the S = B−A vs A−B
+convention flipped; a negation bijection preserved the counts, so
+the numbers were internally consistent and wrong). τ-corrected
+redo (`a17_e19_o4_tau.py`): 1,847,445 τ-trials, TRUE population =
+**4,641 shift-passing grids** (old 807 = slice), **witness_pass
+0/4,641**, D2-automatic injectivities 0 violations. Catch #4 and
+P-33's statement stand, now with full-population support; O1–O3
+and all E18 censuses used translation-invariant matching and are
+unaffected. Abstract P-33 enumeration in flight.

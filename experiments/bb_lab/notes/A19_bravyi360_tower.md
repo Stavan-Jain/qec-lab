@@ -169,3 +169,42 @@ k̃ − k = 4 logical qubits that sit heavier (32 = 4·8). Whether
 "deficit rungs + deck-nontrivial top" is *why* this code's FOM leads the
 catalog — i.e., a design principle (hunt covers that break (R) over certified
 bases) — is testable against the IBM catalog's other high-FOM codes.
+
+## 7. Same-session addendum: deck survey of the full Bravyi table
+
+`a19_deck_survey.py` (quotients built by coset convolution — the φ-map trick
+does not generalize to even m/2): literal-descent k on every order-2 deck of
+every published Bravyi code, orbit-swept where a jump appeared.
+
+| code | decks | verdict |
+|---|---|---|
+| [[72,12,6]] (6,6) | x, y, xy | **JUMP 8→12 on all three — code-level** (full orbit swept: no k-preserving descent exists) |
+| [[90,8,10]] (15,3) | — | \|G\| odd: not a Z₂-cover at all |
+| [[108,8,10]] (9,6) | y | R-holds (8→8) |
+| [[144,12,12]] (12,6) | x / y / xy | x: R-holds (bb72, the known descent); y and xy: JUMP 8→12 (literal) |
+| [[288,12,18]] (12,12) | x, y, xy | **R-holds on all three** (12→12) |
+| [[360,12,≤24]] (30,6) | x, y, xy | JUMP 8→12 all three, code-level (§2) |
+| [[756,16,≤34]] (21,18) | y | R-holds (16→16; base = [[378,16]]) |
+
+Consequences:
+
+- **The strong design-principle hypothesis is falsified**: [[288,12,18]]
+  (FOM 13.5, #2 in the table) is deck-trivial on every deck. But the refined
+  pattern holds and is sharper: **every k = 12 flagship acquires its k at
+  exactly one deck-nontrivial rung and propagates it through (R)-rungs.**
+  Gross and 288 both root at bb72 — the (6,6) quarter of [[288,12,18]] is
+  literally bb72 (y⁷ ≡ y mod 6) — and *bb72's own k = 12 is deck-born* from
+  k = 8 quarter-codes at (3,6). The 360 code's k = 12 is born at its top rung.
+- **Wall-attainment prediction (new A17-docket candidate).** [[288,12,18]]
+  is an all-(R) iterated bb72-cover; PAR forces its bases' distances even;
+  18 = 2·10 − 2. If its (6,12) base `A = x³+y²+y⁷, B = y³+x+x²` (n = 144,
+  k = 12) has d = 10, then [[288,12,18]] sits *exactly at the deficit wall
+  2d − 2* — which no measured instance has attained (A17 §corrected picture).
+  Ladder is cheap at n = 144; queued behind the in-flight SAT rounds.
+- **Lean landing zone verified**: in `BBDoubling.lean`, `dangerous_zero_rung`
+  (l. 441) and the shape rungs consume `StrongBaseFloor`/`LogicalFloor` only;
+  `DeckTrivialOnH1` first appears in the assembly theorem (l. 1280). The
+  dangerous-side machinery is already (R)-free as formalized — the M12/M24
+  program needs no refactor to land. m(b): `gross-distance-proof.md` l. 1059
+  (off-support minimum), hexagon rung Lemma 11 l. 1477 — the census port
+  starts there.
