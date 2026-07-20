@@ -567,3 +567,48 @@ theorem. Then port the engine to P-K4 (terminals expected to
 classify as the proven-dead sub-±B configurations) and P-26.
 Files: `a17_e20_overlay_engine.py`, `a17_e20_p33_classify.py`,
 `data/a17/e20_p33_table.json`, `e20_p33_families.json`.
+
+## 14. E20 endgame — P-33 RESOLVED: the (3,3) split is CLOSED
+
+**Theorem ((3,3) vacuous; P-33).** On rank-2 frames G = Z_ℓ × Z_m
+with 4∤ℓ, 4∤m, under D1 ∧ D2 ∧ (iii): A·u_L = B·u_R ≠ 0 has no
+solution with |u_L| = |u_R| = 3. ((a′) is NOT used.)
+
+*Proof of record* = Theorem E19.1 (hand-proven grid reduction) +
+the E20 fixed table (555 terminals; complete, engine-enumerated,
+soundness per §13) + three finite machine-checked kill layers
+(`a17_e20_p33_endgame.py`):
+1. **R1 (226 terminals):** a difference-class form forced at 2^k
+   torsion has order | 2 on 4∤ frames — D1-dead.
+2. **Zone (189):** unit denominators force ord(every coordinate) |
+   d̃ (class 2-adic reduction), so realizations live in
+   T_d̃(G) ⊆ Z_d̃² (rank 2). The COMPLETE solution sets in Z_d̃²
+   (Smith parametrization, S × S componentwise; |S| = 45/49/51/55/
+   69/85 per family) were exhausted: after the full necessary-
+   condition battery INCLUDING the collision-cell distinctness
+   forms (missing from the in-search battery; they cut survivors
+   527,040 → 62,208), **62,208 valid D1∧D2 realizations remain and
+   ZERO pass the mirrored (iii)-shape screen** (both axis
+   orientations; patterns are coset-shift- and scaling-invariant,
+   so the screen covers every class frame). The zone families are
+   genuine weight-6-cycle configurations on big-torsion frames
+   (|T_d̃| ≥ 41 — e.g. Z₁₅×Z₁₅), i.e. the conjecture survived a
+   live falsification risk, and (iii) is precisely what excludes
+   them.
+3. **Free (140):** Smith structure coker ≅ ℤ ⊕ Z₃ (92) or ℤ ⊕ Z₂
+   (48). Every family has a battery form vanishing identically on
+   the pure line (line-dead), and EVERY torsion dressing
+   x = t·v + w₀·u dies at layer 1: for e = 2 a difference-class
+   vanishing form takes 2-torsion-or-zero values (both violations,
+   D1); for e = 3 some vanishing form has 3-divisible multiplier
+   (value ≡ 0). All kills are w₀-uniform — no dressed-(iii) search
+   was needed. Cross-check: brute-force enumeration of complete
+   solution sets in Z₁₅², Z₂₁², Z₄₅² finds 0 valid realizations.
+
+**Scorecard update (§12):** (3,3) moves to PROVEN — the fifth
+closed split after (1,1), (1,3), (1,5)-tower (mod J5e″), (2,2).
+Remaining: P-K4 ((2,4)), P-26 ((2,6)), the (4,4)/(3,5)/(1,7)
+capped layers, J5e″, and (a′). The engine + endgame pipeline
+(enumerate → classify → confine → screen) is the template for
+P-K4/P-26. Files: `a17_e20_p33_endgame.py`,
+`data/a17/e20_p33_endgame.json`.

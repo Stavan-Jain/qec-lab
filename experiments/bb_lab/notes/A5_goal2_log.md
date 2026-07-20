@@ -2156,3 +2156,27 @@ injection-validated against 286 realized grids (relation-level
 concrete assertions in-group). Files: a17_e20_overlay_engine.py,
 a17_e20_p33_classify.py, data/a17/e20_p33_table.json,
 e20_p33_families.json.
+
+## Entry 20c (2026-07-20) — 🎉 P-33 RESOLVED: (3,3) CLOSED — all 555
+## terminals dead across three finite machine-checked layers
+
+The endgame finished the split in one arc: R1 kills 226 (2-power
+torsion ⟹ 2-torsion on 4∤ frames). The 189 zone terminals'
+COMPLETE realization sets in Z_d̃² (Smith parametrization; the
+collision-cell distinctness forms — a battery gap caught during
+the endgame — cut valid pairs 527,040 → 62,208) contain genuine
+D1∧D2 weight-6-cycle configurations on big-torsion class frames
+(Z₁₅×Z₁₅ etc.) — a LIVE falsification risk for the w = 5
+conjecture — and **the mirrored (iii)-shape screen kills every
+single one (0/62,208, both orientations)**: (iii) is exactly the
+hypothesis that excludes them. The 140 free families (coker
+ℤ⊕Z₃ ×92, ℤ⊕Z₂ ×48) die on the pure line (an in-span form fires
+identically) AND on every torsion dressing at layer 1 (e=2:
+diff-class forms are 2-torsion-or-zero — both violations; e=3:
+some vanishing form has 3-divisible multiplier), w₀-uniformly.
+Independent cross-check: complete solution sets in Z₁₅²/Z₂₁²/Z₄₅²
+brute-forced — 0 valid realizations. **Theorem: (3,3) is vacuous
+under D1 ∧ D2 ∧ (iii) on rank-2 4∤ frames — (a′) unused. Fifth
+split closed.** The enumerate→classify→confine→screen pipeline is
+the P-K4/P-26 template. Files: a17_e20_p33_endgame.py,
+data/a17/e20_p33_endgame.json.
