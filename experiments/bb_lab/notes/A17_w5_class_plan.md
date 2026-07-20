@@ -416,3 +416,91 @@ counts, a ≥ 2 both sides) and censused clean end-to-end. Every
 even split with total weight ≤ 9 is census-empty on the live
 population. Remaining analytic work: P-K4, P-26, the (4,4) layer;
 then E19 odd-odd.
+
+## 11. E19 — odd–odd splits: (3,3) collapses to a forced grid;
+## (1,7)/(3,5) profile caps
+
+**Theorem E19.1 ((3,3) reduction).** Any match with
+|u_L| = |u_R| = 3 forces ALL of:
+* a_A(u_L) = a_B(u_R) = 3: **u_L is a triangle of Cay(G, dA) and
+  u_R a triangle of Cay(G, dB)**, each translate pair sharing
+  exactly one collision cell, the 3 + 3 collision cells distinct
+  and off σ;
+* no multiplicity-3 cells on either side; |σ| = 9;
+* σ is a **bijective 3×3 grid**: exactly one cell
+  y_ij ∈ (A+g_i) ∩ (B+r_j) per position.
+*Proof.* Cap: the A-families of the cells of (B+r_j) ∩ σ are
+pairwise disjoint odd-size subsets of {1,2,3} (two cells sharing an
+A-translate ⟹ difference ∈ dA ∩ dB = ∅), so |(B+r_j) ∩ σ| ≤ 3 and
+ñ₁ + 3ñ₃ = 15 − 2n₂ ≤ 9 ⟹ n₂ ≥ 3. (†): n₂ + 3ñ₃ = a_B ≤ 3
+(Sidon). So n₂ = 3, ñ₃ = 0, a_B = 3, ñ₁ = |σ| = 9. (The
+m = 3-cell alternative dies: it puts the three collision pairs on
+one σ-cell, leaving n₂ = 0 < 3.) Mirror for the A side. Equality
+in the cap forces three singleton families per translate, one per
+A-translate — the grid. ∎
+
+**The forced-witness demand.** Write y_ij = α_ij + g_i =
+β_ij + r_j (α over A, β over B; rows and columns of each array are
+injective, by D2). Then β_ij − α_ij = ... α_ij − β_ij = r_j − g_i:
+the witness pair is determined by the shift s_ij := r_j − g_i
+alone, because **D2 makes (a, b) ↦ b − a injective**:
+|S| = |B − A| = 25 exactly (a coincidence b − a = b′ − a′ would put
+b − b′ = a − a′ in dA ∩ dB). The nine shifts are pairwise distinct
+(s_ij = s_i′j′ would put r_j − r_j′ = g_i − g_i′ in dA ∩ dB). So a
+(3,3) match requires: a dA-triangle {g_i}, a dB-triangle {r_j},
+all nine shifts r_j − g_i landing in the 25-element set S, AND the
+forced witnesses a_s, b_s row/column-injective in both
+coordinates. This is the entire surviving demand (necessary; O1
+censuses sufficiency end-to-end).
+
+**Profile caps for the other odd splits (proven, same counting).**
+(1,7): σ = A + g, so every B-translate meets σ in ≤ 1 cell
+(differences within σ are dA) ⟹ ñ₁ + 3ñ₃ + 5ñ₅ + 7ñ₇ ≤ 7 with
+|σ| = 5 ⟹ ñ₃ ≤ 1, ñ₅ = ñ₇ = 0, and Σm = 35 with (†) ≤ 21 gives
+a_B(u_R) ∈ {15, 17, 19, 21} — a super-dense 7-set (≥ 15 of 21
+differences in dB; complete enumeration: Σ complement-degrees =
+2(21 − a) ≤ 12 ⟹ some vertex dB-adjacent to ≥ 5 of the other 6).
+(3,5): the same cap gives Σ_j |(B+r_j) ∩ σ| ≤ 3·5 = 15 ⟹
+25 − 2(n₂ + 2n₄) ≤ 15 ⟹ a_B(u_R) ≥ 5 (dense 5-set), with
+|σ| = |σ_L| ∈ {9, 11, 13, 15}. Full ±B-translates die by SIZE:
+u_R = B + g ⟹ σ_R = B² (chirality I1), weight 5 < 9;
+u_R = −B + g ⟹ σ_R = {0} ∪ dB (I2), weight 21 > 15. Survivors are
+proper dense 5-sets (K₅-minus patterns not equal to a translate).
+
+Census battery: O1 (3,3) forms-vs-forms; O2 (3,5) with the a_B ≥ 5
+prune (valid: |σ| ≥ 25 − 2a_B); O3 (1,7) dense-7 enumeration vs
+canon(A); O4 the (3,3) triangle-grid demand with forced-witness
+injectivity. Files: `a17_e19_odd_census.py`,
+`data/a17/e19_odd_census.json`.
+
+**Census verdicts (2026-07-20): ALL CLEAN.** O1: 66,857 pairs / 0
+matches / 0 annihilator hits either side. O2: 17,279,533 u_R
+(3,684,137 dense) / 0 matches. O3: 232,314 candidates (super-dense
+7-sets are PLENTIFUL, ~5,700 per member — the a ≥ 15 threshold is
+not self-killing) / 0 matches. O4: |B − A| = 25 held 41/41 (the D2
+bijection); 1,104 dA-triangles × 1,177 dB-triangles → 31,688 grid
+pairs → **807 shift-passes** — falsify-first catch #4: a
+"no rank-1 triangle grid in S" lemma would be FALSE — but
+**0/807 pass forced-witness injectivity**. Two of the four
+injectivity constraints are automatic by D2 (β-row and α-column
+collisions would equate a dA- with a dB-element), so the whole
+(3,3) residue is: **P-33 — prove every shift-passing triangle grid
+has an α-row or β-column collision** (each collision is a single
+Sidon-forced membership event g_i + b_Δ − r_j ∈ A, resp. the
+mirror; 18 events per grid, census says ≥ 1 always fires).
+
+## 12. E19 scorecard — the full split map of the theorem
+
+Every split of total weight ≤ 9 is now proven, or reduced +
+censused clean with a named finite gap:
+* PROVEN: (1,1), (1,3), (1,5) [the E17 tower], (2,2) [E18.1].
+* Reduced to a rigid configuration + censused + named gap:
+  (2,4) → P-K4; (2,6) → P-26; (3,3) → P-33.
+* Profile-capped + censused clean end-to-end, analytic layer open:
+  (4,4) [a ≥ 2 both sides], (3,5) [a_B ≥ 5 dense], (1,7)
+  [a_B ≥ 15 super-dense].
+* One-sided (0,k): hypothesis (a′), per-instance classical check.
+Census totals this arc: ~21.5M candidate right-sides across 41
+members, ZERO matches anywhere. The natural E20 assembly: ONE
+overlay/lattice enumeration engine ((C)-table machinery) serving
+P-K4, P-26, and P-33, plus the three profile-capped layers.

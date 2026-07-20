@@ -13,6 +13,25 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-20 — bravyi360-deck-nontrivial-tower (A19) — partial —
+  **Bravyi's [[360,12,≤24]] flagship fails deck condition (R) on all
+  three decks (x¹⁵, y³, diagonal) in every monomial presentation —
+  the first natural code outside the doubling template** — with
+  k 8→12, dim(1+σ)H₁ = 4 = k̃−k verified for every deck (the A12
+  quantitative conjecture, ×3), and the doubly-new sector = im τ_* =
+  the A13 D-summand deck-independently. Tower certified: GB (15,3) =
+  [[90,8,8]] exact, BY (30,3) = [[180,8,12]] exact (both rungs
+  k-preserving, both deficit-4), BX (15,6) = [[180,8,≤12]] (floor
+  round in flight); all three bases pass the A16 class certificate ⇒
+  **first certified lower bound d ≥ 6 for the 360-qubit cover**, and
+  its weight table is pure transfer-lift arithmetic (24 = 2·12 both
+  decks, 32 = 4·8; d ≤ 24 now constructive). Gap audit: gross Thm-C
+  slice/(M) machinery is (R)-free — (M)@12 over BY (Prop-10 depth,
+  n=180) would certify d ≥ 12; the only genuinely new theory needed
+  for full 24 is safe-sector confinement without (R) (A13 seamC↔δ₂
+  route, F₁₆ components).
+  [details](../experiments/bb_lab/notes/A19_bravyi360_tower.md)
+
 - 2026-07-07 — class-small-cycle-theorem (A15/A16, goal 2) — success —
   **The A5 goal-2 target statement is an unconditional theorem: every
   weight-3 BB instance with Sidon disjoint difference sets (D1 ∧ D2),

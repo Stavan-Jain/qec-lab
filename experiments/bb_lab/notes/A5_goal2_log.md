@@ -2066,3 +2066,32 @@ Scorecard: EVERY even split of total weight ≤ 9 — (2,2), (2,4),
 population, with (2,2) proven and (2,4)/(2,6) reduced to finite
 named gaps. Files: a17_e18d_44_census.py,
 data/a17/e18d_44_census.json.
+
+## Entry 19 (2026-07-20) — E19 odd–odd splits: (3,3) collapses to a
+## forced 3×3 grid; the FULL split map of the w = 5 theorem is
+## censused; catch #4
+
+**Theorem E19.1**: the E18 cap machinery + (†) force any (3,3)
+match into: u_L a dA-triangle, u_R a dB-triangle, no mult-3 cells,
+|σ| = 9, and σ a BIJECTIVE 3×3 grid (one cell per (A-translate,
+B-translate) position). D2 then does something remarkable: it makes
+(a, b) ↦ b − a INJECTIVE (|B − A| = 25 exactly, verified 41/41), so
+the grid witnesses are FORCED by the shifts r_j − g_i — zero
+freedom. Two of the four injectivity demands are D2-automatic; the
+entire (3,3) residue is P-33: every shift-passing triangle grid has
+an α-row or β-column collision (18 Sidon-forced membership events;
+census: 807/807 shift-passing grids die here, 0 exceptions).
+Falsify-first catch #4: the shift demand itself is SATISFIABLE
+(807 of 31,688 triangle pairs) — a "no rank-1 grid in S" lemma
+would be false. Profile caps proven for (1,7) (a_B ∈ {15,17,19,21}
+super-dense, B-translates meet σ ≤ once) and (3,5) (a_B ≥ 5,
+±B-translates size-dead via I1/I2). Census battery ALL CLEAN:
+O1 66,857 / O2 17.3M (3.68M dense) / O3 232,314 candidates — 0
+matches everywhere; super-dense 7-sets exist in bulk (~5,700 per
+member), so (1,7)'s analytic layer is real work, not vacuity.
+**Scorecard (§12): every split of weight ≤ 9 is proven [(1,1),
+(1,3), (1,5), (2,2)] or reduced-and-censused with a named finite
+gap [P-K4, P-26, P-33] or profile-capped clean [(4,4), (3,5),
+(1,7)]; ~21.5M candidates, zero matches. E20 = one overlay engine
+for the three P-gaps + the three capped layers.** Files:
+a17_e19_odd_census.py, data/a17/e19_odd_census.json.
