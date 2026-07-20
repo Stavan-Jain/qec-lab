@@ -389,7 +389,30 @@ K₄, and the cap-tight profiles a ∈ {12, 15-via-n₃=2} force
 equality in C2 everywhere, pinning grids as in E18.2). Files:
 `a17_e18c_26_census.py`, `data/a17/e18c_26_census.json`.
 
-E18 status: (2,2) PROVEN vacuous; (2,4) and (2,6) reduced to
-pinned rigid configurations, censused clean end-to-end, gaps
-P-K4/P-26 named and finite; (4,4) unopened (needs the 4-translate
-σ-formula layer on both sides).
+## 10. E18d — (4,4): opening counts + census
+
+**Opening counts (proven).** With |u_L| = |u_R| = 4, σ-cells carry
+odd multiplicity (1 or 3) on BOTH sides. Two cells of one
+B-translate sharing an A-translate die by D2, so the A-translate
+families of the cells of (B+r_j) ∩ σ are pairwise disjoint subsets
+of {1..4} ⟹ |(B+r_j) ∩ σ| ≤ 4 and Σ_j = n₁ + 3n₃ ≤ 16 ⟹
+a_B(u_R) ≥ 2; symmetrically a_A(u_L) ≥ 2. This is far weaker
+forcing than (2,4)'s equality chain (a ≤ 6 leaves room 2..6 on
+BOTH sides simultaneously) — the (4,4) analytic layer is genuinely
+new, as the port map predicted. The mixed families (3-element
+A-families packed with disjoint singletons) are the new structure;
+the D2-disjointness of families is the (4,4) analog of the grid.
+
+**Census E18d (end-to-end, CLEAN).** Every weight-4 u_R form
+against the COMPLETE weight-4 u_L form-set (canon-keyed), per
+member: 1,249,040 × ~38k form pairs over 41 members, **0 matches,
+0 annihilator hits** on either side ((a′) consistent at weight 4).
+Files: `a17_e18d_44_census.py`, `data/a17/e18d_44_census.json`.
+
+E18 status — the even-split census map is COMPLETE: (2,2) PROVEN
+vacuous; (2,4)/(2,6) reduced to pinned rigid configurations with
+finite named gaps (P-K4/P-26); (4,4) opened (family-disjointness
+counts, a ≥ 2 both sides) and censused clean end-to-end. Every
+even split with total weight ≤ 9 is census-empty on the live
+population. Remaining analytic work: P-K4, P-26, the (4,4) layer;
+then E19 odd-odd.

@@ -2049,3 +2049,20 @@ JOINT finite-pattern analysis (P-K4/P-26), not a counting lemma.
 Even-split scorecard: (2,2) proven, (2,4)+(2,6) reduced-and-
 censused with named finite gaps, (4,4) unopened. Files:
 a17_e18c_26_census.py, data/a17/e18c_26_census.json.
+
+## Entry 18d (2026-07-20) — (4,4) opened + censused: the even-split
+## census map is COMPLETE
+
+(4,4) opening counts: odd multiplicities both sides; D2 forces the
+A-translate families over each B-translate's σ-cells to be pairwise
+DISJOINT ⟹ Σ_j |(B+r_j) ∩ σ| ≤ 16 ⟹ a ≥ 2 on BOTH sides — real
+constraints but far from (2,4)'s equality chain; the (4,4) analytic
+layer is the genuinely new machinery the port map predicted, with
+family-disjointness as the grid-analog. Census E18d: every weight-4
+u_R form against the complete weight-4 u_L form-set per member —
+1,249,040 form pairs × 41 members, **0 matches, 0 annihilator hits**.
+Scorecard: EVERY even split of total weight ≤ 9 — (2,2), (2,4),
+(2,6), (4,4) + mirrors — is now census-empty on the live
+population, with (2,2) proven and (2,4)/(2,6) reduced to finite
+named gaps. Files: a17_e18d_44_census.py,
+data/a17/e18d_44_census.json.
