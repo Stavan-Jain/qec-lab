@@ -351,15 +351,45 @@ translates × per-translate-pair rectangle configurations
 (U_ij ≤ 4 corners of an e_i × e_j rectangle in dA, e ∈ dB) — via
 the exact-lattice degeneracy machinery of the (C) table. Entirely
 finite; the census margins (26 vs 30, 0/8, 1 vs 3) say the
-patterns die early.
-
-**(2,6) forward note (proven opener).** Lemma C2 already kills
-every u_R ⊇ (B + g) ⊔ {v}: B·u_R = B² + (B + v) (+ rest), and
-B + v meets σ in ≥ 5 − c_v ≥ 3 cells for the viable sizes. With
-|u_R| = 6 > 5, u_R never fits inside one translate, so the (2,6)
-survivors are a(T) ≥ 10 near-cliques containing NO full
-±B-translate (the A-side cap forces a(u_R) ≥ 10 by the same
-counting as E18.2: n₁ + 3n₃ + 5n₅ ≤ 12 = 6 translates × 2).
-Census next. Files: `a17_e18_k4_census.py`,
+patterns die early. **Scalar shortcut refuted (falsify-first catch
+#3):** the arrow relations f_{π(i)} = d_{π(i),i} − δ ∈ dB demand
+|dB ∩ (dA − δ)| ≥ 3 (up to value coincidences), but the census of
+X(δ) := |dB ∩ (dA − δ)| over all 41 members × 20 δ ∈ dA gives
+min 3 / mode 6–7 / max 11 — the three demands are individually
+cheap, so no per-δ counting lemma can close P-K4; the kill is
+genuinely the JOINT overlay. Files: `a17_e18_k4_census.py`,
 `a17_e18_k3_transversal.py`, `data/a17/e18_k4_census.json`,
 `data/a17/e18_k3_transversal.json`.
+
+## 9. E18c — (2,6): profiles pinned, census clean end-to-end
+
+**Profile theorem (proven, same counting as E18.2).** For
+|u_L| = 2, |u_R| = 6: C2 gives Σ_j |(B+r_j) ∩ σ| = n₁ + 3n₃ +
+5n₅ ≤ 12, and with Σm = 30, (†) a = n₂ + 3n₃ + 6n₄ + 10n₅ + 15n₆
+≤ 15, |σ| = n₁ + n₃ + n₅ ∈ {8, 10}: n₅ = 0 always, and the viable
+(a, |σ|) pairs are exactly
+a = 10 → 10, a = 11 → 8, a = 12 → 10 (n₃ = 1, cap-tight),
+a = 13 → 8 (n₃ = 1), a = 14 → 10 (n₄ = 1), a = 15 → 8 (K₆; n₄ = 1
+or n₃ = 2, cap-tight). So **u_R is a 6-vertex near-clique:
+a(u_R) ≥ 10 of 15 differences in dB**. Lemma C2 kills every u_R
+containing a full ±B-translate (B·(ΣB) = B² squares ⟹ the extra
+translate B + v meets σ in 5 − c_v ≥ 3 > 2 cells); |u_R| = 6 > 5
+never fits inside one translate.
+
+**Census E18c (end-to-end, CLEAN).** Enumeration is complete: a ≥
+10 ⟹ Σ complement-degrees ≤ 10 ⟹ some vertex is dB-adjacent to
+≥ 4 of the other 5 — anchor it at 0, S₄ ⊆ dB, sixth vertex free.
+Over all 41 members: **368,901 candidate translation classes, 0
+matches**; the realized viable (a, |σ|) population lands exactly on
+the derived table (6,961 / 687 / 1,845 / 248 / 140 / 1 for a =
+10..15 at the viable sizes). Remaining gap (**P-26**): the analytic
+kill for translate-free near-cliques — same overlay machinery as
+P-K4, one row up (the near-clique structure is far more rigid than
+K₄, and the cap-tight profiles a ∈ {12, 15-via-n₃=2} force
+equality in C2 everywhere, pinning grids as in E18.2). Files:
+`a17_e18c_26_census.py`, `data/a17/e18c_26_census.json`.
+
+E18 status: (2,2) PROVEN vacuous; (2,4) and (2,6) reduced to
+pinned rigid configurations, censused clean end-to-end, gaps
+P-K4/P-26 named and finite; (4,4) unopened (needs the 4-translate
+σ-formula layer on both sides).

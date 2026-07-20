@@ -2030,3 +2030,22 @@ Bonus: C2 already beheads (2,6) — any u_R containing a full
 ±B-translate is dead, and the A-side count forces a(u_R) ≥ 10.
 Files: a17_e18_k4_census.py, a17_e18_k3_transversal.py,
 data/a17/e18_k4_census.json, e18_k3_transversal.json.
+
+## Entry 18c (2026-07-20) — (2,6) profiles pinned + censused clean;
+## X(δ) scalar shortcut refuted (catch #3)
+
+The C2 cap + (†) counting pins (2,6) exactly: n₅ = 0 and viable
+(a, |σ|) ∈ {(10,10),(11,8),(12,10),(13,8),(14,10),(15,8)} — u_R is
+a ≥ 10-of-15 near-clique, and any u_R containing a full
+±B-translate dies on the squares/fifth-translate argument. The
+complete-enumeration census (anchor a vertex with ≥ 4 in-set
+dB-neighbors — forced by Σ complement-degrees ≤ 10): **368,901
+candidates over 41 members, 0 matches**, with the realized viable
+profile population landing exactly on the derived table. Meanwhile
+the P-K4 scalar shortcut is DEAD: X(δ) = |dB ∩ (dA − δ)| has
+min 3 / max 11 over members×δ — the overlay arrows' three demands
+are individually cheap, so the (2,4)/(2,6) closures must be the
+JOINT finite-pattern analysis (P-K4/P-26), not a counting lemma.
+Even-split scorecard: (2,2) proven, (2,4)+(2,6) reduced-and-
+censused with named finite gaps, (4,4) unopened. Files:
+a17_e18c_26_census.py, data/a17/e18c_26_census.json.
