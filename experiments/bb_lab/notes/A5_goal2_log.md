@@ -1930,3 +1930,46 @@ VACUOUS (Lemma V); (1,5)/(5,1) dead modulo (C) completeness
 and J5-even reduced to J5e′ [census-true]. Next: (C) triangle
 analysis, J5e′ τ-collapse, then the even splits (E18) and
 (1,7)/(3,3)/(3,5) (E19).
+
+## Entry 17c (2026-07-18) — both P-items fall: (C) closes as a
+## machine-checked fixed table; J5e′ DISSOLVES into the dichotomy —
+## the (1,k) tower through k = 5 is PROVEN
+
+**J5 upgraded to Theorem J5′** (all 4∤ frames with at most one even
+axis): the dichotomy — a τ-pair in dB kills by CARDINALITY
+(|2·dB| < 20 = |dA|); τ-freeness makes doubling injective and
+transports the y-free count exactly, landing in the E17
+disjointness {0,2,6} vs {4,8,12,20}. The old P-item (prove τ-pairs
+exist) was never needed. Z₂²-frames: the subgroup bound kills
+ℓm < 84; the T₂-orbit capacity argument (y-free and m/2-jump slots
+SHARE orbits; τ-free dB takes ≤ 1 per orbit ⟹ ≤ (ℓ−2)/2 of them,
+cell needs 6) empties the residual for every even axis ≤ 10.
+Census: Z₆×Z₁₄ (the ℓm = 84 boundary): 2616/2616 B-classes
+collapse, 0 hits. **Open only: both-axes ≥ 14 Z₂² frames
+(|G| ≥ 196) — J5e″, outside the program's populated range.**
+
+**P-item (C) CLOSED (fixed table, A16 App-B grade).** dT = dB for
+Sidon 5-sets ⟺ a ±class-preserving bijection of K₅ edge-sets;
+`a17_c_matching_table.py` enumerates all patterns (anchored WLOG),
+propagating exact rational relation-lattices and pruning on FORCED
+degeneracies only (vertex collision / repeated difference class /
+2-torsion difference — each sound in any abelian group; kill
+denominators restricted to {1,2}). Result: 33,170 nodes, 162,894
+dead branches, 12 terminals — and the permutation-aware classifier
+(`a17_c_reclassify.py`; the naive identity-labeled pass showed
+"OTHER=11" because the + anchor folds anti-translations into
+permuted correspondences) resolves ALL terminals: 6 translation +
+6 anti-translation, **ZERO exotics**. With Lemma S(ii) killing the
+anti branch (the −B product has an m = 5 cell): every image-5 5-set
+is T = B + c, the image is the Frobenius square, and Theorem J5′
+finishes it.
+
+**Standing: the (1,k) tower (k ≤ 5) at w = 5 is PROVEN** — (1,1) by
+D2; (1,3)/(3,1) vacuous (Lemma V); (1,5)/(5,1) by Lemma S + the (C)
+table + J5′ — under D1 ∧ D2 ∧ (iii) on 4∤ frames, with the single
+remote exception J5e″ (|G| ≥ 196 Z₂² corner, census-empty at its
+boundary). Remaining for the full theorem: (1,7), even splits
+(2,2)/(2,4)/(2,6)/(4,4), odd-odd (3,3)/(3,5) — E18/E19 — and the
+(a′) engines. Files: `a17_c_matching_table.py`,
+`a17_c_reclassify.py`, `data/a17/e17_c_table_raw.json`,
+`e17_j5_6x14.json`, updated `A17_w5_class_plan.md` §§5–6.

@@ -174,3 +174,64 @@ of Z₆ (Sidon-distinct 4 > ℓ/2 = 3); the general ℓ ≥ 10 case is
 open. Verification: `a17_j5_probe.py` (universal census, 3 frames,
 0 hits) + `a17_j5_shape_checks.py` (Z_y tables + the odd-frame
 disjointness on pools).
+
+## 6. E17c — J5e′ dissolves; (C) becomes a fixed table
+
+**Theorem J5′ (PROVEN; all 4∤ frames with at most one even axis).**
+Under D1 ∧ (iii): dA = 2·dB is impossible. *Proof.* WLOG m odd (x
+the possibly-even axis; the x↔y mirror is symmetric). Dichotomy on
+dB and the doubling kernel T₂ = {0, τ} (τ = (ℓ/2, 0) if ℓ even,
+trivial if ℓ odd):
+* If dB contains a τ-pair (δ and δ + τ), doubling identifies them:
+  |2·dB| ≤ 19 < 20 = |dA| (D1). Dead.
+* If dB is τ-free, doubling is injective on dB, and with m odd
+  2δ is y-free iff δ is; hence |2·dB ∩ {y = 0}| = Z_y(dB) ∈
+  {4, 8, 12, 20}, while Z_y(dA) ∈ {0, 2, 6} — disjoint. Dead. ∎
+The τ-collapse claim (the old P-item J5e′) was never needed: the
+τ-pair case is killed by CARDINALITY, not by proving pairs exist.
+
+**Residual J5e″ (both axes even — 2-part Z₂²; ℓm ≥ 84 by
+2·dB ⊆ 2G ∖ {0}).** The same dichotomy over the three involutions
+leaves exactly ONE cell: dB fully τ-free (all three τ's — doubling
+injective), B-shape (2,2,1) with EXACTLY TWO differences of y-part
+m/2 (they double into y-free, so the y-free image count is
+4 + 2 = 6), matched against A-(1,1,3). All other shape/count cells
+die by the disjointness ({8,12,20} + W ≥ 8 never lands in {0,2,6})
+or cardinality. Known constraints inside the cell: the y-free image
+{±2w₁, ±2w₂, ±2v} must form A's difference triangle, forcing
+v − w₁ − w₂ ∈ T₂ on the x-axis; dA ⊆ 2G confines A to a coset of
+the odd subgroup 2G. Census: `a17_j5_probe.py --frames 6x14` (the
+ℓm = 84 boundary frame). Status: OPEN (narrow).
+
+**(C) as a fixed table.** Pure difference relations cannot decide
+(C): the coincidence system v(t,s) = v(t′,s) ⟹ v(s,t) = v(t′,t) is
+self-consistent, so the proof must use the global matching. The
+reduction: dT = dB (both Sidon) is exactly a ±class-preserving
+bijection of K₅ edge-sets, i.e. an assignment of B-edges +
+orientations to T-edges with the ℤ-linear relations
+(t_i − t_j) − ±(b_p − b_q) = 0. `a17_c_matching_table.py`
+enumerates all patterns (first edge anchored by B-relabeling WLOG),
+propagates the relations by exact rational elimination, prunes
+branches whose lattice forces a vertex collision, a repeated
+difference class (Sidon), or a 2-torsion difference (D1), and
+classifies the survivors. Expected outcome (= claim (C) as a
+machine-checked instance-independent table, A16 App-B grade): every
+complete pattern is translation (T = B + c) or anti-translation
+(T = −B + c, which then dies by Lemma S(ii): the −B product has an
+m = 5 cell). Soundness note: kills are only claimed when the forced
+relation has denominator 1 or 2 in the lattice (k·R = 0 with
+k ∈ {1,2} implies a degenerate or 2-torsion difference in ANY
+abelian group; higher k, e.g. 3-torsion, is never used).
+
+**J5e″ capacity kill (same session).** On Z₂² frames the T₂-orbit of
+a y-free element (u, 0) (u ∉ {0, ℓ/2}) is {(u,0), (u+ℓ/2,0),
+(u,m/2), (u+ℓ/2,m/2)} — it carries BOTH y-free slots and m/2-jump
+slots, and there are (ℓ−2)/2 such orbits (the x ∈ {0, ℓ/2} orbits
+are 2-torsion-only, D1-excluded). A τ-free dB takes ≤ 1 element per
+orbit, so (#y-free) + (#m/2-jumps) ≤ (ℓ−2)/2. The residual cell
+needs 4 + 2 = 6, forcing ℓ ≥ 14 (and by the x↔y mirror of the same
+count applied to the B-side x-structure, a symmetric bound on m).
+Hence **J5e″ is EMPTY for every Z₂² frame with an even axis ≤ 10** —
+including the boundary frame Z₆×Z₁₄ (census: 2616/2616 B-classes
+collapse, 0 hits) and Z₁₀×Z₁₀-type frames. Open only for both-axes
+≥ 14 Z₂² frames (|G| ≥ 196), outside the program's populated range.
