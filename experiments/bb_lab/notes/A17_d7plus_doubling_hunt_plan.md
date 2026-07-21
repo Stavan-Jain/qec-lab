@@ -514,6 +514,36 @@ extension of the t=1 proof), the per-class Lean check tables, and the
 dispatch sweep; the completeness certificate stays solver-grade (2⁷⁵
 statement).
 
+### 6.5 The (M) kernel route SHIPPED — DangerousFloorNZ 16 is a theorem
+### (2026-07-21)
+
+**`dangerousFloorNZ_of_lightClassification : LogicalFloor 8 →
+LightClassification → DangerousFloorNZ 16`** — axiom-audited (standard
+three + named `native_decide` obligations only), with
+`cover300_{chain,pauli}_distance_eq_16_of_classification` wiring it into
+the distance theorems. The (M)-half of the tightness cell is no longer
+an assumption: the hypothesis set of the [[300,8,16]] claim is now
+exactly {LogicalFloor 8, LightClassification, SeamCosetFloor 16}.
+
+Assembly (`Dangerous.lean`, Z3Z6-dispatch shape): `|p(v)| ≥ 16` closes
+by the slice inequality; else parity forces ≤ 14, the classification
+pins `p(v)` to a class translate, `weight_floor_translate1_reduce`
+walks the orbit (translations lift via `liftEl`/`proj_lift`), and KIND
+dispatches: 94 small classes → single-shape rung on the tabulated
+seam-good translate (`s_translate/s_seam/s_weight` certs); 19 window
+classes → `dangerous_bound_of_window_general` with the window
+hypothesis discharged by `window_sound_t1/t2/t3` over the sweep
+dispatch, bridged through `win_mem_certs`.
+
+**Build-cost arc of the sweep obligations** (the session's engineering
+story): ∀-Fin ball `native_decide` (dies: `decidableBallLT` overflows
+the C stack past ~2^23; ~9+ CPU-h below it) → falsifier-filter cores
+(stack-flat, ~5× cheaper: 53 min wall) → **Gaussian pivot certificates**
+(`KernelCert.lean`: sweeps are rank facts; all 37 window systems admit
+no-row-op elimination orders, never in ascending cell order): the full
+560M-mask obligation set now builds in **3.9 s**. Per-class sweep
+dispatch = emitted `fin_cases` theorems over the 113 classes.
+
 ## 7. Success criteria
 
 - **Primary:** one (code, axis) with S4-certified SF ≥ 2·d(base) ≥ 14,

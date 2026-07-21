@@ -556,6 +556,7 @@ def write(path: Path, content: str, force: bool):
 
 # ---------------------------------------------------------------- leaves
 SWEEP_HEADER = BANNER + """
+import Mathlib.Tactic.FinCases
 import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.KernelCert
 
 /-!
@@ -586,6 +587,8 @@ namespace Stabilizer
 namespace Homological
 namespace BB
 namespace Z5Z15F2A6
+
+set_option maxRecDepth 4096
 
 """
 
@@ -982,6 +985,87 @@ def sweepP_pub(i: int) -> str:
 """
 
 
+def _dispatch_support() -> str:
+    """Assembly-support certificates + the per-class sweep dispatch
+    theorems consumed by Dangerous.lean (fin_cases over the 113
+    classes; invalid classes close by decide on the tabulated data)."""
+    win_t = {ci: (16 - BW[ci]) // 2
+             for ci in range(N_CLASSES) if KIND[ci] == 1}
+    out = """/-! ## Assembly support: class-shape certificates + sweep dispatch -/
+
+theorem kind_cases : ∀ i : Fin 113,
+    KIND.getD i.val 0 = 0 ∨ KIND.getD i.val 0 = 1 := by
+  native_decide
+
+theorem win_t_cases : ∀ i : Fin 113, KIND.getD i.val 0 = 1 →
+    tOf i = 1 ∨ tOf i = 2 ∨ tOf i = 3 := by
+  native_decide
+
+theorem s_weight_certs : ∀ i : Fin 113, KIND.getD i.val 0 = 0 →
+    (Finset.univ.filter fun j : G150 × Fin 2 =>
+      bbBoundary2Fn a150 b150 (sF0Chain i) j ≠ 0).card
+      = BW.getD i.val 0 := by
+  native_decide
+
+"""
+
+    def dispatch(name: str, hyps: str, body: str,
+                 valid: dict, absurds: dict) -> str:
+        lines = [f"theorem {name} (i : Fin 113) {hyps} :", f"    {body} := by",
+                 "  fin_cases i"]
+        for n in range(N_CLASSES):
+            if n in valid:
+                lines.append(f"  · exact {valid[n]}")
+            else:
+                lines.append(f"  · exact absurd {absurds[n]} (by decide)")
+        return "\n".join(lines) + "\n\n"
+
+    s0_body = ("∀ lam : Fin (2 ^ (winCellList i).length),\n"
+               "      syndFold (winCellList i) lam.val = 0 →\n"
+               "      (tableEntries i 150).any\n"
+               "        (fun pr => lam.val == localMaskOf (winCellList i) pr.2)"
+               " = true")
+    sE_body = ("∀ e : G150 × Fin 2, winMem i e = false →\n"
+               "      survivorB i (cellIdx e) = true →\n"
+               "      ∀ lam : Fin (2 ^ (winCellList i ++ [cellIdx e]).length),\n"
+               "        syndFold (winCellList i ++ [cellIdx e]) lam.val = 0 →\n"
+               "        (tableEntries i (cellIdx e)).any (fun pr =>\n"
+               "          lam.val == localMaskOf (winCellList i ++ [cellIdx e])"
+               " pr.2)\n          = true")
+    sP_body = ("∀ e₁ e₂ : G150 × Fin 2, winMem i e₁ = false →\n"
+               "      winMem i e₂ = false → e₁ ≠ e₂ →\n"
+               "      pairSurvivorB i (cellIdx e₁) (cellIdx e₂) = true →\n"
+               "      ∀ lam : Fin (2 ^ ((winCellList i ++ [cellIdx e₁])"
+               " ++ [cellIdx e₂]).length),\n"
+               "        syndFold ((winCellList i ++ [cellIdx e₁])"
+               " ++ [cellIdx e₂]) lam.val = 0 →\n"
+               "        ((tableEntries i (cellIdx e₁))"
+               " ++ tableEntries i (cellIdx e₂)).any\n"
+               "          (fun pr => lam.val ==\n"
+               "            localMaskOf ((winCellList i ++ [cellIdx e₁])"
+               " ++ [cellIdx e₂])\n              pr.2) = true")
+
+    out += dispatch("win_sweep0_dispatch", "(hk : KIND.getD i.val 0 = 1)",
+                    s0_body,
+                    {ci: f"win_sweep0_{ci}" for ci in win_t},
+                    {n: "hk" for n in range(N_CLASSES)})
+    out += dispatch("win_sweepE_dispatch",
+                    "(hk : KIND.getD i.val 0 = 1) (ht : 2 ≤ tOf i)",
+                    sE_body,
+                    {ci: f"win_sweepE_{ci}" for ci, t in win_t.items()
+                     if t >= 2},
+                    {n: ("ht" if n in win_t else "hk")
+                     for n in range(N_CLASSES)})
+    out += dispatch("win_sweepP_dispatch",
+                    "(hk : KIND.getD i.val 0 = 1) (ht : tOf i = 3)",
+                    sP_body,
+                    {ci: f"win_sweepP_{ci}" for ci, t in win_t.items()
+                     if t == 3},
+                    {n: ("ht" if n in win_t else "hk")
+                     for n in range(N_CLASSES)})
+    return out
+
+
 def emit_leaves(force: bool):
     win_classes = [(ci, BW[ci], (16 - BW[ci]) // 2, bin(WMASK[ci]).count("1"))
                    for ci in range(N_CLASSES) if KIND[ci] == 1]
@@ -1013,6 +1097,7 @@ def emit_leaves(force: bool):
         body += sweepE_pub(w[0])
         if w[2] == 3:
             body += sweepP_pub(w[0])
+    body += _dispatch_support()
     print(f"pivot certificates emitted for {nsys} window systems")
     write(OUT_DIR / "SweepWin.lean", body + LEAF_FOOTER, force)
 
