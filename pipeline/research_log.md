@@ -13,6 +13,28 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-20 — a20-ibm288-tower-opened (A20, new) — success — **IBM's
+  [[288,8,20]] is a gross-shaped all-(R) tower and the campaign to certify
+  d = 20 is open.** Instance study (`scripts/a20_ibm288_tower.py`,
+  kernel-level): k = 8 deck-born at (18,2) — all decks jump, (R) fails
+  there, A12-consistent — then **(R) HOLDS on both y-rungs
+  (18,2)→(18,4)→(18,8) with explicit Bezout witnesses saved**
+  (`data/a20/bezout_y_18x{4,8}.json`; `1+y^{m/2} ∈ (A,B)` solved by F₂
+  linear algebra) — so the classical `BBDoubling` template applies at both
+  rungs, `DeckTrivialOnH1` dischargeable via `deckTrivial_of_bezout`, and
+  `bocksteinVanishes_of_orderFourLift` applies (ZMod Frattini lifts).
+  **d₀ = d([[72,8,·]] birth rung) = 6 EXACT** in 0.5 s (weight-6 witness +
+  UNSAT@5 on all 25 orbit reps). With d₂ = 20 (IBM MILP-exact) and PAR,
+  the d₁ ladder (n = 144, in flight) decides between **rung-1 wall
+  attainment** (d₁ = 10 = 2·6−2, the first ever) with perfect rung-2
+  doubling, and perfect rung-1 doubling (d₁ = 12) with a rung-2 deficit-4
+  cell. Certification ledger to full 20: LogicalFloor d₁ (SAT n=144),
+  (M)@20 census over Y4 (weight-19 classification, Prop-10 pattern
+  deeper), SeamCosetFloor 20 (first live (R)-tower consumer of the A13
+  transport machinery; odd part Z₉ ⇒ F₂/F₄/F₆₄ components). Pathfinder
+  for A19 full-24 at half scale.
+  [details](../experiments/bb_lab/notes/A20_ibm288_tower.md)
+
 - 2026-07-20 — a19-wall-refutation-and-catalog-survey (A19 follow-through) —
   success — **The [[288,12,18]] wall-attainment candidate is REFUTED and the
   deck-birth design principle is confirmed catalog-wide.** (1) The Bravyi
