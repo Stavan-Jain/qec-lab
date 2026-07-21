@@ -652,3 +652,84 @@ Consistency: K2's 1.25M-candidate census (0 matches), the N_A cap
 next engine port; per-profile near-clique drivers), (4,4), (3,5),
 (1,7), J5e″, (a′). Files: `a17_e20_pk4_engine.py`,
 `data/a17/e20_pk4_table.json`.
+
+## 16. E21 — P-26 engine port: driver + validation battery; the
+## per-part C2 refinement kills the a = 12 profile analytically
+
+**Sharpened profile theorem (per-part C2 refinement — adversarial
+verification catch).** §9's table used C2 in AGGREGATE
+(Σ_j |(B+r_j) ∩ σ| ≤ 12). The per-part form is strictly stronger:
+each A-part of σ has exactly |σ|/2 cells, every σ-cell carries odd
+m ≥ 1, and every translate meets each part in ≤ 1 cell (D2), so
+**each part's σ-mass is ≤ 6**. At |σ| = 10 a part has 5 cells; an
+m = 3 cell forces part mass ≥ 3 + 4 = 7 > 6. Hence **n₃ = 0
+whenever |σ| = 10**, and the §9 row a = 12 → (n₃ = 1, |σ| = 10) is
+DEAD analytically. The viable profiles are exactly SIX
+(a, |σ|, n₁, n₂, n₃, n₄; n₅ = n₆ = 0):
+(10,10,10,10,0,0) (11,8,8,11,0,0) (13,8,7,10,1,0)
+(14,10,10,8,0,1) (15,8,6,9,2,0) (15,8,8,9,0,1).
+Consistency: the census's 1,845 realized (12,10) candidates are
+B-side-only profiles (no A-side), so no contradiction — they can
+never match. Independent verification: a subagent re-derived the
+whole table + partition classes from the primitives alone (no
+sight of our code/doc), found the same six profiles, flagged the
+a = 12 kill, and matched every partition count below exactly.
+
+**Clique-partition layer (proven + enumerated).** Sidon-B gives
+every translate pair ≤ 1 shared cell, so the a colliding pairs
+PARTITION into edge-disjoint cliques on the 6 translates: n₂ K₂
+(m = 2, off σ) + n₃ K₃ (m = 3, ON σ) + n₄ K₄ (m = 4, off σ).
+Per translate j: cells split 5 = c₁ + c₂ + c₃ + c₄ with σ-degree
+d_j = c₁ + c₃ ≤ 2 (C2) ⟺ **c₂ⱼ + c₄ⱼ ≥ 3** — every translate
+carries ≥ 3 off-σ collision cells. Up to S₆ the viable partitions
+are: a10: 4 (complement graphs C₅+v, C₃+P₂, P₅, C₄+P₁), a11: 5
+(complements C₄+2v, P₄+v, C₃+2v, 2P₂, P₃+P₁), a13: 1 (K₃ + all 9
+cross + 1 inner edge), a14: 1 (K₄ + 8 cross, non-K₄ pair open),
+a15t: 1 (two vertex-DISJOINT K₃ + K₃,₃ — shared-vertex triangles
+die by c₂ ≥ 3), a15q: 1 (K₄ + all 9 remaining) — **13 classes**.
+
+**The driver (`a17_e20_p26_engine.py`).** 9 coordinates
+(a₁..a₄, b₁..b₄, g₂), gauges a₀ = b₀ = 0, g₁ = 0; |σ| = 8 stratum:
+g₂ = a₄ − a₃ (overlap gauge (hi,lo) = (4,3), P₁ = {0,1,2,3},
+P₂ = {0,1,2,4}, overlap cell may host one even collision cell);
+|σ| = 10 stratum: g₂ free coordinate + 21 δ-∉-forms (kind "eq" —
+2-torsion δ is NOT excludable). Branching per (profile, partition):
+translates in a connectivity order, per translate σ-slot names
+(i, p) + b-labels, then clique-cell b-labels; relations anchor r_j
+(elimination) or add integer rows; battery = static Sidon/D2 +
+δ-forms + m=1 sharpness + off-σ + outside-translate + non-edge +
+collision-distinctness, grown incrementally. First-use canon:
+b-labels global, a-labels within the symmetric set, part-1-first
+at s = 10; partition canon spends S₆ (Aut overcount accepted).
+Soundness architecture = P-33/P-K4 verbatim (sound d ∈ {1,2} kills,
+exact confirmation, exhaustive terminal re-verification), plus a
+new **multi-modulus killability-necessity screen**: a form can be
+forced with d ∈ {1,2} only if its reduced row vanishes mod p AND
+mod 3, 5 (and mod 2 for "eq") — unconditional necessity
+(gcd(d, m) = 1), fully vectorized, with all four reduced-battery
+blocks maintained incrementally (one outer product per Z-growing
+row). Kills nothing new, admits nothing new: branch statistics
+byte-identical to the naive engine on the probe runs.
+
+**Validation battery (all green before production).**
+1. Selftests: encodings, 9-dim static kills, g₂-axis freedom,
+   δ-form kill + 2-torsion non-kill, per-translate step counts.
+2. Relaxed existence (collision half, gauge r₁ = 0): 2,055
+   terminals in the first 100k nodes — the abstract frame admits
+   realizable near-cliques (no over-kill).
+3. **Injection**: censused live candidate 6-sets, filtered to the
+   C2-compatible population (per-translate σ-degree ≤ 2 — a MATCH
+   consequence; K₅+isolated-style candidates never enter the
+   frame), mapped into the abstract collision half with every
+   lattice row asserted concretely in the group:
+   **351/351 survive** (a10 100, a11 100, a13 51, a14 100).
+   a15t/a15q have NO live C2-compatible candidates (census fact:
+   the single realized (15,8) candidate fails the n-vector/σ-cap
+   filters) — identical code paths validated via the other four.
+4. Adversarial re-derivation (independent subagent): table +
+   counts exact match + the a12 kill.
+
+Production: 7 enumerations launched (six live profiles + a12 as a
+zero-expectation consistency check — its K₃-in-part slot demand
+needs 4 distinct non-member translates and only 3 exist, so the
+engine must return EMPTY combinatorially). Results → §17.

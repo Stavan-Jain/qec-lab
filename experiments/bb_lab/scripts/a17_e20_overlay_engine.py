@@ -174,6 +174,26 @@ class ZLattice:
             return None
         return dmax
 
+    def basis_modq(self, q: int) -> list:
+        """Echelon basis of the row space over F_q, as
+        (normalized row, pivot) pairs. Used as a NECESSITY screen:
+        d·f ∈ Z-span with gcd(d, q) = 1 forces f into the mod-q
+        row space."""
+        rows = []
+        for r in self.rows:
+            v = [x % q for x in r]
+            for br, bp in rows:
+                if v[bp]:
+                    c = v[bp]
+                    v = [(x - c * y) % q for x, y in zip(v, br)]
+            lead = next((j for j, x in enumerate(v) if x), None)
+            if lead is None:
+                continue
+            inv = pow(v[lead], -1, q)
+            v = [(x * inv) % q for x in v]
+            rows.append((v, lead))
+        return rows
+
     def basis_modp(self) -> tuple:
         rows, pivs = [], []
         for r in self.rows:
@@ -200,7 +220,9 @@ class Battery:
     def __init__(self, forms: list, kinds: list):
         self.forms = forms
         self.kinds = kinds
-        self.F = np.array(forms, dtype=np.int64) % P
+        self.Fz = np.array(forms, dtype=np.int64)
+        self.F = self.Fz % P
+        self.Fq = {q: self.Fz % q for q in (2, 3, 5)}
 
     def reduced(self, lat: ZLattice) -> np.ndarray:
         rows, pivs = lat.basis_modp()
@@ -217,10 +239,72 @@ class Battery:
                 return int(idx)
         return None
 
+    def extended(self, nf: list, nk: list) -> "Battery":
+        """Append forms without rebuilding the numpy block."""
+        b = Battery.__new__(Battery)
+        b.forms = self.forms + nf
+        b.kinds = self.kinds + nk
+        if nf:
+            add = np.array(nf, dtype=np.int64)
+            b.Fz = np.vstack([self.Fz, add])
+            b.F = np.vstack([self.F, add % P])
+            b.Fq = {q: np.vstack([self.Fq[q], add % q])
+                    for q in (2, 3, 5)}
+        else:
+            b.Fz = self.Fz
+            b.F = self.F
+            b.Fq = self.Fq
+        return b
+
+    def kill_candidates(self, lat: ZLattice) -> tuple:
+        """(indices possibly killable, degenerate flag). A form can
+        be killable only if its reduced row vanishes mod p AND mod
+        q for every q ∈ {2,3,5} coprime to the allowed denominator
+        ("eq": d = 1 needs all three; "diff": d ∈ {1,2} needs 3, 5)
+        — necessary conditions, so skipping the rest is sound.
+        degenerate=True (mod-p basis lost exact rank): caller must
+        fall back to the exhaustive exact scan."""
+        rows, pivs = lat.basis_modp()
+        if len(rows) < lat.rank():
+            return [], True
+        R = self.F.copy()
+        for br, bp in zip(rows, pivs):
+            R = (R - np.outer(R[:, bp], br)) % P
+        z = ~R.any(axis=1)
+        nz = int(z.sum())
+        if nz == 0:
+            return [], False
+        zidx = np.nonzero(z)[0]
+        if nz <= 12:      # small: exact checks beat the screen
+            return [int(i) for i in zidx], False
+        oks = {}
+        for q in (2, 3, 5):
+            Rq = self.Fq[q][zidx]
+            for br, bp in lat.basis_modq(q):
+                brv = np.array(br, dtype=np.int64)
+                Rq = (Rq - np.outer(Rq[:, bp], brv)) % q
+            oks[q] = ~Rq.any(axis=1)
+        out = []
+        for k, idx in enumerate(zidx):
+            idx = int(idx)
+            if self.kinds[idx] == "diff":
+                if oks[3][k] and oks[5][k]:
+                    out.append(idx)
+            elif oks[2][k] and oks[3][k] and oks[5][k]:
+                out.append(idx)
+        return out, False
+
     def exact_all(self, lat: ZLattice) -> list:
-        return [i for i, (f, k) in enumerate(zip(self.forms,
-                                                 self.kinds))
-                if killable(lat.forced_denom(f), k)]
+        """All killable form indices (exact; screened fast path
+        with exhaustive fallback on mod-p degeneracy)."""
+        cands, degen = self.kill_candidates(lat)
+        if degen:
+            return [i for i, (f, k) in enumerate(
+                        zip(self.forms, self.kinds))
+                    if killable(lat.forced_denom(f), k)]
+        return [idx for idx in cands
+                if killable(lat.forced_denom(self.forms[idx]),
+                            self.kinds[idx])]
 
 
 def static_battery() -> Battery:

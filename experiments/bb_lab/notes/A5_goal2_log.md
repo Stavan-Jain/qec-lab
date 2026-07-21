@@ -2200,3 +2200,39 @@ half-configs — finds 832 terminals in 3M nodes including 80
 lattice-forced sub-B patterns; the machinery admits realizable
 structures, so the empty full table is a fact. Sixth split closed.
 Files: a17_e20_pk4_engine.py, data/a17/e20_pk4_table.json.
+
+## Entry 22 — 2026-07-21 (E21: P-26 driver built + validated; per-part
+## C2 refinement kills a = 12; production runs launched)
+
+The (2,6) engine port is BUILT and fully validated (doc §16).
+Structure: the a colliding pairs partition into edge-disjoint
+cliques (Sidon-B: ≤ 1 shared cell per pair) — n₂ K₂ + n₃ K₃ (on σ)
++ n₄ K₄ with per-translate c₂ + c₄ ≥ 3 (C2) ⟹ 13 partition
+classes over the profiles. Driver: 9 coordinates (g₂ free in the
+|σ| = 10 stratum, = a₄ − a₃ at |σ| = 8), σ-slot names + b-label
+first-use canon, incremental battery, sound d ∈ {1,2} kills only,
+terminal exact re-verification; new vectorized multi-modulus
+(p, 2, 3, 5) killability-necessity screen — branch statistics
+byte-identical, ~3× faster (2.0k relax / 1.8k full nodes/s).
+
+FALSIFY-FIRST CATCH #6 (adversarial subagent, own-side): §9's
+a = 12 profile row is analytically DEAD — C2 per-part (each A-part
+mass ≤ 6; 5-cell part + m = 3 cell ⟹ ≥ 7) forces n₃ = 0 at
+|σ| = 10. Six live profiles remain. The independent re-derivation
+(primitives only, no code/doc access) matched the corrected table
+AND all 13 partition counts exactly. Census consistent (the 1,845
+realized (12,10) candidates are B-side-only objects).
+
+Validation: relaxed collision half finds 2,055 terminals/100k
+nodes (realizability ✓); injection of live C2-compatible censused
+candidates — every abstract row concretely asserted in-group —
+**351/351 survive** (a10/a11/a13/a14; a15t/a15q have NO live
+C2-compatible candidates — itself a census fact worth having).
+Engine-core upgrades (Battery.extended, exact_all fast path,
+kill_candidates screen) are shared with the P-33/P-K4 drivers;
+their selftests pass; published P-33/P-K4 results predate the
+change and were produced by the naive exact path.
+
+Launched: all 7 production enumerations in parallel (a12 as a
+zero-expectation consistency check). Files:
+a17_e20_p26_engine.py, data/a17/e20_p26_<prof>.{json,log}.
