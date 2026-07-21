@@ -555,50 +555,30 @@ def write(path: Path, content: str, force: bool):
 
 
 # ---------------------------------------------------------------- leaves
-LEAF_HEADER = BANNER + """
-import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.WindowEngine
+SWEEP_HEADER = BANNER + """
+import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.KernelCert
 
 /-!
-# Z5Z15F2A6 window sweep leaves ({name})
+# Z5Z15F2A6 window sweeps via pivot certificates
 
-The per-class sweep certificates in the exact hypothesis shapes of
-`window_sound_t1/t2/t3` ({content}).
+Every sweep obligation of `window_sound_t1/t2/t3` — base sweeps of the
+19 window classes, extension sweeps of the surviving extra cells, and
+the t = 3 pair sweeps — discharged by Gaussian-elimination pivot
+certificates instead of `2^L` mask enumeration.
 
-Each sweep's `native_decide` core is the falsifier filter
-`(List.range (2 ^ L)).filter (syndrome-zero && not-in-table) = []`:
-`List.filter` is a native tail-recursive stdlib loop, so only the
-per-mask predicate is interpreted — a `Fin`-indexed ball is ~5× slower
-per item and its `Decidable` instance overflows the C stack beyond
-about `2 ^ 23`.  The flat `∀`-form the `window_sound_*` wrappers
-consume is recovered through `forall_of_filter_nil`.
-Files are parallel build leaves.
--/
-
-namespace Quantum
-namespace Stabilizer
-namespace Homological
-namespace BB
-namespace Z5Z15F2A6
-
-"""
-
-ASSEMBLY_HEADER = BANNER + """
-import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.SweepWin4
-import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.SweepWin5
-import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.SweepWin6
-
-/-!
-# Z5Z15F2A6 window sweep leaves (7 of 7 — assembly)
-
-Survivor certificates and the public extension-sweep theorems.
+Per system, one `native_decide` checks (`cert1B`/`cert2B`) that the
+tabulated pivot order triangularizes the window's syndrome map and that
+the tabulated kernel generators are δ-normalized on the free positions;
+`kernel_classify_dim1/dim2` then classifies every zero-syndrome mask
+into the generator span, and membership of each span element in the
+candidate table is a second tabulated check.  The public theorem
+statements are byte-identical to the enumeration versions.
 
 `survivorB`/`pairSurvivorB` pass for only finitely many extra cells per
 t ≥ 2 class; one cheap `native_decide` certifies each survivor list, and
-the public `win_sweepE_*`/`win_sweepP_*` theorems (the exact hypothesis
-shapes of `window_sound_t2/t3`) dispatch through `mem_of_filter_eq` to
-the per-survivor flat sweeps of `SweepWin4`–`SweepWin6`.  This keeps the
-gate quantifiers out of the `native_decide` cores entirely — no inner
-ball is ever evaluated behind a `Decidable` arrow instance.
+the public `win_sweepE_*`/`win_sweepP_*` theorems dispatch through
+`mem_of_filter_eq` to the per-survivor flats.  No sweep quantifier ever
+puts a ball behind a `Decidable` arrow instance.
 -/
 
 namespace Quantum
@@ -666,6 +646,115 @@ def _pair_survivors(ci: int) -> list[int]:
     return out
 
 
+# ------------------------------------------------- pivot certificates
+def _kernel_f2(cols: list[int]) -> list[int]:
+    """Kernel basis of the syndrome map as position masks."""
+    done: list[tuple[int, int]] = []
+    basis = []
+    for i, v0 in enumerate(cols):
+        v, m = v0, 1 << i
+        for pv, pm in done:
+            if v & (pv & -pv):
+                v ^= pv
+                m ^= pm
+        if v == 0:
+            basis.append(m)
+        else:
+            done.append((v, m))
+    return basis
+
+
+def _pivot_cert(cells: list[int]):
+    """Greedy elimination-order pivot certificate for the window system.
+
+    Returns (dim, frees, gens, piv) with `gens` δ-normalized on `frees`
+    and `piv` a list of (position, row) pairs in elimination order
+    satisfying the Lean `pivB` semantics (verified by `_check_cert`)."""
+    cols = [_col_mask(c) for c in cells]
+    basis = _kernel_f2(cols)
+    d = len(basis)
+    assert d in (1, 2), (len(cells), d)
+    supports = [[i for i in range(len(cells)) if (b >> i) & 1]
+                for b in basis]
+    for frees in itertools.product(*supports):
+        if len(set(frees)) != d:
+            continue
+        B = basis[:]
+        M = [[(B[i] >> f) & 1 for f in frees] for i in range(d)]
+        if d == 1:
+            if M[0][0] != 1:
+                continue
+            Bn = [B[0]]
+        else:
+            if (M[0][0] * M[1][1]) ^ (M[0][1] * M[1][0]) != 1:
+                continue
+            Bn = [(B[0] if M[1][1] else 0) ^ (B[1] if M[0][1] else 0),
+                  (B[0] if M[1][0] else 0) ^ (B[1] if M[0][0] else 0)]
+        if not all(((Bn[i] >> frees[j]) & 1) == (1 if i == j else 0)
+                   for i in range(d) for j in range(d)):
+            continue
+        rem = set(range(len(cells))) - set(frees)
+        piv = []
+        ok = True
+        while rem:
+            found = None
+            for j in sorted(rem):
+                other = 0
+                for s in rem:
+                    if s != j:
+                        other |= cols[s]
+                private = cols[j] & ~other
+                if private:
+                    found = (j, (private & -private).bit_length() - 1)
+                    break
+            if not found:
+                ok = False
+                break
+            piv.append(found)
+            rem.discard(found[0])
+        if ok:
+            return d, list(frees), Bn, piv
+    raise AssertionError(f"no pivot certificate for {len(cells)}-cell system")
+
+
+def _check_cert(cells: list[int], dim: int, frees: list[int],
+                gens: list[int], piv: list[tuple[int, int]]):
+    """Replicate the Lean cert1B/cert2B semantics bit-for-bit."""
+    L = len(cells)
+    cols = [_col_mask(c) for c in cells]
+
+    def synd(mask):
+        s = 0
+        for i in range(L):
+            if (mask >> i) & 1:
+                s ^= cols[i]
+        return s
+
+    # pivB
+    for t, (j, r) in enumerate(piv):
+        assert j < L
+        assert (cols[j] >> r) & 1
+        sel = 0
+        pos = 0
+        for j2, _ in piv[t + 1:]:
+            sel |= cols[j2]
+            pos |= 1 << j2
+        assert not (sel >> r) & 1
+        assert not (pos >> j) & 1
+    pm = 0
+    for j, _ in piv:
+        pm |= 1 << j
+    fm = 0
+    for f in frees:
+        fm |= 1 << f
+    assert pm | fm == (1 << L) - 1 and pm & fm == 0
+    for i, g in enumerate(gens):
+        assert g < (1 << L) and synd(g) == 0
+        for k, f in enumerate(frees):
+            assert ((g >> f) & 1) == (1 if i == k else 0)
+    assert dim == len(frees) == len(gens)
+
+
 def _body0(i: int, v: str) -> str:
     K = f"({i} : Fin 113)"
     return (f"syndFold (winCellList {K}) {v} = 0 →\n"
@@ -693,81 +782,91 @@ def _bodyP(i: int, v: str) -> str:
             f"          = true")
 
 
-def win_len_thm(i: int, w: int) -> str:
-    return (f"private theorem win_len_{i} :\n"
-            f"    (winCellList ({i} : Fin 113)).length = {w} := by\n"
-            f"  native_decide\n\n")
+def _piv_lit(piv: list[tuple[int, int]]) -> str:
+    return "[" + ", ".join(f"({j}, {r})" for j, r in piv) + "]"
 
 
-def _filter_core(name: str, cells: str, table: str, L: int) -> str:
-    return f"""private theorem {name}_core :
-    (List.range (2 ^ {L})).filter (fun m =>
-      syndFold {cells} m == 0 &&
-      !(({table}).any (fun pr => m == localMaskOf {cells} pr.2)))
-      = [] := by
+def _cert_and_flat(name: str, cell_ids: list[int], cells: str, table: str,
+                   len_expr: str) -> str:
+    """One batched native_decide certificate + the flat public theorem
+    (byte-identical statement to the enumeration version) for one window
+    system."""
+    dim, frees, gens, piv = _pivot_cert(cell_ids)
+    _check_cert(cell_ids, dim, frees, gens, piv)
+    L = len(cell_ids)
+    if dim == 1:
+        certcall = (f"cert1B {cells}\n"
+                    f"        {_piv_lit(piv)}\n"
+                    f"        {frees[0]} {gens[0]}")
+        spans = ["0", str(gens[0])]
+        destr = "obtain ⟨⟨⟨hlen, hkc⟩, htab0⟩, htab1⟩ := hcert"
+        rc = "rcases kernel_classify_dim1 hkc lam.val hlt hs with h | h"
+        cases = ("  · rw [h]\n    exact htab0\n"
+                 "  · rw [h]\n    exact htab1\n")
+    else:
+        certcall = (f"cert2B {cells}\n"
+                    f"        {_piv_lit(piv)}\n"
+                    f"        {frees[0]} {frees[1]} {gens[0]} {gens[1]}")
+        spans = ["0", str(gens[0]), str(gens[1]),
+                 f"({gens[0]} ^^^ {gens[1]})"]
+        destr = ("obtain ⟨⟨⟨⟨⟨hlen, hkc⟩, htab0⟩, htab1⟩, htab2⟩, htab3⟩"
+                 " := hcert")
+        rc = ("rcases kernel_classify_dim2 hkc lam.val hlt hs"
+              " with h | h | h | h")
+        cases = ("  · rw [h]\n    exact htab0\n"
+                 "  · rw [h]\n    exact htab1\n"
+                 "  · rw [h]\n    exact htab2\n"
+                 "  · rw [h]\n    exact htab3\n")
+    tabs = "\n      && ".join(
+        f"(({table}).any (fun pr => {m} == localMaskOf {cells} pr.2))"
+        for m in spans)
+    return f"""private theorem {name}_cert :
+    (({len_expr} == {L})
+      && ({certcall})
+      && {tabs}) = true := by
   native_decide
 
-"""
-
-
-def _flat_thm(name: str, cells: str, table: str, len_expr: str,
-              rw_block: str) -> str:
-    return f"""theorem {name} :
+theorem {name} :
     ∀ lam : Fin (2 ^ {len_expr}),
       syndFold {cells} lam.val = 0 →
       ({table}).any
         (fun pr => lam.val == localMaskOf {cells} pr.2)
         = true := by
-{rw_block}
-  exact forall_of_filter_nil
-    (fun m => syndFold {cells} m)
-    (fun m => ({table}).any
-      (fun pr => m == localMaskOf {cells} pr.2))
-    {name}_core
-
+  have hcert := {name}_cert
+  simp only [Bool.and_eq_true, beq_iff_eq] at hcert
+  {destr}
+  rw [hlen]
+  intro lam hs
+  have hlt : lam.val < 2 ^ {len_expr} := by
+    rw [hlen]
+    exact lam.isLt
+  {rc}
+{cases}
 """
 
 
-def sweep0_thm(i: int, w: int) -> str:
+def sweep0_thm(i: int) -> str:
     K = f"({i} : Fin 113)"
-    cells = f"(winCellList {K})"
-    table = f"tableEntries {K} 150"
-    return (_filter_core(f"win_sweep0_{i}", cells, table, w)
-            + _flat_thm(f"win_sweep0_{i}", cells, table,
-                        f"(winCellList {K}).length",
-                        f"  rw [win_len_{i}]"))
+    return _cert_and_flat(f"win_sweep0_{i}", _win_cells(i),
+                          f"(winCellList {K})", f"tableEntries {K} 150",
+                          f"(winCellList {K}).length")
 
 
-def sweepE_flat(i: int, w: int, c: int) -> str:
+def sweepE_flat(i: int, c: int) -> str:
     K = f"({i} : Fin 113)"
-    cells = f"(winCellList {K} ++ [{c}])"
-    table = f"tableEntries {K} {c}"
-    rw_block = (f"  have hlen : (winCellList {K} ++ [{c}]).length"
-                f" = {w + 1} := by\n"
-                f"    have h := win_len_{i}\n"
-                f"    rw [List.length_append, List.length_singleton]\n"
-                f"    omega\n"
-                f"  rw [hlen]")
-    return (_filter_core(f"win_sweepE_{i}_c{c}", cells, table, w + 1)
-            + _flat_thm(f"win_sweepE_{i}_c{c}", cells, table,
-                        f"(winCellList {K} ++ [{c}]).length", rw_block))
+    return _cert_and_flat(f"win_sweepE_{i}_c{c}", _win_cells(i) + [c],
+                          f"(winCellList {K} ++ [{c}])",
+                          f"tableEntries {K} {c}",
+                          f"(winCellList {K} ++ [{c}]).length")
 
 
-def sweepP_flat(i: int, w: int, c1: int, c2: int) -> str:
+def sweepP_flat(i: int, c1: int, c2: int) -> str:
     K = f"({i} : Fin 113)"
-    cells = f"((winCellList {K} ++ [{c1}]) ++ [{c2}])"
-    table = f"(tableEntries {K} {c1}) ++ tableEntries {K} {c2}"
-    rw_block = (f"  have hlen : ((winCellList {K} ++ [{c1}])"
-                f" ++ [{c2}]).length = {w + 2} := by\n"
-                f"    have h := win_len_{i}\n"
-                f"    rw [List.length_append, List.length_append,\n"
-                f"      List.length_singleton, List.length_singleton]\n"
-                f"    omega\n"
-                f"  rw [hlen]")
-    return (_filter_core(f"win_sweepP_{i}_p{c1}_{c2}", cells, table, w + 2)
-            + _flat_thm(f"win_sweepP_{i}_p{c1}_{c2}", cells, table,
-                        f"((winCellList {K} ++ [{c1}]) ++ [{c2}]).length",
-                        rw_block))
+    return _cert_and_flat(
+        f"win_sweepP_{i}_p{c1}_{c2}", _win_cells(i) + [c1, c2],
+        f"((winCellList {K} ++ [{c1}]) ++ [{c2}])",
+        f"(tableEntries {K} {c1}) ++ tableEntries {K} {c2}",
+        f"((winCellList {K} ++ [{c1}]) ++ [{c2}]).length")
 
 
 def _lit(lst: list[int]) -> str:
@@ -886,74 +985,26 @@ def sweepP_pub(i: int) -> str:
 def emit_leaves(force: bool):
     win_classes = [(ci, BW[ci], (16 - BW[ci]) // 2, bin(WMASK[ci]).count("1"))
                    for ci in range(N_CLASSES) if KIND[ci] == 1]
-    t1 = sorted([w for w in win_classes if w[2] == 1],
-                key=lambda w: -(2 ** w[3]))
+    t1 = sorted([w for w in win_classes if w[2] == 1])
     t2plus = sorted([w for w in win_classes if w[2] >= 2])
     # sanity: extras (kernel-growing cells) must be among the survivors
     for ci, e, _, _ in extras:
         assert e in _survivors(ci), (ci, e)
-    # Greedy-balance the t=1 classes into three leaves by 2^|W| (mask
-    # count = interpreter cost).  The extension work is split by class:
-    # the biggest E block alone (SweepWin4), the rest of the E blocks
-    # (SweepWin5), and the t>=2 base sweeps + pair sweeps (SweepWin6).
-    # SweepWin7 holds the cheap survivor certificates and the public
-    # dispatch theorems consuming the per-survivor flats.
-    N_T1 = 3
-    bins: list[list] = [[] for _ in range(N_T1)]
-    load = [0] * N_T1
+    nsys = 0
+    body = SWEEP_HEADER
     for w in t1:
-        j = load.index(min(load))
-        bins[j].append(w)
-        load[j] += 2 ** w[3]
-    ecost = {w[0]: len(_survivors(w[0])) * 2 ** (w[3] + 1) for w in t2plus}
-    big_e = max(t2plus, key=lambda w: ecost[w[0]])
-    print("leaf split: " + ", ".join(
-        f"L{k + 1}={len(bins[k])} t1 (~{load[k]:.3g})" for k in range(N_T1))
-        + f", L4=E[{big_e[0]}] (~{ecost[big_e[0]]:.3g})"
-        + f", L5=E[rest] (~{sum(ecost[w[0]] for w in t2plus if w != big_e):.3g})"
-        + f", L6=bases+pairs, L7=assembly")
-    for k in range(N_T1):
-        body = LEAF_HEADER.format(
-            name=f"{k + 1} of 7",
-            content=f"base sweeps, t = 1 classes "
-                    f"{sorted(w[0] for w in bins[k])}")
-        for w in sorted(bins[k]):
-            body += win_len_thm(w[0], w[3])
-            body += sweep0_thm(w[0], w[3])
-        write(OUT_DIR / f"SweepWin{k + 1}.lean", body + LEAF_FOOTER, force)
-    # L4: the biggest extension block
-    body = LEAF_HEADER.format(
-        name="4 of 7",
-        content=f"extension sweeps of class {big_e[0]} "
-                f"({len(_survivors(big_e[0]))} surviving cells)")
-    body += win_len_thm(big_e[0], big_e[3])
-    for c in _survivors(big_e[0]):
-        body += sweepE_flat(big_e[0], big_e[3], c)
-    write(OUT_DIR / "SweepWin4.lean", body + LEAF_FOOTER, force)
-    # L5: the remaining extension blocks
-    rest = [w for w in t2plus if w != big_e]
-    body = LEAF_HEADER.format(
-        name="5 of 7",
-        content=f"extension sweeps of classes {[w[0] for w in rest]}")
-    for w in rest:
-        body += win_len_thm(w[0], w[3])
-        for c in _survivors(w[0]):
-            body += sweepE_flat(w[0], w[3], c)
-    write(OUT_DIR / "SweepWin5.lean", body + LEAF_FOOTER, force)
-    # L6: t>=2 base sweeps (public form) + pair sweeps
-    body = LEAF_HEADER.format(
-        name="6 of 7",
-        content="base sweeps of the t >= 2 classes, and the t = 3 "
-                "pair sweeps")
+        body += sweep0_thm(w[0])
+        nsys += 1
     for w in t2plus:
-        body += win_len_thm(w[0], w[3])
-        body += sweep0_thm(w[0], w[3])
+        body += sweep0_thm(w[0])
+        nsys += 1
+        for c in _survivors(w[0]):
+            body += sweepE_flat(w[0], c)
+            nsys += 1
         if w[2] == 3:
             for n in _pair_survivors(w[0]):
-                body += sweepP_flat(w[0], w[3], n // 150, n % 150)
-    write(OUT_DIR / "SweepWin6.lean", body + LEAF_FOOTER, force)
-    # L7: survivor certificates + public dispatch
-    body = ASSEMBLY_HEADER
+                body += sweepP_flat(w[0], n // 150, n % 150)
+                nsys += 1
     for w in t2plus:
         body += surv_cert(w[0])
         if w[2] == 3:
@@ -962,7 +1013,8 @@ def emit_leaves(force: bool):
         body += sweepE_pub(w[0])
         if w[2] == 3:
             body += sweepP_pub(w[0])
-    write(OUT_DIR / "SweepWin7.lean", body + LEAF_FOOTER, force)
+    print(f"pivot certificates emitted for {nsys} window systems")
+    write(OUT_DIR / "SweepWin.lean", body + LEAF_FOOTER, force)
 
 
 def main():
