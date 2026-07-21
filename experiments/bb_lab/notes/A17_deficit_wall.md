@@ -342,6 +342,14 @@ Corrected empirical picture:
   practical protocol: witness ladders always; UNSAT pins only where the
   frame is small or the claim is load-bearing.
 
+### 8b. New docket cells (2026-07-20 — A19 instance study + the 288-base ladder)
+
+| cell | value | grade |
+|---|---|---|
+| BY rung (GB →x [[180,8,12]], Z₃₀×Z₃) | **d = 12 = 2·d(GB) − 4** (deficit 4) | exact: floor@11 all-UNSAT (35 reps, 3.1 h) + weight-12 witness (`data/a19/by_floor11.log`, `by_floor13.log`; A19 §1) |
+| BX rung (GB →y [[180,8,12]], Z₁₅×Z₆) | **d = 12 = 2·d(GB) − 4** (deficit 4) | witness-grade (ISD ≤ 12 in 60 s); floor@11 round pending (A19 §1) |
+| [[288,12,18]] (6,12) base (Bravyi, all-(R) tower) | **d(base) ≥ 12 certified — the §7/A19 wall-attainment candidate (`18 = 2·10 − 2` requires d(base) = 10) is REFUTED.** No measured instance attains `2d − 2`, now including its most prominent candidate. If the in-flight floor@13 lands a weight-12 witness, the cover sits at `18 = 2d − 6` — the same deficit as bb108-y stored, making **deficit-6 the recurring certified value (2-for-2)** and replacing the wall as the pattern wanting explanation | floor@9: 155 orbit reps all-UNSAT, 191 s; floor@11: 155 reps all-UNSAT, 21.7 min (`data/a19/e288_base_floor{9,11,13}.log`) |
+
 ## 9. Consequences and residue
 
 - **OQ status (A14 §16).** Answered as corrected: the wall *value* is a

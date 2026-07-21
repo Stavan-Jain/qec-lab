@@ -13,6 +13,33 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-20 — a19-wall-refutation-and-catalog-survey (A19 follow-through) —
+  success — **The [[288,12,18]] wall-attainment candidate is REFUTED and the
+  deck-birth design principle is confirmed catalog-wide.** (1) The Bravyi
+  [[288,12,18]] (6,12) base: floor@9 and floor@11 all-UNSAT over all 155
+  orbit reps (191 s / 21.7 min, 8 workers) certify **d(base) ≥ 12** — the
+  A19 §7 prediction "d(base) = 10 ⟹ the cover attains the wall 18 = 2d−2"
+  is dead; no measured instance attains the wall. Pending floor@13: a
+  weight-12 witness would land the cell at **18 = 2d − 6, the same deficit
+  as bb108-y** — deficit-6 recurring 2-for-2 (new docket cells logged,
+  A17 §8b, incl. the BX/BY deficit-4 rungs). (2) Catalog-wide recursive
+  deck-birth survey over IBM's supplemental Tables I–III
+  (`scripts/a19_deck_survey_catalog.py`; 220 rows parsed, 218 k-validated
+  against recomputed F₂ ranks; implementation reproduces all four A19 §7
+  Bravyi verdicts): **every k = 12 class has a unique deck-birth rung**
+  (literal presentations) — five of seven born at (6,6)/bb72, two born at
+  the top ([[288,12,16]] class a and Bravyi-360 class V). New taxonomy:
+  top-born (d ∈ {16,22,24,≤30}), deep-born long propagators (the (18,·)
+  family, born (18,2): [[288,8,20]] d = 20 **exact**, [[288,8,18]],
+  [[288,8,16]]×3), and odd-core all-(R) towers ([[360,8,18]] over (15,3))
+  — k need not be deck-born when k ≠ 12. Follow-up targets:
+  **[[288,12,16]]** (second deck-nontrivial-top flagship, A19-playbook
+  candidate at friendlier scale) and **[[288,8,20]]** (cheapest known
+  d ≥ 20 certification target; bases at n = 144/72). Caveats: greedy
+  first-branch descent; jumps literal pending orbit sweeps; one
+  parse-suspect row (n288/e (16,9): table k = 40 vs computed 36).
+  [details](../experiments/bb_lab/notes/A19_bravyi360_tower.md)
+
 - 2026-07-20 — a13-seamc-delta2-transport (A13 L2 continuation) — success —
   **The seamC↔δ₂ homological transport — A13 L2's sole remaining gap and
   the paper's main-theorem bridge — is now an axiom-clean Lean theorem**

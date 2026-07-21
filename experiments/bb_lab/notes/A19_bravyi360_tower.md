@@ -141,6 +141,9 @@ n and 33% in d; the kernel-verified record (gross, n = 144) by 2.5× in n.
   24s are section-type. (Conflated section lift s(u) — weight-preserving,
   p∘s = id, not a cycle in general — with transfer lift τ(u) — weight-2|u|,
   p∘τ = 0, always a cycle.)
+- "[[288,12,18]] sits at the wall (its (6,12) base has d = 10)" — dead
+  (2026-07-20 addendum): floor@9 + floor@11 all-UNSAT over all 155 orbit
+  reps certify d(base) ≥ 12 (§7 verdict).
 - "IBM's largest exact is n = 288 at d = 12" — wrong: that is their largest
   *own-discovered* exact; the published record incl. Bravyi's codes is
   [[288,12,18]].
@@ -201,6 +204,21 @@ Consequences:
   k = 12) has d = 10, then [[288,12,18]] sits *exactly at the deficit wall
   2d − 2* — which no measured instance has attained (A17 §corrected picture).
   Ladder is cheap at n = 144; queued behind the in-flight SAT rounds.
+  **Verdict (2026-07-20, same day): REFUTED.** The ladder ran — floor@9 and
+  floor@11 over all 155 orbit reps, both all-UNSAT (191 s / 21.7 min,
+  `data/a19/e288_base_floor{9,11}.log`): **d(base) ≥ 12 certified**, so the
+  wall value `2d − 2` is out of reach for this cell. If the in-flight
+  floor@13 returns a weight-12 witness, the cell lands at `18 = 2d − 6` —
+  the same deficit as bb108-y stored (A17 §8b), making deficit-6 the
+  recurring certified value (2-for-2). A catalog-wide deck-birth survey
+  (`scripts/a19_deck_survey_catalog.py`, IBM supplemental Tables I–III,
+  218 k-validated rows) simultaneously confirmed the refined design
+  principle for every k = 12 class (literal) and surfaced two follow-up
+  targets: **[[288,12,16]]** (IBM class a, A = 1+y+x, B = y³+x⁵+x¹⁰ at
+  (12,12)) — a second deck-nontrivial-top flagship, d = 16 MILP-exact —
+  and **[[288,8,20]]** (IBM class Y, (18,8), d = 20 MILP-exact), born at
+  (18,2) and tower-structured with bases at n = 144/72: the cheapest
+  known d ≥ 20 certification target.
 - **Lean landing zone verified**: in `BBDoubling.lean`, `dangerous_zero_rung`
   (l. 441) and the shape rungs consume `StrongBaseFloor`/`LogicalFloor` only;
   `DeckTrivialOnH1` first appears in the assembly theorem (l. 1280). The
