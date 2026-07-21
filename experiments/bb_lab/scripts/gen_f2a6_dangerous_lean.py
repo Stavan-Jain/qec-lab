@@ -564,12 +564,13 @@ import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.WindowEngine
 The per-class sweep certificates in the exact hypothesis shapes of
 `window_sound_t1/t2/t3` ({content}).
 
-Each sweep's `native_decide` core is stated in split form — `∀ hi, ∀ lo`
-over the high/low halves of the mask space — because the flat
-`∀ lam : Fin (2 ^ L)` decidability instance recurses to depth `2 ^ L`
-on the C stack and aborts beyond about `2 ^ 23`.  The split caps the
-depth at `2 ^ 13`; the public flat-form theorem (the shape the
-`window_sound_*` wrappers consume) is recovered through `ball_split`.
+Each sweep's `native_decide` core is the falsifier filter
+`(List.range (2 ^ L)).filter (syndrome-zero && not-in-table) = []`:
+`List.filter` is a native tail-recursive stdlib loop, so only the
+per-mask predicate is interpreted — a `Fin`-indexed ball is ~5× slower
+per item and its `Decidable` instance overflows the C stack beyond
+about `2 ^ 23`.  The flat `∀`-form the `window_sound_*` wrappers
+consume is recovered through `forall_of_filter_nil`.
 Files are parallel build leaves.
 -/
 
@@ -579,7 +580,32 @@ namespace Homological
 namespace BB
 namespace Z5Z15F2A6
 
-set_option maxRecDepth 4096
+"""
+
+ASSEMBLY_HEADER = BANNER + """
+import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.SweepWin4
+import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.SweepWin5
+import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6.SweepWin6
+
+/-!
+# Z5Z15F2A6 window sweep leaves (7 of 7 — assembly)
+
+Survivor certificates and the public extension-sweep theorems.
+
+`survivorB`/`pairSurvivorB` pass for only finitely many extra cells per
+t ≥ 2 class; one cheap `native_decide` certifies each survivor list, and
+the public `win_sweepE_*`/`win_sweepP_*` theorems (the exact hypothesis
+shapes of `window_sound_t2/t3`) dispatch through `mem_of_filter_eq` to
+the per-survivor flat sweeps of `SweepWin4`–`SweepWin6`.  This keeps the
+gate quantifiers out of the `native_decide` cores entirely — no inner
+ball is ever evaluated behind a `Decidable` arrow instance.
+-/
+
+namespace Quantum
+namespace Stabilizer
+namespace Homological
+namespace BB
+namespace Z5Z15F2A6
 
 """
 
@@ -592,10 +618,52 @@ end Quantum
 """
 
 
-def _split(L: int) -> tuple[int, int]:
-    """High/low split exponents (a, b) with a + b = L, b = L // 2."""
-    b = L // 2
-    return L - b, b
+def _win_cells(ci: int) -> list[int]:
+    return [j for j in range(150) if (WMASK[ci] >> j) & 1]
+
+
+def _col_mask(c: int) -> int:
+    m = 0
+    for r in COLS[3 * c: 3 * c + 3]:
+        m |= 1 << r
+    return m
+
+
+def _cw_mask(ci: int) -> int:
+    cw = 0
+    for j in _win_cells(ci):
+        cw |= _col_mask(j)
+    return cw
+
+
+def _survivors(ci: int) -> list[int]:
+    """Cells passing the Lean gate  !winMem && survivorB, ascending —
+    must match `(List.range 150).filter ...` exactly."""
+    cw = _cw_mask(ci)
+    out = []
+    for c in range(150):
+        if (WMASK[ci] >> c) & 1:
+            continue
+        cm = _col_mask(c)
+        if cm & cw == cm:
+            out.append(c)
+    return out
+
+
+def _pair_survivors(ci: int) -> list[int]:
+    """Ordered pair indices n = c1*150 + c2 passing the Lean pair gate,
+    ascending — must match `(List.range 22500).filter ...` exactly."""
+    cw = _cw_mask(ci)
+    win = WMASK[ci]
+    out = []
+    for n in range(150 * 150):
+        c1, c2 = n // 150, n % 150
+        if c1 == c2 or (win >> c1) & 1 or (win >> c2) & 1:
+            continue
+        x = _col_mask(c1) ^ _col_mask(c2)
+        if x & cw == x:
+            out.append(n)
+    return out
 
 
 def _body0(i: int, v: str) -> str:
@@ -631,72 +699,155 @@ def win_len_thm(i: int, w: int) -> str:
             f"  native_decide\n\n")
 
 
-def sweep0_thm(i: int, w: int) -> str:
-    K = f"({i} : Fin 113)"
-    a, b = _split(w)
-    sv = f"(2 ^ {b} * hi.val + lo.val)"
-    return f"""private theorem win_sweep0_{i}_core :
-    ∀ hi : Fin (2 ^ {a}), ∀ lo : Fin (2 ^ {b}),
-      {_body0(i, sv)} := by
+def _filter_core(name: str, cells: str, table: str, L: int) -> str:
+    return f"""private theorem {name}_core :
+    (List.range (2 ^ {L})).filter (fun m =>
+      syndFold {cells} m == 0 &&
+      !(({table}).any (fun pr => m == localMaskOf {cells} pr.2)))
+      = [] := by
   native_decide
-
-theorem win_sweep0_{i} :
-    ∀ lam : Fin (2 ^ (winCellList {K}).length),
-      {_body0(i, "lam.val")} := by
-  have hlen : (winCellList {K}).length = {a} + {b} := by
-    have h := win_len_{i}; omega
-  rw [hlen]
-  exact ball_split
-    (p := fun v =>
-      {_body0(i, "v")})
-    win_sweep0_{i}_core
 
 """
 
 
-def sweepE_thm(i: int, w: int) -> str:
+def _flat_thm(name: str, cells: str, table: str, len_expr: str,
+              rw_block: str) -> str:
+    return f"""theorem {name} :
+    ∀ lam : Fin (2 ^ {len_expr}),
+      syndFold {cells} lam.val = 0 →
+      ({table}).any
+        (fun pr => lam.val == localMaskOf {cells} pr.2)
+        = true := by
+{rw_block}
+  exact forall_of_filter_nil
+    (fun m => syndFold {cells} m)
+    (fun m => ({table}).any
+      (fun pr => m == localMaskOf {cells} pr.2))
+    {name}_core
+
+"""
+
+
+def sweep0_thm(i: int, w: int) -> str:
     K = f"({i} : Fin 113)"
-    a, b = _split(w + 1)
-    sv = f"(2 ^ {b} * hi.val + lo.val)"
-    return f"""private theorem win_sweepE_{i}_core :
-    ∀ e : G150 × Fin 2, winMem {K} e = false →
-      survivorB {K} (cellIdx e) = true →
-      ∀ hi : Fin (2 ^ {a}), ∀ lo : Fin (2 ^ {b}),
-        {_bodyE(i, sv)} := by
+    cells = f"(winCellList {K})"
+    table = f"tableEntries {K} 150"
+    return (_filter_core(f"win_sweep0_{i}", cells, table, w)
+            + _flat_thm(f"win_sweep0_{i}", cells, table,
+                        f"(winCellList {K}).length",
+                        f"  rw [win_len_{i}]"))
+
+
+def sweepE_flat(i: int, w: int, c: int) -> str:
+    K = f"({i} : Fin 113)"
+    cells = f"(winCellList {K} ++ [{c}])"
+    table = f"tableEntries {K} {c}"
+    rw_block = (f"  have hlen : (winCellList {K} ++ [{c}]).length"
+                f" = {w + 1} := by\n"
+                f"    have h := win_len_{i}\n"
+                f"    rw [List.length_append, List.length_singleton]\n"
+                f"    omega\n"
+                f"  rw [hlen]")
+    return (_filter_core(f"win_sweepE_{i}_c{c}", cells, table, w + 1)
+            + _flat_thm(f"win_sweepE_{i}_c{c}", cells, table,
+                        f"(winCellList {K} ++ [{c}]).length", rw_block))
+
+
+def sweepP_flat(i: int, w: int, c1: int, c2: int) -> str:
+    K = f"({i} : Fin 113)"
+    cells = f"((winCellList {K} ++ [{c1}]) ++ [{c2}])"
+    table = f"(tableEntries {K} {c1}) ++ tableEntries {K} {c2}"
+    rw_block = (f"  have hlen : ((winCellList {K} ++ [{c1}])"
+                f" ++ [{c2}]).length = {w + 2} := by\n"
+                f"    have h := win_len_{i}\n"
+                f"    rw [List.length_append, List.length_append,\n"
+                f"      List.length_singleton, List.length_singleton]\n"
+                f"    omega\n"
+                f"  rw [hlen]")
+    return (_filter_core(f"win_sweepP_{i}_p{c1}_{c2}", cells, table, w + 2)
+            + _flat_thm(f"win_sweepP_{i}_p{c1}_{c2}", cells, table,
+                        f"((winCellList {K} ++ [{c1}]) ++ [{c2}]).length",
+                        rw_block))
+
+
+def _lit(lst: list[int]) -> str:
+    return "[" + ", ".join(str(x) for x in lst) + "]"
+
+
+def surv_cert(i: int) -> str:
+    return f"""private theorem win_surv_{i} :
+    (List.range 150).filter (fun c =>
+      !(winMem ({i} : Fin 113) (coordOfC1 c)) && survivorB ({i} : Fin 113) c)
+      = {_lit(_survivors(i))} := by
   native_decide
 
-theorem win_sweepE_{i} :
+"""
+
+
+def pairs_cert(i: int) -> str:
+    return f"""private theorem win_pairs_{i} :
+    (List.range 22500).filter (fun n =>
+      !(n / 150 == n % 150) &&
+      (!(winMem ({i} : Fin 113) (coordOfC1 (n / 150))) &&
+        (!(winMem ({i} : Fin 113) (coordOfC1 (n % 150))) &&
+          pairSurvivorB ({i} : Fin 113) (n / 150) (n % 150))))
+      = {_lit(_pair_survivors(i))} := by
+  native_decide
+
+"""
+
+
+def sweepE_pub(i: int) -> str:
+    K = f"({i} : Fin 113)"
+    surv = _survivors(i)
+    assert surv, f"class {i}: no survivors — vacuous E dispatch unexpected"
+    if len(surv) == 1:
+        c = surv[0]
+        cases = (f"  have hc : cellIdx e = {c} := by simpa using hmem\n"
+                 f"  rw [hc]\n"
+                 f"  exact win_sweepE_{i}_c{c}\n")
+    else:
+        ors = " ∨ ".join(f"cellIdx e = {c}" for c in surv)
+        pat = " | ".join(["hc"] * len(surv))
+        cases = (f"  have hm' : {ors} := by simpa using hmem\n"
+                 f"  rcases hm' with {pat}\n")
+        for c in surv:
+            cases += (f"  · rw [hc]\n"
+                      f"    exact win_sweepE_{i}_c{c}\n")
+    return f"""theorem win_sweepE_{i} :
     ∀ e : G150 × Fin 2, winMem {K} e = false →
       survivorB {K} (cellIdx e) = true →
       ∀ lam : Fin (2 ^ (winCellList {K} ++ [cellIdx e]).length),
         {_bodyE(i, "lam.val")} := by
   intro e he hs
-  have hlen : (winCellList {K} ++ [cellIdx e]).length = {a} + {b} := by
-    have h := win_len_{i}
-    rw [List.length_append, List.length_singleton]
-    omega
-  rw [hlen]
-  exact ball_split
-    (p := fun v =>
-      {_bodyE(i, "v")})
-    (win_sweepE_{i}_core e he hs)
-
+  have hp : (fun c =>
+      !(winMem {K} (coordOfC1 c)) && survivorB {K} c)
+      (cellIdx e) = true := by
+    show (!(winMem {K} (coordOfC1 (cellIdx e))) &&
+      survivorB {K} (cellIdx e)) = true
+    rw [coordOfC1_cellIdx, he, hs]
+    rfl
+  have hmem : cellIdx e ∈ {_lit(surv)} :=
+    mem_of_filter_eq win_surv_{i} (List.mem_range.mpr (cellIdx_lt e)) hp
+{cases}
 """
 
 
-def sweepP_thm(i: int, w: int) -> str:
+def sweepP_pub(i: int) -> str:
     K = f"({i} : Fin 113)"
-    a, b = _split(w + 2)
-    sv = f"(2 ^ {b} * hi.val + lo.val)"
-    return f"""private theorem win_sweepP_{i}_core :
-    ∀ e₁ e₂ : G150 × Fin 2, winMem {K} e₁ = false →
-      winMem {K} e₂ = false → e₁ ≠ e₂ →
-      pairSurvivorB {K} (cellIdx e₁) (cellIdx e₂) = true →
-      ∀ hi : Fin (2 ^ {a}), ∀ lo : Fin (2 ^ {b}),
-        {_bodyP(i, sv)} := by
-  native_decide
-
-theorem win_sweepP_{i} :
+    pairs = _pair_survivors(i)
+    assert pairs, f"class {i}: no pair survivors — vacuous P dispatch"
+    ors = " ∨ ".join(f"cellIdx e₁ * 150 + cellIdx e₂ = {n}" for n in pairs)
+    pat = " | ".join(["hc"] * len(pairs))
+    cases = (f"  have hm' : {ors} := by simpa using hmem\n"
+             f"  rcases hm' with {pat}\n")
+    for n in pairs:
+        c1, c2 = n // 150, n % 150
+        cases += (f"  · have hc₁ : cellIdx e₁ = {c1} := by omega\n"
+                  f"    have hc₂ : cellIdx e₂ = {c2} := by omega\n"
+                  f"    rw [hc₁, hc₂]\n"
+                  f"    exact win_sweepP_{i}_p{c1}_{c2}\n")
+    return f"""theorem win_sweepP_{i} :
     ∀ e₁ e₂ : G150 × Fin 2, winMem {K} e₁ = false →
       winMem {K} e₂ = false → e₁ ≠ e₂ →
       pairSurvivorB {K} (cellIdx e₁) (cellIdx e₂) = true →
@@ -704,18 +855,31 @@ theorem win_sweepP_{i} :
           ++ [cellIdx e₂]).length),
         {_bodyP(i, "lam.val")} := by
   intro e₁ e₂ h₁ h₂ hne hp
-  have hlen : ((winCellList {K} ++ [cellIdx e₁]) ++ [cellIdx e₂]).length
-      = {a} + {b} := by
-    have h := win_len_{i}
-    rw [List.length_append, List.length_append, List.length_singleton,
-      List.length_singleton]
-    omega
-  rw [hlen]
-  exact ball_split
-    (p := fun v =>
-      {_bodyP(i, "v")})
-    (win_sweepP_{i}_core e₁ e₂ h₁ h₂ hne hp)
-
+  have hlt₁ := cellIdx_lt e₁
+  have hlt₂ := cellIdx_lt e₂
+  have hdiv : (cellIdx e₁ * 150 + cellIdx e₂) / 150 = cellIdx e₁ := by omega
+  have hmod : (cellIdx e₁ * 150 + cellIdx e₂) % 150 = cellIdx e₂ := by omega
+  have hcne : cellIdx e₁ ≠ cellIdx e₂ := fun h => hne (cellIdx_inj h)
+  have hp' : (fun n =>
+      !(n / 150 == n % 150) &&
+      (!(winMem {K} (coordOfC1 (n / 150))) &&
+        (!(winMem {K} (coordOfC1 (n % 150))) &&
+          pairSurvivorB {K} (n / 150) (n % 150))))
+      (cellIdx e₁ * 150 + cellIdx e₂) = true := by
+    show (!((cellIdx e₁ * 150 + cellIdx e₂) / 150 ==
+        (cellIdx e₁ * 150 + cellIdx e₂) % 150) &&
+      (!(winMem {K}
+          (coordOfC1 ((cellIdx e₁ * 150 + cellIdx e₂) / 150))) &&
+        (!(winMem {K}
+            (coordOfC1 ((cellIdx e₁ * 150 + cellIdx e₂) % 150))) &&
+          pairSurvivorB {K}
+            ((cellIdx e₁ * 150 + cellIdx e₂) / 150)
+            ((cellIdx e₁ * 150 + cellIdx e₂) % 150)))) = true
+    rw [hdiv, hmod, coordOfC1_cellIdx, coordOfC1_cellIdx, h₁, h₂, hp]
+    simp [hcne]
+  have hmem : cellIdx e₁ * 150 + cellIdx e₂ ∈ {_lit(pairs)} :=
+    mem_of_filter_eq win_pairs_{i} (List.mem_range.mpr (by omega)) hp'
+{cases}
 """
 
 
@@ -724,42 +888,81 @@ def emit_leaves(force: bool):
                    for ci in range(N_CLASSES) if KIND[ci] == 1]
     t1 = sorted([w for w in win_classes if w[2] == 1],
                 key=lambda w: -(2 ** w[3]))
-    t2plus = [w for w in win_classes if w[2] >= 2]
-    # Greedy-balance the t=1 classes into four leaves by 2^|W| (the mask
-    # count is the interpreter cost); the t>=2 classes (base + extra-cell
-    # + pair sweeps) form the fifth leaf.  Five leaves ≈ the parallelism
-    # a 16 GB machine sustains at ~2 GB per lean worker.
-    N_T1 = 4
+    t2plus = sorted([w for w in win_classes if w[2] >= 2])
+    # sanity: extras (kernel-growing cells) must be among the survivors
+    for ci, e, _, _ in extras:
+        assert e in _survivors(ci), (ci, e)
+    # Greedy-balance the t=1 classes into three leaves by 2^|W| (mask
+    # count = interpreter cost).  The extension work is split by class:
+    # the biggest E block alone (SweepWin4), the rest of the E blocks
+    # (SweepWin5), and the t>=2 base sweeps + pair sweeps (SweepWin6).
+    # SweepWin7 holds the cheap survivor certificates and the public
+    # dispatch theorems consuming the per-survivor flats.
+    N_T1 = 3
     bins: list[list] = [[] for _ in range(N_T1)]
     load = [0] * N_T1
     for w in t1:
         j = load.index(min(load))
         bins[j].append(w)
         load[j] += 2 ** w[3]
+    ecost = {w[0]: len(_survivors(w[0])) * 2 ** (w[3] + 1) for w in t2plus}
+    big_e = max(t2plus, key=lambda w: ecost[w[0]])
     print("leaf split: " + ", ".join(
-        f"L{k + 1}={len(bins[k])} t1 classes (~{load[k]:.3g} masks)"
-        for k in range(N_T1))
-        + f", L{N_T1 + 1}={len(t2plus)} t>=2 classes")
+        f"L{k + 1}={len(bins[k])} t1 (~{load[k]:.3g})" for k in range(N_T1))
+        + f", L4=E[{big_e[0]}] (~{ecost[big_e[0]]:.3g})"
+        + f", L5=E[rest] (~{sum(ecost[w[0]] for w in t2plus if w != big_e):.3g})"
+        + f", L6=bases+pairs, L7=assembly")
     for k in range(N_T1):
         body = LEAF_HEADER.format(
-            name=f"{k + 1} of {N_T1 + 1}",
+            name=f"{k + 1} of 7",
             content=f"base sweeps, t = 1 classes "
                     f"{sorted(w[0] for w in bins[k])}")
         for w in sorted(bins[k]):
             body += win_len_thm(w[0], w[3])
             body += sweep0_thm(w[0], w[3])
         write(OUT_DIR / f"SweepWin{k + 1}.lean", body + LEAF_FOOTER, force)
+    # L4: the biggest extension block
     body = LEAF_HEADER.format(
-        name=f"{N_T1 + 1} of {N_T1 + 1}",
-        content="the t >= 2 classes: base + single-extra sweeps, and "
-                "the t = 3 pair sweep")
-    for w in sorted(t2plus):
+        name="4 of 7",
+        content=f"extension sweeps of class {big_e[0]} "
+                f"({len(_survivors(big_e[0]))} surviving cells)")
+    body += win_len_thm(big_e[0], big_e[3])
+    for c in _survivors(big_e[0]):
+        body += sweepE_flat(big_e[0], big_e[3], c)
+    write(OUT_DIR / "SweepWin4.lean", body + LEAF_FOOTER, force)
+    # L5: the remaining extension blocks
+    rest = [w for w in t2plus if w != big_e]
+    body = LEAF_HEADER.format(
+        name="5 of 7",
+        content=f"extension sweeps of classes {[w[0] for w in rest]}")
+    for w in rest:
+        body += win_len_thm(w[0], w[3])
+        for c in _survivors(w[0]):
+            body += sweepE_flat(w[0], w[3], c)
+    write(OUT_DIR / "SweepWin5.lean", body + LEAF_FOOTER, force)
+    # L6: t>=2 base sweeps (public form) + pair sweeps
+    body = LEAF_HEADER.format(
+        name="6 of 7",
+        content="base sweeps of the t >= 2 classes, and the t = 3 "
+                "pair sweeps")
+    for w in t2plus:
         body += win_len_thm(w[0], w[3])
         body += sweep0_thm(w[0], w[3])
-        body += sweepE_thm(w[0], w[3])
         if w[2] == 3:
-            body += sweepP_thm(w[0], w[3])
-    write(OUT_DIR / f"SweepWin{N_T1 + 1}.lean", body + LEAF_FOOTER, force)
+            for n in _pair_survivors(w[0]):
+                body += sweepP_flat(w[0], w[3], n // 150, n % 150)
+    write(OUT_DIR / "SweepWin6.lean", body + LEAF_FOOTER, force)
+    # L7: survivor certificates + public dispatch
+    body = ASSEMBLY_HEADER
+    for w in t2plus:
+        body += surv_cert(w[0])
+        if w[2] == 3:
+            body += pairs_cert(w[0])
+    for w in t2plus:
+        body += sweepE_pub(w[0])
+        if w[2] == 3:
+            body += sweepP_pub(w[0])
+    write(OUT_DIR / "SweepWin7.lean", body + LEAF_FOOTER, force)
 
 
 def main():
