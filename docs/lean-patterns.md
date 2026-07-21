@@ -366,6 +366,20 @@ the hard way:
    validate falsifiability (a claim the evaluator must *refute*) before
    believing any surprising speedup: a truncated probe file plus a
    too-narrow `grep` once produced a fictitious 1000× win.
+4. **When the sweep predicate is F₂-linear in the mask bits, don't sweep at
+   all** — the sweep is secretly a rank fact, and a Gaussian-elimination
+   pivot certificate proves it in O(L²) packed-Nat ops with the public
+   statement unchanged (`Z5Z15F2A6/KernelCert.lean` +
+   emitter `_pivot_cert`: 560M masks, 53 min → 3.9 s). Certificate = pivot
+   list `(position, check-row)` in elimination order, each row hitting its
+   cell's column and no *later* pivot's column, plus δ-normalized kernel
+   generators on the free positions; `peel` + `kernel_classify_dim1/dim2`
+   turn one cheap `native_decide` into the full kernel classification.
+   Two traps: a no-row-op elimination order exists for weight-3-column
+   systems in practice but essentially **never in ascending cell order**
+   (emit the permuted order; don't try a lockstep list induction), and the
+   Python emitter must simulate the Lean cert Bool bit-for-bit
+   (`_check_cert`) so drift fails loudly at emission, not after a build.
 
 These are quick-lookup items for failures that have a definite fix once
 recognized.
