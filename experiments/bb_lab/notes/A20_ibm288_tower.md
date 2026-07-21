@@ -38,18 +38,25 @@ floors come from SAT ladders, not the class certificate. PAR applies
 ## 2. Distance arithmetic — d₀ = 6 measured; d₁ decides the headline
 
 **d₀ = 6 EXACT** (2026-07-20, 0.5 s: weight-6 witness + all 25 orbit reps
-UNSAT@5, `data/a20/y72_ladder.log`). Y2 = [[72,8,6]]. With d₂ = 20 exact
-(IBM MILP) and PAR forcing even values, the live scenarios are:
+UNSAT@5, `data/a20/y72_ladder.log`). Y2 = [[72,8,6]].
 
-- **d₁ = 10: rung 1 attains the wall** (10 = 2·6 − 2 — the first
-  wall-attaining instance ever, immediately after the [[288,12,18]]
-  candidate died, A17 §8b) **and rung 2 doubles perfectly** (20 = 2·10).
-- **d₁ = 12: rung 1 doubles perfectly** (12 = 2·6) **and rung 2 is a
-  deficit-4 cell** (20 = 2·12 − 4, the BX/BY value).
-- d₁ ∈ {6, 8}: rung-1 freeze/deficit and rung 2 *exceeds* 2d₁ — novel
-  (τ-killed light classes); would contradict no theorem but no precedent.
+**d₁ = 10 EXACT** (same day, 180 s: weight-10 witness + all 25 orbit reps
+UNSAT@9, `data/a20/y144_ladder.log`). Y4 = [[144,8,10]]. Therefore:
 
-The n = 144 ladder (in flight, `data/a20/y144_ladder.log`) decides.
+- **Rung 1 ATTAINS THE DEFICIT WALL: 10 = 2·6 − 2.** The first measured
+  instance at exactly `2d − 2` (A17 §8b entry; supersedes "no measured
+  instance attains the wall"), found the same day the [[288,12,18]]
+  candidate was refuted. (R) holds on this rung, so the T2 machinery
+  applies to the attaining cell directly — the natural specimen for the
+  A17 §9 maxSF residue question.
+- **Rung 2 doubles perfectly: 20 = 2·10.** τ-lift of the d₁ witness
+  verified as a weight-20 nontrivial X-logical of Y8
+  (`scripts/a20_tau_lift.py`, `data/a20/y8_weight20_witness.npy`):
+  **d(Y8) ≤ 20 constructive**, independent of IBM's MILP, and the
+  τ-tightness obligation of the rung-2 template is discharged.
+
+One tower, both extremes: the maximal-deficit cell and a perfect doubling,
+stacked. Whatever mechanism sets the deficit acts per-rung, not per-code.
 
 ## 3. Staged certification plan
 
@@ -85,11 +92,19 @@ natural pathfinder for the A19 full-24 program: every piece of machinery
 built here (census depth, F₆₄/F₄ engine question, template-with-Bezout
 Lean wiring) ports upward.
 
-## 5. State
+## 5. State (end of opening session, 2026-07-20)
 
-- Instance study: DONE (§1 table; `data/a20/tower_report.json`; Bezout
-  witnesses for both y-rungs saved).
-- **d₀ = 6 exact** (`data/a20/y72_ladder.log`). d₁ ladder: in flight.
-- (M)@20 census, SeamCosetFloor 20, Lean staging: not started.
-- Certified floor today: d(Y8) ≥ 6 by Theorem-B projection transfer once
-  µ(Y4) ≥ 6 is checked (Y4 stabilizer floor — cheap; queued with d₁).
+Rung-2 template ledger for certified d(Y8) = 20 (target m = 2d₁ = 20):
+
+| obligation | status |
+|---|---|
+| `LogicalFloor 10` at Y4 | **DONE (solver-grade)** — the d₁ ladder's UNSAT@9 over all 25 orbit reps |
+| `DeckTrivialOnH1` | **DONE** — Bezout witness `data/a20/bezout_y_18x8.json`, dischargeable via `deckTrivial_of_bezout` |
+| τ-tightness (upper bound) | **DONE** — verified weight-20 witness `data/a20/y8_weight20_witness.npy` |
+| `DangerousFloorNZ 20` | open — (M)@20 census over Y4: light-stabilizer classification to weight 19, SAT-assisted + m-rungs |
+| `SeamCosetFloor 20` | open — the hard item; first live (R)-tower consumer of the A13 transport machinery (odd part Z₉ ⇒ F₂/F₄/F₆₄ components) |
+
+Also banked: d₀ = 6, d₁ = 10 exact; the rung-1 wall-attaining cell (A17
+§8b); `bocksteinVanishes_of_orderFourLift` applies at both rungs (ZMod
+lifts (18,16)/(18,8)). Lean staging (named-hypothesis packaging of d₀/d₁
+on the Z5Z15F2A6 model + Bezout instantiation) not started.

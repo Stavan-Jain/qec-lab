@@ -23,16 +23,20 @@ what was tried and why it didn't work.
   linear algebra) — so the classical `BBDoubling` template applies at both
   rungs, `DeckTrivialOnH1` dischargeable via `deckTrivial_of_bezout`, and
   `bocksteinVanishes_of_orderFourLift` applies (ZMod Frattini lifts).
-  **d₀ = d([[72,8,·]] birth rung) = 6 EXACT** in 0.5 s (weight-6 witness +
-  UNSAT@5 on all 25 orbit reps). With d₂ = 20 (IBM MILP-exact) and PAR,
-  the d₁ ladder (n = 144, in flight) decides between **rung-1 wall
-  attainment** (d₁ = 10 = 2·6−2, the first ever) with perfect rung-2
-  doubling, and perfect rung-1 doubling (d₁ = 12) with a rung-2 deficit-4
-  cell. Certification ledger to full 20: LogicalFloor d₁ (SAT n=144),
-  (M)@20 census over Y4 (weight-19 classification, Prop-10 pattern
-  deeper), SeamCosetFloor 20 (first live (R)-tower consumer of the A13
-  transport machinery; odd part Z₉ ⇒ F₂/F₄/F₆₄ components). Pathfinder
-  for A19 full-24 at half scale.
+  **d₀ = 6 EXACT** (0.5 s) and **d₁ = 10 EXACT** (180 s; weight-10 witness
+  + UNSAT@9 on all 25 orbit reps) — so **rung 1 ATTAINS THE DEFICIT WALL,
+  10 = 2·6 − 2, the first measured instance ever at exactly 2d − 2**
+  (same day the [[288,12,18]] candidate was refuted; A17 §8b supersession
+  logged), and **rung 2 doubles perfectly, 20 = 2·10**, with the τ-lift
+  of the d₁ witness verified as a weight-20 nontrivial logical of Y8
+  (`scripts/a20_tau_lift.py`) — **d(Y8) ≤ 20 constructive**, independent
+  of IBM's solver. Rung-2 template ledger: LogicalFloor 10 DONE
+  (UNSAT@9), DeckTrivialOnH1 DONE (Bezout), τ-tightness DONE (witness);
+  open: (M)@20 census over Y4 (weight-19 classification) and
+  SeamCosetFloor 20 (first live (R)-tower consumer of the A13 transport
+  machinery; odd part Z₉ ⇒ F₂/F₄/F₆₄ components). One tower carrying both
+  the maximal-deficit cell and a perfect doubling: the deficit mechanism
+  is per-rung, not per-code. Pathfinder for A19 full-24 at half scale.
   [details](../experiments/bb_lab/notes/A20_ibm288_tower.md)
 
 - 2026-07-20 — a19-wall-refutation-and-catalog-survey (A19 follow-through) —
