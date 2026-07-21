@@ -333,7 +333,39 @@ about the same and the 2^18-deep `decidableBallLT` recursion risks the C
 stack. Floor: ~100+ interpreted applies per item is the practical minimum for
 proof-carrying structures.
 
-## Mechanical fixes for common gotchas
+**Big sweeps: state the core as a falsifier filter, not a `Fin` ball**
+(established on `Z5Z15F2A6/SweepWin*`, 560M masks). Three rules, each learned
+the hard way:
+
+1. `∀ lam : Fin (2^L), …` is the wrong `native_decide` core beyond ~2^23:
+   `decidableBallLT`'s recursion is *linear-depth on the C stack* ("Stack
+   overflow detected. Aborting." — the cliff sits between 2^23 and 2^25
+   depending on worker stack), and even below the cliff the instance costs
+   ~55 µs/item of `Fin`/instance overhead on top of a ~12 µs body. State the
+   core as
+   `(List.range (2^L)).filter (fun m => syn m == 0 && !chk m) = []` —
+   `List.filter` is a native tail-recursive stdlib loop, so only the
+   predicate is interpreted: ~5× cheaper per item, stack-flat at any `L`.
+   One generic bridge (`WindowEngine.forall_of_filter_nil`) recovers the
+   `∀ lam : Fin (2^L), syn lam.val = 0 → chk lam.val = true` public form —
+   pass `syn`/`chk` explicitly; the elaborator will not solve them by
+   higher-order unification.
+2. Never put a Bool gate in front of a big ball inside one `native_decide`
+   (`∀ e, gate e = true → ∀ lam : Fin (2^L), …`): the `Decidable` arrow
+   instance is an ordinary strict function, so the inner ball's instance —
+   i.e. the entire inner sweep — is evaluated for *every* `e`, gate-true or
+   not. Instead certify the gate's survivor list once
+   (`(List.range n).filter gate = [c₀, c₁]` by `native_decide` — cheap),
+   emit one literal-cell core per survivor, and dispatch the public
+   gate-quantified theorem through membership (`mem_of_filter_eq`, then
+   `simpa`-extract the disjunction and `rw` each case). Vacuous gates come
+   out free.
+3. Diagnose per-item cost with a coverage-forcing count before trusting any
+   sweep-time forecast — e.g.
+   `((List.range (2^20)).filter (fun m => syn m == 0)).length = 2` — and
+   validate falsifiability (a claim the evaluator must *refute*) before
+   believing any surprising speedup: a truncated probe file plus a
+   too-narrow `grep` once produced a fictitious 1000× win.
 
 These are quick-lookup items for failures that have a definite fix once
 recognized.
