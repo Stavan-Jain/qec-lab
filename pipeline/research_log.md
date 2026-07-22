@@ -88,9 +88,13 @@ what was tried and why it didn't work.
   code is OUTSIDE the A16 class ((iii) fails: A = 1+x+y is monomial in
   both axes), so this is also the first floor proof for a
   doubly-monomial neighbor-family instance, and the first past-2w depth
-  rung (T5) executed anywhere.  Status partial only because the Lean
-  layer is unstarted (plan written; est. 2–4 sessions).
-  [details](../experiments/bb_lab/notes/A21_analytic_base_floor.md)
+  rung (T5) executed anywhere.  Lean layer STARTED same session:
+  `BaseFloor.lean` on `claude/a21-logical-floor` builds green —
+  `logicalFloor_8 : coverData.LogicalFloor 8` compiles with the
+  weights-≤5 layer fully machine-verified (6.75M-tuple `check_four`,
+  largest SmallCycleData sweep yet) and a single sorry left
+  (`weight6_cycle_is_boundary`, the §3.7 split map; two-stage discharge
+  plan written).  [details](../experiments/bb_lab/notes/A21_analytic_base_floor.md)
 
 - 2026-07-22 — a22-light-classification-fibering (A22 session 1) — partial —
   **The 9.6 h SAT enumeration behind `LightClassification` ([[150,8,8]]

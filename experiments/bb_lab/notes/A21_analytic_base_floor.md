@@ -407,6 +407,16 @@ Target Prop (exact): `coverData.LogicalFloor 8` in
   the weight-6 sorry (parity + strong floor + omega squeeze weight to
   exactly 6, then the classification).
 
+**BUILD GREEN (commit `c239d1f` on `claude/a21-logical-floor`)**:
+`lake build …Z5Z15F2A6.BaseFloor` succeeds, 3361 jobs; the only sorry
+is `weight6_cycle_is_boundary` (line 114, `TODO(a21-w6)`).  All four
+bundle obligations verified — `check_four` (6.75M tuples) runs ~10 min
+in `native_decide`; per-file recompiles re-pay that cost, so session 2
+should consider splitting the obligations into a separate leaf file
+before iterating.  Build traps hit & solved: `rw [coverData_baseComplex]`
+under `∈ boundaries` breaks the rewrite motive (membership type depends
+on the complex) — use `show … from` defeq instead.
+
 Session-2 charter: discharge `weight6_cycle_is_boundary` per the §3
 split map.  Suggested order: (i) split bookkeeping
 (`card_filter_split` from BBDoubling gives the L/R partition);
