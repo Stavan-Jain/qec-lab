@@ -226,7 +226,7 @@ Orbit transfer throughout: all certificates are translation-covariant.
 
 | # | statement | status |
 |---|---|---|
-| H1 | census of nonzero b ∈ im ∂₂(Y4), |b| ≤ 19, is exhaustive | bands 2–16 CLOSED (469); **band 18 PENDING** (1,186 found; V7 moonshot / census-resume) |
+| H1 | census of nonzero b ∈ im ∂₂(Y4), |b| ≤ 19, is exhaustive | **DONE (analytic, A22-V7 grade)** — §6: exactly 1,655 classes; bands ≤ 16 reproduce SAT exactly (469), band 18 definitively 1,186 (SAT had found every class); with H2's floors, `DangerousFloorNZ 20` is fully discharged |
 | H2 | per-class dangerous floors at 20 | DONE — 1,655/1,655 UNSAT, ~17 s |
 | H3 | LogicalFloor 10 at Y4 | DONE — UNSAT@9, all 25 orbit reps |
 | H4 | DeckTrivialOnH1 (R) | DONE — Bezout witness `data/a20/bezout_y_18x8.json` (kernel-level; `deckTrivial_of_bezout`-ready) |
