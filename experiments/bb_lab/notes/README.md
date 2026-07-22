@@ -32,6 +32,9 @@ A11 line, not A8).
 | A18 | Corpus breadth sweep (ex-"a16"): μ_e barrenness, 41 group shapes | `A18_breadth_sweep.md` | done |
 | A19 | Bravyi [[360,12,≤24]] tower: deck-nontrivial on all decks, bases [[90,8,8]]/[[180,8,12]]², τ-lift weight table, path to certified d | `A19_bravyi360_tower.md` | active (M12 next; BX floor + beat-24 gate in flight) |
 | A20 | IBM [[288,8,20]] (class Y) as an all-(R) tower: k born (18,2), Bezout witnesses both y-rungs, d₀ = 6 exact, cheapest d ≥ 20 target | `A20_ibm288_tower.md` | active (d₁ ladder in flight; template obligations next) |
+| A21 | Analytic base floor for f2a6f17e: LogicalFloor 8 via the class small-cycle machinery | `A21_analytic_base_floor.md` | active (spawned 2026-07-21) |
+| A22 | Analytic light-boundary completeness: LightClassification via σ-correlation/Fourier structure | `A22_analytic_classification.md` | active (spawned 2026-07-21) |
+| A23 | Analytic seam-coset floor: SeamCosetFloor 16 via parity + transport + difference sets | `A23_analytic_seam_floor.md` | active (spawned 2026-07-21) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill
