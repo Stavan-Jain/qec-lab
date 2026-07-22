@@ -207,10 +207,13 @@ Consequences:
   **Verdict (2026-07-20, same day): REFUTED.** The ladder ran — floor@9 and
   floor@11 over all 155 orbit reps, both all-UNSAT (191 s / 21.7 min,
   `data/a19/e288_base_floor{9,11}.log`): **d(base) ≥ 12 certified**, so the
-  wall value `2d − 2` is out of reach for this cell. If the in-flight
-  floor@13 returns a weight-12 witness, the cell lands at `18 = 2d − 6` —
-  the same deficit as bb108-y stored (A17 §8b), making deficit-6 the
-  recurring certified value (2-for-2). A catalog-wide deck-birth survey
+  wall value `2d − 2` is out of reach for this cell. **Closed same day:
+  floor@13 returned nine weight-12 witnesses (4.0 h) — d(base) = 12
+  EXACT, the cell sits at `18 = 2d − 6`, deficit-6 certified 2-for-2**
+  (with bb108-y; A17 §8b). The base is [[144,12,12]] — gross parameters,
+  the perfect y-double of its bb72 half — so [[288,12,18]] is bb72
+  doubled twice: perfect rung, then deficit-6 rung (mirror of A20's
+  wall-then-perfect tower). A catalog-wide deck-birth survey
   (`scripts/a19_deck_survey_catalog.py`, IBM supplemental Tables I–III,
   218 k-validated rows) simultaneously confirmed the refined design
   principle for every k = 12 class (literal) and surfaced two follow-up

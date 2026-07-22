@@ -45,10 +45,13 @@ what was tried and why it didn't work.
   [[288,12,18]] (6,12) base: floor@9 and floor@11 all-UNSAT over all 155
   orbit reps (191 s / 21.7 min, 8 workers) certify **d(base) ≥ 12** — the
   A19 §7 prediction "d(base) = 10 ⟹ the cover attains the wall 18 = 2d−2"
-  is dead; no measured instance attains the wall. Pending floor@13: a
-  weight-12 witness would land the cell at **18 = 2d − 6, the same deficit
-  as bb108-y** — deficit-6 recurring 2-for-2 (new docket cells logged,
-  A17 §8b, incl. the BX/BY deficit-4 rungs). (2) Catalog-wide recursive
+  is dead. **Closed same session: floor@13 found nine weight-12 witnesses
+  (4.0 h) — d(base) = 12 EXACT, the cell certified at 18 = 2d − 6,
+  deficit-6 recurring 2-for-2 with bb108-y** (docket cells logged, A17
+  §8b, incl. the BX/BY deficit-4 rungs). The base is [[144,12,12]] —
+  gross parameters, perfect y-double of its bb72 half — so [[288,12,18]]
+  is bb72 doubled twice: perfect rung then deficit-6 rung, the mirror of
+  A20's wall-then-perfect stacking. (2) Catalog-wide recursive
   deck-birth survey over IBM's supplemental Tables I–III
   (`scripts/a19_deck_survey_catalog.py`; 220 rows parsed, 218 k-validated
   against recomputed F₂ ranks; implementation reproduces all four A19 §7
