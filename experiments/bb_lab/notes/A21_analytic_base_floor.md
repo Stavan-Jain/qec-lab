@@ -389,6 +389,35 @@ Target Prop (exact): `coverData.LogicalFloor 8` in
 `QEC/Stabilizer/Codes/BivariateBicycle/Z5Z15F2A6/` — own worktree
 (`a21-*`), NEVER `a15-m-kernel-route`.
 
+**Session-1 Lean status (2026-07-22):** worktree
+`QECLean/.claude/worktrees/a21-logical-floor`, branch
+`claude/a21-logical-floor` (based on `claude/a15-m-kernel-route`
+`de4b547`, which owns `coverData`; mathlib shared by symlink).  New file
+`Z5Z15F2A6/BaseFloor.lean` (+ umbrella import):
+
+* `floorData : SmallCycleData G150` — the weights-2/4 layer via the
+  parametric T2 bundle, BB108-pattern `native_decide` obligations
+  (`check_four` is 2·150³ ≈ 6.75M tuples — biggest such sweep yet;
+  watch build time).
+* `strong_floor` — nonzero cycles weigh ≥ 6 (sharp).
+* `weight6_cycle_is_boundary` — STATED, `sorry -- TODO(a21-w6)`.
+  This is the single remaining sorry; it carries the whole §3.7
+  split map.
+* `logicalFloor_8 : coverData.LogicalFloor 8` — assembly PROVEN modulo
+  the weight-6 sorry (parity + strong floor + omega squeeze weight to
+  exactly 6, then the classification).
+
+Session-2 charter: discharge `weight6_cycle_is_boundary` per the §3
+split map.  Suggested order: (i) split bookkeeping
+(`card_filter_split` from BBDoubling gives the L/R partition);
+(ii) one-sided via a `KernelCert`-pattern pivot certificate for
+`rank(conv a150) = 71` + the 16-element weight table; (iii) the y-span
+lemma (row recurrence — the only genuinely new framework piece);
+(iv) pigeonhole splits with the C0.5–C0.8 constants as `decide`s;
+(v) the (3,3) localization.  Fallback for stubborn splits:
+translation-normalized finite sweeps (the (3,3) census is 900
+translation classes — kernel-decidable with the coset trick).
+
 Proposed lemma decomposition (bottom-up):
 1. `parity_even`: ε as a `ZMod 2`-algebra hom; cycles have
    |u_L| ≡ |u_R|.  (BBSmallCycle may already have the pattern.)
