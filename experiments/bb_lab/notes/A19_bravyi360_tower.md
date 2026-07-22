@@ -25,7 +25,7 @@ BX (15,6)  --x-->  C  (30,6) = the Bravyi code
 |---|---|---|---|---|
 | GB | Z₁₅×Z₃ | [[90,8]] | **8 exact** | coset-SAT ladder, 35 orbit reps, 187 s (`a15_coset_distance`); witness support `[12,14,27,29,69,71,84,86]` |
 | BY | Z₃₀×Z₃ | [[180,8]] | **12 exact** | floor@11 all-UNSAT (35 reps, 3.1 h, `data/a19/by_floor11.log`) + weight-12 witness (`by_floor13.log`, class 0x10) |
-| BX | Z₁₅×Z₆ | [[180,8]] | **12 pending** (≤ 12 witness via ISD; floor@11 round in flight) | `a19_lifts.py` ISD; floor run same protocol as BY |
+| BX | Z₁₅×Z₆ | [[180,8]] | **12 pending** (≤ 12 witness via ISD; floor@11: 14/35 reps banked all-UNSAT before session teardown, `data/a19/bx_floor11_partial.log`; targeted resume of the 21 outstanding reps queued) | `a19_lifts.py` ISD; floor run same protocol as BY |
 | C | Z₃₀×Z₆ | [[360,12]] | ≤ 24 constructive; ≥ 6 certified | §3, §4 |
 
 - GB is **not** Bravyi's bb_90 ([[90,8,10]] shares the frame and A; different
@@ -81,8 +81,9 @@ the *new* sector of their deck, `im τ_* ⊆ ker p_*`. So the cover's light
 operators are the tower's arithmetic: 24 = 2·12 (both decks), 32 = 4·8.
 **d(C) ≤ 24 is now constructive** (explicit verified operator), independent of
 solver incumbents. A budgeted beat-24 SAT gate (w ≤ 22 per-coset over the ten
-lightest orbit reps, `a19_beat24.py`) is in flight; 54k ISD iterations never
-beat 24. **Epistemics of the gate:** n = 360 SAT is witness-side only — if the
+lightest orbit reps, `a19_beat24.py`) died with its host session having
+returned zero results — retired for good per the epistemics below; 54k ISD
+iterations never beat 24. **Epistemics of the gate:** n = 360 SAT is witness-side only — if the
 true coset minimum is 24, a w ≤ 22 query is secretly UNSAT and times out
 uninformatively (per-coset UNSAT is priced out beyond ~w = 13 at n = 180,
 ~w = 14 at n = 300; hopeless at n = 360). Hits are decisive, timeouts are NOT
@@ -112,15 +113,26 @@ invokes it. Consequences for this (R)-failing cover:
   other three sectors, it yields **certified d(C) ≥ 12** — double the A16
   floor, and stronger than any published bound for this code.
 - **Full-24 program:** (i) (M)@24 for BY/BX (classification to weight 23 —
-  substantially deeper than gross's 11; SAT-assisted census first);
+  substantially deeper than gross's 11; SAT-assisted census first — now via
+  the shipped A17 (M)-kernel pipeline, see §6);
   (ii) zero-rung at 24 = 2·d(base) (τ-tightness: the dangerous floor is
-  *attained* by the §3 lifts, exactly the gross pattern); (iii) the genuinely
-  new theory: **doubly-old (safe) sector ≥ 24 without (R)** — candidate route
-  via A13's D-module decomposition (the seamC ↔ δ₂ transport gap) replacing
-  Theorem-D confinement, on F₁₆ components (e = 15; "floors port,
-  classifications don't"). A cheap pilot first: doubly-old classes have both
-  projections nontrivial (≥ 12 each) — test whether a joint-support argument
-  clears 16–18 before building the F₁₆ slot-frame analog.
+  *attained* by the §3 lifts, exactly the gross pattern); (iii) the
+  **doubly-old (safe) sector ≥ 24 without (R)** — *the route now exists*
+  (update 2026-07-22): the seamC↔δ₂ transport closed on 2026-07-20
+  (`BBBocksteinTransport.lean`, axiom-clean —
+  `bocksteinVanishes_of_elementForm`; `BocksteinElementForm` discharged
+  **unconditionally for every ZMod doubling deck, twists included**, which
+  covers all three decks of C: the diagonal x¹⁵y³ is the twisted x-deck
+  (15,3)). The rank scaffolding is now theorems — `E = k̃ − k`,
+  `dim ker ε₊ = k`, `ker τ₊ ≤ range p₊` — so §2's numerics (E = 4, ×3 decks)
+  are instances of proven statements. The remaining *structural* piece is the
+  iso `H₁ ≅ D^{k̃−k} ⊕ F₂^{2k−k̃}` (f.g. `F₂[ε]/(ε²)`-module classification —
+  bounded algebra; all rank inputs proven). Sequencing: A20's
+  `SeamCosetFloor 20` is the transport machinery's **first live trial** at
+  half scale (odd part Z₉ ⇒ F₆₄ components there, vs F₁₆ here); the cheap
+  A19 pilot — doubly-old classes have both projections nontrivial (≥ 12
+  each), test whether a joint-support argument clears 16–18 — proceeds in
+  parallel, then A20's port pattern comes up-tower.
 
 Record context: the published solver-exact BB record is Bravyi's
 [[288,12,18]] (MIP-exact per their Table 3 note; independently E-status in
@@ -148,23 +160,44 @@ n and 33% in d; the kernel-verified record (gross, n = 144) by 2.5× in n.
   *own-discovered* exact; the published record incl. Bravyi's codes is
   [[288,12,18]].
 
-## 6. State and next steps
+## 6. State and next steps — RE-RANKED 2026-07-22 (post-transport)
 
-In flight at session close: BX floor@11 (expect d(BX) = 12 exact); beat-24
-SAT gate (3 h budget). Next session, in order:
+Program shifts since the opening session: (a) the A13 seamC↔δ₂ transport
+closed — the §4(iii) safe-sector route is scaffolded by theorems, not a
+conjecture; (b) the A17 (M)-kernel census pipeline **shipped**
+(pivot-certificate sweeps: 2^L enumeration → Gaussian-elimination
+certificates, 53 min → 3.9 s) and A20 already reuses it (1,655 classes
+floor-certified in ~17 s, 0 SAT hits); (c) A20 stands as the deliberate
+half-scale pathfinder — 4/5 rung-2 obligations discharged, `SeamCosetFloor
+20` the sole opening and the transport's first live consumer; (d) the
+beat-24 gate died with its session, zero hits — retired (§3). Re-ranked
+order:
 
-1. Close BX (floor@11 verdict + witness); log the two deficit cells in the
-   A17 docket.
-2. **M12**: light-stabilizer classification for BY to weight 11 (Prop-10
-   analog; start from the hexagon/D-pair census script pattern) → certified
-   d(C) ≥ 12. Then the same at BX for redundancy.
-3. Lean staging (engineering track): generated BaseFloors certificates for
-   GB/BX/BY (`gen_base_floor_lean.py`; all frames floor-bearing) — kernel
-   d ≥ 6 + transfer naming the Bravyi flagship; named-hypothesis packaging of
-   d(GB) = 8, d(BY) = 12 on the Z5Z15F2A6 model. Verify BBDoubling's
-   dangerous-side rungs are (R)-free (expected from §4) and factor
-   `DeckTrivialOnH1` out of them if so.
-4. (M)@24 census + the doubly-old pilot (§4) — the moonshot core.
+1. **Close BX** (cheapest, hours): targeted resume of the 21 outstanding
+   floor@11 orbit reps (14/35 banked all-UNSAT) → both bases exact
+   [[180,8,12]]; projection floor 12 on every sector except new-xy. Log the
+   two deficit-4 cells in the A17 docket.
+2. **M12 → certified d(C) ≥ 12** (days, now mechanical): retarget the
+   A17/A20 census pipeline (`a20_m_census.py` / `a20_m_floors.py` pattern)
+   at BY (30,3), depth 11 — not a hand-port of Prop 10. With (1):
+   certified d(C) ≥ 12, the strongest bound for this code by any method.
+3. **(M)@24 census** at BY and BX (depth 23, week-scale): same pipeline,
+   deeper bands. A20's band data calibrates feasibility (no weight-8
+   stabilizers — the Prop-10 gap echoes; bands 2–16 closed in seconds once
+   pivot-certificates landed). Yields dangerous-floor-24-grade certificates
+   on both decks — everything but the doubly-old sector.
+4. **Doubly-old sector ≥ 24** (moonshot, §4(iii)): sequence *behind* A20's
+   SeamCosetFloor-20 trial (F₆₄ there, F₁₆ here); run the joint-support
+   pilot (≥ 16–18) in parallel; port the pattern up-tower. The
+   module-classification iso, when it lands, supplies the D⁴ ⊕ F₂⁴
+   statement for the Lean capstone.
+5. **Lean staging** (parallel, engineering): BaseFloors certificates for
+   GB/BX/BY (generator-ready; frames floor-bearing); named-hypothesis
+   packaging of d = 8/12/12 (Z5Z15F2A6 model); **new post-transport item:**
+   instantiate the transport theorems on C — the unconditional ZMod-family
+   element form covers all three decks (diagonal = twisted x-deck), making
+   E = 4 and the sector accounting Lean theorems for the flagship. (The
+   former item "verify the dangerous rungs are (R)-free" is done — §7.)
 
 Open question worth naming: both rungs of this tower are deficit-4, yet the
 cover recovers 24 = 2·12 via τ-lifts of the *deficit* value while gaining
