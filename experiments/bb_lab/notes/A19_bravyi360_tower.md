@@ -26,7 +26,7 @@ BX (15,6)  --x-->  C  (30,6) = the Bravyi code
 | GB | Z₁₅×Z₃ | [[90,8]] | **8 exact** | coset-SAT ladder, 35 orbit reps, 187 s (`a15_coset_distance`); witness support `[12,14,27,29,69,71,84,86]` |
 | BY | Z₃₀×Z₃ | [[180,8]] | **12 exact** | floor@11 all-UNSAT (35 reps, 3.1 h, `data/a19/by_floor11.log`) + weight-12 witness (`by_floor13.log`, class 0x10) |
 | BX | Z₁₅×Z₆ | [[180,8]] | **12 pending** (≤ 12 witness via ISD; floor@11: 14/35 reps banked all-UNSAT before session teardown, `data/a19/bx_floor11_partial.log`; targeted resume of the 21 outstanding reps queued) | `a19_lifts.py` ISD; floor run same protocol as BY |
-| C | Z₃₀×Z₆ | [[360,12]] | ≤ 24 constructive; ≥ 6 certified | §3, §4 |
+| C | Z₃₀×Z₆ | [[360,12]] | **≥ 12 CERTIFIED (M12, 2026-07-22)**; ≤ 24 constructive | §3, §4, §8 |
 
 - GB is **not** Bravyi's bb_90 ([[90,8,10]] shares the frame and A; different
   B, different d). BX ≁ BY under the full Aut+monomial orbit
@@ -177,10 +177,10 @@ order:
    floor@11 orbit reps (14/35 banked all-UNSAT) → both bases exact
    [[180,8,12]]; projection floor 12 on every sector except new-xy. Log the
    two deficit-4 cells in the A17 docket.
-2. **M12 → certified d(C) ≥ 12** (days, now mechanical): retarget the
-   A17/A20 census pipeline (`a20_m_census.py` / `a20_m_floors.py` pattern)
-   at BY (30,3), depth 11 — not a hand-port of Prop 10. With (1):
-   certified d(C) ≥ 12, the strongest bound for this code by any method.
+2. **M12 → certified d(C) ≥ 12 — DONE (2026-07-22, same session as this
+   re-rank; §8).** The pipeline retarget took one census run (227 s) plus
+   seven floor queries (0.4 s). Note: the route runs entirely through the
+   y-deck — BX (step 1) is redundancy, not a dependency.
 3. **(M)@24 census** at BY and BX (depth 23, week-scale): same pipeline,
    deeper bands. A20's band data calibrates feasibility (no weight-8
    stabilizers — the Prop-10 gap echoes; bands 2–16 closed in seconds once
@@ -262,3 +262,33 @@ Consequences:
   program needs no refactor to land. m(b): `gross-distance-proof.md` l. 1059
   (off-support minimum), hexagon rung Lemma 11 l. 1477 — the census port
   starts there.
+
+## 8. M12 CERTIFIED: d([[360,12,≤24]]) ≥ 12 (2026-07-22)
+
+The §6.2 milestone, executed via the A17/A20 (M)-kernel pipeline retargeted
+at the y-deck (`a19_m_census.py`, `a19_m_floors.py`; data in `data/a19/`):
+
+1. **Census** (227 s, XOR-native + orbit blocking, bands 2–10, exhaustive):
+   BY has exactly **7** translation-orbit classes of nonzero X-stabilizers
+   with |b| ≤ 11 — one hexagon (w = 6) and six at w = 10, **no weight-8
+   stabilizers** (the gross Prop-10 gap, third instance: gross, A20's Y4,
+   now BY). µ(BY) = 6.
+2. **Fiber-pinned floors** (7 queries, 0.4 s total, all UNSAT): every
+   nontrivial cover X-logical v with p_y(v) = b has
+   |v| = |b| + 2·(off-fiber occupancy) ≥ 12 — m_req = 3 over the hexagon,
+   1 over each w = 10 class.
+3. **b = 0 stratum, analytic**: p_y(v) = 0 chain-level ⟺ v = τ(u) with u a
+   BY cycle and |v| = 2|u|; |v| ≤ 10 would need a nonzero BY cycle of
+   weight ≤ 5 — dead by the A16 class certificate (µ ≥ 6). No SAT needed.
+4. **Assembly**: p_y*[v] ≠ 0 ⇒ |v| ≥ |p_y(v)| ≥ d(BY) = 12 (exact, §1);
+   p_y*[v] = 0 ⇒ (2) or (3). **Certified d(C) ≥ 12**, entirely through the
+   y-deck — solver-grade (CryptoMiniSat UNSATs) + the A16 analytic
+   certificate + the d(BY) ladder. With §3's τ-lift: **12 ≤ d(C) ≤ 24, both
+   ends certified/verified** — the strongest bounds this code has had.
+
+Two forward-looking bonuses: (a) the b = 0 stratum discharges at the FULL
+24 target too — τ(u) nontrivial forces [u] ≠ 0, hence |u| ≥ 12, |v| ≥ 24 —
+so after the deep census (§6.3), only the doubly-old sector separates the
+program from full 24; (b) the census weight-gap (no w = 8) is now a
+three-instance pattern worth a lemma hunt (why do weight-3 mirrored pairs
+never produce weight-8 stabilizers?).

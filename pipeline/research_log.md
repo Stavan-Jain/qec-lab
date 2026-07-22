@@ -13,6 +13,18 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — bravyi360-m12-certified (A19 §8) — success —
+  **Certified d ≥ 12 for Bravyi's [[360,12,≤24]]** via the A17/A20
+  (M)-kernel pipeline retargeted at the y-deck: exhaustive census of
+  BY's light X-stabilizers (7 classes ≤ w11: one hexagon, six w10, no
+  w8 — the Prop-10 gap's third instance), fiber-pinned UNSAT floors
+  (all 7, 0.4 s), b = 0 stratum analytic via A16. With the τ-lift
+  upper bound: 12 ≤ d ≤ 24, both ends certified/verified — the
+  strongest bounds this code has had by any method. Route is
+  y-deck-only (BX not a dependency). Compute: 227 s census + 0.4 s
+  floors once the machinery existed.
+  [details](../experiments/bb_lab/notes/A19_bravyi360_tower.md)
+
 - 2026-07-22 — a20-dangerous-floor-certified (A20) — success — **The
   (M)@20 dangerous floor of the [[288,8,20]] tower is certified over the
   full census, and the flagged analytic-tail risk is retired.** Census
