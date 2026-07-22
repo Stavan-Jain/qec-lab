@@ -337,3 +337,29 @@ band 14 partial (89+), JSONL resumable as fallback
 (`data/a19/m12_census_classes.jsonl`). Next session: the Φ-sparsity
 classification tree (δ-active-site bounds from W ≥ 1 per site, ε-kernel
 enumeration for the radical layer) → analytic census to weight 23.
+
+### §9 session 2 (2026-07-22, same day): structural inputs + census redesign
+
+- **Φ-sparsity spectrum** (`a19_phi_eps.py` (A)): |supp φ| = 15/18; min
+  joint sparsity |supp U| + |supp ΦU| = 16 / 11 / **6** at |supp U| = 1/2/3
+  — the 3↔3 minimum is the hexagon's δ-shadow (matches §8's census-lens
+  data). Pure-δ stabilizers (a ≤ 3) have weight ≥ 2·6 = 12; the a ∈ {4,5,6}
+  completion is queued for the tree session.
+- **ε-layer census, exhaustive** (`a19_phi_eps.py` (B), 2¹⁸ enumeration):
+  pair map (A_ε f, B_ε f) has kernel dim 4 — the ε-pair code is [36,14]
+  with min nonzero weight 6; full weight histogram banked through w = 22
+  (288 at w6, 720 at w8, 1728 at w10, …). The ε-backbone of the
+  classification tree is now data, not conjecture.
+- **Census redesign — lex-leader symmetry breaking** (`a19_m_census2.py`):
+  replaces per-class orbit-blocking (90 clauses/class, the A20 bottleneck)
+  with 89 static lex-leader chains (every model is its orbit's lex-min rep;
+  one blocking clause per class). Built-in completeness harness: bands
+  2–12 must reproduce the a19_m_census ground truth or the run aborts.
+  **Validated: {6:1, 10:6} in 15 s (was 227 s) and band 12's 42/42 in 35 s
+  (was 1,351 s) — 39×.** Bands 14–22 launched
+  (`data/a19/m24_census_classes.jsonl`).
+
+The analytic classification tree (the full A22-style proof-grade census)
+remains the moonshot follow-on; its two structural inputs (Φ-spectrum,
+ε-layer) are banked above, and the redesigned SAT census now provides the
+ground truth it must reproduce at every depth.
