@@ -109,6 +109,90 @@ Also banked: d₀ = 6, d₁ = 10 exact; the rung-1 wall-attaining cell (A17
 lifts (18,16)/(18,8)). Lean staging (named-hypothesis packaging of d₀/d₁
 on the Z5Z15F2A6 model + Bezout instantiation) not started.
 
+## 6. V7 completeness CLOSED — the analytic census; H1 discharged (2026-07-22)
+
+**Headline.** The completeness gap of the boundary census is closed
+analytically, at A22-V7 grade (every ingredient a finite algebraic fact —
+kernel-checkable in principle, no solver trust): the complete list of
+G-translation classes of nonzero b ∈ im ∂₂(Y4) with |b| ≤ 19 is **exactly
+the 1,655 SAT classes**. Closed bands reproduced exactly (469); **band 18
+is definitively 1,186** — the unterminated SAT enumeration had already
+found every class; zero new. Hence §7's H1 is **DISCHARGED** (supersedes
+its PENDING marker), and with H2's 1,655/1,655 UNSAT floors the dangerous
+sector (`DangerousFloorNZ 20`) is complete outright: **5 of §7's 6
+hypotheses now done; only H5 (lift-aware seam floor) remains** for the
+d = 20 theorem. No census-resume needed — the stopped enumeration stays
+stopped.
+
+Scripts: `a20_v7_lever0.py` (pre-sweep measurements),
+`a20_v7_completeness.py` (the engine; rerun to regenerate
+`data/a20/v7_complete_classes.jsonl` + `v7_summary.json` +
+`v7_completeness.log`), `a20_v7_new_floors.py` (floors for
+census-missed classes — vacuously done, 0 rows).
+
+**Lever autopsy (measured first, per the session brief;
+`a20_v7_lever0.py`, `data/a20/v7_lever0.json`).**
+
+- **Lever 0 (the A22-P1 analog) — DEAD.** min |f| over the 16
+  joint-kernel translates has a heavy band-18 tail: {3: 471, 4: 592,
+  5: 101, 6: 7, then 9…23: 15 classes}; min site-support reaches 8/8
+  (10 classes). No small-support-f sweep exists (and no converse bound
+  would have been available). Bonus structure banked: ker A⋆ = ker B⋆ =
+  ker ∂₂ verified directly at Y4 (dims 4/4/4 — the A23 gating fact),
+  and the 15 nonzero kernel elements are δ₄-pure with weight exactly
+  6·(active sites): weights {36: 12, 48: 3}, site-supports {6: 12, 8: 3}.
+- **Lever 5 (A23's flat min-side strata, coordinator-proposed) —
+  INFEASIBLE here.** min(|u|,|v|) reaches 9 on 500/1,655 classes, so
+  flat strata must run to b = 9: Σ_b C(72,b)/16 ≈ 6.2·10⁹ elements,
+  ~31× A23's f2a6 sweep, with only 4 dense parity checks to prune. The
+  fibering below is exactly the refinement that makes the same
+  min-side sweep per-site-bounded.
+- **Levers 1–3 — ADOPTED**, unlocked by two NEW finite facts that
+  dissolve the session-1 obstruction ("the inner GF(64)⁸ enumeration
+  lacks a finite reduction"):
+  - **(P) Excess parity.** W(ε,d4,ξ) ≡ ε (mod 2) for every ξ (fiber
+    weight parity = augmentation), so the per-site excess over
+    W_min(ε,d4) is EVEN. The dominant B₀ = 18 stratum (54,064 of
+    74,528 survivor cells) is excess-0-only; every deviation budget
+    halves.
+  - **(A) Argmin = 3^cost.** |{ξ : W(ε,d4,ξ) = W_min}| = 3^{W_min}
+    exactly (sizes 1/3/9/27). So a **min-cost information set** I of
+    the [16, 8] GF(64) graph code {(w, C₆₄w)} — matroid greedy on the
+    rows of [I₈; C₆₄] with per-coordinate costs W_min — bounds each
+    cell's enumeration by 3^{cost(I)} × even-deviation terms.
+    Completeness: excesses are ≥ 0 sitewise, so any |b| ≤ 18 solution
+    restricted to I has excess-sum ≤ E := 18 − B₀. Balanced-cell
+    fallback (also complete): two one-sided passes at halved budget,
+    since min(exc_u, exc_v) ≤ 2⌊E/4⌋ by parity.
+
+**Ingredient list (I1–I7, all finite algebraic facts).** I1 the CRT
+fibering + 512-triple weight table (re-derived in-script); I2 the six
+component operators extracted from D2 = H_Xᵀ itself by 8 site-delta
+applications (fiber value 1 = CRT triple (1,1,1), a unit in every
+component), verified against D2 on random f AND on all 1,655 census
+rows; I3 im ∂₂ = F₂⁸ × GF(4)⁶ × GF(64)⁸ exactly (ε free, v_ε = C_ε u_ε;
+δ₄ = the 6-dim joint image, 4,096 pairs; δ₆₄ free, v₆₄ = C₆₄ u₆₄);
+I4 = (P); I5 the outer bound B₀ ≤ |b| (survivor histogram = the
+session-1 16.7M pre-filter ÷ 16 kernel redundancy, exact match);
+I6 = (A) + the information-set restriction bound; I7 unique-preimage
+reconstruction per triple + canonicalization over the 72 translations.
+
+**Run accounting.** 2⁸ × 4⁶ = 1.05M outer cells → 74,528 survivors;
+674,288,722 inner candidates (strategies: mixed info-set 73,162 cells,
+halved two-pass 1,366); 118,932 light boundary vectors — equal to
+Σ orbit sizes over the 1,655 classes EXACTLY, i.e. every G-translate of
+every class was produced exactly once (the strongest internal
+completeness witness short of Lean). 1,105 s single-core.
+
+**Lean feasibility (assessed, not started).** Structurally A22-L1–L6:
+fibering lemmas, finite tables, component-matrix certificates (8×8 over
+F₂/GF(4)/GF(64), all F₂-linearizable), B₀ arithmetic, per-cell
+info-set rank certificates, glue. The mass is the difference: 74,528
+cells / 6.7·10⁸ weight evaluations vs A22's 16,384 subsets / 6·10⁵
+checks. Direct decide-scale needs the ÷24 outer symmetry quotient (z³
+acts trivially on outer data) and packed-table batching; judged
+feasible-with-engineering, one dedicated session to prototype.
+
 ## 7. Assembly: certified d(Y8) = 20 — the theorem of record (DRAFT, two verdicts pending)
 
 **Claim.** IBM's class-Y code Y8 = [[288,8,d]] (arXiv:2606.02418 Table II)

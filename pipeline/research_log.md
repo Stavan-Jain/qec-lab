@@ -13,6 +13,33 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — a20-v7-completeness (A20) — success — **The Y4
+  boundary-census completeness gap is closed analytically: band 18 is
+  definitively 1,186 classes (the unterminated SAT census had already
+  found every one), and the [[288,8,20]] tower's `DangerousFloorNZ 20`
+  is discharged outright — 5 of the 6 assembly hypotheses (A20 §7) now
+  done, only the lift-aware seam floor remains for certified d = 20.**
+  Levers measured dead first: the A22-P1 analog (min-|f| over the 16
+  kernel translates has a band-18 tail to 23, min site-support to 8/8 —
+  no small-f sweep) and A23's flat min-side strata (min side reaches 9
+  on 500 classes ⟹ ~6.2·10⁹ flat elements, 31× A23's scale; the gating
+  fact ker A⋆ = ker B⋆ = ker ∂₂ itself VERIFIED at Y4, kernel δ₄-pure at
+  exactly 6·active-sites). What closed it: two new finite facts on the
+  a20 fibering — **excess parity** (site weight ≡ ε mod 2 ⟹ per-site
+  excess even; the 54K-cell B₀ = 18 stratum is excess-0-only) and
+  **argmin = 3^cost** (⟹ min-cost information sets of the [16,8] GF(64)
+  graph code (w, C₆₄w) via matroid greedy bound each cell at
+  3^{cost(I)}), plus halved-budget two-sided passes for balanced cells
+  (min-side excess ≤ 2⌊E/4⌋). Engine (`a20_v7_completeness.py`,
+  A22-V7 grade — every ingredient a finite algebraic fact): 74,528
+  survivor cells, 674M candidates, 18 min single-core; 118,932 light
+  vectors = Σ orbit sizes EXACTLY (every translate found exactly once);
+  closed bands ≤ 16 match the SAT census exactly (469); zero new band-18
+  classes, so the existing 1,655 UNSAT floors already cover the
+  definitive list (`a20_v7_new_floors.py` vacuous). Lean port assessed
+  feasible-with-engineering (A22-L-style + ÷24 symmetry quotient).
+  [details](../experiments/bb_lab/notes/A20_ibm288_tower.md)
+
 - 2026-07-22 — a23-analytic-seam-floor (A23, session 1) — partial —
   **Every covering-style certificate for `SeamCosetFloor 16` of
   f2a6f17e:y is refuted with exact numerics, but the whole Prop
