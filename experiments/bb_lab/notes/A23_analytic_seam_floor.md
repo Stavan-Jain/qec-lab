@@ -264,11 +264,31 @@ Exact checks (`a23_strata_check.py`, GF(16)-syndrome enumeration):
 
 Zero violations anywhere.  The b=6 stratum carries **exactly 15 tight
 pairs (a,b) = (10,6)** — precisely one G-orbit (75 translates / stab 5),
-i.e. the SAT witness orbit and nothing else.  b=7 (124M; needs a
-numpy-batched enumerator, ~10 min) and the σ-side strata (a ≤ 7,
-syndrome-coset layers of the same sizes) remain for the next session —
-together they would complete a NO-SAT numerical verification of the
-inequality, replacing the CMS UNSAT@14 with structured enumeration.
+i.e. the SAT witness orbit and nothing else.
+
+**σ-side (a ≤ 7 case), derived and verified** (`a23_strata_sigma_side.py`).
+Since `Q = B⋆P = xy⁶·Ψ` (a monomial translate of Ψ), both case families
+reduce to the SAME operator `Ψ` near `e₀`; with `S` the GF(16) syndrome
+(`S(e₀) = block-identity ≠ 0`):
+
+    (i)  ∀ u ∈ V (S(u) = 0), |u| ≤ 7:      |Ψ⋆u + e₀|     ≥ 16 − |u|
+    (ii) ∀ u″ with S(u″) = S(e₀), |u″| ≤ 7: |Ψ⋆(e₀ + u″)| ≥ 16 − |u″|
+    (iii) both sides ≥ 8: trivial.
+
+(Verified identity: `Ψ⋆A = σ(A)⋆(1+e₀)`.)  σ-side exact results:
+
+| stratum a | elements | exact min b | min total | slack |
+|---|---|---|---|---|
+| 1 | 5 | 19 | 20 | 4 |
+| 2 | 175 | 16 | 18 | 2 |
+| 3 | 4 210 | 15 | 18 | 2 |
+| 4 | 75 950 | 14 | 18 | 2 |
+| 5 | 1 078 876 | 13 | 18 | 2 |
+
+(The a=2 stratum contains the seam representatives themselves — min
+total 18 = the raw seam weight ✓.)  Remaining enumerations for a
+complete NO-SAT verification of the inequality: (i) at b=7 (124M),
+(ii) at a=6 (~12.6M) and a=7 (~124M) — numpy-batched, ~30 min total.
 
 ## §8 Assessment + next session
 
@@ -290,8 +310,8 @@ layers are already censused there) that collapses the per-u checks to
 per-family lemmas.
 
 **Next session plan, in order:**
-1. finish b=6/b=7 exact checks + the σ-side (a ≤ 7) strata (numeric
-   completion of the inequality);
+1. finish the three remaining strata (b=7; σ-side a=6,7) with a
+   numpy-batched enumerator (numeric completion of the inequality);
 2. structure theorem attempt for the ≤7 layers of V (S-diagonal pairs +
    A-lines composition; the layers look like unions of few "cells");
 3. Lean bridge: worktree `a23-seam-transfer`; prove the reduction chain
