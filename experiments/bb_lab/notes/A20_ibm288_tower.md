@@ -108,3 +108,51 @@ Also banked: d₀ = 6, d₁ = 10 exact; the rung-1 wall-attaining cell (A17
 §8b); `bocksteinVanishes_of_orderFourLift` applies at both rungs (ZMod
 lifts (18,16)/(18,8)). Lean staging (named-hypothesis packaging of d₀/d₁
 on the Z5Z15F2A6 model + Bezout instantiation) not started.
+
+## 7. Assembly: certified d(Y8) = 20 — the theorem of record (DRAFT, two verdicts pending)
+
+**Claim.** IBM's class-Y code Y8 = [[288,8,d]] (arXiv:2606.02418 Table II)
+has d = 20, certified at solver grade (CryptoMiniSat UNSAT certificates +
+kernel-level F₂ linear algebra + explicit verified witnesses), independent
+of IBM's MILP.
+
+**Upper bound.** The τ-lift of the d₁ witness is a verified weight-20
+nontrivial X-logical (`a20_tau_lift.py`, `data/a20/y8_weight20_witness.npy`)
+⟹ d ≤ 20.
+
+**Lower bound — case assembly over any nontrivial cover X-logical v.**
+By T2 (`push1_mem_seamCoset_of_deckTrivial`, Lean, under H4) + the L0 iff
+(`pull1_mem_boundaries_iff_seamCoset`, Lean), p(v) lies in a seam coset
+seamC ζ + im ∂₂ for some ζ ∈ ker ∂₂(Y4):
+
+- **ζ = 0, p(v) = 0** (new sector): v = τ(u) with u a nontrivial base
+  logical (τ injective chain map), so |v| = 2|u| ≥ 2·10 = 20 by H3.
+- **ζ = 0, p(v) = b ≠ 0** (dangerous): slice identity |v| = |b| + 2·off.
+  If |b| ≥ 20, done. Else b is one of the censused classes (H1) and its
+  fiber-pinned floor (H2) gives |v| ≥ 20.
+- **ζ ≠ 0** (safe): 15 classes = 2 G-orbits (§5). Let w = p(v), an
+  element of the coset. If |w| ≥ 20, |v| ≥ |p(v)| ≥ 20. Else w is in the
+  lift-aware census (H5) and — every cover cycle over a non-boundary w
+  being automatically nontrivial (δ₂-injectivity, §5) — its lift query
+  certifies |v| = |w| + 2·off ≥ 20.
+
+Orbit transfer throughout: all certificates are translation-covariant.
+
+**Hypothesis ledger (provenance; solver-grade unless noted).**
+
+| # | statement | status |
+|---|---|---|
+| H1 | census of nonzero b ∈ im ∂₂(Y4), |b| ≤ 19, is exhaustive | bands 2–16 CLOSED (469); **band 18 PENDING** (1,186 found; V7 moonshot / census-resume) |
+| H2 | per-class dangerous floors at 20 | DONE — 1,655/1,655 UNSAT, ~17 s |
+| H3 | LogicalFloor 10 at Y4 | DONE — UNSAT@9, all 25 orbit reps |
+| H4 | DeckTrivialOnH1 (R) | DONE — Bezout witness `data/a20/bezout_y_18x8.json` (kernel-level; `deckTrivial_of_bezout`-ready) |
+| H5 | lift-aware seam floor at 20, both orbits | class 0x1 **RUNNING** (20/20 lift-UNSAT so far); class 0x3 **PENDING** (probe on budget) |
+| H6 | weight-20 witness | DONE — verified |
+
+**Grade and staging.** Solver grade throughout; Lean packaging path:
+named hypotheses on the Z5Z15F2A6 model — H1/H2 via the A17 (M)-kernel
+emitter pipeline, H4 via `deckTrivial_of_bezout`, H5 via the A23 bridge
+recipe (kernel cert + seamC additivity + decide facts; kernel equality
+ker A⋆ = ker B⋆ = ker ∂₂ VERIFIED at Y4, so the two-trinomial collapse
+applies), H3 as a BaseFloors-style certificate. The transport theorems
+consumed here are on QECLean main as of 2026-07-20 (PR #60 merged).
