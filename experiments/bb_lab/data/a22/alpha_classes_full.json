@@ -1,0 +1,12960 @@
+[
+ {
+  "kind": "pure-h",
+  "class_ids": [
+   0
+  ],
+  "b_weight": 10
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   4,
+   1,
+   10,
+   8
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 6,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 0,
+    "beta": 9,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 4,
+    "beta": 11,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 1,
+   "(3, 1)": 10,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 6
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 3,
+  "cost": 6,
+  "sites": [
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 1,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 6,
+    "class_id": 2
+   },
+   {
+    "flips": [
+     [
+      3,
+      1
+     ]
+    ],
+    "b_weight": 12,
+    "class_id": 27
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 12,
+    "class_id": 28
+   },
+   {
+    "flips": [
+     [
+      4,
+      2
+     ]
+    ],
+    "b_weight": 12,
+    "class_id": 1
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   12,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 5,
+  "cost": 10,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 12,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 10,
+    "class_id": 3
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   7,
+   0,
+   0,
+   7
+  ],
+  "active_sites": [
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 3,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 2,
+    "beta": 7,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 7,
+    "beta": 2,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 7,
+    "beta": 11,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   }
+  ],
+  "m_star": {
+   "(3, 2)": 7
+  },
+  "m_star_nsites": 1,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 10
+   },
+   {
+    "flips": [
+     [
+      3,
+      1
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 26
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 30
+   },
+   {
+    "flips": [
+     [
+      4,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 38
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   9,
+   10,
+   8,
+   8
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 9,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 2,
+    "beta": 2,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 10,
+   "(3, 1)": 8,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 14
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   4,
+   7,
+   15,
+   12,
+   15
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 4,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 7,
+    "beta": 7,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 15,
+   "(3, 1)": 12,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 11
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   4,
+   14,
+   0,
+   0,
+   14
+  ],
+  "active_sites": [
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 3,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 4,
+    "beta": 14,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 14,
+    "beta": 4,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 14,
+    "beta": 5,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   }
+  ],
+  "m_star": {
+   "(3, 2)": 14
+  },
+  "m_star_nsites": 1,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 7
+   },
+   {
+    "flips": [
+     [
+      3,
+      1
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 37
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 29
+   },
+   {
+    "flips": [
+     [
+      4,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 4
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   1,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 10,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 1,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 10,
+    "class_id": 8
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   2,
+   15,
+   0,
+   10,
+   15
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 2,
+    "beta": 14,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 1)": 10,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 23
+   },
+   {
+    "flips": [
+     [
+      3,
+      1
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 25
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   5,
+   10,
+   8,
+   5,
+   0
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 5,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 5,
+    "beta": 9,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 5,
+    "beta": 6,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 8,
+   "(3, 1)": 5
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 13
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   5,
+   12,
+   0,
+   10,
+   12
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 5,
+    "beta": 13,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 1)": 10,
+   "(3, 2)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 5
+   },
+   {
+    "flips": [
+     [
+      3,
+      1
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 32
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   11,
+   10,
+   0,
+   10,
+   10
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 11,
+    "beta": 11,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 1)": 10,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 9
+   },
+   {
+    "flips": [
+     [
+      3,
+      1
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 24
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   12,
+   4,
+   14,
+   12,
+   0
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 5,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 4,
+    "beta": 14,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 14,
+    "beta": 5,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 14,
+   "(3, 1)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 12
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   5,
+   9,
+   10,
+   15,
+   8
+  ],
+  "active_sites": [
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 2,
+    "beta": 14,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(3, 0)": 10,
+   "(3, 1)": 15,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 55
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   1,
+   0,
+   0,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 10,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 10,
+    "class_id": 22
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   1,
+   5,
+   12,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 12,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 86
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   8,
+   5,
+   0,
+   0,
+   15
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 5,
+    "beta": 4,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 58
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 81
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   10,
+   2,
+   0,
+   0,
+   8
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 2,
+    "beta": 6,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 43
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 50
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   12,
+   11,
+   0,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 10,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 10,
+    "class_id": 46
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   13,
+   1,
+   0,
+   0,
+   11
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 13,
+    "beta": 11,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 1,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 11,
+    "beta": 3,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 2)": 11
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 97
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   15,
+   0,
+   8,
+   15,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 5,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 8,
+   "(3, 1)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 16
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   15,
+   6,
+   0,
+   0,
+   12
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 6,
+    "beta": 3,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 2)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 48
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 56
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   1,
+   0,
+   6,
+   1,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 6,
+    "beta": 13,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 44
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 65
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   1,
+   1,
+   12,
+   1,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 12,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 1,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 62
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   1,
+   6,
+   11,
+   0,
+   10,
+   1
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 10,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 67
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   1,
+   10,
+   10,
+   0,
+   10,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 68
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   4,
+   0,
+   15,
+   4,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 4,
+    "beta": 5,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 4,
+    "beta": 9,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 4
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 87
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   4,
+   15,
+   5,
+   12,
+   15,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 4,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 12,
+   "(3, 1)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 94
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   0,
+   0,
+   8,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 10,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 10,
+    "class_id": 17
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   8,
+   15,
+   8,
+   0,
+   15
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 8,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 61
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   12,
+   1,
+   8,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 1,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 8,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 69
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   15,
+   10,
+   0,
+   15,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 15
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   9,
+   10,
+   0,
+   8,
+   10,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 8,
+   "(3, 1)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 18
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   10,
+   0,
+   11,
+   10,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 11,
+    "beta": 6,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 45
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 39
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   10,
+   8,
+   10,
+   0,
+   8,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 77
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   10,
+   9,
+   0,
+   0,
+   8,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 8,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 90
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   10,
+   12,
+   10,
+   10,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 10,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 54
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   0,
+   0,
+   0,
+   1,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 0,
+    "beta": 6,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 1,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 57
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   0,
+   5,
+   12,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 10,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 10,
+    "class_id": 35
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   1,
+   10,
+   0,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 70
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   1,
+   15,
+   12,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 12,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 40
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   8,
+   10,
+   12,
+   0,
+   15
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 12,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 89
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   15,
+   0,
+   2,
+   15,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 2,
+    "beta": 3,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 0)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 64
+   },
+   {
+    "flips": [
+     [
+      3,
+      2
+     ]
+    ],
+    "b_weight": 14,
+    "class_id": 49
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   15,
+   0,
+   11,
+   0,
+   12,
+   1
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 12,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 36
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   15,
+   12,
+   10,
+   0,
+   12,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 10,
+   "(3, 1)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 20
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   0,
+   0,
+   0,
+   0,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 9,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 0,
+    "beta": 3,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 19
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   0,
+   1,
+   15,
+   12,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 7,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 0)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 85
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   3,
+   1,
+   8,
+   15,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 3,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 0)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 82
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   3,
+   13,
+   0,
+   0,
+   12,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 3,
+    "beta": 4,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 13,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 1)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 31
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   6,
+   9,
+   0,
+   0,
+   8,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 9,
+    "beta": 5,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 1)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 80
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   12,
+   0,
+   10,
+   0,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 0,
+    "beta": 5,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 63
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   15,
+   12,
+   9,
+   15,
+   0,
+   0,
+   15
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 12,
+   "(2, 1)": 1,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 101
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   2,
+   7,
+   0,
+   10,
+   15,
+   0,
+   0,
+   8
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 5,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 2,
+    "beta": 7,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 7,
+    "beta": 2,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 7,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 84
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   4,
+   14,
+   10,
+   0,
+   15,
+   10,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 5,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 4,
+    "beta": 14,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 14,
+    "beta": 4,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 2)": 14,
+   "(3, 0)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 71
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   0,
+   0,
+   6,
+   1,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 3,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 6,
+    "beta": 13,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 0)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 42
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   0,
+   10,
+   10,
+   0,
+   10,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 5,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 1)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 21
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   1,
+   1,
+   0,
+   0,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 33
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   1,
+   12,
+   11,
+   0,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 59
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   9,
+   0,
+   0,
+   8,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 9,
+    "beta": 5,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 0)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 60
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   9,
+   15,
+   10,
+   0,
+   15,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 1)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 66
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   6,
+   13,
+   0,
+   5,
+   12,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 13,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 0)": 1,
+   "(2, 2)": 10,
+   "(3, 0)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 34
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   2,
+   15,
+   0,
+   0,
+   7,
+   0,
+   0,
+   8
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 2,
+    "beta": 14,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 7,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 1)": 10,
+   "(2, 2)": 15,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 76
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   1,
+   5,
+   12,
+   0,
+   5,
+   0,
+   0,
+   0,
+   12
+  ],
+  "active_sites": [
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 5,
+    "beta": 13,
+    "types": "DD",
+    "cost": 4,
+    "h": 0,
+    "flip_pen": 2
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 7,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(2, 1)": 10,
+   "(2, 2)": 12,
+   "(3, 2)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 41
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 51
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   0,
+   8,
+   15,
+   0,
+   0,
+   15
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 2)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 103
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   0,
+   10,
+   8,
+   0,
+   0,
+   8
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 2)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 93
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   0,
+   12,
+   1,
+   0,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 72
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   0,
+   15,
+   12,
+   0,
+   0,
+   12
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 2)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 73
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   1,
+   0,
+   12,
+   1,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 0)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 74
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   1,
+   10,
+   0,
+   0,
+   10,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 1)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 75
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   8,
+   0,
+   10,
+   8,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 0)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 79
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   8,
+   15,
+   0,
+   0,
+   15,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 1)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 104
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   10,
+   0,
+   1,
+   10,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 0)": 10
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 91
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   10,
+   8,
+   0,
+   0,
+   8,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 1)": 8
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 102
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   12,
+   0,
+   15,
+   12,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 0)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 53
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   12,
+   1,
+   0,
+   0,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 78
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   15,
+   0,
+   8,
+   15,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 0)": 15
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 96
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   0,
+   10,
+   15,
+   12,
+   0,
+   0,
+   12,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 6,
+  "cost": 12,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(3, 1)": 12
+  },
+  "m_star_nsites": 2,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 12,
+    "class_id": 95
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   1,
+   0,
+   0,
+   1,
+   0,
+   0,
+   0,
+   10
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 10,
+   "(3, 2)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 52
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   1,
+   0,
+   0,
+   12,
+   11,
+   0,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 10,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 105
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   1,
+   0,
+   8,
+   0,
+   0,
+   8,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 10,
+   "(3, 0)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 106
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   1,
+   0,
+   12,
+   0,
+   5,
+   12,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 13,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 10,
+   "(3, 0)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 107
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   12,
+   11,
+   0,
+   12,
+   0,
+   0,
+   0,
+   1
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 3,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 1,
+   "(3, 2)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 111
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   12,
+   11,
+   0,
+   15,
+   13,
+   0,
+   0,
+   12
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    2
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 13,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     2
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 1,
+   "(3, 2)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 112
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   12,
+   11,
+   10,
+   0,
+   0,
+   10,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 0,
+    "beta": 5,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 1,
+   "(3, 0)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 110
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   0,
+   12,
+   11,
+   15,
+   0,
+   9,
+   15,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    1
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     1
+    ],
+    "alpha": 12,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 11,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 9,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 2)": 1,
+   "(3, 0)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 98
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   0,
+   0,
+   0,
+   0,
+   10,
+   8,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 11,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 10,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 8,
+   "(3, 0)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 83
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   0,
+   0,
+   0,
+   15,
+   0,
+   0,
+   15,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 14,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 15,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 8,
+   "(3, 1)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 47
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   0,
+   0,
+   2,
+   0,
+   1,
+   10,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 2,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 10,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 8,
+   "(3, 0)": 10
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 92
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   8,
+   0,
+   0,
+   4,
+   1,
+   0,
+   0,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 0,
+    "beta": 4,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 4,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 8,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 99
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   0,
+   5,
+   0,
+   0,
+   15,
+   12,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 7,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 15,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 12,
+    "beta": 8,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 12,
+   "(3, 0)": 12
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 108
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   0,
+   5,
+   0,
+   1,
+   0,
+   0,
+   1,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 0,
+    "beta": 9,
+    "types": "OD",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 1,
+    "beta": 12,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 1,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 12,
+   "(3, 1)": 1
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 109
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   0,
+   5,
+   3,
+   0,
+   8,
+   15,
+   0,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    2
+   ],
+   [
+    4,
+    0
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 3,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     2
+    ],
+    "alpha": 8,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     0
+    ],
+    "alpha": 15,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 12,
+   "(3, 0)": 15
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 88
+   }
+  ]
+ },
+ {
+  "kind": "alpha",
+  "alpha": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   10,
+   12,
+   0,
+   5,
+   6,
+   8,
+   0,
+   0,
+   8,
+   0
+  ],
+  "active_sites": [
+   [
+    1,
+    1
+   ],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    0
+   ],
+   [
+    2,
+    2
+   ],
+   [
+    3,
+    0
+   ],
+   [
+    3,
+    1
+   ],
+   [
+    4,
+    1
+   ]
+  ],
+  "n_active": 7,
+  "cost": 14,
+  "sites": [
+   {
+    "site": [
+     1,
+     1
+    ],
+    "alpha": 1,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     1,
+     2
+    ],
+    "alpha": 10,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     0
+    ],
+    "alpha": 12,
+    "beta": 15,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     2,
+     2
+    ],
+    "alpha": 5,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     0
+    ],
+    "alpha": 6,
+    "beta": 0,
+    "types": "DO",
+    "cost": 2,
+    "h": 0,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     3,
+     1
+    ],
+    "alpha": 8,
+    "beta": 10,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   },
+   {
+    "site": [
+     4,
+     1
+    ],
+    "alpha": 8,
+    "beta": 1,
+    "types": "MM",
+    "cost": 2,
+    "h": 1,
+    "flip_pen": 6
+   }
+  ],
+  "m_star": {
+   "(1, 2)": 10,
+   "(2, 0)": 12,
+   "(3, 1)": 8
+  },
+  "m_star_nsites": 3,
+  "children": [
+   {
+    "flips": [],
+    "b_weight": 14,
+    "class_id": 100
+   }
+  ]
+ }
+]

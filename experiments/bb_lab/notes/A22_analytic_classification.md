@@ -130,10 +130,111 @@ accounting. This is the certificate-compression target of the moonshot
 achieved at the numeric level; Lean feasibility now looks *plausible*
 rather than aspirational.
 
-## 2. Session log
+## 2. Phase 1 — delta-side structure (2026-07-22)
 
-- 2026-07-22: fibering ansatz drafted; Phase-0 script written and ALL
-  PASS on first complete run (one loader fix for the completion-marker
-  line). Next: Phase 1 — analytic structure of the 94 α-classes
-  (m-preimage smallness, Galois/Φ symmetry, orbit reduction of the
-  sweep 16,384 → ~10²), then the Lean-architecture assessment.
+`scripts/a22_delta_structure.py`, `scripts/a22_emit_dataset.py`;
+dataset `data/a22/alpha_classes_full.json` (the canonical per-class
+record: α, active sites, per-site types/costs, m*, flip-children,
+file-class match — all 113 matched).
+
+**P1 (m-smallness).** Every light α = Ãm for an m with ≤ 3 sites
+(min over the 16 η₀-line preimages): histogram {1: 3, 2: 41, 3: 50}.
+So the small stratum is literally "boundaries of site-support-≤3
+δ-data" — the SAT-observed coset minima {1,2,3} explained.
+
+**P2 (geometry).** 94/94 active sets ⊆ supp(m*) + Ā-triangle. m*
+values are mostly μ₅ (profiles MMM:50, MM:35, DM:6, D:2, M:1).
+
+**P3 (symmetry).** No Galois site-symmetry exists (correct in
+hindsight: the F₂-classes are Galois-stable; α-coordinates are merely
+covariant). The Φ-involution acts on δ-data as
+**α ↦ ζ^{2i(g)}·Frob²(β′)** (fiber conjugation + x-twist + block
+swap; 75 translated forms all verified to permute the 94 reps).
+Orbits: 94 → 55 families (16 fixed + 39 pairs).
+
+**P4 (|S| structure).** Light α classes: |S| ∈ {3: 3, 5: 21, 6: 32,
+7: 38} — none at 1, 2 (⟹ d = 6 analytic, see below) and none at 4
+(cost phenomenon, certified by the sweep).
+
+**P5 (sweep bookkeeping).** Special subsets (nonzero kernel): 9,235
+of 16,384, by size {3: 15, 4: 180, 5: 945, 6: 2830, 7: 5265}; kernel
+dims {1: 6680, 2: 2250, 3: 290, 4: 15}. The 15 special |S|=3 subsets
+are EXACTLY the translates of the Ā-triangle; its kernel line's three
+μ₃-cosets give the |b|=6 class (c ∈ μ₅) and the two (D,D)³ |b|=12
+classes (c in the ω/ω²-cosets) — the minimum-weight geometry is
+completely forced.
+
+**Line-profile collapse (verified).** Site types are governed by the
+μ₃-character δ ↦ δ⁵: along a kernel line c·v the whole type vector
+shifts uniformly by c⁵. Hence each kernel line needs only 3 cost
+evaluations (μ₅-scalars are z-translations). Total cost evaluations
+across all special kernels: **568,905**.
+
+## 3. The classification tree (complete, all counts close)
+
+| stratum | #α | children (|b|: count each) | classes |
+|---|---|---|---|
+| pure-h (α=0, |h|=1) | — | 10: 1 | 1 |
+| |S|=3, cost 6, |m*|=1 (triangle, c∈μ₅) | 1 | 6: 1, 12: 3 | 4 |
+| |S|=3, cost 12, |m*|=1 (triangle, ω-cosets) | 2 | 12: 1, 14: 3 | 8 |
+| |S|=5, cost 10, |m*|=2 | 6 | 10: 1 | 6 |
+| |S|=5, cost 12, |m*|=2 | 9 | 12: 1, 14: 1 | 18 |
+| |S|=5, cost 14, |m*|=2 | 6 | 14: 1 | 6 |
+| |S|=6, cost 12, |m*|∈{2,3} | 22 | 12: 1 | 22 |
+| |S|=6, cost 14, |m*|=3 | 10 | 14: 1 | 10 |
+| |S|=7, cost 14, |m*|=3 | 38 | 14: 1 | 38 |
+| **total** | 94 | | **113** |
+
+(|b| totals: 6 → 1, 10 → 7, 12 → 36, 14 → 69 ✓ = the file. The 19
+near-kernel classes = exactly the flip-children with excess > 0.)
+
+**Analytic bonus: d(im ∂₂) = 6 with forced geometry.** |S| ≤ 2 has no
+special subsets (120 tiny full-rank certificates), so nonzero light
+means pure-h (weight 10) or |S| ≥ 3 (cost ≥ 6); the |S| = 3 minimum
+is attained only on Ā-triangle translates, kernel = the Ãm line
+(m = δ-monomial), i.e. the minimum-weight codewords are exactly the
+∂₂(fiber-monomial) family with ε-optimal dressing.
+
+## 4. Lean proof architecture for `LightClassification` (assessment)
+
+The 2⁷⁵ Prop reduces to, in order:
+
+- **L1 (algebra):** the fibering iso F₂[G] ≅ F₂[Z₁₅] × GF16[Z₁₅]
+  and the three decomposition identities (u_ε = Āf_ε, v_ε = x̄u_ε,
+  δ-transfer via τ⋆Ã = B̃ — the last is a single finite convolution
+  identity). GF16 can be avoided entirely: δ-parts are F₂⁴-vectors
+  (reduction mod the quartic q(z)), all maps F₂-linear; the "GF16
+  linear systems" become F₂ matrices of 4× the dimensions.
+- **L2 (finite):** the 32-entry weight table; the per-site cost/flip
+  table (6 cases).
+- **L3 (arithmetic):** weight ≤ 14 ⟹ ≤ 7 active sites (each ≥ 2).
+- **L4 (rank certificates):** the 16,384 subset systems — Gaussian
+  pivot certificates exactly as in the shipped `KernelCert.lean`
+  pattern (each ≤ 64×28 over F₂ after the 4× blowup); optionally 15×
+  reduced by one translation-equivariance lemma to 1,096 orbits.
+- **L5 (kernel dispositions):** per special subset, kernel basis cert
+  + 568,905 line-coset cost evaluations (each: 15 site-costs of an
+  explicit vector pair, sum, compare 14) — packed-table
+  decide/native_decide chunks; same order as the Stage-4/5 sweep
+  engineering that already shipped.
+- **L6 (glue):** the 94+1 survivors → flip-children → identification
+  with the 113 tabulated `repChain` reps (emitted decide tables), and
+  the translation-orbit walk (`weight_floor_translate1_reduce`
+  machinery already exists on the branch).
+
+Verdict: **full kernel-checked LightClassification is
+engineering-feasible** — no SAT, no 2⁷⁵ enumeration, total obligation
+mass ≈ 6·10⁵ tiny checks + 1.6·10⁴ pivot certs, comparable to the
+(M)-route sweep obligations already built in Stage 4/5. This answers
+the moonshot's reachability question positively at the architecture
+level; the remaining work is an emitter + a Lean statement layer
+matching `Defs.lean` conventions (session 2).
+
+## 5. Session log
+
+- 2026-07-22: fibering ansatz drafted; Phase-0 script ALL PASS on
+  first complete run (one loader fix). Phase 1: m-smallness, Φ-action
+  on α, triangle geometry, line-profile collapse, dataset emitted
+  (`data/a22/alpha_classes_full.json`), obligation counts computed.
+  Next session: Lean statement layer + emitter prototype (own
+  worktree, NOT a15-m-kernel-route), starting from L1/L2.
