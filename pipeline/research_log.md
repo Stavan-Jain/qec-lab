@@ -13,6 +13,33 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — a21-analytic-base-floor (A21 session 1) — partial —
+  **Complete analytic proof (math level) of `LogicalFloor 8` for the
+  [[150,8,8]] f2a6f17e base** — the ≥ 8 half of d(base) = 8, previously
+  SAT-only (CaDiCaL UNSAT@7), now a solver-free split map with every
+  residue a fixed instance table.  Ingredients found: (i) the code is a
+  *twisted self-pairing* — an involutive automorphism ψ with
+  B = xy⁶·ψ(A) yields a chain symmetry Φ swapping the split (a,b)→(b,a),
+  halving the work; (ii) a **y-span lemma** (rows of A⋆T under
+  A = 1+x+y satisfy a 1-step recurrence; block analysis vs B's row-span
+  6/min-gap 2) kills (1,1),(1,3),(1,5) uniformly with no censuses;
+  (iii) μ(Ann) = 40 exactly (single shared F₁₆ orbit; all 15 nonzero
+  annihilator elements are translates of the trace idempotent, weight
+  5·8); (iv) the (3,3) crux dies by transversality (D2 forces B+t to
+  hit each A-copy once) + an **overlap lemma** (mult-≥3 values of
+  d(A⊖B) = dA∪dB exactly) localizing both sides to
+  {±A+t}×{±B+s}, with the 3 non-generator combos killed by row-gap
+  invariants of A⊕B/B⊖A/A⊖B — the only weight-6 cycles are the 75
+  generator columns; (v) (2,2)/(2,4) by D2-pigeonholes + word-metric
+  spread bounds (Lemma W: wt(P⋆T) = 3|T|−2E+4N for Sidon P).  Numeric
+  falsify-first census independently re-derives UNSAT@7.  NOTE: the
+  code is OUTSIDE the A16 class ((iii) fails: A = 1+x+y is monomial in
+  both axes), so this is also the first floor proof for a
+  doubly-monomial neighbor-family instance, and the first past-2w depth
+  rung (T5) executed anywhere.  Status partial only because the Lean
+  layer is unstarted (plan written; est. 2–4 sessions).
+  [details](../experiments/bb_lab/notes/A21_analytic_base_floor.md)
+
 - 2026-07-22 — a22-light-classification-fibering (A22 session 1) — partial —
   **The 9.6 h SAT enumeration behind `LightClassification` ([[150,8,8]]
   f2a6f17e, 113 light-boundary classes) is re-derived in ~2 min of exact
