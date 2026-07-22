@@ -13,6 +13,25 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — a22-light-classification-fibering (A22 session 1) — partial —
+  **The 9.6 h SAT enumeration behind `LightClassification` ([[150,8,8]]
+  f2a6f17e, 113 light-boundary classes) is re-derived in ~2 min of exact
+  GF(16) linear algebra**, via a new z = y³ CRT fibering:
+  F₂[Z₅×Z₁₅] ≅ F₂[Z₁₅] × GF(16)[Z₁₅] with an exact 32-entry site-local
+  weight table, the ε-side a FREE coordinate (Ā invertible downstairs),
+  and the δ-side a single-character-check code with transfer τ⋆Ã = B̃.
+  Weight ≤ 14 rigorously forces ≤ 7 active sites; sweeping all 16,384
+  site-subsets (Gaussian kernels) + finite ε-flip accounting reproduces
+  the 113 classes EXACTLY. Structure corollaries: every light δ-part is
+  Ãm with |supp m| ≤ 3; the near-kernel stratum = small configs + one
+  N-fiber ε-flip (coset minima 31–33 explained); minimum weight d = 6
+  forced on Ā-triangle translates via a μ₃-coset trichotomy; Φ acts on
+  δ-data as ζ^{2i}·Frob² block swap (94 α-classes → 55 families). Lean
+  architecture assessed feasible: ~6·10⁵ tiny cost checks + 1.6·10⁴
+  pivot certificates (KernelCert pattern), no SAT, no 2⁷⁵ statement.
+  Status partial only because the Lean layer is unstarted (session 2).
+  [details](../experiments/bb_lab/notes/A22_analytic_classification.md)
+
 - 2026-07-22 — bravyi360-m12-certified (A19 §8) — success —
   **Certified d ≥ 12 for Bravyi's [[360,12,≤24]]** via the A17/A20
   (M)-kernel pipeline retargeted at the y-deck: exhaustive census of
