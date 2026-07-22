@@ -418,6 +418,21 @@ lemma (row recurrence — the only genuinely new framework piece);
 translation-normalized finite sweeps (the (3,3) census is 900
 translation classes — kernel-decidable with the coset trick).
 
+**Two-stage discharge option (recommended).**  Stage A (engineering
+leaf, ~1 session): translation-normalize (`translate1` +
+`bbBoundary1Fn_translate1` already in BBSmallCycle), then per split use
+the coset structure: the solution set of `A⋆u_R = c` is
+`u₀(c) + Ann(A)` with `|Ann(A)| = 16`; provide the particular-solution
+matrix and the 4-element kernel basis as data tables, certify kernel
+completeness via the `KernelCert` Gaussian-pivot pattern (already in
+this instance directory!), and `native_decide` the ≈2,701-class (3,3)
+sweep + the smaller splits.  This makes `logicalFloor_8` sorry-free
+quickly — discharging one of the three hypotheses of
+`cover300_pauli_distance_eq_16_of_classification` — and the analytic
+§3 arguments then replace the sweep leaf at leisure (exactly the
+gross-proof floorOK staging).  Stage B (analytic flip): §4 items
+(i)–(v).
+
 Proposed lemma decomposition (bottom-up):
 1. `parity_even`: ε as a `ZMod 2`-algebra hom; cycles have
    |u_L| ≡ |u_R|.  (BBSmallCycle may already have the pattern.)
