@@ -101,8 +101,8 @@ Rung-2 template ledger for certified d(Y8) = 20 (target m = 2d₁ = 20):
 | `LogicalFloor 10` at Y4 | **DONE (solver-grade)** — the d₁ ladder's UNSAT@9 over all 25 orbit reps |
 | `DeckTrivialOnH1` | **DONE** — Bezout witness `data/a20/bezout_y_18x8.json`, dischargeable via `deckTrivial_of_bezout` |
 | τ-tightness (upper bound) | **DONE** — verified weight-20 witness `data/a20/y8_weight20_witness.npy` |
-| `DangerousFloorNZ 20` | open — (M)@20 census over Y4: light-stabilizer classification to weight 19, SAT-assisted + m-rungs |
-| `SeamCosetFloor 20` | open — the hard item; first live (R)-tower consumer of the A13 transport machinery (odd part Z₉ ⇒ F₂/F₄/F₆₄ components) |
+| `DangerousFloorNZ 20` | **floors DONE, exhaustiveness pending** — census (`a20_m_census.py`): bands 2–16 closed (469 classes: 1×w6, 6×w10, 33×w12, 54×w14, 375×w16; **no weight-8 stabilizers** — gross's Prop-10 gap echoed; µ(Y4) = 6); band 18 at 1,186+ classes, still enumerating. Per-class fiber-pinned UNSAT floors (`a20_m_floors.py`): **all 1,655 censused classes certified in ~17 s total, 0 SAT hits** — incl. the hexagon m ≥ 7 in 9 s (the flagged analytic-tail risk, retired). Remaining: band-18 UNSAT close-out + floors re-run on stragglers |
+| `SeamCosetFloor 20` | open — the last obligation; first live (R)-tower consumer of the A13 transport machinery (odd part Z₉ ⇒ F₂/F₄/F₆₄ components) |
 
 Also banked: d₀ = 6, d₁ = 10 exact; the rung-1 wall-attaining cell (A17
 §8b); `bocksteinVanishes_of_orderFourLift` applies at both rungs (ZMod

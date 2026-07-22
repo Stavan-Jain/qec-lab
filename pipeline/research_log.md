@@ -13,6 +13,25 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — a20-dangerous-floor-certified (A20) — success — **The
+  (M)@20 dangerous floor of the [[288,8,20]] tower is certified over the
+  full census, and the flagged analytic-tail risk is retired.** Census
+  (`a20_m_census.py`, XOR-native, orbit-blocking, resumable): bands 2–16
+  CLOSED — 469 classes (1×w6 hexagon, 6×w10, 33×w12, 54×w14, 375×w16),
+  **no weight-8 stabilizers** (gross Prop-10's gap echoed at Y4) and
+  µ(Y4) = 6 certified; band 18 at 1,186+ classes, enumeration ongoing
+  (orbit-blocking clause load is the bottleneck — census redesign via
+  canonical-form constraints is the porting lesson for A19's (M)@24).
+  Floors (`a20_m_floors.py`): per-class fiber-pinned UNSAT — cover-cycle
+  XORs + p(v) = b pinned by 144 fiber XORs + signature-OR nontriviality +
+  cardinality on off-support fibers only; slice identity ⇒ |v| ≥ 20 over
+  b. **All 1,655 censused classes certified, 0 SAT hits, ~17 s of solver
+  time** — the hexagon's m ≥ 7 (deepest rung in the program) in 9 s.
+  IBM's MILP d = 20 independently corroborated on the dangerous side.
+  `DangerousFloorNZ 20` awaits only the band-18 UNSAT close-out; the
+  sole remaining rung-2 obligation is `SeamCosetFloor 20`.
+  [details](../experiments/bb_lab/notes/A20_ibm288_tower.md)
+
 - 2026-07-20 — a20-ibm288-tower-opened (A20, new) — success — **IBM's
   [[288,8,20]] is a gross-shaped all-(R) tower and the campaign to certify
   d = 20 is open.** Instance study (`scripts/a20_ibm288_tower.py`,
