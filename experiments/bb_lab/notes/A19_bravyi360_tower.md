@@ -181,16 +181,31 @@ order:
    re-rank; §8).** The pipeline retarget took one census run (227 s) plus
    seven floor queries (0.4 s). Note: the route runs entirely through the
    y-deck — BX (step 1) is redundancy, not a dependency.
-3. **(M)@24 census** at BY and BX (depth 23, week-scale): same pipeline,
-   deeper bands. A20's band data calibrates feasibility (no weight-8
-   stabilizers — the Prop-10 gap echoes; bands 2–16 closed in seconds once
-   pivot-certificates landed). Yields dangerous-floor-24-grade certificates
-   on both decks — everything but the doubly-old sector.
+3. **(M)@24 census** at BY and BX (depth 23): same pipeline, deeper bands
+   — with the **A22 cross-link (2026-07-22)**: A22's (ε,δ) CRT fibering
+   re-derived a 113-class enumeration in ~2 min that SAT took 9.6 h, and
+   BY carries the same ℤ₅ fiber (z = x⁶, `F₂[z]/(z⁵−1) ≅ F₂ × GF(16)`,
+   identical per-site weight table) — the census redesign A20's porting
+   lesson called for. Port caveat: A22's base ℤ₁₅ is odd/semisimple; BY's
+   base ℤ₆×ℤ₃ carries the ℤ₂ radical, so the ε-side needs the (1+s)-layer
+   engine (A5 E2 pattern), not A22's invertible-substitution shortcut.
+   Port opened same day (`a19_fibering.py`, §9). A20's band data
+   calibrates the SAT fallback (orbit-blocking clause load is its known
+   bottleneck).
 4. **Doubly-old sector ≥ 24** (moonshot, §4(iii)): sequence *behind* A20's
    SeamCosetFloor-20 trial (F₆₄ there, F₁₆ here); run the joint-support
    pilot (≥ 16–18) in parallel; port the pattern up-tower. The
    module-classification iso, when it lands, supplies the D⁴ ⊕ F₂⁴
-   statement for the Lean capstone.
+   statement for the Lean capstone. **A23 cross-links (2026-07-22)**:
+   (a) its instance's hard block and BY's both live over **F₁₆** (ℤ₅
+   fiber there, e = 15 here) — the idempotent/character-strata machinery
+   is being built in our field; (b) its reduction pattern — a fully
+   quantified SeamCosetFloor collapsed to one self-contained convolution
+   inequality `|A⋆f + e₀| + |B⋆f| ≥ 16` anchored on the kernel idempotent
+   — is the target shape for our sector floors; (c) **negative knowledge,
+   binding**: disjoint/fractional packing and region-parity certificate
+   families are REFUTED there with a sharp LP-gap (≈13.8 < 15) — do not
+   spend budget on packing certificates for A19's floors.
 5. **Lean staging** (parallel, engineering): BaseFloors certificates for
    GB/BX/BY (generator-ready; frames floor-bearing); named-hypothesis
    packaging of d = 8/12/12 (Z5Z15F2A6 model); **new post-transport item:**
@@ -292,3 +307,33 @@ so after the deep census (§6.3), only the doubly-old sector separates the
 program from full 24; (b) the census weight-gap (no w = 8) is now a
 three-instance pattern worth a lemma hunt (why do weight-3 mirrored pairs
 never produce weight-8 stabilizers?).
+
+## 9. (M)@24 census redesign: the A22 fibering port, session 1 (2026-07-22)
+
+`a19_fibering.py`. Setup: Z₃₀ = Z₅⟨z = x⁶⟩ × Z₆⟨v = x²⁵⟩ (CRT), base
+H = Z₆×Z₃ (18 sites), fiber Z₅; F₂[z]/(z⁵−1) ≅ F₂ × GF(16), A22's exact
+per-site weight table reused verbatim. Fibered polynomials:
+A = z⁴v³ + y + y², B = 1 + v + zv². Results:
+
+1. **Weight calculus verified**: 2,000/2,000 random stabilizers satisfy
+   |·| = Σ_sites W(ε,δ) on both blocks.
+2. **Operator components — inverted landscape vs A22** (their ε-side was
+   invertible, δ-side carried the kernel): here A_ε, B_ε have rank 12/18
+   (kernel dim 6 each — the Z₂ radical, as §6.3's caveat predicted), while
+   **A_δ and B_δ are BOTH invertible over GF(16)[H]**. Consequence: u_δ is
+   a free GF(16)[H] coordinate and v_δ = Φu_δ for the single fixed
+   transfer operator Φ := B̃Ã⁻¹ — the entire δ-side of the census reduces
+   to Φ's sparse-to-sparse behavior (the A22 m-site-theorem shape), and
+   the radical lives only in the small ε-side (18-dim F₂, kernels dim 6:
+   enumerable outright).
+3. **Census-through-the-lens calibration** (the 7 M12 classes + band-12/14
+   partials): light stabilizers are monomial-heavy — per-block site counts
+   ≈ block weight (hexagon 3+3; w10s split {4,6}; w14 strata 5–7 δ-sites
+   per block) — i.e. mostly cost-1 μ₅-monomial fibers, the rigidity a
+   classification tree wants.
+
+SAT-census status at retirement: bands ≤ 12 complete (7 + 42 classes),
+band 14 partial (89+), JSONL resumable as fallback
+(`data/a19/m12_census_classes.jsonl`). Next session: the Φ-sparsity
+classification tree (δ-active-site bounds from W ≥ 1 per site, ε-kernel
+enumeration for the radical layer) → analytic census to weight 23.
