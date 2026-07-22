@@ -13,6 +13,33 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — a23-analytic-seam-floor (A23, session 1) — partial —
+  **Every covering-style certificate for `SeamCosetFloor 16` of
+  f2a6f17e:y is refuted with exact numerics, but the whole Prop
+  collapses to one tight two-trinomial inequality.** Negative side (all
+  on the single G-orbit rep; ker ∂₂ = 15 translates of one weight-40
+  element, stab ⟨(1,3)⟩): complete w8-cycle census (exactly 75 = one
+  orbit of logicals, no w8 boundaries) ⟹ exact max disjoint
+  odd-pairing dual-detector packing = **10**; no S-orbit triple;
+  fractional packing LP = **13.70→13.84 under column generation** (< 15
+  needed) — a genuine binary-clutter covering gap; region-confined
+  parity floors cap at 12 (confinement kills dual cycles; bands < 8
+  rows carry none). Also: the spawn brief's "|seamC ζ| likely small"
+  premise is impossible (|seamC| ≥ 16 whenever the floor holds; actual
+  18/20), so the LightClassification triangle-reduction cannot close.
+  Positive side: ker(A⋆) = ker(B⋆) = ker ∂₂ (one F₁₆ block) ⟹ the seam
+  cosets are exactly the graph code {(β + A⋆f, B⋆f) : β ∈ ker∂₂∖0}
+  (seam offset satisfies the transfer relation t′ = 0 exactly), and by
+  orbit collapse **SeamCosetFloor 16 ⟺ ∀f: |A⋆f + e₀| + |B⋆f| ≥ 16**
+  (e₀ = the explicit weight-40 block idempotent; σ-symmetrizable to two
+  weight-3 trinomials). Lean bridge = 4 decide facts + seamC additivity
+  + kernel cert. Strata b ≤ 6 of the inequality verified exactly
+  (13.7M elements, 0 violations; b ≤ 5 has slack ≥ 4; **b = 6 is tight
+  with exactly 15 pairs at (10,6) = the SAT-witness G-orbit and nothing
+  else**); b = 7 + σ-side pending — would give a no-SAT verification.
+  8/8-split makes the parity lemma unnecessary.
+  [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)
+
 - 2026-07-22 — a20-seam-wall-and-fibering (A20) — partial — **The seam
   floor is FALSE as stated — the wall value appears in the seam — and the
   A22 fibering port validates on Y4 but its completeness sweep meets a
