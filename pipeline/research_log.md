@@ -13,6 +13,31 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-07-22 — a20-seam-wall-and-fibering (A20) — partial — **The seam
+  floor is FALSE as stated — the wall value appears in the seam — and the
+  A22 fibering port validates on Y4 but its completeness sweep meets a
+  measured obstruction.** (1) Seam: the 15 seam classes of the Y-tower
+  collapse to 2 G-orbits (12+3, both δ₂-injective); probe SAT@18 on class
+  0x1 — the seam-coset minimum sits at **18 = 2d₁ − 2, the wall value, at
+  rung 2 of the tower whose rung 1 attained the wall in d**. Not a d = 20
+  refutation (floor is sufficient-not-necessary); replaced by the
+  **lift-aware seam floor** (`a20_safe_m_floors.py`): coset-element census
+  ≤ 19 + per-element fiber-pinned lift queries (elements are auto-nontrivial
+  by δ₂-injectivity — no signature clause), running. (2) Fibering
+  (`a20_fibering.py`): z = x², G ≅ Z₉ fiber × Z₂×Z₄ local base; CRT
+  F₂×GF(4)×GF(64); 512-triple bijection + exact site-weight formula
+  verified; ε and δ₆₄ components invertible (augmentation = local-ring
+  criterion), **kernel localizes to the GF(4) component**; the frame
+  validates on ALL 1,655 census classes (0 mismatches). V7 obstruction,
+  measured: budget-19/8-sites kills A22's active-site lever (min site cost
+  1; 820 all-site classes), and the invertible GF(64) component removes
+  the overdetermination lever; W_min pre-filter cuts 16.7M → 1.19M outer
+  survivors but the inner GF(64)⁸ enumeration lacks a finite reduction so
+  far — the moonshot-grade residue. SAT census stopped at user request
+  (checkpoint intact, resumable); band-18 exhaustiveness remains open via
+  census-resume or the V7 residue.
+  [details](../experiments/bb_lab/notes/A20_ibm288_tower.md)
+
 - 2026-07-22 — a21-analytic-base-floor (A21 session 1) — partial —
   **Complete analytic proof (math level) of `LogicalFloor 8` for the
   [[150,8,8]] f2a6f17e base** — the ≥ 8 half of d(base) = 8, previously
