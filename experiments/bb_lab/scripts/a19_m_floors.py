@@ -128,10 +128,19 @@ def floor_query(task):
 
 
 def main():
+    global TARGET, CENSUS, RESULTS
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", type=int, default=6)
     ap.add_argument("--max-weight", type=int, default=10)
+    ap.add_argument("--target", type=int, default=12)
+    ap.add_argument("--census", default=None)
+    ap.add_argument("--results", default=None)
     args = ap.parse_args()
+    TARGET = args.target
+    if args.census:
+        CENSUS = OUT / args.census
+    if args.results:
+        RESULTS = OUT / args.results
 
     done = set()
     if RESULTS.exists():

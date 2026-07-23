@@ -25,7 +25,7 @@ BX (15,6)  --x-->  C  (30,6) = the Bravyi code
 |---|---|---|---|---|
 | GB | Z₁₅×Z₃ | [[90,8]] | **8 exact** | coset-SAT ladder, 35 orbit reps, 187 s (`a15_coset_distance`); witness support `[12,14,27,29,69,71,84,86]` |
 | BY | Z₃₀×Z₃ | [[180,8]] | **12 exact** | floor@11 all-UNSAT (35 reps, 3.1 h, `data/a19/by_floor11.log`) + weight-12 witness (`by_floor13.log`, class 0x10) |
-| BX | Z₁₅×Z₆ | [[180,8]] | **12 pending** (≤ 12 witness via ISD; floor@11: 14/35 reps banked all-UNSAT before session teardown, `data/a19/bx_floor11_partial.log`; targeted resume of the 21 outstanding reps queued) | `a19_lifts.py` ISD; floor run same protocol as BY |
+| BX | Z₁₅×Z₆ | [[180,8]] | **12 exact** (2026-07-22) | floor@11 all-UNSAT: 14/35 banked (`bx_floor11_partial.log`) + 21 resumed (`a19_bx_resume.py`, 4.1 h, `bx_floor11_resume.log`) + weight-12 ISD witness (`a19_lifts.py`) |
 | C | Z₃₀×Z₆ | [[360,12]] | **≥ 12 CERTIFIED (M12, 2026-07-22)**; ≤ 24 constructive | §3, §4, §8 |
 
 - GB is **not** Bravyi's bb_90 ([[90,8,10]] shares the frame and A; different
@@ -363,3 +363,14 @@ The analytic classification tree (the full A22-style proof-grade census)
 remains the moonshot follow-on; its two structural inputs (Φ-spectrum,
 ε-layer) are banked above, and the redesigned SAT census now provides the
 ground truth it must reproduce at every depth.
+
+**Census progress (2026-07-22, redesigned engine):** bands 2–20 ALL
+COMPLETE — per-band classes {6: 1, 10: 6, 12: 42, 14: 54, 16: 487,
+18: 1,649, 20: 6,071} (band 20 alone: 2.9 h; the old engine's projection
+for the same depth was multi-day). Band 22 in flight (raised cap; ~20k
+classes projected from the ~3.5×/band growth). **(M)@24 floors launched**
+over the 8,310 banked classes (`a19_m_floors.py --target 24`, m_req
+strata 2…9; the hexagon at m_req = 9 / bound 16 is the expected hard
+tail). Also closed same day: **d(BX) = 12 exact** (§1) — both n = 180
+bases now solver-certified at 12, making the §4 projection floor
+symmetric across decks.
