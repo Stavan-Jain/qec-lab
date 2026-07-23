@@ -704,3 +704,18 @@ what was tried and why it didn't work.
   ((w-1)/w)²·|G| for weight w (untested for w ≥ 4). Implemented as Tier-1
   feature `bb_lab.h2_minwt_formula` with 14 tests. Not a distance bound
   (per §6m); a positive structural identity. [details](attempts/bb_distance_conjecture_family_d_v3_h2_minwt_formula/result.md)
+
+- 2026-07-22 — A23 seam-coset floor (f2a6f17e:y session 2) — success —
+  `seamCosetFloor_16 : coverData.SeamCosetFloor 16` is a sorry-free Lean
+  theorem (branch `claude/a23-seam-transfer`): the CryptoMiniSat
+  XOR-native UNSAT@14 certificate (975.8 s + 6.85 GB DRAT) behind the
+  [[300,8,16]] safe floor is replaced by analytic certificates. Route =
+  the A22 CRT-fibering site sweep: δ-type of a 5-point z-fiber is a
+  function of Hamming weight alone, the ε-parity link decouples per
+  site, and the ≤7-active-site systems collapse to 16,084 one-mask
+  inconsistency certs + 300 RREF classification certs (3,000 reps, min
+  cost exactly 16, zero violations). One `native_decide` checks the
+  whole 32,768-subset table in ~100 s. With A21's `logicalFloor_8`, the
+  [[300,8,16]] distance theorem now rests on the single hypothesis
+  `LightClassification` (A22).
+  [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)

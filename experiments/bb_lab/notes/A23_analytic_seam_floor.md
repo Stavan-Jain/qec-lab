@@ -323,3 +323,130 @@ per-family lemmas.
 **Reachability:** good.  This no longer needs new mechanisms — the
 remaining risk is Lean-scale engineering of a 10⁸–10⁹-cell sweep (or
 the strata structure theorem removing it).
+
+## §9 SESSION 2 (2026-07-22): the A22-fibering site sweep — the inequality DISCHARGED
+
+**Headline: `seamCosetFloor_16 : coverData.SeamCosetFloor 16` is a
+sorry-free Lean theorem** (branch `claude/a23-seam-transfer`, worktree
+off `claude/a15-m-kernel-route` @ f9159e9).  Axioms: `{propext,
+Classical.choice, Quot.sound}` + named per-obligation `native_decide`
+axioms only.  The docket's CryptoMiniSat XOR-native `UNSAT@14` (975.8 s
++ 6.85 GB DRAT) is fully replaced by analytic certificates.  Route
+taken: the **A22 CRT-fibering site sweep** (the brief's "check FIRST"
+shortcut) — it worked on the first serious attempt and made both
+fallback routes (strata structure theorem, 260M-cell enumeration)
+unnecessary.
+
+### §9.1 The site reduction (`a23_site_sweep.py`, V0–V6 all PASS)
+
+Work in the z-fiber decomposition of `F₂[Z₅×Z₁₅]`: 15 **sites**
+`(x, y mod 3)`, 5-point fibers (`z = y³` cosets).  Three elementary
+facts collapse the final-form inequality:
+
+* **δ-type by weight alone.**  Under CRT `F₂⁵ ≅ F₂ × GF(16)`, the
+  δ-type of a fiber is a function of its Hamming weight:
+  `{0,5} → O`, `{1,4} → M`, `{2,3} → D`.  No GF(16) needed in Lean.
+* **Parity link** (the ε-identity `B̄ = x̄·Ā`): site parities of `A⋆f`
+  at `s` equal those of `B⋆f` at `s + x̄`; `e₀` is ε-free (fiber
+  weights 2×10, 4×5).
+* **Per-site cost bound**: parity-linked fibers of types `(t₁,t₂)`
+  weigh ≥ `c(t₁,t₂)` with `c` = the A22 cost table
+  (O,O)=0, (O,D)=2, (M,M)=2, (O,M)=4, (M,D)=4, (D,D)=4 — a 36-case
+  weight-arithmetic fact.  The ε-freedom (`Ā` invertible) makes the
+  bound exact (V4: 8/8 random `f` achieve it), but only `≥` is needed.
+
+Hence `|e₀+A⋆f| + |B⋆f| ≥ Σ_s c(type pair at s)`, and ≥ 8 active sites
+⟹ ≥ 16 for free.  The ≤ 7-active configurations are governed by the
+δ-data `w(f) ∈ F₂^120` (per-site mod-N coordinates of both blocks,
+B-side stored at the x̄-shifted site), which satisfies **64 affine
+relations** (null space of the linear part, rank 56 — includes the e₀
+offset constants).
+
+### §9.2 The sweep (`a23_wspace_sweep.py`)
+
+For each sitemask of ≤ 7 active sites (16,384 = all of C(15,≤7)):
+restrict the 64 relations to the 8·|S| on-site coordinates and solve.
+
+* **16,084 masks inconsistent** — every |S| ≤ 6 mask and 6,135 of the
+  |S|=7 masks.  So admissible configs have exactly 7 or ≥ 8 active
+  sites.  Certificate: one 64-bit row-combination mask each.
+* **300 masks consistent** (all |S| = 7), kernel dims k ∈ {0: 120,
+  4: 180} over F₂ beyond the trivial part → 3,000 quotient reps.
+* **min cost = 16, ZERO violations**; the f-space control sweep
+  (a23_site_sweep.py V6, with K₀ = 19-dim cost-invariant kernel =
+  span{fiber-N's} ⊕ ker ∂₂) reproduces identical counts.
+
+Python total ≈ 30 s.  (Bug caught: numpy-int64 `1 << i` overflow at
+bit 64 silently corrupted packed masks — force Python ints.)
+
+### §9.3 The Lean discharge (4 files, ~2,000 lines + 638 KB data)
+
+* `SeamSweepData.lean` (GENERATED, `a23_gen_seam_sweep.py --force`):
+  `e0mask`, the 15-entry seam dictionary (`dictGx/Gy/Fe`), the 64
+  relation masks + packed constants, and the certificate table —
+  `ROWSEL`/`CIDX` indexed by raw sitemask (32,768 entries, columnar
+  `Array ℕ` in 2,048-chunks; 4,096-chunks hit elaborator maxRecDepth),
+  cons-cert arrays `CPART/CK/CEX0–3/CFR0–3/CPOFF/CPIDX/CPSEL` (300
+  certs, 16,080 pivot rows).  Generator hard-asserts everything incl.
+  an independent verification pass mirroring the Lean checker.
+* `SeamFiber.lean`: fiber partition of `wt150`, parity link (basis
+  `native_decide` + `funLiftF2` lift), δ-types by weight, cost table,
+  per-site bound (`decide`), δ-coords, `wOf`, `weight_ge_cost_sum`.
+  Traps hit: `omega`/unifier whnf-ing through `fwt`-terms (fix: ℕ-level
+  wrapper lemma applied to abstract variables; `Nat.lt_succ_of_le`
+  instead of omega), `Equiv.sum_comp` needs term-mode (refine-unification
+  times out).
+* `SeamSweep.lean`: `evalMaskF` algebra (xor/add/smul/sum4), fold-XOR
+  expansion, `checkIncons`/`checkConsAt` checkers, **`incons_sound`**
+  (0 = 1 contradiction) and **`cons_sound`** — the RREF-certificate
+  argument via the residual `v := (w+part) + Σ tvec_c·extra_c`: v
+  satisfies the homogeneous relations, vanishes off-site (support),
+  at frees (δ-normalization), at pivots (`Finset.sum_eq_single` against
+  the pivot combination — no peel ordering needed) ⟹ `w` is the
+  `tvec`-repricing, cost checked by (c8) over all 16 τ's.
+  `table_coverage : ∀ S : Finset Sites, S.card ≤ 7 →
+  checkCertAt (maskNat S) = true` — ONE `native_decide` enumerating all
+  32,768 Finsets (≈ 100 s), plus `maskNat_testBit` decoding bits as
+  membership.  `sweep_bound`, `rels_hold` (affine split + 64×75 basis
+  check in closed sparse form `wLinPt` — evaluating `conv` on
+  `Pi.single` directly is a 260M-op trap; the closed form is 1.2M),
+  and **`core_ineq : 16 ≤ wt150 (e0f + conv a150 f) + wt150 (conv
+  b150 f)`**.
+* `SeamReduction.lean`: `seam_dict` (one `native_decide`, 15 nonzero
+  kernel patterns × 150 points through the real `coverData.seamC`),
+  `floor_of_dict` (graph-form chain rewrite + block-weight split +
+  translation collapse `translate (-ge)` into `core_ineq`),
+  `kerA_classify` dispatch (A21 row-combination certificates), the
+  zero-pattern boundary contradiction, and
+  **`seamCosetFloor_16 : coverData.SeamCosetFloor 16`**.
+
+Build times: data 25 s, fiber 12 s, sweep ≈ 120 s, reduction 13 s.
+
+### §9.4 Status of the A15 hypothesis set
+
+With A21's `logicalFloor_8` (shipped) and this, the `[[300,8,16]]`
+distance theorem `cover300_*_distance_eq_16_of_classification` now has
+a SINGLE remaining certificate hypothesis: `LightClassification`
+(A22's target).  Wiring `seamCosetFloor_16` into `Distance.lean` is
+deliberately left to the main session.
+
+### §9.5 What resisted / honesty notes
+
+* Nothing mathematical resisted this session — the fibering route
+  went through end-to-end.  The engineering traps (whnf blowups,
+  numpy shift overflow, elaborator recursion depth on 4k-element
+  array literals) are documented above and in the generator.
+* The b=6 tightness is respected: the 300 consistent certs contain
+  cost-16 reps (10 tight of 3,000); all checks are `≥`, never strict.
+* `sum_fin5_eq_card`, the 1024-pair per-site bound, δ-type bridges are
+  kernel `decide`; the heavy finite facts are `native_decide` — listed
+  by name in the axiom audit (§9.6).
+
+### §9.6 Axiom audit
+
+`#print axioms seamCosetFloor_16` = propext, Classical.choice,
+Quot.sound + native_decide obligations: coverA, coverData.{proj_fiber,
+proj_sec, push_A, push_B}, e0_fparity, kerElt_at_fc,
+kerElt_convA_pointwise, maskNat_testBit, parity_link_basis,
+pivOKA_holds, rels_base, rels_lin_basis, seam_dict, table_coverage.
+Zero sorries, zero linter suppressions.
