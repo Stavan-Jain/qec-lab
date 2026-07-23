@@ -174,7 +174,24 @@ def main():
     for cl in card.clauses:
         solver.add_clause(cl)
 
+    # resume: reblock previously-found elements (and count them)
     n_elts, n_lift_unsat, sat_hits, t0 = 0, 0, [], time.time()
+    if res_path.exists():
+        for line in res_path.read_text().splitlines():
+            row = json.loads(line)
+            wv = np.zeros(N1, dtype=np.uint8)
+            wv[row["w_support"]] = 1
+            for g in stab:
+                tv = translate1(wv, g)
+                solver.add_clause(
+                    [-w[q] if tv[q] else w[q] for q in range(N1)])
+            n_elts += 1
+            if row["lift"] == "UNSAT":
+                n_lift_unsat += 1
+            else:
+                sat_hits.append(row)
+        print(f"resumed: {n_elts} elements reblocked "
+              f"({n_lift_unsat} lift-UNSAT)", flush=True)
     while True:
         sat, model = solver.solve()
         if not sat:

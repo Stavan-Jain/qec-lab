@@ -189,8 +189,9 @@ def main():
                   + (f" wt {out['witness_weight']}" if out["verdict"] == "SAT"
                      else "") + f" ({out['secs']}s)", flush=True)
     log.close()
-    print("done — UNSAT everywhere ⟹ SeamCosetFloor 20 certified "
-          "(solver-grade) for all classes probed.", flush=True)
+    print("done — a class's floor is certified ONLY if its verdict above "
+          "is UNSAT (SAT = light element found; BUDGET = no evidence).",
+          flush=True)
 
 
 if __name__ == "__main__":
