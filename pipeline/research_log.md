@@ -123,6 +123,32 @@ what was tried and why it didn't work.
   (`weight6_cycle_is_boundary`, the §3.7 split map; two-stage discharge
   plan written).  [details](../experiments/bb_lab/notes/A21_analytic_base_floor.md)
 
+- 2026-07-22 — a21-analytic-base-floor (A21 session 2) — **success
+  (engineering grade)** — **`logicalFloor_8 : coverData.LogicalFloor 8`
+  is a THEOREM, sorry-free and axiom-clean** (standard three + named
+  `native_decide` obligations; QECLean `claude/a21-logical-floor`
+  commit `1a98a97`).  The weight-6 sorry closed by the stage-A
+  translation-reduced coset route: a cycle's `u_R` over a normalized
+  `u_L` lies in the 16-element coset `wAB⋆u_L + Ann(A)` (Ann(A) =
+  Ann(B), dim 4, certified by Gaussian pivot certificates), so five
+  `native_decide` sweeps over 16-candidate classes (5,625 × 16 for the
+  (3,3) crux, 2.5 min) kill splits (1,5)/(2,4)/(5,1)/(4,2)/one-sided
+  and classify weight-3 completions into the generator columns
+  `∂₂δ_t`.  One of the three hypotheses of
+  `cover300_pauli_distance_eq_16_of_classification` is now discharged;
+  the CaDiCaL UNSAT@7 certificate is replaced end-to-end.  **New
+  certificate form forced by a small negative discovery**: no-row-op
+  pivot orders (KernelCert shape) provably do NOT exist for full-torus
+  conv systems — every 4-cell free seed's peel closure stalls at ≤
+  10/75 cells (the A17 "orders always exist" experience is a
+  window-with-boundary artifact); the fix is the row-combination
+  certificate (store the RREF combination mask per pivot; check its
+  3-term adjoint row; peel by one sum_eq_single) — simpler in Lean than
+  the no-row-op peel and universally applicable.  Stage B (analytic §3
+  flip of the sweep leaves) remains optional and leaf-local;
+  Distance.lean wiring deferred to main-session review.
+  [details](../experiments/bb_lab/notes/A21_analytic_base_floor.md)
+
 - 2026-07-22 — a22-light-classification-fibering (A22 session 1) — partial —
   **The 9.6 h SAT enumeration behind `LightClassification` ([[150,8,8]]
   f2a6f17e, 113 light-boundary classes) is re-derived in ~2 min of exact

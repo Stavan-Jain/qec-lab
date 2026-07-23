@@ -153,6 +153,78 @@ with the correct values, margins hold).
 The full proof is written out in §3 below; the math for
 `LogicalFloor 8` is **complete at analytic grade** as of session 1.
 
+### 2026-07-22 session 2 — Lean stage A COMPLETE: `logicalFloor_8` sorry-free
+
+Charter executed: `weight6_cycle_is_boundary` discharged by the §4
+stage-A engineering route (translation-reduced coset sweeps).
+**`logicalFloor_8 : coverData.LogicalFloor 8` is now a theorem** on
+`claude/a21-logical-floor` (commit `1a98a97`), axioms = {propext,
+Classical.choice, Quot.sound} + named `native_decide` obligations; zero
+sorry, zero linter suppressions; statement byte-identical to session 1.
+
+**Architecture shipped** (five modules in `Z5Z15F2A6/`):
+
+| module | content | build cost |
+|---|---|---|
+| `BaseFloorData` (GENERATED) | wAB/wBA masks, z1–4 echelon kernel basis, fc1–4 = (4,11..14), pivListA/B (71 × (cell, row-mask)) | — |
+| `BaseFloorKernel` | 3-term conv evaluators, adj3 pairing + swap lemma, row-combination peel, `kerA_classify`/`kerB_classify`, A⋆wAB=B / B⋆wBA=A, conv-point/indicator lemmas | ~30 s |
+| `BaseFloorSweep` | S0–S2′ sweeps + (3,3) generator classification | 2:36 (S3 ≈ 1.6 s per t₁-slice, probed first) |
+| `BaseFloorChecks` | the four SmallCycleData obligations (split out of BaseFloor) | 5:13 (check_four) |
+| `BaseFloor` | support extraction, L/R split, normalization, coset lemmas, boundary transfer, 7-way split map, assembly | ~15 s |
+
+Generator: `scripts/a21_gen_basefloor_data.py` (numpy hard-asserts all
+tables + simulates the Lean `pivOK` Bool bit-for-bit + verifies all five
+sweep facts in exact quantifier semantics before writing; S3 fires at
+exactly 6 ordered slots = the generator columns, matching §3.7).
+
+**Negative result worth keeping (new certificate form forced).**  The
+KernelCert-style *no-row-op* pivot certificate (each check row hitting
+its pivot cell and no later pivot) **does not exist** for the full-torus
+systems `conv_A`/`conv_B`: the peel closure of *every* 4-cell free set
+stalls at ≤ 10 of 75 cells (20k random + structured seeds; the A-stencil
+closure is the 2-of-3 triangle closure on L-triples, which grows bounded
+staircases from finite seeds — a 5-cell x-ring would cascade, but 4
+frees never reach one).  The A17 experience that no-row-op orders
+"always exist in practice" is a **window-with-boundary phenomenon** —
+windows have corner seeds, closed tori do not.  Fix: the
+**row-combination certificate** — store per pivot `(j, w)` the RREF
+combination mask `w`; the checked condition is `y := conv P̃ w` (3-term
+adjoint form `adj3`) with `y j = 1` and `y = 0` on later pivots; peel =
+one `Finset.sum_eq_single` over `Σ_c (adj3 w) c · v c = Σ_r w r · (conv
+P v) r = 0`.  Always exists (it is RREF), and the Lean peel is *simpler*
+than the no-row-op version (no stencil-distinctness case analysis).
+Candidate lift for `docs/lean-patterns.md` §sweeps item 4.
+
+**Design decisions that paid off:**
+* Sweeps quantify over ALL `t`/`(t₁,t₂)` including degenerate values
+  (verified vacuous/true in numpy) — soundness passes raw support cells
+  with no side-hypothesis bookkeeping at the sweep boundary; the
+  distinctness that `conv_indicator₂/₃` genuinely need falls out of
+  `Finset.card_eq_two/three` extraction for free.
+* Function-level sweeps (Finset cards in the body) were affordable
+  (probe: 1.6 s per 1,200-class slice) — no packed-mask weight bridges
+  needed; the interpreted-`native_decide` Finset tax is acceptable at
+  75-cell scale.
+* One `case_leftk` lemma per split with a shared normalization preamble;
+  filter-set transfers stated with the RHS in *exact sweep syntax* and
+  closed by `filter_congr` + pointwise `rw` (defeq absorbs beta-redexes).
+
+**Traps hit (Lean):** (a) `rw [hcls]` with `kerA_classify`'s
+self-referential coordinates (`kerElt (v fc1) … = v`-shaped RHS
+mentioning `v`) mangles the goal — orient the filter-set equality so the
+rewrite runs `← hcls` on the kerElt side; (b) expected-type propagation
+pushes `base150Complex.C2` into `translate`/`Pi.single` instance
+synthesis — wrap witnesses in `show G150 → ZMod 2 from _`; (c) the
+`boundary2`-application defeq needs one bridged `rfl` lemma under a
+heartbeat bump (whnf through the structure literal + LinearMap coe);
+(d) `Finset.sum_eq_single` must be stated with the literal `f a` RHS
+first, then simplified — unifying against a pre-simplified RHS sticks.
+
+Remaining (optional, stage B): replace the sweep leaves by the §3
+analytic arguments at leisure — the assembly consumes only the sweep
+statements, so the flip is leaf-local.  Integration of `logicalFloor_8`
+into `Distance.lean` deliberately NOT done (main-session review gate).
+
 ---
 
 ## 3. The proof (analytic, complete) — d(f2a6f17e) ≥ 8 at chain level
@@ -407,7 +479,9 @@ Target Prop (exact): `coverData.LogicalFloor 8` in
   the weight-6 sorry (parity + strong floor + omega squeeze weight to
   exactly 6, then the classification).
 
-**BUILD GREEN (commit `c239d1f` on `claude/a21-logical-floor`)**:
+**BUILD GREEN (commit `c239d1f` on `claude/a21-logical-floor`)**
+*(superseded by session 2, commit `1a98a97`: the sorry is discharged —
+see the §2 session-2 log)*:
 `lake build …Z5Z15F2A6.BaseFloor` succeeds, 3361 jobs; the only sorry
 is `weight6_cycle_is_boundary` (line 114, `TODO(a21-w6)`).  All four
 bundle obligations verified — `check_four` (6.75M tuples) runs ~10 min
@@ -476,7 +550,20 @@ but the analytic route above is the target.
   overlap localization, σ pair tables) look portable to other
   neighbor-family BB codes — candidate generalization target for the
   A15 T5 depth program.
-* Lean: not started; est. 2–4 sessions for the analytic route.
+* **Lean: `logicalFloor_8` DONE at engineering grade (session 2,
+  commit `1a98a97`)** — sorry-free, axiom-clean, statement unchanged.
+  The weight-6 layer is discharged by the stage-A coset sweeps, not the
+  §3 analytic arguments; the analytic flip (stage B) is optional and
+  leaf-local.  What the *kernel/compiler* now verifies end-to-end:
+  parity, the ≤ 5 floor, the coset structure (rank certificates), and
+  the 5,625-class (3,3) classification — the CaDiCaL UNSAT@7
+  certificate is fully replaced for this hypothesis.
+* Honest caveat on grades: the sweeps are `native_decide` obligations
+  (trusting the Lean compiler), same trust class as the rest of the
+  instance directory; the §3 analytic route would move more of the
+  weight-6 layer to kernel-only checking.
 * Known correction during session 1: word-length constants (C0.5)
   were initially mis-computed by hand; all downstream margins
-  re-verified by BFS.  No other reversals.
+  re-verified by BFS.  No other reversals.  Session 2 added the
+  no-row-op-certificate impossibility (window-vs-torus) — a genuine
+  small discovery about certificate existence, not a reversal.
