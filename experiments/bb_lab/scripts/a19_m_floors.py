@@ -178,13 +178,11 @@ def main():
                       flush=True)
             print(f"  [{ok}/{len(tasks)}] w={out['w']} bound={out['bound']}"
                   f" {out['verdict']} ({out['secs']}s)", flush=True)
-    print(f"\nM12 floors (w <= {args.max_weight}): {ok} queries in "
+    print(f"\n(M)@{TARGET} floors (w <= {args.max_weight}): {ok} queries in "
           f"{time.time() - t0:.0f}s; SAT hits: {len(sat_hits)}", flush=True)
     if not sat_hits:
         print("ALL FLOORS CERTIFIED: every nontrivial cover logical with "
-              "p_y(v) a census-listed b has weight >= 12. With the b = 0 "
-              "stratum (A16, docstring) and d(BY) = 12 (projection bound): "
-              "certified d(C) >= 12.", flush=True)
+              f"p_y(v) a census-listed b has weight >= {TARGET}.", flush=True)
     log.close()
 
 

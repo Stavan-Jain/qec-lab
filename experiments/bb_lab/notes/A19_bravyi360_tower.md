@@ -374,3 +374,18 @@ strata 2…9; the hexagon at m_req = 9 / bound 16 is the expected hard
 tail). Also closed same day: **d(BX) = 12 exact** (§1) — both n = 180
 bases now solver-certified at 12, making the §4 projection floor
 symmetric across decks.
+
+### §9 session 2, continued: (M)@24 floors over bands ≤ 20 — ALL CERTIFIED
+
+`a19_m_floors.py --target 24` over the 8,310 banked classes: **all UNSAT in
+153 s, zero SAT hits** — including the six w = 10 classes (bound 12, ~10 s
+each) and the hexagon at m_req = 9 / bound 16, the deepest rung attempted in
+the program, in 27.5 s. The A20-calibrated "hard tail" essentially did not
+exist at n = 360 under fiber pinning. Combined with the b = 0 stratum (§8.3,
+which discharges at 24 via d(BY) = 12): once band 22 closes and its bound-0
+floors run, **the entire y-deck dangerous sector (p_y*[v] = 0) is certified
+≥ 24**. Sector ledger for full 24 after that point: new-y ✓, new-xy ✓
+(y-deck (M)@24); new-x proper — run the **symmetric x-deck census + floors
+over BX** (same scripts, BASE → (15,6), fiber pairs (a, a+15)) to lift it
+from 12 to 24; doubly-old — the sole remaining front (§4(iii), behind A20's
+seam trial). Run log: `data/a19/m24_floors_run1.log`.
