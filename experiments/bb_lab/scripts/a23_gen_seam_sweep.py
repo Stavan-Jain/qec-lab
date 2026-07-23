@@ -239,7 +239,9 @@ def fmt_nat_array(name: str, vals: list[int], chunk: int = 2048) -> str:
         names.append(cn)
         body = ",".join(str(v) for v in vals[ci:ci + chunk])
         parts.append(f"def {cn} : Array ℕ :=\n  #[{wrap(body)}]\n")
-    parts.append(f"def {name} : Array ℕ := " + " ++ ".join(names) + "\n")
+    lines = [" ++ ".join(names[li:li + 5]) for li in range(0, len(names), 5)]
+    app = ("\n    ++ ").join(lines)
+    parts.append(f"def {name} : Array ℕ :=\n  {app}\n")
     return "\n".join(parts)
 
 
@@ -377,10 +379,10 @@ def e0f : G150 → ZMod 2 := maskFun e0mask
 /-- Relation constants (bit `j` = the affine constant of relation `j`). -/
 def RELCONSTS : ℕ := {relconsts}
 """)
-    parts.append("\n/-- Inconsistency row-combination masks (64-bit), "
+    parts.append("\n/-- Inconsistency row-combination masks (64-bit),\n"
                  "indexed by sitemask; `0` = not an inconsistency cert. -/\n"
                  + fmt_nat_array("ROWSEL", rowsel))
-    parts.append("\n/-- 1-based consistent-certificate index by sitemask; "
+    parts.append("\n/-- 1-based consistent-certificate index by sitemask;\n"
                  "`0` = none. -/\n" + fmt_nat_array("CIDX", cidx))
     parts.append("\n/-- Consistent certs: particular solutions "
                  "(120-bit `w` masks). -/\n" + fmt_nat_array("CPART", cpart))
