@@ -705,6 +705,19 @@ what was tried and why it didn't work.
   feature `bb_lab.h2_minwt_formula` with 14 tests. Not a distance bound
   (per §6m); a positive structural identity. [details](attempts/bb_distance_conjecture_family_d_v3_h2_minwt_formula/result.md)
 
+- 2026-07-22 — A22 light-boundary completeness (f2a6f17e session 2) —
+  success — `lightClassification : LightClassification` is a sorry-free
+  Lean theorem (branch `claude/a22-light-classification`): the 9.6-hour
+  SAT enumeration-completeness verdict behind the [[300,8,16]] dangerous
+  floor is replaced by a CRT fibering (z=y³, w=y⁵:
+  F₂[Z₅×Z₁₅] ≅ F₂[Z₁₅] × GF(16)[Z₁₅]) — per-site 32-entry weight tables,
+  the free ε-coordinate (Ā invertible downstairs), the ≤-7-active-sites
+  bound, and a 16,384-subset GF(16) kernel sweep with row-combination
+  pivot certificates (per A21's closed-torus discovery) + ε-flip
+  accounting, reproducing the 113 classes. 3 standard axioms + 9
+  native_decide. Discharges the second of the [[300,8,16]] hypotheses.
+  [details](../experiments/bb_lab/notes/A22_analytic_classification.md)
+
 - 2026-07-22 — A23 seam-coset floor (f2a6f17e:y session 2) — success —
   `seamCosetFloor_16 : coverData.SeamCosetFloor 16` is a sorry-free Lean
   theorem (branch `claude/a23-seam-transfer`): the CryptoMiniSat

@@ -230,7 +230,113 @@ the moonshot's reachability question positively at the architecture
 level; the remaining work is an emitter + a Lean statement layer
 matching `Defs.lean` conventions (session 2).
 
-## 5. Session log
+## 5. Session 2 (2026-07-22): `lightClassification` PROVEN in Lean —
+## sorry-free, axiom-clean, ~14 min build
+
+**Headline: `LightClassification` is now a THEOREM** —
+`lightClassification : LightClassification` compiles on branch
+`claude/a22-light-classification` (worktree off `f9159e9`), zero
+sorries, `#print axioms` = {propext, Classical.choice, Quot.sound} + 9
+named `native_decide` obligations. The 9.6 h SAT-enumeration
+certificate hypothesis of PR #61 is replaced by an analytic,
+kernel-checkable proof.
+
+### The architecture as SHIPPED (diverges from §4's plan in 3 ways)
+
+1. **No GF(16), no CRT iso, no H-matrix anywhere.** δ-extraction is the
+   per-fiber F₂-map `dₙ = tₙ + t₄` (reduction mod `q(z)`), ε is the bit
+   sum, and the inverse is the *ring identity* `σbit` (`t₄ = ε + Σd`,
+   `tₙ = dₙ + t₄`) — the entire (ε,δ)↔fiber bijection is one 160-case
+   `decide` (`σbit_eps_delta`). The per-site weight/cost tables emerge
+   from σ + popcount (32-entry `W5TAB`, decide-checked); μ₅/M/D
+   taxonomy never appears.
+2. **Two reductions cut 16,384 subsets → 429 certificates**: (a)
+   supp-monotonicity ⟹ only *maximal* (size-7) subsets need
+   certificates; (b) Z₁₅ translation-orbit reduction (429 = 6435/15,
+   free action), realized in-proof by `gOfTau τ = (τ_i, 5·τ_b)` which
+   shifts sites with **zero fiber rotation** (`2·5τ_b ≡ 0 mod 5`), so
+   δ-data transports as a pure site permutation (`dU_translate`).
+   `SHIFT_ANS` (16,384-entry table) gives each ≤7-site mask its (τ, j).
+3. **Orthogonality via a transposed syndrome fold, not per-W basis
+   checks**: pivot functionals W (120-bit, RREF row-combinations of the
+   left-null-space of the δ-data map) are certified by
+   `xorFoldCols W = 0` — XOR of `COLPACK` columns (the *transposed*
+   basis-image matrix) at W's set bits — one 75-bit accumulator instead
+   of 75 parities per W. One semantic `native_decide` bridges `COLPACK`
+   (and `DGEN`, its transpose, used for the generator-preimage
+   identities `rowFold (pre) = gen`) to `deltaData ∘ ∂₂` on the
+   75-point basis; `funLiftF2` lifts to all boundaries.
+
+### Proof chain (9 new Lean files + 2 generated)
+
+`LightSite` (site geometry: `siteEquiv` regroup, `recon_eq` σ-bijection
+reconstruction, `active_card_le` ≤7-sites, `flip_card_le` ≤1-outside-
+flip — the two card bounds are 1024-case fiber-pair decides + a generic
+`card·m ≤ Σ` count) → `LightCertData`/`LightTTData` (generated; 1,033
+KB + 422 KB, **1,024-entry chunked arrays** — flat `#[...]` literals at
+16K+ entries blow `maxRecDepth`/`isDefEq`; `NAME_CHUNKS : Array (Array
+Nat)` dispatchers fix it) → `LightLinear` (maskFun unpackers, `xorSelTab`
+generic fold + testBit-sum lemma, the 3 semantic natives, `packChain`
+round trip) → `LightPeel` (`peel_delta` + `classify`: y = span element
+of its own free-coordinate code `e < 2^{4k}`, via peel of `y + Σ eᵢ·genᵢ`
+whose ∂₂-preimage correction `f + Σ eᵢ·preᵢ` keeps everything a
+boundary's δ-data) → `LightChecks` (`subCert_all` over all 429 reps,
+`shift_all`, `tt_decode`, fuel-bounded `memberTT` binary search with
+one-sided soundness) → `LightSweep` (`checkA_all`: mincost prefilter
+completeness vs the emitted survivor lists; `checkB_all`: all
+(survivor, 2⁷ in-rep ε-patterns, ≤1 outside flip) light reconstructions
+∈ translate table; `expandMask`/`extractS` round trip) → `LightBridge`
+(`weight_eq_wtOf` semantic-weight = packed-table-weight, `wtOf_or_single`
++10 flip split, `nib_arith` mod-16 bit decomposition, translation
+transport) → `LightAssembly` (`rep_classify` per-rep core +
+`lightClassification`).
+
+### Generator (`a22_gen_light_classification.py`)
+
+Pure-F₂ pipeline in the exact Lean conventions (no GF(16)); emits
+COLPACK/DGEN/REP7/SHIFT_ANS/certificates (21,996 pivots, 2,028
+generators with ∂₂-preimages)/13,780 survivors/TT (8,475 sorted
+translate rows). Hard-asserts: rank(Φ)=56, dim V'⊥=64, per-rep RREF
+triangularity + kernel dims (histogram {0: 78, 4: 215, 8: 117, 12: 18,
+16: 1}), σ/weight-formula on random chains, **sweep soundness** (2,200
+distinct recon masks all ∈ TT) and **route completeness** (every one of
+the 8,415 distinct TT masks re-derived through the exact
+SHIFT_ANS→translate→sweep path the Lean proof takes).
+
+### Build costs (wall, M-series laptop, shared with A23)
+
+CertData 110 s (parse), TTData ~45 s, Site 26 s, Linear 43 s (3
+natives), Peel 20 s, Checks 58 s, **Sweep 498 s** (checkA+checkB
+natives — the dominant cost, ~44.5K reconstruction packs at 150
+function-evals each), Bridge 58 s, Assembly 9 s ≈ **14.5 min total**
+for the A22 layer.
+
+### Traps hit (for lean-patterns.md)
+
+- Array literals: >2K entries risk `maxRecDepth`; 16K entries hit
+  `isDefEq` timeouts. Chunk at 1,024 + `Array (Array Nat)` dispatcher.
+- `rcases h : boolExpr with _ | _` *substitutes* the scrutinee in the
+  goal — a following `rw [h]` fails with "pattern not found".
+- `Finset.filter`-instance whnf pits: mixing `set`-abstracted and raw
+  forms of the same filter in `simp only [...] at`-style Bool
+  extraction hit 2M-heartbeat `whnf` timeouts; explicit `by_cases` +
+  targeted `rw` of individual Bool atoms (plus `rw [← hMdef]` to
+  re-align `set`-atoms before `omega`) avoids it.
+- `ite` at function type: ascribe the else-branch
+  (`else (0 : G150 → ZMod 2)`) or `Pi.single` loses its family.
+- Renames on this toolchain: `Nat.testBit_eq_decide_div_mod_eq`,
+  `Finset.notMem_empty`, `Finset.card_insert_of_notMem`, `push Not`
+  (not `push_neg`).
+
+### Consequence
+
+The `_of_classification` theorems in `Distance.lean` can now consume
+`lightClassification` directly (NOT wired in this session per scope);
+the [[300,8,16]] hypothesis set drops to {SeamCosetFloor 16} once
+integrated. The moonshot's Lean-feasibility question is closed
+**positively and completely** for LightClassification.
+
+## 6. Session log
 
 - 2026-07-22: fibering ansatz drafted; Phase-0 script ALL PASS on
   first complete run (one loader fix). Phase 1: m-smallness, Φ-action
@@ -238,3 +344,7 @@ matching `Defs.lean` conventions (session 2).
   (`data/a22/alpha_classes_full.json`), obligation counts computed.
   Next session: Lean statement layer + emitter prototype (own
   worktree, NOT a15-m-kernel-route), starting from L1/L2.
+- 2026-07-22 (session 2): full Lean chain designed, generated, and
+  proven in one session — see §5. Branch
+  `claude/a22-light-classification`; generator
+  `scripts/a22_gen_light_classification.py`.
