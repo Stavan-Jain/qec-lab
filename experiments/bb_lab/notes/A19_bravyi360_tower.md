@@ -389,3 +389,32 @@ floors run, **the entire y-deck dangerous sector (p_y*[v] = 0) is certified
 over BX** (same scripts, BASE → (15,6), fiber pairs (a, a+15)) to lift it
 from 12 to 24; doubly-old — the sole remaining front (§4(iii), behind A20's
 seam trial). Run log: `data/a19/m24_floors_run1.log`.
+
+## 10. The near-flat reduction (2026-07-22): full certification hangs on one query
+
+Discovered while diagnosing the band-22 census slowdown (58 s/class at 50
+classes — weeks-scale; killed as superseded). **Claim.** Any nontrivial
+X-logical v of C with |v| ≤ 22 has at most 5 doubly-occupied y-fibers.
+*Proof.* m := #doubles; |p_y(v)| = |v| − 2m. If [p_y(v)] ≠ 0:
+|p_y(v)| ≥ d(BY) = 12 ⇒ m ≤ 5. If [p_y(v)] = 0 with b ≠ 0: b is a
+stabilizer of weight |v| − 2m ≤ 22; |b| ≤ 20 contradicts the certified
+(M)@24 floors (§9, bands ≤ 20 complete, 8,310/8,310 UNSAT); |b| = 22 forces
+m = 0. If b = 0: v = τ(u) with [u] ≠ 0 and |u| ≤ 11 — contradicts
+d(BY) = 12. ∎
+
+**Consequences.** (a) Band 22 of the census is NOT needed for
+certification (only for the analytic tree). (b) The x-deck symmetric run
+is NOT needed. (c) The doubly-old sector needs NO new mathematics for the
+solver-grade verdict: the single query
+
+    v ∈ ker H_Z(C), nontrivial, |v| ≤ 22, #doubly-occupied fibers ≤ 5
+
+(`a19_nearflat_gate.py`) being UNSAT — combined with §8/§9's banked
+certificates and the τ-lift witness — gives **d(C) = 24 EXACT at solver
+grade**; a SAT hit is an explicit sub-24 logical resolving d(C) < 24
+exactly. Feasibility caveat: the query sits near the free-UNSAT wall; the
+m ≤ 5 pin is the structural lever. Gates in flight (m ≤ 5 and the m = 0
+flat stratum); if the full gate stalls, decompose by stratum m ∈ {0..5}
+(each with |v| ≤ 22 and |p_y(v)| = |v|−2m ≥ 12 implicitly harder-pinned).
+The A24 moonshot question is now conditional on this query's tractability,
+not on missing theory.
