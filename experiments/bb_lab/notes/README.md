@@ -7,7 +7,7 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A24.**
+**Next free number: A25.**
 
 | # | Line | Note file(s) | Status |
 |---|------|--------------|--------|
@@ -35,6 +35,7 @@ A11 line, not A8).
 | A21 | Analytic base floor for f2a6f17e: LogicalFloor 8 via the class small-cycle machinery | `A21_analytic_base_floor.md` | active (spawned 2026-07-21) |
 | A22 | Analytic light-boundary completeness: LightClassification via σ-correlation/Fourier structure | `A22_analytic_classification.md` | **DONE** (2026-07-22): `lightClassification` sorry-free via CRT fibering (z=y³,w=y⁵), branch `claude/a22-light-classification` |
 | A23 | Analytic seam-coset floor: SeamCosetFloor 16 via parity + transport + difference sets | `A23_analytic_seam_floor.md` | **DONE** (2026-07-22): `seamCosetFloor_16` sorry-free via A22-fibering site sweep, branch `claude/a23-seam-transfer` |
+| A24 | Bravyi-360 y-deck safe-sector floor at 24 (p_y*≠0 sector; subsumes new-x + doubly-old), falsify-first + A23-fibering port | `A24_y_safe_floor.md` | active (spawned 2026-07-23; note lives on branch `claude/bravyi-y-deck-floor-bbf8cf`, not yet on main) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill
