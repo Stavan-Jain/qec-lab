@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Fetch MaxCDCL (MSE 2023 source artifact), apply the qec-lab patch,
 # and build both binaries:
-#   maxcdcl_stock   — pristine MSE 2023 solver (baseline)
-#   maxcdcl_release — qec-lab fork (-cost-step, -prime-vars)
+#   maxcdcl_stock — pristine MSE 2023 solver (baseline)
+#   tandem        — the qec-lab fork (-cost-step, -prime-vars)
 #
 # Usage:  ./build_maxcdcl.sh [target-dir]     (default: ./maxcdcl)
 # Needs:  curl, unzip, make, a C++ compiler, zlib headers.
@@ -28,7 +28,8 @@ if ! grep -q costStep code/core/Solver.h; then
 fi
 cd code/simp
 MROOT=.. make r >/dev/null
+cp maxcdcl_release tandem
 
 echo "built:"
-echo "  $(pwd)/maxcdcl_stock    (pristine MSE 2023)"
-echo "  $(pwd)/maxcdcl_release  (qec-lab fork)"
+echo "  $(pwd)/maxcdcl_stock  (pristine MSE 2023)"
+echo "  $(pwd)/tandem         (qec-lab fork)"

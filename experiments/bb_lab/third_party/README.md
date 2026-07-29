@@ -1,6 +1,12 @@
 # third_party — patched external solvers
 
-## MaxCDCL (qec-lab fork)
+## Tandem (the qec-lab MaxCDCL fork)
+
+**Tandem** — a tandem bicycle: two riders, the code's algebra and
+CDCL branch-and-bound, on one (bivariate) bicycle. The analytic layer
+verifies instance theorems (coset weight parity, anchor transversals)
+and hands them to the solver as search hints; neither rider gets
+anywhere alone at this speed.
 
 Upstream: MaxCDCL, Li–Coll–Li (MIT license), MaxSAT Evaluation 2023
 source artifact —
@@ -29,9 +35,17 @@ neither flag the fork is behaviourally identical to stock:
   never a constraint — cannot affect correctness.
 
 Measured (2026-07-29, Apple Silicon, naive BB distance WCNFs, under
-background load): `-cost-step=2` gives a consistent ~2–3× speedup
-(gross 5.4→1.9 s; [[168,·,14]] instances ~39→13–18 s); priming adds a
-little at n≥168; incumbent seeding is neutral at n≤168 (the descent
-phase warms the clause database, so cold-started proofs can lose what
-they save). See `scripts/fork_ab.py` for the harness that produced
-these numbers and asserts every distance against known values.
+background load; full table in `scripts/fork_ab.py` output):
+
+| code            | stock | step | step+prime | step+seed |
+|-----------------|------:|-----:|-----------:|----------:|
+| gross [[144,12,12]] | 5.48 | 1.80 | 1.99 | 3.51 |
+| [[150,8,12]]    |  7.80 | 3.22 | 3.42 | 3.36 |
+| [[168,6,12]]    |  7.67 | 3.69 | 3.44 | 4.16 |
+| [[168,·,14]] ×4 | 34–49 | 16–21 | 13–22 | 14–21 |
+
+`-cost-step=2` alone is a consistent **~2–3×**; priming is ±noise to
+mildly positive at n=168; incumbent seeding is neutral at these sizes
+(the descent phase warms the clause database, so cold-started proofs
+can lose what they save — its value thesis is n≥288). Every distance
+is asserted against known values by the harness.
