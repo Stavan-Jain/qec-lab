@@ -1,0 +1,4 @@
+bb_288 [[288,12,18]] — coarse strengthened instance, jobs=2
+[shard] k=12  classes=4095  orbits=155  initial d_ub=48  backend=cms  jobs=2
+[shard] probe improved d_ub → 18 (0.01s)
+[shard] probe at w ≤ 17: no improvement within budget (4.13s) → shard rounds
