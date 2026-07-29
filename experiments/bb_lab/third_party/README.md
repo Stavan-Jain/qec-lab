@@ -44,6 +44,21 @@ neither flag the fork is behaviourally identical to stock:
   branching phases, typically a known witness. Warm-starts the descent
   *without* cold-starting the clause database (the measured defect of
   plain UB seeding). Pure bias; cannot affect correctness.
+- **`-fiber-lb=path`** — the per-fiber lower-bound rounding transplant
+  (descent theory → BnB bound arithmetic; no clauses, no aux vars).
+  The certificate file carries a free-deck fiber pairing of the soft
+  vars, the class-indicator (a-var) ids, a per-class table of
+  certified base-coset floors, and the invariant-sector floor. At
+  each search node the solver computes, from fiber states alone,
+  min over the two completion types (σ-invariant / moving) of a
+  certified completion cost; reaching the incumbent fires a soft
+  conflict through the `UBconflictFlag`/`involvedLits` premise hook,
+  so the learned clause is valid *given the caller's theorem*.
+  Emitted by `bb_lab.maxsat_distance.emit_fiber_certificate` (all
+  structural premises asserted numerically per instance; floors
+  certified by base-code SAT). SOUNDNESS IS THE CALLER'S OBLIGATION —
+  a wrong table yields wrong answers (demonstrated in the toy
+  falsification test).
 
 Measured (2026-07-29, Apple Silicon, naive BB distance WCNFs, under
 background load; full table in `scripts/fork_ab.py` output):

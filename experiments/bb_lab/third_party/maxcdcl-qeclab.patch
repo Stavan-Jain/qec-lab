@@ -1,6 +1,6 @@
---- a/code/core/Solver.h	2023-05-31 02:13:50
-+++ b/code/core/Solver.h	2026-07-29 16:07:56
-@@ -498,6 +498,13 @@
+--- a/core/Solver.h
++++ b/core/Solver.h
+@@ -498,6 +498,32 @@
      
      /* OccLists<Lit, vec<softWatcher>, softWatcherDeleted> softWatches; */
      uint64_t hardWeight, solutionCost, totalWeight, UB;
@@ -11,10 +11,29 @@
 +    // occur. Default 1 = stock behaviour.
 +    int costStep = 1;
 +    void primeVar(Var v);   // qec-lab fork: branch-first hint (anchors)
++    // qec-lab fork: -fiber-lb — certified pushforward/fiber lower-bound
++    // pruning. The caller partitions the soft (qubit) vars into fibers
++    // (pairs) under a free deck involution and certifies: every
++    // solution either has all fibers even ("invariant") and costs
++    // >= fiberInvFloor, or has #odd fibers >= fiberFloorB[c] where c
++    // is the class read off the listed a-vars. Both facts enter the
++    // node lower bound arithmetically (no clauses, no aux vars); a
++    // bound conflict fires through the UBconflictFlag/involvedLits
++    // premise hook so the learned clause is valid given the caller's
++    // theorem. SOUNDNESS IS THE CALLER'S OBLIGATION: a wrong table
++    // yields wrong answers.
++    int fiberEnabled = 0, fiberK = 0, fiberInvFloor = 0;
++    vec<Var> fiberPairX, fiberPairY, fiberAVars;
++    vec<int> fiberFloorB;
++    uint32_t fbLastMask = 0, fbLastVals = 0;
++    int fbLastF = 0, fbValid = 0;
++    uint64_t fiberConfls = 0;
++    void fiberLoad(const char* path);
++    bool fiberSoftConflict();
      unsigned int weight;
      int instanceType, nbOriVars;
      int nbClauseReduce;
-@@ -1074,6 +1081,19 @@
+@@ -1074,6 +1100,19 @@
  inline int      Solver::nVars         ()      const   { return vardata.size(); }
  inline int      Solver::nFreeVars     ()      const   { return (int)dec_vars - (trail_lim.size() == 0 ? trail.size() : trail_lim[0]); }
  inline void     Solver::setPolarity   (Var v, bool b) { polarity[v] = b; }
@@ -34,12 +53,173 @@
  inline void     Solver::setDecisionVar(Var v, bool b) 
  { 
      if      ( b && !decision[v]) dec_vars++;
---- a/code/core/Solver.cc	2023-06-01 02:08:06
-+++ b/code/core/Solver.cc	2026-07-29 16:08:16
-@@ -4997,6 +4997,13 @@
+--- a/core/Solver.cc
++++ b/core/Solver.cc
+@@ -4151,11 +4151,155 @@
+ //     var_iLevel_inc=level_incs[level_incs.size()-1];
+ //     return true;
+ // }
++
++// qec-lab fork: load the -fiber-lb certificate file. Format:
++//   p fiberlb <k> <npairs> <invFloor>
++//   a <k 1-based DIMACS a-var ids>            (class bit j = j-th id)
++//   f <2^k ints>                              (fiberFloorB, index = class)
++//   <npairs lines: "x y" 1-based DIMACS pairs>
++void Solver::fiberLoad(const char* path) {
++  FILE* f = fopen(path, "r");
++  if (f == NULL) {
++    printf("c WARNING! cannot open fiber-lb file %s\n", path); return;
++  }
++  int k, npairs; long invF;
++  if (fscanf(f, "p fiberlb %d %d %ld", &k, &npairs, &invF) != 3
++      || k < 0 || k > 20 || npairs < 1) {
++    printf("c WARNING! bad fiber-lb header\n"); fclose(f); return;
++  }
++  char tag[8];
++  if (fscanf(f, "%4s", tag) != 1 || tag[0] != 'a') {
++    printf("c WARNING! bad fiber-lb a-line\n"); fclose(f); return;
++  }
++  fiberK = k; fiberInvFloor = (int)invF;
++  fiberAVars.clear(); fiberFloorB.clear();
++  fiberPairX.clear(); fiberPairY.clear();
++  for (int j = 0; j < k; j++) {
++    int id;
++    if (fscanf(f, "%d", &id) != 1 || id <= 0 || id > nVars()) {
++      printf("c WARNING! bad fiber-lb a-var\n"); fclose(f); return;
++    }
++    fiberAVars.push(id - 1);
++  }
++  if (fscanf(f, "%4s", tag) != 1 || tag[0] != 'f') {
++    printf("c WARNING! bad fiber-lb f-line\n"); fclose(f); return;
++  }
++  for (int c = 0; c < (1 << k); c++) {
++    int v;
++    if (fscanf(f, "%d", &v) != 1) {
++      printf("c WARNING! bad fiber-lb table\n"); fclose(f); return;
++    }
++    fiberFloorB.push(v);
++  }
++  for (int i = 0; i < npairs; i++) {
++    int x, y;
++    if (fscanf(f, "%d %d", &x, &y) != 2
++        || x <= 0 || y <= 0 || x > nVars() || y > nVars()) {
++      printf("c WARNING! bad fiber-lb pair\n"); fclose(f); return;
++    }
++    fiberPairX.push(x - 1); fiberPairY.push(y - 1);
++  }
++  fclose(f);
++  fiberEnabled = 1; fbValid = 0;
++  printf("c fiber-lb: k=%d pairs=%d invFloor=%d\n", k, npairs, fiberInvFloor);
++}
++
++// qec-lab fork: the fiber/pushforward node bound. Every completion is
++// either invariant (all fibers even; cost >= max(fiberInvFloor,
++// trues + cost of closing half-open-true fibers even)) or moving
++// (#odd fibers >= fiberFloorB[class], each odd fiber holding >= one
++// true). If min over the two branches reaches UB, no completion can
++// improve the incumbent: fire a soft conflict through the
++// UBconflictFlag premise hook, supplying every assigned literal the
++// arithmetic consumed (falseLits already carries the assigned trues).
++bool Solver::fiberSoftConflict() {
++  if (!fiberEnabled || UB == 0) return false;
++  int64_t t = falseLits.size();
++  if (t >= (int64_t)UB) return false;      // stock check handles it
++  int odd_now = 0, oddable0 = 0, oddable1 = 0;
++  for (int i = 0; i < fiberPairX.size(); i++) {
++    lbool vx = value(fiberPairX[i]), vy = value(fiberPairY[i]);
++    if (vx == l_Undef && vy == l_Undef) oddable1++;
++    else if (vx == l_Undef || vy == l_Undef) {
++      if ((vx == l_Undef ? vy : vx) == l_True) oddable0++;
++      else oddable1++;
++    }
++    else if (vx != vy) odd_now++;
++  }
++  uint32_t mask = 0, vals = 0;
++  for (int j = 0; j < fiberK; j++) {
++    lbool va = value(fiberAVars[j]);
++    if (va != l_Undef) {
++      mask |= 1u << j;
++      if (va == l_True) vals |= 1u << j;
++    }
++  }
++  int Fb;
++  if (fbValid && mask == fbLastMask && vals == fbLastVals) Fb = fbLastF;
++  else {
++    Fb = INT32_MAX;
++    for (int c = 1; c < (1 << fiberK); c++)
++      if ((((uint32_t)c) & mask) == vals && fiberFloorB[c] < Fb)
++        Fb = fiberFloorB[c];
++    fbLastMask = mask; fbLastVals = vals; fbLastF = Fb; fbValid = 1;
++  }
++  int64_t mLB;
++  if (Fb == INT32_MAX) mLB = INT64_MAX;    // no consistent class
++  else {
++    int needOdd = Fb - odd_now;
++    if (odd_now == 0 && needOdd < 1) needOdd = 1;
++    if (needOdd < 0) needOdd = 0;
++    if (needOdd > oddable0 + oddable1) mLB = INT64_MAX;
++    else {
++      int extra = needOdd - oddable0;
++      if (extra < 0) extra = 0;
++      mLB = t + extra;
++    }
++  }
++  int64_t nodeLB;
++  if (odd_now > 0) nodeLB = mLB;
++  else {
++    int64_t iLB = t + oddable0;
++    if ((int64_t)fiberInvFloor > iLB) iLB = fiberInvFloor;
++    nodeLB = (mLB < iLB) ? mLB : iLB;
++  }
++  if (nodeLB < (int64_t)UB) return false;
++  // Premises: assigned-false fiber vars and assigned a-vars, as their
++  // currently-false literals (assigned-true fiber vars are softs and
++  // already sit in falseLits). Root-level (level 0) assignments are
++  // globally valid and omitted, matching the analyzer's convention.
++  for (int i = 0; i < fiberPairX.size(); i++) {
++    for (int s = 0; s < 2; s++) {
++      Var v = s ? fiberPairY[i] : fiberPairX[i];
++      if (value(v) == l_False && level(v) > 0 && !involved[v]) {
++        involved[v] = 1;
++        involvedLits.push(mkLit(v, false));
++      }
++    }
++  }
++  for (int j = 0; j < fiberK; j++) {
++    Var v = fiberAVars[j];
++    if (value(v) != l_Undef && level(v) > 0 && !involved[v]) {
++      involved[v] = 1;
++      involvedLits.push(value(v) == l_True ? mkLit(v, true)
++                                           : mkLit(v, false));
++    }
++  }
++  fiberConfls++;
++  UBconflictFlag = true; softConflictFlag = true;
++  return true;
++}
+ 
+ CRef Solver::lPropagate() {
+   CRef confl =  propagate();
+   if (confl != CRef_Undef || softConflictFlag)
+     return confl;
++  // qec-lab fork: certified fiber bound — checked only here (the main
++  // search's propagate site), whose soft conflicts are always consumed
++  // by analyzeSoftConflict; probe/lookahead/vivification contexts
++  // clear the flag without analysis and must not see fiber conflicts.
++  if (fiberEnabled && fiberSoftConflict())
++    return confl;
+   if (UB > 1 && UB == falseLits.size() + 1 && decisionLevel() < hardenLevel) {
+       harden();
+       confl =  propagate();
+@@ -4997,6 +5141,18 @@
  	      model.growTo(nVars());
  	      for (int i = 0; i < nVars(); i++) model[i] = value(i);
  	      //  softConflictFlag=true;
++	      // qec-lab fork: telemetry for killed/time-boxed runs — the
++	      // final stats line never prints there.
++	      if (fiberEnabled)
++	        printf("c fiber conflicts so far: %llu\n",
++	               (unsigned long long)fiberConfls);
 +	      // qec-lab fork: costs are ≡ (mod costStep) on these
 +	      // instances, so no model exists in (UB-costStep, UB);
 +	      // tighten the exclusive search bound by costStep-1. The
@@ -50,9 +230,20 @@
  	      if (UB==0)
  		return l_True;
  	      else if (infeasibleUB >= UB)
---- a/code/simp/Main.cc	2023-06-01 02:10:34
-+++ b/code/simp/Main.cc	2026-07-29 16:51:46
-@@ -135,6 +135,25 @@
+--- a/simp/Main.cc
++++ b/simp/Main.cc
+@@ -72,6 +72,10 @@
+ 	printf("c nbSimplifyAll         : %d\n", solver.nbSimplifyAll);
+ 	printf("c s_propagations        : %-12lld\n", solver.s_propagations);
+ 	printf("c s_cost_ratio          : %4.2f%%\n", solver.s_propagations * 100 / (double)solver.propagations);
++	// qec-lab fork: how often the certified fiber bound fired.
++	if (solver.fiberEnabled)
++	    printf("c fiber conflicts       : %llu\n",
++	           (unsigned long long)solver.fiberConfls);
+ 
+ }
+ #else 
+@@ -135,6 +139,31 @@
          IntOption    mem_lim("MAIN", "mem-lim","Limit on memory usage in megabytes.\n", INT32_MAX, IntRange(0, INT32_MAX));
          BoolOption   drup   ("MAIN", "drup",   "Generate DRUP UNSAT proof.", false);
          StringOption drup_file("MAIN", "drup-file", "DRUP UNSAT proof ouput file.", "");
@@ -75,10 +266,16 @@
 +            " branching phases (e.g. a known witness — warm-starts the"
 +            " descent without cold-starting the clause database)."
 +            " Pure search bias; cannot affect correctness.", "");
++        StringOption fiber_lb("MAIN", "fiber-lb",
++            "Certified fiber/pushforward lower-bound file (caller-"
++            "verified deck structure + per-class base-coset floors +"
++            " invariant-sector floor). Prunes nodes whose completions"
++            " provably cannot beat the incumbent. SOUNDNESS IS THE"
++            " CALLER'S OBLIGATION.", "");
  
          parseOptions(argc, argv, true);
          
-@@ -190,6 +209,12 @@
+@@ -190,6 +219,12 @@
  
          S.initUB = INT64_MAX;
          S.initLB = 0;
@@ -91,7 +288,7 @@
  
          int bestsol = 0; //0: no solution found, 1: MHS, 2: LS, 3: maxcdcl, 4: inputUB
  
-@@ -259,8 +284,14 @@
+@@ -259,8 +294,14 @@
          printf("c initial LB: %lld\n", S.initLB);
  
          lbool ret;
@@ -107,7 +304,7 @@
  
  
          if (S.verbosity > 0){
-@@ -287,6 +318,35 @@
+@@ -287,6 +328,41 @@
          S.parsing = false;
          S.setFrozenVars();
          S.eliminate(true);
@@ -140,6 +337,12 @@
 +                printf("c phase file: %d vars initialised\n", v_);
 +            }
 +        }
++        // qec-lab fork: certified fiber bound, loaded after
++        // simplification so nVars() is final (soft/fiber vars are
++        // frozen; eliminated a-vars stay l_Undef, which only weakens
++        // the class conditioning — sound).
++        if (strlen(fiber_lb))
++            S.fiberLoad(fiber_lb);
          double simplified_time = cpuTime();
          if (S.verbosity > 0){
              printf("c |  Simplification time:  %12.2f s                                       |\n", simplified_time - parsed_time);

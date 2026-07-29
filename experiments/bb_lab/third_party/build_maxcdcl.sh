@@ -27,6 +27,10 @@ if ! grep -q costStep code/core/Solver.h; then
     patch -p1 -d code < "$HERE/maxcdcl-qeclab.patch"
 fi
 cd code/simp
+# clean first: the patch changes the Solver class layout (Solver.h) and
+# the stock makefile's dependency tracking is not reliable across that —
+# stale objects from the stock build segfault at startup.
+MROOT=.. make clean >/dev/null 2>&1 || true
 MROOT=.. make r >/dev/null
 cp maxcdcl_release tandem
 
