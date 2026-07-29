@@ -51,8 +51,8 @@
  		return l_True;
  	      else if (infeasibleUB >= UB)
 --- a/code/simp/Main.cc	2023-06-01 02:10:34
-+++ b/code/simp/Main.cc	2026-07-29 16:08:43
-@@ -135,6 +135,14 @@
++++ b/code/simp/Main.cc	2026-07-29 16:51:46
+@@ -135,6 +135,25 @@
          IntOption    mem_lim("MAIN", "mem-lim","Limit on memory usage in megabytes.\n", INT32_MAX, IntRange(0, INT32_MAX));
          BoolOption   drup   ("MAIN", "drup",   "Generate DRUP UNSAT proof.", false);
          StringOption drup_file("MAIN", "drup-file", "DRUP UNSAT proof ouput file.", "");
@@ -64,10 +64,34 @@
 +        StringOption prime_vars("MAIN", "prime-vars",
 +            "Comma-separated 1-based DIMACS vars to branch on first,"
 +            " positive phase (symmetry-anchor hint).", "");
++        IntOption    init_lb ("MAIN", "init-lb",
++            "Caller-certified lower bound on the optimum (e.g. an"
++            " analytic/kernel-checked distance floor). Search stops as"
++            " soon as an incumbent reaches it. SOUNDNESS IS THE"
++            " CALLER'S OBLIGATION: a wrong (too high) bound yields a"
++            " non-optimal answer.", 0, IntRange(0, INT32_MAX));
++        StringOption phase_file("MAIN", "phase-file",
++            "File with a 0/1 string over DIMACS vars 1..n: initial"
++            " branching phases (e.g. a known witness — warm-starts the"
++            " descent without cold-starting the clause database)."
++            " Pure search bias; cannot affect correctness.", "");
  
          parseOptions(argc, argv, true);
          
-@@ -259,8 +267,14 @@
+@@ -190,6 +209,12 @@
+ 
+         S.initUB = INT64_MAX;
+         S.initLB = 0;
++        // qec-lab fork: caller-certified floor → the existing
++        // initLB→infeasibleUB machinery stops the search the moment an
++        // incumbent reaches the floor (composes with -cost-step: the
++        // parity shift encodes exactly the excluded gap).
++        if (init_lb > 0)
++            S.initLB = init_lb;
+ 
+         int bestsol = 0; //0: no solution found, 1: MHS, 2: LS, 3: maxcdcl, 4: inputUB
+ 
+@@ -259,8 +284,14 @@
          printf("c initial LB: %lld\n", S.initLB);
  
          lbool ret;
@@ -83,7 +107,7 @@
  
  
          if (S.verbosity > 0){
-@@ -287,6 +301,18 @@
+@@ -287,6 +318,35 @@
          S.parsing = false;
          S.setFrozenVars();
          S.eliminate(true);
@@ -97,6 +121,23 @@
 +                while (*p >= '0' && *p <= '9') id = id * 10 + (*p++ - '0');
 +                if (id > 0) S.primeVar(id - 1);
 +                while (*p && (*p < '0' || *p > '9')) p++;
++            }
++        }
++        if (strlen(phase_file)) {
++            // qec-lab fork: initial phases from a 0/1 string (typically
++            // a known witness); '1' ⟹ try the positive literal first.
++            FILE* pf = fopen(phase_file, "r");
++            if (pf == NULL)
++                printf("c WARNING! cannot open phase file %s\n",
++                       (const char*)phase_file);
++            else {
++                int c_, v_ = 0;
++                while ((c_ = fgetc(pf)) != EOF && v_ < S.nVars()) {
++                    if (c_ == '0' || c_ == '1')
++                        S.setPolarity(v_++, c_ == '0');
++                }
++                fclose(pf);
++                printf("c phase file: %d vars initialised\n", v_);
 +            }
 +        }
          double simplified_time = cpuTime();

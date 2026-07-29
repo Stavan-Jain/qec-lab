@@ -155,6 +155,8 @@ def maxsat_distance(
     timeout: float | None = None,
     extra_args: tuple[str, ...] = (),
     seed_ub: int | None = None,
+    init_lb: int | None = None,
+    phase_bits: np.ndarray | None = None,
 ) -> MaxSatDistanceResult:
     """Run a WCNF MaxSAT solver on the chosen encoding and return the
     verified distance. Trust model: the *witness* (weight = optimum
@@ -169,7 +171,17 @@ def maxsat_distance(
     )
     qv = write_wcnf(checks, wcnf, mode=mode, action=action)
 
-    argv = [str(solver_binary), *extra_args, str(wcnf)]
+    argv = [str(solver_binary), *extra_args]
+    if init_lb is not None:
+        # CALLER-CERTIFIED floor (analytic/kernel-checked). The solver
+        # stops when an incumbent reaches it — a wrong floor yields a
+        # wrong answer, so only pass certified values.
+        argv.append(f"-init-lb={init_lb}")
+    if phase_bits is not None:
+        pf = work_dir / f"{mode}_{checks.group.label()}.phases"
+        pf.write_text("".join("1" if b else "0" for b in phase_bits))
+        argv.append(f"-phase-file={pf}")
+    argv.append(str(wcnf))
     if seed_ub is not None:
         argv.append(str(seed_ub))  # positional initial-UB (stock feature)
     t0 = time.perf_counter()

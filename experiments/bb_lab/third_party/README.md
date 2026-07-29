@@ -33,6 +33,17 @@ neither flag the fork is behaviourally identical to stock:
   with positive phase (bumped in both VSIDS and CHB heaps). Used for
   the translation-symmetry anchor qubits (L0, R0). A search *bias*,
   never a constraint — cannot affect correctness.
+- **`-init-lb=F`** — caller-certified lower bound on the optimum
+  (an analytic or kernel-checked distance floor). Routed through the
+  solver's existing `initLB → infeasibleUB` machinery: the search
+  stops the moment an incumbent reaches the floor, deleting the proof
+  phase entirely when the floor is tight. Composes with `-cost-step`
+  (the parity shift encodes exactly the excluded gap). SOUNDNESS IS
+  THE CALLER'S OBLIGATION — only pass certified floors.
+- **`-phase-file=path`** — 0/1 string over DIMACS vars: initial
+  branching phases, typically a known witness. Warm-starts the descent
+  *without* cold-starting the clause database (the measured defect of
+  plain UB seeding). Pure bias; cannot affect correctness.
 
 Measured (2026-07-29, Apple Silicon, naive BB distance WCNFs, under
 background load; full table in `scripts/fork_ab.py` output):
