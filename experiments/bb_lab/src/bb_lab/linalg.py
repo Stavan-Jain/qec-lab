@@ -92,36 +92,40 @@ def quotient_complement_basis(
     Returned rows are the *original* extension rows (not their reduced
     forms), so they still anticommute correctly with X-logicals as
     `<·, v>` witnesses.
+
+    Implementation note (2026-07-29): the original joint-reduction with
+    origin tracking could *misattribute* a pivot to an extension row
+    when a swap displaced a base row below the extension block (first
+    triggered by a Z7×Z12 corpus instance, returning k+1 rows). This
+    version is order-robust: reduce each extension row against a fixed
+    rref of `base`, then against the previously accepted (reduced)
+    rows; accept iff nonzero. Count is exactly
+    rank(base ∪ extension) − rank(base).
     """
     base = (base & 1).astype(np.uint8)
     extension = (extension & 1).astype(np.uint8)
     if base.size == 0:
         return extension.copy()
-    n_base = base.shape[0]
-    n_ext = extension.shape[0]
-    A = np.vstack([base, extension]).astype(np.uint8, copy=True)
-    origin = np.array([-1] * n_base + list(range(n_ext)))
-    rows, cols = A.shape
-    pivot_row = 0
+
+    base_rref, _ = rref_f2(base)
+    base_rows = [r for r in base_rref if r.any()]
+    base_pivots = [int(np.flatnonzero(r)[0]) for r in base_rows]
+
+    accepted: list[np.ndarray] = []       # reduced forms
+    accepted_pivots: list[int] = []
     chosen_ext: list[int] = []
-    for col in range(cols):
-        if pivot_row >= rows:
-            break
-        sub = A[pivot_row:, col]
-        nonzero = np.flatnonzero(sub)
-        if nonzero.size == 0:
-            continue
-        r = pivot_row + int(nonzero[0])
-        if r != pivot_row:
-            A[[pivot_row, r]] = A[[r, pivot_row]]
-            origin[pivot_row], origin[r] = origin[r], origin[pivot_row]
-        mask = A[:, col] == 1
-        mask[pivot_row] = False
-        if mask.any():
-            A[mask] ^= A[pivot_row]
-        if origin[pivot_row] >= 0:
-            chosen_ext.append(int(origin[pivot_row]))
-        pivot_row += 1
+    for i in range(extension.shape[0]):
+        r = extension[i].copy()
+        for b, p in zip(base_rows, base_pivots):
+            if r[p]:
+                r ^= b
+        for b, p in zip(accepted, accepted_pivots):
+            if r[p]:
+                r ^= b
+        if r.any():
+            chosen_ext.append(i)
+            accepted.append(r)
+            accepted_pivots.append(int(np.flatnonzero(r)[0]))
     if not chosen_ext:
         return np.zeros((0, extension.shape[1]), dtype=np.uint8)
     return extension[chosen_ext].copy()

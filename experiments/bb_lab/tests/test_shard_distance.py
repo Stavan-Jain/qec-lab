@@ -134,3 +134,24 @@ def test_transport_soundness_bb72():
 def test_bits_roundtrip():
     for c in [1, 5, 4095, 2**11]:
         assert _bits_to_int(_int_to_bits(c, 12)) == c
+
+
+def test_logical_count_z7z12_regression():
+    """Regression for the quotient_complement_basis pivot-attribution
+    bug (2026-07-29): on this Z7×Z12 corpus instance the joint-reduction
+    version returned k+1 = 7 Z-logical rows (an extension row stole a
+    base pivot after a swap displaced base rows). Counts must agree
+    with n − rank(H_X) − rank(H_Z) on both sides."""
+    from bb_lab.linalg import nullspace_f2, quotient_complement_basis
+
+    checks = _build(
+        7, 12, "y^6 + x*y + x^3", "x^2*y^11 + x^3*y^5 + x^5*y^2"
+    )
+    L_Z = find_logical_z(checks)
+    V = quotient_complement_basis(
+        checks.H_X, nullspace_f2(checks.H_Z)
+    )
+    assert L_Z.shape[0] == V.shape[0] == 6
+    # and the class action machinery accepts it end-to-end
+    action = compute_class_action(checks)
+    assert action.k == 6

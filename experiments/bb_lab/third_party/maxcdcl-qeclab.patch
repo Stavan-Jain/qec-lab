@@ -1,0 +1,104 @@
+--- a/code/core/Solver.h	2023-05-31 02:13:50
++++ b/code/core/Solver.h	2026-07-29 16:07:56
+@@ -498,6 +498,13 @@
+     
+     /* OccLists<Lit, vec<softWatcher>, softWatcherDeleted> softWatches; */
+     uint64_t hardWeight, solutionCost, totalWeight, UB;
++    // qec-lab fork: all feasible costs are ≡ (mod costStep) for the
++    // instances that set it (BB codes: coset weight parity ⟹ step 2).
++    // After each improving model the search bound is tightened by
++    // costStep-1 extra units — sound because the skipped costs cannot
++    // occur. Default 1 = stock behaviour.
++    int costStep = 1;
++    void primeVar(Var v);   // qec-lab fork: branch-first hint (anchors)
+     unsigned int weight;
+     int instanceType, nbOriVars;
+     int nbClauseReduce;
+@@ -1074,6 +1081,19 @@
+ inline int      Solver::nVars         ()      const   { return vardata.size(); }
+ inline int      Solver::nFreeVars     ()      const   { return (int)dec_vars - (trail_lim.size() == 0 ? trail.size() : trail_lim[0]); }
+ inline void     Solver::setPolarity   (Var v, bool b) { polarity[v] = b; }
++// qec-lab fork: make v an early, positive-phase branching candidate in
++// both heuristics (transversal-anchor content of the symmetry argument:
++// WLOG a solution's support meets the anchor — try it first, as search
++// bias rather than as a constraint).
++inline void     Solver::primeVar      (Var v)
++{
++    if (v < 0 || v >= nVars()) return;
++    activity_VSIDS[v] = 1e10;
++    activity_CHB[v]   = 1.0;
++    if (order_heap_VSIDS.inHeap(v)) order_heap_VSIDS.decrease(v);
++    if (order_heap_CHB.inHeap(v))   order_heap_CHB.decrease(v);
++    polarity[v] = false;   // sign=false ⟹ try the positive literal first
++}
+ inline void     Solver::setDecisionVar(Var v, bool b) 
+ { 
+     if      ( b && !decision[v]) dec_vars++;
+--- a/code/core/Solver.cc	2023-06-01 02:08:06
++++ b/code/core/Solver.cc	2026-07-29 16:08:16
+@@ -4997,6 +4997,13 @@
+ 	      model.growTo(nVars());
+ 	      for (int i = 0; i < nVars(); i++) model[i] = value(i);
+ 	      //  softConflictFlag=true;
++	      // qec-lab fork: costs are ≡ (mod costStep) on these
++	      // instances, so no model exists in (UB-costStep, UB);
++	      // tighten the exclusive search bound by costStep-1. The
++	      // printed `o` line above used the true cost. Guarded
++	      // against uint64 underflow (UB=0 handled just below).
++	      if (costStep > 1 && UB >= (uint64_t)(costStep - 1))
++		UB -= (uint64_t)(costStep - 1);
+ 	      if (UB==0)
+ 		return l_True;
+ 	      else if (infeasibleUB >= UB)
+--- a/code/simp/Main.cc	2023-06-01 02:10:34
++++ b/code/simp/Main.cc	2026-07-29 16:08:43
+@@ -135,6 +135,14 @@
+         IntOption    mem_lim("MAIN", "mem-lim","Limit on memory usage in megabytes.\n", INT32_MAX, IntRange(0, INT32_MAX));
+         BoolOption   drup   ("MAIN", "drup",   "Generate DRUP UNSAT proof.", false);
+         StringOption drup_file("MAIN", "drup-file", "DRUP UNSAT proof ouput file.", "");
++        // qec-lab fork options:
++        IntOption    cost_step ("MAIN", "cost-step",
++            "All feasible costs are congruent mod this step (caller-verified"
++            " instance property, e.g. BB coset weight parity => 2); prune"
++            " with step granularity.", 1, IntRange(1, 64));
++        StringOption prime_vars("MAIN", "prime-vars",
++            "Comma-separated 1-based DIMACS vars to branch on first,"
++            " positive phase (symmetry-anchor hint).", "");
+ 
+         parseOptions(argc, argv, true);
+         
+@@ -259,8 +267,14 @@
+         printf("c initial LB: %lld\n", S.initLB);
+ 
+         lbool ret;
+-        if(S.initUB<INT64_MAX)
++        if(S.initUB<INT64_MAX){
+             S.initUB--;
++            // qec-lab fork: with a caller-supplied incumbent and a cost
++            // parity step, the next feasible improvement is a further
++            // step-1 below (initUB is the inclusive max target here).
++            if (cost_step > 1 && S.initUB >= cost_step - 1)
++                S.initUB -= (cost_step - 1);
++        }
+ 
+ 
+         if (S.verbosity > 0){
+@@ -287,6 +301,18 @@
+         S.parsing = false;
+         S.setFrozenVars();
+         S.eliminate(true);
++        // qec-lab fork: apply instance hints after simplification so
++        // heaps and variable state are final.
++        S.costStep = cost_step;
++        if (strlen(prime_vars)) {
++            const char* p = prime_vars;
++            while (*p) {
++                int id = 0;
++                while (*p >= '0' && *p <= '9') id = id * 10 + (*p++ - '0');
++                if (id > 0) S.primeVar(id - 1);
++                while (*p && (*p < '0' || *p > '9')) p++;
++            }
++        }
+         double simplified_time = cpuTime();
+         if (S.verbosity > 0){
+             printf("c |  Simplification time:  %12.2f s                                       |\n", simplified_time - parsed_time);
