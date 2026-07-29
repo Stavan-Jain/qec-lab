@@ -41,7 +41,7 @@ UNION ALL
 
 FRONTIER_SQL = """
 SELECT * FROM bb_instances
-WHERE n BETWEEN 150 AND 280 AND d_exact IS NULL
+WHERE n BETWEEN {n_min} AND {n_max} AND d_exact IS NULL
   AND d_ub BETWEEN {min_dub} AND {max_dub}
 ORDER BY n DESC, d_ub ASC   -- larger n first; modest d_ub = likelier true
 LIMIT {limit}
@@ -62,6 +62,7 @@ def run(args) -> None:
         else FRONTIER_SQL.format(
             limit=args.limit * 3,  # headroom for already-swept exclusion
             min_dub=args.min_dub, max_dub=args.max_dub,
+            n_min=args.n_min, n_max=args.n_max,
         )
     )
     cols = [d[0] for d in con.execute("SELECT * FROM bb_instances LIMIT 0").description]
@@ -84,11 +85,26 @@ def run(args) -> None:
                 Poly.from_string(row["A_poly"], G),
                 Poly.from_string(row["B_poly"], G),
             )
+            extra: tuple[str, ...] = ()
+            if args.tandem_step:
+                # Tandem's -cost-step=2 is sound only when the coset
+                # weight-parity premise holds; verify per code.
+                from bb_lab.sat_distance import find_logical_z
+                from bb_lab.linalg import (
+                    nullspace_f2, quotient_complement_basis,
+                )
+                hx_even = not any(int(r_.sum()) % 2 for r_ in checks.H_X)
+                V = quotient_complement_basis(
+                    checks.H_X, nullspace_f2(checks.H_Z)
+                )
+                if hx_even and not any(int(v.sum()) % 2 for v in V):
+                    extra = ("-cost-step=2",)
             t0 = time.perf_counter()
             try:
                 r = maxsat_distance(
                     checks, args.binary, mode="naive",
                     work_dir=args.work_dir, timeout=args.per_code_timeout,
+                    extra_args=extra,
                 )
                 status = "ok"
                 d_found, secs = r.distance, r.solver_seconds
@@ -118,6 +134,10 @@ def main() -> None:
     ap.add_argument("--limit", type=int, default=20)
     ap.add_argument("--min-dub", type=int, default=12)
     ap.add_argument("--max-dub", type=int, default=99)
+    ap.add_argument("--n-min", type=int, default=150)
+    ap.add_argument("--n-max", type=int, default=280)
+    ap.add_argument("--tandem-step", action="store_true",
+                    help="pass -cost-step=2 when the parity premise holds")
     ap.add_argument("--per-code-timeout", type=float, default=600.0)
     ap.add_argument("--binary", default=None, required=True)
     ap.add_argument("--work-dir", default=".")
