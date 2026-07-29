@@ -1,6 +1,6 @@
 --- a/core/Solver.h
 +++ b/core/Solver.h
-@@ -498,6 +498,32 @@
+@@ -498,6 +498,36 @@
      
      /* OccLists<Lit, vec<softWatcher>, softWatcherDeleted> softWatches; */
      uint64_t hardWeight, solutionCost, totalWeight, UB;
@@ -24,16 +24,20 @@
 +    // yields wrong answers.
 +    int fiberEnabled = 0, fiberK = 0, fiberInvFloor = 0;
 +    vec<Var> fiberPairX, fiberPairY, fiberAVars;
-+    vec<int> fiberFloorB;
++    vec<int> fiberFloorB;      // per-class floor on #odd fibers (|p₊v|)
++    vec<int> fiberCostB;       // optional per-class floor on the moving
++                               // completion COST itself (the v2 "g"
++                               // table: seam/window-scale bounds);
++                               // empty ⟹ zeros (v1 files)
 +    uint32_t fbLastMask = 0, fbLastVals = 0;
-+    int fbLastF = 0, fbValid = 0;
++    int fbLastF = 0, fbLastG = 0, fbValid = 0;
 +    uint64_t fiberConfls = 0;
 +    void fiberLoad(const char* path);
 +    bool fiberSoftConflict();
      unsigned int weight;
      int instanceType, nbOriVars;
      int nbClauseReduce;
-@@ -1074,6 +1100,19 @@
+@@ -1074,6 +1104,19 @@
  inline int      Solver::nVars         ()      const   { return vardata.size(); }
  inline int      Solver::nFreeVars     ()      const   { return (int)dec_vars - (trail_lim.size() == 0 ? trail.size() : trail_lim[0]); }
  inline void     Solver::setPolarity   (Var v, bool b) { polarity[v] = b; }
@@ -55,7 +59,7 @@
      if      ( b && !decision[v]) dec_vars++;
 --- a/core/Solver.cc
 +++ b/core/Solver.cc
-@@ -4151,11 +4151,155 @@
+@@ -4151,11 +4151,185 @@
  //     var_iLevel_inc=level_incs[level_incs.size()-1];
  //     return true;
  // }
@@ -99,6 +103,24 @@
 +    }
 +    fiberFloorB.push(v);
 +  }
++  // Optional v2 "g" table: per-class floors on the moving completion
++  // cost itself (seam/window-scale). Absent in v1 files.
++  fiberCostB.clear();
++  {
++    long pos = ftell(f);
++    char t2[8];
++    if (fscanf(f, "%4s", t2) == 1 && t2[0] == 'g') {
++      for (int c = 0; c < (1 << k); c++) {
++        int v;
++        if (fscanf(f, "%d", &v) != 1) {
++          printf("c WARNING! bad fiber-lb g-table\n"); fclose(f); return;
++        }
++        fiberCostB.push(v);
++      }
++    } else {
++      fseek(f, pos, SEEK_SET);
++    }
++  }
 +  for (int i = 0; i < npairs; i++) {
 +    int x, y;
 +    if (fscanf(f, "%d %d", &x, &y) != 2
@@ -109,7 +131,8 @@
 +  }
 +  fclose(f);
 +  fiberEnabled = 1; fbValid = 0;
-+  printf("c fiber-lb: k=%d pairs=%d invFloor=%d\n", k, npairs, fiberInvFloor);
++  printf("c fiber-lb: k=%d pairs=%d invFloor=%d costTable=%d\n",
++         k, npairs, fiberInvFloor, fiberCostB.size() > 0);
 +}
 +
 +// qec-lab fork: the fiber/pushforward node bound. Every completion is
@@ -142,15 +165,25 @@
 +      if (va == l_True) vals |= 1u << j;
 +    }
 +  }
-+  int Fb;
-+  if (fbValid && mask == fbLastMask && vals == fbLastVals) Fb = fbLastF;
-+  else {
-+    Fb = INT32_MAX;
-+    for (int c = 1; c < (1 << fiberK); c++)
-+      if ((((uint32_t)c) & mask) == vals && fiberFloorB[c] < Fb)
-+        Fb = fiberFloorB[c];
-+    fbLastMask = mask; fbLastVals = vals; fbLastF = Fb; fbValid = 1;
++  int Fb, Gb;
++  if (fbValid && mask == fbLastMask && vals == fbLastVals) {
++    Fb = fbLastF; Gb = fbLastG;
 +  }
++  else {
++    Fb = INT32_MAX; Gb = INT32_MAX;
++    bool haveG = fiberCostB.size() > 0;
++    for (int c = 1; c < (1 << fiberK); c++)
++      if ((((uint32_t)c) & mask) == vals) {
++        if (fiberFloorB[c] < Fb) Fb = fiberFloorB[c];
++        if (haveG && fiberCostB[c] < Gb) Gb = fiberCostB[c];
++      }
++    if (!haveG) Gb = 0;
++    fbLastMask = mask; fbLastVals = vals;
++    fbLastF = Fb; fbLastG = Gb; fbValid = 1;
++  }
++  // Moving bound: odd-fiber arithmetic from the F table, plus the
++  // direct certified completion-cost floor from the optional G table
++  // (every moving completion in a consistent class costs >= Gb).
 +  int64_t mLB;
 +  if (Fb == INT32_MAX) mLB = INT64_MAX;    // no consistent class
 +  else {
@@ -162,6 +195,7 @@
 +      int extra = needOdd - oddable0;
 +      if (extra < 0) extra = 0;
 +      mLB = t + extra;
++      if ((int64_t)Gb > mLB) mLB = Gb;
 +    }
 +  }
 +  int64_t nodeLB;
@@ -211,7 +245,7 @@
    if (UB > 1 && UB == falseLits.size() + 1 && decisionLevel() < hardenLevel) {
        harden();
        confl =  propagate();
-@@ -4997,6 +5141,18 @@
+@@ -4997,6 +5171,18 @@
  	      model.growTo(nVars());
  	      for (int i = 0; i < nVars(); i++) model[i] = value(i);
  	      //  softConflictFlag=true;

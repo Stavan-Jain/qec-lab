@@ -131,3 +131,28 @@ def test_fiber_certificate_format(tmp_path):
     assert len(tbl) == 1 << k and all(f >= 1 for f in tbl[1:])
     pair_ids = [int(x) for l in lines[3:] for x in l.split()]
     assert sorted(pair_ids) == sorted(int(x) for x in qv)
+
+
+def test_moving_cost_floor_v2():
+    """The v2 cost-floor engine: certified F2 must be >= the v1
+    base-coset relaxation everywhere, and on the dangerous fiber
+    (lam = 0, nontrivial-pinned) it must reach the code distance on
+    bb_72 (d = 6: no lighter nontrivial logical exists, moving or
+    not)."""
+    from bb_lab.descent_sat import (
+        base_coset_floors,
+        moving_cost_floor_budgeted,
+    )
+
+    A, B, checks = _bb72()
+    action = compute_class_action(checks)
+    dd = compute_descent(checks, action, (0, 3), A=A, B=B)
+    v1 = base_coset_floors(dd, {0, 1}, cap=8)
+    f0 = moving_cost_floor_budgeted(
+        checks, dd, 0, cap=5, confl_budget=500_000, start=v1[0]
+    )
+    f1 = moving_cost_floor_budgeted(
+        checks, dd, 1, cap=5, confl_budget=500_000, start=v1[1]
+    )
+    assert f0 >= v1[0] and f1 >= v1[1]
+    assert f0 >= 6  # dangerous fiber at the true distance

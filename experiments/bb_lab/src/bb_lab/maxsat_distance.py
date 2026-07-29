@@ -169,6 +169,9 @@ def emit_fiber_certificate(
     path: Path,
     floor_cap: int = 20,
     floor_budget: int | None = 100_000,
+    cost_floors: bool = False,
+    cost_cap: int | None = None,
+    cost_budget: int = 200_000,
 ) -> Path:
     """Write the `-fiber-lb` certificate for the naive WCNF whose
     variable ids are (qv, a_lits): the σ fiber pairing, the invariant-
@@ -204,6 +207,21 @@ def emit_fiber_certificate(
             confl_budget=floor_budget,
         )
     inv = invariant_floor(dd)
+    cost: dict[int, int] | None = None
+    if cost_floors:
+        # v2 "g" table: certified floors on the moving completion COST
+        # (budgeted stand-in for analytic seam/window floors), seeded
+        # with the v1 bound (|v| ≥ |p₊v| ≥ base-coset floor).
+        from .descent_sat import moving_cost_floor_budgeted
+
+        cc = cost_cap if cost_cap is not None else floor_cap
+        cost = {
+            lam: moving_cost_floor_budgeted(
+                checks, dd, lam, cap=cc,
+                confl_budget=cost_budget, start=floors[lam],
+            )
+            for lam in set(lam_of.values())
+        }
     pairs = [
         tuple(int(qv[i]) for i in np.flatnonzero(dd.S[b]))
         for b in range(dd.S.shape[0])
@@ -216,6 +234,11 @@ def emit_fiber_certificate(
         for c in range(1, 1 << k):
             tbl[c] = floors[lam_of[c]]
         f.write("f " + " ".join(map(str, tbl)) + "\n")
+        if cost is not None:
+            gtbl = [0] * (1 << k)
+            for c in range(1, 1 << k):
+                gtbl[c] = max(cost[lam_of[c]], tbl[c])
+            f.write("g " + " ".join(map(str, gtbl)) + "\n")
         for x, y in pairs:
             f.write(f"{x} {y}\n")
     return Path(path)
@@ -243,6 +266,7 @@ def maxsat_distance(
     fiber_sigma: tuple[int, ...] | None = None,
     fiber_polys: tuple | None = None,
     fiber_reuse: bool = True,
+    fiber_v2: bool = False,
 ) -> MaxSatDistanceResult:
     """Run a WCNF MaxSAT solver on the chosen encoding and return the
     verified distance. Trust model: the *witness* (weight = optimum
@@ -268,11 +292,12 @@ def maxsat_distance(
         assert mode == "naive", "fiber-lb targets the naive encoding"
         assert fiber_polys is not None, "fiber_sigma needs fiber_polys=(A,B)"
         sig = "".join(str(int(x)) for x in fiber_sigma)
-        flb = work_dir / f"fiber_{checks.group.label()}_{sig}.flb"
+        tag = "v2_" if fiber_v2 else ""
+        flb = work_dir / f"fiber_{tag}{checks.group.label()}_{sig}.flb"
         if not (fiber_reuse and flb.exists()):
             emit_fiber_certificate(
                 checks, fiber_polys[0], fiber_polys[1], fiber_sigma,
-                qv, a_lits, flb,
+                qv, a_lits, flb, cost_floors=fiber_v2,
             )
         argv.append(f"-fiber-lb={flb}")
     if init_lb is not None:

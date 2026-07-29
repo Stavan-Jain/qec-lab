@@ -934,3 +934,99 @@ def base_coset_floors_budgeted(
             floor = w + 1           # UNSAT at ≤ w
         out[cb] = floor
     return out
+
+
+def moving_cost_floor_budgeted(
+    checks: CheckMatrices,
+    dd: DescentData,
+    lam_class: int,
+    cap: int,
+    confl_budget: int = 200_000,
+    start: int = 1,
+) -> int:
+    """Certified lower bound on the moving-sector completion cost
+
+        F2(λ) = min{ |v| : H_Z v = 0, p₊v ≠ 0, μ̄(p₊v) = λ
+                     (∧ μ(v) ≠ 0 when λ = 0) }
+
+    by ascending conflict-budgeted CMS refutation of the class-pinned
+    cover instance (H_Z parity rows, pushforward definitions, ⋁w,
+    μ̄(w) = λ pins, |v| ≤ t). UNSAT at t certifies F2 ≥ t+1; when
+    every logical class of the cover has even weight parity (verified
+    here), minima are even and UNSAT at even t certifies F2 ≥ t+2.
+    A SAT or budget-exhausted call stops the ascent with the floor
+    proven so far. `start` seeds the ascent (pass a floor already
+    certified elsewhere, e.g. the v1 base-coset bound — |v| ≥ |p₊v|).
+
+    For λ ≠ 0 every member of the fiber is a genuine logical
+    (μ̄(p₊v) = Λμ(v) ≠ 0 ⟹ μ(v) ≠ 0). For λ = 0 — the dangerous
+    fiber — stabilizers with nonzero pushforward would dominate the
+    minimum (they sit at check-row weight), so the instance adds the
+    nontriviality clause ⋁⟨L_Z[j], v⟩: the certified quantity is the
+    *dangerous-sector floor* (the A15 DangerousFloorNZ analog), which
+    is what the solver's completions (all in some nonzero class) obey.
+
+    This is the budgeted stand-in for the analytic seam/window floors:
+    same table semantics, solver-word certification tier.
+    """
+    H_Z = checks.H_Z
+    n = H_Z.shape[1]
+    nb = dd.S.shape[0]
+    L_Z = find_logical_z(checks) if lam_class == 0 else None
+    # even-parity premise for step-2 ascent
+    hx_even = not any(int(row.sum()) % 2 for row in checks.H_X)
+    ker_c = nullspace_f2(H_Z)
+    all_even = hx_even and not any(int(r.sum()) % 2 for r in ker_c)
+    lam_bits = (
+        _int_to_bits(lam_class, dd.kb) if dd.kb
+        else np.zeros(0, np.uint8)
+    )
+
+    def _try(t: int) -> bool | None:
+        """True=SAT, False=UNSAT (certified), None=budget."""
+        pool = IDPool()
+        qv = [pool.id() for _ in range(n)]
+        solver = pycryptosat.Solver(confl_limit=confl_budget)
+        for row in H_Z:
+            idx = np.flatnonzero(row)
+            if idx.size:
+                solver.add_xor_clause([qv[i] for i in idx], False)
+        wv = [pool.id() for _ in range(nb)]
+        for b in range(nb):
+            idx = np.flatnonzero(dd.S[b])
+            solver.add_xor_clause([qv[i] for i in idx] + [wv[b]], False)
+        solver.add_clause(wv)
+        for j, Lb in enumerate(dd.Lb_Z):
+            idx = np.flatnonzero(Lb)
+            solver.add_xor_clause(
+                [wv[i] for i in idx], bool(lam_bits[j])
+            )
+        if L_Z is not None:
+            # dangerous fiber: exclude stabilizers (μ(v) ≠ 0)
+            a_outs = []
+            for L in L_Z:
+                aj = pool.id()
+                solver.add_xor_clause(
+                    [qv[i] for i in np.flatnonzero(L)] + [aj], False
+                )
+                a_outs.append(aj)
+            solver.add_clause(a_outs)
+        card = CardEnc.atmost(
+            lits=qv, bound=t, vpool=pool, encoding=EncType.seqcounter
+        )
+        for cl in card.clauses:
+            solver.add_clause(cl)
+        sat, _ = solver.solve()
+        return sat
+
+    floor = max(1, start)
+    t = floor if not all_even else floor + (floor % 2)  # first even ≥ floor
+    while t <= cap:
+        res = _try(t)
+        if res is not True and res is not False:
+            break                       # budget: keep what's proven
+        if res is True:
+            break                       # exact minimum found at ≤ t
+        floor = t + 2 if all_even else t + 1
+        t = t + 2 if all_even else t + 1
+    return floor

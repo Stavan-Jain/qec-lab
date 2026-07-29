@@ -197,7 +197,63 @@ where the A15 program has been run. fiber-lb is the delivery vehicle
 for exactly that: the solver side is built, validated, and waiting for
 stronger certificates.
 
-## 5. Artifacts
+## 5. Experiment 3: fiber-lb v2 — moving-sector cost floors (the "g" table)
+
+The §4 upgrade, built 2026-07-30. v1's table bounds the *odd-fiber
+count* (|p₊v| ≥ base-coset floor — provably stuck at base scale, §4);
+v2 adds a second table with different semantics: certified floors on
+the **moving completion cost itself**,
+
+    F2(λ) = min{ |v| : H_Z v = 0, p₊v ≠ 0, μ̄(p₊v) = λ,
+                 (μ(v) ≠ 0 when λ = 0) },
+
+the quantity the seam/window theory bounds at 2d̄ scale. Patch v5
+parses an optional `g` line and folds `mLB = max(t + oddArith, G_b)`
+into the moving branch (v1 files unchanged; toy teeth-test for the g
+table passes both directions). The λ = 0 fiber — the dangerous sector
+— needs the nontriviality pin, else stabilizers with nonzero
+pushforward dominate the minimum at check-row weight (measured: gross
+λ=0 lifts 6 → 10 with the pin; the A15 DangerousFloorNZ analog).
+
+Certification engine: `moving_cost_floor_budgeted` — ascending
+conflict-budgeted CMS refutation of the λ-pinned cover instance,
+even-step under the verified parity premise, sound at any stopping
+point. This is a *budgeted SAT stand-in* for analytic seam floors.
+
+**bb_288 verdict: the stand-in hits the wall it was meant to bypass.**
+Per-λ pinned refutation at w ≤ 10 on n = 288 already exhausts 200k
+conflicts (per-λ up to 116 s); the g-table came out {6:63, 8:64,
+9:3456, 10:512} — ≤ 1 unit over v1, nowhere near the 16–17 needed.
+The pre-registered go/no-go (how many of 64 λ reach ≥ 12/14/17): zero
+— the 1 h re-race was skipped as already decided. Class pins do not
+break the refutation exponential; only *analytic* certification
+(window/seam machinery, per-code work as in the [[300,8,16]] program)
+can fill the table at 2d̄ scale. The delivery vehicle — g-table
+semantics, solver arithmetic, dangerous-fiber pin — is built,
+validated, and waiting for it.
+
+**gross (where per-λ refutation IS tractable): the proof phase
+collapses.** The g-table fills to {12, 13} for 87 % of classes
+(cap 11); with the unrefined λ=0 entry (6) the run is still a tax
+(4.14 s vs 3.11 s — min-over-consistent-classes stays 6 until deep).
+After the dangerous-fiber refinement (λ=0 certified 12 in 85 s, 800k
+budget) the g-table is ≥ 12 on every nonzero class and invFloor = 12
+— the certificate now *contains* a solver-word d ≥ 12 proof — and the
+measured run is
+
+    fiber-v2 (refined): 0.25 s  vs  step: 3.12 s   (12.5×, 5 reps,
+    3 fiber conflicts total, d = 12 re-verified every run)
+
+The search descends to the weight-12 incumbent and the certificate
+kills the entire optimality phase in 3 node conflicts: the
+`-init-lb`-style solve-time-is-witness-search-only regime, but with
+the floor *self-assembled* from 64 per-λ certified refutations + the
+invariant floor instead of externally supplied. Emission cost ~3.4 min
+(parallel, one-time per (code, deck)) — the economics favor repeated
+solves and, more importantly, demonstrate exactly what an *analytic*
+seam-floor table would deliver at bb_288 with no SAT filling at all.
+The concrete remaining target is now a finite list: certify
+F2(λ) ≥ 17 for the 64 Λ-classes of a bb_288 deck analytically.
 
 - `src/bb_lab/descent_sat.py` — the layer (DescentData battery,
   sector solvers, driver; `use_floors`, `scaffold_rest` flags;
