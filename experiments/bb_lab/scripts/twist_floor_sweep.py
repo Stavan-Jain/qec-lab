@@ -110,6 +110,7 @@ def _setup(args):
         bands.append((hi - 1, hi, need))
         hi += 2
     _CTX["light_max"] = d_base - 2
+    _CTX["trust_light"] = bool(getattr(args, "trust_base_distance", False))
     _CTX["bands"] = bands
     _CTX["target"] = target
     _CTX["group_label"] = G.label()
@@ -135,13 +136,22 @@ def _run_item(args):
     target = _CTX["target"]
     # light band: empty by the base-distance theorem for λ ≠ 0; any
     # member is either a base-distance violation or a machinery bug.
+    # With trust_light the enumeration check is skipped and the theorem
+    # (base d_exact, corpus settlement tier) is cited instead — at big
+    # bases the falsify-first battery costs more than the sweep.
     light_max = _CTX["light_max"]
     light_bound = 10**9
-    ws, complete = band(1, light_max, 500, 300)
-    if not complete:
-        out["floor"] = None
-        out["reason"] = "light band incomplete"
-        return out
+    if _CTX.get("trust_light") and lam != 0:
+        out["strata"][f"1-{light_max}"] = {
+            "n": 0, "complete": True, "by": "base-distance-theorem",
+        }
+        ws = []
+    else:
+        ws, complete = band(1, light_max, 500, 300)
+        if not complete:
+            out["floor"] = None
+            out["reason"] = "light band incomplete"
+            return out
     for w in ws:
         wt = int(w.sum())
         kthr = (target + wt + 1) // 2
@@ -202,6 +212,11 @@ def main() -> None:
     ap.add_argument(
         "--target", type=int, default=None,
         help="certification target (default 2·d̄ for lifts, 18 for bb_288)",
+    )
+    ap.add_argument(
+        "--trust-base-distance", action="store_true",
+        help="skip the light-band emptiness enumeration for λ ≠ 0 and "
+        "cite the base-distance theorem (corpus d_exact tier) instead",
     )
     args = ap.parse_args()
     outdir = Path(args.out)
