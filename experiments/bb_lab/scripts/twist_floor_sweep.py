@@ -49,6 +49,7 @@ from bb_lab.shard_distance import (  # noqa: E402
 from bb_lab.twist_floors import (  # noqa: E402
     compute_twist,
     enum_band,
+    masked_K_sat_budgeted,
     masked_K_value,
     syndrome_min_budgeted,
     window_floor,
@@ -57,17 +58,61 @@ from bb_lab.twist_floors import (  # noqa: E402
 _CTX: dict = {}
 
 
-def _setup():
-    G = ZmZn(12, 12)
-    A = Poly.from_string("x^3 + y^2 + y^7", G)
-    B = Poly.from_string("y^3 + x + x^2", G)
+def _setup(args):
+    """Default: the bb_288 dual-deck configuration. With --base-id
+    and --axis: the literal lift of that corpus row along the axis,
+    with every available cover axis deck installed (dual when both
+    cover axes are even). Sets _CTX['bands'] from (d̄, target)."""
+    if args.base_id:
+        import duckdb
+
+        con = duckdb.connect(
+            "/Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/"
+            "bb_instances.duckdb", read_only=True,
+        )
+        ell, m, d_base, a_s, b_s = con.execute(
+            "SELECT ell, m, d_exact, A_poly, B_poly FROM bb_instances "
+            "WHERE instance_id = ?", [args.base_id],
+        ).fetchone()
+        con.close()
+        ell, m, d_base = int(ell), int(m), int(d_base)
+        lift = (2 * ell, m) if args.axis == 0 else (ell, 2 * m)
+        G = ZmZn(*lift)
+        A = Poly.from_string(a_s, G)
+        B = Poly.from_string(b_s, G)
+        target = args.target or 2 * d_base
+    else:
+        G = ZmZn(12, 12)
+        A = Poly.from_string("x^3 + y^2 + y^7", G)
+        B = Poly.from_string("y^3 + x + x^2", G)
+        d_base, target = 12, args.target or 18
     checks = bb_check_matrices(A, B)
     action = compute_class_action(checks)
-    for sigma in ((0, 6), (6, 0)):
+    ellc, mc = G.orders
+    decks = []
+    if ellc % 2 == 0:
+        decks.append((ellc // 2, 0))
+    if mc % 2 == 0:
+        decks.append((0, mc // 2))
+    for sigma in decks:
         dd = compute_descent(checks, action, sigma, A=A, B=B)
         td = compute_twist(checks, dd)
         _CTX[str(sigma)] = (dd, td)
     _CTX["k"] = action.k
+    # Bands from the base distance to the target: the light band
+    # (1, d̄−2) must be empty for λ ≠ 0 (base-distance theorem — a
+    # member is a RED-ALERT); then two-wide bands up to target−2 with
+    # masked need = ceil((target − hi)/2) each.
+    bands = []
+    hi = d_base
+    while hi <= target - 2:
+        need = (target - hi + 1) // 2
+        bands.append((hi - 1, hi, need))
+        hi += 2
+    _CTX["light_max"] = d_base - 2
+    _CTX["bands"] = bands
+    _CTX["target"] = target
+    _CTX["group_label"] = G.label()
     return checks, action
 
 
@@ -87,34 +132,45 @@ def _run_item(args):
         }
         return ws, complete
 
-    # light band
+    target = _CTX["target"]
+    # light band: empty by the base-distance theorem for λ ≠ 0; any
+    # member is either a base-distance violation or a machinery bug.
+    light_max = _CTX["light_max"]
     light_bound = 10**9
-    ws, complete = band(1, 10, 500, 300)
+    ws, complete = band(1, light_max, 500, 300)
     if not complete:
         out["floor"] = None
         out["reason"] = "light band incomplete"
         return out
     for w in ws:
         wt = int(w.sum())
-        kthr = (18 + wt + 1) // 2
+        kthr = (target + wt + 1) // 2
         K, exact = syndrome_min_budgeted(
             td.Hb_Z, (td.T @ w) % 2, cap=kthr, confl_budget=300_000
         )
         light_bound = min(light_bound, window_floor(wt, K))
 
     floors = [light_bound]
-    for (lo, hi, kneed, limit, wall) in (
-        (11, 12, 3, 2000, 400),
-        (13, 14, 2, 2000, 500),
-        (15, 16, 1, 4000, 700),
-    ):
+    for (lo, hi, kneed) in _CTX["bands"]:
+        limit = 2000 if kneed >= 2 else 4000
+        wall = 400 + 100 * (3 - min(kneed, 3))
         ws, complete = band(lo, hi, limit, wall)
         if not complete:
             floors.append(hi)          # |v| ≥ |w| ≥ lo ⟹ ≥ hi by parity
             continue
         if not ws:
             continue                   # empty stratum contributes nothing
-        mk = min(masked_K_value(td, w, kneed) for w in ws)
+        mks = []
+        for w in ws:
+            if kneed <= 3:
+                mks.append(masked_K_value(td, w, kneed))
+            else:
+                j, b = masked_K_sat_budgeted(td, w, kneed)
+                if b is not None and j == 0:
+                    mks.append(0)
+                else:
+                    mks.append(j)
+        mk = min(mks)
         if mk == 0:
             # a b ⊆ supp(w) solves the twist: cost-|w| LOGICAL exists!
             out["floor"] = None
@@ -123,7 +179,7 @@ def _run_item(args):
         # every member has |w| = hi (odd weights are parity-excluded),
         # so the stratum bound is hi + 2·(min masked value, ≤ kneed).
         floors.append(hi + 2 * mk)
-    out["floor"] = int(min(min(floors), 18))
+    out["floor"] = int(min(min(floors), target))
     out["seconds"] = round(time.perf_counter() - t_start, 1)
     return out
 
@@ -137,14 +193,30 @@ def main() -> None:
         help="prior sweep log: completed '[i/n] (deck) λ=..: floor=..' "
         "lines are reused and their items skipped",
     )
+    ap.add_argument(
+        "--base-id", default=None,
+        help="corpus instance_id of a BASE code: sweep its literal "
+        "lift along --axis instead of bb_288",
+    )
+    ap.add_argument("--axis", type=int, default=0, choices=(0, 1))
+    ap.add_argument(
+        "--target", type=int, default=None,
+        help="certification target (default 2·d̄ for lifts, 18 for bb_288)",
+    )
     args = ap.parse_args()
     outdir = Path(args.out)
     outdir.mkdir(parents=True, exist_ok=True)
 
-    checks, action = _setup()
+    checks, action = _setup(args)
     k = action.k
+    deck_keys = [kk for kk in _CTX if kk.startswith("(")]
+    print(
+        f"group {_CTX['group_label']} target {_CTX['target']} "
+        f"decks {deck_keys} bands {_CTX['bands']}",
+        flush=True,
+    )
     items = []
-    for key in ("(0, 6)", "(6, 0)"):
+    for key in deck_keys:
         dd, _ = _CTX[key]
         lams = sorted(
             {
@@ -202,15 +274,14 @@ def main() -> None:
         vals = Counter(v for v in m.values())
         print(f"{key}: floor histogram {dict(sorted((str(k_), v) for k_, v in vals.items()))}")
 
-    # dual-deck assembly over the 4095 classes
-    dd06, _ = _CTX["(0, 6)"]
-    dd60, _ = _CTX["(6, 0)"]
+    # per-class assembly (max over decks with nonzero Λ-image)
     g = [0] * (1 << k)
     fallback = 0
     for c in range(1, 1 << k):
         cb = _int_to_bits(c, k)
         best = 0
-        for key, dd in (("(0, 6)", dd06), ("(6, 0)", dd60)):
+        for key in deck_keys:
+            dd, _ = _CTX[key]
             lam = _bits_to_int((cb @ dd.Lam) % 2)
             if lam == 0:
                 continue

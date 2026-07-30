@@ -373,3 +373,53 @@ def masked_K_value(
         if ((s_res ^ cols[:, i])).tobytes() in col_bytes:
             return 2
     return kmax if kmax <= 3 else 3
+
+
+def masked_K_sat_budgeted(
+    td: TwistData,
+    w: np.ndarray,
+    need: int,
+    confl_budget: int = 150_000,
+) -> tuple[int, np.ndarray | None]:
+    """Certified floor on min |b ∖ supp(w)| over the twist coset, by
+    ascending budgeted CMS with the cardinality restricted to the
+    outside-support bits. Returns (certified_j, witness_b): UNSAT at
+    j certifies ≥ j+1 (ascent continues to `need`); a SAT stops with
+    the exact value and its witness; budget-out stops with the floor
+    proven so far. Complements the exact hash path
+    (`masked_K_value`, need ≤ 3) for larger targets."""
+    nb = td.Hb_Z.shape[1]
+    supp = set(np.flatnonzero(w).tolist())
+    outside = [i for i in range(nb) if i not in supp]
+    syn = (td.T @ w) % 2
+    certified = 0
+    for j in range(0, need):
+        pool = IDPool()
+        bv = [pool.id() for _ in range(nb)]
+        s = pycryptosat.Solver(confl_limit=confl_budget)
+        consistent = True
+        for r, row in enumerate(td.Hb_Z):
+            idx = np.flatnonzero(row)
+            if idx.size:
+                s.add_xor_clause([bv[i] for i in idx], bool(syn[r]))
+            elif syn[r]:
+                consistent = False
+                break
+        if not consistent:
+            return need, None          # coset empty: vacuous
+        card = CardEnc.atmost(
+            lits=[bv[i] for i in outside], bound=j, vpool=pool,
+            encoding=EncType.seqcounter,
+        )
+        for cl in card.clauses:
+            s.add_clause(cl)
+        sat, model = s.solve()
+        if sat is True:
+            b = np.array(
+                [1 if model[v] else 0 for v in bv], dtype=np.uint8
+            )
+            return j, b
+        if sat is not False:
+            return certified, None     # budget
+        certified = j + 1
+    return certified, None
