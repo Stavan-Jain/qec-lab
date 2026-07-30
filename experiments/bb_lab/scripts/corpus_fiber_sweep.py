@@ -55,12 +55,13 @@ WITH ranked AS (
       PARTITION BY d_exact, n ORDER BY instance_id
   ) AS rk
   FROM bb_instances
-  WHERE d_exact IS NOT NULL AND d_exact >= 6 AND k > 0 AND k <= 16
+  WHERE d_exact IS NOT NULL AND d_exact BETWEEN 6 AND 14
+    AND k > 0 AND k <= 12 AND n <= 210
     AND (ell % 2 = 0 OR m % 2 = 0)
 )
 SELECT instance_id, ell, m, n, k, d_exact, A_poly, B_poly FROM ranked
 WHERE rk <= 2
-ORDER BY d_exact DESC, n DESC
+ORDER BY n ASC, d_exact DESC   -- small first: results stream early
 LIMIT {limit}
 """
 
@@ -90,21 +91,38 @@ def sweep_one(row):
     except (ValueError, AssertionError) as e:
         out["verdict"] = f"SKIP({e})"
         return out
-    # self-computed upper bound (no stored knowledge)
-    U = int(_greedy_upper_bound(action.V, checks.H_X).sum())
-    out["greedy_ub"] = U
+    # self-computed upper bound (no stored knowledge): greedy witness,
+    # tightened by cheap conflict-budgeted monolith probes — the caps
+    # for the certificate budgets track the real optimum much closer
+    # than the raw greedy weight.
+    from bb_lab.sat_distance import find_logical_z as _flz
+    from bb_lab.shard_distance import _monolith_probe
+
+    wit = _greedy_upper_bound(action.V, checks.H_X)
+    L_Z0 = _flz(checks)
+    while int(wit.sum()) > 2:
+        v2 = _monolith_probe(
+            checks.H_Z, L_Z0, int(wit.sum()) - 1, 60_000
+        )
+        if v2 is None:
+            break
+        wit = v2
+    U = int(wit.sum())
+    out["probe_ub"] = U
     step = ("-cost-step=2",) if _all_even(checks) else ()
 
     best = None
+    wdir = _WORK / iid          # per-code dir: group labels collide
+    wdir.mkdir(parents=True, exist_ok=True)
     for sigma in axis_decks(checks):
         sig = "".join(str(int(x)) for x in sigma)
         tag = f"{iid}_{sig}"
         try:
             t0 = time.perf_counter()
             qv, a_lits = write_wcnf(
-                checks, _WORK / f"naive_{tag}.wcnf", mode="naive"
+                checks, wdir / f"naive_{tag}.wcnf", mode="naive"
             )
-            flb = _WORK / f"fiber_{tag}.flb"
+            flb = wdir / f"fiber_{tag}.flb"
             emit_fiber_certificate(
                 checks, A, B, sigma, qv, a_lits, flb,
                 floor_cap=max(4, U - 1), floor_budget=60_000,
@@ -124,11 +142,11 @@ def sweep_one(row):
         okd = True
         for _ in range(2):
             rf = maxsat_distance(
-                checks, _BIN, mode="naive", work_dir=_WORK,
+                checks, _BIN, mode="naive", work_dir=wdir,
                 extra_args=step + (f"-fiber-lb={flb}",),
             )
             r0 = maxsat_distance(
-                checks, _BIN, mode="naive", work_dir=_WORK,
+                checks, _BIN, mode="naive", work_dir=wdir,
                 extra_args=step,
             )
             okd &= rf.distance == d_exact == r0.distance
