@@ -132,6 +132,11 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", required=True)
     ap.add_argument("--jobs", type=int, default=8)
+    ap.add_argument(
+        "--resume", default=None,
+        help="prior sweep log: completed '[i/n] (deck) λ=..: floor=..' "
+        "lines are reused and their items skipped",
+    )
     args = ap.parse_args()
     outdir = Path(args.out)
     outdir.mkdir(parents=True, exist_ok=True)
@@ -152,6 +157,30 @@ def main() -> None:
     print(f"{len(items)} (deck, λ) items", flush=True)
 
     results = []
+    if args.resume:
+        import re
+
+        pat = re.compile(
+            r"^\[\s*\d+/\d+\] \((\d+), (\d+)\) λ=(\d+): floor=(\d+|None)"
+        )
+        for line in Path(args.resume).read_text().splitlines():
+            mo = pat.match(line)
+            if not mo:
+                continue
+            key = f"({mo.group(1)}, {mo.group(2)})"
+            lam = int(mo.group(3))
+            fl = None if mo.group(4) == "None" else int(mo.group(4))
+            if fl is not None:
+                results.append(
+                    {"deck": key, "lam": lam, "floor": fl,
+                     "strata": {}, "resumed": True}
+                )
+        done = {(r["deck"], r["lam"]) for r in results}
+        items = [it for it in items if it not in done]
+        print(
+            f"resumed {len(results)} items from log; {len(items)} to run",
+            flush=True,
+        )
     with mp.get_context("fork").Pool(args.jobs) as pool:
         for res in pool.imap_unordered(_run_item, items):
             results.append(res)
