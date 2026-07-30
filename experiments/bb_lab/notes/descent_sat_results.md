@@ -271,3 +271,54 @@ F2(λ) ≥ 17 for the 64 Λ-classes of a bb_288 deck analytically.
   check, floors ⟷ base-distance cross-validation, the falsify-first
   non-descending-input loud failure, and the certificate format
   contract
+
+## 6. The twist program: bb_288 census, the search, three certifications
+
+(2026-07-30/31.) The (w,b) normal form + stratified sweep, run at
+scale, with the parallel session's settlement folded in.
+
+**bb_288**: the parallel branch (claude/tandem-corpus-sweep-c642de)
+settled d = 18 exactly — Tandem `-cost-step=2`, 6924 s, witness
+re-verified — mooting this sweep's role in determining d. What the
+sweep banked before stopping: the complete (0,6)-deck census (63 λ:
+floors {14: 50, 16: 13}; light strata empty; |w| = 12 strata of size
+≤ 2, all masked-clean; the |w| ≥ 14 completeness proofs the wall) —
+the decomposed, kernel-checkable form of d ≥ 18, which a solver run
+cannot provide. The weak (6,0) leg was abandoned.
+
+**Corpus doubling detector** (honest no-bounds protocol, 36/36
+d-verified): every d = 6 code self-certifies the collapse condition;
+NO d ≥ 10 code does — self-certification saturates at the budgeted-
+SAT wall (g_min ≈ 8) corpus-wide, with the invariant floor almost
+never the binding side. Confirms: collapse comes from analytic
+structure, not solver budget.
+
+**Collapse-ready search** (d = 16 bases × axis lifts): of 8
+candidates — 3 PROMISING (wm154-y [[308,6,≤32]]; l168_6_16-x
+[[336,6,≤32]], dual-deck; l168_4_16a-y [[336,4,≤32]]), 1 WINDOW-KILL
+(axis-sensitivity, echoing A11's presentation-sensitivity), 4 GRAY.
+The falsifier gates that killed every d̄ = 10-era hunt were passed by
+all three survivors.
+
+**Full certifications, target 32** (light band by the base-distance
+theorem after the first run burned its walls re-proving it): all
+three land at **certified floor 16 on every λ** — the band-
+completeness wall again, now at |w| ∈ [15,18] on d̄ = 16 bases. The
+dual-deck [[336,6]] candidate achieves the program's first
+**zero-fallback table** (63/63 classes covered). Evidentially the
+low bands are empty-but-unproven and first members appear at
+|w| ≈ 20–30, putting the true distances plausibly in [20, 32] —
+above the current d = 18 record — but the certificates cannot say so.
+
+**The consolidated finding of the whole arc**: one wall, three
+appearances — band-completeness / absence-proving UNSAT on a large
+base is the single bottleneck behind (i) bb_288's 16 → 18 gap,
+(ii) corpus self-certification stalling at 8, (iii) the lifts'
+16 → 32 gap. Everything else (strata enumeration where populated,
+masked-K certificates, class transport, dual-deck coverage) is cheap
+and works. Routes past the wall, in order of leverage: direct Tandem
+settlement runs on the shortlisted candidates (the bb_288 recipe —
+recommended next for wm154-y); orbit transport shrinking cosets
+before enumeration; overnight completeness budgets; and the Lean/
+kernel route consuming the censuses (rank-certificate obligations in
+the MIm style), the only path that also upgrades the trust tier.
