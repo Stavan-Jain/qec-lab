@@ -156,3 +156,31 @@ def test_moving_cost_floor_v2():
     )
     assert f0 >= v1[0] and f1 >= v1[1]
     assert f0 >= 6  # dangerous fiber at the true distance
+
+
+def test_masked_K_fast_matches_reference():
+    """masked_K_value (residual-hash) must agree with the exhaustive
+    masked_K_at_least reference on random base cycles (bb_72)."""
+    from bb_lab.twist_floors import (
+        compute_twist,
+        masked_K_at_least,
+        masked_K_value,
+    )
+    from bb_lab.linalg import nullspace_f2
+
+    A, B, checks = _bb72()
+    action = compute_class_action(checks)
+    dd = compute_descent(checks, action, (0, 3), A=A, B=B)
+    td = compute_twist(checks, dd)
+    ker = nullspace_f2(td.Hb_Z)
+    rng = np.random.default_rng(5)
+    for _ in range(15):
+        coeff = rng.integers(0, 2, size=ker.shape[0]).astype(np.uint8)
+        w = (coeff @ ker) % 2
+        if not w.any():
+            continue
+        fast = masked_K_value(td, w, 3)
+        for k in (1, 2, 3):
+            assert masked_K_at_least(td, w, k) == (fast >= k), (
+                f"disagreement at k={k}: fast={fast}"
+            )
