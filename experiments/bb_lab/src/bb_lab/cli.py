@@ -47,7 +47,16 @@ def main() -> None:
     default=False,
     help="Emit LRAT proofs + DIMACS CNFs into certificates/<code_id>/ (requires the cadical CLI).",
 )
-def bravyi_check(full: bool, emit_proofs: bool) -> None:
+@click.option(
+    "--only",
+    "only",
+    multiple=True,
+    metavar="CODE_ID",
+    help="Run just these code_ids (repeatable), ignoring --full/--quick. The "
+         "way to regenerate one heroic instance's certificate without also "
+         "running every heroic instance below it in the table.",
+)
+def bravyi_check(full: bool, emit_proofs: bool, only: tuple[str, ...]) -> None:
     """Reproduce the Bravyi-table distances via SAT."""
     from .certificate import make_certificate, write_certificate, verify_certificate
     from .sat_distance import find_logical_z
@@ -55,8 +64,17 @@ def bravyi_check(full: bool, emit_proofs: bool) -> None:
     CERTS = LAB_ROOT / "certificates"
     rows = yaml.safe_load(INSTANCES_YAML.read_text())["instances"]
     small = {"bb_72_12_6", "bb_90_8_10", "bb_108_8_10"}
+    known = {r["code_id"] for r in rows}
+    if unknown := set(only) - known:
+        raise click.ClickException(
+            f"--only: unknown code_id(s) {sorted(unknown)}; "
+            f"{INSTANCES_YAML.name} has {sorted(known)}"
+        )
     for row in rows:
-        if not full and row["code_id"] not in small:
+        if only:
+            if row["code_id"] not in only:
+                continue
+        elif not full and row["code_id"] not in small:
             click.echo(f"  skip  {row['display_name']}  (heroic; pass --full)")
             continue
         code_id = row["code_id"]
@@ -597,7 +615,7 @@ def verify_cert(cert_path: Path, instances: Path | None, drat_trim: str | None, 
     import shutil
     import subprocess as _sp
     from .certificate import read_certificate, verify_certificate
-    from .certificate import _matrix_hash, _file_hash
+    from .certificate import _matrix_hash, _logical_space_hash, _file_hash
     from .checks import bb_check_matrices
     from .sat_distance import find_logical_z
 
@@ -621,7 +639,7 @@ def verify_cert(cert_path: Path, instances: Path | None, drat_trim: str | None, 
 
     # 1) Hashes must agree — the certificate is *about* this code.
     h_check_h = _matrix_hash(checks.H_Z)
-    l_logical_h = _matrix_hash(L_Z)
+    logical_space_h = _logical_space_hash(checks.H_Z, L_Z)
     click.echo(f"certificate code_id     {cert.code_id}")
     click.echo(f"claimed distance        {cert.distance}")
     if h_check_h != cert.h_check_sha256:
@@ -629,10 +647,11 @@ def verify_cert(cert_path: Path, instances: Path | None, drat_trim: str | None, 
             f"H_check hash mismatch: cert claims {cert.h_check_sha256[:16]}…, "
             f"recomputed {h_check_h[:16]}…. This certificate is for a different code."
         )
-    if l_logical_h != cert.l_logical_sha256:
+    if logical_space_h != cert.logical_space_sha256:
         raise click.ClickException(
-            f"L_logical hash mismatch: cert claims {cert.l_logical_sha256[:16]}…, "
-            f"recomputed {l_logical_h[:16]}…"
+            f"logical-space hash mismatch: cert claims "
+            f"{cert.logical_space_sha256[:16]}…, recomputed "
+            f"{logical_space_h[:16]}…. This certificate is for a different code."
         )
     click.echo("matrix hashes           OK")
 
