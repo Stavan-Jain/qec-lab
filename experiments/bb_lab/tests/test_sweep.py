@@ -70,7 +70,7 @@ def test_stem_distinguishes_swapped_polynomials():
 def test_write_wcnf_leaves_no_temp_files(tmp_path):
     c = _checks(6, 6, "x^3 + y + y^2", "y^3 + x + x^2")
     path = tmp_path / f"{instance_stem(c, 'naive')}.wcnf"
-    qv = write_wcnf(c, path, mode="naive")
+    qv, _ = write_wcnf(c, path, mode="naive")
 
     assert path.exists() and path.stat().st_size > 0
     assert len(qv) == c.num_qubits

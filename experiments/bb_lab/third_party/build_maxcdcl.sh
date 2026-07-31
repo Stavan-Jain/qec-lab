@@ -31,16 +31,15 @@ cp maxcdcl_release maxcdcl_stock
 
 # Apply the qec-lab patch (idempotent: skip if already applied) and rebuild.
 #
-# -p2, not -p1: the patch's paths are `a/code/core/Solver.h`, and `-d code`
-# already chdirs into `code/`, so one strip level leaves `code/code/...`
-# and matches nothing. --batch keeps a mismatch from dropping into patch's
-# interactive "File to patch:" prompt, which is what let the failure pass
-# unnoticed: every hunk was skipped, the build continued, and the
-# *unpatched* binary was copied to `tandem`. An A/B against stock would
-# then have compared the solver to itself and reported no difference.
+# The merged patch (v5, fiber-lb included) carries `a/core/...` paths, so
+# it applies with -p1 from the MaxCDCL root WITHOUT `-d code` (one strip
+# level from `a/code/...` under `-d code` was the historical mislabelled-
+# binary bug — both lines found it independently). --batch keeps a
+# mismatch from dropping into patch's interactive "File to patch:" prompt;
+# the explicit failure branch refuses to ship an unpatched 'tandem'.
 cd ../..
 if ! grep -q costStep code/core/Solver.h; then
-    if ! patch --batch -p2 -d code < "$HERE/maxcdcl-qeclab.patch"; then
+    if ! patch --batch --forward -p1 < "$HERE/maxcdcl-qeclab.patch"; then
         echo "ERROR: maxcdcl-qeclab.patch did not apply — refusing to" >&2
         echo "       build an unpatched binary named 'tandem'. The" >&2
         echo "       upstream zip layout may have changed." >&2
@@ -53,7 +52,10 @@ grep -q costStep code/core/Solver.h || {
 }
 
 cd code/simp
-MROOT=.. make clean >/dev/null 2>&1 || true   # symmetric with the stock build
+# clean first: the patch changes the Solver class layout (Solver.h) and
+# the stock makefile's dependency tracking is not reliable across that —
+# stale objects from the stock build segfault at startup.
+MROOT=.. make clean >/dev/null 2>&1 || true
 MROOT=.. make r >/dev/null
 cp maxcdcl_release tandem
 
@@ -65,7 +67,7 @@ cp maxcdcl_release tandem
 # `set -o pipefail`, `solver --help | grep -q` fails the whole pipeline
 # because grep exits at the first match and SIGPIPEs the solver.
 tandem_help="$(./tandem --help 2>&1 || true)"
-for flag in cost-step prime-vars init-lb phase-file; do
+for flag in cost-step prime-vars init-lb phase-file fiber-lb; do
     case "$tandem_help" in
         *"-$flag"*) ;;
         *) echo "ERROR: built 'tandem' is missing -$flag" >&2; exit 1 ;;

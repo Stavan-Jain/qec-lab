@@ -59,6 +59,39 @@ uv run bb-lab verify-cert certificates/bb_72_12_6.cert.json   # full re-check
   && cd drat-trim && cc -O2 -o drat-trim drat-trim.c )
 ```
 
+## The browser UI
+
+```bash
+./third_party/build_maxcdcl.sh      # once: fetch + build maxcdcl_stock and tandem
+uv run bb-lab ui                    # http://127.0.0.1:8765
+```
+
+Type a group and two polynomials. The default view is just the answer:
+`[[n, k, d]]`, the check weight, and one line of secondary facts (group,
+|G|, check counts, qubit degree, rate, CSS guard). **Compute distance**
+fills in `d` — incumbents stream live, so a long run shows its current
+upper bound rather than a spinner, and Cancel kills the solver process.
+
+Everything else is one click away. **Solver options** holds the backend,
+the encoding and the solver flags, with a summary line
+(`Tandem · naive · -cost-step=2`) so you can see the selection without
+opening it. **Full report** holds the ranks, weight profiles, canonical
+polynomial forms and the solver premises.
+
+`--binary <path>` (or `$BB_LAB_TANDEM`) points at a different solver
+build; without one the UI falls back to the in-process CryptoMiniSat
+ladder and says so. The Tandem run mirrors the sweep scripts exactly —
+`mode="naive"`, `-cost-step=2` only when the coset weight-parity premise
+is verified for that code — and reports the `d_method` string the run
+would earn in the corpus.
+
+The solver's options are read from `tandem --help` at startup rather than
+hardcoded, so a flag added to the fork shows up in the UI as soon as you
+rebuild. Only flags carrying a *soundness obligation* need a line of
+Python: an entry in `webui/solver.py: FLAG_NOTES` naming the premise from
+`webui/analysis.py: premises()` that must hold before the flag may be
+passed. That check runs server-side on every request.
+
 ## Module layout
 
 | Path | Purpose |
@@ -69,6 +102,8 @@ uv run bb-lab verify-cert certificates/bb_72_12_6.cert.json   # full re-check
 | `src/bb_lab/linalg.py` | Dense F₂ rank, nullspace, quotient-complement |
 | `src/bb_lab/codeparams.py` | `n`, `k` from check matrices |
 | `src/bb_lab/sat_distance.py` | Exact distance via SAT; dual backend (pysat fast / cadical CLI for proofs) |
+| `src/bb_lab/maxsat_distance.py` | WCNF emitters (`naive` / `strengthened`) + the Tandem driver |
+| `src/bb_lab/webui/` | `bb-lab ui`: analysis, flag discovery + premise gating, stdlib HTTP/SSE, static page |
 | `src/bb_lab/certificate.py` | JSON witness + DRAT-reference certificate format `bb-cert/v2` |
 | `src/bb_lab/lean_bridge.py` | `state.yaml` ↔ JSON ↔ `BBChainComplex.lean` skeleton |
 | `src/bb_lab/store.py` | DuckDB schema (for v1 corpus) |
