@@ -30,6 +30,8 @@ them. Every reported witness is independently re-verified.
 
 from __future__ import annotations
 
+import hashlib
+import os
 import subprocess
 import time
 from dataclasses import dataclass
@@ -116,6 +118,41 @@ def _build_hard(
     return cnf, qv
 
 
+def instance_stem(checks: CheckMatrices, mode: str) -> str:
+    """Instance-unique stem for this code's scratch files.
+
+    The stem used to be `{mode}_{group}`, which is *not* unique: the
+    28,688-row merit sweep spans 21 group labels, so two workers sharing
+    a `work_dir` would overwrite each other's WCNF and silently solve the
+    wrong code. Hashing the check matrices keeps the name deterministic —
+    a rerun reuses the path, and leftover scratch stays greppable — while
+    reducing collisions to content equality.
+    """
+    h = hashlib.blake2b(digest_size=8)
+    for M in (checks.H_X, checks.H_Z):
+        A = np.ascontiguousarray(M, dtype=np.uint8)
+        h.update(repr(A.shape).encode())
+        h.update(A.tobytes())
+    return f"{mode}_{checks.group.label()}_{h.hexdigest()}"
+
+
+def _atomic_write(path: Path, write_body) -> None:
+    """Write via a private temp file, then rename into place.
+
+    Portfolio runs legitimately emit the same instance from several
+    processes at once; `os.replace` is atomic, so a concurrent reader
+    sees either the old file or the complete new one, never a prefix.
+    """
+    tmp = path.with_name(f"{path.name}.tmp{os.getpid()}")
+    try:
+        with tmp.open("w") as f:
+            write_body(f)
+        os.replace(tmp, path)
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
+
+
 def write_wcnf(
     checks: CheckMatrices,
     path: Path,
@@ -130,11 +167,14 @@ def write_wcnf(
     if mode == "strengthened" and action is None:
         action = compute_class_action(checks)
     cnf, qv = _build_hard(checks, mode, action)
-    with Path(path).open("w") as f:
+
+    def body(f) -> None:
         for clause in cnf.clauses:
             f.write("h " + " ".join(str(l) for l in clause) + " 0\n")
         for v in qv:
             f.write(f"1 -{v} 0\n")
+
+    _atomic_write(Path(path), body)
     return qv
 
 
@@ -157,15 +197,22 @@ def maxsat_distance(
     seed_ub: int | None = None,
     init_lb: int | None = None,
     phase_bits: np.ndarray | None = None,
+    keep_scratch: bool = False,
 ) -> MaxSatDistanceResult:
     """Run a WCNF MaxSAT solver on the chosen encoding and return the
     verified distance. Trust model: the *witness* (weight = optimum
     cost) is re-verified here; the optimality claim is the solver's —
     cross-check against `shard_distance` where independence matters.
+
+    Scratch files are named per instance, so a whole-corpus sweep would
+    otherwise leave one WCNF per row behind (the merit sweep's 28,688
+    rows, ~1.5 GB). They are deleted on success unless `keep_scratch`;
+    a *failed* solve always keeps them, so the reproducer survives.
     """
     work_dir = Path(work_dir)
     work_dir.mkdir(parents=True, exist_ok=True)
-    wcnf = work_dir / f"{mode}_{checks.group.label()}.wcnf"
+    stem = instance_stem(checks, mode)
+    wcnf = work_dir / f"{stem}.wcnf"
     action = (
         compute_class_action(checks) if mode == "strengthened" else None
     )
@@ -178,8 +225,9 @@ def maxsat_distance(
         # wrong answer, so only pass certified values.
         argv.append(f"-init-lb={init_lb}")
     if phase_bits is not None:
-        pf = work_dir / f"{mode}_{checks.group.label()}.phases"
-        pf.write_text("".join("1" if b else "0" for b in phase_bits))
+        pf = work_dir / f"{stem}.phases"
+        bits = "".join("1" if b else "0" for b in phase_bits)
+        _atomic_write(pf, lambda f: f.write(bits))
         argv.append(f"-phase-file={pf}")
     argv.append(str(wcnf))
     if seed_ub is not None:
@@ -189,6 +237,15 @@ def maxsat_distance(
         argv, capture_output=True, text=True, timeout=timeout,
     )
     dt = time.perf_counter() - t0
+
+    def drop_scratch() -> None:
+        """Called only on the success paths — a raised error leaves the
+        WCNF (and any phase file) in place for reproduction."""
+        if keep_scratch:
+            return
+        wcnf.unlink(missing_ok=True)
+        if phase_bits is not None:
+            (work_dir / f"{stem}.phases").unlink(missing_ok=True)
 
     out = proc.stdout
     optimum = "s OPTIMUM FOUND" in out
@@ -209,6 +266,7 @@ def maxsat_distance(
         # seed exists: optimum = seed, and the CALLER holds the
         # weight-`seed_ub` witness that justified the seed.
         if seed_ub is not None and cost == seed_ub:
+            drop_scratch()
             return MaxSatDistanceResult(
                 distance=int(cost), witness=None, mode=mode,
                 solver_seconds=dt, optimum_found=True,
@@ -228,6 +286,7 @@ def maxsat_distance(
     L_Z = find_logical_z(checks)
     assert ((L_Z @ v) % 2).any(), "witness is a stabilizer"
 
+    drop_scratch()
     return MaxSatDistanceResult(
         distance=int(cost),
         witness=v,

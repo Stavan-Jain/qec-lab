@@ -15,43 +15,56 @@ the coset weight-parity premise is verified to hold for that code
 (same gate as ladder_sweep.py).
 
 Measured on the 2026-07-29 run: 28,003 rows at qmin=8, D=14, zero
-timeouts, ~0.32 s/row mean over 6 workers.  Rows are ordered by
-descending best-case q so the informative ones land first.
+timeouts, ~0.32 s/row mean over 6 manually launched shards.  Those
+shards striped rows `i % nshards`, which handles this workload badly --
+its slowest 1% of rows are 35% of its total time, so a stripe that
+draws two hard rows runs long after the others idle.  `bb_lab.sweep`
+now hands rows out dynamically instead; `--jobs` defaults to the
+machine's performance-core count.
 
-Usage (from experiments/bb_lab), sharded across N workers:
-  uv run python scripts/merit_sweep.py --binary <tandem> \\
-      --shard 0 --nshards 6 --qmin 8 --out shard0.csv --work-dir w0
+Usage (from experiments/bb_lab):
+  uv run python scripts/merit_sweep.py --binary <tandem> --qmin 8
+
+`--shard/--nshards` still partition the row set, for splitting a sweep
+across several machines; within one machine leave them alone and let
+`--jobs` do the work.
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
-import subprocess
-import time
 from pathlib import Path
 
-import duckdb
-
-from bb_lab.checks import bb_check_matrices
-from bb_lab.group import ZmZn
-from bb_lab.linalg import nullspace_f2, quotient_complement_basis
-from bb_lab.maxsat_distance import maxsat_distance
-from bb_lab.poly import Poly
+from bb_lab.sweep import bb_distance_task, default_jobs, duckdb_rows, run_sweep
 
 DB = "/Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/bb_instances.duckdb"
 
 SQL = """
 SELECT instance_id, group_struct, ell, m, n, k, A_poly, B_poly, d_ub
 FROM bb_instances
-WHERE d_exact IS NULL AND k > 0 AND k * {dcap} * {dcap} / n >= {qmin}
+WHERE {settled} k > 0 AND k * {dcap} * {dcap} / n >= {qmin}
 ORDER BY k * {dcap} * {dcap} / n DESC, n ASC, instance_id
 """
+
+FIELDNAMES = [
+    "instance_id", "group", "n", "k", "d", "q", "d_ub_known",
+    "seconds", "cost_step", "status", "A_poly", "B_poly",
+]
+
+
+def merit_task(payload: dict) -> dict:
+    """Distance solve plus the figure of merit it feeds."""
+    row = bb_distance_task(payload)
+    d = row.get("d")
+    row["q"] = round(row["k"] * d * d / row["n"], 3) if d else None
+    return row
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--binary", required=True)
+    ap.add_argument("--jobs", type=int, default=None,
+                    help="workers (default: performance-core count)")
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--nshards", type=int, default=1)
     ap.add_argument("--qmin", type=float, default=8.0,
@@ -59,64 +72,57 @@ def main() -> None:
     ap.add_argument("--dcap", type=float, default=14.0,
                     help="distance cap defining 'best case' in the screen")
     ap.add_argument("--per-code-timeout", type=float, default=600.0)
-    ap.add_argument("--work-dir", default=".")
+    ap.add_argument("--limit", type=int, default=None,
+                    help="cap rows after sharding (smoke tests, benchmarks)")
+    ap.add_argument("--include-settled", action="store_true",
+                    help="also re-run rows that already have d_exact; the "
+                         "screen is exhausted, so this is how you get a "
+                         "row set to benchmark against")
+    ap.add_argument("--work-dir", default="merit_work")
     ap.add_argument("--out", default="merit_sweep_results.csv")
     args = ap.parse_args()
 
-    con = duckdb.connect(DB, read_only=True)
-    rows = con.execute(SQL.format(qmin=args.qmin, dcap=args.dcap)).fetchall()
-    con.close()
+    rows = duckdb_rows(DB, SQL.format(
+        qmin=args.qmin, dcap=args.dcap,
+        settled="" if args.include_settled else "d_exact IS NULL AND",
+    ))
     rows = [r for i, r in enumerate(rows) if i % args.nshards == args.shard]
+    if args.limit is not None:
+        rows = rows[: args.limit]
 
-    out = Path(args.out)
-    done: set[str] = set()
-    if out.exists():
-        with out.open() as f:
-            done = {ln.split(",")[0] for ln in f.read().splitlines()[1:]}
-    new = not out.exists()
+    items = [
+        {
+            "ell": r["ell"], "m": r["m"],
+            "A_poly": r["A_poly"], "B_poly": r["B_poly"],
+            "binary": args.binary, "mode": "naive",
+            "timeout": args.per_code_timeout,
+            "passthrough": {
+                "instance_id": r["instance_id"], "group": r["group_struct"],
+                "n": r["n"], "k": r["k"], "d_ub_known": r["d_ub"],
+                "A_poly": r["A_poly"], "B_poly": r["B_poly"],
+            },
+        }
+        for r in rows
+    ]
 
-    work = Path(args.work_dir)
-    work.mkdir(parents=True, exist_ok=True)
-    print(f"shard {args.shard}/{args.nshards}: {len(rows)} rows "
-          f"({len(done)} already done)", flush=True)
+    def report(row: dict) -> str | None:
+        if row.get("d") and row.get("q") and row["q"] >= args.qmin:
+            return (f"  ** [[{row['n']},{row['k']},{row['d']}]] "
+                    f"q={row['q']}  {row['group']}  "
+                    f"A={row['A_poly']} B={row['B_poly']}")
+        if row.get("status") not in (None, "ok"):
+            return f"  !! [{row['instance_id'][:16]}] {row['status']}"
+        return None
 
-    with out.open("a", newline="") as f:
-        w = csv.writer(f)
-        if new:
-            w.writerow(["instance_id", "group", "n", "k", "d", "q",
-                        "d_ub_known", "seconds", "cost_step", "status",
-                        "A_poly", "B_poly"])
-        for iid, gs, ell, m, n, k, ap_, bp_, dub in rows:
-            if iid in done:
-                continue
-            G = ZmZn(int(ell), int(m))
-            ch = bb_check_matrices(Poly.from_string(ap_, G),
-                                   Poly.from_string(bp_, G))
-            # -cost-step=2 is sound only when every H_X row and every
-            # class representative has even weight; verify per code.
-            hx_even = not any(int(r.sum()) % 2 for r in ch.H_X)
-            V = quotient_complement_basis(ch.H_X, nullspace_f2(ch.H_Z))
-            step = hx_even and not any(int(v.sum()) % 2 for v in V)
-            t0 = time.perf_counter()
-            try:
-                r = maxsat_distance(
-                    ch, args.binary, mode="naive", work_dir=work,
-                    timeout=args.per_code_timeout,
-                    extra_args=("-cost-step=2",) if step else (),
-                )
-                d, secs, status = r.distance, r.solver_seconds, "ok"
-            except subprocess.TimeoutExpired:
-                d, secs, status = None, time.perf_counter() - t0, "timeout"
-            except Exception as e:
-                d, secs, status = None, time.perf_counter() - t0, \
-                    f"error:{type(e).__name__}"
-            q = round(k * d * d / n, 3) if d else None
-            w.writerow([iid, gs, n, k, d, q, dub, round(secs, 2),
-                        int(step), status, ap_, bp_])
-            f.flush()
-            if d and q and q >= 8:
-                print(f"  ** [[{n},{k},{d}]] q={q}  {gs}  A={ap_} B={bp_}",
-                      flush=True)
+    print(f"merit sweep: shard {args.shard}/{args.nshards}, "
+          f"{len(items)} rows, jobs={args.jobs or default_jobs()}", flush=True)
+    run_sweep(
+        items, merit_task,
+        out=Path(args.out), fieldnames=FIELDNAMES,
+        key_field="instance_id",
+        key=lambda it: it["passthrough"]["instance_id"],
+        jobs=args.jobs, work_root=Path(args.work_dir), report=report,
+    )
 
 
 if __name__ == "__main__":
