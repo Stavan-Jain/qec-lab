@@ -22,11 +22,17 @@ import shutil
 import subprocess
 from pathlib import Path
 
+import numpy as np
 import pytest
 
-from bb_lab.certificate import read_certificate, verify_certificate
+from bb_lab.certificate import (
+    _logical_space_hash,
+    read_certificate,
+    verify_certificate,
+)
 from bb_lab.checks import bb_check_matrices
 from bb_lab.group import ZmZn
+from bb_lab.linalg import nullspace_f2, rank_f2
 from bb_lab.poly import Poly
 from bb_lab.sat_distance import find_logical_z
 
@@ -45,8 +51,14 @@ def _sha256_file(p: Path) -> str:
 
 
 def _sha256_matrix(M) -> str:
-    import numpy as np
     return hashlib.sha256(np.ascontiguousarray(M & 1).tobytes()).hexdigest()
+
+
+def _bb_72_checks():
+    G = ZmZn(6, 6)
+    A = Poly.from_string("x^3 + y + y^2", G)
+    B = Poly.from_string("y^3 + x + x^2", G)
+    return bb_check_matrices(A, B)
 
 
 def test_bb_72_committed_cert_witness_layer():
@@ -60,18 +72,55 @@ def test_bb_72_committed_cert_witness_layer():
     assert cert.code_id == "bb_72_12_6"
     assert cert.distance == 6
 
-    G = ZmZn(6, 6)
-    A = Poly.from_string("x^3 + y + y^2", G)
-    B = Poly.from_string("y^3 + x + x^2", G)
-    checks = bb_check_matrices(A, B)
+    checks = _bb_72_checks()
     L_Z = find_logical_z(checks)
 
     # Hash agreement = "this certificate is about this code"
     assert _sha256_matrix(checks.H_Z) == cert.h_check_sha256
-    assert _sha256_matrix(L_Z) == cert.l_logical_sha256
+    assert _logical_space_hash(checks.H_Z, L_Z) == cert.logical_space_sha256
 
     # Witness is a legitimate weight-6 nontrivial logical
     verify_certificate(cert, checks.H_Z, L_Z)
+
+
+def test_logical_space_hash_is_basis_invariant():
+    """The pinned hash binds a certificate to a *code*, not to whichever
+    coset representatives `find_logical_z` happened to return.
+
+    Regression for the 2026-07-29 `quotient_complement_basis` rewrite: it
+    fixed a real pivot-attribution bug, picked an equally valid but
+    different set of extension rows, and thereby invalidated every
+    committed certificate. Any valid logical basis must hash the same.
+    """
+    checks = _bb_72_checks()
+    L_Z = find_logical_z(checks)
+    baseline = _logical_space_hash(checks.H_Z, L_Z)
+
+    # (a) reordering the basis rows
+    assert _logical_space_hash(checks.H_Z, L_Z[::-1]) == baseline
+
+    # (b) an invertible change of basis: replace L[0] by L[0] ⊕ L[1]
+    mixed = L_Z.copy()
+    mixed[0] ^= mixed[1]
+    assert _logical_space_hash(checks.H_Z, mixed) == baseline
+
+    # (c) shifting a representative by a stabilizer — a different coset
+    #     rep for the same logical
+    shifted = L_Z.copy()
+    shifted[0] ^= checks.H_Z[0]
+    assert _logical_space_hash(checks.H_Z, shifted) == baseline
+
+    # (d) a wholly independent construction of the same quotient: every
+    #     row of ker(H_X), which spans the same space with 42 ≠ 12 rows
+    assert _logical_space_hash(checks.H_Z, nullspace_f2(checks.H_X)) == baseline
+
+    # …but a genuinely different logical space must NOT collide: drop a
+    # logical direction and the hash has to move.
+    truncated = L_Z[1:]
+    assert rank_f2(np.vstack([checks.H_Z, truncated])) < rank_f2(
+        np.vstack([checks.H_Z, L_Z])
+    )
+    assert _logical_space_hash(checks.H_Z, truncated) != baseline
 
 
 @pytest.mark.skipif(

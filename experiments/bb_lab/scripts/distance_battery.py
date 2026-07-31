@@ -21,10 +21,17 @@ i.e. a code still running past ~2 min is already evidence of d >= 16.
 The d=16 codes were 12.7% of the battery and 92% of its compute, so
 size the window by the expected number of *hits*, not by pool size.
 
+That 12.7%/92% split is also why this battery wants a dynamic queue
+rather than the `i % nshards` striping it used to run under: the whole
+cost is a handful of long solves, and a stripe that draws two of them
+runs long after its siblings are idle. `--jobs` (default: performance
+cores) now hands rows out as workers free up; `--shard/--nshards` are
+kept for splitting across machines.
+
 Usage (from experiments/bb_lab):
   uv run python scripts/distance_battery.py --binary <tandem> \\
       --pool 154,6,100 --pool 168,6,50 --pool 168,4,50 --min-dub 16 \\
-      --shard 0 --nshards 10 --out d16_0.csv --work-dir w0
+      --out d16.csv
 """
 
 from __future__ import annotations
@@ -32,17 +39,11 @@ from __future__ import annotations
 import argparse
 import csv
 import glob
-import subprocess
-import time
 from pathlib import Path
 
 import duckdb
 
-from bb_lab.checks import bb_check_matrices
-from bb_lab.group import ZmZn
-from bb_lab.linalg import nullspace_f2, quotient_complement_basis
-from bb_lab.maxsat_distance import maxsat_distance
-from bb_lab.poly import Poly
+from bb_lab.sweep import bb_distance_task, default_jobs, run_sweep
 
 DB = "/Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/bb_instances.duckdb"
 
@@ -61,6 +62,12 @@ ORDER BY k DESC, instance_id
 """
 
 
+FIELDNAMES = [
+    "instance_id", "group", "n", "k", "d", "d_ub_known",
+    "seconds", "cost_step", "status", "A_poly", "B_poly",
+]
+
+
 def _pool(spec: str) -> tuple[int, int, int]:
     n, k, take = (int(x) for x in spec.split(","))
     return n, k, take
@@ -76,6 +83,8 @@ def main() -> None:
                          "(k desc). Use for the n=288 targets.")
     ap.add_argument("--min-dub", type=int, default=16,
                     help="only rows whose d_ub still admits this distance")
+    ap.add_argument("--jobs", type=int, default=None,
+                    help="workers (default: performance-core count)")
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--nshards", type=int, default=1)
     ap.add_argument("--per-code-timeout", type=float, default=1800.0)
@@ -108,48 +117,39 @@ def main() -> None:
     con.close()
     mine = [r for i, r in enumerate(rows) if i % args.nshards == args.shard]
 
-    out = Path(args.out)
-    new = not out.exists()
-    work = Path(args.work_dir)
-    work.mkdir(parents=True, exist_ok=True)
-    t_start = time.perf_counter()
-    print(f"shard {args.shard}: {len(mine)} of {len(rows)} codes", flush=True)
+    items = [
+        {
+            "ell": ell, "m": m, "A_poly": ap_, "B_poly": bp_,
+            "binary": args.binary, "mode": "naive",
+            "timeout": args.per_code_timeout,
+            "passthrough": {
+                "instance_id": iid, "group": gs, "n": n, "k": k,
+                "d_ub_known": dub, "A_poly": ap_, "B_poly": bp_,
+            },
+        }
+        for iid, gs, ell, m, n, k, ap_, bp_, dub in mine
+    ]
 
-    with out.open("a", newline="") as f:
-        w = csv.writer(f)
-        if new:
-            w.writerow(["instance_id", "group", "n", "k", "d", "d_ub_known",
-                        "seconds", "cost_step", "status", "A_poly", "B_poly"])
-        for iid, gs, ell, m, n, k, ap_, bp_, dub in mine:
-            if args.deadline and time.perf_counter() - t_start > args.deadline:
-                print("deadline reached — not starting further solves",
-                      flush=True)
-                break
-            G = ZmZn(int(ell), int(m))
-            ch = bb_check_matrices(Poly.from_string(ap_, G),
-                                   Poly.from_string(bp_, G))
-            hx_even = not any(int(r.sum()) % 2 for r in ch.H_X)
-            V = quotient_complement_basis(ch.H_X, nullspace_f2(ch.H_Z))
-            step = hx_even and not any(int(v.sum()) % 2 for v in V)
-            t0 = time.perf_counter()
-            try:
-                r = maxsat_distance(
-                    ch, args.binary, mode="naive", work_dir=work,
-                    timeout=args.per_code_timeout,
-                    extra_args=("-cost-step=2",) if step else (),
-                )
-                d, secs, status = r.distance, r.solver_seconds, "ok"
-            except subprocess.TimeoutExpired:
-                d, secs, status = None, time.perf_counter() - t0, "timeout"
-            except Exception as e:
-                d, secs, status = None, time.perf_counter() - t0, \
-                    f"error:{type(e).__name__}"
-            w.writerow([iid, gs, n, k, d, dub, round(secs, 2), int(step),
-                        status, ap_, bp_])
-            f.flush()
-            if d and d >= args.min_dub:
-                print(f"  *** d={d} [[{n},{k},{d}]] {gs} A={ap_} B={bp_} "
-                      f"({secs:.0f}s)", flush=True)
+    def report(row: dict) -> str | None:
+        d = row.get("d")
+        if d and d >= args.min_dub:
+            return (f"  *** d={d} [[{row['n']},{row['k']},{d}]] "
+                    f"{row['group']} A={row['A_poly']} B={row['B_poly']} "
+                    f"({row['seconds']:.0f}s)")
+        if row.get("status") not in (None, "ok"):
+            return f"  !! [{row['instance_id'][:16]}] {row['status']}"
+        return None
+
+    print(f"shard {args.shard}: {len(items)} of {len(rows)} codes, "
+          f"jobs={args.jobs or default_jobs()}", flush=True)
+    run_sweep(
+        items, bb_distance_task,
+        out=Path(args.out), fieldnames=FIELDNAMES,
+        key_field="instance_id",
+        key=lambda it: it["passthrough"]["instance_id"],
+        jobs=args.jobs, work_root=Path(args.work_dir), report=report,
+        deadline=args.deadline or None,
+    )
 
 
 if __name__ == "__main__":

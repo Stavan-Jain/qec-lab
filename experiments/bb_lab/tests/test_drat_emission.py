@@ -115,6 +115,39 @@ def test_certificate_records_drat_paths():
         verify_certificate(cert, checks.H_Z, L_Z)
 
 
+def test_committed_cnfs_are_reproducible():
+    """Re-emitting bb_72's proof bundle must reproduce the committed
+    CNFs byte for byte.
+
+    `certificates/.gitignore` commits only bb_72's bundle and justifies
+    discarding the larger ones with "regeneration reproduces the same
+    files". That claim quietly stopped holding when the 2026-07-29
+    `quotient_complement_basis` rewrite changed which logical basis
+    `find_logical_z` returns — the basis rows are encoded directly into
+    the CNF, so every committed CNF became unreproducible with nothing
+    to notice. This is that missing check.
+
+    Only the CNFs are compared: they are built by our own encoder and so
+    are fully determined by the code, whereas DRAT bytes depend on the
+    solver build and would make this test fail on a different cadical.
+    """
+    committed = Path(__file__).resolve().parent.parent / "certificates" / "bb_72_12_6"
+    if not committed.exists():
+        pytest.skip("committed bb_72 proof bundle missing")
+    checks = _bb_72_checks()
+    with tempfile.TemporaryDirectory() as td:
+        result = x_distance(checks, proof_dir=td, code_id="bb_72_12_6")
+        for proof_path in result.unsat_proof_paths:
+            fresh = proof_path.with_suffix(".cnf")
+            gold = committed / fresh.name
+            assert gold.exists(), f"committed bundle is missing {fresh.name}"
+            assert fresh.read_bytes() == gold.read_bytes(), (
+                f"{fresh.name} no longer reproduces the committed bundle — "
+                "the CNF encoding (or the logical basis it encodes) changed; "
+                "regenerate with `bb-lab bravyi-check --quick --emit-proofs`"
+            )
+
+
 def test_drat_sizes_grow_with_weight():
     """Cheap sanity: weight-(d-1) UNSAT should produce a meaningfully
     larger proof than weight-1."""

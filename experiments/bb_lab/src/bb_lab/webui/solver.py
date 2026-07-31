@@ -484,7 +484,7 @@ def run_tandem(
         work = Path(td)
         job.emit("stage", stage="encoding",
                  detail=f"building the {mode} WCNF")
-        qv = write_wcnf(checks, work / "instance.wcnf", mode=mode)
+        qv, _ = write_wcnf(checks, work / "instance.wcnf", mode=mode)
         job.check_cancel()
 
         argv = build_argv(

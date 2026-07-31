@@ -918,7 +918,7 @@ experiments/bb_lab/
 │   ├── linalg.py                   # F₂ rank, nullspace, quotient complement
 │   ├── sat_distance.py             # exact d via pysat (fast) /
 │   │                               #   cadical CLI (proof-emitting)
-│   ├── certificate.py              # WitnessCertificate (bb-cert/v1):
+│   ├── certificate.py              # WitnessCertificate (bb-cert/v2):
 │   │                               #   witness + DRAT refs + SHA256 hashes
 │   ├── lean_bridge.py              # state.yaml ↔ JSON ↔ emitted .lean
 │   ├── automorphism.py             # Aut(G) via brute-force gen images

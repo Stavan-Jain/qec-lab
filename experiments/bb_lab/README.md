@@ -104,7 +104,7 @@ passed. That check runs server-side on every request.
 | `src/bb_lab/sat_distance.py` | Exact distance via SAT; dual backend (pysat fast / cadical CLI for proofs) |
 | `src/bb_lab/maxsat_distance.py` | WCNF emitters (`naive` / `strengthened`) + the Tandem driver |
 | `src/bb_lab/webui/` | `bb-lab ui`: analysis, flag discovery + premise gating, stdlib HTTP/SSE, static page |
-| `src/bb_lab/certificate.py` | JSON witness + DRAT-reference certificate format `bb-cert/v1` |
+| `src/bb_lab/certificate.py` | JSON witness + DRAT-reference certificate format `bb-cert/v2` |
 | `src/bb_lab/lean_bridge.py` | `state.yaml` ↔ JSON ↔ `BBChainComplex.lean` skeleton |
 | `src/bb_lab/store.py` | DuckDB schema (for v1 corpus) |
 | `src/bb_lab/cli.py` | `bb-lab` entry points |
@@ -168,11 +168,14 @@ The DRAT proof files are the v1 hand-off. The next step on track (b)
 is plumbing a Lean-side LRAT consumer:
 
 - Read `certificates/<code_id>.cert.json` — get `n`, `direction`,
-  `witness_support`, `h_check_sha256`, `l_logical_sha256`,
+  `witness_support`, `h_check_sha256`, `logical_space_sha256`,
   `unsat_proofs: [{weight_bound, drat_path, cnf_path, sha256s}]`.
 - Reconstruct `H_check` and `L_logical` from the same `(G, A, B)` Lean
   already has (`bbChainComplex`). Hashes match → the certificate is
-  about *our* code, not someone else's.
+  about *our* code, not someone else's. Note `logical_space_sha256`
+  covers the *space* `span(H_check ∪ L_logical) = ker(H_X)` in reduced
+  row-echelon form, so Lean is free to pick its own logical basis —
+  only the code has to agree.
 - For each `UnsatProofRef`: convert DRAT→LRAT with `drat-trim -L`,
   then run an in-kernel LRAT verifier (Carneiro-style), conclude no
   logical of weight ≤ `weight_bound` exists.
