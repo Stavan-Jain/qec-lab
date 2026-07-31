@@ -41,7 +41,7 @@ import subprocess
 import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable
 
 import numpy as np
 
@@ -350,6 +350,7 @@ def x_distance(
     verbose: bool = False,
     proof_dir: Path | str | None = None,
     code_id: str = "code",
+    progress: "Callable[[int, bool, float], None] | None" = None,
 ) -> DistanceResult:
     """Compute `d_X` exactly via iterated SAT calls.
 
@@ -358,6 +359,9 @@ def x_distance(
     `weight_upper_bound` (default `n`) caps the search.
     `verbose=True` prints one line per weight iteration with the elapsed
     wall time — useful for long-running heroic instances.
+    `progress=fn` calls `fn(weight, satisfiable, seconds)` after each
+    rung instead of (or as well as) printing — the hook the web UI
+    streams from, so a caller can watch the ladder climb.
     `proof_dir=<path>` enables emission of LRAT proofs + DIMACS CNFs for
     every UNSAT call; combined with the SAT witness this gives a full
     distance certificate. Requires the `cadical` CLI.
@@ -375,14 +379,15 @@ def x_distance(
     proof_dir_path = Path(proof_dir) if proof_dir is not None else None
 
     for w in range(weight_lower_bound, weight_upper_bound + 1):
-        if verbose:
-            t0 = _time.time()
+        t0 = _time.time()
         witness, proof_path = _solve_at_weight(
             checks.H_Z, L_Z, w,
             proof_dir=proof_dir_path, code_id=code_id,
         )
         if proof_path is not None:
             proof_paths.append(proof_path)
+        if progress is not None:
+            progress(w, witness is not None, _time.time() - t0)
         if verbose:
             dt = _time.time() - t0
             outcome = "SAT  ✓" if witness is not None else "UNSAT"

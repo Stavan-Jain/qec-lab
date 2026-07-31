@@ -1,6 +1,11 @@
 data/
 runs/
 scratch/
+
+# Solver build tree: build_maxcdcl.sh fetches the MSE-2023 MaxCDCL zip and
+# compiles maxcdcl_stock + tandem in place (~94 MB). Reproducible from the
+# script plus maxcdcl-qeclab.patch, both of which ARE tracked.
+third_party/maxcdcl/
 *.duckdb
 *.duckdb.wal
 *.parquet

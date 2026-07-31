@@ -21,10 +21,18 @@ cd MaxCDCL/code/simp
 MROOT=.. make r >/dev/null
 cp maxcdcl_release maxcdcl_stock
 
-# apply the qec-lab patch (idempotent: skip if already applied) and rebuild
+# apply the qec-lab patch (idempotent: skip if already applied) and rebuild.
+# The patch's paths are already `a/code/...`, so -p1 lands them relative to
+# the MaxCDCL root — do NOT add `-d code` (that looks for code/code/...).
+# --batch keeps a mismatch from stalling on patch's interactive prompt.
 cd ../..
 if ! grep -q costStep code/core/Solver.h; then
-    patch -p1 -d code < "$HERE/maxcdcl-qeclab.patch"
+    patch -p1 --batch --forward < "$HERE/maxcdcl-qeclab.patch"
+    grep -q costStep code/core/Solver.h || {
+        echo "error: patch reported success but costStep is absent from" \
+             "code/core/Solver.h — the fork would be a stock binary." >&2
+        exit 1
+    }
 fi
 cd code/simp
 MROOT=.. make r >/dev/null
