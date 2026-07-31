@@ -4,14 +4,14 @@ For v0 a "certificate" is a JSON file recording the minimum-weight
 nontrivial-logical witness produced by the SAT search:
 
     {
-      "schema_version": "bb-cert/v1",
+      "schema_version": "bb-cert/v2",
       "code_id": "...",
       "n": ...,
       "distance": ...,
       "direction": "X",
       "witness_support": [i_1, i_2, ...],   # qubit indices set to 1
       "h_check_sha256": "...",              # over H_Z (the syndrome op)
-      "l_logical_sha256": "...",            # over the logical-Z basis
+      "logical_space_sha256": "...",        # over the logical space (see below)
       "solver": "cadical@1.9.5",
       "wall_seconds": ...,
     }
@@ -27,6 +27,18 @@ logical-Z basis, then independently verify
 The UNSAT direction (proving no smaller logical exists) is currently
 trusted to CaDiCaL; piping its LRAT output through `drat-trim` is a v1
 follow-up that will populate a sibling `.drat` file alongside this JSON.
+
+The two hashes answer "is this certificate about *this* code?", so
+neither may depend on an arbitrary internal choice. `H_Z` is a
+deterministic function of (G, A, B), so it is hashed literally.
+`L_Z` is *not*: `find_logical_z` picks arbitrary coset representatives
+for `ker(H_X) / rowspan(H_Z)`, and any other valid choice certifies
+exactly the same distance. So what gets hashed is the logical *space*
+`span(H_Z ∪ L_Z) = ker(H_X)` in canonical form — see
+`_logical_space_hash`. (Schema v1 hashed the basis matrix itself; a
+2026-07-29 fix to `quotient_complement_basis` changed the selection
+rule and silently invalidated every committed v1 certificate, which is
+what motivated the v2 change.)
 """
 
 from __future__ import annotations
@@ -40,8 +52,10 @@ from typing import Sequence
 
 import numpy as np
 
+from .linalg import rref_f2
 
-SCHEMA_VERSION = "bb-cert/v1"
+
+SCHEMA_VERSION = "bb-cert/v2"
 
 
 @dataclass(frozen=True, slots=True)
@@ -70,7 +84,7 @@ class WitnessCertificate:
     direction: str  # 'X' or 'Z'
     witness_support: tuple[int, ...]
     h_check_sha256: str
-    l_logical_sha256: str
+    logical_space_sha256: str
     solver: str
     wall_seconds: float
     emitted_at: str
@@ -85,6 +99,12 @@ class WitnessCertificate:
     @classmethod
     def from_json(cls, text: str) -> "WitnessCertificate":
         d = json.loads(text)
+        if d.get("schema_version") != SCHEMA_VERSION:
+            raise ValueError(
+                f"unsupported cert schema {d.get('schema_version')!r} "
+                f"(this build reads {SCHEMA_VERSION}); regenerate with "
+                "`bb-lab bravyi-check --emit-proofs`"
+            )
         return cls(
             schema_version=d["schema_version"],
             code_id=d["code_id"],
@@ -93,7 +113,7 @@ class WitnessCertificate:
             direction=d["direction"],
             witness_support=tuple(int(i) for i in d["witness_support"]),
             h_check_sha256=d["h_check_sha256"],
-            l_logical_sha256=d["l_logical_sha256"],
+            logical_space_sha256=d["logical_space_sha256"],
             solver=d["solver"],
             wall_seconds=float(d["wall_seconds"]),
             emitted_at=d["emitted_at"],
@@ -105,6 +125,22 @@ class WitnessCertificate:
 
 def _matrix_hash(M: np.ndarray) -> str:
     return hashlib.sha256(np.ascontiguousarray(M & 1).tobytes()).hexdigest()
+
+
+def _logical_space_hash(H_check: np.ndarray, L_logical: np.ndarray) -> str:
+    """Fingerprint the logical space, not the basis that presents it.
+
+    `verify_certificate`'s anticommutation test asks whether the witness
+    pairs nontrivially with *some* logical. Because `rowspan(H_check)`
+    pairs trivially with every `w ∈ ker(H_check)`, that test depends only
+    on the subspace `span(H_check ∪ L_logical)` — which is `ker(H_X)`, an
+    invariant of the code — and not on which coset representatives
+    `L_logical` happens to hold. Reduced row-echelon form is a canonical
+    form for a row space, so every valid logical basis hashes the same.
+    """
+    M = np.vstack([H_check & 1, L_logical & 1]).astype(np.uint8)
+    reduced, _ = rref_f2(M)
+    return _matrix_hash(reduced[reduced.any(axis=1)])
 
 
 def make_certificate(
@@ -161,7 +197,7 @@ def make_certificate(
         direction=direction,
         witness_support=tuple(int(i) for i in np.flatnonzero(witness)),
         h_check_sha256=_matrix_hash(H_check),
-        l_logical_sha256=_matrix_hash(L_logical),
+        logical_space_sha256=_logical_space_hash(H_check, L_logical),
         solver=solver,
         wall_seconds=wall_seconds,
         emitted_at=_dt.datetime.now(_dt.UTC).isoformat(),
@@ -190,8 +226,8 @@ def verify_certificate(
         raise ValueError(f"unknown cert schema {cert.schema_version!r}")
     if _matrix_hash(H_check) != cert.h_check_sha256:
         raise ValueError("H_check hash mismatch — certificate was built against a different check matrix")
-    if _matrix_hash(L_logical) != cert.l_logical_sha256:
-        raise ValueError("L_logical hash mismatch — certificate was built against a different logical basis")
+    if _logical_space_hash(H_check, L_logical) != cert.logical_space_sha256:
+        raise ValueError("logical-space hash mismatch — certificate was built against a different code")
     n = H_check.shape[1]
     if cert.n != n:
         raise ValueError(f"cert n={cert.n} ≠ H_check cols n={n}")

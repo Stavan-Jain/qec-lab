@@ -2,11 +2,11 @@
   "code_id": "bb_90_8_10",
   "direction": "X",
   "distance": 10,
-  "emitted_at": "2026-05-24T16:23:46.774712+00:00",
+  "emitted_at": "2026-07-31T02:02:32.798845+00:00",
   "h_check_sha256": "d79b46aba243dffc25cd1b3a9a75537e006d8525ea8303c6253cbacb2895e61f",
-  "l_logical_sha256": "0258352aa9871c8bd88120abbbdd30a6d2c1a9885cc0f754392b2ce82a19b60f",
+  "logical_space_sha256": "c667791c8989357ebfbf3cdda6b1e637e33d4db8c1fe653c072ad3fffaac6409",
   "n": 90,
-  "schema_version": "bb-cert/v1",
+  "schema_version": "bb-cert/v2",
   "solver": "cadical@3.0.0",
   "unsat_proofs": [
     {
@@ -73,7 +73,7 @@
       "weight_bound": 9
     }
   ],
-  "wall_seconds": 14.092950105667114,
+  "wall_seconds": 10.643381118774414,
   "witness_support": [
     52,
     53,
