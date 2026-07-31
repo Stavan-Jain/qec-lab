@@ -6,6 +6,7 @@ Subcommands:
   bb-lab lean-import <yaml>      print the JSON descriptor for a state.yaml row
   bb-lab lean-emit <yaml> <out>  emit a Lean skeleton from a state.yaml row
   bb-lab classify <flags>        run the Tier-0 obstruction gate on a candidate spec
+  bb-lab ui                      browser UI: a code in, [[n,k,d]] + check weights out
 
 `enumerate` is reserved for v1 (canonical-form deduper + weight-bounded
 enumeration); calling it raises NotImplementedError today.
@@ -1153,6 +1154,51 @@ def classify_cmd(
     click.echo("Reasoning:")
     for line in result.reasoning:
         click.echo(f"  - {line}")
+
+
+@main.command(name="ui")
+@click.option("--host", default="127.0.0.1", show_default=True)
+@click.option("--port", default=8765, show_default=True, type=int)
+@click.option(
+    "--binary",
+    default=None,
+    help=(
+        "Path to the Tandem solver. Defaults to $BB_LAB_TANDEM, else the "
+        "binary built by third_party/build_maxcdcl.sh."
+    ),
+)
+@click.option("--open/--no-open", "open_browser", default=True,
+              help="Open the page in a browser once the server is up.")
+def ui(host: str, port: int, binary: str | None, open_browser: bool) -> None:
+    """Serve the browser UI: enter a code, get [[n, k, d]] and check weights."""
+    import os
+    import webbrowser
+
+    from .webui import DEFAULT_TANDEM, probe, serve
+
+    chosen = binary or os.environ.get("BB_LAB_TANDEM") or (
+        str(DEFAULT_TANDEM) if DEFAULT_TANDEM.exists() else None
+    )
+    info = probe(chosen)
+    if info.available and info.fork:
+        click.echo(f"solver:  Tandem — {info.path}")
+    elif info.available:
+        click.echo(f"solver:  {info.path}\n         {info.error}")
+    else:
+        click.echo(f"solver:  unavailable ({info.error})")
+        click.echo("         falling back to the in-process CryptoMiniSat ladder.")
+
+    httpd = serve(host=host, port=port, binary=chosen)
+    url = f"http://{host}:{port}/"
+    click.echo(f"serving: {url}   (ctrl-c to stop)")
+    if open_browser:
+        webbrowser.open(url)
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        click.echo("\nstopped.")
+    finally:
+        httpd.server_close()
 
 
 if __name__ == "__main__":

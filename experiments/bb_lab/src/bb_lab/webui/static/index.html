@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BB code inspector</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">⛓</span>
+    <div>
+      <h1>BB code inspector</h1>
+      <p>bivariate bicycle codes</p>
+    </div>
+  </div>
+  <div id="backend-badge" class="badge badge-muted">probing solver…</div>
+</header>
+
+<main>
+  <!-- ─────────────────────────────────────────── input ── -->
+  <section class="panel panel-input">
+    <div class="presets" id="presets"></div>
+
+    <form id="code-form" autocomplete="off">
+      <label class="field">
+        <span class="field-label">Group <em>G</em></span>
+        <input id="orders" name="orders" value="12x6" spellcheck="false">
+      </label>
+
+      <label class="field">
+        <span class="field-label">Polynomial <em>A</em></span>
+        <input id="polyA" name="A" value="x^3 + y + y^2" spellcheck="false">
+      </label>
+
+      <label class="field">
+        <span class="field-label">Polynomial <em>B</em></span>
+        <input id="polyB" name="B" value="y^3 + x + x^2" spellcheck="false">
+      </label>
+    </form>
+
+    <div id="input-error" class="error hidden"></div>
+
+    <div class="actions">
+      <button type="button" id="solve" class="primary">Compute distance</button>
+      <button type="button" id="cancel" class="ghost hidden">Cancel</button>
+    </div>
+
+    <details class="disclosure" id="options">
+      <summary>
+        <span>Solver options</span>
+        <span class="summary-note" id="options-note"></span>
+      </summary>
+      <div class="disclosure-body">
+        <div class="field">
+          <span class="field-label">Backend</span>
+          <div class="seg" id="backend-select"></div>
+        </div>
+        <div class="field" id="mode-field">
+          <span class="field-label">Encoding</span>
+          <div class="seg" id="mode-select">
+            <button type="button" data-mode="naive" class="on">naive</button>
+            <button type="button" data-mode="strengthened">strengthened</button>
+          </div>
+          <span class="field-hint">
+            the sweep scripts all use <code>naive</code>
+          </span>
+        </div>
+        <div id="flags"></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- ────────────────────────────────────────── results ── -->
+  <section class="panel panel-results">
+    <div class="headline">
+      <div class="params" id="params">
+        <span class="brk">[[</span><span id="p-n">·</span><span class="sep">,</span><span
+          id="p-k">·</span><span class="sep">,</span><span id="p-d" class="unknown">?</span><span class="brk">]]</span>
+      </div>
+      <div class="weightcard">
+        <div class="weightcard-value" id="check-weight">·</div>
+        <div class="weightcard-label">check weight</div>
+        <div class="weightcard-sub" id="check-weight-sub">qubits per stabilizer</div>
+      </div>
+    </div>
+
+    <div class="meta" id="meta"></div>
+
+    <div id="warnings"></div>
+    <div id="known"></div>
+
+    <div class="result" id="solve-card" hidden>
+      <div class="result-head">
+        <span class="result-title" id="solve-title">Solver</span>
+        <span id="solve-state" class="badge badge-muted"></span>
+      </div>
+      <div id="solve-summary" class="result-summary"></div>
+      <div id="incumbents" class="incumbents"></div>
+      <details class="disclosure sub" id="log-wrap">
+        <summary><span>Solver output</span></summary>
+        <pre id="log" class="log"></pre>
+      </details>
+    </div>
+
+    <details class="disclosure" id="report">
+      <summary>
+        <span>Full report</span>
+        <span class="summary-note">ranks, weight profiles, solver premises</span>
+      </summary>
+      <div class="disclosure-body">
+        <div class="stats" id="stats"></div>
+        <h4>Canonical form</h4>
+        <div id="canonical"></div>
+        <h4>Premises</h4>
+        <div id="premise-body"></div>
+      </div>
+    </details>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

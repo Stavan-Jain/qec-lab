@@ -252,6 +252,40 @@ def _parse_v_bits(stdout: str) -> str:
     return "".join(bits)
 
 
+def parse_solver_output(stdout: str) -> tuple[bool, int | None, str]:
+    """`(optimum_found, best_cost, v_bits)` from a MaxCDCL-family run.
+
+    Split out of `maxsat_distance` so alternative drivers (the web UI's
+    streaming runner) share one parser with the sweep scripts.
+    """
+    optimum = "s OPTIMUM FOUND" in stdout
+    cost: int | None = None
+    for line in stdout.splitlines():
+        if line.startswith("o "):
+            cost = int(line[2:].strip())
+    return optimum, cost, _parse_v_bits(stdout)
+
+
+def decode_witness(bits: str, qv: list[int]) -> np.ndarray:
+    """Project a solver v-line onto the qubit variables, in qubit order."""
+    return np.array(
+        [1 if bits[q - 1] == "1" else 0 for q in qv], dtype=np.uint8
+    )
+
+
+def verify_witness(checks: CheckMatrices, v: np.ndarray, cost: int) -> None:
+    """Independent re-verification of a claimed minimum-weight logical.
+
+    The solver's *optimality* claim is taken on trust; this checks the
+    three facts that make the returned vector a witness at all. Shared
+    by every driver so the trust boundary sits in exactly one place.
+    """
+    assert int(v.sum()) == cost, "v-line weight != reported optimum"
+    assert not ((checks.H_Z @ v) % 2).any(), "witness not in ker(H_Z)"
+    L_Z = find_logical_z(checks)
+    assert ((L_Z @ v) % 2).any(), "witness is a stabilizer"
+
+
 def maxsat_distance(
     checks: CheckMatrices,
     solver_binary: Path | str,
@@ -319,17 +353,12 @@ def maxsat_distance(
     dt = time.perf_counter() - t0
 
     out = proc.stdout
-    optimum = "s OPTIMUM FOUND" in out
+    optimum, cost, bits = parse_solver_output(out)
     if not optimum:
         raise RuntimeError(
             f"solver did not report OPTIMUM (exit {proc.returncode});"
             f" tail:\n{out[-1500:]}\n{proc.stderr[-500:]}"
         )
-    cost = None
-    for line in out.splitlines():
-        if line.startswith("o "):
-            cost = int(line[2:].strip())
-    bits = _parse_v_bits(out)
 
     if len(bits) < max(qv):
         # No (usable) model printed. Legitimate exactly when the run
@@ -346,15 +375,8 @@ def maxsat_distance(
             f"(cost={cost}, seed={seed_ub}); tail:\n{out[-1500:]}"
         )
 
-    v = np.array(
-        [1 if bits[q - 1] == "1" else 0 for q in qv], dtype=np.uint8
-    )
-
-    # Independent verification of the witness.
-    assert int(v.sum()) == cost, "v-line weight != reported optimum"
-    assert not ((checks.H_Z @ v) % 2).any(), "witness not in ker(H_Z)"
-    L_Z = find_logical_z(checks)
-    assert ((L_Z @ v) % 2).any(), "witness is a stabilizer"
+    v = decode_witness(bits, qv)
+    verify_witness(checks, v, cost)
 
     return MaxSatDistanceResult(
         distance=int(cost),
