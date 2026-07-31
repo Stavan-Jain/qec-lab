@@ -292,6 +292,20 @@ def test_deadline_stops_the_sweep_and_leaves_it_resumable(tmp_path):
     assert len(rows) == 24, "resume after deadline duplicated rows"
 
 
+def test_zero_deadline_still_stops(tmp_path):
+    """deadline=0.0 means "the budget is already spent" (a caller that
+    used it all upstream), not "no deadline" — truthiness would invert
+    this and run the whole sweep."""
+    out = tmp_path / "r.csv"
+    items = [{"key": f"k{i}", "x": i, "sleep": 0.2} for i in range(16)]
+    written = run_sweep(
+        items, slow_task, out=out, fieldnames=FIELDNAMES,
+        key_field="key", key=lambda it: it["key"],
+        jobs=2, work_root=tmp_path / "work", deadline=0.0,
+    )
+    assert written < 16, "deadline=0.0 was read as 'no deadline'"
+
+
 def test_run_sweep_refuses_to_recurse_inside_a_worker(tmp_path, monkeypatch):
     """A caller without an `if __name__ == '__main__':` guard would have
     every spawned child re-run the module top level and start its own

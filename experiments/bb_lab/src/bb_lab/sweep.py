@@ -215,7 +215,11 @@ def run_sweep(
                         f"  … {written}/{len(pending)} rows "
                         f"({rate:.1f}/s)", flush=True,
                     )
-                if (deadline and not stopped
+                # `is not None`, not truthiness: a caller that spent its
+                # whole budget upstream passes a remaining deadline of
+                # 0.0, which must still stop the sweep rather than read
+                # as "no deadline".
+                if (deadline is not None and not stopped
                         and time.perf_counter() - t0 > deadline):
                     stopped = True
                     dropped = sum(fu.cancel() for fu in futures)

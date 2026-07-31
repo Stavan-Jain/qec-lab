@@ -43,6 +43,7 @@ from __future__ import annotations
 import argparse
 import math
 import random
+import time
 from pathlib import Path
 
 from bb_lab.automorphism import automorphisms
@@ -107,9 +108,19 @@ def main() -> None:
     # Phase 1 -- draw, k-filter, canonical-dedup. Pure Python and cheap
     # next to the solving; kept serial so the candidate list is exactly
     # reproducible from --seed.
+    #
+    # --deadline covers phase 1 too. In the old interleaved loop it could
+    # cut the draws short; now that all drawing happens before any
+    # solving, a large --samples would otherwise blow the whole budget
+    # before a single code got settled.
+    t_start = time.perf_counter()
     seen: set = set()
     items: list[dict] = []
     for _ in range(args.samples):
+        if args.deadline and time.perf_counter() - t_start > args.deadline:
+            print(f"deadline reached during drawing ({len(items)} kept)",
+                  flush=True)
+            break
         A = Poly.from_support(rng.sample(els, 3), G)
         B = Poly.from_support(rng.sample(els, 3), G)
         k = code_params(bb_check_matrices(A, B)).k
@@ -129,8 +140,9 @@ def main() -> None:
             "passthrough": {"n": n, "k": k,
                             "A_poly": a_str, "B_poly": b_str},
         })
-    print(f"phase 1: {len(items)} distinct k-qualifying codes drawn",
-          flush=True)
+    t_drawn = time.perf_counter() - t_start
+    print(f"phase 1: {len(items)} distinct k-qualifying codes drawn "
+          f"({t_drawn:.1f}s)", flush=True)
 
     # Phase 2 -- settle them on the dynamic queue. Resume keys off the
     # canonical (A_poly, B_poly) pair the CSV already carries.
@@ -152,7 +164,7 @@ def main() -> None:
         key_field=("A_poly", "B_poly"),
         key=lambda it: (it["A_poly"], it["B_poly"]),
         jobs=args.jobs, work_root=Path(args.work_dir), report=report,
-        deadline=args.deadline or None,
+        deadline=max(0.0, args.deadline - t_drawn) if args.deadline else None,
     )
 
 
