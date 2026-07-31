@@ -10,8 +10,9 @@ const state = {
   flags: {},            // flag -> value (only what the user turned on)
   ack: new Set(),       // flags whose caller obligation was acknowledged
   job: null,
+  jobSig: null,
   source: null,
-  solvedFor: null,      // signature of the code the solve card describes
+  solvedFor: null,      // signature of the code the result strip describes
 };
 
 // A distance belongs to one specific (G, A, B). Anything the solver said
@@ -59,7 +60,7 @@ async function loadBackend() {
 
   if (t.available && t.fork) {
     badge.className = "badge badge-good";
-    badge.textContent = `Tandem ready · ${t.options.length} solver options`;
+    badge.textContent = "Tandem ready";
     badge.title = t.path;
   } else if (t.available) {
     badge.className = "badge badge-warn";
@@ -107,6 +108,7 @@ async function loadPresets() {
       $("orders").value = p.orders;
       $("polyA").value = p.A;
       $("polyB").value = p.B;
+      invalidateOnEdit();
       analyse();
     };
     box.appendChild(b);
@@ -115,100 +117,126 @@ async function loadPresets() {
 
 // ───────────────────────────────────────────────────────── flags
 
+/** One line under "Solver options" saying what is currently selected, so the
+ *  panel does not have to be opened just to check. */
+function renderOptionsNote() {
+  const bits = [state.choice === "tandem" ? "Tandem" : "SAT ladder"];
+  if (state.choice === "tandem") {
+    bits.push(state.mode);
+    for (const [flag, value] of Object.entries(state.flags)) {
+      bits.push(value === true ? flag : `${flag}=${value}`);
+    }
+  }
+  $("options-note").textContent = bits.join(" · ");
+}
+
 function renderFlags() {
   const box = $("flags");
   box.replaceChildren();
-  if (state.choice !== "tandem") return;
-  const t = state.backend?.tandem;
-  if (!t?.available) return;
+  if (state.choice === "tandem") {
+    const t = state.backend?.tandem;
+    if (t?.available) {
+      const premises = state.report?.premises || {};
+      const featured = t.options.filter((o) => o.featured);
+      const rest = t.options.filter((o) => !o.featured);
 
-  const premises = state.report?.premises || {};
-  const featured = t.options.filter((o) => o.featured);
-  const rest = t.options.filter((o) => !o.featured);
+      const list = el("div", "flaglist");
+      for (const opt of featured) list.appendChild(featuredFlag(opt, premises));
+      box.appendChild(list);
 
-  const list = el("div", "flaglist");
-  for (const opt of featured) list.appendChild(featuredFlag(opt, premises));
-  box.appendChild(list);
-
-  if (rest.length) {
-    const d = el("details", "advanced");
-    d.appendChild(el("summary", "", `all ${t.options.length} solver options`));
-    const grid = el("div", "advanced-grid");
-    for (const opt of rest) grid.appendChild(advancedFlag(opt));
-    d.appendChild(grid);
-    box.appendChild(d);
+      if (rest.length) {
+        const d = el("details", "disclosure sub");
+        const s = el("summary");
+        s.appendChild(el("span", "", `${rest.length} more solver options`));
+        d.appendChild(s);
+        const grid = el("div", "advanced-grid");
+        for (const opt of rest) grid.appendChild(advancedFlag(opt));
+        d.appendChild(grid);
+        box.appendChild(d);
+      }
+    }
   }
+  renderOptionsNote();
 }
 
 function featuredFlag(opt, premises) {
   const wrap = el("div", "flag");
+  if (opt.blurb) wrap.title = opt.blurb;          // full text on hover
+
   const head = el("div", "flag-head");
   const cb = el("input");
   cb.type = "checkbox";
   cb.checked = opt.flag in state.flags;
-
   head.appendChild(cb);
   head.appendChild(el("span", "flag-name", opt.label));
+
+  let valueInput = null;
+  if (opt.kind !== "bool") {
+    valueInput = el("input");
+    valueInput.type = opt.kind === "string" ? "text" : "number";
+    // Prefill only a value we actually recommend. The solver's own default is
+    // a placeholder at most — echoing `-cpu-lim`'s 2147483647 into the box
+    // reads as a bug, and `-init-lb`'s 0 is a floor that means nothing.
+    valueInput.value = state.flags[opt.flag] ?? opt.suggested ?? "";
+    valueInput.placeholder = opt.default ?? "";
+    valueInput.oninput = () => sync();
+    head.appendChild(valueInput);
+  }
   head.appendChild(el("span", "flag-code", opt.flag));
   wrap.appendChild(head);
-  if (opt.blurb) wrap.appendChild(el("div", "flag-blurb", opt.blurb));
 
   // A flag with a machine-checkable premise is only offered when the
   // premise holds for the code on screen.
   const premise = opt.requires ? premises[opt.requires] : null;
-  const blocked = opt.requires && premise && !premise.holds;
-  if (blocked) {
+  if (opt.requires && premise && !premise.holds) {
     wrap.classList.add("blocked");
     cb.checked = false;
     cb.disabled = true;
+    if (valueInput) valueInput.disabled = true;
     delete state.flags[opt.flag];
-    const r = el("div", "flag-block-reason");
-    r.textContent = `Unavailable: “${premise.label}” is false here. ${premise.detail}`;
-    wrap.appendChild(r);
+    wrap.appendChild(el(
+      "div", "flag-block-reason",
+      `Unavailable: “${premise.label}” is false here — ${premise.detail}`,
+    ));
     return wrap;
   }
   if (opt.requires && !premise) {
     cb.disabled = true;
+    if (valueInput) valueInput.disabled = true;
     wrap.classList.add("blocked");
-    wrap.appendChild(el("div", "flag-block-reason", "Enter a valid code to check this flag's premise."));
+    wrap.appendChild(el("div", "flag-block-reason",
+                        "Enter a valid code to check this flag's premise."));
     return wrap;
   }
 
-  let valueInput = null;
-  if (opt.kind !== "bool") {
-    const row = el("div", "flag-row");
-    valueInput = el("input");
-    valueInput.type = opt.kind === "string" ? "text" : "number";
-    valueInput.value = state.flags[opt.flag] ?? opt.suggested ?? opt.default ?? "";
-    valueInput.oninput = () => {
-      if (cb.checked) state.flags[opt.flag] = valueInput.value;
-    };
-    row.appendChild(valueInput);
-    if (opt.domain) row.appendChild(el("span", "flag-blurb", opt.domain));
-    wrap.appendChild(row);
-  }
-
   // No machine check exists for this obligation → demand an explicit ack.
-  let ackBox = null;
+  let ackRow = null;
   if (opt.soundness === "caller" && !opt.requires) {
-    const lab = el("label", "flag-ack");
-    ackBox = el("input");
+    ackRow = el("label", "flag-ack");
+    const ackBox = el("input");
     ackBox.type = "checkbox";
     ackBox.checked = state.ack.has(opt.flag);
     ackBox.onchange = () => {
       ackBox.checked ? state.ack.add(opt.flag) : state.ack.delete(opt.flag);
-      sync();
     };
-    lab.appendChild(ackBox);
-    lab.appendChild(el("span", "", "I certify this value — an unsound one silently returns a wrong distance."));
-    wrap.appendChild(lab);
+    ackRow.appendChild(ackBox);
+    ackRow.appendChild(el("span", "", "I certify this value."));
+    wrap.appendChild(ackRow);
   }
 
+  // The caveat only earns space once the flag is actually switched on.
+  const why = opt.short ? el("span", "flag-why", opt.short) : null;
+  if (why) wrap.insertBefore(why, ackRow);
+
+  // An empty value box means "off": better to leave the flag out than to
+  // invent a number the user never chose.
   const sync = () => {
-    if (!cb.checked) { delete state.flags[opt.flag]; return; }
-    state.flags[opt.flag] = opt.kind === "bool"
-      ? true
-      : (valueInput.value || opt.suggested || opt.default);
+    const value = opt.kind === "bool" ? true : valueInput.value.trim();
+    if (cb.checked && value !== "") state.flags[opt.flag] = value;
+    else delete state.flags[opt.flag];
+    if (why) why.style.display = cb.checked ? "" : "none";
+    if (ackRow) ackRow.style.display = cb.checked ? "" : "none";
+    renderOptionsNote();
   };
   cb.onchange = sync;
   sync();
@@ -217,8 +245,8 @@ function featuredFlag(opt, premises) {
 
 function advancedFlag(opt) {
   const row = el("div", "advanced-row");
-  const lab = el("label", "", opt.flag);
-  row.appendChild(lab);
+  if (opt.blurb) row.title = opt.blurb;
+  row.appendChild(el("label", "", opt.flag));
   if (opt.domain) row.appendChild(el("span", "dom", opt.domain));
 
   if (opt.kind === "bool") {
@@ -228,6 +256,7 @@ function advancedFlag(opt) {
     cb.onchange = () => {
       if (cb.checked) state.flags[opt.flag] = true;
       else delete state.flags[opt.flag];
+      renderOptionsNote();
     };
     row.appendChild(cb);
   } else {
@@ -238,6 +267,7 @@ function advancedFlag(opt) {
     inp.oninput = () => {
       if (inp.value === "") delete state.flags[opt.flag];
       else state.flags[opt.flag] = inp.value;
+      renderOptionsNote();
     };
     row.appendChild(inp);
   }
@@ -246,9 +276,9 @@ function advancedFlag(opt) {
 
 // ───────────────────────────────────────────────────── analysis
 
-// Analysis cost grows with |G| (~1 s at n = 288), so a fast request issued
-// after a slow one can come back first. Stamp each request and drop any
-// response that is not the newest, or the page paints an older code's report.
+// Analysis cost grows with |G| (~5 s at the size cap), so a fast request
+// issued after a slow one can come back first. Stamp each request and drop
+// any response that is not the newest, or the page paints an older report.
 let analyseSeq = 0;
 
 const analyse = debounce(async () => {
@@ -273,14 +303,12 @@ const analyse = debounce(async () => {
     $("p-n").textContent = "·";
     $("p-k").textContent = "·";
     $("check-weight").textContent = "·";
+    $("meta").replaceChildren();
   }
   renderFlags();
 }, 220);
 
 function renderReport(r) {
-  $("group-hint").innerHTML =
-    `<code>${r.group_label}</code> · |G| = ${r.group_order} · n = 2|G| = ${r.n}`;
-
   $("p-n").textContent = r.n;
   $("p-k").textContent = r.k;
 
@@ -306,25 +334,59 @@ function renderReport(r) {
     sub.textContent = "non-uniform rows";
   }
 
+  renderMeta(r);
+
   const warn = $("warnings");
   warn.replaceChildren();
   for (const w of r.warnings) warn.appendChild(el("div", "notice", w));
 
+  renderStats(r);
+  renderPremises(r.premises);
+  renderKnown(r.known);
+  $("solve").disabled = r.k === 0;
+}
+
+/** The quiet line under the headline: everything a glance should cover. */
+function renderMeta(r) {
+  const box = $("meta");
+  box.replaceChildren();
+  const deg = r.qubit_degree !== null
+    ? `${r.qubit_degree} X-checks/qubit`
+    : `${r.x_profile.col_min}–${r.x_profile.col_max} X-checks/qubit`;
+  const parts = [
+    ["", `${r.group_label}`],
+    ["", `|G| = ${r.group_order}`],
+    ["", `${r.group_order} X + ${r.group_order} Z checks`],
+    ["", deg],
+    ["", `rate ${r.rate.toFixed(3)}`],
+  ];
+  parts.forEach(([, text], i) => {
+    if (i) box.appendChild(el("span", "dot", "·"));
+    box.appendChild(el("b", "", text));
+  });
+  box.appendChild(el("span", "dot", "·"));
+  const css = el("b", r.css_commutes ? "ok" : "no",
+                 r.css_commutes ? "CSS ✓" : "CSS ✗");
+  css.title = "H_X · H_Zᵀ = 0";
+  box.appendChild(css);
+}
+
+function renderStats(r) {
   const qubitDeg = r.qubit_degree !== null
     ? { v: r.qubit_degree, note: "X-checks per qubit (Z alike)" }
     : { v: `${r.x_profile.col_min}–${r.x_profile.col_max}`, note: "non-uniform" };
-
   const stats = [
     ["Group", r.group_label, `|G| = ${r.group_order}`],
     ["Qubits n", r.n, "2|G|"],
-    ["Logicals k", r.k, `n − rank H_X − rank H_Z`],
+    ["Logicals k", r.k, "n − rank H_X − rank H_Z"],
     ["Check weight", r.check_weight ?? `${r.x_profile.row_min}–${r.x_profile.row_max}`, "X and Z alike"],
     ["Qubit degree", qubitDeg.v, qubitDeg.note],
     ["Stabilizers", r.num_checks, `${r.group_order} X + ${r.group_order} Z`],
     ["rank H_X", r.rank_HX, ""],
     ["rank H_Z", r.rank_HZ, ""],
     ["Rate k/n", r.rate.toFixed(4), ""],
-    ["CSS commute", r.css_commutes ? "✓" : "✗", "H_X · H_Zᵀ = 0", r.css_commutes ? "ok" : "bad"],
+    ["CSS commute", r.css_commutes ? "✓" : "✗", "H_X · H_Zᵀ = 0",
+     r.css_commutes ? "ok" : "bad"],
   ];
   const grid = $("stats");
   grid.replaceChildren();
@@ -336,19 +398,23 @@ function renderReport(r) {
     grid.appendChild(s);
   }
 
-  renderPremises(r.premises);
-  renderKnown(r.known);
-  $("solve").disabled = r.k === 0;
+  // The canonical spellings, which can differ from what was typed (terms are
+  // ordered, and pairs cancel over F₂). One line rather than two ragged tiles.
+  const canon = $("canonical");
+  canon.replaceChildren();
+  for (const [name, poly, weight] of [["A", r.A, r.A_weight], ["B", r.B, r.B_weight]]) {
+    const row = el("div", "canon-row");
+    row.appendChild(el("span", "canon-name", name));
+    row.appendChild(el("code", "", poly));
+    row.appendChild(el("span", "canon-weight", `weight ${weight}`));
+    canon.appendChild(row);
+  }
 }
 
 function renderPremises(premises) {
-  const card = $("premise-card");
   const body = $("premise-body");
   body.replaceChildren();
-  const keys = Object.keys(premises || {});
-  if (!keys.length) { card.hidden = true; return; }
-  card.hidden = false;
-  for (const key of keys) {
+  for (const key of Object.keys(premises || {})) {
     const p = premises[key];
     const row = el("div", "premise");
     row.appendChild(el("span", `mark ${p.holds ? "yes" : "no"}`, p.holds ? "✓" : "✗"));
@@ -361,32 +427,29 @@ function renderPremises(premises) {
 }
 
 function renderKnown(known) {
-  const card = $("known-card");
-  const body = $("known-body");
-  if (!known || !known.found) { card.hidden = true; return; }
-  card.hidden = false;
-  body.replaceChildren();
-  const dl = el("dl", "kv");
-  const add = (k, v) => {
-    if (v === null || v === undefined) return;
-    dl.appendChild(el("dt", "", k));
-    dl.appendChild(el("dd", "", String(v)));
-  };
-  add("code_id", known.code_id);
-  add("d (exact)", known.d_exact);
-  add("d bounds", known.d_exact === null ? `${known.d_lb ?? "?"} … ${known.d_ub ?? "?"}` : null);
-  add("method", known.d_method);
-  add("orbit size", known.orbit_size);
-  body.appendChild(dl);
-  body.appendChild(el(
-    "div", "field-hint",
-    "Matched on the canonical orbit representative under Aut(G) ⋉ G plus " +
-    "block swap, so an equivalent presentation still finds this row. " +
-    "Cited, not re-derived — press Compute distance to prove it here.",
-  ));
+  const box = $("known");
+  box.replaceChildren();
+  if (!known || !known.found) return;
+  box.className = "known";
+  box.appendChild(el("span", "known-tag", "corpus"));
+  const line = el("span");
   if (known.d_exact !== null && known.d_exact !== undefined) {
+    line.appendChild(el("span", "", "d = "));
+    line.appendChild(el("code", "", String(known.d_exact)));
     setDistance(known.d_exact, "known");
+  } else {
+    line.appendChild(el("span", "", `d ∈ [${known.d_lb ?? "?"}, ${known.d_ub ?? "?"}]`));
   }
+  if (known.d_method) {
+    line.appendChild(el("span", "", " via "));
+    line.appendChild(el("code", "", known.d_method));
+  }
+  box.appendChild(line);
+  const cite = el("span", "known-tag", "cited");
+  cite.title =
+    "Matched on the canonical orbit representative under Aut(G) ⋉ G plus " +
+    "block swap. Not re-derived here — press Compute distance to prove it.";
+  box.appendChild(cite);
 }
 
 function setDistance(d, kind) {
@@ -462,7 +525,7 @@ async function solve() {
 
   es.addEventListener("incumbent", (ev) => {
     const p = JSON.parse(ev.data);
-    addIncumbent(p.cost, p.elapsed);
+    addChip(`≤ ${p.cost}`, `${p.elapsed}s`);
     const node = $("p-d");
     node.className = "pending";
     node.textContent = `≤${p.cost}`;
@@ -470,7 +533,7 @@ async function solve() {
 
   es.addEventListener("rung", (ev) => {
     const p = JSON.parse(ev.data);
-    addRung(p.weight, p.sat, p.seconds);
+    addChip(`w ≤ ${p.weight}: ${p.sat ? "SAT" : "UNSAT"}`, `${p.seconds}s`);
     const node = $("p-d");
     node.className = "pending";
     node.textContent = p.sat ? p.weight : `>${p.weight}`;
@@ -485,16 +548,15 @@ async function solve() {
     setDistance(p.distance);
     const bits = [
       `d = <strong>${p.distance}</strong>`,
-      `witness weight <strong>${p.witness_weight}</strong> (re-verified: in ker H_Z, not a stabilizer)`,
-      `solver <strong>${fmtSecs(p.solver_seconds)}</strong>`,
-      `method <strong>${p.method}</strong>`,
+      `witness weight <strong>${p.witness_weight}</strong>, re-verified`,
+      `<strong>${fmtSecs(p.solver_seconds)}</strong>`,
+      `<strong>${p.method}</strong>`,
     ];
-    $("solve-summary").innerHTML = bits.join(" · ");
     if (state.report) {
       const q = (state.report.k * p.distance ** 2) / state.report.n;
-      $("solve-summary").innerHTML +=
-        ` · merit q = k·d²/n = <strong>${q.toFixed(2)}</strong>`;
+      bits.push(`merit q = <strong>${q.toFixed(2)}</strong>`);
     }
+    $("solve-summary").innerHTML = bits.join(" · ");
     finish(es);
   });
 
@@ -530,21 +592,12 @@ function setState(text, cls) {
   b.className = cls;
 }
 
-function addIncumbent(cost, elapsed) {
+function addChip(text, when) {
   const box = $("incumbents");
   [...box.children].forEach((c) => c.classList.remove("latest"));
   const n = el("span", "inc latest");
-  n.appendChild(el("span", "", `≤ ${cost}`));
-  n.appendChild(el("span", "t", `${elapsed}s`));
-  box.appendChild(n);
-}
-
-function addRung(weight, sat, seconds) {
-  const box = $("incumbents");
-  [...box.children].forEach((c) => c.classList.remove("latest"));
-  const n = el("span", "inc latest");
-  n.appendChild(el("span", "", `w ≤ ${weight}: ${sat ? "SAT" : "UNSAT"}`));
-  n.appendChild(el("span", "t", `${seconds}s`));
+  n.appendChild(el("span", "", text));
+  n.appendChild(el("span", "t", when));
   box.appendChild(n);
 }
 
@@ -578,6 +631,7 @@ for (const b of $("mode-select").children) {
   b.onclick = () => {
     state.mode = b.dataset.mode;
     [...$("mode-select").children].forEach((c) => c.classList.toggle("on", c === b));
+    renderOptionsNote();
   };
 }
 

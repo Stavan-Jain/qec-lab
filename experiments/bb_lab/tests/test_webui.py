@@ -182,6 +182,23 @@ def test_help_parser_reads_types_domains_and_defaults():
     assert "--help" not in opts
 
 
+def test_flag_payload_carries_what_the_page_renders():
+    """The UI's compact rows key off these fields; keep them present."""
+    opts = {o.flag: o.to_json() for o in solver.parse_help(HELP_SAMPLE)}
+    step = opts["-cost-step"]
+    assert step["label"] == "Cost step"          # short enough for one line
+    assert step["suggested"] == 2                # prefilled value
+    assert step["short"]                         # one-clause inline caveat
+    assert step["blurb"] and len(step["blurb"]) > len(step["short"])  # hover text
+    assert step["featured"] is True
+    # -init-lb has no recommended value: the box stays empty until the user
+    # supplies a floor they can certify.
+    assert opts["-init-lb"]["suggested"] is None
+    # An undecorated option still renders, just plainly.
+    assert opts["-rfirst"]["short"] == ""
+    assert opts["-rfirst"]["blurb"] is None
+
+
 def test_unknown_flags_survive_discovery_without_code_changes():
     """A future Tandem flag must appear on its own — that is the whole point."""
     extended = HELP_SAMPLE.replace(

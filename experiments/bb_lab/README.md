@@ -66,11 +66,17 @@ uv run bb-lab verify-cert certificates/bb_72_12_6.cert.json   # full re-check
 uv run bb-lab ui                    # http://127.0.0.1:8765
 ```
 
-Type a group and two polynomials; `[[n, k]]`, the check weight, the qubit
-degree, the CSS commutation guard and the solver premises update as you
-type, and **Compute distance** fills in `d`. Incumbents stream live, so a
-long run shows its current upper bound rather than a spinner, and Cancel
-kills the solver process.
+Type a group and two polynomials. The default view is just the answer:
+`[[n, k, d]]`, the check weight, and one line of secondary facts (group,
+|G|, check counts, qubit degree, rate, CSS guard). **Compute distance**
+fills in `d` — incumbents stream live, so a long run shows its current
+upper bound rather than a spinner, and Cancel kills the solver process.
+
+Everything else is one click away. **Solver options** holds the backend,
+the encoding and the solver flags, with a summary line
+(`Tandem · naive · -cost-step=2`) so you can see the selection without
+opening it. **Full report** holds the ranks, weight profiles, canonical
+polynomial forms and the solver premises.
 
 `--binary <path>` (or `$BB_LAB_TANDEM`) points at a different solver
 build; without one the UI falls back to the in-process CryptoMiniSat

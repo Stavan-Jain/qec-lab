@@ -87,6 +87,7 @@ class SolverOption:
             "domain": self.domain,
             "label": note.label if note else self.flag.lstrip("-"),
             "blurb": note.blurb if note else None,
+            "short": note.short if note else "",
             "requires": note.requires if note else None,
             "soundness": note.soundness if note else "safe",
             "suggested": note.suggested if note else None,
@@ -106,7 +107,8 @@ class FlagNote:
     """
 
     label: str
-    blurb: str
+    blurb: str                   # full text, shown on hover
+    short: str = ""              # one clause, shown inline when it matters
     soundness: str = "safe"      # 'safe' | 'bias' | 'caller'
     requires: str | None = None
     suggested: Any = None
@@ -115,13 +117,14 @@ class FlagNote:
 
 FLAG_NOTES: dict[str, FlagNote] = {
     "-cost-step": FlagNote(
-        label="Cost step (weight parity)",
+        label="Cost step",
         blurb=(
             "Declares every feasible cost congruent mod N, letting the "
             "solver tighten its bound by N−1 after each improving model. "
             "N = 2 is exactly the coset weight-parity theorem, and is "
             "worth ~2–3× on BB instances."
         ),
+        short="sound here: every feasible logical weight is even.",
         soundness="caller",
         requires="coset_parity_even",
         suggested=2,
@@ -135,6 +138,7 @@ FLAG_NOTES: dict[str, FlagNote] = {
             "the floor is tight. Only pass analytically or kernel-certified "
             "floors — a wrong value silently returns a wrong distance."
         ),
+        short="unverifiable here — a wrong floor returns a wrong distance.",
         soundness="caller",
         featured=True,
     ),
@@ -157,8 +161,15 @@ FLAG_NOTES: dict[str, FlagNote] = {
         soundness="bias",
     ),
     "-cpu-lim": FlagNote(
-        label="CPU limit (s)",
-        blurb="Solver-side CPU cap. Gives up rather than answering.",
+        label="CPU limit",
+        blurb=(
+            "Solver-side CPU cap in seconds. The run reports failure rather "
+            "than a distance if it expires — useful when probing a code you "
+            "are not sure is tractable. (The solver's own default is "
+            "effectively unlimited.)"
+        ),
+        short="the run reports failure instead of a distance if it expires.",
+        suggested=300,
         featured=True,
     ),
     "-mem-lim": FlagNote(
