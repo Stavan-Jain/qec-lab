@@ -1,0 +1,2 @@
+cover300 [[300,8,16]] Z5xZ30: k=8 all_even=True (Lean-certified d=16)
+RESULT cover300: d=16  solver=1649.2s  (expect 16)

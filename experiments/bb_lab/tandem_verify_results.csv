@@ -1,0 +1,101 @@
+instance_id,n,k,d_known,d_method,d_tandem,parity_flag,seconds,status
+1125d0a25ff25616,150,8,12,sat,12,True,1.66,PASS
+386053d621d64e53,150,8,12,sat,12,True,1.94,PASS
+ead59e563530b24b,150,8,12,sat,12,True,1.92,PASS
+8c1c6ad6a631bd9c,150,8,12,sat,12,True,1.92,PASS
+76b20bd1b5b490c9,150,8,12,sat,12,True,1.81,PASS
+cf2664aac573dc9e,150,8,12,sat,12,True,2.59,PASS
+6f9e8285eedf94e6,144,12,12,sat,12,True,1.53,PASS
+da3937325fb5857b,144,12,12,sat,12,True,1.74,PASS
+22d095170a4c9afa,98,6,12,sat-cadical@1.9.5 (pysat),12,True,2.22,PASS
+463c8d4a9eca99c9,98,6,12,sat-cadical@1.9.5 (pysat),12,True,1.76,PASS
+9895c441258667ca,98,6,12,sat-cadical@1.9.5 (pysat),12,True,1.66,PASS
+465e4ec94447eabb,98,6,12,sat-cadical@1.9.5 (pysat),12,True,1.73,PASS
+635ca79c002ae9cb,98,6,12,sat-cadical@1.9.5 (pysat),12,True,1.82,PASS
+5be0c6936a406eb9,98,6,12,sat-cadical@1.9.5 (pysat),12,True,2.08,PASS
+72580524b2e3dc90,98,6,12,sat-cadical@1.9.5 (pysat),12,True,1.6,PASS
+40eec8eacd3f1a0c,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.97,PASS
+f32bc19068a8b33b,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.09,PASS
+db1895986fbe6822,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.61,PASS
+a3383a3f87336042,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.61,PASS
+fe7af452ac98e532,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.04,PASS
+5f4e9899ee92d276,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.8,PASS
+6a8f965a0631946e,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.57,PASS
+c0797ba92339bbc7,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.93,PASS
+ae5fae65260eb4b2,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.67,PASS
+9980a3e8a9db1e44,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.19,PASS
+c2b5a5a3278a33f9,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.81,PASS
+96bf3ed1432718aa,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.02,PASS
+d2790d1af92405a6,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.99,PASS
+c83eec2e0045c37b,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.01,PASS
+ebe680ded9252f65,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.89,PASS
+011b9a5d542bbe7b,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.92,PASS
+71c1a8231d5ac3a9,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.03,PASS
+3a20b5de1c10bc31,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.71,PASS
+7b12660a88c130bf,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.76,PASS
+3ed07a09e0ad2049,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.14,PASS
+82213c51193645c7,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.54,PASS
+c05903f3e4b29c1e,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.68,PASS
+723d65da72b530b2,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.59,PASS
+71ea30ebaaec6581,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.99,PASS
+e81e357e19e9caab,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.65,PASS
+80f49904c0c23e89,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.12,PASS
+ef4d8251c204700c,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.68,PASS
+49de0178606f7a76,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.66,PASS
+04fe9d6359ac63a6,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.42,PASS
+cd68168b80c64037,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.87,PASS
+8ddc592d389abc96,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.1,PASS
+918af8656fd01757,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.95,PASS
+fda1a3e6736e12fa,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.47,PASS
+8dc982b4dd9ddc11,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.03,PASS
+bf161b9ef4ea7d91,96,4,12,sat-cadical@1.9.5 (pysat),12,True,2.44,PASS
+df3c87d3a4c8912c,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.52,PASS
+1c4328be04c0cf81,96,4,12,sat-cadical@1.9.5 (pysat),12,True,1.87,PASS
+06b4e7254be475fc,180,8,10,sat,10,True,1.75,PASS
+0f150a367d4fe6b6,180,8,10,sat,10,True,0.82,PASS
+00faa94d6259f52d,180,4,10,sat,10,True,2.65,PASS
+0f0ba1d0ece2ad1a,180,8,10,sat,10,True,0.68,PASS
+085e8ee84af3f2da,180,4,10,sat,10,True,4.0,PASS
+5a9c81c512eadea7,150,8,10,sat,10,True,0.62,PASS
+2d0da29f4941e226,150,8,10,sat,10,True,0.61,PASS
+3a6acaff7a9379ec,150,8,10,sat,10,True,0.54,PASS
+1e26a857c394e70f,150,8,10,sat,10,True,1.02,PASS
+21403bbe50ae0db6,150,8,10,sat,10,True,0.77,PASS
+0c47279879aba061,126,8,10,sat,10,True,0.36,PASS
+0a4b0ac935a62190,126,8,10,sat,10,True,0.73,PASS
+097c8c8ecac73a86,126,8,10,sat,10,True,0.42,PASS
+07bb458cf8458b5c,126,8,10,sat,10,True,0.5,PASS
+0c03c144443c2099,126,8,10,sat,10,True,0.41,PASS
+0dabd5c44f52fa74,112,6,10,sat-cadical@1.9.5 (pysat),10,True,0.4,PASS
+071d29d45a2e0bdc,112,6,10,sat-cadical@1.9.5 (pysat),10,True,0.39,PASS
+08151bc9d7f1141a,112,6,10,sat-cadical@1.9.5 (pysat),10,True,0.66,PASS
+0be2f0109aca150c,112,6,10,sat-cadical@1.9.5 (pysat),10,True,0.42,PASS
+0a444bbac26b5a26,112,6,10,sat-cadical@1.9.5 (pysat),10,True,0.46,PASS
+0624753c0bb1e94a,98,6,10,sat-cadical@1.9.5 (pysat),10,True,0.39,PASS
+0642082b503850e7,98,6,10,sat-cadical@1.9.5 (pysat),10,True,0.41,PASS
+023aaa6d6ae74145,98,6,10,sat-cadical@1.9.5 (pysat),10,True,0.35,PASS
+05f8b1f5b2e85e13,98,6,10,sat-cadical@1.9.5 (pysat),10,True,0.37,PASS
+03dd4f9d6df2d66e,98,6,10,sat-cadical@1.9.5 (pysat),10,True,0.42,PASS
+3eb8617a6296578f,96,4,10,sat-cadical@1.9.5 (pysat),10,True,0.37,PASS
+355e5bcf9c1fa75a,96,4,10,sat-cadical@1.9.5 (pysat),10,True,0.49,PASS
+0bb8303eccbd1c4a,96,4,10,sat-cadical@1.9.5 (pysat),10,True,0.39,PASS
+3e93aa0bbd1764bf,96,4,10,sat-cadical@1.9.5 (pysat),10,True,0.59,PASS
+10d5fdc2a6917ea0,96,4,10,sat-cadical@1.9.5 (pysat),10,True,0.45,PASS
+1109a0efbbbd8ca2,90,8,10,sat-cadical@1.9.5 (pysat),10,True,0.33,PASS
+276426ce1294c704,90,8,10,sat-cadical@1.9.5 (pysat),10,True,0.33,PASS
+2d954f4a59c35c23,90,8,10,sat-cadical@1.9.5 (pysat),10,True,0.34,PASS
+407c975a6dd7b3e4,90,8,10,sat-cadical@1.9.5 (pysat),10,True,0.35,PASS
+0c9795230892eeaa,90,8,10,sat-cadical@1.9.5 (pysat),10,True,0.27,PASS
+00346e8e98f7bbb5,78,4,10,sat-cadical@1.9.5 (pysat),10,True,0.27,PASS
+0291a0aa8d774f1b,78,4,10,sat-cadical@1.9.5 (pysat),10,True,0.27,PASS
+0496a8e57d987570,78,4,10,sat-cadical@1.9.5 (pysat),10,True,0.31,PASS
+098bfd41577903f4,78,4,10,sat-cadical@1.9.5 (pysat),10,True,0.22,PASS
+09efe52aec1dce45,78,4,10,sat-cadical@1.9.5 (pysat),10,True,0.32,PASS
+5d507de36267a5ee,180,16,8,sat,8,True,0.39,PASS
+38d3c884a86ecc6d,150,8,8,sat,8,True,0.25,PASS
+ac46bbeae7a3a397,150,8,8,sat,8,True,0.24,PASS
+d7433d258fade574,150,8,8,sat,8,True,0.23,PASS
+bb_72_12_6,72,12,6,published,6,True,0.03,PASS
+bb_90_8_10,90,8,10,published,10,True,0.27,PASS
+bb_108_8_10,108,8,10,published,10,True,0.35,PASS
+gross,144,12,12,published,12,True,1.54,PASS
