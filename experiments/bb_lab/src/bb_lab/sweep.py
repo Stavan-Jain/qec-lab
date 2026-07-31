@@ -66,15 +66,34 @@ def default_jobs() -> int:
     return max(1, (os.cpu_count() or 2) - 1)
 
 
-def completed_keys(out: Path, key_field: str) -> set[str]:
-    """Keys already present in `out`, for resume. Empty if absent."""
+def _as_tuple(x) -> tuple[str, ...]:
+    return (x,) if isinstance(x, str) else tuple(x)
+
+
+def completed_keys(
+    out: Path, key_field: str | Sequence[str]
+) -> set[tuple[str, ...]]:
+    """Keys already present in `out`, for resume. Empty if absent.
+
+    `key_field` may name several columns, for sweeps whose rows have no
+    single id — `cell_hunt` draws fresh codes and identifies them by the
+    canonical (A_poly, B_poly) pair already in its CSV, so resume costs
+    it no schema change.
+    """
+    fields = _as_tuple(key_field)
     if not out.exists():
         return set()
     with out.open(newline="") as f:
         reader = csv.DictReader(f)
-        if reader.fieldnames is None or key_field not in reader.fieldnames:
+        if reader.fieldnames is None or any(
+            fl not in reader.fieldnames for fl in fields
+        ):
             return set()
-        return {row[key_field] for row in reader if row.get(key_field)}
+        return {
+            tuple(row[fl] for fl in fields)
+            for row in reader
+            if all(row.get(fl) for fl in fields)
+        }
 
 
 def worker_work_dir() -> Path:
@@ -99,8 +118,8 @@ def run_sweep(
     *,
     out: Path,
     fieldnames: Sequence[str],
-    key_field: str,
-    key: Callable[[Any], str],
+    key_field: str | Sequence[str],
+    key: Callable[[Any], Any],
     jobs: int | None = None,
     work_root: Path | str = "sweep_work",
     report: Callable[[dict], str | None] | None = None,
@@ -113,6 +132,10 @@ def run_sweep(
     responsible for catching its own solver errors and encoding them in
     the row — an exception that escapes is recorded as an error row and
     the sweep continues.
+
+    `key_field` names the CSV column(s) identifying a row, and `key(item)`
+    must return a matching string (or tuple of strings, for several
+    columns). Resume skips items whose key is already in `out`.
 
     Rows land in completion order, not submission order; resume is by
     `key_field`, so ordering carries no meaning. Returns the number of
@@ -133,8 +156,9 @@ def run_sweep(
             "pool. Wrap the call in a main guard."
         )
     out = Path(out)
+    key_cols = _as_tuple(key_field)
     done = completed_keys(out, key_field)
-    pending = [it for it in items if key(it) not in done]
+    pending = [it for it in items if _as_tuple(key(it)) not in done]
     jobs = jobs or default_jobs()
     work_root = Path(work_root)
     work_root.mkdir(parents=True, exist_ok=True)
@@ -174,7 +198,7 @@ def run_sweep(
                     row = fut.result()
                 except Exception as e:  # worker died or task re-raised
                     row = {fn: None for fn in fieldnames}
-                    row[key_field] = key(item)
+                    row.update(zip(key_cols, _as_tuple(key(item))))
                     if "status" in row:
                         row["status"] = f"error:{type(e).__name__}"
                 writer.writerow({fn: row.get(fn) for fn in fieldnames})

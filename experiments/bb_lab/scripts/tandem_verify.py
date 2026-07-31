@@ -21,19 +21,33 @@ from __future__ import annotations
 
 import argparse
 import csv
-import time
 from pathlib import Path
-
-import duckdb
 
 LAB_ROOT = Path(__file__).resolve().parent.parent
 DB = "/Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/bb_instances.duckdb"
 
-from bb_lab.checks import bb_check_matrices  # noqa: E402
-from bb_lab.group import ZmZn  # noqa: E402
-from bb_lab.linalg import nullspace_f2, quotient_complement_basis  # noqa: E402
-from bb_lab.maxsat_distance import maxsat_distance  # noqa: E402
-from bb_lab.poly import Poly  # noqa: E402
+from bb_lab.sweep import (  # noqa: E402
+    bb_distance_task, default_jobs, duckdb_rows, run_sweep,
+)
+
+FIELDNAMES = ["instance_id", "n", "k", "d_known", "d_method", "d_tandem",
+              "parity_flag", "seconds", "status"]
+
+
+def verify_task(payload: dict) -> dict:
+    """Solve, then compare against the independently-known distance.
+
+    A MISMATCH is the whole point of this battery, so it is recorded as
+    a row rather than raised — one bad row must not stop the other 99.
+    """
+    row = bb_distance_task(payload)
+    row["d_tandem"] = row.pop("d")
+    row["parity_flag"] = bool(row.pop("cost_step"))
+    if row["status"] == "ok":
+        row["status"] = (
+            "PASS" if row["d_tandem"] == row["d_known"] else "MISMATCH"
+        )
+    return row
 
 # Stratified sample: per (d_exact, n) bucket, up to `cap` rows, largest
 # n first inside each d; d weighted by the caps below.
@@ -68,79 +82,85 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--binary", required=True)
     ap.add_argument("--limit", type=int, default=96)
-    ap.add_argument("--per-code-timeout", type=float, default=600.0)
-    ap.add_argument("--work-dir", default=".")
+    ap.add_argument("--jobs", type=int, default=None,
+                    help="workers (default: performance-core count)")
+    ap.add_argument("--per-code-timeout", type=float, default=1800.0)
+    ap.add_argument("--resume", action="store_true",
+                    help="keep an existing --out and solve only what is "
+                         "missing; by default the battery starts fresh, "
+                         "since a validation run wants every code checked "
+                         "against the binary in hand")
+    ap.add_argument("--work-dir", default="verify_work")
     ap.add_argument("--out", default="tandem_verify_results.csv")
     args = ap.parse_args()
 
-    con = duckdb.connect(DB, read_only=True)
-    cols = [d[0] for d in con.execute(
-        "SELECT * FROM bb_instances LIMIT 0").description]
-    sql = SAMPLE_SQL.format(
+    from bb_lab.checks import bb_check_matrices
+    from bb_lab.codeparams import code_params
+    from bb_lab.group import ZmZn
+    from bb_lab.poly import Poly
+
+    rows = duckdb_rows(DB, SAMPLE_SQL.format(
         c12=CAPS[12], c10=CAPS[10], c8=CAPS[8], c6=CAPS[6],
         c4=CAPS[4], c2=CAPS[2], limit=args.limit,
-    )
-    rows = [dict(zip(cols, r)) for r in con.execute(sql).fetchall()]
-
+    ))
     codes = [
-        (r["instance_id"], int(r["ell"]), int(r["m"]),
-         r["A_poly"], r["B_poly"], int(r["d_exact"]), r["d_method"])
+        (r["instance_id"], int(r["ell"]), int(r["m"]), r["A_poly"],
+         r["B_poly"], int(r["d_exact"]), r["d_method"],
+         int(r["n"]), int(r["k"]))
         for r in rows
     ]
-    codes += [(cid, l, m, a, b, d, "published") for cid, l, m, a, b, d in BRAVYI]
-    print(f"battery: {len(codes)} codes", flush=True)
+    for cid, ell, m, a, b, d in BRAVYI:  # published rows carry no (n, k)
+        G = ZmZn(ell, m)
+        params = code_params(bb_check_matrices(
+            Poly.from_string(a, G), Poly.from_string(b, G)))
+        codes.append((cid, ell, m, a, b, d, "published", params.n, params.k))
 
-    n_pass = n_fail = n_err = 0
-    times: list[float] = []
-    with Path(args.out).open("w", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["instance_id", "n", "k", "d_known", "d_method",
-                    "d_tandem", "parity_flag", "seconds", "status"])
-        for cid, ell, m, a, b, d_known, method in codes:
-            G = ZmZn(ell, m)
-            checks = bb_check_matrices(
-                Poly.from_string(a, G), Poly.from_string(b, G))
-            V = quotient_complement_basis(
-                checks.H_X, nullspace_f2(checks.H_Z))
-            all_even = (
-                not any(int(r_.sum()) % 2 for r_ in checks.H_X)
-                and not any(int(v.sum()) % 2 for v in V)
-            )
-            extra = ("-cost-step=2",) if all_even else ()
-            t0 = time.perf_counter()
-            try:
-                r = maxsat_distance(
-                    checks, args.binary, mode="naive",
-                    work_dir=args.work_dir,
-                    timeout=args.per_code_timeout, extra_args=extra,
-                )
-                dt = time.perf_counter() - t0
-                ok = r.distance == d_known
-                status = "PASS" if ok else "MISMATCH"
-                if ok:
-                    n_pass += 1
-                    times.append(r.solver_seconds)
-                else:
-                    n_fail += 1
-                d_out = r.distance
-            except Exception as e:
-                dt = time.perf_counter() - t0
-                status, d_out = f"error:{type(e).__name__}", None
-                n_err += 1
-            w.writerow([cid, checks.num_qubits, V.shape[0], d_known,
-                        method, d_out, bool(extra), round(dt, 2), status])
-            f.flush()
-            marker = "" if status == "PASS" else "  <<<<<< ATTENTION"
-            print(f"  [{cid[:16]:<16}] n={checks.num_qubits:>3} "
-                  f"d={d_known:>2} → {d_out}  ({dt:6.2f}s) {status}{marker}",
-                  flush=True)
+    items = [
+        {
+            "ell": ell, "m": m, "A_poly": a, "B_poly": b,
+            "binary": args.binary, "mode": "naive",
+            "timeout": args.per_code_timeout,
+            "passthrough": {"instance_id": cid, "n": n, "k": k,
+                            "d_known": d_known, "d_method": method},
+        }
+        for cid, ell, m, a, b, d_known, method, n, k in codes
+    ]
 
-    times.sort()
+    out = Path(args.out)
+    if not args.resume:
+        out.unlink(missing_ok=True)
+    print(f"battery: {len(items)} codes, "
+          f"jobs={args.jobs or default_jobs()}", flush=True)
+
+    def report(row: dict) -> str | None:
+        marker = "" if row["status"] == "PASS" else "  <<<<<< ATTENTION"
+        return (f"  [{row['instance_id'][:16]:<16}] n={row['n']:>3} "
+                f"d={row['d_known']:>2} → {row['d_tandem']}  "
+                f"({row['seconds']:6.2f}s) {row['status']}{marker}")
+
+    run_sweep(
+        items, verify_task,
+        out=out, fieldnames=FIELDNAMES, key_field="instance_id",
+        key=lambda it: it["passthrough"]["instance_id"],
+        jobs=args.jobs, work_root=Path(args.work_dir), report=report,
+    )
+
+    with out.open(newline="") as f:
+        done = list(csv.DictReader(f))
+    n_pass = sum(r["status"] == "PASS" for r in done)
+    n_fail = sum(r["status"] == "MISMATCH" for r in done)
+    n_err = len(done) - n_pass - n_fail
+    times = sorted(float(r["seconds"]) for r in done if r["status"] == "PASS")
+    print(f"\nSUMMARY: {n_pass} pass / {n_fail} MISMATCH / {n_err} error",
+          end="", flush=True)
     if times:
-        med = times[len(times) // 2]
-        print(f"\nSUMMARY: {n_pass} pass / {n_fail} MISMATCH / {n_err} error"
-              f"   median solver {med:.2f}s, max {times[-1]:.2f}s",
-              flush=True)
+        print(f"   median solver {times[len(times) // 2]:.2f}s, "
+              f"max {times[-1]:.2f}s", flush=True)
+    else:
+        print(flush=True)
+    if n_fail:
+        raise SystemExit(f"{n_fail} MISMATCH — a wrong distance is a "
+                         f"red-alert finding either way")
 
 
 if __name__ == "__main__":

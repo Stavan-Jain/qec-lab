@@ -5,28 +5,47 @@ measured points: calibration rungs (d_exact known — validates the
 solver and fits the scaling curve) and frontier rungs (d_ub-only,
 unscreened — every settled row is a new exact distance).
 
+Rungs run on `bb_lab.sweep`'s dynamic queue; `--jobs` defaults to the
+machine's performance-core count.
+
 Usage (from experiments/bb_lab):
-  uv run python scripts/ladder_sweep.py --mode calibration
-  uv run python scripts/ladder_sweep.py --mode frontier --per-code-timeout 900
+  uv run python scripts/ladder_sweep.py --mode calibration --binary <tandem>
+  uv run python scripts/ladder_sweep.py --mode frontier --per-code-timeout 1800
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
-import subprocess
-import time
 from pathlib import Path
-
-import duckdb
 
 LAB_ROOT = Path(__file__).resolve().parent.parent
 DB = "/Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/bb_instances.duckdb"
 
-from bb_lab.checks import bb_check_matrices  # noqa: E402
-from bb_lab.group import ZmZn  # noqa: E402
-from bb_lab.maxsat_distance import maxsat_distance  # noqa: E402
-from bb_lab.poly import Poly  # noqa: E402
+from bb_lab.sweep import (  # noqa: E402
+    bb_distance_task, completed_keys, default_jobs, duckdb_rows, run_sweep,
+)
+
+FIELDNAMES = [
+    "instance_id", "n", "k", "d_exact_known", "d_ub_known",
+    "d_found", "solver_seconds", "status",
+]
+
+
+def ladder_task(payload: dict) -> dict:
+    """Solve, then flag any disagreement with a known exact distance.
+
+    Column names differ from the shared task's (`d_found`,
+    `solver_seconds`), so remap rather than change the CSV schema and
+    strand the committed ladder results.
+    """
+    row = bb_distance_task(payload)
+    row["d_found"] = row.pop("d")
+    row["solver_seconds"] = row.pop("seconds")
+    known = row.get("d_exact_known")
+    if (row["status"] == "ok" and known is not None
+            and row["d_found"] != known):
+        row["status"] = "MISMATCH"
+    return row
 
 CALIBRATION_SQL = """
 (SELECT * FROM bb_instances WHERE n=150 AND k=8 AND d_exact=12 LIMIT 6)
@@ -48,15 +67,7 @@ LIMIT {limit}
 """
 
 
-def _already_swept(out: Path) -> set[str]:
-    if not out.exists():
-        return set()
-    with out.open() as f:
-        return {row.split(",")[0] for row in f.read().splitlines()[1:]}
-
-
 def run(args) -> None:
-    con = duckdb.connect(DB, read_only=True)
     sql = (
         CALIBRATION_SQL if args.mode == "calibration"
         else FRONTIER_SQL.format(
@@ -65,66 +76,47 @@ def run(args) -> None:
             n_min=args.n_min, n_max=args.n_max,
         )
     )
-    cols = [d[0] for d in con.execute("SELECT * FROM bb_instances LIMIT 0").description]
-    rows = [dict(zip(cols, r)) for r in con.execute(sql).fetchall()]
+    rows = duckdb_rows(DB, sql)
     out = Path(args.out)
-    done = _already_swept(out)
+    # Applied before --limit as well as inside run_sweep, so a resumed
+    # run fills the limit with fresh rungs instead of re-counting done ones.
+    done = {k[0] for k in completed_keys(out, "instance_id")}
     rows = [r for r in rows if r["instance_id"] not in done][: args.limit]
-    print(f"{args.mode}: {len(rows)} rungs", flush=True)
-    new = not out.exists()
-    with out.open("a", newline="") as f:
-        w = csv.writer(f)
-        if new:
-            w.writerow([
-                "instance_id", "n", "k", "d_exact_known", "d_ub_known",
-                "d_found", "solver_seconds", "status",
-            ])
-        for row in rows:
-            G = ZmZn(int(row["ell"]), int(row["m"]))
-            checks = bb_check_matrices(
-                Poly.from_string(row["A_poly"], G),
-                Poly.from_string(row["B_poly"], G),
-            )
-            extra: tuple[str, ...] = ()
-            if args.tandem_step:
-                # Tandem's -cost-step=2 is sound only when the coset
-                # weight-parity premise holds; verify per code.
-                from bb_lab.sat_distance import find_logical_z
-                from bb_lab.linalg import (
-                    nullspace_f2, quotient_complement_basis,
-                )
-                hx_even = not any(int(r_.sum()) % 2 for r_ in checks.H_X)
-                V = quotient_complement_basis(
-                    checks.H_X, nullspace_f2(checks.H_Z)
-                )
-                if hx_even and not any(int(v.sum()) % 2 for v in V):
-                    extra = ("-cost-step=2",)
-            t0 = time.perf_counter()
-            try:
-                r = maxsat_distance(
-                    checks, args.binary, mode="naive",
-                    work_dir=args.work_dir, timeout=args.per_code_timeout,
-                    extra_args=extra,
-                )
-                status = "ok"
-                d_found, secs = r.distance, r.solver_seconds
-                if row["d_exact"] is not None and d_found != row["d_exact"]:
-                    status = "MISMATCH"
-            except subprocess.TimeoutExpired:
-                status, d_found, secs = "timeout", None, time.perf_counter() - t0
-            except Exception as e:  # keep sweeping; record the failure
-                status, d_found, secs = f"error:{type(e).__name__}", None, 0.0
-            w.writerow([
-                row["instance_id"], row["n"], row["k"],
-                row["d_exact"], row["d_ub"], d_found, round(secs, 2), status,
-            ])
-            f.flush()
-            print(
-                f"  [{row['instance_id']}] n={row['n']} k={row['k']} "
-                f"d_known={row['d_exact']}/{row['d_ub']} → {d_found} "
-                f"({secs:.1f}s, {status})",
-                flush=True,
-            )
+    print(f"{args.mode}: {len(rows)} rungs, "
+          f"jobs={args.jobs or default_jobs()}", flush=True)
+
+    items = [
+        {
+            "ell": r["ell"], "m": r["m"],
+            "A_poly": r["A_poly"], "B_poly": r["B_poly"],
+            "binary": args.binary, "mode": "naive",
+            "timeout": args.per_code_timeout,
+            "passthrough": {
+                "instance_id": r["instance_id"], "n": r["n"], "k": r["k"],
+                "d_exact_known": r["d_exact"], "d_ub_known": r["d_ub"],
+            },
+        }
+        for r in rows
+    ]
+
+    def report(row: dict) -> str | None:
+        tag = ""
+        if row["status"] == "MISMATCH":
+            tag = "  <<<<<< MISMATCH"
+        elif row["status"] not in ("ok",):
+            tag = f"  ({row['status']})"
+        return (
+            f"  [{row['instance_id']}] n={row['n']} k={row['k']} "
+            f"d_known={row['d_exact_known']}/{row['d_ub_known']} → "
+            f"{row['d_found']} ({row['solver_seconds']:.1f}s){tag}"
+        )
+
+    run_sweep(
+        items, ladder_task,
+        out=out, fieldnames=FIELDNAMES, key_field="instance_id",
+        key=lambda it: it["passthrough"]["instance_id"],
+        jobs=args.jobs, work_root=Path(args.work_dir), report=report,
+    )
 
 
 def main() -> None:
@@ -137,10 +129,18 @@ def main() -> None:
     ap.add_argument("--n-min", type=int, default=150)
     ap.add_argument("--n-max", type=int, default=280)
     ap.add_argument("--tandem-step", action="store_true",
-                    help="pass -cost-step=2 when the parity premise holds")
-    ap.add_argument("--per-code-timeout", type=float, default=600.0)
+                    help="NO-OP, kept so existing invocations still run: "
+                         "the shared task now verifies the coset-parity "
+                         "premise per code and passes -cost-step=2 "
+                         "whenever it holds, as the other batteries do")
+    ap.add_argument("--jobs", type=int, default=None,
+                    help="workers (default: performance-core count)")
+    # Raised from 600 s alongside the move to a queue: concurrent solves
+    # run ~20% slower each, and a cap tuned serially drops rows that
+    # would otherwise settle.
+    ap.add_argument("--per-code-timeout", type=float, default=1800.0)
     ap.add_argument("--binary", default=None, required=True)
-    ap.add_argument("--work-dir", default=".")
+    ap.add_argument("--work-dir", default="ladder_work")
     ap.add_argument("--out", default="ladder_results.csv")
     run(ap.parse_args())
 

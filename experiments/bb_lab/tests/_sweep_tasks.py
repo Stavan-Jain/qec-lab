@@ -65,6 +65,16 @@ def fanout_task(item: dict) -> dict:
     }
 
 
+def pair_task(item: dict) -> dict:
+    """Keyed by an (a, b) pair rather than a single id column."""
+    return {
+        "a": item["a"],
+        "b": item["b"],
+        "value": item["x"] ** 2,
+        "status": "ok",
+    }
+
+
 def slow_task(item: dict) -> dict:
     """Sleeps `item['sleep']` seconds — for exercising the deadline."""
     import time

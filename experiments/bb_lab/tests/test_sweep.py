@@ -24,6 +24,7 @@ from bb_lab.sweep import completed_keys, default_jobs, run_sweep
 from tests._sweep_tasks import (
     fanout_task,
     flaky_task,
+    pair_task,
     slow_task,
     square_task,
     workdir_task,
@@ -198,7 +199,7 @@ def test_failed_row_is_retried_on_resume(tmp_path):
     run_sweep(items, flaky_task, out=out, fieldnames=FIELDNAMES,
               key_field="key", key=lambda it: it["key"],
               jobs=1, work_root=tmp_path / "work")
-    assert completed_keys(out, "key") == {"boom"}
+    assert completed_keys(out, "key") == {("boom",)}
     written = run_sweep(items, flaky_task, out=out, fieldnames=FIELDNAMES,
                         key_field="key", key=lambda it: it["key"],
                         jobs=1, work_root=tmp_path / "work")
@@ -223,6 +224,37 @@ def test_worker_scratch_is_private_to_the_pid(tmp_path):
         assert d.is_dir()
         assert d.parent == root
         assert d.name == f"w{r['pid']}", "scratch dir is not pid-private"
+
+
+def test_composite_key_resume(tmp_path):
+    """`cell_hunt` has no single id column — it identifies a drawn code by
+    its canonical (A_poly, B_poly) pair, so resume must key on several
+    columns without forcing a schema change."""
+    fields = ["a", "b", "value", "status"]
+    items = [{"a": f"A{i}", "b": f"B{i % 3}", "x": i} for i in range(9)]
+    out = tmp_path / "r.csv"
+    run_sweep(
+        items, pair_task, out=out, fieldnames=fields,
+        key_field=("a", "b"), key=lambda it: (it["a"], it["b"]),
+        jobs=2, work_root=tmp_path / "work",
+    )
+    assert len(_rows(out)) == 9
+    assert completed_keys(out, ("a", "b")) == {
+        (it["a"], it["b"]) for it in items
+    }
+
+    # Rerun with three extra draws: only those run, nothing duplicates.
+    more = items + [{"a": f"A{i}", "b": f"B{i % 3}", "x": i}
+                    for i in range(9, 12)]
+    written = run_sweep(
+        more, pair_task, out=out, fieldnames=fields,
+        key_field=("a", "b"), key=lambda it: (it["a"], it["b"]),
+        jobs=2, work_root=tmp_path / "work",
+    )
+    rows = _rows(out)
+    assert written == 3
+    assert len(rows) == 12
+    assert len({(r["a"], r["b"]) for r in rows}) == 12
 
 
 def test_completed_keys_handles_missing_and_headerless(tmp_path):

@@ -21,19 +21,28 @@ Measured (2026-07-29, --merit 12 --dcap 14, six groups, 360k draws):
 q >= 12 -- the k-filter and a high distance pull against each other,
 and the surviving distance distribution peaks at d=8.
 
+The run is two phases rather than one interleaved loop. Drawing,
+k-filtering and canonical dedup are pure Python and cheap; solving is
+everything else (the 2026-07-29 larger-n hunt spent 44.5 h here, one
+row of it 6,157 s). So phase 1 assembles the survivor list serially and
+phase 2 puts it on `bb_lab.sweep`'s dynamic queue. Splitting them also
+buys resume, which this script never had: survivors are keyed by their
+canonical (A_poly, B_poly) pair, which the CSV already carries, so
+rerunning the same command skips what is already settled.
+
+Note the draw is seeded (`--seed`), so phase 1 reproduces its candidate
+list exactly; resume therefore lines up even when `--samples` grows.
+
 Usage (from experiments/bb_lab):
   uv run python scripts/cell_hunt.py --binary <tandem> \\
-      --ell 7 --m 11 --k 6 --samples 40000 --out hits.csv --work-dir w
+      --ell 7 --m 11 --k 6 --samples 40000 --out hits.csv
 """
 
 from __future__ import annotations
 
 import argparse
-import csv
 import math
 import random
-import subprocess
-import time
 from pathlib import Path
 
 from bb_lab.automorphism import automorphisms
@@ -41,9 +50,21 @@ from bb_lab.canonical import build_perm_table, canonical_pair
 from bb_lab.checks import bb_check_matrices
 from bb_lab.codeparams import code_params
 from bb_lab.group import ZmZn
-from bb_lab.linalg import nullspace_f2, quotient_complement_basis
-from bb_lab.maxsat_distance import maxsat_distance
 from bb_lab.poly import Poly
+from bb_lab.sweep import bb_distance_task, default_jobs, run_sweep
+
+# Unchanged from the serial writer, so existing hunt CSVs stay
+# appendable. `bb_distance_task` also returns cost_step; run_sweep only
+# writes the columns named here, so dropping it costs nothing.
+FIELDNAMES = ["n", "k", "d", "q", "seconds", "status", "A_poly", "B_poly"]
+
+
+def hunt_task(payload: dict) -> dict:
+    """Distance solve plus the figure of merit it feeds."""
+    row = bb_distance_task(payload)
+    d = row.get("d")
+    row["q"] = round(row["k"] * d * d / row["n"], 3) if d else None
+    return row
 
 
 def main() -> None:
@@ -57,9 +78,15 @@ def main() -> None:
     ap.add_argument("--dcap", type=float, default=14.0)
     ap.add_argument("--samples", type=int, default=40000)
     ap.add_argument("--seed", type=int, default=0)
-    ap.add_argument("--per-code-timeout", type=float, default=900.0)
+    # Raised from 900 s with the move to a queue: concurrent solves run
+    # ~20% slower each (shared cache / memory bandwidth), so a cap tuned
+    # on serial runs drops rows that would otherwise settle -- and in a
+    # distance hunt those are the interesting ones.
+    ap.add_argument("--per-code-timeout", type=float, default=1800.0)
+    ap.add_argument("--jobs", type=int, default=None,
+                    help="workers (default: performance-core count)")
     ap.add_argument("--deadline", type=float, default=0.0)
-    ap.add_argument("--work-dir", default=".")
+    ap.add_argument("--work-dir", default="cell_hunt_work")
     ap.add_argument("--out", default="cell_hunt_results.csv")
     args = ap.parse_args()
     if not args.k and not args.merit:
@@ -73,63 +100,60 @@ def main() -> None:
     auts = automorphisms(G)
     perms = build_perm_table(G, auts)
 
-    work = Path(args.work_dir)
-    work.mkdir(parents=True, exist_ok=True)
-    out = Path(args.out)
-    new = not out.exists()
-    t_start = time.perf_counter()
-    seen: set = set()
-    tested = 0
-
     crit = f"k == {args.k}" if args.k else f"k >= {k_min} (q>={args.merit})"
     print(f"Z{args.ell}xZ{args.m} n={n}, keeping {crit}, "
           f"{args.samples} draws", flush=True)
 
-    with out.open("a", newline="") as f:
-        w = csv.writer(f)
-        if new:
-            w.writerow(["n", "k", "d", "q", "seconds", "status",
-                        "A_poly", "B_poly"])
-        for _ in range(args.samples):
-            if args.deadline and time.perf_counter() - t_start > args.deadline:
-                print("deadline reached", flush=True)
-                break
-            A = Poly.from_support(rng.sample(els, 3), G)
-            B = Poly.from_support(rng.sample(els, 3), G)
-            ch = bb_check_matrices(A, B)
-            k = code_params(ch).k
-            if (args.k and k != args.k) or (not args.k and k < k_min):
-                continue
-            key = canonical_pair(A.support, B.support, G,
-                                 auts=auts, perms=perms).key
-            if key in seen:
-                continue
-            seen.add(key)
-            tested += 1
-            hx_even = not any(int(r.sum()) % 2 for r in ch.H_X)
-            V = quotient_complement_basis(ch.H_X, nullspace_f2(ch.H_Z))
-            step = hx_even and not any(int(v.sum()) % 2 for v in V)
-            t0 = time.perf_counter()
-            try:
-                r = maxsat_distance(
-                    ch, args.binary, mode="naive", work_dir=work,
-                    timeout=args.per_code_timeout,
-                    extra_args=("-cost-step=2",) if step else (),
-                )
-                d, secs, status = r.distance, r.solver_seconds, "ok"
-            except subprocess.TimeoutExpired:
-                d, secs, status = None, time.perf_counter() - t0, "timeout"
-            except Exception as e:
-                d, secs, status = None, time.perf_counter() - t0, \
-                    f"error:{type(e).__name__}"
-            q = round(k * d * d / n, 3) if d else None
-            w.writerow([n, k, d, q, round(secs, 2), status,
-                        A.canonical_string(), B.canonical_string()])
-            f.flush()
-            if d and d >= 16:
-                print(f"  *** [[{n},{k},{d}]] q={q} A={A.canonical_string()} "
-                      f"B={B.canonical_string()} ({secs:.0f}s)", flush=True)
-    print(f"tested {tested} distinct codes", flush=True)
+    # Phase 1 -- draw, k-filter, canonical-dedup. Pure Python and cheap
+    # next to the solving; kept serial so the candidate list is exactly
+    # reproducible from --seed.
+    seen: set = set()
+    items: list[dict] = []
+    for _ in range(args.samples):
+        A = Poly.from_support(rng.sample(els, 3), G)
+        B = Poly.from_support(rng.sample(els, 3), G)
+        k = code_params(bb_check_matrices(A, B)).k
+        if (args.k and k != args.k) or (not args.k and k < k_min):
+            continue
+        key = canonical_pair(A.support, B.support, G,
+                             auts=auts, perms=perms).key
+        if key in seen:
+            continue
+        seen.add(key)
+        a_str, b_str = A.canonical_string(), B.canonical_string()
+        items.append({
+            "ell": args.ell, "m": args.m,
+            "A_poly": a_str, "B_poly": b_str,
+            "binary": args.binary, "mode": "naive",
+            "timeout": args.per_code_timeout,
+            "passthrough": {"n": n, "k": k,
+                            "A_poly": a_str, "B_poly": b_str},
+        })
+    print(f"phase 1: {len(items)} distinct k-qualifying codes drawn",
+          flush=True)
+
+    # Phase 2 -- settle them on the dynamic queue. Resume keys off the
+    # canonical (A_poly, B_poly) pair the CSV already carries.
+    def report(row: dict) -> str | None:
+        d = row.get("d")
+        if d and d >= 16:
+            return (f"  *** [[{row['n']},{row['k']},{d}]] q={row['q']} "
+                    f"A={row['A_poly']} B={row['B_poly']} "
+                    f"({row['seconds']:.0f}s)")
+        if row.get("status") not in (None, "ok"):
+            return (f"  !! A={row['A_poly']} B={row['B_poly']} "
+                    f"{row['status']}")
+        return None
+
+    print(f"phase 2: solving, jobs={args.jobs or default_jobs()}", flush=True)
+    run_sweep(
+        items, hunt_task,
+        out=Path(args.out), fieldnames=FIELDNAMES,
+        key_field=("A_poly", "B_poly"),
+        key=lambda it: (it["A_poly"], it["B_poly"]),
+        jobs=args.jobs, work_root=Path(args.work_dir), report=report,
+        deadline=args.deadline or None,
+    )
 
 
 if __name__ == "__main__":
