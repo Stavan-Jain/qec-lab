@@ -17,15 +17,21 @@ builds the pristine baseline (`maxcdcl_stock`), applies
 `core/Solver.cc`, `simp/Main.cc`) and builds the fork
 (`maxcdcl_release`). Builds clean on macOS arm64 and Linux.
 
-The build script ends by asserting that `tandem` advertises all four
+The build script ends by asserting that `tandem` advertises all five
 fork flags and that `maxcdcl_stock` advertises none of them. Two ways
 it used to produce a mislabelled pair, both now fixed and both silent:
 
-- the patch was applied with `-p1 -d code`, which resolves
-  `a/code/core/Solver.h` to `code/code/core/Solver.h` and matches
-  nothing under Apple's `/usr/bin/patch` (GNU patch's fuzzier prefix
-  search hides this). Every hunk was skipped, the build continued, and
-  the *unpatched* binary was copied to `tandem`. It is `-p2`.
+- patch-path arithmetic. Apple's `/usr/bin/patch` skips every hunk
+  whose stripped path doesn't exist relative to its cwd (GNU patch's
+  fuzzier prefix search hides the mismatch), and in the pre-guard era
+  the build then continued and copied the *unpatched* binary to
+  `tandem`. It bit twice: the original patch carried `a/code/core/...`
+  paths and was applied with `-p1 -d code` (→ `code/code/core/...`,
+  matches nothing); the regenerated v5 patch carries `a/core/...`
+  paths and was applied with plain `-p1` from the MaxCDCL root
+  (→ `MaxCDCL/core/...` — the sources live under `code/`). It is
+  `-p1 -d code` today, and a costStep grep hard-fails the build if
+  application is ever skipped again.
 - on a *rerun*, `unzip -o` restores pristine sources carrying their 2023
   archive timestamps, which are older than the release objects (`*.or`)
   left by the previous patched build. make judged those stale objects up
@@ -38,8 +44,8 @@ measured on a fork binary measures the same thing. They matter for
 reproducibility, and would matter for correctness the moment the patch
 stops being inert by default.
 
-The patch adds two *caller-verified, instance-specific* hints; with
-neither flag the fork is behaviourally identical to stock:
+The patch adds five *caller-verified, instance-specific* hints; with
+none of the flags passed the fork is behaviourally identical to stock:
 
 - **`-cost-step=N`** — declares that all feasible costs are congruent
   mod N. After each improving model (cost printed first), the exclusive
