@@ -7,7 +7,9 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A25.**
+**Next free number: A28.** (A25/A26 are claimed on branches not yet on main
+— rows below record them defensively to prevent a rerun of the July A15
+collision; their note files are not in this checkout.)
 
 | # | Line | Note file(s) | Status |
 |---|------|--------------|--------|
@@ -36,6 +38,9 @@ A11 line, not A8).
 | A22 | Analytic light-boundary completeness: LightClassification via σ-correlation/Fourier structure | `A22_analytic_classification.md` | **DONE** (2026-07-22): `lightClassification` sorry-free via CRT fibering (z=y³,w=y⁵), branch `claude/a22-light-classification` |
 | A23 | Analytic seam-coset floor: SeamCosetFloor 16 via parity + transport + difference sets | `A23_analytic_seam_floor.md` | **DONE** (2026-07-22): `seamCosetFloor_16` sorry-free via A22-fibering site sweep, branch `claude/a23-seam-transfer` |
 | A24 | Bravyi-360 y-deck safe-sector floor at 24 (p_y*≠0 sector; subsumes new-x + doubly-old), falsify-first + A23-fibering port | `A24_y_safe_floor.md` | active (spawned 2026-07-23; note lives on branch `claude/bravyi-y-deck-floor-bbf8cf`, not yet on main) |
+| A25 | d_circ extended-code line (SBB Thm-1 reduction; gross d_ext^Z ≤ 9) | on its branch | claimed elsewhere, not on main (recorded from session memory) |
+| A26 | Mitten-codes descent (arXiv:2607.28795): 3 towers, k-doubling regime, Table XIII erratum | on its branch | claimed elsewhere, not on main (recorded from session memory) |
+| A27 | Safe-floor deletion: generality tiering + fibering feasibility probe for the Z₁₅×Z₆ [[180,4,10]] docket UNKNOWNs | `A27_safe_floor_generality.md` | done (synthesis + probe, 2026-08-06; §5 lists gates for any follow-on) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill
