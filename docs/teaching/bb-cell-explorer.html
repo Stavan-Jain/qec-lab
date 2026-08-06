@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BB cell explorer — stencils, sheets, and the doubling argument</title>
+<style>
+/* ==================================================================
+   Tokens. A drafting-table neutral (cool, faintly green) so that the
+   two ink colours borrowed from the paper's own figures — blue first
+   stamp, amber second stamp — are the only saturated things here.
+   ================================================================== */
+:root{
+  --paper:#e7ebe9; --panel:#f5f8f6; --panel-2:#edf1ef;
+  --rule:#ccd5d2; --rule-2:#a4b2af;
+  --ink:#131919; --ink-2:#4d5b5c; --ink-3:#788683;
+  --blue:#23608f; --blue-wash:rgba(35,96,143,.14);
+  --amber:#ab6014; --amber-wash:rgba(171,96,20,.16);
+  --seam:#8b3a6c; --good:#2b7350; --bad:#a13228;
+  --grid:#cfd7d4; --cell-off:#fdfefd; --cell-void:#e4e9e7;
+  --font-serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --font-ui:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0d1113; --panel:#161c1e; --panel-2:#1d2528;
+    --rule:#2a3336; --rule-2:#465457;
+    --ink:#e0e8e7; --ink-2:#9aabab; --ink-3:#758484;
+    --blue:#63a6dd; --blue-wash:rgba(99,166,221,.16);
+    --amber:#dd9647; --amber-wash:rgba(221,150,71,.18);
+    --seam:#cf8ab6; --good:#5cb185; --bad:#e07a6e;
+    --grid:#243033; --cell-off:#121819; --cell-void:#0f1517;
+  }
+}
+:root[data-theme="light"]{
+  --paper:#e7ebe9; --panel:#f5f8f6; --panel-2:#edf1ef;
+  --rule:#ccd5d2; --rule-2:#a4b2af;
+  --ink:#131919; --ink-2:#4d5b5c; --ink-3:#788683;
+  --blue:#23608f; --blue-wash:rgba(35,96,143,.14);
+  --amber:#ab6014; --amber-wash:rgba(171,96,20,.16);
+  --seam:#8b3a6c; --good:#2b7350; --bad:#a13228;
+  --grid:#cfd7d4; --cell-off:#fdfefd; --cell-void:#e4e9e7;
+}
+:root[data-theme="dark"]{
+  --paper:#0d1113; --panel:#161c1e; --panel-2:#1d2528;
+  --rule:#2a3336; --rule-2:#465457;
+  --ink:#e0e8e7; --ink-2:#9aabab; --ink-3:#758484;
+  --blue:#63a6dd; --blue-wash:rgba(99,166,221,.16);
+  --amber:#dd9647; --amber-wash:rgba(221,150,71,.18);
+  --seam:#cf8ab6; --good:#5cb185; --bad:#e07a6e;
+  --grid:#243033; --cell-off:#121819; --cell-void:#0f1517;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--font-ui); font-size:14px; line-height:1.5;
+}
+h1,h2,h3{margin:0; text-wrap:balance; font-weight:600}
+p{margin:0}
+button,input,select{font:inherit; color:inherit}
+:focus-visible{outline:2px solid var(--blue); outline-offset:2px; border-radius:3px}
+.m{font-family:var(--font-mono); font-size:.94em; font-variant-numeric:tabular-nums}
+
+/* ---------------------------------------------------------- masthead */
+.masthead{
+  border-bottom:1px solid var(--rule); background:var(--panel);
+  padding:15px clamp(16px,3vw,34px) 14px;
+  display:flex; gap:10px 28px; align-items:baseline; flex-wrap:wrap;
+}
+.masthead .brand{flex:0 1 auto; min-width:0}
+.eyebrow{
+  font-family:var(--font-mono); font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--ink-3); margin-bottom:3px;
+}
+.masthead h1{font-family:var(--font-serif); font-size:clamp(21px,2.6vw,27px); line-height:1.1; letter-spacing:-.01em}
+.lede{
+  font-family:var(--font-serif); font-size:14.5px; color:var(--ink-2);
+  flex:1 1 340px; max-width:62ch; min-width:0;
+}
+.theme-toggle{
+  align-self:center; flex:0 0 auto;
+  background:var(--panel-2); border:1px solid var(--rule); color:var(--ink-2);
+  border-radius:999px; padding:6px 13px; cursor:pointer; font-size:12px;
+  font-family:var(--font-mono); white-space:nowrap;
+}
+.theme-toggle:hover{border-color:var(--rule-2); color:var(--ink)}
+
+/* -------------------------------------------------- setup bar + chips */
+.setup{
+  padding:10px clamp(16px,3vw,34px) 11px; background:var(--panel);
+  border-bottom:1px solid var(--rule);
+}
+.setup-row{display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end}
+.setup .f{flex:0 0 auto; width:215px}
+.setup .f.tiny{width:62px}
+.setup .f.wide{flex:0 1 300px; width:300px; min-width:150px}
+.setup-note{
+  font-size:11.5px; color:var(--ink-3); margin-top:7px; line-height:1.45; max-width:105ch;
+}
+@media (max-width:600px){
+  .setup .f, .setup .f.wide{flex:1 1 100%; width:100%}
+  .setup .f.tiny{flex:1 1 0; width:auto; min-width:0}
+}
+.chipstrip{
+  display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  padding:9px clamp(16px,3vw,34px); border-bottom:1px solid var(--rule);
+  background:var(--panel-2);
+}
+.chip{
+  font-family:var(--font-mono); font-size:12px; padding:3px 9px;
+  border:1px solid var(--rule); border-radius:4px; background:var(--panel);
+  color:var(--ink-2); white-space:nowrap;
+}
+.chip b{color:var(--ink); font-weight:600}
+.chip.hero{border-color:var(--blue); color:var(--blue); background:var(--blue-wash)}
+.chip.ok{border-color:var(--good); color:var(--good)}
+.chip.no{border-color:var(--bad); color:var(--bad)}
+
+/* ------------------------------------------------------------ shell */
+.shell{
+  display:grid; gap:16px; padding:14px clamp(16px,3vw,34px) 36px;
+  grid-template-columns:minmax(0,1fr) minmax(270px,330px);
+  align-items:start; max-width:1620px; margin:0 auto;
+}
+@media (max-width:880px){ .shell{grid-template-columns:minmax(0,1fr)} }
+
+.rail{display:flex; flex-direction:column; gap:14px; min-width:0}
+.card{
+  background:var(--panel); border:1px solid var(--rule); border-radius:7px;
+  box-shadow:var(--shadow-sm); overflow:hidden;
+}
+.card > h2{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.085em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500;
+  padding:9px 13px; border-bottom:1px solid var(--rule); background:var(--panel-2);
+  display:flex; justify-content:space-between; align-items:center; gap:8px;
+}
+.card > h2 .ref{text-transform:none; letter-spacing:0; color:var(--ink-3); opacity:.85}
+.card .body{padding:12px 13px; display:flex; flex-direction:column; gap:10px}
+
+/* ------------------------------------------------------------ forms */
+label.f{display:flex; flex-direction:column; gap:3px; min-width:0}
+label.f > span{font-size:10.5px; color:var(--ink-3); font-family:var(--font-mono); letter-spacing:.04em}
+input[type=text],input[type=number],select{
+  background:var(--cell-off); border:1px solid var(--rule); border-radius:4px;
+  padding:5px 7px; font-family:var(--font-mono); font-size:12.5px; width:100%; min-width:0;
+}
+input:hover,select:hover{border-color:var(--rule-2)}
+
+.segmented{display:flex; border:1px solid var(--rule); border-radius:5px; overflow:hidden; flex:0 0 auto}
+.segmented button{
+  background:var(--panel-2); border:0; border-right:1px solid var(--rule);
+  padding:5px 10px; cursor:pointer; font-size:12px; color:var(--ink-2); white-space:nowrap;
+}
+.segmented button:last-child{border-right:0}
+.segmented button[aria-pressed=true]{background:var(--blue); color:#fff}
+.check{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--ink-3); cursor:pointer; white-space:nowrap}
+
+/* Board toolbar: the controls that act on the board live with the board. */
+.toolbar{
+  display:flex; gap:8px; align-items:center; flex-wrap:wrap;
+  padding:8px 12px; border-bottom:1px solid var(--rule); background:var(--panel-2);
+}
+.toolbar .sep{width:1px; align-self:stretch; background:var(--rule); margin:0 2px}
+.toolbar .push{margin-left:auto}
+.ops{display:flex; gap:5px; flex-wrap:wrap}
+.ops button{
+  background:var(--panel-2); border:1px solid var(--rule); border-radius:5px;
+  padding:4px 9px; cursor:pointer; font-size:12px; color:var(--ink-2);
+  display:flex; align-items:baseline; gap:5px; white-space:nowrap;
+}
+.ops button:hover:not(:disabled){border-color:var(--blue); color:var(--ink)}
+.ops button:disabled{opacity:.35; cursor:not-allowed}
+.ops button .k{font-family:var(--font-mono); font-size:13px; color:var(--blue); font-weight:600}
+.ops button:disabled .k{color:inherit}
+.toolhint{
+  padding:7px 13px; font-size:12px; color:var(--ink-3); border-bottom:1px solid var(--rule);
+  background:var(--panel);
+}
+.toolhint b{color:var(--ink-2); font-weight:600}
+
+/* ------------------------------------------------------------ stage */
+.stage{display:flex; flex-direction:column; gap:14px; min-width:0}
+.tour{
+  border:1px solid var(--rule); border-left:3px solid var(--seam); border-radius:7px;
+  background:var(--panel); padding:11px 14px; display:flex; gap:14px; align-items:center;
+}
+.tour .txt{flex:1; min-width:0}
+.tour .step{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.07em;
+  text-transform:uppercase; color:var(--seam);
+}
+.tour .cap{font-family:var(--font-serif); font-size:14.5px; color:var(--ink-2); margin-top:2px}
+.tour .cap b{color:var(--ink); font-weight:600}
+.tour .nav{display:flex; gap:6px; flex:0 0 auto}
+.tour .nav button{
+  border:1px solid var(--rule); background:var(--panel-2); border-radius:5px;
+  width:30px; height:30px; cursor:pointer; color:var(--ink-2); font-size:14px; padding:0;
+}
+.tour .nav button:hover:not(:disabled){border-color:var(--seam); color:var(--seam)}
+.tour .nav button:disabled{opacity:.35; cursor:not-allowed}
+
+.boardcard{background:var(--panel); border:1px solid var(--rule); border-radius:7px; box-shadow:var(--shadow-sm)}
+.toolbar .lvl{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-3); white-space:nowrap}
+.toolbar .lvl b{color:var(--ink-2)}
+.boardwrap{padding:12px; overflow-x:auto}
+svg.board{display:block; margin:0 auto; max-width:100%; height:auto; touch-action:manipulation}
+svg.board .cell{fill:var(--cell-off); stroke:var(--grid); stroke-width:.6; cursor:crosshair}
+svg.board .cell.on{fill:var(--blue)}
+svg.board .cell.on.ov{fill:var(--amber)}
+svg.board .cell.syn{fill:var(--bad); stroke:var(--grid)}
+svg.board .cell:hover{stroke:var(--ink-2); stroke-width:1.1}
+svg.board .cell.dim{fill:var(--cell-void)}
+svg.board .gridline{stroke:var(--grid); stroke-width:.6; fill:none}
+svg.board .frame{stroke:var(--rule-2); stroke-width:1.4; fill:none}
+svg.board .seam{stroke:var(--seam); stroke-width:2; stroke-dasharray:5 3}
+svg.board .lab{fill:var(--ink-3); font-family:var(--font-mono); font-size:9.5px}
+svg.board .blocklab{fill:var(--ink-2); font-family:var(--font-mono); font-size:11.5px}
+svg.board .blocklab tspan.q{fill:var(--ink-3)}
+svg.board .sheetlab{fill:var(--seam); font-family:var(--font-mono); font-size:10px}
+svg.board .origin{fill:none; stroke:var(--ink); stroke-width:1.5}
+svg.board .cancel{stroke:var(--ink-2); stroke-width:1.2; fill:none}
+svg.board .probe{fill:none; stroke:var(--amber); stroke-width:1.8; stroke-dasharray:3 2}
+svg.board .cursor{fill:none; stroke:var(--ink); stroke-width:2.2}
+svg.board:focus{outline:none}
+svg.board:focus-visible{outline:2px solid var(--blue); outline-offset:3px}
+svg.board .overlay{pointer-events:none}
+svg.board .fly{fill:var(--blue); stroke:var(--grid); stroke-width:.6}
+@media (prefers-reduced-motion:no-preference){
+  svg.board .flylayer{transition:transform .55s cubic-bezier(.4,.05,.2,1)}
+}
+
+.legend{display:flex; gap:14px; flex-wrap:wrap; padding:0 13px 12px; font-size:11.5px; color:var(--ink-3)}
+.legend span{display:flex; align-items:center; gap:5px}
+.legend i{width:11px; height:11px; border-radius:2px; display:inline-block; border:1px solid var(--grid)}
+.legend i.on{background:var(--blue)} .legend i.ov{background:var(--amber)}
+.legend i.syn{background:var(--bad)}
+.legend i.q{
+  background:var(--cell-off); border-color:var(--ink-2);
+  background-image:linear-gradient(45deg,transparent 44%,var(--ink-3) 44%,var(--ink-3) 56%,transparent 56%),
+                   linear-gradient(-45deg,transparent 44%,var(--ink-3) 44%,var(--ink-3) 56%,transparent 56%);
+}
+.legend i.og{background:var(--cell-off); border:1.5px solid var(--ink); border-radius:50%}
+
+/* ---------------------------------------------------------- readouts */
+dl.kv{display:grid; grid-template-columns:auto 1fr; gap:4px 10px; margin:0; align-items:baseline}
+dl.kv dt{font-size:11.5px; color:var(--ink-3)}
+dl.kv dd{
+  margin:0; font-family:var(--font-mono); font-size:12.5px;
+  font-variant-numeric:tabular-nums; text-align:right; color:var(--ink);
+}
+.verdicts{display:flex; gap:6px; flex-wrap:wrap}
+.badge{
+  font-family:var(--font-mono); font-size:11px; padding:2px 7px; border-radius:3px;
+  border:1px solid var(--rule-2); color:var(--ink-2); background:var(--panel-2); white-space:nowrap;
+}
+.badge.ok{border-color:var(--good); color:var(--good); background:transparent}
+.badge.no{border-color:var(--bad); color:var(--bad); background:transparent}
+.badge.hot{border-color:var(--amber); color:var(--amber); background:var(--amber-wash)}
+.badge.cool{border-color:var(--blue); color:var(--blue); background:var(--blue-wash)}
+.note{font-size:11.5px; color:var(--ink-3); line-height:1.45}
+.note.warn{color:var(--bad)}
+.ident{
+  font-family:var(--font-mono); font-size:12px; background:var(--panel-2);
+  border:1px solid var(--rule); border-radius:4px; padding:7px 9px;
+  overflow-x:auto; white-space:nowrap; color:var(--ink-2);
+}
+.ident b{color:var(--ink); font-weight:600}
+.ident.wrap{white-space:normal; line-height:1.6}
+.ident.ok{border-color:var(--good)}
+.ident.no{border-color:var(--bad)}
+ul.list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:4px}
+ul.list li button{
+  width:100%; background:var(--panel-2); border:1px solid var(--rule); border-radius:4px;
+  padding:5px 8px; cursor:pointer; display:flex; justify-content:space-between; gap:8px;
+  font-family:var(--font-mono); font-size:11.5px; color:var(--ink-2);
+}
+ul.list li button:hover{border-color:var(--blue); color:var(--blue)}
+ul.list li button em{font-style:normal; color:var(--ink-3)}
+/* Depth on demand: the "why" stays available without crowding the readout. */
+details.more{margin-top:2px}
+details.more > summary{
+  font-family:var(--font-mono); font-size:11px; color:var(--ink-3);
+  cursor:pointer; list-style:none; user-select:none;
+}
+details.more > summary::-webkit-details-marker{display:none}
+details.more > summary::before{content:"▸ "}
+details.more[open] > summary::before{content:"▾ "}
+details.more > summary:hover{color:var(--blue)}
+details.more .note{margin-top:6px}
+
+footer{
+  border-top:1px solid var(--rule); background:var(--panel);
+  padding:18px clamp(16px,3vw,34px) 30px; color:var(--ink-3); font-size:12px;
+}
+footer p{max-width:78ch; margin-bottom:6px}
+footer code{font-family:var(--font-mono); color:var(--ink-2)}
+.err{
+  background:var(--bad); color:#fff; padding:7px 11px; border-radius:5px;
+  font-family:var(--font-mono); font-size:12px;
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brand">
+    <p class="eyebrow">Companion tool · <i>The doubling theorem for bivariate bicycle codes</i></p>
+    <h1>Cells of the group algebra</h1>
+  </div>
+  <p class="lede">Stamp checks onto the torus, then fold, swap and lift between a BB code and
+    its double cover — every number computed live from ℓ, m, A and B.</p>
+  <button class="theme-toggle" id="themeBtn" type="button">theme: auto</button>
+</header>
+
+<div class="setup">
+  <div class="setup-row">
+    <label class="f"><span>preset</span><select id="preset"></select></label>
+    <label class="f tiny"><span>ℓ</span><input type="number" id="inEll" min="1" max="60" value="6"></label>
+    <label class="f tiny"><span>m</span><input type="number" id="inM" min="1" max="60" value="6"></label>
+    <label class="f wide"><span>A</span><input type="text" id="inA" value="x^3 + y + y^2" spellcheck="false"></label>
+    <label class="f wide"><span>B</span><input type="text" id="inB" value="y^3 + x + x^2" spellcheck="false"></label>
+    <label class="f tiny"><span>floor d</span>
+      <input type="number" id="inD" min="1" max="99" value="6"
+             title="The base cycle floor of hypothesis (F). It bounds stabilisers too, so it never exceeds |A| + |B|."></label>
+  </div>
+  <p class="setup-note" id="presetNote"></p>
+  <div id="specErr"></div>
+</div>
+
+<div class="chipstrip" id="chips"></div>
+
+<main class="shell">
+
+  <!-- ============================== stage ============================== -->
+  <section class="stage">
+    <div class="tour">
+      <div class="txt">
+        <p class="step" id="tourStep">walkthrough</p>
+        <p class="cap" id="tourCap">Press <b>›</b> for a ten-step tour of the argument, or just start stamping.</p>
+      </div>
+      <div class="nav">
+        <button type="button" id="tourPrev" title="previous step" aria-label="previous step">‹</button>
+        <button type="button" id="tourNext" title="next step" aria-label="next step">›</button>
+      </div>
+    </div>
+
+    <div class="boardcard">
+      <div class="toolbar">
+        <div class="segmented" id="levelSeg" role="group" aria-label="level">
+          <button type="button" data-level="base">base</button>
+          <button type="button" data-level="cover">cover</button>
+        </div>
+        <p class="lvl" id="boardLvl"></p>
+        <span class="sep"></span>
+        <div class="segmented" id="tools" role="group" aria-label="tool">
+          <button type="button" data-tool="stamp">stamp</button>
+          <button type="button" data-tool="paint">paint</button>
+          <button type="button" data-tool="probe">probe</button>
+        </div>
+        <span class="sep"></span>
+        <div class="ops" id="ops">
+          <button type="button" id="opFold"  title="Fold to the base: v₀ + v₁"><span class="k">p</span> fold</button>
+          <button type="button" id="opLift"  title="Diagonal lift: u ↦ (u, u)"><span class="k">τ</span> lift</button>
+          <button type="button" id="opRes"   title="Exponent-restricted lift: one copy on sheet 0"><span class="k">ũ</span> sheet 0</button>
+          <button type="button" id="opSwap"  title="Swap the sheets: multiply by xᐟ"><span class="k">σ</span> swap</button>
+          <button type="button" id="opMaster" title="Master identity: v + σv = τ(p(v))"><span class="k">+σ</span> v + σv</button>
+        </div>
+        <span class="sep"></span>
+        <div class="ops">
+          <button type="button" id="btnClear">clear</button>
+          <button type="button" id="btnRandom"
+            title="A heuristic search over cosets — a light logical, not a certified minimum.">light logical</button>
+        </div>
+        <label class="check push"><input type="checkbox" id="chkSlice" checked> slice colours</label>
+      </div>
+      <p class="toolhint" id="toolHint"></p>
+      <div class="boardwrap">
+        <svg class="board" id="board" tabindex="0" role="application"
+             aria-label="Qubit grids for the L and R blocks and the X-syndrome. Arrow keys move the cursor, b switches block, Enter applies the current tool."></svg>
+      </div>
+      <div class="legend">
+        <span><i class="on"></i> qubit acted on</span>
+        <span><i class="ov"></i> occupied in both sheets (costs 2)</span>
+        <span><i class="q"></i> cancelled by an even overlap</span>
+        <span><i class="og"></i> stamp position g</span>
+        <span><i class="syn"></i> violated X-check</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== right rail =========================== -->
+  <aside class="rail">
+    <section class="card">
+      <h2>This operator <span class="ref">§2.2</span></h2>
+      <div class="body">
+        <div class="verdicts" id="verdicts"></div>
+        <dl class="kv" id="stateKV"></dl>
+        <div id="sliceBox"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Stamps &amp; window <span class="ref">§7.6</span></h2>
+      <div class="body" id="windowBox"></div>
+    </section>
+
+    <section class="card">
+      <h2>Condition (R) <span class="ref">§8.1</span></h2>
+      <div class="body" id="rBox"></div>
+    </section>
+
+    <section class="card">
+      <h2>Relations K and seam carries <span class="ref">§5.1</span></h2>
+      <div class="body" id="kBox"></div>
+    </section>
+  </aside>
+</main>
+
+<footer>
+  <p><b>What this computes.</b> Ranks, k, the relation space K = Ann(A) ∩ Ann(B), the seam-carry
+  map Δ and the Bézout certificate for (R) are all exact 𝔽₂ linear algebra done in your browser.
+  <b>Distance is not computed</b> — it is exponentially hard, and the whole point of the doubling
+  theorem is to avoid searching for it. Published distances shown on presets are quoted, not derived.</p>
+  <p>Conventions match <code>experiments/bb_lab</code>: H<sub>X</sub> = (M<sub>A</sub> | M<sub>B</sub>),
+  H<sub>Z</sub> = (M<sub>B</sub>ᵀ | M<sub>A</sub>ᵀ), so the Z-check at g is (Bδ<sub>g</sub>, Aδ<sub>g</sub>)
+  and the X-check at g is (ι(A)δ<sub>g</sub>, ι(B)δ<sub>g</sub>) with ι the inversion g ↦ −g.
+  Section references point at <code>docs/teaching/bb-doubling-theorem.tex</code>.</p>
+</footer>
+
+<script>
+"use strict";
+/* ==================================================================
+   1. 𝔽₂ linear algebra on bit-packed rows
+   ================================================================== */
+const words = n => (n + 31) >> 5;
+const bitsNew = n => new Uint32Array(words(n));
+const bget = (r, i) => (r[i >> 5] >>> (i & 31)) & 1;
+const bset = (r, i) => { r[i >> 5] |= (1 << (i & 31)); };
+function bxor(a, b){ for (let i = 0; i < a.length; i++) a[i] ^= b[i]; }
+function bany(r){ for (let i = 0; i < r.length; i++) if (r[i]) return true; return false; }
+function bfromDense(v){ const r = bitsNew(v.length); for (let i = 0; i < v.length; i++) if (v[i]) bset(r, i); return r; }
+
+/** Full reduced row echelon form, pivots searched only in columns [0, climit). */
+function rref(rows, climit){
+  const piv = [];
+  let r = 0;
+  for (let c = 0; c < climit && r < rows.length; c++){
+    let p = -1;
+    for (let i = r; i < rows.length; i++) if (bget(rows[i], c)) { p = i; break; }
+    if (p < 0) continue;
+    const t = rows[r]; rows[r] = rows[p]; rows[p] = t;
+    for (let i = 0; i < rows.length; i++) if (i !== r && bget(rows[i], c)) bxor(rows[i], rows[r]);
+    piv.push(c); r++;
+  }
+  return { rank: r, piv, rows };
+}
+/** A reusable reduced basis: `has(target)` tests membership in the row space. */
+function spanOf(denseRows, ncols){
+  const R = rref(denseRows.map(bfromDense), ncols);
+  return {
+    rank: R.rank, piv: R.piv, rows: R.rows, ncols,
+    residual(target){
+      const t = (target instanceof Uint32Array ? target : bfromDense(target)).slice();
+      for (let i = 0; i < R.piv.length; i++) if (bget(t, R.piv[i])) bxor(t, R.rows[i]);
+      return t;
+    },
+    has(target){ return !bany(this.residual(target)); }
+  };
+}
+/** Basis of {x : Mx = 0}; M given as dense rows of length ncols. */
+function nullspace(denseRows, ncols){
+  const R = rref(denseRows.map(bfromDense), ncols);
+  const isPiv = new Uint8Array(ncols);
+  R.piv.forEach(c => { isPiv[c] = 1; });
+  const out = [];
+  for (let f = 0; f < ncols; f++){
+    if (isPiv[f]) continue;
+    const v = new Uint8Array(ncols);
+    v[f] = 1;
+    for (let i = 0; i < R.piv.length; i++) if (bget(R.rows[i], f)) v[R.piv[i]] = 1;
+    out.push(v);
+  }
+  return out;
+}
+/** One solution of Mx = t, or null. Rows carry the rhs in bit `ncols`. */
+function solveF2(denseRows, rhs, ncols){
+  const aug = denseRows.map((row, i) => {
+    const r = bitsNew(ncols + 1);
+    for (let c = 0; c < ncols; c++) if (row[c]) bset(r, c);
+    if (rhs[i]) bset(r, ncols);
+    return r;
+  });
+  const R = rref(aug, ncols);
+  for (let i = R.rank; i < R.rows.length; i++) if (bget(R.rows[i], ncols)) return null;
+  const x = new Uint8Array(ncols);
+  for (let i = 0; i < R.piv.length; i++) x[R.piv[i]] = bget(R.rows[i], ncols);
+  return x;
+}
+
+/* ==================================================================
+   2. The group algebra 𝔽₂[ℤ_ell × ℤ_m]
+   ================================================================== */
+const VARS = { x: 0, y: 1 };
+
+/** Parse into raw (unreduced) exponent pairs; the ring reduces them. */
+function parseTerms(text, label){
+  const terms = String(text).split("+").map(s => s.trim()).filter(Boolean);
+  if (!terms.length) throw new Error(label + " is empty.");
+  return terms.map(term => {
+    const e = [0, 0];
+    for (const f of term.split("*").map(s => s.trim()).filter(Boolean)){
+      if (f === "1") continue;
+      const mm = /^([a-zA-Z])(?:\s*\^\s*(\d+))?$/.exec(f);
+      if (!mm) throw new Error(
+        label + ": cannot read “" + f + "”. Factors look like x, y^3 or 1; " +
+        "write implicit products with a star, x*y^2.");
+      const v = mm[1].toLowerCase();
+      if (!(v in VARS)) throw new Error(label + ": unknown variable “" + v + "” (only x and y).");
+      e[VARS[v]] += parseInt(mm[2] || "1", 10);
+    }
+    return e;
+  });
+}
+
+function makeRing(ell, m){
+  const N = ell * m;
+  return {
+    ell, m, N,
+    idx: (a, b) => a * m + b,
+    ax: i => (i / m) | 0,
+    ay: i => i % m,
+    /** Reduce raw exponents mod this ring's orders, cancelling repeats over 𝔽₂. */
+    poly(raw){
+      const seen = new Map();
+      for (const [ea, eb] of raw){
+        const key = (((ea % ell) + ell) % ell) * m + (((eb % m) + m) % m);
+        seen.set(key, (seen.get(key) || 0) ^ 1);
+      }
+      return [...seen.entries()].filter(([, c]) => c).map(([k]) => [ (k / m) | 0, k % m ]);
+    },
+    zero(){ return new Uint8Array(N); },
+    /** (P·f)(g) = Σ_h P(h) f(g−h): shift f by each monomial of P and add. */
+    mul(supp, f){
+      const out = new Uint8Array(N);
+      for (const [ea, eb] of supp){
+        for (let a = 0; a < ell; a++){
+          const a2 = (a + ea) % ell;
+          for (let b = 0; b < m; b++) if (f[a * m + b]) out[a2 * m + (b + eb) % m] ^= 1;
+        }
+      }
+      return out;
+    },
+    /** Support of P·δ_g, as cell indices. */
+    stamp(supp, g){
+      const a0 = (g / m) | 0, b0 = g % m;
+      return supp.map(([ea, eb]) => ((a0 + ea) % ell) * m + (b0 + eb) % m);
+    },
+    inv(supp){ return supp.map(([a, b]) => [(ell - a % ell) % ell, (m - b % m) % m]); },
+    str(supp){
+      if (!supp.length) return "0";
+      const one = ([a, b]) => {
+        if (!a && !b) return "1";
+        const p = [];
+        if (a) p.push("x" + (a > 1 ? "^" + a : ""));
+        if (b) p.push("y" + (b > 1 ? "^" + b : ""));
+        return p.join("*");
+      };
+      return supp.slice().sort((p, q) => p[0] - q[0] || p[1] - q[1]).map(one).join(" + ");
+    }
+  };
+}
+
+/* ==================================================================
+   3. The code model — everything derived from (ℓ, m, A, B)
+   ================================================================== */
+const MAX_BASE = 420;   // |G| downstairs; the cover is twice this
+
+function buildLevel(ring, A, B){
+  const N = ring.N;
+  // Z-check at g = (Bδ_g, Aδ_g); X-check at g = (ι(A)δ_g, ι(B)δ_g).
+  const iA = ring.inv(A), iB = ring.inv(B);
+  const HZ = [], HX = [];
+  for (let g = 0; g < N; g++){
+    const z = new Uint8Array(2 * N), x = new Uint8Array(2 * N);
+    for (const c of ring.stamp(B, g)) z[c] ^= 1;
+    for (const c of ring.stamp(A, g)) z[N + c] ^= 1;
+    for (const c of ring.stamp(iA, g)) x[c] ^= 1;
+    for (const c of ring.stamp(iB, g)) x[N + c] ^= 1;
+    HZ.push(z); HX.push(x);
+  }
+  const stab = spanOf(HZ, 2 * N);
+  const rankX = spanOf(HX, 2 * N).rank;
+  return { ring, A, B, iA, iB, N, n: 2 * N, HZ, HX, stab, rankX,
+           k: 2 * N - stab.rank - rankX };
+}
+
+function buildModel(ell, m, Atext, Btext){
+  if (!(ell >= 1 && m >= 1)) throw new Error("ℓ and m must be positive whole numbers.");
+  if (ell * m > MAX_BASE) throw new Error(
+    "|G| = " + (ell * m) + " exceeds this page's cap of " + MAX_BASE +
+    " (the cover would need " + (4 * ell * m) + " qubits). Drive bb_lab directly for that.");
+  const rawA = parseTerms(Atext, "A"), rawB = parseTerms(Btext, "B");
+  const base = makeRing(ell, m), cover = makeRing(2 * ell, m);
+  const Ab = base.poly(rawA), Bb = base.poly(rawB);
+  const Ac = cover.poly(rawA), Bc = cover.poly(rawB);
+  if (!Ab.length || !Bb.length) throw new Error("A and B must be non-zero over 𝔽₂.");
+
+  const L = buildLevel(base, Ab, Bb), C = buildLevel(cover, Ac, Bc);
+
+  // K = Ann(A) ∩ Ann(B) downstairs: stack the two multiplication matrices.
+  const eqs = [];
+  for (let g = 0; g < L.N; g++){
+    const ra = new Uint8Array(L.N), rb = new Uint8Array(L.N);
+    for (const c of base.stamp(L.iA, g)) ra[c] ^= 1;   // row g of M_A
+    for (const c of base.stamp(L.iB, g)) rb[c] ^= 1;   // row g of M_B
+    eqs.push(ra, rb);
+  }
+  const K = nullspace(eqs, L.N);
+
+  // Seam carry: lift ζ to sheet 0, apply the cover's stabiliser map, read a sheet.
+  const carries = K.map(z => {
+    const zt = cover.zero();
+    for (let a = 0; a < ell; a++) for (let b = 0; b < m; b++)
+      zt[cover.idx(a, b)] = z[base.idx(a, b)];
+    const CL = cover.mul(Bc, zt), CR = cover.mul(Ac, zt);
+    const dL = base.zero(), dR = base.zero();
+    let diagonal = true;
+    for (let a = 0; a < ell; a++) for (let b = 0; b < m; b++){
+      const lo = CL[cover.idx(a, b)], hi = CL[cover.idx(a + ell, b)];
+      const ro = CR[cover.idx(a, b)], rh = CR[cover.idx(a + ell, b)];
+      if (lo !== hi || ro !== rh) diagonal = false;
+      dL[base.idx(a, b)] = lo; dR[base.idx(a, b)] = ro;
+    }
+    const carry = new Uint8Array(2 * L.N);
+    carry.set(dL, 0); carry.set(dR, L.N);
+    return { zeta: z, zetaWt: wt(z), carry, wt: wt(carry), diagonal };
+  });
+  // dim imΔ, measured inside the class space (mod stabilisers). The span is
+  // kept: "is this class confined?" is asked on every repaint.
+  const imDelta = spanOf(L.HZ.concat(carries.map(c => c.carry)), 2 * L.N);
+  const dimImDelta = imDelta.rank - L.stab.rank;
+
+  // (R): solve PA + QB = 1 + x^ℓ upstairs. Row g pairs P against A(g−·), Q against B(g−·).
+  const rows = [], rhs = new Uint8Array(C.N);
+  for (let g = 0; g < C.N; g++){
+    const r = new Uint8Array(2 * C.N);
+    for (const c of cover.stamp(C.iA, g)) r[c] ^= 1;
+    for (const c of cover.stamp(C.iB, g)) r[C.N + c] ^= 1;
+    rows.push(r);
+  }
+  rhs[cover.idx(0, 0)] ^= 1; rhs[cover.idx(ell % (2 * ell), 0)] ^= 1;
+  const sol = solveF2(rows, rhs, 2 * C.N);
+  let bezout = null;
+  if (sol){
+    const P = [], Q = [];
+    for (let i = 0; i < C.N; i++){
+      if (sol[i]) P.push([cover.ax(i), cover.ay(i)]);
+      if (sol[C.N + i]) Q.push([cover.ax(i), cover.ay(i)]);
+    }
+    // Self-check: recompute PA + QB and compare against 1 + x^ℓ.
+    const pv = cover.zero(), qv = cover.zero();
+    for (let i = 0; i < C.N; i++){ pv[i] = sol[i]; qv[i] = sol[C.N + i]; }
+    const lhs = cover.mul(Ac, pv);
+    const other = cover.mul(Bc, qv);
+    for (let i = 0; i < C.N; i++) lhs[i] ^= other[i];
+    let ok = true;
+    for (let i = 0; i < C.N; i++) if (lhs[i] !== rhs[i]) ok = false;
+    bezout = { P: cover.str(P), Q: cover.str(Q), verified: ok };
+  }
+
+  return {
+    ell, m, Atext, Btext, base, cover, Ab, Bb, Ac, Bc,
+    L, C, K, carries, imDelta, dimImDelta, bezout, Rholds: !!sol,
+    liftedExponents: Ac.concat(Bc).some(([a]) => a >= ell)
+  };
+}
+
+const wt = v => { let s = 0; for (let i = 0; i < v.length; i++) s += v[i]; return s; };
+
+/* ==================================================================
+   4. Operators — one Z-type operator v = (v_L, v_R) at one level
+   ================================================================== */
+function opZero(lvl){ return { L: lvl.ring.zero(), R: lvl.ring.zero() }; }
+function opCopy(v){ return { L: v.L.slice(), R: v.R.slice() }; }
+function opXor(v, w){ for (let i = 0; i < v.L.length; i++){ v.L[i] ^= w.L[i]; v.R[i] ^= w.R[i]; } return v; }
+function opWt(v){ return wt(v.L) + wt(v.R); }
+function opIsZero(v){ return opWt(v) === 0; }
+function opFlat(v, N){ const f = new Uint8Array(2 * N); f.set(v.L, 0); f.set(v.R, N); return f; }
+function opFromFlat(f, N){ return { L: f.slice(0, N), R: f.slice(N) }; }
+/** The Z-check at g, as an operator. */
+function zCheck(lvl, g){
+  const v = opZero(lvl);
+  for (const c of lvl.ring.stamp(lvl.B, g)) v.L[c] ^= 1;
+  for (const c of lvl.ring.stamp(lvl.A, g)) v.R[c] ^= 1;
+  return v;
+}
+/** Syndrome C(v) = A v_L + B v_R — one coefficient per X-check. */
+function syndrome(lvl, v){
+  const s = lvl.ring.mul(lvl.A, v.L), t = lvl.ring.mul(lvl.B, v.R);
+  for (let i = 0; i < s.length; i++) s[i] ^= t[i];
+  return s;
+}
+
+/* ==================================================================
+   5. Application state
+   ================================================================== */
+const S = {
+  model: null, level: "cover", tool: "stamp",
+  v: null, stamps: new Set(), probe: null, slice: true,
+  d: 6, preset: "base72", tour: -1, tourU: null, anim: null, cursor: null
+};
+const lvl = () => S.level === "base" ? S.model.L : S.model.C;
+const $ = id => document.getElementById(id);
+
+/* You always enter the BASE. The cover is built from it by doubling x, so the
+   preset that produces the gross code on the board is the [[72,12,6]] row. */
+const PRESETS = [
+  { id:"base72", name:"[[72,12,6]] → gross", ell:6, m:6, A:"x^3 + y + y^2", B:"y^3 + x + x^2", d:6,
+    note:"The running example. All four conditions hold, and d(cover) = 12 = 2·6." },
+  { id:"gross",  name:"gross → second rung", ell:12, m:6, A:"x^3 + y + y^2", B:"y^3 + x + x^2", d:12,
+    note:"Doubling gross again. The structure survives, but in every instance examined the second same-axis rung freezes at the first cover's distance (§10)." },
+  { id:"bb90",   name:"[[90,8,10]]", ell:15, m:3, A:"x^9 + y + y^2", B:"1 + x^2 + x^7", d:10,
+    note:"Bravyi et al., Table I. A different group shape — note how much smaller the relation space K is." },
+  { id:"bb108",  name:"[[108,8,10]]", ell:9, m:6, A:"x^3 + y + y^2", B:"y^3 + x + x^2", d:10,
+    note:"The same polynomials as gross over an odd-ℓ group: k jumps 8 → 12 upstairs, so (R) fails and the safe sector loses its confinement." },
+  { id:"bb288",  name:"[[288,12,18]]", ell:12, m:12, A:"x^3 + y^2 + y^7", B:"y^3 + x + x^2", d:18,
+    note:"Passes the structural conditions — but its cover has a safe-sector logical of weight ≤ 24 < 36, so the safe floor fails (§10)." },
+  { id:"rfail",  name:"(R) fails — k jumps", ell:3, m:3, A:"1 + y + y^2", B:"1 + x^2 + x^4", d:null,
+    note:"§10's counterexample: k goes 8 → 16. Reduce B to 1 + x + x² by hand (the same base code!) and (R) comes back — doubling is a property of the presentation, not of the code." }
+];
+
+/* ==================================================================
+   6. Rendering
+   ================================================================== */
+const CELL_MIN = 9, CELL_MAX = 52, LABEL_W = 240;   // room for the block captions
+
+/* Layout: L and R side by side — the two halves of one operator, as the
+   write-up draws them — with the syndrome board under L. Two rows of two
+   fit the wide column far better than three stacked strips did. */
+function boardMetrics(){
+  const ring = lvl().ring;
+  const wrap = $("board").parentElement;
+  const padL = 22, padR = 8, padT = 16, padB = 17, gap = 22, gapX = 30;
+  const headerH = S.level === "cover" ? 17 : 0;
+  const availW = Math.max(240, wrap.clientWidth - 24);
+  const availH = Math.max(260, Math.min(560, (window.innerHeight || 900) * 0.66));
+  const byW = Math.floor((availW - padL - padR - gapX) / (2 * ring.ell));
+  const byH = Math.floor((availH - headerH - 2 * (padT + padB) - gap) / (2 * ring.m));
+  const cell = Math.max(CELL_MIN, Math.min(CELL_MAX, byW, byH));
+  // The syndrome is a diagnostic, not a third co-equal board: drawn smaller so
+  // all three stay on screen together.
+  const cellS = Math.max(8, Math.round(cell * 0.62));
+  const gw = ring.ell * cell, gh = ring.m * cell, ghS = ring.m * cellS;
+  const colW = Math.max(gw, LABEL_W);              // captions must not collide
+  return { ring, cell, cellS, padL, padR, padT, padB, gap, gapX, gw, gh, ghS, headerH, colW,
+           colPitch: colW + gapX,
+           blockH: padT + gh + padB,
+           width: padL + colW + gapX + colW + padR,
+           height: headerH + (padT + gh + padB) + gap + (padT + ghS + padB) };
+}
+
+/** Per-cell state codes for one block: 0 empty, 1 on, 2 on+overflow, 3 dim. */
+function blockClasses(){
+  const M = S.model, ring = lvl().ring, v = S.v;
+  const cls = { L: new Uint8Array(ring.N), R: new Uint8Array(ring.N) };
+  for (const blk of ["L", "R"]){
+    for (let i = 0; i < ring.N; i++) cls[blk][i] = v[blk][i] ? 1 : 0;
+  }
+  if (S.level === "cover" && S.slice){
+    // A cell occupied in both sheets costs two; one in exactly one sheet is
+    // where the shadow lives. That is the slice identity, cell by cell.
+    const ell = M.ell, m = M.m;
+    for (const blk of ["L", "R"]){
+      for (let a = 0; a < ell; a++) for (let b = 0; b < m; b++){
+        const i0 = ring.idx(a, b), i1 = ring.idx(a + ell, b);
+        if (v[blk][i0] && v[blk][i1]){ cls[blk][i0] = 2; cls[blk][i1] = 2; }
+      }
+    }
+  }
+  return cls;
+}
+
+/** Cells covered by the stamped checks but cancelled out of v (the q* cells). */
+function cancelledCells(){
+  const out = { L: new Set(), R: new Set() };
+  if (!S.stamps.size) return out;
+  const l = lvl();
+  for (const g of S.stamps){
+    for (const c of l.ring.stamp(l.B, g)) if (!S.v.L[c]) out.L.add(c);
+    for (const c of l.ring.stamp(l.A, g)) if (!S.v.R[c]) out.R.add(c);
+  }
+  return out;
+}
+
+function esc(s){ return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;"); }
+
+function render(){
+  const M = S.model, l = lvl(), ring = l.ring, g = boardMetrics();
+  const cls = blockClasses(), cancelled = cancelledCells();
+  const syn = syndrome(l, S.v);
+  const isCover = S.level === "cover";
+  const probeCells = S.tool === "probe" && S.probe != null
+    ? { L: new Set(ring.stamp(l.iA, S.probe)), R: new Set(ring.stamp(l.iB, S.probe)) }
+    : null;
+
+  const colX = c => g.padL + c * g.colPitch;
+  const rowY = r => g.headerH + r * (g.blockH + g.gap) + g.padT;
+
+  const parts = [];
+  parts.push(
+    '<defs><pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" ' +
+    'patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" ' +
+    'stroke="var(--ink-3)" stroke-width="1.1"/></pattern></defs>');
+
+  const blocks = [
+    { key: "L", label: "L block", sub: "Z-checks act by B", col: 0, row: 0 },
+    { key: "R", label: "R block", sub: "Z-checks act by A", col: 1, row: 0 },
+    { key: "S", label: "X-syndrome", sub: "C(v) = A·vL + B·vR", col: 0, row: 1 }
+  ];
+  if (isCover) for (const c of [0, 1]){
+    parts.push('<g transform="translate(' + colX(c) + ',' + (g.headerH - 5) + ')">' +
+      '<text class="sheetlab" x="' + (M.ell * g.cell / 2) + '" y="0" text-anchor="middle">sheet 0</text>' +
+      '<text class="sheetlab" x="' + (M.ell * g.cell * 1.5) + '" y="0" text-anchor="middle">sheet 1</text></g>');
+  }
+
+  blocks.forEach(blk => {
+    parts.push('<g transform="translate(' + colX(blk.col) + ',' + rowY(blk.row) + ')">');
+    const cs = blk.key === "S" ? g.cellS : g.cell;
+    const gwB = ring.ell * cs, ghB = ring.m * cs;
+    const cy = b => (ring.m - 1 - b) * cs;         // y grows upward
+    // label
+    parts.push('<text class="blocklab" x="0" y="-4">' + esc(blk.label) +
+               ' <tspan class="q">— ' + esc(blk.sub) + '</tspan></text>');
+    // cells
+    for (let i = 0; i < ring.N; i++){
+      const a = ring.ax(i), b = ring.ay(i);
+      let c = "cell";
+      if (blk.key === "S"){ if (syn[i]) c += " syn"; }
+      else {
+        const st = cls[blk.key][i];
+        if (st === 1) c += " on";
+        else if (st === 2) c += " on ov";
+      }
+      parts.push('<rect class="' + c + '" x="' + (a * cs) + '" y="' + cy(b) +
+        '" width="' + cs + '" height="' + cs +
+        '" data-block="' + blk.key + '" data-cell="' + i + '"><title>(' + a + ',' + b + ')</title></rect>');
+    }
+    parts.push('<g class="overlay">');
+    // cancellations (hatched squares with a cross)
+    if (blk.key !== "S"){
+      for (const i of cancelled[blk.key]){
+        const x = ring.ax(i) * cs, y = cy(ring.ay(i)), pad = Math.max(2, cs * 0.14);
+        parts.push('<rect x="' + x + '" y="' + y + '" width="' + cs + '" height="' + cs +
+                   '" fill="url(#hatch)" opacity=".55"/>');
+        parts.push('<path class="cancel" d="M' + (x + pad) + ' ' + (y + pad) + 'L' + (x + cs - pad) + ' ' +
+                   (y + cs - pad) + 'M' + (x + cs - pad) + ' ' + (y + pad) + 'L' + (x + pad) + ' ' + (y + cs - pad) + '"/>');
+      }
+    }
+    // probed X-check stencil
+    if (probeCells && blk.key !== "S"){
+      for (const i of probeCells[blk.key]){
+        parts.push('<rect class="probe" x="' + (ring.ax(i) * cs + 1) + '" y="' + (cy(ring.ay(i)) + 1) +
+                   '" width="' + (cs - 2) + '" height="' + (cs - 2) + '" rx="2"/>');
+      }
+    }
+    // keyboard cursor
+    if (S.cursor && S.cursor.block === blk.key){
+      parts.push('<rect class="cursor" x="' + (ring.ax(S.cursor.cell) * cs) + '" y="' +
+                 cy(ring.ay(S.cursor.cell)) + '" width="' + cs + '" height="' + cs + '"/>');
+    }
+    // stamp origins (on the qubit boards) / the probed check (on the syndrome)
+    const ring_r = Math.max(2.5, cs * 0.3);
+    if (blk.key !== "S"){
+      for (const s of S.stamps)
+        parts.push('<circle class="origin" cx="' + (ring.ax(s) * cs + cs / 2) + '" cy="' +
+                   (cy(ring.ay(s)) + cs / 2) + '" r="' + ring_r + '"/>');
+    } else if (probeCells){
+      parts.push('<circle class="origin" cx="' + (ring.ax(S.probe) * cs + cs / 2) + '" cy="' +
+                 (cy(ring.ay(S.probe)) + cs / 2) + '" r="' + ring_r + '"/>');
+    }
+    // grid + frame + seam
+    let gl = "";
+    for (let a = 1; a < ring.ell; a++) gl += "M" + (a * cs) + " 0V" + ghB;
+    for (let b = 1; b < ring.m; b++) gl += "M0 " + (b * cs) + "H" + gwB;
+    parts.push('<path class="gridline" d="' + gl + '"/>');
+    parts.push('<rect class="frame" x="0" y="0" width="' + gwB + '" height="' + ghB + '"/>');
+    if (isCover) parts.push('<path class="seam" d="M' + (M.ell * cs) + ' -2V' + (ghB + 2) + '"/>');
+    // axis ticks
+    const step = cs < 14 ? (cs < 11 ? 4 : 2) : 1;
+    for (let a = 0; a < ring.ell; a += step)
+      parts.push('<text class="lab" x="' + (a * cs + cs / 2) + '" y="' + (ghB + 11) +
+                 '" text-anchor="middle">' + a + '</text>');
+    for (let b = 0; b < ring.m; b += step)
+      parts.push('<text class="lab" x="-4" y="' + (cy(b) + cs / 2 + 3.4) + '" text-anchor="end">' + b + '</text>');
+    parts.push('</g></g>');
+  });
+
+  const svg = $("board");
+  svg.setAttribute("viewBox", "0 0 " + g.width + " " + g.height);
+  svg.setAttribute("width", g.width);
+  svg.setAttribute("height", g.height);
+  svg.innerHTML = parts.join("");
+
+  renderChips(); renderState(); renderWindow(); renderR(); renderK(); renderLevelUI();
+}
+
+const TOOL_HINT = {
+  stamp: "<b>Stamp</b> — click a cell g to multiply in the Z-check S(δ<sub>g</sub>) = (Bδ<sub>g</sub>, Aδ<sub>g</sub>). Click again to remove it.",
+  paint: "<b>Paint</b> — click a cell to toggle that one qubit. Watch the syndrome board below react.",
+  probe: "<b>Probe</b> — hover a cell g to see the X-check there, and whether the operator commutes with it."
+};
+function renderLevelUI(){
+  const M = S.model;
+  document.querySelectorAll("#levelSeg button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.level === S.level)));
+  document.querySelectorAll("#tools button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.tool === S.tool)));
+  $("preset").value = S.preset || "";
+  const P = PRESETS.find(p => p.id === S.preset);
+  $("presetNote").innerHTML = P ? esc(P.note)
+    : "Custom code — the cover always re-reads these polynomials over ℤ<sub>2ℓ</sub>×ℤ<sub>m</sub>.";
+  const l = lvl(), cols = S.level === "base" ? M.ell : 2 * M.ell;
+  $("boardLvl").innerHTML = "ℤ<sub>" + cols + "</sub>×ℤ<sub>" + M.m +
+    "</sub> &nbsp;<b>[[" + l.n + "," + l.k + "]]</b>";
+  $("opFold").disabled = S.level !== "cover";
+  $("opSwap").disabled = S.level !== "cover";
+  $("opMaster").disabled = S.level !== "cover";
+  $("opLift").disabled = S.level !== "base";
+  $("opRes").disabled = S.level !== "base";
+  $("toolHint").innerHTML = TOOL_HINT[S.tool] + (S.level === "cover"
+    ? " &nbsp;·&nbsp; Upstairs: fold, swap and v + σv are live."
+    : " &nbsp;·&nbsp; Downstairs: the two lifts are live.");
+}
+
+function renderChips(){
+  const M = S.model;
+  const c = [];
+  c.push('<span class="chip">A = <b>' + esc(M.base.str(M.Ab)) + '</b> &nbsp;|A| = ' + M.Ab.length + '</span>');
+  c.push('<span class="chip">B = <b>' + esc(M.base.str(M.Bb)) + '</b> &nbsp;|B| = ' + M.Bb.length + '</span>');
+  c.push('<span class="chip">base <b>[[' + M.L.n + ',' + M.L.k + ']]</b></span>');
+  c.push('<span class="chip">cover <b>[[' + M.C.n + ',' + M.C.k + ']]</b></span>');
+  c.push('<span class="chip ' + (M.Rholds ? "ok" : "no") + '">(R) ' +
+         (M.Rholds ? "holds" : "fails") + ' — k ' + (M.L.k === M.C.k ? "preserved" : "jumps") + '</span>');
+  const P = PRESETS.find(p => p.id === S.preset);
+  if (P && P.d) c.push('<span class="chip hero">published d(base) = ' + P.d +
+    ' ⇒ target 2d = ' + (2 * P.d) + '</span>');
+  $("chips").innerHTML = c.join("");
+}
+
+function renderState(){
+  const M = S.model, l = lvl(), v = S.v;
+  const flat = opFlat(v, l.N);
+  const w = opWt(v), syn = syndrome(l, v), sw = wt(syn);
+  const isCycle = sw === 0;
+  const isStab = isCycle && l.stab.has(flat);
+  const zero = w === 0;
+
+  const badges = [];
+  if (zero) badges.push('<span class="badge">zero operator</span>');
+  else if (!isCycle) badges.push('<span class="badge no">not a cycle — ' + sw + ' X-checks violated</span>');
+  else if (isStab) badges.push('<span class="badge">stabiliser (trivial class)</span>');
+  else badges.push('<span class="badge ok">non-trivial logical</span>');
+
+  const kv = [];
+  kv.push(["weight |v|", w + " = " + wt(v.L) + " + " + wt(v.R)]);
+
+  let sliceHTML = "";
+  if (S.level === "cover"){
+    const ell = M.ell, m = M.m, base = M.base;
+    const sheet0 = { L: base.zero(), R: base.zero() }, sheet1 = { L: base.zero(), R: base.zero() };
+    for (let a = 0; a < ell; a++) for (let b = 0; b < m; b++){
+      for (const blk of ["L", "R"]){
+        sheet0[blk][base.idx(a, b)] = v[blk][l.ring.idx(a, b)];
+        sheet1[blk][base.idx(a, b)] = v[blk][l.ring.idx(a + ell, b)];
+      }
+    }
+    const shadow = { L: sheet0.L.slice(), R: sheet0.R.slice() };
+    opXor(shadow, sheet1);
+    const bw = opWt(shadow), overflow = (w - bw) / 2;
+    const diag = bw === 0 && w > 0;
+    const shadowFlat = opFlat(shadow, M.L.N);
+    const shadowStab = M.L.stab.has(shadowFlat);
+    if (isCycle && !isStab && !zero){
+      badges.push(shadowStab
+        ? '<span class="badge hot">dangerous sector</span>'
+        : '<span class="badge cool">safe sector</span>');
+    }
+    if (diag) badges.push('<span class="badge">diagonal</span>');
+    kv.push(["sheets |v₀|, |v₁|", opWt(sheet0) + ", " + opWt(sheet1)]);
+    kv.push(["shadow |p(v)|", String(bw)]);
+    kv.push(["overflow m", String(overflow)]);
+    sliceHTML =
+      '<div class="ident wrap"><b>slice identity</b><br>|v| = |b| + 2·overflow &nbsp;→&nbsp; <b>' +
+      w + '</b> = ' + bw + ' + 2·' + overflow + '</div>';
+    if (isCycle && !zero && !isStab) sliceHTML +=
+      '<p class="note">Shadow class: ' + (shadowStab
+        ? "trivial — the fold tells you nothing about the weight, so the sheets must be compared with each other (§7)."
+        : "a genuine base logical — condition (R) confines it to imΔ (§8.2).") + '</p>';
+  } else {
+    kv.push(["syndrome weight", String(sw)]);
+    if (isCycle && !zero && !isStab){
+      const inImD = M.imDelta.has(flat);
+      kv.push(["[v] ∈ imΔ ?", inImD ? "yes" : "no"]);
+      badges.push(inImD
+        ? '<span class="badge hot">confined class — τ(v) is a stabiliser upstairs</span>'
+        : '<span class="badge ok">τ(v) is a logical upstairs</span>');
+    }
+  }
+  if (S.tool === "probe" && S.probe != null){
+    const bit = syn[S.probe];
+    sliceHTML +=
+      '<div class="ident ' + (bit ? "no" : "ok") + '"><b>X-check at (' +
+      l.ring.ax(S.probe) + "," + l.ring.ay(S.probe) + ')</b> = (ι(A)δ<sub>g</sub>, ι(B)δ<sub>g</sub>)' +
+      " &nbsp;·&nbsp; C(v)(g) = <b>" + bit + "</b> — v " + (bit ? "anticommutes" : "commutes") + "</div>" +
+      '<p class="note">The X-check stencil is the Z-check stencil <em>inverted</em> and with the ' +
+      "blocks swapped. That swap is what makes CSS commutation come out to AB + BA = 0.</p>";
+  }
+  $("verdicts").innerHTML = badges.join("");
+  $("stateKV").innerHTML = kv.map(([a, b]) => "<dt>" + a + "</dt><dd>" + b + "</dd>").join("");
+  $("sliceBox").innerHTML = sliceHTML;
+}
+
+function renderWindow(){
+  const box = $("windowBox"), l = lvl();
+  if (!S.stamps.size){
+    box.innerHTML = '<p class="note">Stamp one or more Z-checks to see the window U — the union ' +
+      'of the stamped stencils. Its size is the only thing the window-averaging lemma needs.</p>';
+    return;
+  }
+  const built = opZero(l);
+  for (const g of S.stamps) opXor(built, zCheck(l, g));
+  const matches = stampsDrive();
+
+  const U = new Set();
+  for (const g of S.stamps){
+    for (const c of l.ring.stamp(l.B, g)) U.add("L" + c);
+    for (const c of l.ring.stamp(l.A, g)) U.add("R" + c);
+  }
+  const r = S.stamps.size, bw = opWt(built), u = U.size;
+  const html = [];
+  html.push('<dl class="kv">' +
+    "<dt>stamps r</dt><dd>" + r + "</dd>" +
+    "<dt>weight |b|</dt><dd>" + bw + "</dd>" +
+    "<dt>window |U|</dt><dd>" + u + "</dd>" +
+    "<dt>cancelled</dt><dd>" + (u - bw) + "</dd></dl>");
+  if (S.d > 0){
+    const mb = Math.max(0, Math.ceil(S.d - u / 2));
+    const floor = bw + 2 * mb;
+    const target = 2 * S.d;
+    html.push('<div class="ident wrap ' + (floor >= target ? "ok" : "no") + '">' +
+      "<b>window averaging</b> m(b) ≥ ⌈d − |U|/2⌉ = ⌈" + S.d + " − " + (u / 2) + "⌉ = <b>" + mb + "</b><br>" +
+      "⇒ any dangerous logical over b weighs ≥ |b| + 2m(b) = <b>" + floor + "</b>" +
+      (floor >= target ? " ≥ 2d = " + target : " &lt; 2d = " + target + " — rung not closed") + "</div>");
+  }
+  if (!matches) html.push('<p class="note warn">The board has been painted since these stamps, ' +
+    "so |b| above is the stamped product, not what you see.</p>");
+  const P = PRESETS.find(p => p.id === S.preset);
+  if (P && P.d && P.d > S.d) html.push('<p class="note warn">This code aims at 2·d(base) = ' +
+    (2 * P.d) + ", but a cycle floor of " + S.d + " certifies only " + (2 * S.d) + ".</p>");
+  const cap = S.model.Ab.length + S.model.Bb.length;
+  html.push('<details class="more"><summary>what the window is for</summary>' +
+    '<p class="note">A single stamp is a hexagon (|U| = |b|). Two stamps offset by an element ' +
+    "of dA ∪ dB cancel in exactly one cell — a D-pair, |U| = |b| + 1.</p>" +
+    '<p class="note">d is the <em>cycle</em> floor of hypothesis (F). It bounds stabilisers too, ' +
+    "so it can never exceed |A| + |B| = " + cap + " — a single check is itself a cycle. The " +
+    "rungs only reach 2·d(base) once the cycle floor climbs all the way to d(base), which is " +
+    "what Input (T-A) does for the running example and what makes a second doubling stall.</p>" +
+    "</details>");
+  box.innerHTML = html.join("");
+}
+
+function renderR(){
+  const M = S.model, box = $("rBox"), html = [];
+  const same = M.L.k === M.C.k;
+  html.push('<div class="ident ' + (M.Rholds ? "ok" : "no") + '">1 + x<sup>' + M.ell + '</sup> ' +
+    (M.Rholds ? "∈" : "∉") + " (A, B) upstairs</div>");
+  html.push('<dl class="kv"><dt>k(base)</dt><dd>' + M.L.k + "</dd>" +
+    "<dt>k(cover)</dt><dd>" + M.C.k + "</dd>" +
+    "<dt>dim imΔ</dt><dd>" + M.dimImDelta + "</dd></dl>");
+  html.push('<p class="note' + (same ? "" : " warn") + '">' + (same
+    ? "k is preserved, so the swap acts trivially on every cover class and safe shadows are confined to imΔ."
+    : "k jumps from " + M.L.k + " to " + M.C.k + ", so the swap moves classes and the safe sector's confinement collapses.") + "</p>");
+  if (M.bezout){
+    html.push('<details class="more"><summary>Bézout certificate</summary>' +
+      '<div class="ident wrap"><b>P</b> = ' + esc(M.bezout.P) + "<br><b>Q</b> = " + esc(M.bezout.Q) + "</div>" +
+      '<p class="note">' + (M.bezout.verified ? "Verified: " : "UNVERIFIED: ") +
+      "PA + QB = 1 + x<sup>" + M.ell + "</sup>. Certificates are not unique — the write-up's is " +
+      "P = 0, Q = (1 + x²)B. Theorem 9.2: (R) ⟺ k preserved ⟺ this ideal membership.</p></details>");
+  }
+  box.innerHTML = html.join("");
+}
+
+function renderK(){
+  const M = S.model, box = $("kBox"), html = [];
+  html.push('<dl class="kv"><dt>dim K</dt><dd>' + M.K.length + "</dd>" +
+    "<dt>non-zero ζ</dt><dd>" + (M.K.length ? (Math.pow(2, M.K.length) - 1) : 0) + "</dd>" +
+    "<dt>dim imΔ (classes)</dt><dd>" + M.dimImDelta + "</dd></dl>");
+  if (!M.K.length){
+    html.push('<p class="note">No relations: the base checks are independent, so nothing carries ' +
+      "across the seam and every base class lifts to a cover class.</p>");
+  } else {
+    html.push('<ul class="list">' + M.carries.map((c, i) =>
+      '<li><button type="button" data-carry="' + i + '">ζ<em>' + (i + 1) + '</em>' +
+      '<em>|ζ| = ' + c.zetaWt + " → |Δζ| = " + c.wt + (c.diagonal ? "" : " ⚠") + "</em></button></li>"
+    ).join("") + "</ul>");
+    html.push('<details class="more"><summary>how to read these</summary>' +
+      '<p class="note">A relation ζ is a set of base checks whose product is the identity. ' +
+      "Loading one stamps its cells on the base board — the product is blank. Press <b>ũ</b> to " +
+      "run the same stamps upstairs: nothing cancels any more, and what survives is the diagonal " +
+      "stabiliser τ(Δζ). That is why base classes in imΔ die when you lift them.</p></details>");
+  }
+  box.innerHTML = html.join("");
+}
+
+/* ==================================================================
+   7. Operations
+   ================================================================== */
+function reduceMotion(){ return matchMedia("(prefers-reduced-motion: reduce)").matches; }
+
+function setStampsAndBuild(stamps){
+  const l = lvl();
+  S.stamps = new Set(stamps);
+  S.v = opZero(l);
+  for (const g of S.stamps) opXor(S.v, zCheck(l, g));
+}
+/** True when what is on the board is exactly the product of the stamped checks. */
+function stampsDrive(){
+  if (!S.stamps.size) return false;
+  const l = lvl(), built = opZero(l);
+  for (const g of S.stamps) opXor(built, zCheck(l, g));
+  for (let i = 0; i < l.N; i++)
+    if (built.L[i] !== S.v.L[i] || built.R[i] !== S.v.R[i]) return false;
+  return true;
+}
+
+function doFold(){
+  const M = S.model, ell = M.ell, m = M.m, cov = M.C.ring, base = M.base;
+  const out = opZero(M.L);
+  for (const blk of ["L", "R"]) for (let a = 0; a < ell; a++) for (let b = 0; b < m; b++)
+    out[blk][base.idx(a, b)] = S.v[blk][cov.idx(a, b)] ^ S.v[blk][cov.idx(a + ell, b)];
+  const stamps = new Set([...S.stamps].map(g => base.idx(cov.ax(g) % ell, cov.ay(g))));
+  animateFold(() => { S.level = "base"; S.v = out; S.stamps = stamps; S.probe = null; render(); });
+}
+function doLift(diagonal){
+  const M = S.model, ell = M.ell, m = M.m, cov = M.C.ring, base = M.base;
+  const driven = stampsDrive();
+  const out = opZero(M.C);
+  for (const blk of ["L", "R"]) for (let a = 0; a < ell; a++) for (let b = 0; b < m; b++){
+    const val = S.v[blk][base.idx(a, b)];
+    out[blk][cov.idx(a, b)] = val;
+    if (diagonal) out[blk][cov.idx(a + ell, b)] = val;
+  }
+  const stamps = new Set([...S.stamps].map(g => cov.idx(base.ax(g), base.ay(g))));
+  S.level = "cover"; S.probe = null;
+  if (!diagonal && driven){
+    // The board is a product of checks, so lift the *stamp set* and re-run it
+    // upstairs. That is the seam carry: multiplications that used to wrap
+    // around and cancel now land in the far sheet instead.
+    setStampsAndBuild(stamps);
+  } else {
+    S.v = out; S.stamps = new Set();
+  }
+  render();
+}
+function doSwap(){
+  const M = S.model, cov = M.C.ring, ell = M.ell;
+  const out = opZero(M.C);
+  for (const blk of ["L", "R"]) for (let i = 0; i < cov.N; i++)
+    out[blk][cov.idx((cov.ax(i) + ell) % cov.ell, cov.ay(i))] = S.v[blk][i];
+  S.v = out;
+  S.stamps = new Set([...S.stamps].map(g => cov.idx((cov.ax(g) + ell) % cov.ell, cov.ay(g))));
+  render();
+}
+function doMaster(){
+  const M = S.model, cov = M.C.ring, ell = M.ell;
+  const out = opCopy(S.v);
+  for (const blk of ["L", "R"]) for (let i = 0; i < cov.N; i++)
+    out[blk][cov.idx((cov.ax(i) + ell) % cov.ell, cov.ay(i))] ^= S.v[blk][i];
+  S.v = out; S.stamps = new Set(); render();
+}
+
+/** Slide the sheet-1 cells onto sheet 0, then commit. The commit runs off a
+    plain timer, never off requestAnimationFrame: in a background or throttled
+    tab rAF may never fire, and a decorative animation must not be able to
+    swallow the operation it decorates. */
+function animateFold(commit){
+  if (reduceMotion() || S.anim){ commit(); return; }
+  const M = S.model, g = boardMetrics(), ring = M.C.ring, ell = M.ell;
+  const svg = $("board");
+  const layer = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  layer.setAttribute("class", "flylayer");
+  let any = false;
+  ["L", "R"].forEach((blk, bi) => {
+    const left = g.padL + bi * g.colPitch, top = g.headerH + g.padT;
+    for (let i = 0; i < ring.N; i++){
+      if (!S.v[blk][i] || ring.ax(i) < ell) continue;
+      any = true;
+      const r = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      r.setAttribute("class", "fly");
+      r.setAttribute("x", left + ring.ax(i) * g.cell);
+      r.setAttribute("y", top + (ring.m - 1 - ring.ay(i)) * g.cell);
+      r.setAttribute("width", g.cell); r.setAttribute("height", g.cell);
+      layer.appendChild(r);
+    }
+  });
+  if (!any){ commit(); return; }
+  svg.appendChild(layer);
+  layer.getBoundingClientRect();          // flush layout so the transition runs
+  layer.style.transform = "translateX(" + (-ell * g.cell) + "px)";
+  S.anim = true;
+  setTimeout(() => { S.anim = null; commit(); }, 560);
+}
+
+/* ==================================================================
+   8. Walkthrough
+   ================================================================== */
+function centreCell(ring){ return ring.idx(Math.floor(ring.ell / 2) % ring.ell, Math.floor(ring.m / 2) % ring.m); }
+function diffSet(supp, ring){
+  const out = [];
+  for (const p of supp) for (const q of supp){
+    if (p[0] === q[0] && p[1] === q[1]) continue;
+    out.push([((p[0] - q[0]) % ring.ell + ring.ell) % ring.ell, ((p[1] - q[1]) % ring.m + ring.m) % ring.m]);
+  }
+  return out;
+}
+/** The tour keeps one base logical around so steps 4–8 tell a single story. */
+function tourLogical(){
+  if (!S.tourU || S.tourU.L.length !== S.model.L.N){
+    let best = null;
+    for (let i = 0; i < 6; i++){
+      const r = randomLogical(S.model.L);
+      if (r && (!best || opWt(r) < opWt(best))) best = r;
+    }
+    S.tourU = best || opZero(S.model.L);
+  }
+  return S.tourU;
+}
+function tauOf(u){
+  const M = S.model, cov = M.C.ring, base = M.base, out = opZero(M.C);
+  for (const blk of ["L", "R"]) for (let a = 0; a < M.ell; a++) for (let b = 0; b < M.m; b++){
+    const val = u[blk][base.idx(a, b)];
+    out[blk][cov.idx(a, b)] = val;
+    out[blk][cov.idx(a + M.ell, b)] = val;
+  }
+  return out;
+}
+function sigmaOf(v){
+  const M = S.model, cov = M.C.ring, out = opZero(M.C);
+  for (const blk of ["L", "R"]) for (let i = 0; i < cov.N; i++)
+    out[blk][cov.idx((cov.ax(i) + M.ell) % cov.ell, cov.ay(i))] = v[blk][i];
+  return out;
+}
+/** τ(u) plus one cover check — the off-diagonal dangerous shape of §7. */
+function dangerousOffDiagonal(){
+  const M = S.model, v = tauOf(tourLogical());
+  opXor(v, zCheck(M.C, centreCell(M.C.ring)));
+  return v;
+}
+function minimalRelationCells(){
+  const M = S.model;
+  if (!M.carries.length) return null;
+  let best = 0;
+  M.carries.forEach((c, i) => { if (c.zetaWt < M.carries[best].zetaWt) best = i; });
+  const cells = [];
+  for (let i = 0; i < M.L.N; i++) if (M.carries[best].zeta[i]) cells.push(i);
+  return cells;
+}
+/** Every step rebuilds its state from scratch, so stepping back and forth is stable. */
+const TOUR = [
+  { cap: "<b>One stamp.</b> The Z-check at g acts by Bδ<sub>g</sub> on the L block and Aδ<sub>g</sub> on the R block — one fixed two-board stencil, dropped wherever you like. Click other cells to move it around.",
+    run(){ S.level = "base"; S.tool = "stamp"; setStampsAndBuild([centreCell(S.model.L.ring)]); } },
+  { cap: "<b>Two stamps that overlap.</b> Offset the second by an element of dB and the two B-translates share exactly one cell, which cancels — the hatched q*. Weight drops by 2 and the window U is one cell wider than the support. That is a <em>D-pair</em>.",
+    run(){
+      const M = S.model, ring = M.L.ring, g0 = centreCell(ring);
+      const d = diffSet(M.Bb, ring)[0] || [1, 0];
+      S.level = "base"; S.tool = "stamp";
+      setStampsAndBuild([g0, ring.idx((ring.ax(g0) + d[0]) % ring.ell, (ring.ay(g0) + d[1]) % ring.m)]);
+    } },
+  { cap: "<b>Two stamps that miss.</b> Offset by anything outside dA ∪ dB and nothing cancels at all. Because the difference sets are disjoint and multiplicity-free, two stamps can never save more than one cell — which is what caps the light stabilisers at hexagons and D-pairs.",
+    run(){
+      const M = S.model, ring = M.L.ring, g0 = centreCell(ring);
+      const bad = new Set(diffSet(M.Ab, ring).concat(diffSet(M.Bb, ring)).map(p => p[0] + "," + p[1]));
+      let pick = null;
+      for (let a = 0; a < ring.ell && !pick; a++) for (let b = 0; b < ring.m && !pick; b++)
+        if ((a || b) && !bad.has(a + "," + b)) pick = [a, b];
+      S.level = "base"; S.tool = "stamp";
+      setStampsAndBuild(pick ? [g0, ring.idx((ring.ax(g0) + pick[0]) % ring.ell, (ring.ay(g0) + pick[1]) % ring.m)] : [g0]);
+    } },
+  { cap: "<b>A base logical.</b> A cycle whose class is non-trivial: the syndrome board is blank, so it commutes with every X-check, yet it is not a product of checks. d(base) is the minimum weight over all of these.",
+    run(){ S.level = "base"; S.tool = "paint"; S.stamps = new Set(); S.v = opCopy(tourLogical()); } },
+  { cap: "<b>Lift it (τ).</b> The same picture on both sheets. Weight doubles exactly, and the shadow is zero — so this is where 2·d(base) comes from. It is a genuine cover logical precisely when the base class avoids imΔ; the panel on the right says which.",
+    run(){ S.level = "cover"; S.tool = "paint"; S.stamps = new Set(); S.v = tauOf(tourLogical()); } },
+  { cap: "<b>Still dangerous, now off-diagonal.</b> Multiply in one cover check. The sheets no longer agree — they differ on exactly the shadow's support, and the shadow is a single check. The slice identity on the right now has a non-zero |b| term; amber cells are the ones charged twice.",
+    run(){ S.level = "cover"; S.tool = "paint"; S.stamps = new Set(); S.v = dangerousOffDiagonal(); } },
+  { cap: "<b>The swap (σ).</b> Multiplication by x<sup>ℓ</sup> exchanges the sheets — the whole picture slides across the seam. Under condition (R) this changes no class at all, so σv and v are the same logical operator up to stabilisers.",
+    run(){ S.level = "cover"; S.tool = "paint"; S.stamps = new Set(); S.v = sigmaOf(dangerousOffDiagonal()); } },
+  { cap: "<b>v + σv.</b> The master identity says this equals τ(p(v)) — always diagonal, always the lift of the shadow. Condition (R) is the statement that it is always a <em>stabiliser</em>, and the badge confirms it. That single fact is what confines safe shadows to imΔ.",
+    run(){
+      S.level = "cover"; S.tool = "paint"; S.stamps = new Set();
+      const w = dangerousOffDiagonal();
+      S.v = opCopy(w); opXor(S.v, sigmaOf(w));
+    } },
+  { cap: "<b>A relation.</b> These stamped checks multiply to the identity: the board is blank even though every cell carries a stamp ring. Relations are the elements of K = Ann(A) ∩ Ann(B) — redundancies among the base's checks.",
+    run(){
+      const cells = minimalRelationCells();
+      S.level = "base"; S.tool = "stamp";
+      if (cells) setStampsAndBuild(cells); else { S.stamps = new Set(); S.v = opZero(S.model.L); }
+    } },
+  { cap: "<b>The same stamps, upstairs.</b> Nothing cancels any more: terms that used to wrap around the x-direction now land in the far sheet instead. What survives is diagonal — the seam carry τ(Δζ) — and it is a cover stabiliser, which is exactly why the base classes in imΔ die when you lift them.",
+    run(){
+      const M = S.model, cells = minimalRelationCells();
+      S.level = "cover"; S.tool = "stamp";
+      if (cells) setStampsAndBuild(cells.map(g => M.C.ring.idx(M.base.ax(g), M.base.ay(g))));
+      else { S.stamps = new Set(); S.v = opZero(M.C); }
+    } }
+];
+
+const bToDense = (r, n) => { const v = new Uint8Array(n); for (let i = 0; i < n; i++) v[i] = bget(r, i); return v; };
+
+/** Greedily multiply in single checks while that lowers the weight. */
+function lighten(l, f){
+  let improved = true;
+  while (improved){
+    improved = false;
+    for (let g = 0; g < l.N; g++){
+      const row = l.HZ[g];
+      let delta = 0;
+      for (let i = 0; i < f.length; i++) if (row[i]) delta += f[i] ? -1 : 1;
+      if (delta < 0){ for (let i = 0; i < f.length; i++) f[i] ^= row[i]; improved = true; }
+    }
+  }
+  return f;
+}
+/** A light representative of some non-trivial class. Not a distance oracle:
+    this is a heuristic search over cosets, and it makes no minimality claim. */
+function randomLogical(l){
+  const ns = nullspace(l.HX, 2 * l.N);
+  if (!ns.length) return null;
+  let best = null, bestW = Infinity;
+  for (let attempt = 0; attempt < 40; attempt++){
+    const f = new Uint8Array(2 * l.N);
+    for (const b of ns) if (Math.random() < 0.5) for (let i = 0; i < f.length; i++) f[i] ^= b[i];
+    if (!wt(f) || l.stab.has(f)) continue;
+    lighten(l, f);                                   // same class, lower weight
+    const w = wt(f);
+    if (w && w < bestW && !l.stab.has(f)){ best = f.slice(); bestW = w; }
+  }
+  return best ? opFromFlat(best, l.N) : null;
+}
+
+function tourCaption(){
+  const i = S.tour;
+  $("tourStep").textContent = i < 0 ? "walkthrough" : "step " + (i + 1) + " of " + TOUR.length;
+  $("tourCap").innerHTML = i < 0
+    ? "Press <b>›</b> for a ten-step tour of the argument, or just start stamping."
+    : TOUR[i].cap;
+  $("tourPrev").disabled = i < 0;
+  $("tourNext").disabled = i >= TOUR.length - 1;
+}
+function showTour(i){
+  S.tour = i;
+  if (i < 0){
+    tourCaption();
+  } else {
+    TOUR[i].run();
+    tourCaption();
+  }
+  render();
+}
+
+/* ==================================================================
+   9. Wiring
+   ================================================================== */
+function rebuild(keepState){
+  const ell = parseInt($("inEll").value, 10), m = parseInt($("inM").value, 10);
+  try {
+    const model = buildModel(ell, m, $("inA").value, $("inB").value);
+    S.model = model;
+    $("specErr").innerHTML = model.liftedExponents
+      ? '<p class="note warn">Some x-exponent is ≥ ℓ, so upstairs it lands on sheet 1. ' +
+        "The base code is unchanged, but the cover is a different lift — this is exactly the " +
+        "presentation-sensitivity the write-up warns about (§10).</p>"
+      : "";
+    if (!keepState){
+      S.v = opZero(lvl()); S.stamps = new Set(); S.probe = null; S.tour = -1;
+      // A single Z-check is itself a cycle of weight |A| + |B|, so the cycle
+      // floor can never exceed that — quoting the published *distance* here
+      // would silently overstate hypothesis (F).
+      const P = PRESETS.find(p => p.id === S.preset);
+      S.d = Math.min(P && P.d ? P.d : Infinity, model.Ab.length + model.Bb.length);
+      $("inD").value = S.d;
+    }
+    S.tourU = null; S.cursor = null;
+    tourCaption();
+    if (!S.v || S.v.L.length !== lvl().ring.N){ S.v = opZero(lvl()); S.stamps = new Set(); }
+    render();
+  } catch (e){
+    $("specErr").innerHTML = '<div class="err">' + esc(e.message) + "</div>";
+  }
+}
+
+function boardHit(ev){
+  const t = ev.target.closest("rect[data-cell]");
+  return t ? { block: t.dataset.block, cell: parseInt(t.dataset.cell, 10) } : null;
+}
+
+function init(){
+  // presets
+  $("preset").innerHTML = PRESETS.map(p =>
+    '<option value="' + p.id + '">' + esc(p.name) + "</option>"
+  ).join("") + '<option value="">custom…</option>';
+  $("preset").addEventListener("change", ev => {
+    const p = PRESETS.find(q => q.id === ev.target.value);
+    if (!p) return;
+    S.preset = p.id;
+    $("inEll").value = p.ell; $("inM").value = p.m; $("inA").value = p.A; $("inB").value = p.B;
+    S.level = "cover"; S.tour = -1;
+    rebuild(false);          // rebuild derives the cycle floor from the new code
+  });
+
+  ["inEll", "inM", "inA", "inB"].forEach(id =>
+    $(id).addEventListener("input", () => { S.preset = null; rebuild(true); }));
+  $("inD").addEventListener("input", () => { S.d = parseInt($("inD").value, 10) || 0; render(); });
+
+  $("levelSeg").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-level]"); if (!b) return;
+    if (b.dataset.level === S.level) return;
+    // Changing level by hand starts a fresh operator: the two rings are
+    // different spaces, and silently reinterpreting a vector would lie.
+    S.level = b.dataset.level; S.v = opZero(lvl()); S.stamps = new Set(); S.probe = null;
+    render();
+  });
+  $("tools").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-tool]"); if (!b) return;
+    S.tool = b.dataset.tool; S.probe = null; render();
+  });
+  $("chkSlice").addEventListener("change", e => { S.slice = e.target.checked; render(); });
+  $("btnClear").addEventListener("click", () => { S.v = opZero(lvl()); S.stamps = new Set(); render(); });
+  $("btnRandom").addEventListener("click", () => {
+    const r = randomLogical(lvl());
+    if (r){ S.v = r; S.stamps = new Set(); render(); }
+  });
+
+  $("opFold").addEventListener("click", doFold);
+  $("opLift").addEventListener("click", () => doLift(true));
+  $("opRes").addEventListener("click", () => doLift(false));
+  $("opSwap").addEventListener("click", doSwap);
+  $("opMaster").addEventListener("click", doMaster);
+
+  const board = $("board");
+  function apply(hit){
+    const l = lvl();
+    if (S.tool === "stamp"){
+      if (S.stamps.has(hit.cell)) S.stamps.delete(hit.cell); else S.stamps.add(hit.cell);
+      opXor(S.v, zCheck(l, hit.cell));
+    } else if (S.tool === "paint"){
+      S.v[hit.block][hit.cell] ^= 1;
+    } else {
+      S.probe = hit.cell;
+    }
+    render();
+  }
+  board.addEventListener("click", ev => {
+    const hit = boardHit(ev); if (!hit || hit.block === "S") return;
+    S.cursor = { block: hit.block, cell: hit.cell };
+    apply(hit);
+  });
+  board.addEventListener("keydown", ev => {
+    const ring = lvl().ring;
+    const K = ev.key;
+    if (!S.cursor) S.cursor = { block: "L", cell: centreCell(ring) };
+    let a = ring.ax(S.cursor.cell), b = ring.ay(S.cursor.cell);
+    if (K === "ArrowLeft") a = (a - 1 + ring.ell) % ring.ell;
+    else if (K === "ArrowRight") a = (a + 1) % ring.ell;
+    else if (K === "ArrowUp") b = (b + 1) % ring.m;
+    else if (K === "ArrowDown") b = (b - 1 + ring.m) % ring.m;
+    else if (K === "b" || K === "B") S.cursor.block = S.cursor.block === "L" ? "R" : "L";
+    else if (K === "Enter" || K === " "){ apply(S.cursor); ev.preventDefault(); return; }
+    else return;
+    ev.preventDefault();
+    S.cursor.cell = ring.idx(a, b);
+    if (S.tool === "probe") S.probe = S.cursor.cell;
+    render();
+  });
+  board.addEventListener("mousemove", ev => {
+    if (S.tool !== "probe") return;
+    const hit = boardHit(ev);
+    const c = hit ? hit.cell : null;
+    if (c !== S.probe){ S.probe = c; render(); }
+  });
+  board.addEventListener("mouseleave", () => { if (S.tool === "probe" && S.probe != null){ S.probe = null; render(); } });
+
+  document.getElementById("kBox").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-carry]"); if (!b) return;
+    const c = S.model.carries[parseInt(b.dataset.carry, 10)];
+    const cells = [];
+    for (let i = 0; i < S.model.L.N; i++) if (c.zeta[i]) cells.push(i);
+    S.level = "base"; S.tool = "stamp"; setStampsAndBuild(cells); render();
+  });
+
+  $("tourPrev").addEventListener("click", () => showTour(Math.max(-1, S.tour - 1)));
+  $("tourNext").addEventListener("click", () => showTour(Math.min(TOUR.length - 1, S.tour + 1)));
+
+  const themes = ["auto", "light", "dark"];
+  $("themeBtn").addEventListener("click", () => {
+    const cur = document.documentElement.dataset.theme || "auto";
+    const next = themes[(themes.indexOf(cur) + 1) % 3];
+    if (next === "auto") delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = next;
+    $("themeBtn").textContent = "theme: " + next;
+  });
+
+  let rt;
+  addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { if (S.model) render(); }, 120); });
+
+  // Boot on the [[72,12,6]] base at cover level, so the board opens on gross.
+  const g = PRESETS.find(p => p.id === "base72");
+  $("inEll").value = g.ell; $("inM").value = g.m; $("inA").value = g.A; $("inB").value = g.B;
+  $("inD").value = g.d; S.d = g.d;
+  rebuild(false);
+}
+init();
+</script>
+</body>
+</html>
