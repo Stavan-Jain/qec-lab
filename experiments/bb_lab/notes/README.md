@@ -7,7 +7,7 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A28.**
+**Next free number: A29.**
 
 | # | Line | Note file(s) | Status |
 |---|------|--------------|--------|
@@ -39,6 +39,7 @@ A11 line, not A8).
 | A25 | gross d_circ via SBB Thm-1 extended-code reduction (d_ext^Z ≤ 9 verified; exact-d_ext UNSAT probes) | note on unmerged branch — row added defensively 2026-08-03 to prevent number collision | active |
 | A26 | Mitten-code descent (arXiv:2607.28795): decks/quotients/towers on non-abelian LP codes; tower hypothesis refuted, Table XIII [[300]] erratum, 2d̄−2 wall echo ×2 | `A26_mitten_descent.md` | done (ISD tier; exact-d + safe-floor follow-ups queued) |
 | A27 | Safe-floor deletion: generality tiering + fibering feasibility probe for the Z₁₅×Z₆ [[180,4,10]] docket UNKNOWNs | `A27_safe_floor_generality.md` | done (synthesis + probe, 2026-08-06; §5 lists gates for any follow-on) |
+| A28 | LSC theory: certified BZ census lane (docket [[180,4,10]] censuses NEW), shift-bound verdict (measured negative w/ certified gap cell), ε-trisection theorem (validated 2,203/2,203) | `A28_light_classification_theory.md` | active (docket5e BZ + depth-10 tree in flight 2026-08-06) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill
