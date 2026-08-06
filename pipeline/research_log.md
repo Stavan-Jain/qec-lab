@@ -732,3 +732,20 @@ what was tried and why it didn't work.
   [[300,8,16]] distance theorem now rests on the single hypothesis
   `LightClassification` (A22).
   [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)
+
+- 2026-08-06 — A28 general fibering engine — success — the A22/A23
+  fibering is now a code-agnostic library (`bb_lab.fibering`): exact
+  weight formula in field-free residue coordinates for ANY odd fiber
+  order, automatic fiber enumeration + ε-monomial-link detection,
+  τ-twisted state sweep with consistency-pruned DFS, batched exact
+  ε-costs, seamC offsets per Prop A14.1, verified refutation witnesses.
+  Validated bit-for-bit against pair72/A23/A22 (including the 113-class
+  census). New results: 3 of the A17 docket's 7 UNKNOWN safe-floor
+  cells decided (Z₅×Z₁₅ [[150,8,8]] trio: ac46bbea:y and 38d3c884:x at
+  d_safe = 16 EXACT, 38d3c884:y ≥ 18) and the A8 §4.3 open core CLOSED
+  — the [[168,12,6]] Z₆×Z₁₄ safe floor 12 certified in 10 s, completing
+  the [[336,12,12]] doubling's template inputs without the
+  heterogeneous-dictionary program. Includes an A27 §3.3 P5 erratum
+  (the ≥2-per-site bound needs the ε-link). Named residue: the
+  ε-recursion chapter (Z₂₁×Z₃, Z₁₅×Z₆ floor-20).
+  [details](../experiments/bb_lab/notes/A28_general_fibering.md)

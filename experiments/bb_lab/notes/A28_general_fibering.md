@@ -180,15 +180,123 @@ subsumed).
 
 ## 5. Deployment (docket + curated targets)
 
-(filled after the runs)
+### 5.1 NEW DECISIONS — three docket UNKNOWNs certified, two pinned exact
+
+The A17 docket carried **7 distinct UNKNOWN safe-floor cells** (CMS 2 h+
+per query, no verdict; A27 §3 discussed only the three Z₁₅×Z₆ ones —
+the docket also holds three Z₅×Z₁₅ [[150,8,8]] cells and one Z₂₁×Z₃).
+Engine results (`data/a28/docket_engine*.jsonl`):
+
+| cell | code | floor | engine verdict | time | extra |
+|---|---|---|---|---|---|
+| `ac46bbea:y` | [[150,8,8]] Z₅×Z₁₅, B = 1+y¹¹+xy² | 16 | **CERTIFIED** | 1.4 s | refute@18 ⟹ **d_safe = 16 EXACT** |
+| `38d3c884:x` | [[150,8,8]] Z₅×Z₁₅, B = y⁹+y¹²+x²y⁴ | 16 | **CERTIFIED** | ~20 s | refute@18 ⟹ **d_safe = 16 EXACT** |
+| `38d3c884:y` | same code, y-axis | 16 | **CERTIFIED** | ~20 s | certify@18 too ⟹ **d_safe ≥ 18** |
+
+All three run on **diagonal fibers** z = (1,3)/(1,12) whose ε-monomial
+links only the automatic fiber enumeration surfaced (the standard y³
+fiber has *no* link for these B's — A22's hand-chosen fiber would have
+missed them). The `38d3c884` classes carry nonzero τ (ε-twisted seam
+classes — a phenomenon f2a6 never exhibited, since its kernel is pure
+δ-sector); the τ-state sweep of L3/L4 is what decides them. The
+exactness pins are solver-free in both directions: sweep certificates
+below, verified non-boundary witnesses above.
+
+### 5.2 THE A8 OPEN CORE IS CLOSED
+
+`[[168,12,6]]` over Z₆×Z₁₄ (A = 1+y+x³y³, B = 1+x+x²y⁷), x-doubling to
+the SAT-exact `[[336,12,12]]` (A8 §3). A8 §4.3 declared the confined
+floor — every base 1-cycle in a nonzero Smith class has weight ≥ 12 —
+its open core, expecting a re-derivation of the gross slot-cost engine
+with a heterogeneous 8/12/14 layer dictionary over F₈/F₆₄ where the
+F₄ co-point rigidity provably fails (A8 §2, the Tier-3 obstruction of
+A27 §1). The engine **certifies the floor at 12 in 10.2 s** on the q=7
+unpaired frame ((R) re-checked: k = k̃ = 12; 3 kernel orbit classes;
+relaxed δ-costs alone suffice — min 12/15/15, zero ε-suspects; leaf
+counts 18450/268/268, all kdims ≤ 6). The Tier-3 wall was never on the
+path: **the fibering needs no value rigidity at all**, and the "genuinely
+undeveloped mathematics" A8 anticipated is unnecessary for this floor.
+With condition (1) d(cover) = 12 SAT-exact, (2) k-preservation = Bezout
+(A12), and now (3) the safe floor certified, the `[[336,12,12]]`
+doubling has all template inputs at engine/certificate level — the
+first d = 6 → 12 doubling with a solver-free safe floor.
+
+### 5.3 Validation rows and the engine boundary
+
+Full-docket rerun (`docket_engine_final.jsonl`): f2a6f17e:y (the one
+Z₅×Z₁₅ SF-CERTIFIED row in engine reach) re-certifies in ~1 s,
+agreeing with its CMS UNSAT@14. The 14 Z₂₁×Z₃ SF-CERTIFIED rows and
+the 4 remaining UNKNOWNs (three Z₁₅×Z₆ floor-20 cells = A27's targets,
+one Z₂₁×Z₃) are **beyond engine v1**, with a precise diagnosis each:
+
+* **Z₂₁×Z₃ (q=3 frames):** no fiber carries the ε-link (all ε-images
+  collapse to monomial-vs-trinomial pairs), and in unpaired mode the
+  relaxed bound is far too weak (observed min_relaxed = 8 against
+  floors of 16) because the ε-penalty carries most of the weight —
+  hundreds of thousands of suspects each needing an exact ε-pass, and
+  the ε-image (~2²¹) is over the enumeration cap. q=7 frames die the
+  other way (δ-kernels ≈ 2²⁶ per leaf).
+* **Z₁₅×Z₆ floor-20 (A27's cells):** no linked fiber (the §3 erratum);
+  the unpaired q=5 DFS tree is ≈ C(36, ≤18) ≈ 3·10¹⁰ nodes — pruning
+  only bites at the depth where the budget boundary sits.
+
+Both failure modes point at the same missing chapter: **charging the
+ε-side inside the sweep** (the pure-ε stratum of a safe class costs
+q × the quotient-code coset weight of the class's ε-image — the
+safe-floor problem *recurses into the ε-quotient BB code*, cf. §6).
+
+### 5.4 Negative control
+
+by90 ([[90,8,8]] Z₃₀×Z₃, the Bravyi-360 tower bottom whose x-rung
+freezes at 12 < 16, A14 §13): the engine must NOT certify floor 16.
+Result recorded in `data/a28/extra_targets.jsonl` (no false
+certificate; decision-or-abort per the same diagnosis as above).
 
 ## 6. Limits, residue, and the follow-on program
 
-(filled at session end)
+1. **Scope (inherited, unchanged):** abelian G; |A|, |B| odd (parity);
+   (R) as a checked hypothesis; safe-class semantics via Prop A14.1.
+2. **Engine v1 decides** codes with a linked fiber whose paired sweep
+   fits (f2a6-class, the new Z₅×Z₁₅ cells), and unlinked codes whose
+   unpaired DFS stays small (pair72, the A8 base at q=7). It refuses —
+   with named caps, never false claims — when the ε-freedom or the
+   node tree blows up.
+3. **The ε-recursion chapter (the one genuinely new mathematics
+   left):** per L5, a δ-config's exact cost = relaxed + a weighted
+   coset-min in the ε-quotient pair map; at δ = 0 this is exactly
+   q × (safe-floor problem of the ε-quotient code). Charging partial
+   ε-costs during the DFS (per-unit lower bounds conditioned on the
+   quotient's own difference-set/small-cycle structure, or recursing
+   the engine into the quotient) is the designed route to Z₂₁×Z₃,
+   Z₁₅×Z₆-floor-20, and beyond — A27's "constrained-h taxonomy",
+   now with a precise interface.
+4. **Translation-orbit mask reduction** (÷|G| on leaves/nodes) is
+   designed but unimplemented — a constant-factor ~50–90× on the DFS,
+   possibly enough for the Z₁₅×Z₆ cells by brute force; the
+   ε-recursion is the principled route.
+5. **Gross stays out of reach by budget arithmetic** (S = 12 vs
+   b = 22 on its only fiber) — consistent with its slot-frame history;
+   the engine is a complement, not a replacement, for that machinery.
 
 ## 7. Lean-feasibility assessment
 
-(filled at session end)
+The certificate mass of an engine run is exactly the A22/A23 shape the
+repo has already shipped twice: per-leaf rank/pivot certificates
+(hundreds, cf. A23's 429), the residue/weight lemmas (L1–L3 are
+32-case-style decides), seamC dictionary facts (per class, as in
+`SeamReduction.lean`), and the K₀/quotient bookkeeping. Three deltas
+vs the shipped instances: (i) leaves come from the state-DFS, so the
+Lean statement should quantify over state assignments (the completeness
+lemma L4 replaces the `table_coverage` Finset enumeration — same
+`native_decide`-enumerable shape); (ii) τ-states add a 3-way case
+split per twisted site; (iii) the exact-ε pass on suspects becomes a
+per-suspect linear-functional minimum certificate (argmin flip + the
+Σ-identity — a decide per suspect). For the A8 base the suspects list
+is EMPTY (relaxed alone certifies), so its Lean packaging is *simpler*
+than A23's: data + sweeps only. Estimated at 1–2 sessions for the A8
+instance on the established pattern; the generic engine-emitter (one
+generator serving all instances, in the GENERATORS.md discipline) is
+the natural S-track follow-on.
 
 ## Appendix: verification map
 

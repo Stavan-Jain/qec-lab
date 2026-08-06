@@ -196,6 +196,21 @@ A4 Theorem D).
 >   (the Lean theorem is already unconditional; this is epistemic
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
+>
+> **A28 (2026-08-06, `A28_general_fibering.md`): the fibering is now an
+> ENGINE.** `bb_lab.fibering` generalizes the A22/A23 safe-floor
+> deletion to a code-agnostic procedure (any odd fiber order, automatic
+> fiber/link enumeration, τ-twisted state sweep, consistency-pruned
+> DFS, verified witnesses), validated bit-for-bit against the A22/A23
+> ground truths. First deployments: 3 of the docket's 7 UNKNOWN
+> safe-floor cells decided (ac46bbea:y and 38d3c884:x/y — the Z₅×Z₁₅
+> [[150,8,8]] trio; two pinned d_safe = 16 EXACT solver-free), and the
+> **A8 §4.3 open core is CLOSED** — the [[168,12,6]] Z₆×Z₁₄ safe floor
+> 12 certified in 10 s, so the [[336,12,12]] doubling now has all
+> template inputs without the heterogeneous-dictionary program. Named
+> residue: the ε-recursion chapter (A28 §6.3) for Z₂₁×Z₃ and the
+> Z₁₅×Z₆ floor-20 cells; A27 §3.3 P5's sweep estimate corrected
+> (erratum, A28 §3).
 
 **The program has its first headline theorem (Entry 14): d(gross) ≥ 6,
 fully analytic — triple the published Lin–Pryadko floor of 2. Goal 3 is
