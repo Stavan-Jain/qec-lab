@@ -1,0 +1,25 @@
+{
+  "code_id": "mitten_150_30_10",
+  "direction": "Z",
+  "distance": 10,
+  "emitted_at": "2026-08-03T21:37:19.321824+00:00",
+  "h_check_sha256": "667c2ec933ffba08c9132582729d52b58966fee14b9068a1e6e2874a8eaafe74",
+  "logical_space_sha256": "56bb23b2000a69770cb2e51859e2776d8620dcfd6f0df481d314287b4ac87978",
+  "n": 150,
+  "schema_version": "bb-cert/v2",
+  "solver": "tandem(maxcdcl-mse23+qeclab-patch, no flags) + cms-ladder(pycryptosat@5.14.7)",
+  "unsat_proofs": [],
+  "wall_seconds": 221.8,
+  "witness_support": [
+    25,
+    76,
+    80,
+    81,
+    96,
+    101,
+    102,
+    119,
+    124,
+    135
+  ]
+}

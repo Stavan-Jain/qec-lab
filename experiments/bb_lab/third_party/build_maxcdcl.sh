@@ -2,7 +2,8 @@
 # Fetch MaxCDCL (MSE 2023 source artifact), apply the qec-lab patch,
 # and build both binaries:
 #   maxcdcl_stock — pristine MSE 2023 solver (baseline)
-#   tandem        — the qec-lab fork (-cost-step, -prime-vars)
+#   tandem        — the qec-lab fork (-cost-step, -prime-vars, -init-lb,
+#                   -phase-file, -fiber-lb)
 #
 # Usage:  ./build_maxcdcl.sh [target-dir]     (default: ./maxcdcl)
 # Needs:  curl, unzip, make, a C++ compiler, zlib headers.
@@ -31,15 +32,25 @@ cp maxcdcl_release maxcdcl_stock
 
 # Apply the qec-lab patch (idempotent: skip if already applied) and rebuild.
 #
-# The merged patch (v5, fiber-lb included) carries `a/core/...` paths, so
-# it applies with -p1 from the MaxCDCL root WITHOUT `-d code` (one strip
-# level from `a/code/...` under `-d code` was the historical mislabelled-
-# binary bug — both lines found it independently). --batch keeps a
-# mismatch from dropping into patch's interactive "File to patch:" prompt;
-# the explicit failure branch refuses to ship an unpatched 'tandem'.
+# The merged patch (v5, fiber-lb included) carries `a/core/...` paths and
+# the zip unpacks the sources under MaxCDCL/code/, so -p1 must resolve
+# against code/ — hence `-d code` from here (the MaxCDCL root). Plain -p1
+# from this directory looks for MaxCDCL/core/..., which does not exist:
+# every hunk reports "No file to patch. Skipping..." and the guard below
+# aborts the build. The historical mislabelled-binary bug was the same
+# skip-everything failure with the opposite mismatch — an older patch
+# carried `a/code/core/...` paths, so under `-d code` the prefix doubled
+# (both lines found it independently). --batch keeps a mismatch from
+# dropping into patch's interactive "File to patch:" prompt; the explicit
+# failure branch refuses to ship an unpatched 'tandem'.
+#
+# patch(1) also needs a writable TMPDIR: under Claude Code's sandbox the
+# system default (/var/folders/...) may not be writable, which layers
+# confusing "Can't create <tmp>: No such file or directory" noise on top
+# of the real result. Export TMPDIR to any writable directory first.
 cd ../..
 if ! grep -q costStep code/core/Solver.h; then
-    if ! patch --batch --forward -p1 < "$HERE/maxcdcl-qeclab.patch"; then
+    if ! patch --batch --forward -p1 -d code < "$HERE/maxcdcl-qeclab.patch"; then
         echo "ERROR: maxcdcl-qeclab.patch did not apply — refusing to" >&2
         echo "       build an unpatched binary named 'tandem'. The" >&2
         echo "       upstream zip layout may have changed." >&2
@@ -83,4 +94,4 @@ esac
 
 echo "built:"
 echo "  $(pwd)/maxcdcl_stock  (pristine MSE 2023)"
-echo "  $(pwd)/tandem         (qec-lab fork; 4 flags verified present)"
+echo "  $(pwd)/tandem         (qec-lab fork; 5 flags verified present)"
