@@ -1,61 +1,507 @@
 {
- "nodes": 125,
+ "nodes": 1697,
  "leaves": [
   {
    "kind": "giveup",
-   "P_in": "11102060054003fbde",
+   "P_in": "13330e1e555403ffbde",
    "P_out": "0",
    "bound": 0,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "11330e0e155401ffbde",
+   "P_out": "200001040000200000",
+   "bound": 18
+  },
+  {
+   "kind": "kill",
+   "P_in": "1113060e055400ffbde",
+   "P_out": "20080010000100000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "111106060154007fbde",
+   "P_out": "2000804000080000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "1150226005c083fbde",
+   "P_out": "1000040001000040000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "19182062055003fbde",
+   "P_out": "1004042001080840000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "11102060054003fffe",
+   "P_out": "1084842021090840000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11102060054003fbde",
+   "P_out": "1084842021090840420",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1102020014001fbdf",
+   "P_out": "100000400400020000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "1102020014001fffe",
+   "P_out": "100000400400020001",
+   "bound": 30
+  },
+  {
+   "kind": "kill",
+   "P_in": "301116030114045fbde",
+   "P_out": "100000400400020421",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "201112030014041fbde",
+   "P_out": "1100040401400060421",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1902820814801fbde",
+   "P_out": "2100100500400420421",
+   "bound": 14,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1102020014001fbde",
-   "P_out": "100000400400020000",
+   "P_out": "2108108508408420421",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "303001e444402afbde",
+   "P_out": "10020000100010000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "203001a4404028fbde",
+   "P_out": "110020400500030000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "701005640c4222fbde",
+   "P_out": "12020804100090000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "60100524084220fbde",
+   "P_out": "112020c045000b0000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "230110174044062fbde",
+   "P_out": "412024804902090000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "30100164044022fbde",
+   "P_out": "2412124904902490000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "120104124104024fbde",
+   "P_out": "512024c04d020b0000",
+   "bound": 14,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "20100124004020fbde",
-   "P_out": "10020000100010000",
+   "P_out": "1512064c05d020f0000",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "4003400a0604408fbde",
+   "P_out": "210021040100210000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "610150070244442fbde",
+   "P_out": "212021844100290000",
+   "bound": 18
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600150030204440fbde",
+   "P_out": "312021c445002b0000",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "402148021204410fbde",
+   "P_out": "2212121944100690000",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "400140020204400fbde",
+   "P_out": "22321a1954100790000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "10100060044002fffe",
+   "P_out": "4210421042104210000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004fffe",
+   "P_out": "4310421442504230000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100020004000fffe",
+   "P_out": "5310461443504270000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "100020004000fbdf",
+   "P_out": "4210421042104210420",
+   "bound": 20
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002fbde",
+   "P_out": "4210421042104210421",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "100020004000fbde",
-   "P_out": "210021040100210000",
-   "bound": 10,
-   "undecided": 13
+   "P_out": "4310421442504230421",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "50800c408c0a027bde",
+   "P_out": "1000200040008000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "550224400f03037bde",
+   "P_out": "9008208048008000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "540204400e03027bde",
+   "P_out": "19028208148018000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "710025440d02237bde",
+   "P_out": "49208208249008000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "510024400d02037bde",
+   "P_out": "249209248249208000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1500044401c02067bde",
+   "P_out": "59228208349018000",
+   "bound": 14,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "500004400c02027bde",
-   "P_out": "1000200040008000",
+   "P_out": "1059268209349058000",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1410064001902057bde",
+   "P_out": "101000600440028000",
+   "bound": 18
+  },
+  {
+   "kind": "kill",
+   "P_in": "4300a4010902117bde",
+   "P_out": "1101040601440068000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "412024804902097bde",
+   "P_out": "11210c0611440168000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "410024000902017bde",
+   "P_out": "11230c0e154401e8000",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "442204804a03087bde",
+   "P_out": "111020600540038000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "440204000a03007bde",
+   "P_out": "113020e045400b8000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "602005844802287bde",
+   "P_out": "151220600741038000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600005040802207bde",
+   "P_out": "153220e047410b8000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "402004804802087bde",
+   "P_out": "351221640741238000",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "400004000802007bde",
-   "P_out": "101000600440028000",
+   "P_out": "353221e447412b8000",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "12300e1051100357bde",
+   "P_out": "401004200842008000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "10320e08151001d7bde",
+   "P_out": "601005240842208000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10300e0011100157bde",
+   "P_out": "603005a44842288000",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2300a1050100317bde",
+   "P_out": "1401044201842048000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "320a0814100197bde",
+   "P_out": "1601045241842248000",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300a0010100117bde",
+   "P_out": "1603045a458422c8000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "18028008108017ffe",
+   "P_out": "421084210842108000",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "110020400500037ffe",
+   "P_out": "42908c21884a108000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020000100017ffe",
+   "P_out": "52908c618c4a128000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "10020000100017bdf",
+   "P_out": "421084210842108420",
+   "bound": 20
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110020400500037bde",
+   "P_out": "421084210842108421",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "10020000100017bde",
-   "P_out": "401004200842008000",
+   "P_out": "521084610c42128421",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2a08881c008187bde",
+   "P_out": "411024200942018000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10a008c0c4080a7bde",
+   "P_out": "4310a4210942118000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "a00880c008087bde",
+   "P_out": "5310a4610d42138000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1048248009209047bde",
+   "P_out": "413024a04942098000",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1008048009008047bde",
+   "P_out": "453224a04b43098000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "108008408408027bde",
+   "P_out": "1413064a059420d8000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "8008008008007bde",
+   "P_out": "1513064e05d420f8000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11200c0411400167bde",
+   "P_out": "41902c20894a018000",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10200c0011000147bde",
+   "P_out": "51902c608d4a038000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1100040401400067bde",
+   "P_out": "4390ac21894a118000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1000040001000047bde",
+   "P_out": "5390ac618d4a138000",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2040300100201407bde",
+   "P_out": "141906c20994a058000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2000100100000407bde",
+   "P_out": "145926c209b4b058000",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "80800020010007bde",
+   "P_out": "341916c30994a458000",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "7bde",
-   "P_out": "411024200942018000",
+   "P_out": "349996c32995a458000",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
   },
   {
    "kind": "kill",
@@ -64,46 +510,616 @@
    "bound": 16
   },
   {
+   "kind": "kill",
+   "P_in": "51902c608d4a03977e",
+   "P_out": "6881",
+   "bound": 18
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11902860854803977e",
+   "P_out": "400004000802006881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1150226005c083977e",
+   "P_out": "8008008008006881",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11102060054003977e",
+   "P_out": "c00a008088806881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1013060a051400d977e",
+   "P_out": "100000400400026881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101106020114005977e",
+   "P_out": "102000c044000a6881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "13020a0414009977e",
+   "P_out": "1100040401400066881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001977e",
+   "P_out": "1102040c054000e6881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1103040e054400e977e",
+   "P_out": "10020000100016881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110104060144006977e",
+   "P_out": "12020804100096881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "103000e044400a977e",
+   "P_out": "1010060001100056881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002977e",
+   "P_out": "10120608051000d6881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1003040a050400c977e",
+   "P_out": "110020400500036881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004977e",
+   "P_out": "112020c045000b6881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3000a0404008977e",
+   "P_out": "1110060401500076881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
    "kind": "giveup",
    "P_in": "100020004000977e",
-   "P_out": "6881",
+   "P_out": "1112060c055000f6881",
    "bound": 14,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1510064401d0207177e",
+   "P_out": "100020004000e881",
+   "bound": 18
+  },
+  {
+   "kind": "giveup",
+   "P_in": "111006040150007177e",
+   "P_out": "40100420084200e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "112020c045000b177e",
+   "P_out": "100104020104004e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11002040050003177e",
+   "P_out": "1003040a050400ce881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "10300e001110015177e",
+   "P_out": "10100060044002e881",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101006000110005177e",
+   "P_out": "12108061044012e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1202080410009177e",
+   "P_out": "110104060144006e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1002000010001177e",
+   "P_out": "1103040e054400ee881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1102040c054000e177e",
+   "P_out": "1102020014001e881",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110004040140006177e",
+   "P_out": "13020a0414009e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "102000c044000a177e",
+   "P_out": "101106020114005e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10000040040002177e",
+   "P_out": "1013060a051400de881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020408050000c177e",
+   "P_out": "11102060054003e881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100004000100004177e",
+   "P_out": "113020e045400be881",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "200080400008177e",
+   "P_out": "111106060154007e881",
+   "bound": 14,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "177e",
-   "P_out": "100020004000e881",
+   "P_out": "1113060e055400fe881",
    "bound": 14,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "311116070154047935f",
+   "P_out": "6ca0",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "111106060154007935f",
+   "P_out": "2000100100000406ca0",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "113020e045400b935f",
+   "P_out": "1000040001000046ca0",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11102060054003935f",
+   "P_out": "10020408050000c6ca0",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "301116030114045935f",
+   "P_out": "100000400400026ca0",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101106020114005935f",
+   "P_out": "2100100500400426ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "21102124014021935f",
+   "P_out": "1100040401400066ca0",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001935f",
+   "P_out": "1300041441400266ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "303001e444402a935f",
+   "P_out": "10020000100016ca0",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "30100164044022935f",
+   "P_out": "12020804100096ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "103000e044400a935f",
+   "P_out": "210021040100216ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002935f",
+   "P_out": "212021844100296ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1003040a050400c935f",
+   "P_out": "110020400500036ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004935f",
+   "P_out": "112020c045000b6ca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3000a0404008935f",
+   "P_out": "1110060401500076ca0",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "100020004000935f",
-   "P_out": "6ca0",
+   "P_out": "1112060c055000f6ca0",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2112120d045004b135f",
+   "P_out": "100020004000eca0",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "211012050050043135f",
+   "P_out": "3000a0404008eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1300a041050013135f",
+   "P_out": "200110030004040eca0",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11002040050003135f",
+   "P_out": "202118031004050eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "109086002111005135f",
+   "P_out": "10100060044002eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101006000110005135f",
+   "P_out": "18180062045002eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1202080410009135f",
+   "P_out": "110104060144006eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1002000010001135f",
+   "P_out": "1103040e054400eeca0",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11200c041140016135f",
+   "P_out": "1102020014001eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110004040140006135f",
+   "P_out": "310a021014011eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "102000c044000a135f",
+   "P_out": "101106020114005eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10000040040002135f",
+   "P_out": "1013060a051400deca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020408050000c135f",
+   "P_out": "11102060054003eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "200080400008135f",
+   "P_out": "111106060154007eca0",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100004000100004135f",
+   "P_out": "113020e045400beca0",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "135f",
-   "P_out": "100020004000eca0",
+   "P_out": "1113060e055400feca0",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "4220080420108135e",
+   "P_out": "6ca1",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1103040e054400e935e",
+   "P_out": "40200000201006ca1",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "103000e044400a935e",
+   "P_out": "1040240001201046ca1",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "13020a0414009935e",
+   "P_out": "140200400601026ca1",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3000a0404008935e",
+   "P_out": "150220400701036ca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10120608051000d135e",
+   "P_out": "4120020024100eca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020408050000c135e",
+   "P_out": "5122020034101eca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1202080410009135e",
+   "P_out": "104124020124104eca1",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "200080400008135e",
-   "P_out": "6ca1",
+   "P_out": "105126020134105eca1",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "511024600d4203935e",
+   "P_out": "2000804000086ca1",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "41102420094201935e",
+   "P_out": "102000c044000a6ca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "201112030014041935e",
+   "P_out": "402004804802086ca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001935e",
+   "P_out": "2402104904802486ca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "30100164044022935e",
+   "P_out": "12020804100096ca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002935e",
+   "P_out": "212021844100296ca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004935e",
+   "P_out": "112020c045000b6ca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100020004000935e",
+   "P_out": "1112060c055000f6ca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "510024400d0203135e",
+   "P_out": "3000a0404008eca1",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "41002400090201135e",
+   "P_out": "103000e044400aeca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "21002104010021135e",
+   "P_out": "403004a0484208eca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1002000010001135e",
+   "P_out": "603005a4484228eca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "500004400c0202135e",
+   "P_out": "13020a0414009eca1",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10000040040002135e",
+   "P_out": "413024a0494209eca1",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100004000100004135e",
+   "P_out": "113020e045400beca1",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "135e",
-   "P_out": "2000804000086ca1",
+   "P_out": "1113060e055400feca1",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
   },
   {
    "kind": "kill",
@@ -112,109 +1128,1527 @@
    "bound": 16
   },
   {
+   "kind": "kill",
+   "P_in": "2310a1250140318116",
+   "P_out": "40200000201001248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "10b18e023115015e996",
+   "P_out": "240201040201201248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10310e021114015e996",
+   "P_out": "2c0a01060211201248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1310a061054013e996",
+   "P_out": "1240241041201241248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "310a021014011e996",
+   "P_out": "1340241441601261248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11310e0611540178116",
+   "P_out": "240201040201207ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10310e0211140158116",
+   "P_out": "340201440601227ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "390a8218148118116",
+   "P_out": "1240241041201247ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
    "kind": "giveup",
    "P_in": "310a0210140118116",
-   "P_out": "40200000201001248",
+   "P_out": "1248249049209247ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "3091960321150458116",
+   "P_out": "20080010000101248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "1191860621550078116",
+   "P_out": "2020180110000501248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "109186022115005e996",
+   "P_out": "2120180510400521248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1091860221150058116",
+   "P_out": "2120180510400527ac8",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1113060e055400fe996",
+   "P_out": "a0880030010101248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "111106060154007e996",
+   "P_out": "a2880834010181248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1013060a051400de996",
+   "P_out": "1a0880430410121248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101106020114005e996",
+   "P_out": "1a2880c344101a1248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1113060e055400f8116",
+   "P_out": "a0880030010107ac8",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1111060601540078116",
+   "P_out": "a2880834010187ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1013060a051400d8116",
+   "P_out": "1a0880430410127ac8",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1011060201140058116",
-   "P_out": "20080010000101248",
+   "P_out": "1a2880c344101a7ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2d1a2126035121e996",
+   "P_out": "10200c0011000141248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "29182126015021e996",
+   "P_out": "10602c0011201141248",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "391821660550238116",
+   "P_out": "10200c0011000147ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "291821260150218116",
+   "P_out": "11200c0411400167ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "19182062055003e996",
+   "P_out": "12200c1051000341248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "191820620550038116",
+   "P_out": "12200c1051000347ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "99828228158018116",
+   "P_out": "13200c1451400361248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "91820220150018116",
+   "P_out": "13280c9459408361248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "411942860a54c038116",
+   "P_out": "10a08c0031010141248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "401942820a14c018116",
+   "P_out": "11a08c0431410161248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "219029248148218116",
+   "P_out": "50a0cc0033014141248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "19028208148018116",
+   "P_out": "52a0cc1073014341248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "201112030014041e996",
+   "P_out": "10a88c8039018141248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2011120300140418116",
+   "P_out": "10a88c8039018147ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001e996",
+   "P_out": "30a89c8139018541248",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "11020200140018116",
-   "P_out": "10200c0011000141248",
+   "P_out": "30a89c8139018547ac8",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "4107402e064c48a8116",
+   "P_out": "10020000100011248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "107002e044c08ae996",
+   "P_out": "4010420002104011248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "127082e144c09a8116",
+   "P_out": "4010420002104017ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "107002e044c08a8116",
+   "P_out": "40304a0012104117ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "7103540f074444e8116",
+   "P_out": "14022000180811248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3103140f054404e8116",
+   "P_out": "4014422002184811248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1103040e054400ee996",
+   "P_out": "2014122100180c11248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1103040e054400e8116",
+   "P_out": "2014122100180c17ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "6103500f064444a8116",
+   "P_out": "1014062001180851248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4103400e064440a8116",
+   "P_out": "3014162101180c51248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "103000e044400ae996",
+   "P_out": "5014462003184851248",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "103000e044400a8116",
-   "P_out": "10020000100011248",
+   "P_out": "5014462003184857ac8",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2741305740e43628116",
+   "P_out": "12020804100091248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "2701105740c42628116",
+   "P_out": "52220804301091248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2381901760450628116",
+   "P_out": "412024804902091248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2301101740440628116",
+   "P_out": "492824824912091248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3501144701c42468116",
+   "P_out": "212021844100291248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3101140701440468116",
+   "P_out": "612025844902291248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "210110070044042e996",
+   "P_out": "12120618451002d1248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2101100700440428116",
+   "P_out": "12120618451002d7ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11050426014c086e996",
+   "P_out": "2012120904100491248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1050026004c082e996",
+   "P_out": "30121609051004d1248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "41054026024c4828116",
+   "P_out": "2012120904100497ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1050026004c0828116",
+   "P_out": "6012520906104497ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4121480612444128116",
+   "P_out": "2016122904180c91248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4101400602444028116",
+   "P_out": "20361a2914180d91248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002e996",
+   "P_out": "6016522906184c91248",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "101000600440028116",
-   "P_out": "12020804100091248",
+   "P_out": "6016522906184c97ac8",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "700154030304444e996",
+   "P_out": "110020400500031248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "6003500b0604448e996",
+   "P_out": "1110060401500071248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600150030204440e996",
+   "P_out": "1112060c055000f1248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "30051423010c0c4e996",
+   "P_out": "4110420402504031248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300114030104044e996",
+   "P_out": "4114422402584831248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2003100b0404048e996",
+   "P_out": "5110460403504071248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "200110030004040e996",
+   "P_out": "5112460c075040f1248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1003040a050400ce997",
+   "P_out": "2110120500500431248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004e997",
+   "P_out": "2112120d045004b1248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4120020024100e997",
+   "P_out": "3110160501500471248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100020004000e997",
+   "P_out": "3150360501701471248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "400940820a04c00e996",
+   "P_out": "2110120500500431249",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "400140020204400e996",
+   "P_out": "2118128508508431249",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3000a0404008e996",
+   "P_out": "6110520502504431249",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "100020004000e996",
-   "P_out": "110020400500031248",
+   "P_out": "6112520d065044b1249",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "120b049a4d0482c8116",
+   "P_out": "110020400500037ac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100b048a0d0480c8116",
+   "P_out": "310021440500237ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1007042a050c08c8116",
+   "P_out": "118028408508037ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1003040a050400c8116",
+   "P_out": "11c02a408588837ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "223081a54040388116",
+   "P_out": "1110060401500077ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "203001a44040288116",
+   "P_out": "11300e0411500177ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2003100b04040488116",
+   "P_out": "1310061441500277ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3000a04040088116",
+   "P_out": "3310161541500677ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12210c1251040348116",
+   "P_out": "112020c045000b7ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "221081250040308116",
+   "P_out": "1112060c055000f7ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10210c0211040148116",
+   "P_out": "312021c445002b7ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "21080210040108116",
+   "P_out": "1312061c455002f7ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1201041241040248116",
+   "P_out": "1320a0c145001b7ac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "201001240040208116",
+   "P_out": "11320e0c155001f7ac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50022000c0808116",
+   "P_out": "3320a1c545003b7ac8",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1000200040008116",
-   "P_out": "110020400500037ac8",
+   "P_out": "3360a3c54580bb7ac8",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1206043845080ac6996",
+   "P_out": "1000200040009248",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "1314063441580a76996",
+   "P_out": "3000a04040089248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1214063041180a56996",
+   "P_out": "103000e044400a9248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "120c04b049088a46996",
+   "P_out": "13020a04140099248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1204043041080a46996",
+   "P_out": "1b028a0c148099248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "3054362101381c56996",
+   "P_out": "201001240040209248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3014162101180c56996",
+   "P_out": "241201240241209248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "7004542103084c46996",
+   "P_out": "211021240140219248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3004142101080c46996",
+   "P_out": "4211421242144219248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1144242401681866996",
+   "P_out": "2201101340040609248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1104042401480866996",
+   "P_out": "2241301340241609248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10240c2011080946996",
+   "P_out": "2301101740440629248",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1004042001080846996",
-   "P_out": "1000200040009248",
+   "P_out": "2321181750440729248",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "52606c1053205346996",
+   "P_out": "50022000c0809248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50606c0013205146996",
+   "P_out": "2050032400c0a09248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "10682c8019209146996",
+   "P_out": "40054022020c4809248",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10602c0011201146996",
+   "P_out": "400d40a20a0cc809248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11300e0411500176996",
+   "P_out": "452022002c1809248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10300e0011100156996",
+   "P_out": "1452026006c1829248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11200c0411400166996",
+   "P_out": "552222003c1819248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10200c0011000146996",
+   "P_out": "1552226007c1839248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1150260401701076996",
+   "P_out": "250822100c0909248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1110060401500076996",
+   "P_out": "652822102c1909248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102040c054000e6996",
+   "P_out": "350a22101c0919248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1100040401400066996",
+   "P_out": "370a2a141c0999248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1410064001902056996",
+   "P_out": "1250826104c0929248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1400044001802046996",
+   "P_out": "1350a26105c0939248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1000040001000046997",
+   "P_out": "525086610cc2929248",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1000040001000046996",
-   "P_out": "50022000c0809248",
+   "P_out": "525086610cc2929249",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1714067441d82a70116",
+   "P_out": "100020004000fac8",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1314063441580a70116",
+   "P_out": "40100420084200fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1514066401d82870116",
+   "P_out": "20100124004020fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1114062401580870116",
+   "P_out": "60100524084220fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1710065441d02270116",
+   "P_out": "50022000c080fac8",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1510064401d02070116",
+   "P_out": "2050032400c0a0fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1112060c055000f0116",
+   "P_out": "4050062008c280fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1110060401500070116",
+   "P_out": "407006a048c288fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "52124618471042d0116",
+   "P_out": "10100060044002fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12120618451002d0116",
+   "P_out": "410140060244402fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12300e1051100350116",
+   "P_out": "103000e044400afac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1210061041100250116",
+   "P_out": "123080e144401afac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10702e0011301150116",
+   "P_out": "30100164044022fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1050260001301050116",
+   "P_out": "32108165044032fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10120608051000d0116",
+   "P_out": "34120164064122fac8",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1010060001100050116",
-   "P_out": "100020004000fac8",
+   "P_out": "343201e446412afac8",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3142340d056014e0116",
+   "P_out": "1102020014001fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1142240c056010e0116",
+   "P_out": "201112030014041fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11602c0411601160116",
+   "P_out": "13020a0414009fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1140240401601060116",
+   "P_out": "330a0a1414019fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3100140501400460117",
+   "P_out": "5122020034101fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1100040401400060117",
+   "P_out": "205132030034141fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1500044401c02060116",
+   "P_out": "5122020034101fac9",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1100040401400060116",
+   "P_out": "451224200b4301fac9",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "14220c48158021c0116",
+   "P_out": "11102060054003fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "14020448058020c0116",
+   "P_out": "1310a061054013fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10220c08150001c0116",
+   "P_out": "511024600d4203fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020408050000c0116",
+   "P_out": "5310a4610d4213fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10280c8019008140116",
+   "P_out": "113020e045400bfac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10200c0011000140116",
+   "P_out": "11b028e0c5480bfac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1200041041000240116",
+   "P_out": "1330a0e145401bfac8",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1000040001000040116",
-   "P_out": "1102020014001fac8",
+   "P_out": "3330a1e545403bfac8",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "352221c447012b6996",
+   "P_out": "1001040201040049248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "312021c445002b6996",
+   "P_out": "1041240201241049248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "322081c544003a6996",
+   "P_out": "1011060201140059248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "302001c444002a6996",
+   "P_out": "10310e0211140159248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "430840944a40c226996",
+   "P_out": "1003040a050400c9248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "308009448408226996",
+   "P_out": "5003440a070440c9248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "340201440601226996",
+   "P_out": "100b048a0d0480c9248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300001440400226996",
+   "P_out": "104b248a0d2490c9248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "21a02984c108296996",
+   "P_out": "1101040601440069248",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "218029048108216996",
+   "P_out": "1103040e054400e9248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "20a00984c008286996",
+   "P_out": "1111060601540079248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "208009048008206996",
+   "P_out": "1113060e055400f9248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "250221040301216996",
+   "P_out": "1109048609448069248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "240201040201206996",
+   "P_out": "1119068609548079248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "202001844000286996",
+   "P_out": "1149248609649069248",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "200001040000206996",
-   "P_out": "1001040201040049248",
+   "P_out": "114b248e0d6490e9248",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2312121d445006b0116",
+   "P_out": "100104020104004fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2310121540500630116",
+   "P_out": "1003040a050400cfac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2302101d444006a0116",
+   "P_out": "101106020114005fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2300101540400620116",
+   "P_out": "1013060a051400dfac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "322081c544003a0116",
+   "P_out": "300114030104044fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "302001c444002a0116",
+   "P_out": "30211c031104054fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "320081450400320116",
+   "P_out": "3003140b050404cfac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300001440400220116",
+   "P_out": "30231c0b150405cfac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2320a1854100390116",
+   "P_out": "110104060144006fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "222081854000380116",
+   "P_out": "111106060154007fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "602005844802280116",
+   "P_out": "11210c061144016fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "202001844000280116",
+   "P_out": "15210c4611c4216fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2300a1050100310116",
+   "P_out": "1103040e054400efac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220081050000300116",
+   "P_out": "1113060e055400ffac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "240201040201200116",
+   "P_out": "11230c0e154401efac8",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "200001040000200116",
-   "P_out": "100104020104004fac8",
+   "P_out": "11632c0e156411efac8",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "152220c047010b6996",
+   "P_out": "1201041241040249248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "142200c046010a6996",
+   "P_out": "1211061241140259248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2042300904201486996",
+   "P_out": "1301041641440269248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "42200804201086996",
+   "P_out": "3301141741440669248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50220000301016db6",
+   "P_out": "1203041a450402c9248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "40200000201006db6",
+   "P_out": "1213061a451402d9248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "60280010201106996",
+   "P_out": "1203041a450402c9668",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "40200000201006996",
+   "P_out": "12230c1a550403c9668",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4052620806305090116",
+   "P_out": "120104124104024fac8",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4050620002305010116",
+   "P_out": "1203041a450402cfac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "54222000381810116",
+   "P_out": "520144124304424fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50220000301010116",
+   "P_out": "52054432430c4a4fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "160280410601120116",
+   "P_out": "121106124114025fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "60280010201100116",
+   "P_out": "131106164154027fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "140200400601020116",
+   "P_out": "12310e125114035fac8",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "40200000201000116",
-   "P_out": "1201041241040249248",
+   "P_out": "13310e165154037fac8",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "401842800a10c016996",
+   "P_out": "1241241241241249248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "400840800a00c006996",
+   "P_out": "1251261241341259248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "c00a008088806996",
+   "P_out": "5241641243245249248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "8008008008006996",
+   "P_out": "52456432432c5a49248",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "e00a80c088880116",
+   "P_out": "124124124124124fac8",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "a00880c008080116",
+   "P_out": "12452432412c1a4fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "40800c00880a000116",
+   "P_out": "1243241a452412cfac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "8008008008000116",
+   "P_out": "1643245a45a432cfac8",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020000100016997",
+   "P_out": "1249249249249249248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "6997",
+   "P_out": "1259269249349259248",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "400004000802000117",
+   "P_out": "124924924924924fac8",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "117",
+   "P_out": "164924d249a4b24fac8",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020000100016996",
+   "P_out": "1249249249249249249",
+   "bound": 6,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "6996",
+   "P_out": "1259269249349259249",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100000400400020116",
+   "P_out": "124924924924924fac9",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "116",
-   "P_out": "1241241241241249248",
+   "P_out": "134924964964926fac9",
    "bound": 6,
-   "undecided": 13
+   "undecided": 9
   },
   {
    "kind": "kill",
@@ -223,109 +2657,1546 @@
    "bound": 16
   },
   {
+   "kind": "kill",
+   "P_in": "232118175044072fac8",
+   "P_out": "400004000802000116",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "231112174054063fac8",
+   "P_out": "420084010802100116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "230110174044062fac8",
+   "P_out": "4300a4010902110116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "220110134004060fee9",
+   "P_out": "500004400c02020116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220110134004060fee8",
+   "P_out": "500004400c02020117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "221112134014061fac8",
+   "P_out": "500004400c02020536",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220110134004060fac8",
+   "P_out": "510024400d02030536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "3251361341341659248",
+   "P_out": "400004000802006996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3241341341241649248",
+   "P_out": "410024000902016996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2251321340341619248",
+   "P_out": "1400044001802046996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2241301340241609248",
+   "P_out": "1410064001902056996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "22151233401c0e19248",
+   "P_out": "440204000a03006996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2211121340140619248",
+   "P_out": "444206000a83806996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2301101740440629248",
+   "P_out": "450224000b03016996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
    "kind": "giveup",
    "P_in": "2201101340040609248",
-   "P_out": "400004000802000116",
+   "P_out": "550224400f03036996",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2606107944882e81248",
+   "P_out": "1000200040008116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "32261c3955080fc1248",
+   "P_out": "401004200842008116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2226183954080f81248",
+   "P_out": "1401044201842048116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220e10b94c088e81248",
+   "P_out": "421084210842108116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2206103944080e81248",
+   "P_out": "42908c21884a108116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2604107140882e07ac8",
+   "P_out": "3000a04040088116",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "2624187150882f01248",
+   "P_out": "3000a0404008e996",
+   "bound": 18
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2604107140882e01248",
+   "P_out": "23080a1404018e996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "3204143141080e47ac8",
+   "P_out": "403004a04842088116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2204103140080e07ac8",
+   "P_out": "1403044a058420c8116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220c10b148088e01248",
+   "P_out": "403004a0484208e996",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "2204103140080e01248",
-   "P_out": "1000200040008116",
+   "P_out": "40b00ca0c84a08e996",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "32021419450006c7ac8",
+   "P_out": "50022000c0808116",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "2602105944802687ac8",
+   "P_out": "10050422010c0848116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2202101944000687ac8",
+   "P_out": "14050462018c2848116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "22321a1954100791248",
+   "P_out": "50022000c080e996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2222181954000781248",
+   "P_out": "150222001c081e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2302101d444006a1248",
+   "P_out": "250822100c090e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2202101944000681248",
+   "P_out": "1250826104c092e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "2200101140000607ee9",
+   "P_out": "7002a040c0888116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2200101140000607ee8",
+   "P_out": "7002a040c0888117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2210121140100617ac8",
+   "P_out": "7002a040c0888536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2200101140000607ac8",
+   "P_out": "17022a041c0898536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2310121540500631248",
+   "P_out": "7002a040c088e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2210121140100611248",
+   "P_out": "107002e044c08ae996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2600105140802601248",
+   "P_out": "17022a041c089e996",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "2200101140000601248",
-   "P_out": "50022000c0808116",
+   "P_out": "417026a049c289e996",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "324134134124164e880",
+   "P_out": "135e",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "224930934824960e880",
+   "P_out": "100004000100004135e",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "22c1b0136025160e880",
+   "P_out": "100804800900804135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "224130134024160e880",
+   "P_out": "108884802901804135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "22b19a137015071e880",
+   "P_out": "4020000020100135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "229192136015061e880",
+   "P_out": "6028001020110135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "321116134114065e880",
+   "P_out": "c0a0002021100135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "221112134014061e880",
+   "P_out": "10c0a4002121104135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "320914934904864e880",
+   "P_out": "5022000030101135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220910934804860e880",
+   "P_out": "105026000130105135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "230110174044062e880",
+   "P_out": "5822800830901135e",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "220110134004060e880",
-   "P_out": "135e",
+   "P_out": "15822840870903135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "23341a3550580f36880",
+   "P_out": "100020004000935e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "23301a1550500736880",
+   "P_out": "50022000c080935e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3310161541500676880",
+   "P_out": "2108021004010935e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2310121540500636880",
+   "P_out": "10210c021104014935e",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "32121619451006d6880",
+   "P_out": "10100060044002935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3210161141100656880",
+   "P_out": "103000e044400a935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2212121944100696880",
+   "P_out": "110104060144006935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2210121140100616880",
+   "P_out": "1103040e054400e935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3302141d454006e6880",
+   "P_out": "1102020014001935e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2302101d444006a6880",
+   "P_out": "101106020114005935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2242301944201686880",
+   "P_out": "11102060054003935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2202101944000686880",
+   "P_out": "15122060074103935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3300141541400666880",
+   "P_out": "13020a0414009935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3200141141000646880",
+   "P_out": "113020e045400b935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2204103140080e06880",
+   "P_out": "1013060a051400d935e",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "2200101140000606880",
-   "P_out": "100020004000935e",
+   "P_out": "1017062a051c08d935e",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "3213161b451406d8420",
+   "P_out": "7bde",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2213121b44140698420",
+   "P_out": "1000040001000047bde",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3211161341140658420",
+   "P_out": "2000804000087bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2211121340140618420",
+   "P_out": "10020408050000c7bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2311121740540638001",
+   "P_out": "7ffe",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2211121340140618001",
+   "P_out": "100000400400027ffe",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2311121740540638000",
+   "P_out": "7fff",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2211121340140618000",
+   "P_out": "100000400400027fff",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "32a19c1371050748000",
+   "P_out": "10020000100017bde",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3281941361050648000",
+   "P_out": "300a0010100117bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2283901b64050688000",
+   "P_out": "1010060001100057bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2281901360050608000",
+   "P_out": "10120608051000d7bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "26051073408c2e08000",
+   "P_out": "90820020110017bde",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "22051033400c0e08000",
+   "P_out": "490824020912017bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2201101340040608001",
+   "P_out": "94822020190817bde",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "2201101340040608000",
-   "P_out": "7bde",
+   "P_out": "94822020190817bdf",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3344343541681e60000",
+   "P_out": "100020004000fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3340341541601660000",
+   "P_out": "50022000c080fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2350321540701630000",
+   "P_out": "100104020104004fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2340301540601620000",
+   "P_out": "101106020114005fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2324183550480f20000",
+   "P_out": "4120020024100fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2320181550400720000",
+   "P_out": "452022002c180fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2700105540c02620000",
+   "P_out": "6128021024110fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2300101540400620000",
+   "P_out": "461284210a4310fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2612125944902690000",
+   "P_out": "10100060044002fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2610125140902610000",
+   "P_out": "103000e044400afbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3210161141100650000",
+   "P_out": "501004600c4202fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2210121140100610000",
+   "P_out": "1501044601c4206fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3204143141080e40000",
+   "P_out": "11102060054003fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2204103140080e00000",
+   "P_out": "111106060154007fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3200141141000640000",
+   "P_out": "1150226005c083fbde",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "2200101140000600000",
-   "P_out": "100020004000fbde",
+   "P_out": "11150626015c087fbde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "3250836504c0b2fac8",
+   "P_out": "2000100100000400116",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "32c08b458488b27ac8",
+   "P_out": "2001100300040408116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "324083450480b27ac8",
+   "P_out": "2009108308048408116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "327083e544c0ba9248",
+   "P_out": "2000100100000406996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "326083c54480ba1248",
+   "P_out": "200110030004040e996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3a4883470490b21248",
+   "P_out": "2002100904000486996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "324083450480b21248",
+   "P_out": "2082900924010486996",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "6350a72509c2b19248",
+   "P_out": "2100100500400420116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "6250872508c2b09248",
+   "P_out": "2110120500500430116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "16240c7051882b41248",
+   "P_out": "2101100700440428116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "624087050882b01248",
+   "P_out": "3101140701440468116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2350a32501c0b19248",
+   "P_out": "2500104500c02420116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2250832500c0b09248",
+   "P_out": "2510124500d02430116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2340a3050180b11248",
+   "P_out": "2501104700c42428116",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "224083050080b01248",
-   "P_out": "2000100100000400116",
+   "P_out": "2511124700d42438116",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "42154232421c4a1fac8",
+   "P_out": "2020180110000500116",
+   "bound": 18
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2150232401c0a1fac8",
+   "P_out": "6020580112004500116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "21c02b048188a17ac8",
+   "P_out": "2021180310040508116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "214023040180a17ac8",
+   "P_out": "2029188318048508116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "6150272409c2a19248",
+   "P_out": "2020180110000506996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2150232401c0a19248",
+   "P_out": "2420184110802506996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "314023440580a31248",
+   "P_out": "202118031004050e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "214023040180a11248",
+   "P_out": "212118071044052e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "204003040080a07ee9",
+   "P_out": "20301a0110100510116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "204003040080a07ee8",
+   "P_out": "20301a0110100510117",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2050032400c0a0fac8",
+   "P_out": "20301a0110100510536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "204003040080a07ac8",
+   "P_out": "20311a0310140518536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4206403846084a81248",
+   "P_out": "20301a0110100516996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4204403042084a01248",
+   "P_out": "20321a0914100596996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "604007040882a01248",
+   "P_out": "60305a0112104516996",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "204003040080a01248",
-   "P_out": "2020180110000500116",
+   "P_out": "64305a4112906516996",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "4304403442484a26880",
+   "P_out": "200010010000040135e",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "13240c3451480b66880",
+   "P_out": "600050010200440135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "324083450480b26880",
+   "P_out": "700054010300444135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3050036404c0a2e880",
+   "P_out": "602058011200450135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "304003440480a26880",
+   "P_out": "602158031204450935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "217023a441c0a9e880",
+   "P_out": "210010050040042135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "216023844180a96880",
+   "P_out": "210110070044042935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "207003a440c0a8e880",
+   "P_out": "211012050050043135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "206003844080a86880",
+   "P_out": "211112070054043935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "644207040a83a06880",
+   "P_out": "2102100d044004a135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "604007040882a06880",
+   "P_out": "2142300d046014a135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2050032400c0a0e880",
+   "P_out": "2502104d04c024a135e",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "204003040080a06880",
-   "P_out": "200010010000040135e",
+   "P_out": "2503104f04c424a935e",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "317023e445c0ab8000",
+   "P_out": "2000100100000407bde",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "217023a441c0a98000",
+   "P_out": "2100100500400427bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1207043a450c0ac8000",
+   "P_out": "2010120100100417bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "207003a440c0a88000",
+   "P_out": "3010160101100457bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "16050472418c2a48000",
+   "P_out": "2002100904000487bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "6050072408c2a08000",
+   "P_out": "30021409050004c7bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2858032600d0a08000",
+   "P_out": "2402104904802487bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2050032400c0a08000",
+   "P_out": "2482904924812487bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "316023c44580ab0000",
+   "P_out": "200110030004040fbde",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "314023440580a30000",
+   "P_out": "2003100b0404048fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "216023844180a90000",
+   "P_out": "210110070044042fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "214023040180a10000",
+   "P_out": "2103100f044404afbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1604047041882a40000",
+   "P_out": "201112030014041fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "604007040882a00000",
+   "P_out": "301116030114045fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "304003440480a20000",
+   "P_out": "241112430094241fbde",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "204003040080a00000",
-   "P_out": "2000100100000407bde",
+   "P_out": "2511124700d4243fbde",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "60b00da4c84a28fac8",
+   "P_out": "2004102100080c00116",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "603005a4484228fac8",
+   "P_out": "200c10a108088c00116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "60a00d84c80a287ac8",
+   "P_out": "20051023000c0c08116",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "602005844802287ac8",
+   "P_out": "200d10a3080c8c08116",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "613025a44942299248",
+   "P_out": "2004102100080c06996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "603005a44842289248",
+   "P_out": "2014122100180c16996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "612025844902291248",
+   "P_out": "20051023000c0c0e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "602005844802281248",
+   "P_out": "20151223001c0c1e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "600005040802207ee9",
+   "P_out": "2006102904080c80116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600005040802207ee8",
+   "P_out": "2006102904080c80117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1600045041802247ac8",
+   "P_out": "2006102904080c80536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600005040802207ac8",
+   "P_out": "3006142905080cc0536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1601045241842249248",
+   "P_out": "2006102904080c86996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "601005240842209248",
+   "P_out": "3006142905080cc6996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "610025040902211248",
+   "P_out": "2007102b040c0c8e996",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "600005040802201248",
-   "P_out": "2004102100080c00116",
+   "P_out": "2017122b041c0c9e996",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4701405642c4622e880",
+   "P_out": "2004102100080c0135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "701005640c4222e880",
+   "P_out": "6004502102084c0135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "70800d448c0a226880",
+   "P_out": "20051023000c0c0935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "700005440c02226880",
+   "P_out": "200d10a3080c8c0935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "620085050802306881",
+   "P_out": "2104102500480c2135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600005040802206881",
+   "P_out": "2124182510480d2135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "602005844802286880",
+   "P_out": "2104102500480c2135f",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "600005040802206880",
+   "P_out": "2106102d04480ca135f",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "781805660c52228000",
+   "P_out": "2004102100080c07bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "701005640c42228000",
+   "P_out": "2084902120090c07bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "611025240942218000",
+   "P_out": "2104102500480c27bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "601005240842208000",
+   "P_out": "2114122500580c37bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1610065041902250000",
+   "P_out": "20051023000c0c0fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1600045041802240000",
+   "P_out": "20151223001c0c1fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "610025040902210000",
+   "P_out": "30051423010c0c4fbde",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "600005040802200000",
-   "P_out": "2004102100080c0135e",
+   "P_out": "30151623011c0c5fbde",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "200001040000207ee9",
+   "P_out": "2404106100882c00116",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "220081050000307ee8",
+   "P_out": "2404106100882c00117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "200001040000207ee8",
+   "P_out": "2424186110882d00117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "218029048108217ac8",
+   "P_out": "2404106100882c00536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "208009048008207ac8",
+   "P_out": "2414126100982c10536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300001440400227ac8",
+   "P_out": "240c10e10888ac00536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "200001040000207ac8",
+   "P_out": "250c10e508c8ac20536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "303001e444402a9248",
+   "P_out": "2404106100882c06996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "301001640440229248",
+   "P_out": "2406106904882c86996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "211021240140219248",
+   "P_out": "2504106500c82c26996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "201001240040209248",
+   "P_out": "2514126500d82c36996",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "248209048209201248",
+   "P_out": "24051063008c2c0e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "240201040201201248",
+   "P_out": "240d10e3088cac0e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "208009048008201248",
+   "P_out": "2445306300ac3c0e996",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "200001040000201248",
-   "P_out": "2404106100882c00116",
+   "P_out": "244d30e308acbc0e996",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "430140164244422e880",
+   "P_out": "2404106100882c0135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "30100164044022e880",
+   "P_out": "6404506102886c0135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "24120124024120e880",
+   "P_out": "2504106500c82c2135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "20100124004020e880",
+   "P_out": "2544306500e83c2135e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "310021440500236880",
+   "P_out": "24051063008c2c0935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "210021040100216880",
+   "P_out": "2505106700cc2c2935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300001440400226880",
+   "P_out": "24151263009c2c1935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "200001040000206880",
+   "P_out": "2515126700dc2c3935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "223081a54040388000",
+   "P_out": "2404106100882c07bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "221081250040308000",
+   "P_out": "2406106904882c87bde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1201041241040248000",
+   "P_out": "2424186110882d07bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "201001240040208000",
+   "P_out": "34241c6111882d47bde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "310021440500230000",
+   "P_out": "24051063008c2c0fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "210021040100210000",
+   "P_out": "2505106700cc2c2fbde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300001440400220000",
+   "P_out": "24151263009c2c1fbde",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "200001040000200000",
-   "P_out": "2404106100882c0135e",
+   "P_out": "2515126700dc2c3fbde",
    "bound": 6,
-   "undecided": 13
+   "undecided": 9
   },
   {
    "kind": "kill",
@@ -334,109 +4205,1625 @@
    "bound": 16
   },
   {
+   "kind": "kill",
+   "P_in": "1013060a051400dfee8",
+   "P_out": "200001040000200117",
+   "bound": 16
+  },
+  {
+   "kind": "kill",
+   "P_in": "101106020114005fee8",
+   "P_out": "202001844000280117",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3010160101100457ee8",
+   "P_out": "201001240040208117",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1010060001100057ee8",
+   "P_out": "2201101340040608117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1300a0410500137ee8",
+   "P_out": "1200041041000240117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110020400500037ee8",
+   "P_out": "12200c1051000340117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001fee8",
+   "P_out": "1300041441400260117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020000100017ee8",
+   "P_out": "1301041641440268117",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12108061044012fee8",
+   "P_out": "210021040100210117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "120080410400127ee8",
+   "P_out": "211021240140218117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4100400402404027ee8",
+   "P_out": "2300a1050100310117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100000400400027ee8",
+   "P_out": "42304a1052104310117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50022000c080fee8",
+   "P_out": "310021440500230117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4002000080807ee8",
+   "P_out": "311021640540238117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100020004000fee8",
+   "P_out": "314023440580a30117",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
    "kind": "giveup",
    "P_in": "7ee8",
-   "P_out": "200001040000200117",
+   "P_out": "3150236405c0a38117",
    "bound": 14,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "42200804201087ac8",
+   "P_out": "200001040000200536",
+   "bound": 18
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3102140d054004e7ac8",
+   "P_out": "240201040201200536",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "30021409050004c7ac8",
+   "P_out": "340201440601220536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2022180914000587ac8",
+   "P_out": "1240241041201240536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2002100904000487ac8",
+   "P_out": "12602c1051201340536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "b008a0c04808fac8",
+   "P_out": "2240301140201600536",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "a00880c008087ac8",
+   "P_out": "2241301340241608536",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2000804000087ac9",
+   "P_out": "2248309148209600536",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "2000804000087ac8",
-   "P_out": "200001040000200536",
+   "P_out": "2248309148209600537",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11102060054003fac9",
+   "P_out": "202001844000280536",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001fac9",
+   "P_out": "302001c444002a0536",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002fac9",
+   "P_out": "212021844100290536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100020004000fac9",
+   "P_out": "312021c445002b0536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110020400500037ac9",
+   "P_out": "203001a44040288536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020000100017ac9",
+   "P_out": "303001e444402a8536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100000400400027ac9",
+   "P_out": "213021a44140298536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "7ac9",
+   "P_out": "313021e445402b8536",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12108061044012fac8",
+   "P_out": "202001844000280537",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002fac8",
+   "P_out": "222081854000380537",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001fac8",
+   "P_out": "302001c444002a0537",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100020004000fac8",
+   "P_out": "312021c445002b0537",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300a0010100117ac8",
+   "P_out": "203001a44040288537",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020000100017ac8",
+   "P_out": "223081a54040388537",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100000400400027ac8",
+   "P_out": "213021a44140298537",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "7ac8",
-   "P_out": "202001844000280536",
+   "P_out": "313021e445402b8537",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1543244e05e430e9248",
+   "P_out": "200001040000206996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1503044e05c420e9248",
+   "P_out": "240201040201206996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4503404e06c460a9248",
+   "P_out": "1200041041000246996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "503004e04c420a9248",
+   "P_out": "5200441043004246996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "5403444a078460c9248",
+   "P_out": "300001440400226996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1403044a058420c9248",
+   "P_out": "4300401442404226996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "423084a14842189248",
+   "P_out": "1300041441400266996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "403004a04842089248",
+   "P_out": "13200c1451400366996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1017062a051c08d9248",
+   "P_out": "600005040802206996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1013060a051400d9248",
+   "P_out": "604007040882a06996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "113020e045400b9248",
+   "P_out": "1600045041802246996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "13020a04140099248",
+   "P_out": "1700045441c02266996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1103040e054400e9248",
+   "P_out": "610025040902216996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "103000e044400a9248",
+   "P_out": "1610065041902256996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1003040a050400c9248",
+   "P_out": "710025440d02236996",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "3000a04040089248",
-   "P_out": "200001040000206996",
+   "P_out": "1710065441d02276996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "1b18a0630550139248",
+   "P_out": "202001844000286996",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1310a0610540139248",
+   "P_out": "282801864010286996",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2121180710440529248",
+   "P_out": "212021844100296996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "121080610440129248",
+   "P_out": "2212121944100696996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1111060601540079248",
+   "P_out": "222081854000386996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "111020600540039248",
+   "P_out": "12220c18550003c6996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4101400602444029248",
+   "P_out": "2320a1854100396996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101000600440029248",
+   "P_out": "42324a1856104396996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "51220200341019249",
+   "P_out": "302001c444002a6996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "41200200241009249",
+   "P_out": "312021c445002b6996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "61280210241109248",
+   "P_out": "302001c444002a6997",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "41200200241009248",
+   "P_out": "322081c544003a6997",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4011420202144019248",
+   "P_out": "342201c446012a6996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4001400202044009248",
+   "P_out": "352221c447012b6996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "9008208048009248",
+   "P_out": "4342601c466052a6996",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1000200040009248",
-   "P_out": "202001844000286996",
+   "P_out": "434a609c4e60d2a6996",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1512064c05d020f1248",
+   "P_out": "20100124004020e996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1510064401d02071248",
+   "P_out": "203001a4404028e996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1114062401580871248",
+   "P_out": "60100524084220e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1110060401500071248",
+   "P_out": "6050072408c2a0e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "512024c04d020b1248",
+   "P_out": "120104124104024e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "510024400d02031248",
+   "P_out": "1203041a450402ce996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "112020c045000b1248",
+   "P_out": "160104524184224e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110020400500031248",
+   "P_out": "1603045a458422ce996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "14120648059020d1248",
+   "P_out": "30100164044022e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10120608051000d1248",
+   "P_out": "701005640c4222e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "16022804180891248",
+   "P_out": "130104164144026e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12020804100091248",
+   "P_out": "13050436414c0a6e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10300e0011100151248",
+   "P_out": "303001e444402ae996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1010060001100051248",
+   "P_out": "323081e544403ae996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50220000301011248",
+   "P_out": "1303041e454402ee996",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "10020000100011248",
-   "P_out": "20100124004020e996",
+   "P_out": "1343241e456412ee996",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1502044c05c020e1248",
+   "P_out": "21102124014021e996",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102040c054000e1248",
+   "P_out": "61102524094221e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2102100d044004a1248",
+   "P_out": "121106124114025e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "102000c044000a1248",
+   "P_out": "321116134114065e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1140240401601061248",
+   "P_out": "213021a4414029e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "140200400601021248",
+   "P_out": "1213061a451402de996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1100040401400061248",
+   "P_out": "253221a4434129e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100000400400021248",
+   "P_out": "1253261a453412de996",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10060428050808c1248",
+   "P_out": "31102164054023e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1004042001080841248",
+   "P_out": "313021e445402be996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "24082010080901248",
+   "P_out": "131106164154027e996",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4002000080801248",
+   "P_out": "13310e165154037e996",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4020480012004101248",
+   "P_out": "3150236405c0a3e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4000400002004001248",
+   "P_out": "3350a36505c0b3e996",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1000040001000041248",
+   "P_out": "43154236425c4a3e996",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "1248",
-   "P_out": "21102124014021e996",
+   "P_out": "53154636435c4a7e996",
    "bound": 6,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "15e22ac0c7898b6880",
+   "P_out": "20000104000020135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "15c22a408789836880",
+   "P_out": "20200184400028135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2158328508709436880",
+   "P_out": "204003040080a0135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "158228408709036880",
+   "P_out": "2204103140080e0135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "105926820934905e880",
+   "P_out": "30000144040022135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1058268009309056880",
+   "P_out": "30100164044022935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "5922820834901e880",
+   "P_out": "130004144140026135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "58228008309016880",
+   "P_out": "130104164144026935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "111906860954807e880",
+   "P_out": "24020104020120135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101906820914805e880",
+   "P_out": "34020144060122135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1118068409508076880",
+   "P_out": "24120124024120935e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1018068009108056880",
+   "P_out": "34120164064122935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11902860854803e880",
+   "P_out": "124024104120124135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1902820814801e880",
+   "P_out": "134024144160126135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1c02a008188816880",
+   "P_out": "124124124124124935e",
+   "bound": 12,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "18028008108016880",
-   "P_out": "20000104000020135e",
+   "P_out": "12452432412c1a4935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1159268609749078000",
+   "P_out": "200001040000207bde",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1059268209349058000",
+   "P_out": "300001440400227bde",
    "bound": 12,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "159228608749038000",
+   "P_out": "1200041041000247bde",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "59228208349018000",
+   "P_out": "1300041441400267bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101b068a0d1480d8000",
+   "P_out": "240201040201207bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1019068209148058000",
+   "P_out": "242201844201287bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "119028608548038000",
+   "P_out": "1240241041201247bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "19028208148018000",
+   "P_out": "1340241441601267bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "ba8a883c118190000",
+   "P_out": "20100124004020fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3a0a881c108190000",
+   "P_out": "28180126005020fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11a028c0c5080b0000",
+   "P_out": "22108125004030fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1a02880c108090000",
+   "P_out": "32108165044032fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "b88a8038118110000",
+   "P_out": "203001a4404028fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "380a8018108110000",
+   "P_out": "283801a6405028fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "118028408508030000",
+   "P_out": "223081a5404038fbde",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "18028008108010000",
-   "P_out": "200001040000207bde",
+   "P_out": "323081e544403afbde",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "kill",
+   "P_in": "10692c821924914e880",
+   "P_out": "21002104010021135e",
+   "bound": 16
+  },
+  {
+   "kind": "giveup",
+   "P_in": "6928821824910e880",
+   "P_out": "121006104110025135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "406868801a20d106880",
+   "P_out": "21102124014021935e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "68288018209106880",
+   "P_out": "421142124214421935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "12908861844812e880",
+   "P_out": "25022104030121135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2908821804810e880",
+   "P_out": "35022144070123135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "a8888038018106880",
+   "P_out": "25122124034121935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "28088018008106880",
+   "P_out": "2d1a2126035121935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11290c8619448168000",
+   "P_out": "210021040100217bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "129088618448128000",
+   "P_out": "1210061041100257bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "402948821a04c108000",
+   "P_out": "310021440500237bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "29088218048108000",
+   "P_out": "4310421442504237bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "11280c8419408160000",
+   "P_out": "21102124014021fbde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10280c8019008140000",
+   "P_out": "31102164054023fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2a08881c008180000",
+   "P_out": "121106124114025fbde",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "28088018008100000",
-   "P_out": "21002104010021135e",
+   "P_out": "1213061a451402dfbde",
    "bound": 10,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110904860944806e880",
+   "P_out": "2300a105010031135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100904820904804e880",
+   "P_out": "3300a145050033135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10900860844802e880",
+   "P_out": "12300e105110035135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "900820804800e880",
+   "P_out": "13300e145150037135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "148208408609026880",
+   "P_out": "2310a125014031935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "108008408408026880",
+   "P_out": "2712a125034131935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1008048009008046880",
+   "P_out": "3310a165054033935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "8008008008006880",
+   "P_out": "13310e165154037935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1109048609448068000",
+   "P_out": "2300a1050100317bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "109008608448028000",
+   "P_out": "12300e1051100357bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "49208208249008000",
+   "P_out": "3300a1450500337bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "9008208048008000",
+   "P_out": "3702a1450701337bde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1108048409408060000",
+   "P_out": "2310a125014031fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "108008408408020000",
+   "P_out": "12310e125114035fbde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1008048009008040000",
+   "P_out": "3310a165054033fbde",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "8008008008000000",
-   "P_out": "2300a105010031135e",
-   "bound": 8,
-   "undecided": 13
+   "P_out": "13310e165154037fbde",
+   "bound": 6,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1451264201b4305e880",
+   "P_out": "20800904800820135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "105126020134105e880",
+   "P_out": "60800d04880a20135e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10612c021124114e880",
+   "P_out": "21802904810821135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "104124020124104e880",
+   "P_out": "2380a905810831135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101106020114005eca0",
+   "P_out": "24820904820920135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004eca0",
+   "P_out": "25822904830921135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110104060144006e880",
+   "P_out": "24820904820920177e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "100104020104004e880",
+   "P_out": "34820944860922177e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "20151223001c0c1e880",
+   "P_out": "120804904900824135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "150222001c081e880",
+   "P_out": "320814914900864135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "41102420094201e880",
+   "P_out": "120c04b049088a4135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1102020014001e880",
+   "P_out": "160c04f04988aa4135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1050026004c082e880",
+   "P_out": "121806904910825135e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10100060044002e880",
+   "P_out": "121c06b049188a5135e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "50022000c080e880",
+   "P_out": "131806944950827135e",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "100020004000e880",
-   "P_out": "20800904800820135e",
+   "P_out": "131c06b449588a7135e",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "14220c48158021c6880",
+   "P_out": "20900924804820935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "14020448058020c6880",
+   "P_out": "22908925804830935e",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10828408250100c6880",
+   "P_out": "60900d24884a20935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10020408050000c6880",
+   "P_out": "68980d26885a20935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10300e0011100156880",
+   "P_out": "20b009a4c04828935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10200c0011000146880",
+   "P_out": "21b029a4c14829935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3000140101000446880",
+   "P_out": "22b089a5c04838935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1000040001000046880",
+   "P_out": "222b189b5c04878935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "124082410480926880",
+   "P_out": "120904924904824935e",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "120080410400126880",
+   "P_out": "120d04b2490c8a4935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "a0880030010106880",
+   "P_out": "130904964944826935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "20080010000106880",
+   "P_out": "138984966945826935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2002100904000486880",
+   "P_out": "12290c925904834935e",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2000804000086880",
+   "P_out": "32291c935904874935e",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "40200000201006880",
+   "P_out": "122b0c9a5d0483c935e",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "6880",
-   "P_out": "20900924804820935e",
+   "P_out": "126b2c9a5d2493c935e",
    "bound": 6,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1151260601741078000",
+   "P_out": "208009048008207bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1150260401701070000",
+   "P_out": "20900924804820fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "3110160501500470000",
+   "P_out": "248209048209207bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1110060401500070000",
+   "P_out": "2248309148209607bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1013060a051400d8000",
+   "P_out": "308009448408227bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10120608051000d0000",
+   "P_out": "30900964844822fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "10300e0011100150000",
+   "P_out": "30a009c4c4082a7bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1010060001100050000",
+   "P_out": "32a089c5c4083a7bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "6110520502504430000",
+   "P_out": "1208049049008247bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2110120500500430000",
+   "P_out": "520844904b00c247bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "111020600540038000",
+   "P_out": "3208149149008647bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "110020400500030000",
+   "P_out": "320914934904864fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "94822020190810000",
+   "P_out": "1308049449408267bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "90820020110010000",
+   "P_out": "130c04b449488a67bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "300a0010100110000",
+   "P_out": "1388849469418267bde",
+   "bound": 10,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "10020000100010000",
-   "P_out": "208009048008207bde",
+   "P_out": "13a88c9479418367bde",
    "bound": 8,
-   "undecided": 13
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "21a0980530410520000",
+   "P_out": "218029048108217bde",
+   "bound": 14,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2180900520410420000",
+   "P_out": "2380a9058108317bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2081900320050408000",
+   "P_out": "318029448508237bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2080900120010400000",
+   "P_out": "31902964854823fbde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2404106100882c00000",
+   "P_out": "298829068118217bde",
+   "bound": 12,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2004102100080c00000",
+   "P_out": "69882d06891a217bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2400104100802400000",
+   "P_out": "29c82b068198a17bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "2000100100000400000",
+   "P_out": "69c82f06899aa17bde",
+   "bound": 6,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1101040601440068000",
+   "P_out": "2218129148108617bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "101000600440028000",
+   "P_out": "3218169149108657bde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "4001400202044008000",
+   "P_out": "2318129548508637bde",
+   "bound": 10,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "1000200040008000",
+   "P_out": "631852954a50c637bde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "404006000882800000",
+   "P_out": "221912934814861fbde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "400004000802000000",
+   "P_out": "221d12b3481c8e1fbde",
+   "bound": 8,
+   "undecided": 9
+  },
+  {
+   "kind": "giveup",
+   "P_in": "80800020010000000",
+   "P_out": "261912d34894a61fbde",
+   "bound": 8,
+   "undecided": 9
   },
   {
    "kind": "giveup",
    "P_in": "0",
-   "P_out": "218029048108217bde",
+   "P_out": "269992d36895a61fbde",
    "bound": 4,
-   "undecided": 13
+   "undecided": 9
   }
  ]
 }

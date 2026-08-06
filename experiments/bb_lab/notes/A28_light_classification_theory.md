@@ -165,11 +165,17 @@ f2a6 numbers (`a28_m_f2a6.py`, `a28_diag_gap.py`, `a28_diag_joint.py`):
   dim 71 of 75 — the defining sets classical spectral bounds grip on have
   size 4, scattered, run-free. vL–W-class machinery excels in the
   opposite corner (low-rate, structured zero sets).
-- **Kills exist but deep**: one 4-orbit-in cell reaches union bound
-  8 + 8 = 16 ≥ 15; the depth-6 tree (125 nodes, 21 s) achieves 4 kills /
-  59 giveups with all 113 classes safely in giveups; the depth-10 tree
-  kills more but the partition cost grows exponentially while
-  certified-empty-but-game-blind cells (above) can never be closed.
+- **Kills exist but deep — the measured curve**: one 4-orbit-in cell
+  reaches union bound 8 + 8 = 16 ≥ 15. Depth-6 tree: 125 nodes, 4 kills,
+  59 giveups, 21 s (4/4 certificates replay). Depth-10 tree: 1,697
+  nodes, **119 kills, 730 giveups**, 593 s; all 113 classes still land
+  in giveups, 0 violations; 115/119 kill certificates re-derived and
+  replay-verified (the remaining 4 came from the weaker quick-beam pass
+  and did not re-derive at verification beam — carried as UNVERIFIED).
+  Kill fraction grew 3.2% → 7.0% of nodes while the open frontier grew
+  12× — the exponential-partition-cost prediction, quantified: the tree
+  cannot converge at threshold 2d − 2 while game-blind
+  certified-empty cells (above) exist.
 
 **Verdict on the user's scouted residue**: van Lint–Wilson shifting is
 sound, cheap, exactly computable here, and delivers (i) tiny root-level
@@ -320,9 +326,12 @@ site-symmetry"). Closed.
 - 2026-08-06 (later): docket5e census landed (2,371 classes, 870 s) and
   its trisection validated (sectors 1/0/2370, H-census bijection ✓) —
   Theorem T now at 4,574/4,574 clauses across two codes. §6 gates 1–2
-  are therefore fully data-backed for BOTH docket cells. Deep dichotomy
-  tree (depth 10) left running for the kill-rate curve; its result
-  refines §3.5 but changes no verdict.
+  are therefore fully data-backed for BOTH docket cells.
+- 2026-08-06 (final): depth-10 dichotomy tree landed (1,697 nodes /
+  119 kills / 730 giveups / 593 s; 115 replay-verified certificates,
+  4 unverified; all 113 classes in giveups, 0 violations) — §3.5 curve
+  updated; verdicts unchanged. `data/a28/dichotomy_f2a6.json` now holds
+  the depth-10 tree.
 
 ## Appendix. Verification map
 
