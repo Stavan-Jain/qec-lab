@@ -14,6 +14,7 @@ docs/*
 !docs/gross-distance-proof.md
 !docs/gross-distance-proof.tex
 !docs/teaching/
+!docs/talks/
 
 # Cursor local state and continual-learning index
 .cursor/
