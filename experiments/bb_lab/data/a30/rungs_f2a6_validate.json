@@ -1,0 +1,1064 @@
+{
+ "cell": "f2a6:y",
+ "d": 8,
+ "target": 16,
+ "n_classes_total": 113,
+ "n_run": 113,
+ "sector_dim": 8,
+ "kerE_dim": 79,
+ "per_lane": {
+  "restricted<= 4": {
+   "n": 1,
+   "tot_s": 0.02,
+   "max_s": 0.0177
+  },
+  "restricted<= 2": {
+   "n": 7,
+   "tot_s": 0.1,
+   "max_s": 0.0143
+  },
+  "restricted<= 1": {
+   "n": 36,
+   "tot_s": 0.51,
+   "max_s": 0.0149
+  },
+  "restricted<= 0": {
+   "n": 69,
+   "tot_s": 1.0,
+   "max_s": 0.0264
+  }
+ },
+ "results": [
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 4",
+   "w_b": 6,
+   "M": 5,
+   "sectors_nontrivial": 240,
+   "class_index": 0,
+   "secs": 0.0177
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 1,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 2,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 3,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 4,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 5,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 6,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 2",
+   "w_b": 10,
+   "M": 3,
+   "sectors_nontrivial": 240,
+   "class_index": 7,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 8,
+   "secs": 0.0137
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 9,
+   "secs": 0.0137
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 10,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 11,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 12,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 13,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 14,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 15,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 16,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 17,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 18,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 19,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 20,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 21,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 22,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 23,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 24,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 25,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 26,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 27,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 28,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 29,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 30,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 31,
+   "secs": 0.0149
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 32,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 33,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 34,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 35,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 36,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 37,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 38,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 39,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 40,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 41,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 42,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 1",
+   "w_b": 12,
+   "M": 2,
+   "sectors_nontrivial": 240,
+   "class_index": 43,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 44,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 45,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 46,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 47,
+   "secs": 0.0137
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 48,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 49,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 50,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 51,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 52,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 53,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 54,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 55,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 56,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 57,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 58,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 59,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 60,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 61,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 62,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 63,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 64,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 65,
+   "secs": 0.0248
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 66,
+   "secs": 0.0264
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 67,
+   "secs": 0.0188
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 68,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 69,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 70,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 71,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 72,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 73,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 74,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 75,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 76,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 77,
+   "secs": 0.0138
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 78,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 79,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 80,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 81,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 82,
+   "secs": 0.0144
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 83,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 84,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 85,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 86,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 87,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 88,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 89,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 90,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 91,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 92,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 93,
+   "secs": 0.0143
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 94,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 95,
+   "secs": 0.0142
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 96,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 97,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 98,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 99,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 100,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 101,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 102,
+   "secs": 0.0139
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 103,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 104,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 105,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 106,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 107,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 108,
+   "secs": 0.0141
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 109,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 110,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 111,
+   "secs": 0.014
+  },
+  {
+   "verdict": "PASS",
+   "lane": "restricted<= 0",
+   "w_b": 14,
+   "M": 1,
+   "sectors_nontrivial": 240,
+   "class_index": 112,
+   "secs": 0.0141
+  }
+ ],
+ "verdicts": {
+  "PASS": 113
+ },
+ "wall_s": 1.7,
+ "all_pass": true,
+ "control": {
+  "control": "tau(u)+S(z)",
+  "wt_v": 20,
+  "w_b": 6,
+  "overflow": 7,
+  "checker": "VIOLATION",
+  "found_at_or_below": true,
+  "ok": true
+ }
+}
