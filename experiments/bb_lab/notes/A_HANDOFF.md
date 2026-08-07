@@ -197,6 +197,21 @@ A4 Theorem D).
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
 >
+> **A30 (2026-08-07, `A30_coset_bz_doubling_certificates.md`): the
+> docket is CLOSED — first d = 10 → 20 doublings.** Coset-BZ (A28's
+> two-window counting invariant seeded at A29's seam offsets; safe
+> floors are coset weights) certified all 3 remaining docket UNKNOWNs
+> within a 15-min/code box: both Z₁₅×Z₆ [[180,4,10]] codes double on
+> every axis — 37a70e02:x, 5e50a976:x/y all SF-20 CERTIFIED (785·10⁹
+> nodes, 0 hits, 6.3–8.3 min) — plus a 0.6 s second-species cross-check
+> of the CMS-certified Z₂₁×Z₃ 16884e06:y (A29 §5.3's "4 UNKNOWNs" was
+> a stale-row miscount; the true count was 3).
+> Full [[360,4,20]] template input sets at certificate tier
+> (LogicalFloor 10 + exactness witnesses + A28 censuses + (R) + SF-20);
+> deficit wall cleared for the first time. Validation 10/10 vs all
+> recorded coset ground truths (A29's new decisions independently
+> reproduced). Lean packaging per the A15 pattern = follow-on 1.
+>
 > **A28 (2026-08-06, `A28_light_classification_theory.md`): the light
 > census is a COMMODITY; spectral kill engines are measured out.**
 > Certified Brouwer–Zimmermann enumeration (two-window completeness =

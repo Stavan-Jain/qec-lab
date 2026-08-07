@@ -733,6 +733,26 @@ what was tried and why it didn't work.
   `LightClassification` (A22).
   [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)
 
+- 2026-08-07 — A30 coset-BZ doubling certificates — success — safe
+  floors recast as coset weights and decided by the A28 two-window
+  enumeration seeded at A29's seam offsets (asymmetric (r, r−1)
+  complete pairs; exact node-count invariants; multi-offset shared
+  walks). All three remaining A17-docket UNKNOWNs certified inside a
+  15-min/code budget: both Z₁₅×Z₆ [[180,4,10]] codes SF-20 on every
+  axis (37a70e02:x 378 s; 5e50a976:x+y 499 s one pass) — the docket has
+  zero UNKNOWN cells left — plus a 0.6 s second-species cross-check of
+  the CMS-certified Z₂₁×Z₃ 16884e06:y (A29 §5.3's "4 UNKNOWNs" was a
+  stale-row miscount).
+  With base floors certified both sides + weight-10 exactness
+  witnesses + A28 censuses + (R), the full [[360,4,20]] doubling
+  template input sets exist at certificate tier: the program's first
+  d = 10 → 20 doublings and the first codes to clear the 2d − 2
+  deficit wall. Validation 10/10 against every recorded coset ground
+  truth (A29's ac46bbea/38d3c884 decisions independently reproduced by
+  a second certificate species). Lean packaging (A15 pattern) is the
+  named follow-on.
+  [details](../experiments/bb_lab/notes/A30_coset_bz_doubling_certificates.md)
+
 - 2026-08-06 — A28 light-stabilizer classification theory — success —
   the light census (input I2 of the doubling template) is now cheap and
   independently certified: a Brouwer–Zimmermann census certifier

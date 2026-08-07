@@ -1,0 +1,26 @@
+{
+ "37a70e02": {
+  "refuted_at_11": true,
+  "side_minima": {
+   "X": [
+    10
+   ],
+   "Z": [
+    10
+   ]
+  },
+  "secs": 1.0
+ },
+ "5e50a976": {
+  "refuted_at_11": true,
+  "side_minima": {
+   "X": [
+    10
+   ],
+   "Z": [
+    10
+   ]
+  },
+  "secs": 0.9
+ }
+}

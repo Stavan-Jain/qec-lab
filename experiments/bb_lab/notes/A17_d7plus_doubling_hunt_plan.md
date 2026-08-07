@@ -289,6 +289,10 @@ timeout, ~2 h wall. Results (data/a17/docket_decision.jsonl):
   5e50a9:x/y) resisted 2h+ per query (n = 180 at bound 18 is a harder
   class). Honest open; candidates for longer budgets, a totalizer
   cardinality encoding, or a bigger machine.
+  **[RESOLVED 2026-08-07: all three SF-20 CERTIFIED by A30 coset-BZ
+  (enumeration counting certificates, 6.3–8.3 min/code) — the docket
+  has no UNKNOWN cells left; full doubling-template scoreboards in
+  `A30_coset_bz_doubling_certificates.md` §5.]**
 
 **Both-axes codes (each = two independent certified doubling axes):**
 e21c6389 (Z21xZ3), 16884e06 (Z21xZ3), 38d3c884 (Z5xZ15).
