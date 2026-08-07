@@ -171,6 +171,52 @@ certificate mass is the known route). The dangerous-sector Lean theorem
 exists today only for the [[300,8,16]] instance — its architecture is
 portable, its Lean artifact is not.
 
+## 5.5. Session 2 (2026-08-07): the rung pass — d = 20 END-TO-END
+
+The §5 scoreboard's one pending arrow (classification ⟹ dangerous floor)
+is now discharged: `scripts/a30_rung_pass.py` certifies **(M) at 20** for
+every census class of all three cells. Per the teaching doc's dangerous
+sector: a nontrivial dangerous logical has sheets (v₀, v₀ + b), shadow
+b = p(v) a stabilizer, wt(v) = wt(b) + 2·overflow (slice identity), and
+(M) needs overflow ≥ M(b) = d − wt(b)/2 per class. The checker computes
+this directly: the cover-cycle condition is the affine system
+E·v₀ = rhs(b) with E class-independent (one 180×180 matrix per cell);
+solutions decompose into ≤ 2^{k/2} sectors of ker E / im S with
+per-sector cover-boundary triviality; violations are hunted by two
+complete lanes — restricted-support enumeration with meet-in-the-middle
+subset sums over E's reduced columns (M − 1 ≤ 4: the heavy strata), and
+the multi-offset coset-BZ over the same κ=88 windows as §3 (light
+strata). Every candidate is re-verified (solution check, slice identity,
+non-boundary) before it could count as a violation.
+
+**Validation**: f2a6:y — 113/113 PASS in 1.7 s, reproducing the Lean
+theorem `dangerousFloorNZ_of_lightClassification`'s instance (A17 §6.5),
+with the lane split (1+7+36+69) matching the census histogram exactly;
+plus a soundness control that hand-builds a genuine dangerous logical
+(τ(u) + S̃(z̃), weight 20, stamp shadow, overflow 7) and confirms the
+checker FINDS it at an inflated target.
+
+**Results** (`data/a30/rungs_*.json`):
+
+| cell | classes | verdict | wall | lanes |
+|---|---|---|---|---|
+| 37a70e02:x | 2,203 | **ALL PASS** | 7.0 s | 1 bz + 6 r≤4 + 42 r≤3 + 54 r≤2 + 478 r≤1 + 1622 r≤0 |
+| 5e50a976:x | 2,371 | **ALL PASS** | 7.2 s | 1 + 6 + 43 + 55 + 503 + 1763 |
+| 5e50a976:y | 2,371 | **ALL PASS** | 7.0 s | (same strata) |
+
+**Sector-completeness accounting** (why this closes d = 20): every
+nonzero cover class's shadow is either (i) a stabilizer — the dangerous
+sector: b = 0 via LogicalFloor 10 (§5, certified), light b via census
+completeness (A28) + these per-class certificates, heavy b via the slice
+identity — or (ii) a base logical whose class lies in im p₁ = im δ₂
+(A15-P3/A17), i.e. in one of the three Δ-classes whose full cosets §3
+certified ≥ 20, so the projection bound wt(v) ≥ wt(p(v)) ≥ 20 closes it.
+With the lifted weight-20 witness (§5): **d([[360,4,20]]) = 20 at
+certificate tier, end-to-end, for 37a70e02:x and 5e50a976:x/y** (X-side;
+Z by the BB transpose duality, teaching doc §"one side suffices", as in
+the [[300,8,16]] packaging). Updated per-code totals: 17.4 min and
+23.1 min of wall-clock — the rung pass added ~7 s per cell.
+
 ## 6. Deliverables and follow-ons
 
 Shipped: `scripts/a30_coset_bz.py` (validate + decide + the C kernel,
