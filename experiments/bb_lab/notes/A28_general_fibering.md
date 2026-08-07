@@ -193,14 +193,17 @@ Engine results (`data/a28/docket_engine*.jsonl`):
 | `38d3c884:x` | [[150,8,8]] Z₅×Z₁₅, B = y⁹+y¹²+x²y⁴ | 16 | **CERTIFIED** | ~20 s | refute@18 ⟹ **d_safe = 16 EXACT** |
 | `38d3c884:y` | same code, y-axis | 16 | **CERTIFIED** | ~20 s | certify@18 too ⟹ **d_safe ≥ 18** |
 
-All three run on **diagonal fibers** z = (1,3)/(1,12) whose ε-monomial
-links only the automatic fiber enumeration surfaced (the standard y³
-fiber has *no* link for these B's — A22's hand-chosen fiber would have
-missed them). The `38d3c884` classes carry nonzero τ (ε-twisted seam
-classes — a phenomenon f2a6 never exhibited, since its kernel is pure
-δ-sector); the τ-state sweep of L3/L4 is what decides them. The
-exactness pins are solver-free in both directions: sweep certificates
-below, verified non-boundary witnesses above.
+Fiber anatomy (verified by direct τ inspection): `ac46bbea:y` carries
+the ε-link on the standard y³ fiber with τ ≡ 0 — a straight f2a6-shape
+port, hence 1.4 s. `38d3c884` has **no link on the standard fiber**;
+the enumeration surfaces two diagonal linked fibers, z = (1,3) with
+τ-weight 8 (an ε-twisted seam class — a phenomenon f2a6 never
+exhibited, its kernel being pure δ-sector) and z = (1,12) with τ ≡ 0;
+the per-class frame fallback decides on the clean frame, while the
+τ-state sweep of L3/L4 is what makes twisted frames usable at all.
+Hand-picking fibers (the A22 workflow) would have missed all of this.
+The exactness pins are solver-free in both directions: sweep
+certificates below, verified non-boundary witnesses above.
 
 ### 5.2 THE A8 OPEN CORE IS CLOSED
 
@@ -223,11 +226,19 @@ first d = 6 → 12 doubling with a solver-free safe floor.
 
 ### 5.3 Validation rows and the engine boundary
 
-Full-docket rerun (`docket_engine_final.jsonl`): f2a6f17e:y (the one
-Z₅×Z₁₅ SF-CERTIFIED row in engine reach) re-certifies in ~1 s,
-agreeing with its CMS UNSAT@14. The 14 Z₂₁×Z₃ SF-CERTIFIED rows and
-the 4 remaining UNKNOWNs (three Z₁₅×Z₆ floor-20 cells = A27's targets,
-one Z₂₁×Z₃) are **beyond engine v1**, with a precise diagnosis each:
+Two full-docket passes are recorded. `docket_engine_full.jsonl`
+(pre-DFS scorer): f2a6f17e:y — the one Z₅×Z₁₅ SF-CERTIFIED row in
+engine reach — re-certifies in 1.3 s, agreeing with its CMS UNSAT@14;
+Z₂₁×Z₃ rows report NO-FEASIBLE-FIBER. `docket_engine_final.jsonl`
+(current engine; 17 of 21 rows before the run was cut): the three
+Z₅×Z₁₅ UNKNOWNs re-certify (0.3 s / ~19 s / ~19 s), 13 Z₂₁×Z₃ rows
+return honest UNDECIDED after burning their node caps (~2–10 min
+each), and the first Z₁₅×Z₆ floor-20 row spent 3,754 s across its two
+unpaired frames before returning UNDECIDED — the measured shape of the
+v1 boundary (the remaining three Z₁₅×Z₆ rows were cut as
+same-diagnosis stragglers). Every SF-CERTIFIED row the engine can
+reach agrees with its SAT verdict; no row anywhere disagrees. The
+boundary rows have a precise diagnosis each:
 
 * **Z₂₁×Z₃ (q=3 frames):** no fiber carries the ε-link (all ε-images
   collapse to monomial-vs-trinomial pairs), and in unpaired mode the
@@ -249,8 +260,14 @@ safe-floor problem *recurses into the ε-quotient BB code*, cf. §6).
 
 by90 ([[90,8,8]] Z₃₀×Z₃, the Bravyi-360 tower bottom whose x-rung
 freezes at 12 < 16, A14 §13): the engine must NOT certify floor 16.
-Result recorded in `data/a28/extra_targets.jsonl` (no false
-certificate; decision-or-abort per the same diagnosis as above).
+Disposition: no linked fiber (frame scoreboard in
+`data/a28/extra_targets.jsonl`); the unpaired q=5/q=3 DFS attempts
+burned caps for ~50 min without any certificate and the run was
+killed — the required outcome (**no false certificate on a known-false
+floor**) is met by construction and by the run; a witness-producing
+refutation at this size awaits the ε-recursion/orbit-reduction
+upgrades. (An engine-refuted known-false floor IS on record at small
+size: pair72 target-10, §4.)
 
 ## 6. Limits, residue, and the follow-on program
 
@@ -297,6 +314,25 @@ than A23's: data + sweeps only. Estimated at 1–2 sessions for the A8
 instance on the established pattern; the generic engine-emitter (one
 generator serving all instances, in the GENERATORS.md discipline) is
 the natural S-track follow-on.
+
+## 8. Position in the program narrative (the teaching doc)
+
+`docs/teaching/bb-doubling-theorem.pdf` presents the doubling theorem
+as four conditions on the base; read as a recipe, the safe floor is
+its cost center, and the doc's honest footnote was "per new code this
+is solver-hours with no proof artifact." A28 replaces that footnote:
+on engine-reachable codes the safe floor is a uniform seconds-scale
+certified procedure. Two narrative corrections flow back into any
+future edition: (i) the gross-specific F₄ rigidity the doc must caveat
+is *provably incidental for the safe floor* (the A8 §5.2 closure never
+touches it — the invariant content of the weight tables is a residue
+map and popcount); (ii) the "how general is this?" outlook question
+(which A27 answered with a tiering) now has a constructive middle:
+Tier 2's "portable recipe, per-code execution" is mechanized, and the
+per-code residue is localized in one named object — the ε-quotient
+recursion. The loop exposition → gap (A27 P5) → repair (τ-states) →
+new theorems (docket cells, A8 core) is itself worth a paragraph in
+the teaching doc's closing section.
 
 ## Appendix: verification map
 
