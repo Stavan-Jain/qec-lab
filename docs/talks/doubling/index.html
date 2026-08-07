@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Doubling Argument — slides</title>
+<!--
+  ============================================================================
+  The Doubling Argument — advisor talk (14 slides)
+  ============================================================================
+  Present:  open this file in a browser, press F for fullscreen.
+  Keys:     ← → (or clicker PgUp/PgDn) step builds & slides · N notes · ? help
+  Builds:   staggered reveals are the DEFAULT presenting style — designed
+            slides carry data-frag="n" steps; entering a slide forward starts
+            with builds hidden, each → reveals one. PDF prints fully built.
+  PDF:      Cmd+P from Chrome → each slide is one 1280×720 page.
+  Edit:     each slide is a <section class="slide"> below; search "SLIDE 7".
+
+  SLIDE MAP                                             status
+    1   (title slide)                                   DESIGNED
+    2   Certifying distance is expensive                DESIGNED · 6 builds
+    3   BB codes and their covers                       DESIGNED · 6 builds
+    4   Qubits on a grid, stabilizers as stamps         DESIGNED · 4 builds
+    5   The cover code: two sheets                      DESIGNED · 5 builds
+    6   The fold map                                    DESIGNED · 4 builds
+    7   The diagonal lift                               DESIGNED · 2 builds
+    8   Folding: a lower bound for free                 DESIGNED · 8 builds
+    9   Lifting doubles weight                          DESIGNED · 5 builds (setting on entry)
+    10  When lifts collapse: im Δ                       DESIGNED · 4 builds (setting on entry)
+    11  Three fates of a cover logical                  DESIGNED · 8 builds
+    12  The safe sector: confinement into im Δ          DESIGNED · 3 builds (setting + im Δ on entry)
+    13  The dangerous sector: light stabilizers         DESIGNED · 4 builds
+    14  The doubling theorem                            DESIGNED · 9 builds
+
+  DESIGN TOKENS (validated with the dataviz palette checker on --paper):
+    Z-type blue #2F6DB0 · X-type red #B23B33 · logical gold #C98500
+    (gold marks must always carry a direct label; green #2F7D44 is status-only,
+    always with a check icon + label, never adjacent-unlabeled to red)
+  ============================================================================
+-->
+<style>
+  :root{
+    /* surfaces + ink */
+    --paper:#FBFAF7; --letterbox:#ECEAE3;
+    --ink:#20232A; --ink-2:#565349; --muted:#8A867C;
+    --hair:#E0DCD1; --base-line:#C8C4B8;
+    /* semantic colors (see header note) */
+    --z-blue:#2F6DB0; --x-red:#B23B33; --gold:#C98500; --ok:#2F7D44;
+    --z-wash:rgba(47,109,176,.09); --x-wash:rgba(178,59,51,.08);
+    --gold-wash:rgba(201,133,0,.10);
+    /* type */
+    --serif:"Iowan Old Style","Palatino Nova",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --mono:"SF Mono",ui-monospace,Menlo,Consolas,monospace;
+    --s:1;
+  }
+  html,body{height:100%;margin:0}
+  body{background:var(--letterbox);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+
+  /* ---- stage: fixed 1280×720 design space, scaled to the viewport ---- */
+  .stage{
+    position:fixed;left:50%;top:50%;width:1280px;height:720px;
+    transform:translate(-50%,-50%) scale(var(--s));
+  }
+  .slide{
+    position:absolute;inset:0;background:var(--paper);
+    opacity:0;visibility:hidden;transition:opacity .16s ease;
+    overflow:hidden;
+  }
+  .slide.current{opacity:1;visibility:visible}
+  .notes{display:none}
+
+  /* ---- shared slide chrome ---- */
+  .sl-head{position:absolute;left:84px;top:56px;right:84px}
+  .tick{width:34px;height:5px;border-radius:3px;background:var(--gold);margin-bottom:18px}
+  .sl-head h2{margin:0;font:600 44px/1.15 var(--serif);letter-spacing:-.01em;color:var(--ink)}
+  .sl-num{position:absolute;right:44px;bottom:32px;font:13px var(--sans);letter-spacing:.06em;color:var(--muted)}
+  .bb{font-family:"STIX Two Text","Cambria Math","Apple Symbols",var(--serif)}
+
+  /* ---- placeholder scaffold (removed as each slide gets designed) ---- */
+  .ph{
+    position:absolute;left:84px;right:84px;top:184px;bottom:70px;
+    border:1.5px dashed var(--base-line);border-radius:16px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:16px;text-align:center;padding:0 60px;
+  }
+  .ph-main{font:600 13px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .ph-beat{font:italic 400 18px/1.55 var(--serif);color:var(--ink-2);max-width:660px}
+  .ph-draft{font:13.5px/1.55 var(--sans);color:var(--muted);max-width:700px}
+
+  /* ================= slide 1 · title ================= */
+  .t-wrap{position:absolute;left:110px;top:168px;right:110px}
+  .t-eyebrow{font:600 16px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-2)}
+  .t-title{margin:24px 0 0;font:600 86px/1.05 var(--serif);letter-spacing:-.015em;color:var(--ink)}
+  .t-rule{width:64px;height:5px;border-radius:3px;background:var(--gold);margin:36px 0 28px}
+  .t-sub{font:24px/1.45 var(--sans);color:var(--ink-2);max-width:660px}
+  .t-meta{position:absolute;left:110px;bottom:84px;font:18px var(--sans);color:var(--ink)}
+  .t-meta .sep{color:var(--muted);margin:0 10px}
+  .t-meta .dt{color:var(--ink-2)}
+  .t-motif{position:absolute;right:88px;bottom:78px}
+
+  /* ================= slide 14 · summary ================= */
+  .band-tag{font:600 12.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .sum-thm{position:absolute;left:84px;right:84px;top:172px}
+  .thm-flow{display:flex;align-items:center;gap:28px}
+  .code-card{
+    flex:0 0 292px;height:148px;background:#fff;border:1.5px solid var(--hair);
+    border-radius:14px;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:7px;
+  }
+  .cc-name{font:600 12px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .cc-params{font:600 33px var(--mono);letter-spacing:-.02em;color:var(--ink)}
+  .cc-params .gold{color:var(--gold)}
+  .cc-sub{font:15px var(--sans);color:var(--ink-2)}
+  .cc-cover{border-color:rgba(201,133,0,.5);background:linear-gradient(180deg,#fff, #FFFDF6)}
+  .thm-arrow{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}
+  .ta-lbl{font:15px var(--sans);color:var(--ink-2);white-space:nowrap}
+  .thm-arrow svg{display:block;width:100%;height:22px}
+
+  .sum-cond{position:absolute;left:84px;right:84px;top:408px}
+  .chips{display:flex;gap:18px}
+  .chip{
+    flex:1;background:#fff;border:1.5px solid var(--hair);border-radius:12px;
+    padding:15px 18px;display:flex;align-items:center;gap:15px;
+  }
+  .chip-n{
+    flex:0 0 30px;height:30px;border:1.5px solid var(--ink);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font:600 16px var(--serif);color:var(--ink);
+  }
+  .chip-t{font:600 16.5px var(--sans);color:var(--ink)}
+  .chip-s{font:13.5px var(--sans);color:var(--muted);margin-top:3px}
+
+  .sum-inst{position:absolute;left:84px;right:84px;top:532px}
+  .insts{display:flex;gap:18px}
+  .inst{
+    flex:1;position:relative;background:#fff;border:1.5px solid var(--hair);
+    border-radius:12px;padding:16px 18px 14px;
+  }
+  .inst-hi{border-left:3px solid var(--gold)}
+  .inst-row1{display:flex;align-items:baseline;gap:9px;font:600 18px var(--mono);color:var(--ink);white-space:nowrap}
+  .inst-arr{color:var(--muted);font-family:var(--sans)}
+  .inst-polys{margin-top:9px;font:13px var(--mono);color:var(--ink-2)}
+  .inst-polys sup{font-size:.68em}
+  .inst-name{position:absolute;right:14px;bottom:12px;font:12.5px var(--sans);color:var(--muted)}
+  .inst-check{position:absolute;right:12px;top:10px;font:13px var(--sans);color:var(--ok)}
+
+  /* ---- staggered reveals (data-frag="n" appears on the nth keypress) ---- */
+  [data-frag]{opacity:0;transform:translateY(8px);transition:opacity .28s ease,transform .28s ease}
+  [data-frag].on{opacity:1;transform:none}
+  .instant [data-frag]{transition:none}
+
+  /* ---- diagram slides (6–9) ---- */
+  .diagram{position:absolute;left:84px;right:84px}
+  .diagram svg{display:block}
+  .diagram text{font-family:var(--sans)}
+  .diagram .t-cap{font-size:13px;fill:var(--ink-2)}
+  .diagram .t-mut{font-size:12.5px;fill:var(--muted)}
+  .diagram .t-lab{font-size:11.5px;fill:var(--muted);letter-spacing:.09em;text-transform:uppercase}
+  .diagram .t-sym{font-family:var(--serif);font-size:30px;fill:var(--ink-2)}
+  .diagram .t-zero{font-family:var(--serif);font-size:34px;fill:#8A867C}
+  .diagram .t-gold{font-size:13px;font-weight:600;fill:#8A5C00}
+  .diagram .t-it{font-family:var(--serif);font-style:italic}
+  .diagram .t-name{font-family:var(--serif);font-weight:600;font-size:23px}
+  .diagram .t-mono{font-family:var(--mono);font-weight:600;fill:var(--ink)}
+  .diagram .t-x{fill:#8A2F28;font-weight:700;font-size:11.5px}
+  .diagram .t-z{fill:#1F4E7A;font-weight:700;font-size:11.5px}
+  .diagram .t-math{font-family:var(--serif);font-style:italic;fill:var(--ink-2)}
+  .d-band1{top:200px;height:190px}
+  .d-band2{top:414px;height:236px}
+  .d-lift{top:280px;height:260px}
+  .d-space{top:186px;height:430px}
+  .d-cov1{top:166px;height:206px}
+  .d-cov2{top:400px;height:256px}
+  .d-blocks{top:240px;height:420px}
+  .d-fates{top:186px;height:400px}
+  .d-lights{top:248px;height:300px}
+  .d-motiv{top:176px;height:474px}
+  .d-sheets{top:172px;height:480px}
+  .block-note{position:absolute;left:84px;bottom:32px;font:12.5px var(--sans);color:var(--muted)}
+  .concl{
+    position:absolute;left:50%;bottom:44px;transform:translateX(-50%);
+    background:#fff;border:1.5px solid var(--hair);border-radius:999px;
+    padding:11px 26px;font:16.5px var(--sans);color:var(--ink);white-space:nowrap;
+  }
+  .concl .sep{color:var(--muted);margin:0 12px}
+
+  /* ---- overlays (outside the scaled stage) ---- */
+  .overlay{position:fixed;z-index:50}
+  #notesOv{
+    left:0;right:0;bottom:0;max-height:44vh;overflow:auto;
+    background:rgba(251,250,247,.97);border-top:1px solid var(--hair);
+    box-shadow:0 -8px 30px rgba(32,35,42,.10);padding:16px 36px 26px;
+  }
+  #notesOv h3{margin:0 0 10px;font:600 12.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  #notesBody{font:15.5px/1.62 var(--sans);color:var(--ink);max-width:1080px}
+  #helpOv{
+    left:50%;top:50%;transform:translate(-50%,-50%);
+    background:var(--paper);border:1px solid var(--hair);border-radius:14px;
+    box-shadow:0 18px 60px rgba(32,35,42,.16);padding:24px 32px 28px;min-width:400px;
+  }
+  #helpOv h3{margin:0 0 14px;font:600 12.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  #helpOv table{border-collapse:collapse;font:15px var(--sans);color:var(--ink)}
+  #helpOv td{padding:5px 0}
+  #helpOv td:first-child{padding-right:26px;color:var(--ink-2)}
+  kbd{
+    font:600 12.5px var(--mono);background:#fff;border:1px solid var(--base-line);
+    border-bottom-width:2px;border-radius:5px;padding:2px 7px;color:var(--ink);
+  }
+
+  /* ---- print → PDF: one page per slide ---- */
+  @page{size:1280px 720px;margin:0}
+  @media print{
+    body{background:#fff}
+    .stage{position:static;width:auto;height:auto;transform:none}
+    .slide{
+      position:relative;inset:auto;width:1280px;height:720px;
+      opacity:1;visibility:visible;page-break-after:always;break-after:page;
+    }
+    [data-frag]{opacity:1!important;transform:none!important}
+    .overlay{display:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+
+  <!-- ================= SLIDE 1 · title ================= -->
+  <section class="slide s-title current" data-title="Title">
+    <div class="t-wrap">
+      <div class="t-eyebrow">Bivariate bicycle codes</div>
+      <h1 class="t-title">The Doubling Argument</h1>
+      <div class="t-rule"></div>
+      <div class="t-sub">an analytic reduction for certifying code distance</div>
+    </div>
+    <div class="t-meta">Stavan Jain<span class="sep">·</span><span class="dt">August 2026</span></div>
+    <!-- decorative motif: a base lattice sitting inside its doubled cover -->
+    <svg class="t-motif" width="440" height="220" viewBox="0 0 456 228" aria-hidden="true">
+      <defs>
+        <pattern id="dotsA" width="38" height="38" patternUnits="userSpaceOnUse">
+          <circle cx="19" cy="19" r="4.5" fill="#B9B3A4"/>
+        </pattern>
+        <pattern id="dotsB" width="38" height="38" patternUnits="userSpaceOnUse">
+          <circle cx="19" cy="19" r="4.5" fill="#DBD6C9"/>
+        </pattern>
+      </defs>
+      <rect x="228" y="0" width="228" height="228" fill="url(#dotsB)"/>
+      <rect x="0" y="0" width="228" height="228" fill="url(#dotsA)"/>
+      <rect x="3" y="3" width="450" height="222" rx="20" fill="none" stroke="rgba(32,35,42,.10)" stroke-width="1.5"/>
+      <rect x="3" y="3" width="222" height="222" rx="20" fill="none" stroke="rgba(32,35,42,.22)" stroke-width="1.5"/>
+    </svg>
+    <aside class="notes">(Title slide — no script. Introduce the talk, then advance.)</aside>
+  </section>
+
+  <!-- ================= SLIDE 2 ================= -->
+  <section class="slide" data-title="Certifying distance is expensive">
+    <header class="sl-head"><div class="tick"></div><h2>Certifying distance is expensive</h2></header>
+
+    <!-- build 1: the certification wall · 2: all Pauli operators · 3: cycles · 4: stabilizers · 5: the lightest logical = d · 6: the plan -->
+    <div class="diagram d-motiv">
+      <svg width="1112" height="474" viewBox="0 0 1112 474" aria-label="Certifying BB-code distance is intractable beyond d of 16 to 18; distance is the lightest operator that commutes but is not a stabilizer">
+        <defs>
+          <pattern id="hatch2" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="#C8C4B8" stroke-width="1.5"/>
+          </pattern>
+        </defs>
+        <g data-frag="1">
+          <text class="t-cap" x="722" y="16" text-anchor="middle">the wall — d ≈ 16–18</text>
+          <rect x="156" y="26" width="800" height="36" rx="8" fill="#fff" stroke="#C8C4B8" stroke-width="1.25"/>
+          <rect x="157" y="27" width="532" height="34" fill="rgba(32,35,42,.05)"/>
+          <rect x="756" y="27" width="199" height="34" fill="url(#hatch2)" opacity=".5"/>
+          <line x1="689" y1="22" x2="689" y2="66" stroke="#55534E" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <line x1="756" y1="22" x2="756" y2="66" stroke="#55534E" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <text class="t-cap" x="422" y="48" text-anchor="middle">certifiable today · SAT / ILP</text>
+          <text class="t-mut" x="856" y="48" text-anchor="middle">out of reach</text>
+          <g fill="#8A867C" font-size="12">
+            <text x="156" y="82" text-anchor="middle">0</text>
+            <text x="356" y="82" text-anchor="middle">6</text>
+            <text x="556" y="82" text-anchor="middle">12</text>
+            <text x="756" y="82" text-anchor="middle">18</text>
+            <text x="956" y="82" text-anchor="middle">24</text>
+          </g>
+          <text class="t-mut" x="556" y="100" text-anchor="middle">certified distance</text>
+        </g>
+        <g data-frag="2">
+          <ellipse cx="556" cy="300" rx="310" ry="135" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <text class="t-lab" x="556" y="192" text-anchor="middle">all Pauli operators</text>
+        </g>
+        <g data-frag="3">
+          <rect x="416" y="255" width="280" height="110" rx="10" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <text class="t-cap" x="556" y="245" text-anchor="middle">cycles</text>
+        </g>
+        <g data-frag="4">
+          <rect x="417" y="310" width="64" height="54" fill="rgba(32,35,42,.10)"/>
+          <line x1="450" y1="362" x2="404" y2="404" stroke="#B5B0A4" stroke-width="1"/>
+          <text class="t-mut" x="398" y="418" text-anchor="middle">stabilizers</text>
+        </g>
+        <g data-frag="5">
+          <circle cx="640" cy="290" r="7" fill="#C98500"/>
+          <line x1="648" y1="296" x2="724" y2="352" stroke="#B5B0A4" stroke-width="1"/>
+          <text x="730" y="358" font-size="13.5" fill="#8A5C00">the lightest nontrivial logical — its weight is d</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="6">the plan: exploit the structure of this space<span class="sep">·</span>analytic reductions</div>
+    <div class="sl-num">2 / 14</div>
+    <aside class="notes">For various families of practical quantum error correcting codes, one of the best ways to understand how effective the code will be in suppressing noise is to compute the distance of the code. Unfortunately, computing distance for BB codes is in general an NP-hard problem. Indeed for general qLDPC codes, the state of the art technique to certify distance is integer linear programming or SAT. Right now it is intractable to certify distance above 16–18 for BB codes. Over the past few weeks, I’ve been very interested in finding ways to reduce this computational burden.
+      <br><br>Suppose we have a stabilizer code S, which defines a codespace C. Okay, so recall that distance is the minimum weight logical operator, which means that it commutes with the stabilizers, that acts nontrivially on the codespace C. We call these nontrivial logical operators. The key insight is that the space of logical operators has rich structure in a sense that I hope this presentation will make clear. The goal is to use this rich structure to find analytic reductions to the distance computation problem. In this presentation, I will show you one such analytic reduction, which I call the doubling argument.</aside>
+  </section>
+
+  <!-- ================= SLIDE 3 ================= -->
+  <section class="slide" data-title="BB codes and their covers">
+    <header class="sl-head"><div class="tick"></div><h2>BB codes and their covers</h2></header>
+
+    <!-- build 1: base torus · 2: cover torus (one loop doubled) · 3: the group · 4: group algebra → monomials · 5: support → dots · 6: the vector -->
+    <div class="diagram d-cov1">
+      <div class="band-tag" data-frag="1">base and cover</div>
+      <svg width="1112" height="176" viewBox="0 0 1112 176" aria-label="A base torus and its cover with one loop twice as long">
+        <g data-frag="1">
+          <ellipse cx="300" cy="78" rx="110" ry="56" fill="none" stroke="#A19B8E" stroke-width="1.5"/>
+          <ellipse cx="300" cy="72" rx="40" ry="14" fill="none" stroke="#A19B8E" stroke-width="1.5"/>
+          <ellipse cx="300" cy="82" rx="78" ry="28" fill="none" stroke="#C98500" stroke-width="1.75" stroke-dasharray="6 5"/>
+          <ellipse cx="228" cy="80" rx="11" ry="26" fill="none" stroke="#8A867C" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text class="t-mut" x="228" y="16" text-anchor="middle">m = 6</text>
+          <text class="t-gold" x="300" y="150" text-anchor="middle">ℓ = 6</text>
+          <text class="t-mono" x="300" y="171" font-size="17" text-anchor="middle">[[72, 12, <tspan fill="#8A5C00">6</tspan>]]</text>
+        </g>
+        <g data-frag="2">
+          <line x1="440" y1="78" x2="650" y2="78" stroke="#20232A" stroke-width="1.75"/>
+          <polygon points="660,78 648,72.5 648,83.5" fill="#20232A"/>
+          <text class="t-cap" x="550" y="54" text-anchor="middle">same polynomials A, B</text>
+          <text class="t-cap" x="550" y="102" text-anchor="middle">one loop doubled</text>
+          <ellipse cx="880" cy="78" rx="190" ry="56" fill="none" stroke="#A19B8E" stroke-width="1.5"/>
+          <ellipse cx="880" cy="72" rx="100" ry="14" fill="none" stroke="#A19B8E" stroke-width="1.5"/>
+          <ellipse cx="880" cy="82" rx="152" ry="28" fill="none" stroke="#C98500" stroke-width="1.75" stroke-dasharray="6 5"/>
+          <ellipse cx="740" cy="80" rx="11" ry="26" fill="none" stroke="#8A867C" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text class="t-mut" x="740" y="16" text-anchor="middle">m = 6</text>
+          <text class="t-gold" x="880" y="150" text-anchor="middle">2ℓ = 12</text>
+          <text class="t-mono" x="880" y="171" font-size="17" text-anchor="middle">[[144, 12, <tspan fill="#8A5C00">12</tspan>]]</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="diagram d-cov2">
+      <div class="band-tag" data-frag="3">the construction</div>
+      <svg width="1112" height="230" viewBox="0 0 1112 230" aria-label="From the group to monomials to a 0/1 vector">
+        <g data-frag="3">
+          <rect x="237" y="80" width="150" height="56" rx="12" fill="#fff" stroke="#E0DCD1" stroke-width="1.5"/>
+          <text class="t-math" x="312" y="115" font-size="20" text-anchor="middle" font-style="normal">ℤ₂ × ℤ₄</text>
+        </g>
+        <g data-frag="4">
+          <line x1="397" y1="108" x2="463" y2="108" stroke="#20232A" stroke-width="1.75"/>
+          <polygon points="473,108 461,102.5 461,113.5" fill="#20232A"/>
+          <text class="t-cap" x="435" y="90" text-anchor="middle">group algebra</text>
+          <text class="t-mut" x="531" y="10" text-anchor="middle">the 8 monomials</text>
+          <rect x="487" y="20" width="88" height="176" fill="#fff" stroke="#C8C4B8" stroke-width="1.25"/>
+          <path d="M531,20 V196 M487,64 H575 M487,108 H575 M487,152 H575" stroke="#E0DCD1" stroke-width="1" fill="none"/>
+          <text class="t-math" x="509" y="47" font-size="14.5" text-anchor="middle">1</text>
+          <text class="t-math" x="553" y="47" font-size="14.5" text-anchor="middle">x</text>
+          <text class="t-math" x="509" y="91" font-size="14.5" text-anchor="middle">y</text>
+          <text class="t-math" x="553" y="91" font-size="14.5" text-anchor="middle">xy</text>
+          <text class="t-math" x="509" y="135" font-size="14.5" text-anchor="middle">y²</text>
+          <text class="t-math" x="553" y="135" font-size="14.5" text-anchor="middle">xy²</text>
+          <text class="t-math" x="509" y="179" font-size="14.5" text-anchor="middle">y³</text>
+          <text class="t-math" x="553" y="179" font-size="14.5" text-anchor="middle">xy³</text>
+        </g>
+        <g data-frag="5">
+          <line x1="585" y1="108" x2="691" y2="108" stroke="#20232A" stroke-width="1.75"/>
+          <polygon points="701,108 689,102.5 689,113.5" fill="#20232A"/>
+          <text class="t-cap" x="643" y="90" text-anchor="middle">take the support</text>
+          <rect x="715" y="20" width="88" height="176" fill="#fff" stroke="#C8C4B8" stroke-width="1.25"/>
+          <path d="M759,20 V196 M715,64 H803 M715,108 H803 M715,152 H803" stroke="#E0DCD1" stroke-width="1" fill="none"/>
+          <circle cx="781" cy="42" r="8" fill="#262A31"/>
+          <circle cx="737" cy="86" r="8" fill="#262A31"/>
+          <circle cx="781" cy="174" r="8" fill="#262A31"/>
+          <text class="t-math" x="759" y="222" font-size="16" text-anchor="middle">x + y + xy³</text>
+        </g>
+        <g data-frag="6">
+          <text class="t-sym" x="822" y="116" text-anchor="middle">=</text>
+          <path d="M846,16 h-7 v180 h7" fill="none" stroke="#56534E" stroke-width="1.5"/>
+          <text class="t-mono" x="858" y="30" font-size="14" text-anchor="middle" fill="#8A867C">0</text>
+          <text class="t-mono" x="858" y="52" font-size="14" text-anchor="middle">1</text>
+          <text class="t-mono" x="858" y="75" font-size="14" text-anchor="middle" fill="#8A867C">0</text>
+          <text class="t-mono" x="858" y="97" font-size="14" text-anchor="middle" fill="#8A867C">0</text>
+          <text class="t-mono" x="858" y="120" font-size="14" text-anchor="middle">1</text>
+          <text class="t-mono" x="858" y="142" font-size="14" text-anchor="middle" fill="#8A867C">0</text>
+          <text class="t-mono" x="858" y="165" font-size="14" text-anchor="middle" fill="#8A867C">0</text>
+          <text class="t-mono" x="858" y="187" font-size="14" text-anchor="middle">1</text>
+          <path d="M870,16 h7 v180 h-7" fill="none" stroke="#56534E" stroke-width="1.5"/>
+          <text class="t-math" x="886" y="30" font-size="10.5">1</text>
+          <text class="t-math" x="886" y="52" font-size="10.5">y</text>
+          <text class="t-math" x="886" y="75" font-size="10.5">y²</text>
+          <text class="t-math" x="886" y="97" font-size="10.5">y³</text>
+          <text class="t-math" x="886" y="120" font-size="10.5">x</text>
+          <text class="t-math" x="886" y="142" font-size="10.5">xy</text>
+          <text class="t-math" x="886" y="165" font-size="10.5">xy²</text>
+          <text class="t-math" x="886" y="187" font-size="10.5">xy³</text>
+        </g>
+      </svg>
+    </div>
+    <div class="sl-num">3 / 14</div>
+    <aside class="notes">Let’s take a BB code defined over the abelian group ℤ<sub>ℓ</sub> × ℤ<sub>m</sub> with polynomials A, B. We can construct a “cover” code with the same polynomials A and B over the larger abelian group ℤ<sub>2ℓ</sub> × ℤ<sub>m</sub>. Geometrically, you can think of the cover code as being defined on a torus with one loop twice as long. The technique I’m about to present allows us to find the distance of the larger cover code solely by performing computation or proving results about the smaller base code. The final theorem statement is that if the base code satisfies 3 conditions, then the distance of the cover code is twice the distance of the base code. For example, the gross code has parameters [[144, 12, 12]] and is a cover for a base code with parameters [[72, 12, 6]] and has double the distance as you can see. To go through this doubling theorem I think it will be helpful to first do a review of the construction of BB codes.
+      <br><br>We start with an abelian group ℤ<sub>ℓ</sub> × ℤ<sub>m</sub>. We take the group algebra of this abelian group and get a polynomial ring. In particular, elements of this polynomial ring are polynomials in two variables x, y where the power of x is less than ℓ and the power of y is less than m, with coefficients 0 and 1. We can view these polynomials as vectors by taking the support of monomials in the vector. For instance, let’s take ℓ = 2 and m = 4. There are 8 monomials, and [x², y, xy³] corresponds to the vector …</aside>
+  </section>
+
+  <!-- ================= SLIDE 4 ================= -->
+  <section class="slide" data-title="Qubits on a grid, stabilizers as stamps">
+    <header class="sl-head"><div class="tick"></div><h2>Qubits on a grid, stabilizers as stamps</h2></header>
+
+    <!-- build 1: two blocks + the monomial x²y · 2: X-check at g = x⁴y⁴ · 3: Z-check at h = x³y² + overlaps · 4: even overlap ⇒ commute -->
+    <!-- doc convention (bb-doubling-theorem.tex §2.1): X-check at g = (ι(A)δg, ι(B)δg) [rows of H_X], Z-check at h = (Bδh, Aδh);
+         overlap = 2·r_{A+B}(g−h); here g−h = xy² ∈ A+B once ⇒ exactly one shared qubit per block: L(4,2), R(3,4) -->
+    <div class="diagram d-blocks">
+      <svg width="1112" height="450" viewBox="0 0 1112 450" aria-label="Two qubit blocks with an X-stamp and a Z-stamp overlapping on an even number of qubits">
+        <defs>
+          <pattern id="g30" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#EAE6DC" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <g data-frag="1">
+          <text class="t-lab" x="420" y="48" text-anchor="middle">left block</text>
+          <rect x="330" y="60" width="180" height="180" fill="#fff"/>
+          <rect x="330" y="60" width="180" height="180" fill="url(#g30)"/>
+          <rect x="330" y="60" width="180" height="180" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-lab" x="720" y="48" text-anchor="middle">right block</text>
+          <rect x="630" y="60" width="180" height="180" fill="#fff"/>
+          <rect x="630" y="60" width="180" height="180" fill="url(#g30)"/>
+          <rect x="630" y="60" width="180" height="180" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <rect x="390" y="90" width="30" height="30" fill="none" stroke="#55534E" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <text class="t-math" x="405" y="109" font-size="11.5" text-anchor="middle">x²y</text>
+          <rect x="690" y="90" width="30" height="30" fill="none" stroke="#55534E" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <text class="t-math" x="705" y="109" font-size="11.5" text-anchor="middle">x²y</text>
+          <!-- indices: columns = x-exponent, rows = y-exponent -->
+          <g fill="#8A867C" font-size="10.5">
+            <text x="345" y="254" text-anchor="middle">0</text><text x="375" y="254" text-anchor="middle">1</text>
+            <text x="405" y="254" text-anchor="middle">2</text><text x="435" y="254" text-anchor="middle">3</text>
+            <text x="465" y="254" text-anchor="middle">4</text><text x="495" y="254" text-anchor="middle">5</text>
+            <text x="320" y="79" text-anchor="end">0</text><text x="320" y="109" text-anchor="end">1</text>
+            <text x="320" y="139" text-anchor="end">2</text><text x="320" y="169" text-anchor="end">3</text>
+            <text x="320" y="199" text-anchor="end">4</text><text x="320" y="229" text-anchor="end">5</text>
+            <text x="645" y="254" text-anchor="middle">0</text><text x="675" y="254" text-anchor="middle">1</text>
+            <text x="705" y="254" text-anchor="middle">2</text><text x="735" y="254" text-anchor="middle">3</text>
+            <text x="765" y="254" text-anchor="middle">4</text><text x="795" y="254" text-anchor="middle">5</text>
+            <text x="620" y="79" text-anchor="end">0</text><text x="620" y="109" text-anchor="end">1</text>
+            <text x="620" y="139" text-anchor="end">2</text><text x="620" y="169" text-anchor="end">3</text>
+            <text x="620" y="199" text-anchor="end">4</text><text x="620" y="229" text-anchor="end">5</text>
+            <text class="t-math" x="522" y="254">x</text>
+            <text class="t-math" x="318" y="46" text-anchor="end">y</text>
+            <text class="t-math" x="822" y="254">x</text>
+            <text class="t-math" x="618" y="46" text-anchor="end">y</text>
+          </g>
+        </g>
+        <g data-frag="2">
+          <rect x="940" y="14" width="16" height="16" rx="4" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-cap" x="964" y="27">X-stamp</text>
+          <rect x="360" y="180" width="30" height="30" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-x" x="367" y="194">X</text>
+          <rect x="450" y="150" width="30" height="30" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-x" x="457" y="164">X</text>
+          <rect x="450" y="120" width="30" height="30" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-x" x="457" y="134">X</text>
+          <rect x="750" y="90" width="30" height="30" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-x" x="757" y="104">X</text>
+          <rect x="720" y="180" width="30" height="30" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-x" x="727" y="194">X</text>
+          <rect x="690" y="180" width="30" height="30" fill="rgba(178,59,51,.16)" stroke="#B23B33" stroke-width="1.25"/>
+          <text class="t-x" x="697" y="194">X</text>
+        </g>
+        <g data-frag="3">
+          <rect x="940" y="44" width="16" height="16" rx="4" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1.25"/>
+          <text class="t-cap" x="964" y="57">Z-stamp</text>
+          <rect x="420" y="210" width="30" height="30" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1.25"/>
+          <text class="t-z" x="438" y="237">Z</text>
+          <rect x="480" y="120" width="30" height="30" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1.25"/>
+          <text class="t-z" x="498" y="147">Z</text>
+          <rect x="630" y="120" width="30" height="30" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1.25"/>
+          <text class="t-z" x="648" y="147">Z</text>
+          <rect x="720" y="150" width="30" height="30" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1.25"/>
+          <text class="t-z" x="738" y="177">Z</text>
+          <polygon points="450,150 480,120 480,150" fill="rgba(47,109,176,.20)"/>
+          <line x1="450" y1="150" x2="480" y2="120" stroke="#2F6DB0" stroke-width="1"/>
+          <text class="t-z" x="468" y="147" font-size="10">Z</text>
+          <polygon points="720,210 750,180 750,210" fill="rgba(47,109,176,.20)"/>
+          <line x1="720" y1="210" x2="750" y2="180" stroke="#2F6DB0" stroke-width="1"/>
+          <text class="t-z" x="738" y="207" font-size="10">Z</text>
+        </g>
+        <g data-frag="4">
+          <rect x="447" y="117" width="36" height="36" rx="7" fill="none" stroke="#20232A" stroke-width="2"/>
+          <rect x="717" y="177" width="36" height="36" rx="7" fill="none" stroke="#20232A" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="4">even overlap ⇒ the stamps commute</div>
+    <div class="block-note">[[72, 12, 6]] · A = x³ + y + y² · B = y³ + x + x²</div>
+    <div class="sl-num">4 / 14</div>
+    <aside class="notes">The qubits of the code can be viewed as two blocks of the monomials of the ring (i.e. the basis of the vector space). Let’s take the [[72, 12, 6]] code with ℓ = m = 6 and polynomials A = x³ + y + y² and B = y³ + x + x². Then the qubits are two 6×6 blocks. For instance, these two blocks correspond to the monomial x²y. So then what do the stabilizers and logical operators look like in this view? You can think of stabilizers as stamps on this grid of a particular shape. Since BB codes are CSS codes, the stabilizers come in two flavors: there’s the X-type stabilizers and then the Z-type stabilizers. An X-stabilizer of this code corresponds to applying an X to these qubits. The corresponding Z-type stabilizer corresponds to applying a Z to these qubits. To define a valid stabilizer group, these X and Z stabilizers need to commute, which in this picture means that the X and Z stabilizers overlap in an even number of qubits. The nontrivial logical operators that we’re after to compute distance are precisely the operators that commute with these X and Z stabilizers, which means that they have an even overlap, but aren’t stabilizers themselves.</aside>
+  </section>
+
+  <!-- ================= SLIDE 5 ================= -->
+  <section class="slide" data-title="The cover code: two sheets">
+    <header class="sl-head"><div class="tick"></div><h2>The cover code: two sheets</h2></header>
+
+    <!-- build 1: gross grid · 2: cut into two separated sheets · 3: the tower sits over the base · 4: an operator splits across the sheets · 5: takeaway -->
+    <div class="diagram d-sheets">
+      <svg width="1112" height="480" viewBox="0 0 1112 480" aria-label="The gross code's grid is two sheets stacked over the base code's grid">
+        <defs>
+          <pattern id="g26" width="26" height="26" patternUnits="userSpaceOnUse">
+            <path d="M 26 0 L 0 0 0 26" fill="none" stroke="#EAE6DC" stroke-width="1"/>
+          </pattern>
+          <pattern id="g18" width="18" height="18" patternUnits="userSpaceOnUse">
+            <path d="M 18 0 L 0 0 0 18" fill="none" stroke="#EAE6DC" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <g data-frag="1">
+          <text class="t-lab" x="182" y="120" text-anchor="middle">sheet 0</text>
+          <text class="t-lab" x="338" y="120" text-anchor="middle">sheet 1</text>
+          <rect x="104" y="130" width="312" height="156" fill="#fff"/>
+          <rect x="104" y="130" width="156" height="156" fill="rgba(32,35,42,.045)"/>
+          <rect x="104" y="130" width="312" height="156" fill="url(#g26)"/>
+          <rect x="104" y="130" width="312" height="156" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <line x1="260" y1="130" x2="260" y2="286" stroke="#A19B8E" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text class="t-mono" x="260" y="314" font-size="16" text-anchor="middle">[[144, 12, 12]]</text>
+          <text class="t-mut" x="260" y="334" text-anchor="middle">same A, B over ℤ₁₂ × ℤ₆</text>
+        </g>
+        <g data-frag="2">
+          <line x1="436" y1="208" x2="566" y2="208" stroke="#20232A" stroke-width="1.75"/>
+          <polygon points="576,208 564,202.5 564,213.5" fill="#20232A"/>
+          <text class="t-cap" x="501" y="190" text-anchor="middle">cut at the seam</text>
+          <rect x="612" y="36" width="108" height="108" fill="#fff"/>
+          <rect x="612" y="36" width="108" height="108" fill="url(#g18)"/>
+          <rect x="612" y="36" width="108" height="108" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-lab" x="732" y="94">sheet 1</text>
+          <rect x="612" y="180" width="108" height="108" fill="#fff"/>
+          <rect x="612" y="180" width="108" height="108" fill="url(#g18)"/>
+          <rect x="612" y="180" width="108" height="108" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-lab" x="732" y="238">sheet 0</text>
+          <line x1="612" y1="144" x2="612" y2="180" stroke="#A19B8E" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <line x1="720" y1="144" x2="720" y2="180" stroke="#A19B8E" stroke-width="1.25" stroke-dasharray="4 3"/>
+        </g>
+        <g data-frag="3">
+          <line x1="612" y1="288" x2="612" y2="324" stroke="#A19B8E" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <line x1="720" y1="288" x2="720" y2="324" stroke="#A19B8E" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <rect x="612" y="324" width="108" height="108" fill="#fff"/>
+          <rect x="612" y="324" width="108" height="108" fill="url(#g18)"/>
+          <rect x="612" y="324" width="108" height="108" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-lab" x="732" y="382">the base</text>
+          <text class="t-mono" x="666" y="454" font-size="16" text-anchor="middle">[[72, 12, 6]]</text>
+        </g>
+        <g data-frag="4">
+          <!-- a generic cover operator: cells (1,1),(4,3) on sheet 0 and (9,1) on sheet 1 — each dot lives on exactly one sheet -->
+          <circle cx="143" cy="169" r="6.5" fill="#262A31"/>
+          <circle cx="221" cy="221" r="6.5" fill="#262A31"/>
+          <circle cx="351" cy="169" r="6.5" fill="#262A31"/>
+          <circle cx="675" cy="63" r="5.5" fill="#262A31"/>
+          <circle cx="639" cy="207" r="5.5" fill="#262A31"/>
+          <circle cx="693" cy="243" r="5.5" fill="#262A31"/>
+          <text class="t-mut" x="742" y="140">an operator — its support splits across the sheets</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="5">operators on gross live on two sheets over the base</div>
+    <div class="sl-num">5 / 14</div>
+    <aside class="notes">I’m going to use the word “cycle” to refer to a logical operator that could be a stabilizer or a genuine nontrivial logical operator. In other words, I’m going to use the word cycles to refer to the operators that commute with all of the stabilizers. Now let’s take a look at the gross code, which has parameters [[144, 12, 12]] and is the cover code of the [[72, 12, 6]] code, which means that it has the same polynomials, but over ℤ₁₂ × ℤ₆ instead of ℤ₆ × ℤ₆. The qubits of gross are arranged in blocks that are double the size of the ones of the base. So we can think of operators on gross as living on two copies of the base code. We’ll call these two copies sheets. As you might expect, there’s a structural relationship between the logical operators of the cover gross code and the logical operators of the base code. To see this relationship, we’ll need to define two maps.</aside>
+  </section>
+
+  <!-- ================= SLIDE 6 ================= -->
+  <section class="slide" data-title="The fold map">
+    <header class="sl-head"><div class="tick"></div><h2>The fold map</h2></header>
+
+    <!-- build 1: a cover operator · 2: separate sheets · 3: add mod 2 · 4: kernel -->
+    <div class="diagram d-band1">
+      <svg width="1112" height="190" viewBox="0 0 1112 190" aria-label="A cover operator separated into its two sheets and added mod 2">
+        <defs>
+          <pattern id="g22" width="22" height="22" patternUnits="userSpaceOnUse">
+            <path d="M 22 0 L 0 0 0 22" fill="none" stroke="#EAE6DC" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <g data-frag="1">
+          <rect x="132" y="22" width="264" height="132" fill="#fff"/>
+          <rect x="132" y="22" width="132" height="132" fill="rgba(32,35,42,.045)"/>
+          <rect x="132" y="22" width="264" height="132" fill="url(#g22)"/>
+          <rect x="132" y="22" width="264" height="132" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <line x1="264" y1="22" x2="264" y2="154" stroke="#A19B8E" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text class="t-lab" x="198" y="14" text-anchor="middle">sheet 0</text>
+          <text class="t-lab" x="330" y="14" text-anchor="middle">sheet 1</text>
+          <!-- product of the cover X-checks at x²y² and x⁸y³ (doc gauge: cells g+{(9,0),(0,5),(0,4)}); fold cancels at base (2,1) -->
+          <circle cx="187" cy="33" r="7" fill="#262A31"/>
+          <circle cx="187" cy="55" r="7" fill="#262A31"/>
+          <circle cx="253" cy="99" r="7" fill="#262A31"/>
+          <circle cx="319" cy="55" r="7" fill="#262A31"/>
+          <circle cx="319" cy="77" r="7" fill="#262A31"/>
+          <circle cx="385" cy="77" r="7" fill="#262A31"/>
+          <text class="t-cap" x="264" y="177" text-anchor="middle">a cover operator — two X-stamps</text>
+        </g>
+        <g data-frag="2">
+          <line x1="412" y1="88" x2="478" y2="88" stroke="#20232A" stroke-width="1.75"/>
+          <polygon points="488,88 476,82.5 476,93.5" fill="#20232A"/>
+          <text class="t-cap" x="450" y="72" text-anchor="middle">separate sheets</text>
+          <rect x="506" y="22" width="132" height="132" fill="#fff"/>
+          <rect x="506" y="22" width="132" height="132" fill="url(#g22)"/>
+          <rect x="506" y="22" width="132" height="132" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-lab" x="572" y="14" text-anchor="middle">sheet 0</text>
+          <circle cx="561" cy="33" r="7" fill="#262A31"/>
+          <circle cx="561" cy="55" r="7" fill="#262A31"/>
+          <circle cx="627" cy="99" r="7" fill="#262A31"/>
+          <text class="t-sym" x="660" y="99" text-anchor="middle">+</text>
+          <text class="t-cap" x="660" y="14" text-anchor="middle">add mod 2</text>
+          <rect x="682" y="22" width="132" height="132" fill="#fff"/>
+          <rect x="682" y="22" width="132" height="132" fill="url(#g22)"/>
+          <rect x="682" y="22" width="132" height="132" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-lab" x="748" y="14" text-anchor="middle">sheet 1</text>
+          <circle cx="737" cy="55" r="7" fill="#262A31"/>
+          <circle cx="737" cy="77" r="7" fill="#262A31"/>
+          <circle cx="803" cy="77" r="7" fill="#262A31"/>
+        </g>
+        <g data-frag="3">
+          <text class="t-sym" x="836" y="98" text-anchor="middle">=</text>
+          <rect x="858" y="22" width="132" height="132" fill="#fff"/>
+          <rect x="858" y="22" width="132" height="132" fill="url(#g22)"/>
+          <rect x="858" y="22" width="132" height="132" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <text class="t-cap" x="924" y="14" text-anchor="middle">the fold</text>
+          <circle cx="913" cy="33" r="7" fill="#262A31"/>
+          <circle cx="913" cy="77" r="7" fill="#262A31"/>
+          <circle cx="979" cy="77" r="7" fill="#262A31"/>
+          <circle cx="979" cy="99" r="7" fill="#262A31"/>
+          <circle cx="913" cy="55" r="7" fill="none" stroke="#8A867C" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <line x1="920" y1="60" x2="937" y2="154" stroke="#B5B0A4" stroke-width="1" stroke-dasharray="2 3"/>
+          <text class="t-mut" x="937" y="168" text-anchor="middle">hit twice → cancels</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="diagram d-band2" data-frag="4">
+      <div class="band-tag">kernel of the fold — the diagonal operators</div>
+      <svg width="1112" height="200" viewBox="0 0 1112 200" aria-label="A diagonal operator, identical on both sheets, folds to zero">
+        <rect x="132" y="22" width="264" height="132" fill="#fff"/>
+        <rect x="132" y="22" width="132" height="132" fill="rgba(32,35,42,.045)"/>
+        <rect x="132" y="22" width="264" height="132" fill="url(#g22)"/>
+        <rect x="132" y="22" width="264" height="132" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+        <line x1="264" y1="22" x2="264" y2="154" stroke="#A19B8E" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text class="t-lab" x="198" y="14" text-anchor="middle">sheet 0</text>
+        <text class="t-lab" x="330" y="14" text-anchor="middle">sheet 1</text>
+        <!-- τ(base X-check at x²y²) = product of the cover X-checks at x²y² and x⁸y² (doc gauge) -->
+        <circle cx="187" cy="33" r="7" fill="#262A31"/>
+        <circle cx="187" cy="55" r="7" fill="#262A31"/>
+        <circle cx="253" cy="77" r="7" fill="#262A31"/>
+        <circle cx="319" cy="33" r="7" fill="#262A31"/>
+        <circle cx="319" cy="55" r="7" fill="#262A31"/>
+        <circle cx="385" cy="77" r="7" fill="#262A31"/>
+        <path d="M196,33 Q253,23 310,33" fill="none" stroke="#C98500" stroke-width="1.75" opacity=".85"/>
+        <path d="M196,55 Q253,45 310,55" fill="none" stroke="#C98500" stroke-width="1.75" opacity=".85"/>
+        <path d="M262,77 Q319,67 376,77" fill="none" stroke="#C98500" stroke-width="1.75" opacity=".85"/>
+        <text class="t-mut" x="264" y="176" text-anchor="middle">same pattern on both sheets</text>
+        <line x1="412" y1="88" x2="478" y2="88" stroke="#20232A" stroke-width="1.75"/>
+        <polygon points="488,88 476,82.5 476,93.5" fill="#20232A"/>
+        <text class="t-cap" x="450" y="72" text-anchor="middle">fold</text>
+        <rect x="506" y="22" width="132" height="132" fill="#fff"/>
+        <rect x="506" y="22" width="132" height="132" fill="url(#g22)"/>
+        <rect x="506" y="22" width="132" height="132" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+        <text class="t-zero" x="572" y="100" text-anchor="middle">0</text>
+      </svg>
+    </div>
+
+    <div class="block-note">left qubit block shown — the right block folds the same way</div>
+    <div class="sl-num">6 / 14</div>
+    <aside class="notes">The first map is the fold map. It takes an operator like [example], separates it into sheets, adds the sheets modulo 2. This gives us an operator in the base code. What do you think is the kernel of this map? That is, what operators do you think map to 0? We call these the diagonal operators.</aside>
+  </section>
+
+  <!-- ================= SLIDE 7 ================= -->
+  <section class="slide" data-title="The diagonal lift">
+    <header class="sl-head"><div class="tick"></div><h2>The diagonal lift</h2></header>
+
+    <!-- build 1: a base operator · 2: copy onto both sheets -->
+    <div class="diagram d-lift">
+      <svg width="1112" height="260" viewBox="0 0 1112 260" aria-label="A base operator copied onto both sheets of the cover">
+        <defs>
+          <pattern id="g28" width="28" height="28" patternUnits="userSpaceOnUse">
+            <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#EAE6DC" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <g data-frag="1">
+          <rect x="252" y="28" width="168" height="168" fill="#fff"/>
+          <rect x="252" y="28" width="168" height="168" fill="url(#g28)"/>
+          <rect x="252" y="28" width="168" height="168" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <!-- the base X-check at xy² (doc gauge): cells g+{(3,0),(0,5),(0,4)} = {(4,2),(1,1),(1,0)} -->
+          <text class="t-cap" x="336" y="16" text-anchor="middle">a base operator — an X-stamp</text>
+          <circle cx="378" cy="98" r="9" fill="#262A31"/>
+          <circle cx="294" cy="70" r="9" fill="#262A31"/>
+          <circle cx="294" cy="42" r="9" fill="#262A31"/>
+        </g>
+        <g data-frag="2">
+          <line x1="436" y1="112" x2="524" y2="112" stroke="#20232A" stroke-width="1.75"/>
+          <polygon points="534,112 522,106.5 522,117.5" fill="#20232A"/>
+          <text class="t-cap" x="485" y="96" text-anchor="middle">diagonal lift <tspan class="t-it">τ</tspan></text>
+          <rect x="560" y="28" width="336" height="168" fill="#fff"/>
+          <rect x="560" y="28" width="168" height="168" fill="rgba(32,35,42,.045)"/>
+          <rect x="560" y="28" width="336" height="168" fill="url(#g28)"/>
+          <rect x="560" y="28" width="336" height="168" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <line x1="728" y1="28" x2="728" y2="196" stroke="#A19B8E" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text class="t-lab" x="644" y="16" text-anchor="middle">sheet 0</text>
+          <text class="t-lab" x="812" y="16" text-anchor="middle">sheet 1</text>
+          <circle cx="686" cy="98" r="9" fill="#262A31"/>
+          <circle cx="602" cy="70" r="9" fill="#262A31"/>
+          <circle cx="602" cy="42" r="9" fill="#262A31"/>
+          <circle cx="854" cy="98" r="9" fill="#262A31"/>
+          <circle cx="770" cy="70" r="9" fill="#262A31"/>
+          <circle cx="770" cy="42" r="9" fill="#262A31"/>
+          <path d="M697,98 Q770,88 843,98" fill="none" stroke="#C98500" stroke-width="1.75" opacity=".85"/>
+          <path d="M613,70 Q686,60 759,70" fill="none" stroke="#C98500" stroke-width="1.75" opacity=".85"/>
+          <path d="M613,42 Q686,32 759,42" fill="none" stroke="#C98500" stroke-width="1.75" opacity=".85"/>
+          <text class="t-mut" x="728" y="228" text-anchor="middle">the same copy on both sheets</text>
+        </g>
+      </svg>
+    </div>
+
+    <div class="block-note">left qubit block shown — the right block lifts the same way</div>
+    <div class="sl-num">7 / 14</div>
+    <aside class="notes">This motivates the second map, which we’ll call a diagonal lift. It takes an operator in the base code like [example], and creates a cover operator by copying the operator onto the other sheet.</aside>
+  </section>
+
+  <!-- ================= SLIDE 8 ================= -->
+  <section class="slide" data-title="Folding: a lower bound for free">
+    <header class="sl-head"><div class="tick"></div><h2>Folding: a lower bound for free</h2></header>
+
+    <!-- build 1: spaces · 2: cycles rects · 3: cosets + stabilizers · 4: fold p (operators→operators) · 5: cycles→cycles · 6: stabs→stabs · 7: weight · 8: the bound -->
+    <div class="diagram d-space">
+      <svg width="1112" height="430" viewBox="0 0 1112 430" aria-label="Fold maps cover stabilizers to base stabilizers and cover cycles to base cycles, never increasing weight">
+        <defs>
+          <marker id="mk8i" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#20232A"/>
+          </marker>
+          <marker id="mk8m" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#8A867C"/>
+          </marker>
+        </defs>
+        <g data-frag="1">
+          <ellipse cx="300" cy="210" rx="240" ry="190" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <ellipse cx="880" cy="210" rx="190" ry="150" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <text class="t-lab" x="300" y="58" text-anchor="middle">operators on the cover</text>
+          <text class="t-lab" x="880" y="96" text-anchor="middle">operators on the base</text>
+        </g>
+        <g data-frag="2">
+          <rect x="184" y="170" width="232" height="140" rx="10" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <text class="t-cap" x="300" y="160" text-anchor="middle">cycles</text>
+          <rect x="788" y="168" width="184" height="112" rx="9" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <text class="t-cap" x="880" y="158" text-anchor="middle">cycles</text>
+        </g>
+        <g data-frag="3">
+          <path d="M242,171 V309 M300,171 V309 M358,171 V309 M185,240 H415" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="185" y="241" width="56" height="68" fill="rgba(32,35,42,.10)"/>
+          <path d="M834,169 V279 M880,169 V279 M926,169 V279 M789,224 H971" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="789" y="225" width="44" height="54" fill="rgba(32,35,42,.10)"/>
+          <line x1="200" y1="306" x2="152" y2="348" stroke="#B5B0A4" stroke-width="1"/>
+          <text class="t-mut" x="148" y="362" text-anchor="middle">stabilizers</text>
+        </g>
+        <g data-frag="4">
+          <path d="M511,120 C580,98 660,98 728,120" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk8i)"/>
+          <text class="t-cap" x="620" y="86" text-anchor="middle">fold <tspan class="t-it">p</tspan></text>
+        </g>
+        <g data-frag="5">
+          <path d="M416,206 C560,178 644,178 786,197" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk8i)"/>
+        </g>
+        <g data-frag="6">
+          <path d="M213,312 C450,356 640,320 792,258" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk8i)"/>
+        </g>
+        <g data-frag="7">
+          <circle cx="387" cy="205" r="6.5" fill="#C98500"/>
+          <text class="t-gold" x="387" y="189" text-anchor="middle">w</text>
+          <circle cx="903" cy="196" r="6.5" fill="#C98500"/>
+          <text class="t-gold" x="903" y="180" text-anchor="middle">≤ w</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="8">folding never increases weight<span class="sep">·</span>d(cover) ≥ d(base)</div>
+    <div class="sl-num">8 / 14</div>
+    <aside class="notes">Okay, so what do these maps reveal about the structure between the operators of the cover code and the base code? So fold maps cover stabilizers to base stabilizers. And it also maps cover cycles to base cycles. Moreover, folding cannot increase weight. So if we have a cycle with weight d in the cover code, it must be mapped to a cycle in the base with weight at most d. So this immediately gives us a lower bound on the distance: if we can show that no cycles (including stabilizers!) in the base code have weight less than d, then no cycles in the cover code have weight less than d. So the distance of the cover code is at least the distance of the base code. The rest of the argument is tightening that bound: so going from at least d to exactly 2d.</aside>
+  </section>
+
+  <!-- ================= SLIDE 9 ================= -->
+  <section class="slide" data-title="Lifting doubles weight">
+    <header class="sl-head"><div class="tick"></div><h2>Lifting doubles weight</h2></header>
+
+    <!-- same picture as slide 8, arrows reversed; setting visible on entry · build 1: lift τ (operators→operators) · 2: cycles→cycles · 3: stabs→stabs · 4: weight · 5: takeaway -->
+    <div class="diagram d-space">
+      <svg width="1112" height="430" viewBox="0 0 1112 430" aria-label="The diagonal lift maps base stabilizers to cover stabilizers and base cycles to cover cycles, exactly doubling weight">
+        <defs>
+          <marker id="mk9i" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#20232A"/>
+          </marker>
+          <marker id="mk9m" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#8A867C"/>
+          </marker>
+        </defs>
+        <g>
+          <ellipse cx="300" cy="210" rx="240" ry="190" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <ellipse cx="880" cy="210" rx="190" ry="150" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <text class="t-lab" x="300" y="58" text-anchor="middle">operators on the cover</text>
+          <text class="t-lab" x="880" y="96" text-anchor="middle">operators on the base</text>
+          <rect x="184" y="170" width="232" height="140" rx="10" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <path d="M242,171 V309 M300,171 V309 M358,171 V309 M185,240 H415" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="185" y="241" width="56" height="68" fill="rgba(32,35,42,.10)"/>
+          <text class="t-cap" x="300" y="160" text-anchor="middle">cycles</text>
+          <rect x="788" y="168" width="184" height="112" rx="9" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <path d="M834,169 V279 M880,169 V279 M926,169 V279 M789,224 H971" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="789" y="225" width="44" height="54" fill="rgba(32,35,42,.10)"/>
+          <text class="t-cap" x="880" y="158" text-anchor="middle">cycles</text>
+          <line x1="200" y1="306" x2="152" y2="348" stroke="#B5B0A4" stroke-width="1"/>
+          <text class="t-mut" x="148" y="362" text-anchor="middle">stabilizers</text>
+        </g>
+        <g data-frag="1">
+          <path d="M728,120 C660,98 580,98 511,120" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk9i)"/>
+          <text class="t-cap" x="620" y="86" text-anchor="middle">diagonal lift <tspan class="t-it">τ</tspan></text>
+        </g>
+        <g data-frag="2">
+          <path d="M786,197 C644,176 560,176 418,207" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk9i)"/>
+        </g>
+        <g data-frag="3">
+          <path d="M792,258 C640,320 450,356 218,310" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk9i)"/>
+        </g>
+        <g data-frag="4">
+          <circle cx="903" cy="196" r="6.5" fill="#C98500"/>
+          <text class="t-gold" x="903" y="180" text-anchor="middle">w</text>
+          <circle cx="387" cy="205" r="6.5" fill="#C98500"/>
+          <text class="t-gold" x="387" y="189" text-anchor="middle">2w</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="5">the lift copies onto both sheets<span class="sep">·</span>weight exactly doubles</div>
+    <div class="sl-num">9 / 14</div>
+    <aside class="notes">Diagonal lift also satisfies similar properties: it maps base stabilizers to cover stabilizers and base cycles to cover cycles. Moreover, the diagonal lift of a base operator has twice the weight of the base [similar to the previous slide’s diagram].</aside>
+  </section>
+
+  <!-- ================= SLIDE 10 ================= -->
+  <section class="slide" data-title="When lifts collapse: im Δ">
+    <header class="sl-head"><div class="tick"></div><h2>When lifts collapse: im&nbsp;Δ</h2></header>
+
+    <!-- setting persists from slides 8–9 · build 1: a logical whose lift collapses into stabilizers · 2: one that stays logical · 3: im Δ · 4: half -->
+    <div class="diagram d-space">
+      <svg width="1112" height="430" viewBox="0 0 1112 430" aria-label="Some nontrivial base logicals lift to cover stabilizers; the collapsing classes form im Δ">
+        <defs>
+          <marker id="mk10i" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#20232A"/>
+          </marker>
+        </defs>
+        <g>
+          <ellipse cx="300" cy="210" rx="240" ry="190" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <ellipse cx="880" cy="210" rx="190" ry="150" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <text class="t-lab" x="300" y="58" text-anchor="middle">operators on the cover</text>
+          <text class="t-lab" x="880" y="96" text-anchor="middle">operators on the base</text>
+          <rect x="184" y="170" width="232" height="140" rx="10" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <path d="M242,171 V309 M300,171 V309 M358,171 V309 M185,240 H415" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="185" y="241" width="56" height="68" fill="rgba(32,35,42,.10)"/>
+          <text class="t-cap" x="300" y="160" text-anchor="middle">cycles</text>
+          <rect x="788" y="168" width="184" height="112" rx="9" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <path d="M834,169 V279 M880,169 V279 M926,169 V279 M789,224 H971" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="789" y="225" width="44" height="54" fill="rgba(32,35,42,.10)"/>
+          <text class="t-cap" x="880" y="158" text-anchor="middle">cycles</text>
+          <line x1="200" y1="306" x2="152" y2="348" stroke="#B5B0A4" stroke-width="1"/>
+          <text class="t-mut" x="148" y="362" text-anchor="middle">stabilizers</text>
+        </g>
+        <g data-frag="1">
+          <circle cx="857" cy="196" r="6.5" fill="#C98500"/>
+          <path d="M849,192 C640,50 140,140 185,262" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk10i)"/>
+          <text class="t-cap" x="421" y="106" text-anchor="middle">diagonal lift <tspan class="t-it">τ</tspan></text>
+          <text class="t-mut" x="285" y="336" text-anchor="middle">lands in the stabilizers</text>
+        </g>
+        <g data-frag="2">
+          <circle cx="949" cy="196" r="6.5" fill="#C98500"/>
+          <path d="M946,190 C880,118 560,118 398,200" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk10i)"/>
+          <text class="t-mut" x="428" y="228">stays a nontrivial logical</text>
+        </g>
+        <g data-frag="3">
+          <rect x="789" y="169" width="90" height="110" fill="rgba(201,133,0,.13)" stroke="#C98500" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <circle cx="857" cy="196" r="6.5" fill="#C98500"/>
+          <text class="t-gold" x="834" y="301" font-size="15" text-anchor="middle">im Δ</text>
+          <text class="t-mut" x="834" y="320" text-anchor="middle">half the logical classes</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="4">the collapsing classes form im Δ<span class="sep">·</span>exactly half: dim 6 of 12</div>
+    <div class="sl-num">10 / 14</div>
+    <aside class="notes">So a natural question at this point is whether nontrivial base logicals lift to nontrivial cover logicals. The answer is not always. We know that nontrivial logicals lift to cycles, but it’s possible that they can lift to stabilizers too. So what we need is a classification of when nontrivial logicals lift to stabilizers and when they lift to nontrivial logicals.
+      <br><br>I won’t go into the details, but it turns out that there’s a subspace of the base logical operator space that we’ll call im Δ, whose elements diagonalize to stabilizers of the cover code. We can also show that the dimension of this space is half the dimension of the ambient logical operator space. So for the base code, the logical coset space has dimension 12, and im Δ has dimension 6.</aside>
+  </section>
+
+  <!-- ================= SLIDE 11 ================= -->
+  <section class="slide" data-title="Three fates of a cover logical">
+    <header class="sl-head"><div class="tick"></div><h2>Three fates of a cover logical</h2></header>
+
+    <!-- sector colors fixed here: dangerous = red, safe = blue (carried into slides 12–13)
+         fold outcomes label the arrows · build 1: the logical · 2: diagonal · 3: its floor · 4: dangerous · 5: to-show · 6: safe · 7: to-show · 8: what remains -->
+    <div class="diagram d-fates">
+      <svg width="1112" height="400" viewBox="0 0 1112 400" aria-label="Folding a nontrivial cover logical: diagonal, dangerous, or safe">
+        <defs>
+          <marker id="mk11i" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#20232A"/>
+          </marker>
+        </defs>
+        <g data-frag="1">
+          <rect x="406" y="20" width="300" height="56" rx="12" fill="#fff" stroke="#E0DCD1" stroke-width="1.5"/>
+          <circle cx="450" cy="48" r="7" fill="#C98500"/>
+          <text x="468" y="53" font-size="16" fill="#20232A">a nontrivial cover logical</text>
+        </g>
+        <g data-frag="2">
+          <path d="M520,84 C420,140 330,180 268,232" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk11i)"/>
+          <text class="t-mut" x="352" y="150" text-anchor="end">fold = 0</text>
+          <rect x="90" y="246" width="300" height="120" rx="12" fill="#fff" stroke="#E0DCD1" stroke-width="1.5"/>
+          <text class="t-name" x="240" y="304" fill="#20232A" text-anchor="middle">diagonal</text>
+        </g>
+        <g data-frag="3">
+          <text x="240" y="338" font-size="13.5" text-anchor="middle"><tspan fill="#2F7D44" font-weight="700">✓</tspan><tspan fill="#56534E"> twice a base cycle — weight ≥ 12</tspan></text>
+        </g>
+        <g data-frag="4">
+          <path d="M556,84 L556,232" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk11i)"/>
+          <text class="t-mut" x="566" y="210">fold = a nonzero stabilizer</text>
+          <rect x="406" y="246" width="300" height="120" rx="12" fill="#fff" stroke="#E0DCD1" stroke-width="1.5"/>
+          <rect x="407" y="248" width="4" height="116" rx="2" fill="#B23B33"/>
+          <text class="t-name" x="556" y="304" fill="#B23B33" text-anchor="middle">dangerous</text>
+        </g>
+        <g data-frag="5">
+          <text x="556" y="338" font-size="13.5" fill="#8A867C" text-anchor="middle">to show: weight ≥ 12</text>
+        </g>
+        <g data-frag="6">
+          <path d="M592,84 C692,140 782,180 844,232" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk11i)"/>
+          <text class="t-mut" x="770" y="150">fold = a nontrivial base logical</text>
+          <rect x="722" y="246" width="300" height="120" rx="12" fill="#fff" stroke="#E0DCD1" stroke-width="1.5"/>
+          <rect x="723" y="248" width="4" height="116" rx="2" fill="#2F6DB0"/>
+          <text class="t-name" x="872" y="304" fill="#2F6DB0" text-anchor="middle">safe</text>
+        </g>
+        <g data-frag="7">
+          <text x="872" y="338" font-size="13.5" fill="#8A867C" text-anchor="middle">to show: weight ≥ 12</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="8">enough to show: dangerous ≥ 12 and safe ≥ 12<span class="sep">·</span>from the base alone</div>
+    <div class="sl-num">11 / 14</div>
+    <aside class="notes">The dual question is whether nontrivial cover logicals fold to nontrivial base logicals. Again, the answer is not always. Three things can happen: p(v) can be 0, in which case v is diagonal and has twice the weight of p(v)’s base preimage. Since we know that the base code cycles have weight ≥ 6, we can conclude that these cover nontrivial logical operators have weight ≥ 12. This is the best case scenario. The second thing that can happen is that p(v) is a nonzero stabilizer. Let’s call these dangerous logicals. The last thing that can happen is that p(v) is a nontrivial base logical. Let’s call these safe logicals. At this point, it suffices to show that dangerous and safe logicals all have weight ≥ 12. And we want to show this by appealing purely to the properties of the base code. Let’s tackle the safe sector first.</aside>
+  </section>
+
+  <!-- ================= SLIDE 12 ================= -->
+  <section class="slide" data-title="The safe sector: confinement into im Δ">
+    <header class="sl-head"><div class="tick"></div><h2>The safe sector: confinement into im&nbsp;Δ</h2></header>
+
+    <!-- setting + im Δ persist from slide 10 · build 1: a safe logical · 2: (R) gates its fold into im Δ · 3: the payoff -->
+    <div class="diagram d-space">
+      <svg width="1112" height="430" viewBox="0 0 1112 430" aria-label="If (R) holds, a safe logical folds into im Δ, so the im Δ floor gives the safe floor">
+        <defs>
+          <marker id="mk12i" markerWidth="9" markerHeight="7.2" viewBox="0 0 10 8" refX="8.5" refY="4" orient="auto-start-reverse">
+            <path d="M0,0 L10,4 L0,8 Z" fill="#20232A"/>
+          </marker>
+        </defs>
+        <g>
+          <ellipse cx="300" cy="210" rx="240" ry="190" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <ellipse cx="880" cy="210" rx="190" ry="150" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
+          <text class="t-lab" x="300" y="58" text-anchor="middle">operators on the cover</text>
+          <text class="t-lab" x="880" y="96" text-anchor="middle">operators on the base</text>
+          <rect x="184" y="170" width="232" height="140" rx="10" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <path d="M242,171 V309 M300,171 V309 M358,171 V309 M185,240 H415" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="185" y="241" width="56" height="68" fill="rgba(32,35,42,.10)"/>
+          <text class="t-cap" x="300" y="160" text-anchor="middle">cycles</text>
+          <rect x="788" y="168" width="184" height="112" rx="9" fill="rgba(32,35,42,.02)" stroke="#20232A" stroke-width="1.5"/>
+          <path d="M834,169 V279 M880,169 V279 M926,169 V279 M789,224 H971" stroke="#DCD8CD" stroke-width="1" fill="none"/>
+          <rect x="789" y="225" width="44" height="54" fill="rgba(32,35,42,.10)"/>
+          <text class="t-cap" x="880" y="158" text-anchor="middle">cycles</text>
+          <line x1="200" y1="306" x2="152" y2="348" stroke="#B5B0A4" stroke-width="1"/>
+          <text class="t-mut" x="148" y="362" text-anchor="middle">stabilizers</text>
+          <rect x="789" y="169" width="90" height="110" fill="rgba(201,133,0,.13)" stroke="#C98500" stroke-width="1.25" stroke-dasharray="4 3"/>
+          <text class="t-gold" x="834" y="301" font-size="15" text-anchor="middle">im Δ</text>
+        </g>
+        <g data-frag="1">
+          <circle cx="387" cy="205" r="6.5" fill="#C98500"/>
+          <text class="t-cap" x="387" y="152" text-anchor="middle" fill="#1F4E7A">a safe logical</text>
+        </g>
+        <g data-frag="2">
+          <path d="M395,206 C560,178 660,178 801,198" fill="none" stroke="#20232A" stroke-width="1.75" marker-end="url(#mk12i)"/>
+          <circle cx="811" cy="196" r="6.5" fill="#C98500"/>
+          <rect x="573" y="166" width="54" height="28" rx="14" fill="#fff" stroke="#20232A" stroke-width="1.5"/>
+          <text class="t-cap" x="600" y="185" text-anchor="middle">(R)</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="3">the im Δ floor gives the safe floor<span class="sep">·</span>a smaller check, often free analytically</div>
+    <div class="sl-num">12 / 14</div>
+    <aside class="notes">So the big theorem here is that if a particular identity, which we’ll call (R), holds for the base cycles, then the image of a safe cover cycle under the fold map is in im Δ. And in particular, if the safe cycle is a nontrivial logical operator, then the image is a nontrivial logical operator in im Δ. So if we show that all the nontrivial logical operators in im Δ have weight ≥ 12, then we can conclude that all the safe nontrivial logical operators in the cover have weight ≥ 12, since folding never increases weight. But how do we show that all the nontrivial logical operators in im Δ have weight ≥ 12? So you can do this by brute force computation, or you can exploit the structure of im Δ further to prove this. The computational burden of certifying that the confinement classes have no light-weight nontrivial logicals is less than exploring the search space of nontrivial operators of the cover code. Unfortunately I don’t have a good answer as to how much better it is. But the good news is that in a lot of cases we can completely eliminate this burden via further analytic arguments.</aside>
+  </section>
+
+  <!-- ================= SLIDE 13 ================= -->
+  <section class="slide" data-title="The dangerous sector: light stabilizers">
+    <header class="sl-head"><div class="tick"></div><h2>The dangerous sector: light stabilizers</h2></header>
+
+    <!-- doc Fig hexdpair verbatim: hexagon = Z-check at g=(2,2); D-pair = checks at g=(1,2), h=(2,2), shared cell q*
+         build 1: hexagons · 2: D-pairs · 3: the two loss counts · 4: the dangerous floor -->
+    <div class="diagram d-lights">
+      <div class="band-tag" data-frag="1">the only light stabilizers of the base</div>
+      <svg width="1112" height="280" viewBox="0 0 1112 280" aria-label="The two light stabilizer families: hexagons (weight 6) and D-pairs (weight 10)">
+        <defs>
+          <pattern id="g20" width="20" height="20" patternUnits="userSpaceOnUse">
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#EAE6DC" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <g data-frag="1">
+          <text class="t-cap" x="320" y="48" text-anchor="middle" font-weight="600">(a) hexagon — weight 6</text>
+          <text class="t-mut" x="320" y="66" text-anchor="middle">a single Z-check</text>
+          <rect x="180" y="80" width="120" height="120" fill="#fff"/>
+          <rect x="180" y="80" width="120" height="120" fill="url(#g20)"/>
+          <rect x="180" y="80" width="120" height="120" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <rect x="340" y="80" width="120" height="120" fill="#fff"/>
+          <rect x="340" y="80" width="120" height="120" fill="url(#g20)"/>
+          <rect x="340" y="80" width="120" height="120" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <rect x="220" y="180" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="240" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="260" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="220" y="120" width="20" height="20" fill="none" stroke="#55534E" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <text class="t-math" x="230" y="134" font-size="10.5" text-anchor="middle">g</text>
+          <rect x="440" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="380" y="140" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="380" y="160" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="380" y="120" width="20" height="20" fill="none" stroke="#55534E" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <text class="t-math" x="390" y="134" font-size="10.5" text-anchor="middle">g</text>
+          <text class="t-mut" x="240" y="216" text-anchor="middle">L : B·g</text>
+          <text class="t-mut" x="400" y="216" text-anchor="middle">R : A·g</text>
+        </g>
+        <g data-frag="2">
+          <text class="t-cap" x="800" y="48" text-anchor="middle" font-weight="600">(b) D-pair — weight 10</text>
+          <text class="t-mut" x="800" y="66" text-anchor="middle">two checks, one shared cell q*</text>
+          <rect x="660" y="80" width="120" height="120" fill="#fff"/>
+          <rect x="660" y="80" width="120" height="120" fill="url(#g20)"/>
+          <rect x="660" y="80" width="120" height="120" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <rect x="820" y="80" width="120" height="120" fill="#fff"/>
+          <rect x="820" y="80" width="120" height="120" fill="url(#g20)"/>
+          <rect x="820" y="80" width="120" height="120" fill="none" stroke="#C8C4B8" stroke-width="1.25"/>
+          <rect x="680" y="180" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="700" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="700" y="180" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="740" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="720" y="120" width="20" height="20" fill="none" stroke="#8A867C" stroke-width="1.5" stroke-dasharray="3 2.5"/>
+          <text class="t-math" x="730" y="134" font-size="10" text-anchor="middle">q*</text>
+          <rect x="900" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="840" y="140" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="840" y="160" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="920" y="120" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="860" y="140" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <rect x="860" y="160" width="20" height="20" fill="rgba(47,109,176,.16)" stroke="#2F6DB0" stroke-width="1"/>
+          <text class="t-mut" x="720" y="216" text-anchor="middle">L : B·g + B·h</text>
+          <text class="t-mut" x="880" y="216" text-anchor="middle">R : A·g + A·h</text>
+        </g>
+        <g data-frag="3">
+          <text class="t-cap" x="320" y="252" text-anchor="middle">folding onto a hexagon loses ≥ 6 &nbsp;⇒&nbsp; ≥ 12</text>
+          <text class="t-cap" x="800" y="252" text-anchor="middle">folding onto a D-pair loses ≥ 2 &nbsp;⇒&nbsp; ≥ 12</text>
+        </g>
+      </svg>
+    </div>
+    <div class="concl" data-frag="4">windowed light stabilizers<span class="sep">·</span>every dangerous logical weighs ≥ 12</div>
+    <div class="block-note">[[72, 12, 6]] · A = x³ + y + y² · B = y³ + x + x²</div>
+    <div class="sl-num">13 / 14</div>
+    <aside class="notes">Okay, now let’s talk about the dangerous logicals. These nontrivial logical operators fold into stabilizers. But of course the stabilizers in base can have low weight and so this doesn’t directly give us a bound. So a way we can approach this issue is by first classifying the stabilizers of the base with weight less than 12. We’ll call these the light stabilizers. It turns out that the base code only has two kinds of light stabilizers: those with weight 6 and those with weight 10. Now consider those with weight 10. I’ll omit the details, but it turns out that you can show that if a nontrivial logical of the cover maps to a stabilizer of the shape that has weight 10, then it must lose at least 2 ones. Similarly, consider those stabilizers with weight 6. We can show that if a nontrivial logical of the cover maps to a stabilizer of the shape that has weight 6, then it must lose at least 6 ones. Thus, every dangerous logical has weight at least 12. Of course this is not true for every code, but you can show that it is for base codes that have light stabilizers with a particular structure (they admit a windowed decomposition) that I won’t get into.</aside>
+  </section>
+
+  <!-- ================= SLIDE 14 · summary ================= -->
+  <section class="slide s-summary" data-title="The doubling theorem">
+    <header class="sl-head"><div class="tick"></div><h2>The doubling theorem</h2></header>
+
+    <!-- 9-step build: base · arrow · cover · conditions 1–3 · pairs 1–3 -->
+    <div class="sum-thm">
+      <div class="band-tag" data-frag="1">theorem</div>
+      <div class="thm-flow">
+        <div class="code-card" data-frag="1">
+          <div class="cc-name">base</div>
+          <div class="cc-params">[[n, k, d]]</div>
+          <div class="cc-sub"><span class="bb">ℤ</span><sub>ℓ</sub> × <span class="bb">ℤ</span><sub>m</sub> · polynomials A, B</div>
+        </div>
+        <div class="thm-arrow" data-frag="2">
+          <div class="ta-lbl">same polynomials A, B</div>
+          <svg viewBox="0 0 400 22" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="11" x2="384" y2="11" stroke="#20232A" stroke-width="2"/>
+            <path d="M384 3.5 L398 11 L384 18.5 Z" fill="#20232A"/>
+          </svg>
+          <div class="ta-lbl">one loop doubled &nbsp;·&nbsp; <span class="bb">ℤ</span><sub>ℓ</sub> → <span class="bb">ℤ</span><sub>2ℓ</sub></div>
+        </div>
+        <div class="code-card cc-cover" data-frag="3">
+          <div class="cc-name">cover</div>
+          <div class="cc-params">[[2n, k, <span class="gold">2d</span>]]</div>
+          <div class="cc-sub"><span class="bb">ℤ</span><sub>2ℓ</sub> × <span class="bb">ℤ</span><sub>m</sub> · same A, B</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-cond">
+      <div class="band-tag" data-frag="4">given</div>
+      <div class="chips">
+        <div class="chip" data-frag="4">
+          <div class="chip-n">1</div>
+          <div><div class="chip-t">no light cycles</div>
+               <div class="chip-s">every base cycle weighs ≥ d</div></div>
+        </div>
+        <div class="chip" data-frag="5">
+          <div class="chip-n">2</div>
+          <div><div class="chip-t">(R) + im Δ floor at 2d</div>
+               <div class="chip-s">⇒ safe logicals weigh ≥ 2d</div></div>
+        </div>
+        <div class="chip" data-frag="6">
+          <div class="chip-n">3</div>
+          <div><div class="chip-t">windowed light stabilizers</div>
+               <div class="chip-s">⇒ dangerous logicals weigh ≥ 2d</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sum-inst">
+      <div class="band-tag" data-frag="7">verified pairs</div>
+      <div class="insts">
+        <div class="inst" data-frag="7">
+          <div class="inst-check">✓</div>
+          <div class="inst-row1">[[72,12,6]] <span class="inst-arr">→</span> [[144,12,12]]</div>
+          <div class="inst-polys">A = x<sup>3</sup>+y+y<sup>2</sup> &nbsp;·&nbsp; B = y<sup>3</sup>+x+x<sup>2</sup></div>
+          <div class="inst-name">gross</div>
+        </div>
+        <div class="inst" data-frag="8">
+          <div class="inst-check">✓</div>
+          <div class="inst-row1">[[150,8,8]] <span class="inst-arr">→</span> [[300,8,16]]</div>
+          <div class="inst-polys">A = 1+x+y &nbsp;·&nbsp; B = xy<sup>6</sup>+xy<sup>10</sup>+x<sup>2</sup>y<sup>12</sup></div>
+        </div>
+        <div class="inst inst-hi" data-frag="9">
+          <div class="inst-check">✓</div>
+          <div class="inst-row1">[[180,4,10]] <span class="inst-arr">→</span> [[360,4,20]]</div>
+          <div class="inst-polys">A = 1+x+y &nbsp;·&nbsp; B = y<sup>4</sup>+x+x<sup>11</sup>y<sup>2</sup></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sl-num">14 / 14</div>
+    <aside class="notes">In summary, if you have a base code and consider the cover code with the same polynomials but over a larger abelian group, then given these conditions, the cover code has double the distance of the base code. The conditions are: 1. the base code has no cycles with weight less than d. 2. Condition (R) holds, and the nontrivial logicals of the safe sector have weight ≥ 2d, which implies that the safe logicals have weight ≥ 2d. 3. The light stabilizers of the base have a windowed decomposition, which implies that the dangerous logicals have weight ≥ 2d.
+      <br><br>We have several examples of distance doubling pairs: [[72,12,6]] → [[144,12,12]] with A = x³+y+y², B = y³+x+x²; [[150,8,8]] → [[300,8,16]] with A = 1+x+y, B = xy⁶+xy¹⁰+x²y¹²; and [[180,4,10]] → [[360,4,20]] with A = 1+x+y, B = y⁴+x+x¹¹y².</aside>
+  </section>
+
+</div>
+
+<!-- overlays -->
+<div class="overlay" id="notesOv" hidden>
+  <h3 id="notesTitle">Speaker notes</h3>
+  <div id="notesBody"></div>
+</div>
+<div class="overlay" id="helpOv" hidden>
+  <h3>Keys</h3>
+  <table>
+    <tr><td><kbd>←</kbd> <kbd>→</kbd> / clicker</td><td>previous · next (steps through builds)</td></tr>
+    <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>first · last slide</td></tr>
+    <tr><td><kbd>N</kbd></td><td>speaker notes (your draft script)</td></tr>
+    <tr><td><kbd>F</kbd></td><td>fullscreen</td></tr>
+    <tr><td><kbd>⌘P</kbd></td><td>export PDF (one page per slide)</td></tr>
+    <tr><td><kbd>?</kbd> <kbd>Esc</kbd></td><td>toggle · close this help</td></tr>
+  </table>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const stage = document.getElementById('stage');
+  const notesOv = document.getElementById('notesOv');
+  const helpOv  = document.getElementById('helpOv');
+  const notesTitle = document.getElementById('notesTitle');
+  const notesBody  = document.getElementById('notesBody');
+  let cur = 0, curFrag = 0;
+
+  function clamp(i){ return Math.max(0, Math.min(slides.length - 1, i)); }
+  const fragEls = s => [...s.querySelectorAll('[data-frag]')];
+  const maxFrag = s => fragEls(s).reduce((m, el) => Math.max(m, +el.dataset.frag || 0), 0);
+
+  function applyFrags(instant){
+    if (instant) stage.classList.add('instant');
+    fragEls(slides[cur]).forEach(el =>
+      el.classList.toggle('on', +el.dataset.frag <= curFrag));
+    if (instant) { void stage.offsetWidth; stage.classList.remove('instant'); }
+  }
+  // mode 'left': entering forward → builds start hidden · 'right'/'jump': fully built
+  function go(i, mode){
+    cur = clamp(i);
+    slides.forEach((s, j) => s.classList.toggle('current', j === cur));
+    curFrag = mode === 'left' ? 0 : maxFrag(slides[cur]);
+    applyFrags(true);
+    history.replaceState(null, '', '#' + (cur + 1));
+    if (!notesOv.hidden) renderNotes();
+  }
+  function next(){
+    if (curFrag < maxFrag(slides[cur])) { curFrag++; applyFrags(false); }
+    else if (cur < slides.length - 1) go(cur + 1, 'left');
+  }
+  function prev(){
+    if (curFrag > 0) { curFrag--; applyFrags(false); }
+    else if (cur > 0) go(cur - 1, 'right');
+  }
+  function renderNotes(){
+    const s = slides[cur];
+    const a = s.querySelector('.notes');
+    notesTitle.textContent = 'Speaker notes · slide ' + (cur + 1) + ' / ' + slides.length +
+      (s.dataset.title ? ' — ' + s.dataset.title : '');
+    notesBody.innerHTML = a ? a.innerHTML : '<em>(no notes)</em>';
+  }
+  function setScale(){
+    const s = Math.min(innerWidth / 1280, innerHeight / 720);
+    document.documentElement.style.setProperty('--s', s);
+  }
+
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); go(0, 'left'); break;
+      case 'End':  e.preventDefault(); go(slides.length - 1, 'jump'); break;
+      case 'n': case 'N':
+        notesOv.hidden = !notesOv.hidden; if (!notesOv.hidden) renderNotes(); break;
+      case 'f': case 'F':
+        document.fullscreenElement ? document.exitFullscreen()
+                                   : document.documentElement.requestFullscreen();
+        break;
+      case '?': case 'h': case 'H':
+        helpOv.hidden = !helpOv.hidden; break;
+      case 'Escape':
+        notesOv.hidden = true; helpOv.hidden = true; break;
+    }
+  });
+  addEventListener('resize', setScale);
+  addEventListener('hashchange', () => go((parseInt(location.hash.slice(1), 10) || 1) - 1, 'jump'));
+
+  setScale();
+  go((parseInt(location.hash.slice(1), 10) || 1) - 1, 'jump');
+</script>
+</body>
+</html>
