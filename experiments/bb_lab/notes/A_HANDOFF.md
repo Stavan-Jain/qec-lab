@@ -196,6 +196,35 @@ A4 Theorem D).
 >   (the Lean theorem is already unconditional; this is epistemic
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
+>
+> **A28 (2026-08-06, `A28_light_classification_theory.md`): the light
+> census is a COMMODITY; spectral kill engines are measured out.**
+> Certified Brouwer–Zimmermann enumeration (two-window completeness =
+> a counting invariant, no UNSAT) re-derives the f2a6 census in 4.5 s
+> (SAT: 9.6 h, exact) and delivers the two Z₁₅×Z₆ [[180,4,10]] docket
+> censuses the solver lane could not (2,203 + 2,371 classes @ W = 18).
+> ε-trisection theorem (census over Z₂×H = doubled H-census ⊔ cosets ⊔
+> bounded lifts, validated 4,574/4,574) — the even-factor twin of A29's
+> odd-fiber ε-recursion residue. Shifting-as-kill-engine REFUTED with a
+> certified gap cell (best value 8 vs needed 15; do not re-propose);
+> ρ = B̂/Â = A4 §6.3's C-ratios is the surviving vocabulary. All five
+> censused codes share the bottom signature: 1 stamp class + 6 D-pairs,
+> tail near 2d−2.
+>
+> **A29 (2026-08-06, `A29_general_fibering.md`): the fibering is now an
+> ENGINE.** `bb_lab.fibering` generalizes the A22/A23 safe-floor
+> deletion to a code-agnostic procedure (any odd fiber order, automatic
+> fiber/link enumeration, τ-twisted state sweep, consistency-pruned
+> DFS, verified witnesses), validated bit-for-bit against the A22/A23
+> ground truths. First deployments: 3 of the docket's 7 UNKNOWN
+> safe-floor cells decided (ac46bbea:y and 38d3c884:x/y — the Z₅×Z₁₅
+> [[150,8,8]] trio; two pinned d_safe = 16 EXACT solver-free), and the
+> **A8 §4.3 open core is CLOSED** — the [[168,12,6]] Z₆×Z₁₄ safe floor
+> 12 certified in 10 s, so the [[336,12,12]] doubling now has all
+> template inputs without the heterogeneous-dictionary program. Named
+> residue: the ε-recursion chapter (A29 §6.3) for Z₂₁×Z₃ and the
+> Z₁₅×Z₆ floor-20 cells; A27 §3.3 P5's sweep estimate corrected
+> (erratum, A29 §3).
 
 **The program has its first headline theorem (Entry 14): d(gross) ≥ 6,
 fully analytic — triple the published Lin–Pryadko floor of 2. Goal 3 is

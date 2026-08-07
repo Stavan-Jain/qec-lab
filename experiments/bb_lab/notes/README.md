@@ -7,7 +7,7 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A29.**
+**Next free number: A30.**
 
 | # | Line | Note file(s) | Status |
 |---|------|--------------|--------|
@@ -38,8 +38,9 @@ A11 line, not A8).
 | A24 | Bravyi-360 y-deck safe-sector floor at 24 (p_y*≠0 sector; subsumes new-x + doubly-old), falsify-first + A23-fibering port | `A24_y_safe_floor.md` | active (spawned 2026-07-23; note lives on branch `claude/bravyi-y-deck-floor-bbf8cf`, not yet on main) |
 | A25 | gross d_circ via SBB Thm-1 extended-code reduction (d_ext^Z ≤ 9 verified; exact-d_ext UNSAT probes) | note on unmerged branch — row added defensively 2026-08-03 to prevent number collision | active |
 | A26 | Mitten-code descent (arXiv:2607.28795): decks/quotients/towers on non-abelian LP codes; tower hypothesis refuted, Table XIII [[300]] erratum, 2d̄−2 wall echo ×2 | `A26_mitten_descent.md` | done (ISD tier; exact-d + safe-floor follow-ups queued) |
-| A27 | Safe-floor deletion: generality tiering + fibering feasibility probe for the Z₁₅×Z₆ [[180,4,10]] docket UNKNOWNs | `A27_safe_floor_generality.md` | done (synthesis + probe, 2026-08-06; §5 lists gates for any follow-on) |
-| A28 | LSC theory: certified BZ census lane (docket [[180,4,10]] censuses NEW), shift-bound verdict (measured negative w/ certified gap cell), ε-trisection theorem (validated 2,203/2,203) | `A28_light_classification_theory.md` | active (docket5e BZ + depth-10 tree in flight 2026-08-06) |
+| A27 | Safe-floor deletion: generality tiering + fibering feasibility probe for the Z₁₅×Z₆ [[180,4,10]] docket UNKNOWNs | `A27_safe_floor_generality.md` | done (synthesis + probe, 2026-08-06; §3.3 P5 sweep-size estimate corrected by A29 §3 erratum) |
+| A28 | LSC theory: certified BZ census lane (docket [[180,4,10]] censuses NEW), shift-bound verdict (measured negative w/ certified gap cell), ε-trisection theorem (validated 4,574/4,574) | `A28_light_classification_theory.md` | done (2026-08-06 incl. depth-10 dichotomy curve; §6 gates data-backed for both docket cells) |
+| A29 | General fibering engine (`bb_lab.fibering`): portable safe-floor certification; 3 docket UNKNOWNs certified (2 pinned exact), A8 §4.3 open core CLOSED ([[168,12,6]] safe floor 12 in 10 s); ε-recursion chapter = the named residue | `A29_general_fibering.md` | active (session 1, 2026-08-06; engine validated bit-for-bit vs A22/A23; **renumbered from A28 at merge** — claimed A28 in parallel with the LSC line, LSC claim was 31 min earlier) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill

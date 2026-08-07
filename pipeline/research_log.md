@@ -732,3 +732,41 @@ what was tried and why it didn't work.
   [[300,8,16]] distance theorem now rests on the single hypothesis
   `LightClassification` (A22).
   [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)
+
+- 2026-08-06 — A28 light-stabilizer classification theory — success —
+  the light census (input I2 of the doubling template) is now cheap and
+  independently certified: a Brouwer–Zimmermann census certifier
+  (`a28_bz_census.py`, two disjoint information windows ⟹ completeness
+  is a counting invariant, not an UNSAT refutation) re-derives the f2a6
+  113-class census in 4.5 s (SAT lane: 9.6 h; exact agreement) and
+  produces the two Z₁₅×Z₆ [[180,4,10]] docket censuses the SAT lane
+  could not reach (2,203 + 2,371 classes at W = 18, ~11–15 min each).
+  ε-trisection theorem: over G = Z₂×H the census decomposes into
+  doubled H-census ⊔ coset censuses ⊔ bounded lifts (proved + validated
+  4,574/4,574) — the even-factor recursion complementing A29's
+  odd-fiber ε-recursion residue. van Lint–Wilson shifting as a (CLASS)
+  kill engine: REFUTED by measurement — a BZ-certified-empty cell where
+  the exhaustively-computed best game value is 8 against a needed 15;
+  ρ = B̂/Â survives as the uniform endgame vocabulary (it is A4 §6.3's
+  C-ratios). Depth-10 dichotomy tree quantifies the wall (119 kills /
+  730 giveups, frontier ×12). Bottom-of-census universality across all
+  five censused codes: one stamp class at |A|+|B|, six D-pair classes
+  at 2(|A|+|B|)−2, tail onset near 2d−2.
+  [details](../experiments/bb_lab/notes/A28_light_classification_theory.md)
+
+- 2026-08-06 — A29 general fibering engine — success — the A22/A23
+  fibering is now a code-agnostic library (`bb_lab.fibering`): exact
+  weight formula in field-free residue coordinates for ANY odd fiber
+  order, automatic fiber enumeration + ε-monomial-link detection,
+  τ-twisted state sweep with consistency-pruned DFS, batched exact
+  ε-costs, seamC offsets per Prop A14.1, verified refutation witnesses.
+  Validated bit-for-bit against pair72/A23/A22 (including the 113-class
+  census). New results: 3 of the A17 docket's 7 UNKNOWN safe-floor
+  cells decided (Z₅×Z₁₅ [[150,8,8]] trio: ac46bbea:y and 38d3c884:x at
+  d_safe = 16 EXACT, 38d3c884:y ≥ 18) and the A8 §4.3 open core CLOSED
+  — the [[168,12,6]] Z₆×Z₁₄ safe floor 12 certified in 10 s, completing
+  the [[336,12,12]] doubling's template inputs without the
+  heterogeneous-dictionary program. Includes an A27 §3.3 P5 erratum
+  (the ≥2-per-site bound needs the ε-link). Named residue: the
+  ε-recursion chapter (Z₂₁×Z₃, Z₁₅×Z₆ floor-20).
+  [details](../experiments/bb_lab/notes/A29_general_fibering.md)
