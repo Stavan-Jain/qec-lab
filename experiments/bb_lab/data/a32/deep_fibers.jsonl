@@ -1,0 +1,28 @@
+{"wbeta": 6, "cap": 8, "lift_whist": {"6": 1, "22": 220, "20": 56, "16": 12, "18": 46}, "verdicts": {"PASS": 290}, "wall_s": 3.5}
+{"wbeta": 10, "cap": 6, "lift_whist": {"10": 1, "18": 7, "12": 1, "20": 36, "22": 101}, "verdicts": {"PASS": 123}, "wall_s": 0.6}
+{"wbeta": 10, "cap": 6, "lift_whist": {"10": 1, "22": 104, "20": 27, "12": 1, "18": 1}, "verdicts": {"PASS": 111}, "wall_s": 0.6}
+{"wbeta": 10, "cap": 6, "lift_whist": {"12": 1, "22": 104, "10": 1, "20": 27, "18": 1}, "verdicts": {"PASS": 111}, "wall_s": 0.6}
+{"wbeta": 10, "cap": 6, "lift_whist": {"12": 1, "22": 101, "10": 1, "20": 36, "18": 7}, "verdicts": {"PASS": 123}, "wall_s": 0.6}
+{"wbeta": 10, "cap": 6, "lift_whist": {"12": 1, "22": 104, "20": 27, "10": 1, "18": 1}, "verdicts": {"PASS": 111}, "wall_s": 0.6}
+{"wbeta": 10, "cap": 6, "lift_whist": {"12": 1, "22": 104, "20": 27, "10": 1, "18": 1}, "verdicts": {"PASS": 111}, "wall_s": 0.6}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 1, "20": 24, "22": 54, "16": 3}, "verdicts": {"PASS": 75}, "wall_s": 0.4}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 48, "20": 16}, "verdicts": {"PASS": 56}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 48, "20": 16}, "verdicts": {"PASS": 56}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"16": 3, "22": 38, "12": 1, "20": 8}, "verdicts": {"PASS": 45}, "wall_s": 0.2}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 46, "20": 2}, "verdicts": {"PASS": 46}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 52, "20": 4}, "verdicts": {"PASS": 52}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 52, "20": 4}, "verdicts": {"PASS": 52}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 32, "20": 8}, "verdicts": {"PASS": 32}, "wall_s": 0.2}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 46, "20": 2}, "verdicts": {"PASS": 46}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 46, "20": 2}, "verdicts": {"PASS": 46}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 48, "20": 16}, "verdicts": {"PASS": 56}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 48, "20": 16}, "verdicts": {"PASS": 56}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"22": 26, "18": 2, "20": 2}, "verdicts": {"PASS": 29}, "wall_s": 0.2}
+{"wbeta": 12, "cap": 5, "lift_whist": {"14": 3, "22": 78, "18": 1}, "verdicts": {"PASS": 78}, "wall_s": 0.4}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "20": 32, "22": 32}, "verdicts": {"PASS": 52}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 32, "20": 32}, "verdicts": {"PASS": 52}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "20": 26, "22": 16}, "verdicts": {"PASS": 26}, "wall_s": 0.2}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 46, "20": 2}, "verdicts": {"PASS": 46}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 52, "20": 4}, "verdicts": {"PASS": 52}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"12": 2, "22": 52, "20": 4}, "verdicts": {"PASS": 52}, "wall_s": 0.3}
+{"wbeta": 12, "cap": 5, "lift_whist": {"16": 3, "20": 8, "12": 1, "22": 38}, "verdicts": {"PASS": 45}, "wall_s": 0.2}

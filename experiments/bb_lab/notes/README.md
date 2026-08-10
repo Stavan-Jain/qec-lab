@@ -7,7 +7,7 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A32.**
+**Next free number: A33.**
 
 | # | Line | Note file(s) | Status |
 |---|------|--------------|--------|
@@ -43,6 +43,7 @@ A11 line, not A8).
 | A29 | General fibering engine (`bb_lab.fibering`): portable safe-floor certification; 3 docket UNKNOWNs certified (2 pinned exact), A8 §4.3 open core CLOSED ([[168,12,6]] safe floor 12 in 10 s); ε-recursion chapter = the named residue | `A29_general_fibering.md` | active (session 1, 2026-08-06; engine validated bit-for-bit vs A22/A23; **renumbered from A28 at merge** — claimed A28 in parallel with the LSC line, LSC claim was 31 min earlier) |
 | A30 | Coset-BZ (A28 windows × A29 seam offsets): safe floors as coset weights; **all 3 remaining docket UNKNOWNs certified** — both Z₁₅×Z₆ [[180,4,10]] codes double on every axis ([[360,4,20]], first d=10→20, deficit wall cleared) + Z₂₁×Z₃ CMS cross-check in 0.6 s (A29 §5.3 "4 UNKNOWNs" = stale-row miscount); docket CLOSED, ≤ 8.4 min/code | `A30_coset_bz_doubling_certificates.md` | done (2026-08-07 incl. §5.5 rung pass: (M)@20 ALL PASS 2,203+2,371+2,371 classes ~7 s/cell, f2a6 113/113 validation ⟹ **d([[360,4,20]]) = 20 END-TO-END at certificate tier, both codes, all axes**; Lean packaging = follow-on 1) |
 | A31 | Doubling novelty verdict + genealogy: 4-lane web sweep (frontier re-verified through SRB v3 of 2026-08-06 — even-h window OPEN, theorem ours; setting/observation = SRB 2511.13560 + GZ); roots = Smith/transfer LES (Maschke stall at h=2) × CMSS-1991 repeated-root shadow × SV-2012 Lemma 31 classical sandwich; no-ancestor list (coset floors, iff k-criterion, 2d−2 wall); positioning + must-cite table | `A31_doubling_novelty_and_roots.md` | done (2026-08-07; researcher-grade lit synthesis; watch: SRB v1↔v3 diff at submission) |
+| A32 | Bravyi-360 tower slice calculus: two-level shadow/overflow reduction C→BY→GB + GB-sector trisection of the d=24 obligations (SF24-y strata + flat-22 residue); sectors A/B closed live, C closed for \|β\| ≥ 14; residue = 28 deep fibers | `A32_tower_slice_calculus.md` | active (worktree branch `worktree-bravyi360-fibering-fit`; defensive claim 2026-08-10) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill

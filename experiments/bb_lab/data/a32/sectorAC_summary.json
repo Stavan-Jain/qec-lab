@@ -1,0 +1,78 @@
+{
+ "wcensus22": {
+  "vectors": 8848363,
+  "orbits": {
+   "14": 6,
+   "16": 68,
+   "18": 1627,
+   "20": 19873,
+   "22": 175057
+  },
+  "nodes": 19047376314
+ },
+ "sectorA_18to22": {
+  "fibers": 196557,
+  "lifts": 13109,
+  "rungs": 13109,
+  "violations": 0,
+  "flat22_dangerous_rungs": 0,
+  "banked_checked": 0,
+  "lift_m2_hist": {
+   "0": 6929,
+   "1": 4844,
+   "2": 1336
+  },
+  "verdicts": {
+   "PASS": 13109
+  }
+ },
+ "stabcensus22": {
+  "vectors": 3481595,
+  "orbits": {
+   "6": 1,
+   "10": 6,
+   "12": 21,
+   "14": 64,
+   "16": 333,
+   "18": 1733,
+   "20": 10602,
+   "22": 64619
+  },
+  "nodes": 6349125438
+ },
+ "sectorC_14to16": {
+  "fibers": 397,
+  "lifts": 4132,
+  "rungs": 2770,
+  "violations": 0,
+  "flat22_dangerous_rungs": 765,
+  "banked_checked": 1362,
+  "lift_m2_hist": {
+   "0": 416,
+   "2": 561,
+   "4": 962,
+   "3": 1639,
+   "1": 554
+  },
+  "verdicts": {
+   "PASS": 2770
+  }
+ },
+ "sectorC_18to22": {
+  "fibers": 76954,
+  "lifts": 38223,
+  "rungs": 31613,
+  "violations": 0,
+  "flat22_dangerous_rungs": 25492,
+  "banked_checked": 6610,
+  "lift_m2_hist": {
+   "0": 19715,
+   "2": 4757,
+   "1": 13751
+  },
+  "verdicts": {
+   "PASS": 31613
+  }
+ },
+ "wall_s": 545.8
+}

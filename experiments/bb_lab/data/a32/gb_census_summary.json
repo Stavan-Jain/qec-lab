@@ -1,0 +1,36 @@
+{
+ "logical": {
+  "vectors": 1623,
+  "weight_hist": {
+   "10": 1533,
+   "8": 90
+  },
+  "orbits_w8": 2,
+  "orbits_w10": 36,
+  "orbits_w8_notim": 2,
+  "orbits_w10_notim": 36,
+  "nodes": 248619900
+ },
+ "wcoset": {
+  "vectors": 3330,
+  "weight_hist": {
+   "16": 3060,
+   "14": 270
+  },
+  "orbits_w14": 6,
+  "orbits_w16": 68,
+  "nodes": 453687837
+ },
+ "stab": {
+  "vectors": 19065,
+  "orbit_hist": {
+   "6": 1,
+   "10": 6,
+   "12": 21,
+   "14": 64,
+   "16": 333
+  },
+  "nodes": 151229279
+ },
+ "wall_s": 2.6
+}
