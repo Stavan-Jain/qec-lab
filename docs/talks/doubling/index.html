@@ -14,6 +14,8 @@
             slides carry data-frag="n" steps; entering a slide forward starts
             with builds hidden, each → reveals one. PDF prints fully built.
   PDF:      Cmd+P from Chrome → each slide is one 1280×720 page.
+  Handout:  open with ?handout → every slide fully built with its speaker
+            notes beneath; Cmd+P gives a slide+notes PDF (1280×1120 pages).
   Edit:     each slide is a <section class="slide"> below; search "SLIDE 7".
 
   SLIDE MAP                                             status
@@ -210,6 +212,25 @@
     font:600 12.5px var(--mono);background:#fff;border:1px solid var(--base-line);
     border-bottom-width:2px;border-radius:5px;padding:2px 7px;color:var(--ink);
   }
+
+  /* ---- handout mode (?handout): slide + speaker notes per page ---- */
+  body.handout{background:#fff}
+  body.handout .stage{position:static;width:auto;height:auto;transform:none}
+  body.handout .slide{
+    position:relative;inset:auto;width:1280px;height:1120px;
+    opacity:1;visibility:visible;page-break-after:always;break-after:page;
+  }
+  body.handout [data-frag]{opacity:1!important;transform:none!important}
+  body.handout .notes{
+    display:block;position:absolute;left:84px;right:84px;top:744px;
+    font:13.5px/1.5 var(--sans);color:var(--ink-2);
+  }
+  body.handout .notes::before{
+    content:"notes";display:block;margin-bottom:8px;padding-top:14px;
+    border-top:1px solid var(--hair);
+    font:600 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  }
+  body.handout .overlay{display:none!important}
 
   /* ---- print → PDF: one page per slide ---- */
   @page{size:1280px 720px;margin:0}
@@ -1319,6 +1340,14 @@
 
   setScale();
   go((parseInt(location.hash.slice(1), 10) || 1) - 1, 'jump');
+
+  // ?handout → every slide fully built with its speaker notes beneath, one per page
+  if (new URLSearchParams(location.search).has('handout')) {
+    document.body.classList.add('handout');
+    const st = document.createElement('style');
+    st.textContent = '@page{size:1280px 1120px;margin:0}';
+    document.head.appendChild(st);
+  }
 </script>
 </body>
 </html>
