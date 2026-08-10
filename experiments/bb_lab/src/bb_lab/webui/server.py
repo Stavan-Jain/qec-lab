@@ -144,6 +144,8 @@ class Handler(BaseHTTPRequestHandler):
                 self._analyse()
             elif path == "/api/solve":
                 self._solve()
+            elif path == "/api/certify":
+                self._certify()
             elif path.startswith("/api/solve/") and path.endswith("/cancel"):
                 self._cancel(path.split("/")[3])
             elif path == "/api/backend/refresh":
@@ -185,6 +187,51 @@ class Handler(BaseHTTPRequestHandler):
             body.get("orders", ""), body.get("A", ""), body.get("B", ""),
         )
         self._send_json(asdict(report))
+
+    def _certify(self) -> None:
+        """The doubling-aware front-end (bb_lab.doubling_certify).
+
+        Detects a base, certifies the template inputs at base scale, and
+        assembles d = 2 d_base — with Tandem as the witness/fallback
+        lane.  Streams stage events on the same event channel as solve
+        jobs; the final `done` event carries the (scrubbed) verdict."""
+        from ..doubling_certify import certify, scrub_json
+
+        body = self._body()
+        report, _ = analysis.analyse(
+            body.get("orders", ""), body.get("A", ""), body.get("B", ""),
+            lookup_corpus=False,
+        )
+        budget = float(body.get("budget") or 2400.0)
+        threads = int(body.get("threads") or 8)
+        label = f"certify [[{report.n},{report.k}]] {report.group_label}"
+        job = Job(label, "doubling-certify")
+        with _JOBS_LOCK:
+            _JOBS[job.id] = job
+
+        def progress(stage: str, **kw: Any) -> None:
+            job.check_cancel()
+            job.emit("stage", stage=stage,
+                     detail=" ".join(f"{k}={v}" for k, v in kw.items()))
+
+        def work() -> None:
+            try:
+                verdict = certify(
+                    tuple(report.orders), report.A, report.B,
+                    budget_s=budget, threads=threads, progress=progress,
+                )
+                slim = scrub_json(verdict)
+                slim.get("stages", {}).pop("census_classes", None)
+                job.finish({"verdict": slim})
+            except solver.Cancelled:
+                job.state = "cancelled"
+                job.emit("cancelled")
+            except Exception as e:
+                traceback.print_exc()
+                job.fail(f"{type(e).__name__}: {e}")
+
+        threading.Thread(target=work, daemon=True).start()
+        self._send_json({"job_id": job.id, "backend": "doubling-certify"})
 
     def _solve(self) -> None:
         body = self._body()

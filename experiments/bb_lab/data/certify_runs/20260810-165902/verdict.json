@@ -1,0 +1,172 @@
+{
+ "input": {
+  "orders": [
+   30,
+   6
+  ],
+  "A": "1 + y + x",
+  "B": "y^4 + x + x^11*y^2",
+  "n": 360,
+  "k": 4
+ },
+ "tier": "certified computational data (counting-invariant enumeration + the doubling theorem); NOT kernel-checked",
+ "stages": {
+  "detect": [
+   {
+    "axis": 0,
+    "shift_A": 0,
+    "shift_B": 0,
+    "base_group": [
+     15,
+     6
+    ],
+    "base_A": "1 + y + x",
+    "base_B": "y^4 + x + x^11*y^2",
+    "k_cover": 4,
+    "k_base": 4,
+    "R_holds": true,
+    "note": ""
+   }
+  ],
+  "candidate_log": [
+   {
+    "candidate": 0,
+    "axis": 0,
+    "outcome": "CERTIFIED"
+   }
+  ],
+  "base": {
+   "group": [
+    15,
+    6
+   ],
+   "axis": 0,
+   "n": 180,
+   "k": 4,
+   "kappa": 88
+  },
+  "d_base": {
+   "X": {
+    "side": "X",
+    "k": 4,
+    "d": 10,
+    "nodes": [
+     2445542,
+     2445542,
+     41621294,
+     41621294
+    ]
+   },
+   "Z": {
+    "side": "Z",
+    "k": 4,
+    "d": 10,
+    "nodes": [
+     2445542,
+     2445542,
+     41621294,
+     41621294
+    ]
+   }
+  },
+  "census": {
+   "W": 18,
+   "n_classes": 2203,
+   "weight_histogram": {
+    "6": 1,
+    "10": 6,
+    "12": 42,
+    "14": 54,
+    "16": 478,
+    "18": 1622
+   },
+   "windows": [
+    {
+     "nodes": 642559165633,
+     "hits": 137729,
+     "wall_s": 664.62
+    },
+    {
+     "nodes": 71208805393,
+     "hits": 99970,
+     "wall_s": 66.32
+    }
+   ],
+   "raw_hits": 197700
+  },
+  "safe_floor": {
+   "target": 20,
+   "W": 18,
+   "r_pair": [
+    9,
+    8
+   ],
+   "n_orbit_reps": 1,
+   "per_class": {
+    "rep0": {
+     "verdict": "CERTIFIED",
+     "floor": 20
+    }
+   },
+   "windows": [
+    {
+     "nodes": 642559165633,
+     "hits": 0,
+     "wall_s": 428.49
+    },
+    {
+     "nodes": 71208805393,
+     "hits": 0,
+     "wall_s": 39.19
+    }
+   ],
+   "certified": true,
+   "min_refuted": null
+  },
+  "rung_pass": {
+   "n_classes": 2203,
+   "verdicts": {
+    "PASS": 2203
+   },
+   "lanes": {
+    "bz": 1,
+    "restricted<=4": 6,
+    "restricted<=3": 42,
+    "restricted<=2": 54,
+    "restricted<=1": 478,
+    "restricted<=0": 1622
+   },
+   "sector_dim": 4,
+   "all_pass": true,
+   "first_bad": null,
+   "wall_s": 6.9
+  },
+  "witness": {
+   "established": true,
+   "weight": 20
+  }
+ },
+ "status": "CERTIFIED",
+ "distance": {
+  "value": 20,
+  "floor": 20,
+  "upper": 20,
+  "d_base": 10,
+  "statement": "d = 20 (X-side certificates; Z by the BB transpose duality). Inputs: base d exact both sides + census (translation-complete) + safe-class coset floors + dangerous-sector rung pass + diagonal-lift witness."
+ },
+ "tandem": {
+  "role": "cross-check / witness lane",
+  "suggested_flags": {
+   "-init-lb": 20,
+   "-cost-step": 2,
+   "-verb": 1
+  },
+  "acknowledge": [
+   "-init-lb",
+   "-cost-step"
+  ],
+  "note": "passing the certified floor as -init-lb=20 deletes the solver's proof phase: the run only has to FIND the weight-20 witness, then stops at the floor. -cost-step=2 is sound (coset weight parity). Expect minutes, vs hours-to-days for the monolithic proof."
+ },
+ "wall_s": 1220.3,
+ "workdir": "/Users/stavanjain/Code/qec-lab/.claude/worktrees/light-stabilizer-bounds-d25964/experiments/bb_lab/data/certify_runs/20260810-165902"
+}

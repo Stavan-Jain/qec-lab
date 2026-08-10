@@ -197,6 +197,15 @@ A4 Theorem D).
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
 >
+> **A30 §7 (2026-08-10): the doubling front-end is a TOOL.**
+> `bb_lab.doubling_certify` + `bb-lab ui` "Certify as doubling cover" +
+> `scripts/bb_certify_doubling.py`: cover code in → detect base + (R) →
+> census/floors/rungs/witness → d = 2·d_base with tier-labelled
+> certificates; Tandem composed as the witness lane (`-init-lb=floor`
+> deletes its proof phase) and monolithic fallback. [[360,4,20]]
+> re-derived from the cover alone in 20.3 min (census bit-identical to
+> A28); tests 5/5 incl. the by90 rung negative control.
+>
 > **A30 (2026-08-07, `A30_coset_bz_doubling_certificates.md`): the
 > docket is CLOSED — first d = 10 → 20 doublings.** Coset-BZ (A28's
 > two-window counting invariant seeded at A29's seam offsets; safe

@@ -232,6 +232,73 @@ territory, or the theory route); (4) the docket's doubling rows can now
 be *executed* — build the [[360,4,20]] instances and SAT-witness the
 upper sides as an external sanity row.
 
+## 7. Session 3 (2026-08-10): the front-end — cover code in, d = 20 out,
+## composed around Tandem
+
+Follow-on 2 delivered as a library + CLI + UI lane: give it the COVER
+code and it does everything this note did, autonomously.
+
+**Library** (`src/bb_lab/cosetbz.py` + `src/bb_lab/doubling_certify.py`;
+the a28/a30 session scripts stay frozen as artifacts):
+`detect` (axis literal-lifts up to per-block translation normalisation —
+a coordinate permutation of the code — plus (R) via k-preservation),
+`d_side_exact` (progressive-ladder logical-coset BZ, both CSS sides,
+witnesses), `census` (vectorised translation canonicalisation),
+`safe_floor`, `RungEngine`/`rung_pass` (the §5.5 checker), witness lift
+(τ(u) verified nontrivial — now CHECKED, not assumed), and `certify`
+(orchestration, budgets on the monotonic clock, node-estimate guard:
+sweeps beyond ~2.5·10¹² nodes are refused with the shard/theory-route
+message instead of ground through).  Every verdict carries its claim
+tier and a Tandem block.
+
+**The Tandem composition** (per the A27/descent-SAT verdicts: compose
+around the solver, never inside it): a CERTIFIED verdict suggests
+`-init-lb=<floor> -cost-step=2` with the acknowledgements — the
+certified floor deletes Tandem's proof phase, so its run only has to
+FIND the weight-2d witness (minutes) and stops at the floor: the
+`-fiber-lb` hybrid idea landed soundly.  On detection/(R)/scale failure
+or a refutation, the verdict routes to monolithic Tandem as the
+fallback lane.  UI: `bb-lab ui` gains a "Certify as doubling cover"
+action (`/api/certify`, SSE stage stream, tier-labelled verdict card,
+one-click Tandem cross-check with the flags + acknowledgements
+prefilled); server-side soundness gating unchanged.
+
+**Validation** (`tests/test_doubling_certify.py`, 5/5 in ~5 s): docket
+base detection (both cover shapes); pair72 cover [[72,4,8]] certifies
+d = 8 end-to-end in seconds; f2a6:y rung pass 113/113 through the
+library path; the by90 rung cover (Z₃₀×Z₃, the [[180,8,12]] Bravyi
+rung whose base is the [[90,8,8]] bottom) comes back DOUBLING-REFUTED
+(the A14 §13 freeze) — no false certificates; even-weight inputs
+refused.
+
+**End-to-end on the [[360,4,?]] covers** (cover code as the ONLY
+input): Z₃₀×Z₆ `1+y+x` / `y⁴+x+x¹¹y²` → detect base [[180,4,10]],
+d_base = 10 both sides (~1 s), census 2,203 classes with the A28
+histogram **bit-identical**, safe floor CERTIFIED, rung pass
+2,203/2,203 PASS (lane strata exactly §5.5's), witness lift
+established ⟹ **CERTIFIED d = 20 in 1,220 s ≈ 20.3 min** (some CPU
+shared with a concurrent session).  Z₁₅×Z₁₂ (the 5e y-cover) run with
+the live Tandem cross-check lane — see `data/certify_runs/`.
+
+Tandem itself was built this session (build_maxcdcl.sh, fork verified:
+`-cost-step` present, 29 options discovered) and relocated to the
+`third_party/maxcdcl/` path the UI probes.
+
+**The Tandem cross-check, measured at both scales.** The second cover
+(Z₁₅×Z₁₂, CERTIFIED d = 20 in 946 s) ran the live lane three ways:
+
+| lane | outcome |
+|---|---|
+| pair72 cover [[72,4,8]], `-init-lb=8` | **d = 8 CONFIRMED in 0.02 s**, `agrees: true`, witness re-verified by the solver path — the composed loop works end-to-end |
+| n = 360, `-init-lb=20` unseeded | **no incumbent in 900 CPU-s** (~1.7M conflicts/phase): the monolith cannot even FIND a weight-20 witness in the budget the front-end needs for the entire certificate |
+| n = 360, `-phase-file` seeded with the certified witness | no incumbent, **conflict counts identical to unseeded** — MaxCDCL's VSIDS-initialization pass (first 10⁴ conflicts) re-derives polarities and wipes the seed; phase seeding is a null lever in this fork as built (future fork tweak: apply phases after init) |
+
+Honest summary for the UI/story: the cross-check lane is real and
+instant at solver-reachable sizes; at n = 360 the certificate's own
+in-process-verified witness IS the upper side, and the solver lanes are
+fallback-only. Verdicts: `data/certify_runs/*/verdict.json` (three
+committed, incl. both n = 360 cross-check records).
+
 ## Appendix: verification map
 
 | claim | check |

@@ -1,0 +1,180 @@
+{
+ "input": {
+  "orders": [
+   15,
+   12
+  ],
+  "A": "1 + y + x",
+  "B": "y^4 + x^8*y^2 + x^13",
+  "n": 360,
+  "k": 4
+ },
+ "tier": "certified computational data (counting-invariant enumeration + the doubling theorem); NOT kernel-checked",
+ "stages": {
+  "detect": [
+   {
+    "axis": 1,
+    "shift_A": 0,
+    "shift_B": 0,
+    "base_group": [
+     15,
+     6
+    ],
+    "base_A": "1 + y + x",
+    "base_B": "y^4 + x^8*y^2 + x^13",
+    "k_cover": 4,
+    "k_base": 4,
+    "R_holds": true,
+    "note": ""
+   }
+  ],
+  "candidate_log": [
+   {
+    "candidate": 0,
+    "axis": 1,
+    "outcome": "CERTIFIED"
+   }
+  ],
+  "base": {
+   "group": [
+    15,
+    6
+   ],
+   "axis": 1,
+   "n": 180,
+   "k": 4,
+   "kappa": 88
+  },
+  "d_base": {
+   "X": {
+    "side": "X",
+    "k": 4,
+    "d": 10,
+    "nodes": [
+     2445542,
+     2445542,
+     41621294,
+     41621294
+    ]
+   },
+   "Z": {
+    "side": "Z",
+    "k": 4,
+    "d": 10,
+    "nodes": [
+     2445542,
+     2445542,
+     41621294,
+     41621294
+    ]
+   }
+  },
+  "census": {
+   "W": 18,
+   "n_classes": 2371,
+   "weight_histogram": {
+    "6": 1,
+    "10": 6,
+    "12": 43,
+    "14": 55,
+    "16": 503,
+    "18": 1763
+   },
+   "windows": [
+    {
+     "nodes": 642559165633,
+     "hits": 148083,
+     "wall_s": 380.76
+    },
+    {
+     "nodes": 71208805393,
+     "hits": 106963,
+     "wall_s": 43.75
+    }
+   ],
+   "raw_hits": 212865
+  },
+  "safe_floor": {
+   "target": 20,
+   "W": 18,
+   "r_pair": [
+    9,
+    8
+   ],
+   "n_orbit_reps": 1,
+   "per_class": {
+    "rep0": {
+     "verdict": "CERTIFIED",
+     "floor": 20
+    }
+   },
+   "windows": [
+    {
+     "nodes": 642559165633,
+     "hits": 0,
+     "wall_s": 456.66
+    },
+    {
+     "nodes": 71208805393,
+     "hits": 0,
+     "wall_s": 45.2
+    }
+   ],
+   "certified": true,
+   "min_refuted": null
+  },
+  "rung_pass": {
+   "n_classes": 2371,
+   "verdicts": {
+    "PASS": 2371
+   },
+   "lanes": {
+    "bz": 1,
+    "restricted<=4": 6,
+    "restricted<=3": 43,
+    "restricted<=2": 55,
+    "restricted<=1": 503,
+    "restricted<=0": 1763
+   },
+   "sector_dim": 4,
+   "all_pass": true,
+   "first_bad": null,
+   "wall_s": 7.4
+  },
+  "witness": {
+   "established": true,
+   "weight": 20
+  }
+ },
+ "status": "CERTIFIED",
+ "distance": {
+  "value": 20,
+  "floor": 20,
+  "upper": 20,
+  "d_base": 10,
+  "statement": "d = 20 (X-side certificates; Z by the BB transpose duality). Inputs: base d exact both sides + census (translation-complete) + safe-class coset floors + dangerous-sector rung pass + diagonal-lift witness."
+ },
+ "tandem": {
+  "role": "cross-check / witness lane",
+  "suggested_flags": {
+   "-init-lb": 20,
+   "-cost-step": 2,
+   "-verb": 1
+  },
+  "acknowledge": [
+   "-init-lb",
+   "-cost-step"
+  ],
+  "note": "passing the certified floor as -init-lb=20 deletes the solver's proof phase: the run only has to FIND the weight-20 witness, then stops at the floor. -cost-step=2 is sound (coset weight parity). Expect minutes, vs hours-to-days for the monolithic proof.",
+  "crosscheck": {
+   "ran": true,
+   "error": "RuntimeError: solver did not report OPTIMUM (exit 1); tail:\n    LEARNT          | Progress |\nc |           |    Vars  Clauses Literals |    Limit  Clauses Lit/Cl |          |\nc ===============================================================================\nc nb soft clauses: 360, of which 360 unit, 0 nonUnit and 0 empty\nc total nb of literals: 17916\nc conflLits 0, conflLits2 0, nbFailedLits 0, fixedVarsBypreproc 0, totalFixedVars 180\nc 1 conflict sets found with length 182\nc fixedCostBySearch 0, nbSatSoftLits 0, derivedCost 0,ttlFixedVars 180(1696), objForSearch: 360\n\nc variable elimination before search: fixedVars 180(over 1696), clauses 4621, softLits 360\n\nc provided LB: 20\nc no UB provided, search from scratch...\n\nc fixedCostBySearch 0, nbSatSoftLits 0, derivedCost 0,ttlFixedVars 180(1696), objForSearch: 360\nc starting search with 4621 original clauses and 360 softLits...\n\nc ends of initiationization by VSIDS at 10002 conflicts with init -2\n\nc LRB phase 1: conflicts 782845, phase 20000000, starts 1612, UP 20000225\nc VSIDS phase 1: conflicts 704030, phase 20000000, starts 4238, UP 20007240\nc LRB phase 2: conflicts 1717935, phase 40000000, starts 2483, UP 40994707\nc VSIDS phase 2: conflicts 1454515, phase 40000000, starts 9534, UP 40001287\n"
+  },
+  "crosscheck_seeded": {
+   "ran": true,
+   "error": "RuntimeError: solver did not report OPTIMUM (exit 1); tail:\n    LEARNT          | Progress |\nc |           |    Vars  Clauses Literals |    Limit  Clauses Lit/Cl |          |\nc ===============================================================================\nc nb soft clauses: 360, of which 360 unit, 0 nonUnit and 0 empty\nc total nb of literals: 17916\nc conflLits 0, conflLits2 0, nbFailedLits 0, fixedVarsBypreproc 0, totalFixedVars 180\nc 1 conflict sets found with length 182\nc fixedCostBySearch 0, nbSatSoftLits 0, derivedCost 0,ttlFixedVars 180(1696), objForSearch: 360\n\nc variable elimination before search: fixedVars 180(over 1696), clauses 4621, softLits 360\n\nc provided LB: 20\nc no UB provided, search from scratch...\n\nc fixedCostBySearch 0, nbSatSoftLits 0, derivedCost 0,ttlFixedVars 180(1696), objForSearch: 360\nc starting search with 4621 original clauses and 360 softLits...\n\nc ends of initiationization by VSIDS at 10002 conflicts with init -2\n\nc LRB phase 1: conflicts 782845, phase 20000000, starts 1612, UP 20000225\nc VSIDS phase 1: conflicts 704030, phase 20000000, starts 4238, UP 20007240\nc LRB phase 2: conflicts 1717935, phase 40000000, starts 2483, UP 40994707\nc VSIDS phase 2: conflicts 1454515, phase 40000000, starts 9534, UP 40001287\n"
+  }
+ },
+ "wall_s": 946.2,
+ "workdir": "/Users/stavanjain/Code/qec-lab/.claude/worktrees/light-stabilizer-bounds-d25964/experiments/bb_lab/data/certify_runs/20260810-173506"
+}
