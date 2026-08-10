@@ -10,7 +10,10 @@ started_at: 2026-08-10T00:00:00Z
 worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
 qec_lab_branch: claude/mitten-codes-work-ed68db
 estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
-phase: m1-complete           # LiftedProduct.lean landed (3b9a4b8), 8.3 s build
+phase: m2-data-landed        # M1 (3b9a4b8) + M2 data slice (7842caf): Data/Defs/
+                             # umbrella green, 13.6 s ledger total; remaining M2 =
+                             # StabilizerCode.lean packaging (bridge lemma, decoder
+                             # identities, closure eq, 30 logical qubits, assembly)
 covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0

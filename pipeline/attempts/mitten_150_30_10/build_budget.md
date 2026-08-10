@@ -56,8 +56,10 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
 | 2026-08-10 | (probe) `A32Baseline.lean` | 3.2 | `lake env lean`, warm | imports only (Dihedral + ZMod + Fintype.Prod) |
 | 2026-08-10 | (probe) `A32Rehearsal.lean` | 12.4 | `lake env lean`, warm | **delta ≈ 9.2 s** for R1–R4 together (see below) |
 | 2026-08-10 | `Framework/Homological/LiftedProduct.lean` (M1) | 8.3 | `lake build`, worktree `claude/a32-lifted-product` @ 3b9a4b8 | pure proofs; warning-free; vs 10 s allocation |
+| 2026-08-10 | `Codes/Mitten/M150/Data.lean` (M2 data, generated) | 3.0 | `lake build` @ 7842caf | packed tables; vs 20 s allocation |
+| 2026-08-10 | `Codes/Mitten/M150/Defs.lean` (M2) | 2.3 | `lake build` @ 7842caf | indicator polys + complex + decides |
 
-**Measured total (library files): 8.3 s / 300 s** — probes are scratchpad
+**Measured total (library files): 13.6 s / 300 s** — probes are scratchpad
 files, not library modules; they calibrate, they don't count.
 
 ### Budget rehearsal result (M0.4, 2026-08-10)

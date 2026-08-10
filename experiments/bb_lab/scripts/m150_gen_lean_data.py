@@ -347,13 +347,262 @@ end A32Rehearsal
     print("        time lake env lean <dir>/A32Rehearsal.lean")
 
 
+# --------------------------------------------------- instance (M2) mode
+
+
+def rref_rows(M: np.ndarray):
+    """(pivot column list, W) with W·M[:,piv] = I over GF(2), asserting
+    full row rank (same routine as `pivot_certificate`, kept separate so
+    the M2 lane is self-auditing)."""
+    m = M.shape[0]
+    A = M.copy().astype(np.uint8)
+    E = np.eye(m, dtype=np.uint8)
+    piv, r = [], 0
+    for c in range(M.shape[1]):
+        nz = np.nonzero(A[r:, c])[0]
+        if len(nz) == 0:
+            continue
+        p = r + nz[0]
+        A[[r, p]] = A[[p, r]]
+        E[[r, p]] = E[[p, r]]
+        for i in range(m):
+            if i != r and A[i, c]:
+                A[i] ^= A[r]
+                E[i] ^= E[r]
+        piv.append(c)
+        r += 1
+        if r == m:
+            break
+    assert r == m, f"rank {r} < {m}"
+    assert (E.astype(int) @ M[:, piv] % 2 == np.eye(m, dtype=int)).all()
+    return piv, E
+
+
+def nullspace(M: np.ndarray) -> np.ndarray:
+    """Basis of ker over GF(2), rows = basis vectors."""
+    m, n = M.shape
+    A = M.copy().astype(np.uint8)
+    piv, r = [], 0
+    for c in range(n):
+        if r >= m:
+            break
+        nz = np.nonzero(A[r:, c])[0]
+        if len(nz) == 0:
+            continue
+        p = r + nz[0]
+        A[[r, p]] = A[[p, r]]
+        for i in range(m):
+            if i != r and A[i, c]:
+                A[i] ^= A[r]
+        piv.append(c)
+        r += 1
+    free = [c for c in range(n) if c not in piv]
+    basis = np.zeros((len(free), n), dtype=np.uint8)
+    for k, c in enumerate(free):
+        basis[k, c] = 1
+        for i, pc in enumerate(piv):
+            basis[k, pc] = A[i, c]
+    assert not (M.astype(int) @ basis.T % 2).any()
+    return basis
+
+
+def symplectic_basis(HX, HZ):
+    """(Lx, Lz) with rows Lx ⊂ ker H_Z, Lz ⊂ ker H_X, Lx·Lzᵀ = I₃₀,
+    by greedy symplectic Gram–Schmidt over the kernel bases."""
+    KZ = [v.copy() for v in nullspace(HX)]  # candidate Z-logicals
+    KX = [v.copy() for v in nullspace(HZ)]  # candidate X-logicals
+    Lx, Lz = [], []
+    while len(Lz) < 30:
+        found = None
+        for iz, z in enumerate(KZ):
+            for ix, x in enumerate(KX):
+                if int(x @ z) % 2 == 1:
+                    found = (iz, ix)
+                    break
+            if found:
+                break
+        assert found, "symplectic pairing exhausted early"
+        iz, ix = found
+        z, x = KZ.pop(iz), KX.pop(ix)
+        KZ = [w ^ z if int(x @ w) % 2 else w for w in KZ]
+        KX = [w ^ x if int(w @ z) % 2 else w for w in KX]
+        Lz.append(z)
+        Lx.append(x)
+    Lx, Lz = np.array(Lx, dtype=np.uint8), np.array(Lz, dtype=np.uint8)
+    assert not (HZ.astype(int) @ Lx.T % 2).any()
+    assert not (HX.astype(int) @ Lz.T % 2).any()
+    assert (Lx.astype(int) @ Lz.T % 2 == np.eye(30, dtype=int)).all()
+    return Lx, Lz
+
+
+def weight10_witness(HX, HZ, KX):
+    """A weight-10 v ∈ ker H_X with v ∉ rowspace(H_Z), plus a pairing
+    x ∈ ker H_Z with ⟨x, v⟩ = 1.  CMS at exact weight 10 (the census
+    proved no lighter kernel word exists beyond the weight-9 rows, and
+    the anticommutation clause excludes those)."""
+    from bb_lab.sat_distance import _solve_at_weight_cms
+
+    v, _ = _solve_at_weight_cms(HX, KX, 10)
+    assert v is not None and int(v.sum()) == 10
+    assert not (HX.astype(int) @ v % 2).any()
+    # not a boundary: rank jumps when stacked on H_Z
+    piv_hz, _ = rref_rows(HZ)
+    stacked = np.vstack([HZ, v[None, :]])
+    A = stacked.copy().astype(np.uint8)
+    r = 0
+    for c in range(A.shape[1]):
+        nz = np.nonzero(A[r:, c])[0]
+        if len(nz) == 0:
+            continue
+        p = r + nz[0]
+        A[[r, p]] = A[[p, r]]
+        for i in range(A.shape[0]):
+            if i != r and A[i, c]:
+                A[i] ^= A[r]
+        r += 1
+    assert r == 61, "witness lies in rowspace(H_Z)"
+    pair = next(x for x in KX if int(x @ v) % 2 == 1)
+    assert not (HZ.astype(int) @ pair % 2).any()
+    return v, pair
+
+
+def emit_instance(out_dir: Path, force: bool) -> None:
+    """M2 data feed: canonical-labeling decoder/logical/witness data for
+    `QEC/Stabilizer/Codes/Mitten/M150/`, all validated before emission."""
+    a26 = _load_a26()
+    G = a26.Group.from_file(GROUPS / "group_30_1.txt")
+    table, carrier, (z, r, s) = build_dictionary(G)
+    HX, HZ = closed_form_H(G)
+    HXref, HZref = a26.mitten_code(G, **SETS)
+    assert (HX == HXref).all() and (HZ == HZref).all()
+
+    pivX, WX = rref_rows(HX)
+    pivZ, WZ = rref_rows(HZ)
+    # decoder form: phi·(∂ basis matrix) = I with phi supported on pivots;
+    # equivalently W·H[:,piv] = I plus square-inverse symmetry — validate
+    # the exact identity the Lean file will check: for all i, p:
+    # Σ_j W[i,j]·H[p, piv_j] = [i = p] (H[:,piv]·W = I, square case).
+    assert (HX[:, pivX].astype(int) @ WX % 2 == np.eye(60, dtype=int)).all()
+    assert (HZ[:, pivZ].astype(int) @ WZ % 2 == np.eye(60, dtype=int)).all()
+
+    Lx, Lz = symplectic_basis(HX, HZ)
+    KX = nullspace(HZ)
+    wit, witPair = weight10_witness(HX, HZ, KX)
+    print(f"[gen] instance data validated: pivots/W both sides, "
+          f"symplectic 30-basis (Lx wts {sorted(set(Lx.sum(1)))[:3]}…, "
+          f"Lz wts {sorted(set(Lz.sum(1)))[:3]}…), witness wt "
+          f"{int(wit.sum())} + pairing wt {int(witPair.sum())}")
+
+    elems = [lean_elem(carrier(table[g])) for g in range(30)]
+    sets_lean = {k: [lean_elem(carrier(table[g])) for g in v]
+                 for k, v in SETS.items()}
+    packedW = lambda W: [
+        int("".join(str(b) for b in row[::-1]), 2) for row in W]
+    sup = lambda v: [int(i) for i in np.flatnonzero(v)]
+
+    def fmt_sup_rows(rows) -> str:
+        # nested list-of-lists, every line ≤ 100 chars (repo linter)
+        out = []
+        for k, row in enumerate(rows):
+            body = fmt_list([str(i) for i in sup(row)], per_line=14,
+                            indent="   ")
+            out.append("  " + body + ("," if k + 1 < len(rows) else ""))
+        return "[\n" + "\n".join(out) + "]"
+
+    instance_banner = (
+        "/-\nGENERATED FILE — DO NOT HAND-EDIT.\n"
+        "Emitted by qec-lab:experiments/bb_lab/scripts/m150_gen_lean_data.py "
+        "(mode: instance)\nfrom instances/mitten_groups/group_30_1.txt + "
+        "arXiv:2607.28795 Table XIII sets;\nall facts validated in numpy "
+        "before emission (dictionary hom, closed-form H vs\n"
+        "a26_mitten_descent.mitten_code, pivot inverses, symplectic basis, "
+        "witness).\nRegen: uv run python scripts/m150_gen_lean_data.py "
+        "instance --out <M150 dir> --force\n"
+        "Attempt state: qec-lab:pipeline/attempts/mitten_150_30_10/.\n-/"
+    )
+    data = f"""{instance_banner}
+import QEC.Stabilizer.Framework.Homological.LiftedProduct
+import Mathlib.GroupTheory.SpecificGroups.Dihedral
+
+namespace Quantum
+namespace Stabilizer
+namespace Homological
+namespace LP
+namespace M150
+
+/-- The `[[150,30,10]]` mitten group carrier: C₅ (multiplicative) × S₃. -/
+abbrev M150G : Type := Multiplicative (ZMod 5) × DihedralGroup 3
+
+/-- GAP `Elements(SmallGroup(30,1))` order → carrier (z^i·r^j·s^k
+parameterization; z = idx 2, r = idx 3, s = idx 1). -/
+def gapElems : List M150G := {fmt_list(elems, per_line=1)}
+
+/-- Carrier element of a GAP index (junk-total via identity). -/
+def elemOf (i : Nat) : M150G := gapElems.getD i 1
+
+/-- Qubit cell of a canonical qubit index `30·m + g`. -/
+def qubitOf (c : Nat) : Fin 5 × M150G :=
+  (⟨(c / 30) % 5, Nat.mod_lt _ (by omega)⟩, elemOf (c % 30))
+
+/-- Check cell of a canonical check index `30·i + g`. -/
+def checkOf (k : Nat) : Fin 2 × M150G :=
+  (⟨(k / 30) % 2, Nat.mod_lt _ (by omega)⟩, elemOf (k % 30))
+
+/-- Table XIII sets (paper order a0, a1, b0, b1). -/
+def a0 : List M150G := {fmt_list(sets_lean["a0"], per_line=1)}
+def a1 : List M150G := {fmt_list(sets_lean["a1"], per_line=1)}
+def b0 : List M150G := {fmt_list(sets_lean["b0"], per_line=1)}
+def b1 : List M150G := {fmt_list(sets_lean["b1"], per_line=1)}
+
+/-- Pivot qubit indices for `H_X` (canonical `30·m + g`). -/
+def pivX : List Nat := {fmt_list([str(c) for c in pivX], per_line=15)}
+
+/-- Pivot qubit indices for `H_Z`. -/
+def pivZ : List Nat := {fmt_list([str(c) for c in pivZ], per_line=15)}
+
+/-- Rows of `(H_X[:,pivX])⁻¹`, packed little-endian 60-bit Nats. -/
+def wX : List Nat := {fmt_list([str(v) for v in packedW(WX)], per_line=4)}
+
+/-- Rows of `(H_Z[:,pivZ])⁻¹`. -/
+def wZ : List Nat := {fmt_list([str(v) for v in packedW(WZ)], per_line=4)}
+
+/-- Supports of the 30 logical-Z chains (rows of `Lz`, ⊂ ker H_X). -/
+def logZsup : List (List Nat) := {fmt_sup_rows(Lz)}
+
+/-- Supports of the 30 logical-X chains (rows of `Lx`, ⊂ ker H_Z);
+`Lx·Lzᵀ = I₃₀` (validated offline, re-checked in Lean). -/
+def logXsup : List (List Nat) := {fmt_sup_rows(Lx)}
+
+/-- Support of the weight-10 distance witness (∈ ker H_X, ∉ rowspace H_Z). -/
+def witSup : List Nat := {fmt_list([str(i) for i in sup(wit)], per_line=14)}
+
+/-- Support of its dual pairing (∈ ker H_Z, ⟨·, wit⟩ = 1). -/
+def witPairSup : List Nat := {fmt_list([str(i) for i in sup(witPair)], per_line=14)}
+
+end M150
+end LP
+end Homological
+end Stabilizer
+end Quantum
+"""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    target = out_dir / "Data.lean"
+    if target.exists() and not force:
+        sys.exit(f"refusing to overwrite {target} (use --force)")
+    target.write_text(data)
+    print(f"[gen] wrote {target}")
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("mode", choices=["rehearsal"])
+    ap.add_argument("mode", choices=["rehearsal", "instance"])
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--force", action="store_true")
     args = ap.parse_args()
-    emit_rehearsal(args.out, args.force)
+    if args.mode == "rehearsal":
+        emit_rehearsal(args.out, args.force)
+    else:
+        emit_instance(args.out, args.force)
 
 
 if __name__ == "__main__":
