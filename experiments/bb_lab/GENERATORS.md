@@ -33,6 +33,7 @@ as cross-referencing PRs.
 | `scripts/gen_pair72_packaging_data.py` | `Z3Z6/StabilizerCodeData.lean` | 15-check ALL-PASS validation gate + `--force` guard; NOTE: the Lean-side split is done but the generator still emits the pre-split full file — retarget to data-only before the next regen |
 | `scripts/gen_base_floor_lean.py` | `BaseFloors/<Name>.lean` | class-member small-cycle bundles (A15/T2) |
 | `scripts/gen_f2a6_z5z30_data.py` | data feed for `Z5Z15F2A6/` | A17 line |
+| `scripts/m150_gen_lean_data.py` | A32 mitten [[150,30,10]] — v0: budget-rehearsal probe (scratchpad, not library); will grow the `Codes/Mitten/M150/` data modules | falsify-first: dictionary hom + closed-form H + pivot cert validated in Python before emission; carrier `Multiplicative (ZMod 5) × DihedralGroup 3` |
 
 ## Retired (`scripts/attic/`)
 

@@ -53,7 +53,37 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
 
 | Date | File | Wall (s) | Method | Notes |
 |---|---|---:|---|---|
-| — | — | — | — | no Lean landed yet (M0) |
+| 2026-08-10 | (probe) `A32Baseline.lean` | 3.2 | `lake env lean`, warm | imports only (Dihedral + ZMod + Fintype.Prod) |
+| 2026-08-10 | (probe) `A32Rehearsal.lean` | 12.4 | `lake env lean`, warm | **delta ≈ 9.2 s** for R1–R4 together (see below) |
+
+**Measured total (library files): 0 s / 300 s** — probes are scratchpad
+files, not library modules; they calibrate, they don't count.
+
+### Budget rehearsal result (M0.4, 2026-08-10)
+
+Emitted by `scripts/m150_gen_lean_data.py rehearsal` (falsify-first:
+dictionary hom + closed-form H entries + pivot certificate all validated
+in Python before emission; R1's in-Lean pass additionally proves the
+mathlib `sr`-orientation is right — a sign error could not have passed).
+One file, four representative obligations, **compiled clean on first
+attempt**, all `native_decide`/`decide` returning true:
+
+| Obligation | Shape | Scale |
+|---|---|---|
+| R1 `dict_hom` | native_decide, group products through `getD` tables | 900 products |
+| R2 `hzRows_in_kerHX` + `hzRows_weight9` | native_decide, closed-form H entries, `Finset` sums | 540k + 9k terms |
+| R3 `pivot_cert` | native_decide, packed-Nat `testBit` × closed-form H | 216k terms |
+| R4 `gapElem_inj` | kernel `decide`, carrier comparisons | 900 pairs |
+
+All four together ≈ 9.2 s — comfortably inside the M2 allocation (60 s)
+for obligations of exactly this kind, with ~1–3 s of the delta being
+per-`native_decide` compiler overhead (4 invocations; the batching rule
+stands). Carrier arithmetic (`Multiplicative (ZMod 5) × DihedralGroup 3`)
+is NOT a bottleneck at this size; the `DihedralGroup`-vs-`Fin 30`-table
+fallback in plan.md's risk table is not needed. M4 leaf design can
+assume: a certificate-shaped `native_decide` at 10⁵–10⁶ term scale ≈
+seconds — the 180 s floor allocation buys O(20–40) such leaves, or a few
+at 10⁷ scale.
 
 **Measured total: 0 s / 300 s.**
 

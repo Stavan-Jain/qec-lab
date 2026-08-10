@@ -99,9 +99,31 @@ it with an in-Lean `decide` at generation time.
    enumeration lives offline and the Lean build only checks
    certificates.
 
-## Residue / next (M0 exit)
+## F6 — Budget rehearsal (M0.4): DONE, all obligations ≈ 9.2 s
 
-- Emitter `m150_gen_lean_data.py` (GAP-index → `ZMod 5 × DihedralGroup 3`
-  dictionary, packed-Nat tables, pivot certificates) — not started.
-- Budget rehearsal in a QECLean worktree (one certificate file + one
-  batched leaf, measured) — not started; gates the M4 design.
+`scripts/m150_gen_lean_data.py rehearsal` emitted a self-contained probe
+(`A32Rehearsal.lean`, imports Dihedral + ZMod + Fintype.Prod only) with
+four representative obligations — dictionary hom (900 products,
+native_decide), H_Z rows ∈ ker H_X + weight 9 via **closed-form H
+entries** (540k-term sums, native_decide), Gaussian left-inverse pivot
+certificate W·H_X[:,P] = I₆₀ (packed-Nat testBit, native_decide), and a
+900-pair kernel `decide`. Compiled clean on the FIRST attempt via
+`lake env lean` in the QECLean checkout: **12.4 s wall warm vs 3.2 s
+import-only baseline ⟹ ≈ 9.2 s for everything.** Numbers + per-shape
+table in `build_budget.md`.
+
+Carrier note: the multiplicative carrier is
+`Multiplicative (ZMod 5) × DihedralGroup 3` (plain `ZMod 5` is
+additive); mathlib orientation resolved and in-Lean-validated:
+z^i·r^j ↦ `(ofAdd i, .r j)`, z^i·r^j·s ↦ `(ofAdd i, .sr (−j))`.
+The closed-form entry formulas (no stored H tables needed):
+
+```
+HX (β,h) (m,x) = [m=4] · [x⁻¹h ∈ b_β]  +  [m<4 ∧ m%2=β] · [hx⁻¹ ∈ a_{m/2}]
+HZ (α,h) (m,x) = [m=4] · [xh⁻¹ ∈ a_α]  +  [m<4 ∧ m/2=α] · [h⁻¹x ∈ b_{m%2}]
+```
+
+validated entry-for-entry against `a26.mitten_code` before emission.
+
+**M0 is COMPLETE.** Next: M1 (`Framework/Homological/LiftedProduct.lean`
+in a QECLean worktree) ∥ growing the emitter into the M2 data modules.
