@@ -96,6 +96,21 @@ def test_by90_rung_cover_is_not_certified(tmp_path):
         "stages", {}).get("candidate_log")
 
 
+def test_gross_certifies_d12(tmp_path):
+    # the program's founding theorem, through the front-end: gross is
+    # the x-doubling of the Z6xZ6 [[72,12,6]] base (k = 12 exercises the
+    # chunked logical-coset pass); census must be the teaching doc's
+    # 1 hexagon + 6 D-pairs
+    verdict = certify((12, 6), "x^3 + y + y^2", "y^3 + x + x^2",
+                      budget_s=300, threads=8, workdir=tmp_path)
+    assert verdict["status"] == "CERTIFIED", verdict.get("stages")
+    assert verdict["distance"]["value"] == 12
+    assert verdict["distance"]["d_base"] == 6
+    cen = verdict["stages"]["census"]
+    assert cen["n_classes"] == 7
+    assert cen["weight_histogram"] == {6: 1, 10: 6}
+
+
 def test_refuses_even_weight(tmp_path):
     v = certify((6, 6), "1 + x", "1 + y", budget_s=60, workdir=tmp_path)
     assert v["status"] == "REFUSED"

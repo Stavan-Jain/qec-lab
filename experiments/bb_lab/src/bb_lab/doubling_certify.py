@@ -240,8 +240,9 @@ def d_side_exact(
     """Exact side distance if <= Wcap (certified), else floor > Wcap."""
     H, Mrows, reps = bt.logical_reps(side)
     k = len(reps)
-    if (1 << k) - 1 > NOFF_MAX:
-        return {"side": side, "error": f"k = {k} too large for one pass"}
+    if k > 14:
+        return {"side": side, "error": f"k = {k}: 2^k logical cosets is "
+                "beyond the front-end (needs per-code class structure)"}
     combos = []
     for t in range(1, 1 << k):
         L = np.zeros(bt.n, dtype=np.uint8)
@@ -264,16 +265,21 @@ def d_side_exact(
                 if int(b.sum()) <= Wtry and (best is None
                                              or b.sum() < best.sum()):
                     best = b.copy()
-            res = run_window(bt.binp, f"dbase_{side}_w{wi}", Gs, bases, r,
-                             Wtry, deadline, threads=threads,
-                             workdir=workdir)
-            nodes.append(res["nodes"])
-            for j, hx in res.pop("hit_rows"):
-                c = unpack3(hx, bt.n)
-                assert not ((H @ c) % 2).any()
-                assert not in_rowspace(Rr, piv, c)
-                if best is None or c.sum() < best.sum():
-                    best = c
+            # the C kernel takes <= NOFF_MAX base words per invocation;
+            # chunking repeats the (cheap, low-radius) walk per chunk and
+            # each chunk is its own complete certified pass
+            for c0 in range(0, len(bases), NOFF_MAX):
+                res = run_window(bt.binp,
+                                 f"dbase_{side}_w{wi}_c{c0 // NOFF_MAX}",
+                                 Gs, bases[c0:c0 + NOFF_MAX], r, Wtry,
+                                 deadline, threads=threads, workdir=workdir)
+                nodes.append(res["nodes"])
+                for j, hx in res.pop("hit_rows"):
+                    c = unpack3(hx, bt.n)
+                    assert not ((H @ c) % 2).any()
+                    assert not in_rowspace(Rr, piv, c)
+                    if best is None or c.sum() < best.sum():
+                        best = c
         if best is not None:
             return {"side": side, "k": k, "d": int(best.sum()),
                     "witness": best, "nodes": nodes}
