@@ -11,10 +11,15 @@ The string format matches `pipeline/attempts/*/state.yaml`:
 
 Convention: variables are `x, y, z, ...` for the 1st, 2nd, 3rd, ... cyclic
 factor. Exponents reduce mod the corresponding order. The constant monomial
-is spelled `1` (the empty product). Implicit products (e.g. `xy^2`) are
-**not** accepted in v0 — they raise `ValueError`. The Bravyi-table
-instances do not use them, and accepting them silently risks
-disagreement with the Lean side.
+is spelled `1` (the empty product).
+
+Input is normalised before parsing (`normalize_poly_text`): Unicode
+superscripts become `^n` (`y⁶` → `y^6`), the product dots `·⋅×∗` become
+`*`, and implicit products between single-letter factors gain the `*`
+(`xy^6` → `x*y^6`, `x²y¹²` → `x^2*y^12`).  Each rule is unambiguous for
+single-letter variables and is the identity on already-valid input;
+unknown variables and malformed factors still raise, so nothing is
+silently misparsed.
 """
 
 from __future__ import annotations
@@ -32,6 +37,23 @@ _TERM_RE = re.compile(
     re.IGNORECASE,
 )
 _CONST_RE = re.compile(r"\A\s*1\s*\Z")
+
+_SUPERSCRIPTS = str.maketrans("⁰¹²³⁴⁵⁶⁷⁸⁹", "0123456789")
+_SUP_RUN_RE = re.compile(r"[⁰¹²³⁴⁵⁶⁷⁸⁹]+")
+_IMPLICIT_RE = re.compile(r"([a-zA-Z](?:\s*\^\s*\d+)?)\s*(?=[a-zA-Z])")
+
+
+def normalize_poly_text(s: str) -> str:
+    """Widen the accepted syntax without ambiguity (identity on valid input).
+
+    Unicode superscripts → `^n`; product dots → `*`; implicit products
+    between single-letter factors → explicit `*`.  Unknown variables and
+    malformed factors are left for the strict parser to reject loudly.
+    """
+    s = _SUP_RUN_RE.sub(lambda m: "^" + m.group().translate(_SUPERSCRIPTS), s)
+    for dot in "·⋅×∗":
+        s = s.replace(dot, "*")
+    return _IMPLICIT_RE.sub(r"\1*", s)
 
 
 def _parse_term(term: str, group: AbelianGroup) -> tuple[int, ...]:
@@ -81,9 +103,10 @@ class Poly:
         """Parse a polynomial like ``'x^3 + y + y^2'``.
 
         Empty terms ('+ +', leading/trailing '+') are tolerated and produce
-        the zero polynomial.
+        the zero polynomial.  Input is normalised first, so `xy^6`,
+        `x²y¹²`, and `x·y` parse as their explicit-`*` forms.
         """
-        terms = [t.strip() for t in s.split("+")]
+        terms = [t.strip() for t in normalize_poly_text(s).split("+")]
         # Two monomials at the same group element cancel (we're over F₂);
         # accumulate as a symmetric multiset, then take the parity.
         counts: dict[tuple[int, ...], int] = {}
