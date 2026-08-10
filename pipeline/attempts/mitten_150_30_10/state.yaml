@@ -7,10 +7,10 @@ parameters:
 status: planning
 track: engineering          # M1–M3/M5; the M4 floors carry a moonshot-grade core
 started_at: 2026-08-10T00:00:00Z
-worktree_branch: null        # QECLean worktree not yet created (M1 opens it)
+worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
 qec_lab_branch: claude/mitten-codes-work-ed68db
 estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
-phase: m0-complete           # scoping + census + budget rehearsal all done
+phase: m1-complete           # LiftedProduct.lean landed (3b9a4b8), 8.3 s build
 covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0
