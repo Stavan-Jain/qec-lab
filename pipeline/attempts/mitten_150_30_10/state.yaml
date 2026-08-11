@@ -10,15 +10,16 @@ started_at: 2026-08-10T00:00:00Z
 worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
 qec_lab_branch: claude/mitten-codes-work-ed68db
 estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
-phase: m4-design-derisked    # M1 (3b9a4b8) + M2 (7842caf, 64da329) + M3 (64da329)
-                             # all green, 34.3 s ledger. M4 design COMPLETE and
-                             # de-risked offline (m4_findings.md): triple-equation
-                             # reduction, exhaustive censuses (2-3.5k light
-                             # triples/instance), JOIN = exactly the 60 rows both
-                             # sides, Lean sweep rehearsal 7.3 s/instance (one
-                             # native_decide). Next = emitter m4 mode + FloorCore/
-                             # FloorData/Floor{Z,X}Side Lean, then M5. GATE: SAT
-                             # cross-check (in flight) must match m4_triples.json.
+phase: m4-sweeps-green       # M1-M3 green (34.3 s). M4 compute core GREEN in
+                             # QECLean @ 40a4c78: FloorCore (symbolic driver
+                             # theory) + FloorData (generated) + FloorSweep{X,Z}
+                             # (6 natives: 4 instance sweeps + 2 t-joins), 71.4 s,
+                             # ledger 105.7/300 s. Remaining M4 = chain plumbing
+                             # (triple-form bridges, chain-mask bridges,
+                             # classification consumption) -> floorX/floorZ
+                             # theorems; then M5 assembly + bundle. SAT
+                             # cross-census still in flight (gate re-scoped,
+                             # m4_findings.md G5 — record when it lands).
 covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0

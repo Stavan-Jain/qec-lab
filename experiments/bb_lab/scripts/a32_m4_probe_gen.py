@@ -309,12 +309,17 @@ def xorFold : List Nat → Nat → Nat
   | [], _ => 0
   | c :: rest, m => (if m &&& 1 = 1 then c else 0) ^^^ xorFold rest (m >>> 1)
 
-/-- SWAR popcount for masks < 2^32 (constant op count). -/
+/-- Fueled popcount (proof-facing form; masks are < 2^30). -/
+def popCntGo : Nat -> Nat -> Nat
+  | 0, _ => 0
+  | f + 1, m => (m &&& 1) + popCntGo f (m >>> 1)
+
+/-- 15-bit popcount table, correct by construction. -/
+def popTbl : Array Nat := (Array.range 32768).map (popCntGo 15)
+
+/-- Driver popcount: two table lookups (= popCntGo 30 on masks < 2^30). -/
 def popCnt (m : Nat) : Nat :=
-  let v := m - ((m >>> 1) &&& 0x55555555)
-  let v := (v &&& 0x33333333) + ((v >>> 2) &&& 0x33333333)
-  let v := (v + (v >>> 4)) &&& 0x0F0F0F0F
-  (v * 0x01010101) >>> 24 &&& 0xFF
+  popTbl.getD (m &&& 32767) 0 + popTbl.getD (m >>> 15) 0
 
 def parity (m : Nat) : Bool := popCnt m % 2 = 1
 

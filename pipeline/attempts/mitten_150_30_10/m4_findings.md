@@ -124,11 +124,35 @@ inverse certs; mode-wt needs the gross-§2-style corrected decoder for
 the singular `a₀` (dropSet = the 2 free columns) — direct port of
 `decoder_identity_X` + `face_kernel_trivial`-with-drops.
 
-## G5 — SAT cross-check (IN FLIGHT at write time)
+## G5 — SAT cross-check (IN FLIGHT; gate re-scoped 2026-08-11)
 
 `a32_m4_scoping.py` (blocking-clause SAT over the same four systems)
-was launched this session and left running.  GATE for the Lean data
-emission: its exhausted solution sets must equal `m4_triples.json`
-exactly (its per-instance `n_extras` counts vs the 60-member families
-are the stray counts; `n_missing = 0` asserts family containment).  Do
-not emit `FloorData.lean` before this comparison is recorded here.
+was launched this session and left running (>60 min CPU at write time;
+thousands of blocking rounds).  **Gate re-scoping, with reasoning:**
+the original note said to hold `FloorData.lean` for this comparison.
+That was over-cautious: the Lean sweeps are *self-certifying* against
+the classification lists — a missing entry makes the corresponding
+`checkAll` fire off-list and `native_decide` fails the build (this is
+exactly what the probe demonstrated when run against the fam-only
+list), and a bogus extra entry either fails the join native or is
+sound-harmless (the lists are consumed as upper bounds; the join
+re-verifies every pair it admits).  So the *in-build* obligations
+subsume the census-correctness question, and `FloorData.lean` was
+emitted and verified green without waiting.  The SAT comparison remains
+worth recording here when the run lands (expected: per-instance
+solution sets equal `m4_triples.json`, i.e. `n_extras` = stray counts,
+`n_missing = 0`); record it, but nothing downstream is blocked on it.
+
+## G6 — M4 sweep layer GREEN in QECLean (2026-08-11)
+
+`FloorCore.lean` (generic mask/sweep layer, fully symbolic: fueled/table
+popcount + agreement, `xorFold` linearity + basis + `linear_ext`,
+`masksOfWt` completeness, the 4-mode driver — mode 3 = coset-on-`t`,
+added when Z-side t-heavy splits turned out to need it — with one
+soundness lemma per mode, packed-triple extraction, `checkJoin`),
+`FloorData.lean` (generated, mode m4), `FloorSweep{X,Z}.lean` (six
+`native_decide` obligations).  Measured: FloorCore 2.4 s, FloorData
+14 s, SweepX 15 s, SweepZ 40 s — the sweeps and joins of BOTH floors
+now verify inside the build at 71.4 s total.  The Z side pays a
+~30-step identity-`tP` fold per class on its unique-`u` mode-2 splits
+(worth optimizing only if M5 squeezes the budget).
