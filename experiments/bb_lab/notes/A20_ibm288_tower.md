@@ -193,7 +193,7 @@ checks. Direct decide-scale needs the ÷24 outer symmetry quotient (z³
 acts trivially on outer data) and packed-table batching; judged
 feasible-with-engineering, one dedicated session to prototype.
 
-## 7. Assembly: certified d(Y8) = 20 — the theorem of record (DRAFT, two verdicts pending)
+## 7. Assembly: certified d(Y8) = 20 — the theorem of record (COMPLETE as of 2026-08-11; see §8 addendum)
 
 **Claim.** IBM's class-Y code Y8 = [[288,8,d]] (arXiv:2606.02418 Table II)
 has d = 20, certified at solver grade (CryptoMiniSat UNSAT certificates +
@@ -230,7 +230,7 @@ Orbit transfer throughout: all certificates are translation-covariant.
 | H2 | per-class dangerous floors at 20 | DONE — 1,655/1,655 UNSAT, ~17 s |
 | H3 | LogicalFloor 10 at Y4 | DONE — UNSAT@9, all 25 orbit reps |
 | H4 | DeckTrivialOnH1 (R) | DONE — Bezout witness `data/a20/bezout_y_18x8.json` (kernel-level; `deckTrivial_of_bezout`-ready) |
-| H5 | lift-aware seam floor at 20, both orbits | class 0x1 **RUNNING** (20/20 lift-UNSAT so far); class 0x3 **PENDING** (probe on budget) |
+| H5 | lift-aware seam floor at 20, both orbits | **DONE (A33, 2026-08-11, certificate tier)** — 12-orbit coset censused complete by coset-BZ (1,680 elements ≤ 18; the SAT census had 278/280 classes) with 1,680/1,680 deterministic lift rungs PASS, re-derived independently by rung-1 descent; 3-orbit coset EMPTY ≤ 18 (naive SeamCosetFloor 20 is TRUE there). See `A33_ibm288_d20_certificate.md` §2–§3 |
 | H6 | weight-20 witness | DONE — verified |
 
 **Grade and staging.** Solver grade throughout; Lean packaging path:
@@ -240,3 +240,28 @@ recipe (kernel cert + seamC additivity + decide facts; kernel equality
 ker A⋆ = ker B⋆ = ker ∂₂ VERIFIED at Y4, so the two-trinomial collapse
 applies), H3 as a BaseFloors-style certificate. The transport theorems
 consumed here are on QECLean main as of 2026-07-20 (PR #60 merged).
+
+## 8. 2026-08-11 addendum — H5 closed; theorem COMPLETE at certificate tier (A33)
+
+The A32 tower slice calculus, ported to this tower
+(`A33_ibm288_d20_certificate.md`), closed H5 both directly and by
+descent and re-derived every other hypothesis solver-free:
+
+- **H5**: the 12-orbit (0x1-side) seam coset has exactly 1,680 elements
+  ≤ 18 (weights 14: 6 / 16: 84 / 18: 1,590; 280 translation classes —
+  the dying SAT census had 278), all 1,680 per-element lift rungs PASS
+  (1.8 s); the 3-orbit (0x3-side) coset is EMPTY ≤ 18, i.e. the naive
+  SeamCosetFloor 20 — refuted above for 0x1 — is TRUE on the 0x3 orbit
+  (this also explains the 0x3 probe's BUDGET verdict). Total 66 s
+  direct + 28 s descent vs ≈ 16.5 h of banked SAT partials.
+- **H1** gains a direct-BZ derivation (118,932 vectors = §6's V7
+  accounting, exactly the 1,655 classes) and a tower fiber-union
+  derivation from n = 72; **H2** upgraded to 1,655 deterministic rungs;
+  **H3**/d₀/d₁ re-derived by direct BZ + the tower; **H4** re-measured
+  (σ\* = id on H1, both rungs).
+
+**d(Y8) = 20 is now end-to-end at deterministic-certificate tier — the
+program's first certified d = 20, on ≈ 105 s of critical-path compute,
+independent of IBM's MILP.** Lean packaging is the follow-on (A33 §9);
+the staging paragraph above remains the plan of record, with the A33
+artifacts replacing the SAT inputs.
