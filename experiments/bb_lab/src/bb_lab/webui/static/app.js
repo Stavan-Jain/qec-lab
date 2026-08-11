@@ -344,6 +344,7 @@ function renderReport(r) {
   renderPremises(r.premises);
   renderKnown(r.known);
   $("solve").disabled = r.k === 0;
+  $("certify").disabled = r.k === 0;
 }
 
 /** The quiet line under the headline: everything a glance should cover. */
@@ -607,6 +608,130 @@ function appendLog(line) {
   log.scrollTop = log.scrollHeight;
 }
 
+// ───────────────────────────────────────────────────── certifying
+
+async function certifyDoubling() {
+  if (!state.report) return;
+  const sig = signature();
+  const payload = {
+    orders: $("orders").value, A: $("polyA").value, B: $("polyB").value,
+  };
+  $("certify-card").hidden = false;
+  $("certify-stages").replaceChildren();
+  $("certify-summary").textContent = "";
+  $("certify-tandem").replaceChildren();
+  const badge = $("certify-state");
+  badge.textContent = "starting";
+  badge.className = "badge badge-run";
+
+  let job;
+  try {
+    job = await api("/api/certify", payload);
+  } catch (e) {
+    badge.textContent = "rejected";
+    badge.className = "badge badge-bad";
+    $("certify-summary").textContent = e.message;
+    return;
+  }
+  state.job = job.job_id;
+  state.jobSig = sig;
+  $("certify").disabled = true;
+  $("cancel").classList.remove("hidden");
+  const d = $("p-d");
+  d.className = "pending";
+  d.textContent = "…";
+
+  const es = new EventSource(`/api/solve/${job.job_id}/events`);
+  state.source = es;
+
+  es.addEventListener("stage", (ev) => {
+    const p = JSON.parse(ev.data);
+    badge.textContent = p.stage;
+    const chip = el("span", "inc latest");
+    chip.appendChild(el("span", "", p.stage + (p.detail ? ` ${p.detail}` : "")));
+    chip.appendChild(el("span", "t", `${p.elapsed}s`));
+    [...$("certify-stages").children].forEach((c) => c.classList.remove("latest"));
+    $("certify-stages").appendChild(chip);
+  });
+
+  es.addEventListener("done", (ev) => {
+    const v = JSON.parse(ev.data).verdict;
+    const dist = v.distance || {};
+    const ok = v.status === "CERTIFIED";
+    badge.textContent = v.status;
+    badge.className = `badge ${ok ? "badge-good"
+      : v.status === "DOUBLING-REFUTED" ? "badge-bad" : "badge-warn"}`;
+    if (ok) {
+      state.solvedFor = sig;
+      setDistance(dist.value);
+      $("p-d").title =
+        "certificate tier: counting-invariant enumeration + the doubling " +
+        "theorem — not kernel-checked, not a solver run";
+    } else {
+      setDistance(null);
+    }
+    $("certify-summary").textContent =
+      (dist.statement || v.reason || "") + `  (${fmtSecs(v.wall_s || 0)})`;
+    renderTandemLane(v);
+    finishCertify(es);
+  });
+
+  es.addEventListener("cancelled", () => {
+    badge.textContent = "cancelled";
+    badge.className = "badge badge-warn";
+    setDistance(null);
+    finishCertify(es);
+  });
+
+  es.addEventListener("error", (ev) => {
+    if (ev.data) {
+      const p = JSON.parse(ev.data);
+      badge.textContent = "failed";
+      badge.className = "badge badge-bad";
+      $("certify-summary").textContent = p.message;
+      setDistance(null);
+      finishCertify(es);
+    }
+  });
+}
+
+/** The composed Tandem lane: prefill the certified floor as -init-lb (the
+ *  certificate discharges the caller obligation) and hand off to solve. */
+function renderTandemLane(verdict) {
+  const box = $("certify-tandem");
+  box.replaceChildren();
+  const t = verdict.tandem;
+  if (!t) return;
+  box.appendChild(el("span", "", `Tandem ${t.role}: `));
+  const avail = state.backend?.tandem?.available;
+  if (t.suggested_flags && avail) {
+    const b = el("button", "ghost",
+                 verdict.status === "CERTIFIED"
+                   ? `cross-check (find the witness, -init-lb=${t.suggested_flags["-init-lb"]})`
+                   : "run monolithic Tandem");
+    b.type = "button";
+    b.onclick = () => {
+      for (const [flag, value] of Object.entries(t.suggested_flags)) {
+        if (flag !== "-verb") state.flags[flag] = value;
+      }
+      for (const f of t.acknowledge || []) state.ack.add(f);
+      renderFlags();
+      solve();
+    };
+    box.appendChild(b);
+  } else {
+    box.appendChild(el("span", "", avail ? "" : "solver binary unavailable"));
+  }
+}
+
+function finishCertify(es) {
+  es.close();
+  state.source = null;
+  state.job = null;
+  $("certify").disabled = false;
+  $("cancel").classList.add("hidden");
+}
+
 // ──────────────────────────────────────────────────────── wiring
 
 // Editing the code retracts the displayed d immediately, before the (possibly
@@ -623,6 +748,7 @@ for (const id of ["orders", "polyA", "polyB"]) {
 }
 
 $("solve").onclick = solve;
+$("certify").onclick = certifyDoubling;
 $("cancel").onclick = async () => {
   if (state.job) await api(`/api/solve/${state.job}/cancel`, {});
 };

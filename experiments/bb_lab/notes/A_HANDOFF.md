@@ -197,6 +197,55 @@ A4 Theorem D).
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
 >
+> **A33 (2026-08-11, `A33_ibm288_d20_certificate.md`): the calculus
+> ports — d([[288,8,20]]) = 20, the program's first certified d = 20.**
+> A32's tower calculus on A20's all-(R) same-axis tower
+> Y2[[72,8,6]] → Y4[[144,8,10]] → Y8[[288,8,20]] closed the one open
+> hypothesis (H5, the lift-aware seam floor) two independent ways:
+> direct 3-offset coset-BZ census at n = 144 (1,680 elements, 12-orbit;
+> the 3-orbit coset is EMPTY ≤ 18 — A20 §5's "SeamCosetFloor 20 FALSE"
+> holds only on the 12-orbit) + 1,680 rungs ALL PASS in 66 s, and the
+> descent through Y2 (105,328 fibers, 90.6% carry-infeasible, list
+> reproduced exactly; the trisection COLLAPSES to one branch under (R)).
+> Full solver-free upgrade: H1 four ways, H2 as 1,655 rungs (1.9 s),
+> H3/d₀/d₁ by BZ + the dby pattern ⟹ ~105 s of critical-path compute
+> vs ~16.5 h of banked SAT partials (~600×). Portability scorecard:
+> Lemma 1/Thm 3/parity/rung-engine + both bonus patterns verbatim on
+> two twisted (R)-rungs; iterated Z₂ sufficed (composite Z₄ never
+> consumed); sector space is 2^k on BOTH towers (A32's 2⁸ was
+> k-genericity, not an (R) effect); what (R) buys = exactness both
+> ways + σ* = id + the k/2-dim seam + one-branch descent. Falsify-first
+> catch: an empty-window edge in a32's census() (+15/+2 vectors,
+> orbit tables and d = 24 assembly unaffected; fixed at source,
+> corrected censuses re-run, A32 §3 count corrected).
+>
+> **A32 (2026-08-10, `A32_tower_slice_calculus.md`): the Bravyi flagship
+> is DONE — d([[360,12,≤24]]) = 24 exact, and the tower calculus is the
+> real prize.** Two-level slice/shadow descent C→BY→GB ((R)-free,
+> twist-generic: both rungs are twisted lifts and the calculus never
+> sees it), overflow square, GB-sector trisection ([β] ∈ W ∖ 0 /
+> β = 0 / β ∈ Stab): all d = 24 obligations moved to n = 90 censuses +
+> bounded-overflow lift fibers + a30-architecture top rungs — 49,855
+> rungs over ~274k fibers ALL PASS in ~9.4 min (~250× under the W = 22
+> enumeration baseline; ~93% of fibers carry-infeasible). Flat-22 β = 0
+> branch dies by pure parity. Same machine re-derives d(BY) = 12
+> (0.04 s, was 3.1 h SAT), d(GB) = 8, and BY census completeness ≤ 20 —
+> no SAT on the critical path; certificate tier; independently re-run
+> with every count exact. Portability: transport/slice/carry/overflow
+> lemmas hold for ANY free Z₂-deck tower; reachability pruning = one
+> rank condition (K_x ⊆ im p_y*). Next: [[288,8,20]] port, Lean
+> packaging, teaching-doc postscript (the top rung is a perfect
+> doubling 24 = 2·12 with (R) failing on every deck).
+>
+> **A30 §7 (2026-08-10): the doubling front-end is a TOOL.**
+> `bb_lab.doubling_certify` + `bb-lab ui` "Certify as doubling cover" +
+> `scripts/bb_certify_doubling.py`: cover code in → detect base + (R) →
+> census/floors/rungs/witness → d = 2·d_base with tier-labelled
+> certificates; Tandem composed as the witness lane (`-init-lb=floor`
+> deletes its proof phase) and monolithic fallback. [[360,4,20]]
+> re-derived from the cover alone in 20.3 min (census bit-identical to
+> A28); tests 5/5 incl. the by90 rung negative control.
+>
 > **A30 (2026-08-07, `A30_coset_bz_doubling_certificates.md`): the
 > docket is CLOSED — first d = 10 → 20 doublings.** Coset-BZ (A28's
 > two-window counting invariant seeded at A29's seam offsets; safe

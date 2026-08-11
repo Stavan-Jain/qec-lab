@@ -1,0 +1,397 @@
+{"wbeta": 14, "m2_hist": {"0": 1, "2": 3, "4": 32, "3": 4}, "verdicts": {"PASS": 33}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 22, "1": 2, "3": 2, "2": 1}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 19, "3": 2, "1": 2, "2": 1}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"0": 1, "3": 2, "1": 2, "4": 22, "2": 1}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 19, "3": 2, "1": 2, "2": 1}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"0": 1, "1": 2, "2": 1, "4": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 23, "3": 2, "2": 1}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 23, "3": 2, "2": 1}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"0": 1, "1": 2, "4": 22, "3": 4, "2": 1}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "0": 1, "4": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 22, "2": 1, "0": 1, "3": 4}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "0": 1, "4": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "4": 4, "0": 1}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "4": 4, "0": 1}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"1": 2, "2": 1, "0": 1, "4": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 14, "m2_hist": {"1": 2, "2": 1, "0": 1, "4": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "4": 3, "0": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "4": 3, "0": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 14, "m2_hist": {"4": 12, "3": 3}, "verdicts": {"PASS": 15}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 27, "0": 1, "3": 8, "2": 3}, "verdicts": {"PASS": 37}}
+{"wbeta": 14, "m2_hist": {"2": 1, "0": 1, "4": 19, "1": 2, "3": 2}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 19, "0": 1, "2": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 27, "0": 1, "3": 8, "2": 3}, "verdicts": {"PASS": 37}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 19, "0": 1, "2": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"2": 1, "0": 1, "4": 19, "1": 2, "3": 2}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"4": 6, "3": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 19, "0": 1, "2": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 22, "0": 1, "2": 1, "3": 2}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 19, "0": 1, "2": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 22, "0": 1, "2": 1, "3": 2}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"4": 6, "3": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 22, "3": 4, "2": 1}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"4": 12, "3": 6}, "verdicts": {"PASS": 18}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 19, "1": 2, "2": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 19, "1": 2, "2": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 23, "3": 2, "2": 1}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 19, "2": 1, "3": 2}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 19, "2": 1, "3": 2}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 27, "2": 3, "3": 8, "0": 1}, "verdicts": {"PASS": 37}}
+{"wbeta": 14, "m2_hist": {"4": 19, "1": 2, "0": 1, "3": 2, "2": 1}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 22, "2": 1, "3": 2, "0": 1}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 27, "2": 3, "3": 8, "0": 1}, "verdicts": {"PASS": 37}}
+{"wbeta": 14, "m2_hist": {"4": 19, "1": 2, "0": 1, "3": 2, "2": 1}, "verdicts": {"PASS": 21}}
+{"wbeta": 14, "m2_hist": {"1": 2, "4": 22, "2": 1, "3": 2, "0": 1}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"1": 2, "2": 1, "0": 1, "4": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"1": 2, "2": 1, "4": 19, "0": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"1": 2, "2": 1, "4": 19, "0": 1, "3": 1}, "verdicts": {"PASS": 20}}
+{"wbeta": 14, "m2_hist": {"0": 1, "2": 1, "1": 2, "4": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 22, "1": 2, "3": 4, "2": 1}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "4": 22, "0": 1, "3": 2}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"2": 1, "1": 2, "4": 22, "0": 1, "3": 2}, "verdicts": {"PASS": 24}}
+{"wbeta": 14, "m2_hist": {"0": 1, "4": 23, "1": 2, "2": 1, "3": 2}, "verdicts": {"PASS": 25}}
+{"wbeta": 14, "m2_hist": {"3": 4, "4": 4}, "verdicts": {"PASS": 7}}
+{"wbeta": 14, "m2_hist": {"4": 13, "3": 1, "2": 2}, "verdicts": {"PASS": 15}}
+{"wbeta": 14, "m2_hist": {"4": 13, "3": 1, "2": 2}, "verdicts": {"PASS": 15}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 3, "2": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 3, "2": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 5, "2": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 14, "m2_hist": {"1": 2, "0": 1, "4": 5, "2": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 14, "m2_hist": {"4": 6, "3": 4}, "verdicts": {"PASS": 9}}
+{"wbeta": 14, "m2_hist": {"4": 6, "3": 4}, "verdicts": {"PASS": 9}}
+{"wbeta": 14, "m2_hist": {"4": 12, "3": 3}, "verdicts": {"PASS": 15}}
+{"wbeta": 14, "m2_hist": {"1": 2, "2": 1, "0": 1, "4": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 14, "m2_hist": {"2": 2, "4": 8, "1": 2, "3": 4}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 2, "2": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"3": 3, "1": 1, "0": 1, "2": 3}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"3": 3, "1": 1, "0": 1, "2": 3}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"0": 1, "3": 12, "2": 6, "1": 1}, "verdicts": {"PASS": 15}}
+{"wbeta": 16, "m2_hist": {"3": 7, "2": 3, "0": 1, "1": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"3": 7, "2": 3, "0": 1, "1": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"3": 8, "2": 5, "0": 1, "1": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 8, "2": 5, "0": 1, "1": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 4, "0": 1, "3": 6, "1": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"0": 1, "1": 1, "2": 3, "3": 7}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 5, "1": 1, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 5, "1": 1, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 9, "2": 6, "1": 1, "0": 1}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"0": 1, "3": 14, "2": 8, "1": 1}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"0": 1, "1": 1, "2": 3, "3": 7}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"0": 1, "2": 8}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "2": 4, "1": 2, "3": 10}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 10, "1": 2}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"1": 2, "2": 4, "3": 8}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 1, "3": 2}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"3": 2, "2": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 6, "0": 1, "1": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 6, "0": 1, "1": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 3, "2": 3, "1": 1, "0": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"2": 2}, "verdicts": {"PASS": 1}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 6, "0": 1, "3": 9, "1": 1}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 5, "1": 1, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 5, "1": 1, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"0": 1, "3": 14, "1": 1, "2": 8}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"2": 3, "0": 1, "3": 3, "1": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"0": 1, "3": 12, "2": 6, "1": 1}, "verdicts": {"PASS": 15}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 6, "1": 1, "0": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 6, "1": 1, "0": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 2, "1": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 2, "1": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 4, "0": 1, "3": 6, "1": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 5, "3": 8, "1": 1, "0": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 5, "3": 8, "1": 1, "0": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 4}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 12}, "verdicts": {"PASS": 15}}
+{"wbeta": 16, "m2_hist": {"3": 15, "1": 3}, "verdicts": {"PASS": 17}}
+{"wbeta": 16, "m2_hist": {"3": 12, "2": 2, "0": 1, "1": 1}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"3": 15, "1": 2}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"2": 2, "3": 5}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 3, "1": 1, "3": 9}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"2": 7, "0": 1}, "verdicts": {"PASS": 1}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 3, "1": 1, "3": 9}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"2": 7, "0": 1}, "verdicts": {"PASS": 1}}
+{"wbeta": 16, "m2_hist": {"1": 2, "2": 5, "3": 12}, "verdicts": {"PASS": 15}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 14, "2": 2, "1": 2}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"3": 14, "0": 1, "2": 1}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"3": 4, "1": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 16}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 4, "1": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 16}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"3": 12}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 8}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 8}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 20}, "verdicts": {"PASS": 20}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 6, "0": 1, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 6, "0": 1, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 2, "3": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 2, "3": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"1": 1, "3": 9, "2": 3}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 8}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"3": 5, "2": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 12}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"1": 1, "3": 9, "2": 3}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 8}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5, "2": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 12}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 5, "3": 10}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"2": 16, "0": 2}, "verdicts": {"PASS": 11}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 14, "2": 2}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "2": 4, "1": 2, "3": 10}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"2": 3}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1, "3": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1, "3": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 19}, "verdicts": {"PASS": 19}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 2, "3": 5}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"2": 8, "3": 4, "0": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"2": 8, "3": 4, "0": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1, "3": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 8, "0": 1, "3": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 4, "3": 15}, "verdicts": {"PASS": 15}}
+{"wbeta": 16, "m2_hist": {"3": 8}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 1, "3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 2}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 6, "1": 2}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 5, "1": 1, "2": 3, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 6, "1": 2}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 2}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 1, "3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 6, "1": 2}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 5, "1": 1, "2": 3, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 6, "1": 2}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 10, "1": 2}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 10, "1": 2}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 4}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 2, "1": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 6, "0": 1, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 6, "0": 1, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"2": 5, "0": 1, "3": 8, "1": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 10, "1": 2}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 10, "1": 2}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"2": 5, "0": 1, "3": 8, "1": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 10, "2": 2, "1": 2}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"1": 1, "0": 1, "3": 5, "2": 3}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"2": 3, "1": 1, "3": 5, "0": 1}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 3, "1": 1, "0": 1, "2": 3}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 3, "1": 1, "0": 1, "2": 3}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"1": 1, "0": 1, "3": 7, "2": 3}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 3, "0": 1, "3": 6, "1": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"2": 1, "3": 5}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"2": 3, "0": 1, "3": 6, "1": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"2": 1, "3": 5}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"1": 2, "3": 10, "2": 4, "0": 2}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 10, "1": 3}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 8, "2": 3, "1": 1}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 4, "0": 1, "1": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 6, "0": 1, "2": 3, "1": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 5, "3": 8, "1": 1, "0": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"1": 2, "3": 10, "2": 4, "0": 2}, "verdicts": {"PASS": 14}}
+{"wbeta": 16, "m2_hist": {"3": 6, "2": 4, "0": 1, "1": 1}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 10, "1": 3}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 8, "2": 3, "1": 1}, "verdicts": {"PASS": 8}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 6, "0": 1, "2": 3, "1": 1}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 4}, "verdicts": {"PASS": 4}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"2": 5, "3": 8, "1": 1, "0": 1}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"0": 1, "1": 1, "3": 7, "2": 3}, "verdicts": {"PASS": 7}}
+{"wbeta": 16, "m2_hist": {"2": 6, "3": 9, "1": 1, "0": 1}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"0": 1, "3": 9, "2": 6, "1": 1}, "verdicts": {"PASS": 12}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2, "3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"2": 3, "3": 3, "0": 1, "1": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"2": 1, "3": 2}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 14, "2": 2, "1": 2}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"1": 3, "2": 3, "3": 1}, "verdicts": {"PASS": 1}}
+{"wbeta": 16, "m2_hist": {"1": 1, "2": 4, "3": 10}, "verdicts": {"PASS": 11}}
+{"wbeta": 16, "m2_hist": {"1": 3, "3": 16, "2": 3}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"0": 2, "3": 14, "1": 2, "2": 2}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"1": 3, "2": 3, "3": 1}, "verdicts": {"PASS": 1}}
+{"wbeta": 16, "m2_hist": {"3": 10, "2": 4, "1": 1}, "verdicts": {"PASS": 11}}
+{"wbeta": 16, "m2_hist": {"1": 3, "3": 16, "2": 3}, "verdicts": {"PASS": 16}}
+{"wbeta": 16, "m2_hist": {"3": 3, "1": 1, "2": 3, "0": 1}, "verdicts": {"PASS": 3}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"0": 2, "1": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"1": 2, "0": 2}, "verdicts": {}}
+{"wbeta": 16, "m2_hist": {"3": 2}, "verdicts": {"PASS": 2}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"3": 5}, "verdicts": {"PASS": 5}}
+{"wbeta": 16, "m2_hist": {"2": 2}, "verdicts": {"PASS": 1}}
+{"wbeta": 16, "m2_hist": {"3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 6}, "verdicts": {"PASS": 6}}
+{"wbeta": 16, "m2_hist": {"3": 10}, "verdicts": {"PASS": 10}}
+{"wbeta": 16, "m2_hist": {"3": 6}, "verdicts": {"PASS": 6}}

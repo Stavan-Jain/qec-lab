@@ -733,6 +733,46 @@ what was tried and why it didn't work.
   `LightClassification` (A22).
   [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)
 
+- 2026-08-11 — A33 IBM [[288,8,20]] = 20 via the tower calculus —
+  success — the A32 port to A20's all-(R), same-axis tower closed H5
+  (the lift-aware seam floor, the theorem's one open hypothesis) two
+  independent ways — a direct coset-BZ seam census at n = 144 (1,680
+  elements; the second seam orbit's coset is EMPTY at ≤ 18, so the
+  "false" naive floor was false on one orbit only) with 1,680 rungs all
+  passing, and the descent through Y2 reproducing the element list
+  exactly (the trisection collapses to one branch under (R)) — and
+  upgraded every other hypothesis solver-free: d([[288,8,20]]) = 20
+  END-TO-END at certificate tier, the program's first certified d = 20,
+  on ~105 s of critical-path compute (vs ~16.5 h of banked SAT
+  partials). Portability scorecard: the calculus's lemmas held verbatim
+  on two twisted (R)-rungs; iterated Z₂ sufficed; sector space is 2^k
+  on both towers; (R) buys exactness + σ* = id + the k/2-dim seam +
+  one-branch descent. Falsify-first: the port's audit caught an
+  empty-window edge in the A32 census helper (+15/+2 vectors; orbit
+  tables and the d = 24 assembly unaffected; fixed at source and
+  re-verified to the digit).
+  [details](../experiments/bb_lab/notes/A33_ibm288_d20_certificate.md)
+
+- 2026-08-10 — A32 tower slice calculus — success — the analytic-pathway
+  moonshot for Bravyi's [[360,12,≤24]] delivered both the landscape
+  contribution and, as a corollary, the certification: a two-level
+  slice/shadow calculus down the tower C→BY→GB ((R)-free and
+  twist-generic; both rungs of this tower are twisted lifts), with an
+  overflow square and a trisection of every d = 24 violation candidate
+  on the second shadow [β]. All obligations moved from n = 180/W = 22
+  enumeration scale to n = 90 censuses + bounded-overflow lift fibers +
+  top rungs: 49,855 rungs over ~274k fibers, ALL PASS, ~9.4 min wall —
+  ~250× under the coset-BZ baseline — and the flat band-22 β = 0 branch
+  dies by pure parity. d([[360,12,≤24]]) = 24 EXACT at certificate
+  tier, no SAT on the critical path (Bravyi et al. Table 3's "≤"
+  resolved); d(BY) = 12, d(GB) = 8, and the BY stabilizer-census
+  completeness ≤ 20 re-derived solver-free by the same machinery.
+  Independently re-run end-to-end with every count exact. Portable per
+  §7 of the note: the lemmas hold for any free Z₂-deck BB tower; next
+  instances ranked ([[288,8,20]], the A30 doubles as 3-level towers,
+  [[756,16,≤34]]).
+  [details](../experiments/bb_lab/notes/A32_tower_slice_calculus.md)
+
 - 2026-08-07 — A30 coset-BZ doubling certificates — success — safe
   floors recast as coset weights and decided by the A28 two-window
   enumeration seeded at A29's seam offsets (asymmetric (r, r−1)

@@ -1,0 +1,103 @@
+{
+ "bz_pass": {
+  "kappa": 68,
+  "W": 18,
+  "r_pair": [
+   9,
+   8
+  ],
+  "nodes": 66244461102,
+  "empty_window_bases": [
+   {
+    "window": 0,
+    "offset": "S",
+    "w": 0
+   },
+   {
+    "window": 0,
+    "offset": "R12",
+    "w": 30
+   },
+   {
+    "window": 0,
+    "offset": "R3",
+    "w": 40
+   },
+   {
+    "window": 1,
+    "offset": "S",
+    "w": 0
+   },
+   {
+    "window": 1,
+    "offset": "R12",
+    "w": 42
+   },
+   {
+    "window": 1,
+    "offset": "R3",
+    "w": 40
+   }
+  ]
+ },
+ "h1_direct": {
+  "vectors": 118932,
+  "weight_hist": {
+   "6": 72,
+   "12": 2268,
+   "18": 85344,
+   "10": 432,
+   "14": 3888,
+   "16": 26928
+  },
+  "classes": 1655,
+  "equals_banked": true
+ },
+ "r3": {
+  "elements": 0,
+  "verdict": "coset minimum >= 20 outright"
+ },
+ "r12_census": {
+  "elements": 1680,
+  "weight_hist": {
+   "18": 1590,
+   "16": 84,
+   "14": 6
+  },
+  "g_classes": 280
+ },
+ "banked_crosschecks": {
+  "safe_m_floors_278": "all present, all lift-UNSAT",
+  "census_classes_missing_from_banked": 2,
+  "v7_seam_280": "exact class-set equality",
+  "sat18_witness": "present"
+ },
+ "seam_rungs": {
+  "rungs": 1680,
+  "verdicts": {
+   "PASS": 1680
+  },
+  "lanes": {
+   "restricted<=0": 1590,
+   "restricted<=1": 84,
+   "restricted<=2": 6
+  },
+  "wall_s": 1.8,
+  "banked_agreeing_elements": 1668
+ },
+ "tightness_probes": [
+  {
+   "w": 18,
+   "first_hit_M": 3,
+   "min_overflow": 2,
+   "lightest_logical_over_w": 22
+  },
+  {
+   "w": 14,
+   "first_hit_M": 5,
+   "min_overflow": 4,
+   "lightest_logical_over_w": 22
+  }
+ ],
+ "wall_s": 66.2
+}

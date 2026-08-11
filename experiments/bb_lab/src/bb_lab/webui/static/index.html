@@ -45,6 +45,11 @@
 
     <div class="actions">
       <button type="button" id="solve" class="primary">Compute distance</button>
+      <button type="button" id="certify" class="primary"
+              title="Detect a doubling base and certify d = 2·d_base from
+base-scale counting certificates (A28/A29/A30 theory). Minutes where
+monolithic solving stalls; Tandem stays the witness/fallback lane.">
+        Certify as doubling cover</button>
       <button type="button" id="cancel" class="ghost hidden">Cancel</button>
     </div>
 
@@ -103,6 +108,16 @@
         <summary><span>Solver output</span></summary>
         <pre id="log" class="log"></pre>
       </details>
+    </div>
+
+    <div class="result" id="certify-card" hidden>
+      <div class="result-head">
+        <span class="result-title">Doubling certificate</span>
+        <span id="certify-state" class="badge badge-muted"></span>
+      </div>
+      <div id="certify-summary" class="result-summary"></div>
+      <div id="certify-stages" class="incumbents"></div>
+      <div id="certify-tandem" class="result-summary"></div>
     </div>
 
     <details class="disclosure" id="report">

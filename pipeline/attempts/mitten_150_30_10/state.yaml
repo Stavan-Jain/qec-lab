@@ -32,6 +32,11 @@ constraints:
     Mac, wall clock); hard cap 10 min. See build_budget.md — this is a gating
     requirement for the PR, tracked per-file in the ledger."
 notes: |
+  REGISTRY NUMBER: A34 (drafted as A32 in parallel with the
+  tower-calculus A32; reassigned on the 2026-08-11 merge into main,
+  A15 precedent). Artifacts keep the historical a32_ prefix
+  (scripts/a32_*.py, data-a32/, QECLean worktree a32-mitten150).
+
   Target: mitten150StabilizerCodeWithDistance : StabilizerCodeWithDistance
   150 30 10 — the library's largest bundled [[n,k,d]] object, first qLDPC
   one, and the first formally verified non-abelian qLDPC distance.
