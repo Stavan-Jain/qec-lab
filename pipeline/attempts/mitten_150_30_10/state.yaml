@@ -18,8 +18,8 @@ phase: m4-sweeps-green       # M1-M3 green (34.3 s). M4 compute core GREEN in
                              # (triple-form bridges, chain-mask bridges,
                              # classification consumption) -> floorX/floorZ
                              # theorems; then M5 assembly + bundle. SAT
-                             # cross-census still in flight (gate re-scoped,
-                             # m4_findings.md G5 — record when it lands).
+                             # cross-census LANDED + CONFIRMED (counts, families,
+                             # and per-split histograms all equal; G5).
 covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0

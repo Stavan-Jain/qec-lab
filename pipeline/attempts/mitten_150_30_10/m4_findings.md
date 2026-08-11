@@ -124,7 +124,19 @@ inverse certs; mode-wt needs the gross-§2-style corrected decoder for
 the singular `a₀` (dropSet = the 2 free columns) — direct port of
 `decoder_identity_X` + `face_kernel_trivial`-with-drops.
 
-## G5 — SAT cross-check (IN FLIGHT; gate re-scoped 2026-08-11)
+## G5 — SAT cross-check: CONFIRMED (landed 2026-08-11, after G6)
+
+The blocking-clause SAT enumerations exhausted (final UNSAT) on all four
+systems: X0/X1/Z0/Z1 = 1995/3530/2325/3250 nonzero solutions in
+1204/564/1578/614 s.  Counts equal the collector's (minus the zero
+triple), `n_missing = 0` (all 60 family members found per instance),
+and the per-split histograms are EQUAL dict-for-dict between
+`m4_scoping.json` and `m4_triples.json` on every instance.  **Two
+independent tools, one answer** — the classification lists the Lean
+sweeps certify against are cross-confirmed.  (Original gate text kept
+below for the record.)
+
+### (original gate note, superseded)
 
 `a32_m4_scoping.py` (blocking-clause SAT over the same four systems)
 was launched this session and left running (>60 min CPU at write time;
