@@ -20,6 +20,19 @@ artifact was re-verified under this port's conventions before use (§7), and
 the port's census audit found and patched a latent enumeration edge in the
 A32 tooling itself (§8). NOT Lean-checked (follow-on 1, §9).
 
+**Priority, stated exactly** (this paragraph is the source of truth; the
+sibling notes point here). This is the program's first certified `d = 20`
+**for a previously published code** — an independent, solver-free
+reproduction of IBM's MILP-exact value — and the first `d = 20` reached by
+the tower calculus. It is **not** the program's first certified `d = 20`
+outright: A30 §5.5 (2026-08-07) had already taken both `[[360,4,20]]` codes
+to end-to-end certificate tier, at the same claim tier, four days earlier.
+Those are covers the program constructed by doubling; this one is a code
+someone else published with a solver-only distance. Earlier drafts of the
+A20 §7 addendum, the `A_HANDOFF.md` A33 block and the `research_log.md`
+entry carried the unqualified "first certified d = 20" — corrected in place
+2026-08-11, see §8.
+
 Scripts `a33_*.py`; data `data/a33/`. Read-only inputs: MAIN checkout
 `data/a20/`; worktree `data/a20_ro/`, `data/a32/`.
 
@@ -312,6 +325,19 @@ instances where no second deck exists (the calculus cannot apply —
   censused" — FALSE; actual banked state was 278 (0x1, incomplete, all
   UNSAT) + 0 (0x3, probe inconclusive), plus the unrecorded v7_seam
   engine run. No banked *verdict* was wrong.
+- **Priority overclaim, corrected 2026-08-11** (caught by the
+  cross-line consolidation pass, `DOUBLING_PAIRS_CONSOLIDATED.md`): the
+  session's write-ups called `d([[288,8,20]]) = 20` "the program's first
+  certified d = 20" in three places — the A20 §7 addendum, the
+  `A_HANDOFF.md` A33 block, and the `research_log.md` entry. **A30 §5.5
+  (2026-08-07) got there first**, at the identical claim tier
+  (deterministic certificates, no SAT on the critical path), for both
+  `[[360,4,20]]` codes. All three sites now carry the qualified form —
+  first for a *previously published* code, and first by the tower
+  calculus — with the reasoning in the priority paragraph at the head of
+  this note. No computational result is affected; this was a
+  bookkeeping error about the program's own history, of exactly the kind
+  the registry rule exists to catch.
 - **"Element-census completeness was never settled" — now settled three
   ways** for 0x1 (BZ direct, descent, v7_seam agreement) and the 0x3
   coset is EMPTY ≤ 18 — the naive floor A20 §5 declared FALSE-as-stated

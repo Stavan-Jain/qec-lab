@@ -261,7 +261,11 @@ descent and re-derived every other hypothesis solver-free:
   (σ\* = id on H1, both rungs).
 
 **d(Y8) = 20 is now end-to-end at deterministic-certificate tier — the
-program's first certified d = 20, on ≈ 105 s of critical-path compute,
-independent of IBM's MILP.** Lean packaging is the follow-on (A33 §9);
+program's first certified d = 20 for a previously published code, on
+≈ 105 s of critical-path compute, independent of IBM's MILP.** (Not the
+first certified d = 20 outright: A30 §5.5, 2026-08-07, reached the same
+tier on both `[[360,4,20]]` doubled covers four days earlier. Priority
+paragraph: A33 note head; erratum: A33 §8.) Lean packaging is the
+follow-on (A33 §9);
 the staging paragraph above remains the plan of record, with the A33
 artifacts replacing the SAT inputs.
