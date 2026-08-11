@@ -219,6 +219,44 @@ GB `[[90,8,8]]` (Z₁₅×Z₃) →x→ BY `[[180,8,12]]` (Z₃₀×Z₃) →y�
 new data point for the deficit-wall taxonomy, which was built entirely on (R)
 rungs.
 
+**Trust basis, leg by leg** (the question "certificate or solver?" answered by
+tracing the assembly rather than quoting A32's summary line):
+
+| assembly leg | what carries it | trust |
+|---|---|---|
+| `[b] ≠ 0` — sectors A/B/C | GB coset-BZ censuses (exact binomial node counts, kernel-asserted) + MITM fiber enumerations complete by the exact-subset-sum argument, every solution re-verified + 49,855 rungs all PASS | certificate |
+| `[b] = 0, b ≠ 0`, `\|b\| ≤ 20` | banked `(M)@24` floors = **8,461 solver-free rung passes**, `non_pass: []` (`data/a19_scope/scope_results.json`) | certificate |
+| census completeness ≤ 20 | fiber-sweep membership (8,313 checks) + the analytic `β = 0` family — *replaces* the lex-leader SAT engine's terminal UNSATs | certificate |
+| `\|b\| = 22` flat residue | parity (Thm 5 kills `β = 0` at **zero compute**) + 27,152 flat-top rungs | certificate |
+| `b = 0` ⟹ `\|v\| = 2\|u\| ≥ 2·d(BY)` | `d(BY) = 12`: 45 fibers, 7 lifts all stabilizers, 0 logicals, 0.04 s; weight-12 witness re-verified | certificate |
+| upper side `d ≤ 24` | 100 weight-24 τ-lift vectors re-verified as nontrivial logicals | certificate |
+
+So **Tier F is certificate trust end to end**, at the same level as Tier C and
+strictly above Tier D (§2.4: CMS UNSATs are proof-less by construction — DRAT
+is disabled under its Gauss-Jordan XOR reasoning). SAT survives only as
+historical cross-check (A19's original UNSATs, A24's engine censuses), and A32
+§5 explicitly retired the last SAT-tier critical-path input (`d(BY) = 12`)
+during that session. Certificate tier is still **not** kernel tier: nothing here
+is Lean-checked, same as Tier C.
+
+Two clarifications this table is designed to pre-empt:
+
+- **ISD is not a trust dependency.** The weight-24 witnesses were *found* by a
+  heuristic search, but a witness only ever needs checking, and the check is
+  deterministic F₂ linear algebra. Search method is irrelevant to the trust tier
+  of an upper bound — the same asymmetry (cheap witnesses, expensive UNSAT) that
+  runs through the whole program, and the reason it never contaminates a floor.
+- **The genuine caveat is reproducibility, not trust.** A32 reads `data/a19/`
+  and `data/a24/` from the main checkout, and `experiments/bb_lab/.gitignore`
+  ignores `data/` wholesale — subdirectories are force-added case by case.
+  `data/a32/`, `data/a33/`, `data/a30/` and `data/a19_scope/` are committed;
+  **`data/a19/` and `data/a24/` are not.** The 8,461-rung *result* is therefore
+  in the repo but the per-class detail behind it is local-only, so an
+  independent re-runner must regenerate the A19 census first. A32 §5's
+  census-completeness bonus softens this — the banked census is re-derived by
+  the fiber union, demoting it from input to cross-check — but the floors leg
+  still points at ungitted data. Worth force-adding a per-class digest.
+
 ---
 
 ## 2. How the **safe** floor was established — eight distinct methods
@@ -533,6 +571,13 @@ Falsified in-session and worth not re-proposing: the calculus is *not* a
 compression statement (banked census compressed only 2.2×); the win is that
 census *generation* moves to `n = 90`.
 
+**No SAT is load-bearing here.** The `(M)@24` floors at bands ≤ 20 — the one
+leg that reads banked A19 data — are consumed as **8,461 solver-free rung
+passes** (`data/a19_scope/scope_results.json`, `non_pass: []`, 735 s, lanes
+w6…w22), not as the 8,310 SAT UNSATs they replaced; and `d(BY) = 12`, called
+out in A32 §5 as "the last SAT-tier input on the `d(C) = 24` critical path",
+fell to 45 fibers in 0.04 s. Full leg-by-leg trust table: §1 Tier F.
+
 **Erratum (found by the A33 port's audit, patched at source).** The
 `a32_gb_census.census()` helper never emitted the empty-window coset-base
 element. Effect on A32 §3: logicals ≤ 10 — 15 weight-10 vectors missed
@@ -688,6 +733,11 @@ Three further portability facts, both towers agreeing:
 7. **A8's weight-8 rung** — presentation-free `m ≥ 2`, off the critical path.
 8. ~~**Reconcile the "first certified `d = 20`" claim**~~ — **DONE in this
    pass**; see Tier C, A33 §8, and the A33 note's priority paragraph.
+9. **Force-add a per-class digest of the A19 `(M)@24` census.** Tier F's trust
+   tier is fine (§1 Tier F), but its floors leg reads `data/a19/`, which
+   `.gitignore` excludes; only the 8,461-rung summary is committed. A digest
+   keyed by class would close the reproduction path without shipping the full
+   census. Same audit applies to `data/a20/` for Tier C-ii and `data/a24/`.
 
 ---
 
