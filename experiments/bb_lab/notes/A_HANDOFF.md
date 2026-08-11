@@ -197,6 +197,28 @@ A4 Theorem D).
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
 >
+> **A33 (2026-08-11, `A33_ibm288_d20_certificate.md`): the calculus
+> ports — d([[288,8,20]]) = 20, the program's first certified d = 20.**
+> A32's tower calculus on A20's all-(R) same-axis tower
+> Y2[[72,8,6]] → Y4[[144,8,10]] → Y8[[288,8,20]] closed the one open
+> hypothesis (H5, the lift-aware seam floor) two independent ways:
+> direct 3-offset coset-BZ census at n = 144 (1,680 elements, 12-orbit;
+> the 3-orbit coset is EMPTY ≤ 18 — A20 §5's "SeamCosetFloor 20 FALSE"
+> holds only on the 12-orbit) + 1,680 rungs ALL PASS in 66 s, and the
+> descent through Y2 (105,328 fibers, 90.6% carry-infeasible, list
+> reproduced exactly; the trisection COLLAPSES to one branch under (R)).
+> Full solver-free upgrade: H1 four ways, H2 as 1,655 rungs (1.9 s),
+> H3/d₀/d₁ by BZ + the dby pattern ⟹ ~105 s of critical-path compute
+> vs ~16.5 h of banked SAT partials (~600×). Portability scorecard:
+> Lemma 1/Thm 3/parity/rung-engine + both bonus patterns verbatim on
+> two twisted (R)-rungs; iterated Z₂ sufficed (composite Z₄ never
+> consumed); sector space is 2^k on BOTH towers (A32's 2⁸ was
+> k-genericity, not an (R) effect); what (R) buys = exactness both
+> ways + σ* = id + the k/2-dim seam + one-branch descent. Falsify-first
+> catch: an empty-window edge in a32's census() (+15/+2 vectors,
+> orbit tables and d = 24 assembly unaffected; fixed at source,
+> corrected censuses re-run, A32 §3 count corrected).
+>
 > **A32 (2026-08-10, `A32_tower_slice_calculus.md`): the Bravyi flagship
 > is DONE — d([[360,12,≤24]]) = 24 exact, and the tower calculus is the
 > real prize.** Two-level slice/shadow descent C→BY→GB ((R)-free,

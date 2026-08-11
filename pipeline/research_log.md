@@ -733,6 +733,26 @@ what was tried and why it didn't work.
   `LightClassification` (A22).
   [details](../experiments/bb_lab/notes/A23_analytic_seam_floor.md)
 
+- 2026-08-11 — A33 IBM [[288,8,20]] = 20 via the tower calculus —
+  success — the A32 port to A20's all-(R), same-axis tower closed H5
+  (the lift-aware seam floor, the theorem's one open hypothesis) two
+  independent ways — a direct coset-BZ seam census at n = 144 (1,680
+  elements; the second seam orbit's coset is EMPTY at ≤ 18, so the
+  "false" naive floor was false on one orbit only) with 1,680 rungs all
+  passing, and the descent through Y2 reproducing the element list
+  exactly (the trisection collapses to one branch under (R)) — and
+  upgraded every other hypothesis solver-free: d([[288,8,20]]) = 20
+  END-TO-END at certificate tier, the program's first certified d = 20,
+  on ~105 s of critical-path compute (vs ~16.5 h of banked SAT
+  partials). Portability scorecard: the calculus's lemmas held verbatim
+  on two twisted (R)-rungs; iterated Z₂ sufficed; sector space is 2^k
+  on both towers; (R) buys exactness + σ* = id + the k/2-dim seam +
+  one-branch descent. Falsify-first: the port's audit caught an
+  empty-window edge in the A32 census helper (+15/+2 vectors; orbit
+  tables and the d = 24 assembly unaffected; fixed at source and
+  re-verified to the digit).
+  [details](../experiments/bb_lab/notes/A33_ibm288_d20_certificate.md)
+
 - 2026-08-10 — A32 tower slice calculus — success — the analytic-pathway
   moonshot for Bravyi's [[360,12,≤24]] delivered both the landscape
   contribution and, as a corollary, the certification: a two-level
