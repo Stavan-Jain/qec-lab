@@ -198,7 +198,11 @@ A4 Theorem D).
 >   Props 30–31).
 >
 > **A33 (2026-08-11, `A33_ibm288_d20_certificate.md`): the calculus
-> ports — d([[288,8,20]]) = 20, the program's first certified d = 20.**
+> ports — d([[288,8,20]]) = 20, the program's first certified d = 20
+> for a previously published code** (A30 §5.5 reached certificate-tier
+> d = 20 on both `[[360,4,20]]` doubled covers on 2026-08-07 — same
+> tier, program-constructed codes; priority paragraph at the A33 note
+> head, erratum A33 §8).
 > A32's tower calculus on A20's all-(R) same-axis tower
 > Y2[[72,8,6]] → Y4[[144,8,10]] → Y8[[288,8,20]] closed the one open
 > hypothesis (H5, the lift-aware seam floor) two independent ways:

@@ -742,8 +742,11 @@ what was tried and why it didn't work.
   passing, and the descent through Y2 reproducing the element list
   exactly (the trisection collapses to one branch under (R)) — and
   upgraded every other hypothesis solver-free: d([[288,8,20]]) = 20
-  END-TO-END at certificate tier, the program's first certified d = 20,
-  on ~105 s of critical-path compute (vs ~16.5 h of banked SAT
+  END-TO-END at certificate tier, the program's first certified d = 20
+  for a previously published code (A30 got both [[360,4,20]] doubled
+  covers to the same tier on 2026-08-07 — this is the first for a code
+  someone else published, and the first by the tower calculus), on
+  ~105 s of critical-path compute (vs ~16.5 h of banked SAT
   partials). Portability scorecard: the calculus's lemmas held verbatim
   on two twisted (R)-rungs; iterated Z₂ sufficed; sector space is 2^k
   on both towers; (R) buys exactness + σ* = id + the k/2-dim seam +
