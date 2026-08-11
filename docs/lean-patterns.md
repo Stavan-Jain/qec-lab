@@ -443,3 +443,35 @@ the proof body uses more. When the proof body multiplies abstract
 `vertexStabOf` / `faceStabOf` against a parameter `g`, declare `g` at
 `(rotatedSurfaceHomologicalCode L).numQubits` — callers can pass
 `NQubitPauliGroupElement (numQubits L)` (defeq).
+
+### `rw` fails across `HomologicalCode` field instances vs raw instances
+
+`HomologicalCode` registers its cell instances from structure fields
+(`attribute [instance] decEq0 … fin2`), so a term elaborated at
+`myComplex.C2` carries `myComplex.fin2`/`myComplex.decEq2`-flavored
+implicit instance args, while the same term elaborated at the raw cell
+type (e.g. `Fin 2 × M150G`) carries `instFintypeProd`/`instDecidableEqProd`.
+The two are defeq but not syntactically equal, and `rw`/`simp` keyed
+matching fails across the gap — typical victims: `Pi.single c 1` (hidden
+`DecidableEq`), `∑ c, …` (hidden `Fintype` in `Finset.univ`), `map_sum`
+against `X.boundary2 (∑ …)`. The failure is silent-looking ("did not find
+an occurrence" with the pattern visibly present).
+
+Discipline that avoids it wholesale (first worked instance:
+`Codes/Mitten/M150/StabilizerCode.lean` §2–§3, A32):
+
+1. Statements that will be consumed by `rw`/`simp` — bridges against
+   framework lemmas like `cutMap_apply`, `dualBoundary_apply` — get their
+   binders at the **projected** types (`myComplex.C1 → ZMod 2`, sums over
+   `myComplex.C2`), so both sides synthesize the same registered
+   instances.
+2. `native_decide` facts stay at the **raw** computable types, and are
+   consumed **only via `exact`** (or `refine`), never `rw` — unification
+   at default transparency crosses the instance gap by defeq, keyed
+   matching does not.
+3. Lemmas generic over the cell type (e.g. a decoder-collapse core used
+   on both `C2` and `C0`) take the cell type as a variable `{γ : Type}
+   [Fintype γ]` plus an indexing bijection, and get instantiated at the
+   projected types; raw-typed functions/bijections pass into `γ`-slots
+   fine (application-position defeq is safe — it's only pattern matching
+   that breaks).

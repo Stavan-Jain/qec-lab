@@ -58,9 +58,17 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
 | 2026-08-10 | `Framework/Homological/LiftedProduct.lean` (M1) | 8.3 | `lake build`, worktree `claude/a32-lifted-product` @ 3b9a4b8 | pure proofs; warning-free; vs 10 s allocation |
 | 2026-08-10 | `Codes/Mitten/M150/Data.lean` (M2 data, generated) | 3.0 | `lake build` @ 7842caf | packed tables; vs 20 s allocation |
 | 2026-08-10 | `Codes/Mitten/M150/Defs.lean` (M2) | 2.3 | `lake build` @ 7842caf | indicator polys + complex + decides |
+| 2026-08-10 | `Codes/Mitten/M150/StabilizerCode.lean` (M2 packaging) | 19.0 | `lake build` @ 64da329, twice (fresh + forced re-elab) | 7 natives: 2 pointwise entry bridges (9000 cells), 2 decoder identities (3600×60), 3 logical-basis facts (cycles/dual-cycles/inner 30×30); packaging line total w/ Defs = 21.3 s vs 40 s allocation |
+| 2026-08-10 | `Codes/Mitten/M150/Witness.lean` (M3) | 1.7 | `lake build` @ 64da329 | ONE batched native (4 conjuncts); vs 10 s allocation |
+| 2026-08-10 | `Framework/Homological/LogicalCorrespondence.lean` (edit) | ~0 | — | +15-line mirror lemma `not_mem_dualBoundaries_of_witness` in a pre-existing module; not an added module, no measurable delta |
 
-**Measured total (library files): 13.6 s / 300 s** — probes are scratchpad
+**Measured total (library files): 34.3 s / 300 s** — probes are scratchpad
 files, not library modules; they calibrate, they don't count.
+
+Protocol note (2026-08-10): `touch` no longer forces lake rebuilds (lake
+is content-hash-based on this toolchain) — measure by deleting the
+module's `.olean`/`.ilean` under `.lake/build/lib/lean/` and rebuilding,
+or take the per-module wall times lake prints on the first build.
 
 ### Budget rehearsal result (M0.4, 2026-08-10)
 
