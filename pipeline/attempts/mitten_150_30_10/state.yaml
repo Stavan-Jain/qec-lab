@@ -1,0 +1,62 @@
+code_id: mitten_150_30_10
+display_name: '\([[150,30,10]]\) mitten code (non-abelian LP, C₅×S₃)'
+parameters:
+  n: 150
+  k: 30
+  d: 10
+status: complete
+track: engineering          # M1–M3/M5; the M4 floors carried a moonshot-grade core
+started_at: 2026-08-10T00:00:00Z
+completed_at: 2026-08-11T00:00:00Z
+worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
+qec_lab_branch: claude/mitten-codes-work-ed68db
+estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
+phase: complete              # CERTIFICATION COMPLETE @ QECLean 2440ec8:
+                             # M4 chain plumbing (FloorBridge + FloorZSide/
+                             # FloorXSide: maskOf/maskOf_op transfer, equation
+                             # transfer, mode dispatch, t-join, row
+                             # reconstruction) -> floorZ/floorX; M5 Distance.lean
+                             # -> m150StabilizerCode_hasCodeDistance_10 ->
+                             # mitten150StabilizerCodeWithDistance :
+                             # StabilizerCodeWithDistance 150 30 10.
+                             # Axioms: 3 std + native_decide; no sorries.
+                             # Forced full re-elab of all 14 modules: 125.8 s
+                             # serial / 67.5 s wall vs 300 s cap. Pushed to lab.
+covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
+family: non-abelian lifted product (mitten, arXiv:2607.28795)
+sorries_total: 0
+sorries_closed: 0
+sorries_blocked: 0
+constraints:
+  build_time_budget: "≤ 5 min added to a full QECLean lake build (dev M-series
+    Mac, wall clock); hard cap 10 min. See build_budget.md — this is a gating
+    requirement for the PR, tracked per-file in the ledger."
+notes: |
+  REGISTRY NUMBER: A34 (drafted as A32 in parallel with the
+  tower-calculus A32; reassigned on the 2026-08-11 merge into main,
+  A15 precedent). Artifacts keep the historical a32_ prefix
+  (scripts/a32_*.py, data-a32/, QECLean worktree a32-mitten150).
+
+  Target: mitten150StabilizerCodeWithDistance : StabilizerCodeWithDistance
+  150 30 10 — the library's largest bundled [[n,k,d]] object, first qLDPC
+  one, and the first formally verified non-abelian qLDPC distance.
+
+  Not in catalog/zoo.yaml yet (mitten family ingest is a queued follow-up
+  from the 2026-08-03 paper review); attempt started directly on user
+  request — backfill scoring at the next catalog refresh.
+
+  Ground truth already in-repo: d_X = d_Z = 10 SAT-certified two ways
+  (certificates/mitten_150_30_10_{X,Z}.cert.json, qec-lab PR #10);
+  vendored matrices instances/mitten_150_30_10/ (yarn @ 82fb695a).
+
+  M0 COMPLETE (2026-08-10, see m0_findings.md). Budget rehearsal F6:
+  all four representative Lean obligations ≈ 9.2 s (probe compiled clean
+  first try; carrier = Multiplicative (ZMod 5) × DihedralGroup 3, no
+  perf fallback needed). Scoping: Tanner Aut = exactly C₅ (nauty, 1 gen);
+  no X↔Z duality (nauty + census ⟹ airtight at rowspace level); exact
+  census VERDICT rows_only=True — the only wt ≤ 9 kernel vectors are
+  the 60 opposite-side check rows (60/60 per side, exhausted UNSAT,
+  374s + 180s); L(a1), R(b0), R(b1) invertible ⟹ grid blocks
+  eliminable; GAP→Lean dictionary (z=2, r=3, s=1) validated as hom on
+  all 900 products. M4 floor statement pinned: "0 < |v| ≤ 9 cycle ⟹
+  generator row".
