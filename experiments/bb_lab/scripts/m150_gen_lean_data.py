@@ -964,6 +964,41 @@ def emit_m4(out_dir: Path, force: bool) -> None:
                     f"def splits{name} : List (Nat × Nat × Nat × Nat) := [\n"
                     + "\n".join(spl_lines))
         secs.append("")
+    # bridge-layer tables (M4 chain plumbing): raw operator columns and
+    # true inverses the derived-form lemmas compose against.  Validated
+    # falsify-first here and by scripts/a32_m4_bridge_check.py.
+    bridge = dict(
+        tRawAX=_cols(A0),                 # raw L(a0) — X-side u-coefficient
+        tCinvX0=_cols(_inv2(Rb[0])),      # R(b0)^-1  — X0 t-derivation
+        tCinvX1=_cols(_inv2(Rb[1])),      # R(b1)^-1  — X1 t-derivation
+        tRawCZ0=_cols(As[0]),             # raw L(a0~) — Z0 t-coefficient
+        tRawCZ1=_cols(As[1]),             # raw L(a1~) — Z1 t-coefficient
+        tAinvZ=_cols(B0si),               # R(b0~)^-1 — Z u-derivation
+    )
+    for beta in (0, 1):
+        ci, T = bridge[f"tCinvX{beta}"], inst[f"X{beta}"]["T"]
+        for i in range(n):
+            assert _xf(ci, T["tTC"][i]) == 1 << i
+            assert _xf(ci, bridge["tRawAX"][i]) == T["tUT"][i]
+            assert _xf(ci, T["tWC"][i]) == T["tWT"][i]
+            assert _xf(T["tTW"], T["tWT"][i]) == 1 << i
+            assert _xf(T["tTW"], T["tUT"][i]) == T["tUW"][i]
+            assert (_xf(T["tP"], bridge["tRawAX"][i]) ^ (1 << i)) in set(T["ann"])
+    for alpha in (0, 1):
+        rc, T = bridge[f"tRawCZ{alpha}"], inst[f"Z{alpha}"]["T"]
+        for i in range(n):
+            assert _xf(bridge["tAinvZ"], T["tUC"][i]) == 1 << i
+            assert _xf(bridge["tAinvZ"], T["tWC2"][i]) == T["tWC"][i]
+            assert _xf(bridge["tAinvZ"], rc[i]) == T["tTC"][i]
+            assert _xf(T["tUW"], T["tWC"][i]) == 1 << i
+            assert _xf(T["tUW"], T["tTC"][i]) == T["tTW"][i]
+            assert (_xf(T["tPT"], rc[i]) ^ (1 << i)) in set(T["annT"])
+    print("[m4] bridge tables validated (comp-ids, inverses, corr ∈ Ann)")
+    secs.append("/-! Bridge-layer tables (M4 chain plumbing): raw operator\n"
+                "columns and true inverses; see `FloorBridge.lean`. -/")
+    for nm, vals in bridge.items():
+        secs.append(fmt_nats(nm, vals))
+    secs.append("")
     secs.append(fmt_nats("rowsXpk", rows["X"], per=2))
     secs.append(fmt_nats("rowsZpk", rows["Z"], per=2))
     secs += ["", "end M150", "end LP", "end Homological",

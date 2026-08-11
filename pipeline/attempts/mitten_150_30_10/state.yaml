@@ -4,22 +4,24 @@ parameters:
   n: 150
   k: 30
   d: 10
-status: planning
-track: engineering          # M1–M3/M5; the M4 floors carry a moonshot-grade core
+status: complete
+track: engineering          # M1–M3/M5; the M4 floors carried a moonshot-grade core
 started_at: 2026-08-10T00:00:00Z
+completed_at: 2026-08-11T00:00:00Z
 worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
 qec_lab_branch: claude/mitten-codes-work-ed68db
 estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
-phase: m4-sweeps-green       # M1-M3 green (34.3 s). M4 compute core GREEN in
-                             # QECLean @ 40a4c78: FloorCore (symbolic driver
-                             # theory) + FloorData (generated) + FloorSweep{X,Z}
-                             # (6 natives: 4 instance sweeps + 2 t-joins), 71.4 s,
-                             # ledger 105.7/300 s. Remaining M4 = chain plumbing
-                             # (triple-form bridges, chain-mask bridges,
-                             # classification consumption) -> floorX/floorZ
-                             # theorems; then M5 assembly + bundle. SAT
-                             # cross-census LANDED + CONFIRMED (counts, families,
-                             # and per-split histograms all equal; G5).
+phase: complete              # CERTIFICATION COMPLETE @ QECLean 2440ec8:
+                             # M4 chain plumbing (FloorBridge + FloorZSide/
+                             # FloorXSide: maskOf/maskOf_op transfer, equation
+                             # transfer, mode dispatch, t-join, row
+                             # reconstruction) -> floorZ/floorX; M5 Distance.lean
+                             # -> m150StabilizerCode_hasCodeDistance_10 ->
+                             # mitten150StabilizerCodeWithDistance :
+                             # StabilizerCodeWithDistance 150 30 10.
+                             # Axioms: 3 std + native_decide; no sorries.
+                             # Forced full re-elab of all 14 modules: 125.8 s
+                             # serial / 67.5 s wall vs 300 s cap. Pushed to lab.
 covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0

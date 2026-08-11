@@ -67,11 +67,35 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
 | 2026-08-11 | `Codes/Mitten/M150/FloorSweepX.lean` (M4 leaf) | 15.0 | `lake build` | 3 natives: X0+X1 sweeps + X join |
 | 2026-08-11 | `Codes/Mitten/M150/FloorSweepZ.lean` (M4 leaf) | 40.0 | `lake build` | 3 natives: Z0+Z1 sweeps + Z join; identity-tP fold overhead on unique-u splits noted |
 
-**Measured total (library files): 105.7 s / 300 s** — probes are scratchpad
-files, not library modules; they calibrate, they don't count.  (M4
-remaining: chain plumbing + assembly, expected +10–25 s, vs the 180 s
-M4 line of which 71.4 s is used; FloorSweepX/Z are independent leaf
-files, so a parallel build overlaps ~40 s of the serial count.)
+### Final certification measurement (2026-08-11, M4 plumbing + M5 landed)
+
+One forced full re-elaboration of every certification module (deleted
+`.olean`/`.ilean` under `.lake/build/lib/lean/`, one `lake build
+QEC.Stabilizer.Codes.Mitten`), per-module walls from lake:
+
+| Module | Wall (s) | Notes |
+|---|---:|---|
+| `Framework/Homological/LiftedProduct.lean` | 2.9 | M1 |
+| `M150/FloorCore.lean` | 3.3 | + linear_pred, parity functionals, composite transfer, checkJoin_sound, pack5 extraction |
+| `M150/Data.lean` | 2.2 | M2 data |
+| `M150/Defs.lean` | 1.9 | M2 |
+| `M150/FloorData.lean` | 6.7 | regenerated + 6 bridge tables (tRawAX, tCinvX0/1, tRawCZ0/1, tAinvZ) |
+| `M150/FloorSweepX.lean` | 14.0 | 3 natives (unchanged) |
+| `M150/StabilizerCode.lean` | 23.0 | M2 packaging (unchanged) |
+| `M150/Witness.lean` | 3.6 | M3 (unchanged) |
+| `M150/FloorBridge.lean` | 3.0 | NEW: maskOf/comask, maskOf_op transfer, entrySum block maps, weight bridges — symbolic only |
+| `M150/FloorZSide.lean` | 11.0 | NEW: 2 natives (basis bridge, census/rows) + ~30 kernel decides + floorZ |
+| `M150/FloorSweepZ.lean` | 41.0 | 3 natives (unchanged) |
+| `M150/FloorXSide.lean` | 10.0 | NEW: mirror leaf + floorX |
+| `M150/Distance.lean` | 1.7 | NEW: M5 transfer + witness + bundle |
+| `Codes/Mitten.lean` umbrella | 1.5 | |
+| **Serial total** | **125.8** | **wall-clock 67.5 s at 229% CPU (lake parallelism)** |
+
+**Measured total (library files): 125.8 s serial / 300 s cap — CLOSED at
+42% of budget** (67.5 s wall on the dev machine; the M4 allocation used
+89.0 s of its 180 s line, M5 used 1.7 s of 30 s).  Axiom audit on the
+bundle: `propext`, `Classical.choice`, `Quot.sound` + the 18
+`native_decide` leaf axioms; no sorries.
 
 Protocol note (2026-08-10): `touch` no longer forces lake rebuilds (lake
 is content-hash-based on this toolchain) — measure by deleting the
