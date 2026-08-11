@@ -10,13 +10,15 @@ started_at: 2026-08-10T00:00:00Z
 worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
 qec_lab_branch: claude/mitten-codes-work-ed68db
 estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
-phase: m2-m3-complete        # M1 (3b9a4b8) + M2 data (7842caf) + M2 packaging +
-                             # M3 witness (64da329): m150StabilizerCode :
-                             # StabilizerCode m150Complex.numQubits 30 (+ the
-                             # toSubgroup transport bridge) and the weight-10
-                             # dual-cycle witness headline, all green, axiom-clean
-                             # (3 std + native_decide), 34.3 s ledger total;
-                             # next = M4 floors (research core), then M5 bundle
+phase: m4-design-derisked    # M1 (3b9a4b8) + M2 (7842caf, 64da329) + M3 (64da329)
+                             # all green, 34.3 s ledger. M4 design COMPLETE and
+                             # de-risked offline (m4_findings.md): triple-equation
+                             # reduction, exhaustive censuses (2-3.5k light
+                             # triples/instance), JOIN = exactly the 60 rows both
+                             # sides, Lean sweep rehearsal 7.3 s/instance (one
+                             # native_decide). Next = emitter m4 mode + FloorCore/
+                             # FloorData/Floor{Z,X}Side Lean, then M5. GATE: SAT
+                             # cross-check (in flight) must match m4_triples.json.
 covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0

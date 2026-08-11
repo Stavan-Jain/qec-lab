@@ -61,6 +61,7 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
 | 2026-08-10 | `Codes/Mitten/M150/StabilizerCode.lean` (M2 packaging) | 19.0 | `lake build` @ 64da329, twice (fresh + forced re-elab) | 7 natives: 2 pointwise entry bridges (9000 cells), 2 decoder identities (3600×60), 3 logical-basis facts (cycles/dual-cycles/inner 30×30); packaging line total w/ Defs = 21.3 s vs 40 s allocation |
 | 2026-08-10 | `Codes/Mitten/M150/Witness.lean` (M3) | 1.7 | `lake build` @ 64da329 | ONE batched native (4 conjuncts); vs 10 s allocation |
 | 2026-08-10 | `Framework/Homological/LogicalCorrespondence.lean` (edit) | ~0 | — | +15-line mirror lemma `not_mem_dualBoundaries_of_witness` in a pre-existing module; not an added module, no measurable delta |
+| 2026-08-11 | (probe) `A32M4Probe.lean` | 7.3 | `lake env lean`, warm | M4 rehearsal: FULL X0 instance sweep (95 splits, 8.57M classes, 3 modes, 1,995-triple classification) as ONE native_decide; naive driver was 69 s — fold-hoisting + SWAR popcount gave 9.4×. Projects M4 ≈ 40–70 s vs 180 s allocation |
 
 **Measured total (library files): 34.3 s / 300 s** — probes are scratchpad
 files, not library modules; they calibrate, they don't count.
