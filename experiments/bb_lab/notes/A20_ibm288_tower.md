@@ -4,9 +4,27 @@
 (`scripts/a19_deck_survey_catalog.py`, research_log entry
 `a19-wall-refutation-and-catalog-survey`) surfaced IBM class Y —
 `(ℓ,m) = (18,8)`, `A = 1+xy⁴+x¹⁴y`, `B = 1+xy²+x²y⁷`, `[[288,8,20]]`,
-d = 20 **MILP-exact** per arXiv:2606.02418 Table II — as deck-born at
+d = 20 **MILP-exact** per arXiv:2606.02418 **supplemental** Table II
+(the n = 288 CSS catalog, class Y row; see the citation note below) — as
+deck-born at
 (18,2) with two k-preserving y-rungs above it. A d = 20 code whose whole
 tower is SAT-ladder-accessible (bases at n = 144 and n = 72): the cheapest
+<!-- CITATION NOTE (2026-08-11) — read before quoting this reference.
+The code is in the paper's SUPPLEMENT, not its main text. The supplement
+numbers its own tables from I and states that main-text references use the
+form "main text Table N"; its Tables I-III are the CSS catalog by block
+length (I: n=144, II: n=288, III: n=360; IV-X: the non-CSS PBB catalog,
+whose codes are defined by FOUR polynomials (A,B,C,D)). Class Y is the
+n=288 row of SUPPLEMENTAL Table II:
+    Y  (18, 8)  1+xy^4+x^14 y   1+xy^2+x^2 y^7   k=8  d=20  FOM=11.1
+caption: "d and FOM use MILP exact distances". MAIN-TEXT Table 2 is a
+different, much shorter table in the four-polynomial format and does NOT
+list [[288,8,20]] — an earlier reading of the bare "Table II" citation as
+the main-text table caused exactly this confusion. Local evidence:
+`data/a19/ibm_supp.txt` L513 (caption) and L524 (the row); catalog parse
+`scripts/a19_deck_survey_catalog.py` (pdftotext pp. 23-42) ->
+`data/a19/ibm_catalog_css.json`. Both files are gitignored. -->
+
 known concrete target for the program's d ≥ 20 question.
 
 Scripts: `scripts/a20_ibm288_tower.py` (instance study; kernel-level F₂).
@@ -195,7 +213,8 @@ feasible-with-engineering, one dedicated session to prototype.
 
 ## 7. Assembly: certified d(Y8) = 20 — the theorem of record (COMPLETE as of 2026-08-11; see §8 addendum)
 
-**Claim.** IBM's class-Y code Y8 = [[288,8,d]] (arXiv:2606.02418 Table II)
+**Claim.** IBM's class-Y code Y8 = [[288,8,d]] (arXiv:2606.02418
+supplemental Table II)
 has d = 20, certified at solver grade (CryptoMiniSat UNSAT certificates +
 kernel-level F₂ linear algebra + explicit verified witnesses), independent
 of IBM's MILP.

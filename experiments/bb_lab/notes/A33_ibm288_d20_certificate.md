@@ -3,7 +3,9 @@
 **Session 2026-08-11** (worktree `worktree-bravyi360-fibering-fit`). Mission:
 port the A32 tower slice calculus to the A20 line — IBM's class-Y
 `[[288,8,20]]` (Z₁₈×Z₈, A = 1+xy⁴+x¹⁴y, B = 1+xy²+x²y⁷, d = 20 MILP-exact
-per arXiv:2606.02418 Table II) — close the one remaining hypothesis (H5,
+per arXiv:2606.02418 **supplemental** Table II — the n = 288 CSS catalog,
+class Y; *not* main-text Table 2, which does not list this code, see the
+citation note in A20 §1) — close the one remaining hypothesis (H5,
 the lift-aware seam floor) of its d = 20 theorem, upgrade the whole theorem
 to certificate tier, and produce the portability scorecard A32 §7 promised
 ("next instance #1"). All three landed:

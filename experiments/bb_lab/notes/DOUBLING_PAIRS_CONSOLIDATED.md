@@ -7,7 +7,7 @@ A-number claimed. Sources are cited per row; where a note and its data
 disagree, the data file wins and the discrepancy is flagged.
 
 **Revision delta:** A33 adds the `[[144,8,10]] → [[288,8,20]]` pair (Tier C-ii),
-an eighth safe-floor species (the *lift-aware per-element* seam floor, §2.9 —
+an eighth safe-floor species (the *lift-aware per-element* seam floor, §2.8 —
 the first pair whose naive coset floor is **false** and which doubles anyway),
 a sixth dangerous-floor method (§3.7), the (R)-vs-non-(R) portability scorecard
 (§4), the first measured instance *attaining* the deficit wall (§5), and an
@@ -114,10 +114,24 @@ Rung 2 of the tower Y2 `[[72,8,6]]` (Z₁₈×Z₂) →y→ Y4 `[[144,8,10]]` �
 so template C1 does not apply literally — but **(R) holds on both y-rungs**
 with banked Bezout witnesses (`1+y⁴ ∈ (A₈,B₈)`, `1+y² ∈ (A₄,B₄)`), and `k = 8`
 throughout. Hypothesis ledger H1–H6 all discharged at certificate tier; the
-one that was open, H5, is the *lift-aware* seam floor (§2.9). IBM's MILP-exact
-`d = 20` (arXiv:2606.02418 Table II) is reproduced **with no SAT on the
-critical path**, against ~16.5 h of banked SAT partials — a ~600× cut on that
-obligation.
+one that was open, H5, is the *lift-aware* seam floor (§2.8). IBM's MILP-exact
+`d = 20` is reproduced **with no SAT on the critical path**, against ~16.5 h of
+banked SAT partials — a ~600× cut on that obligation.
+
+> **Citation, disambiguated (2026-08-11).** The source is arXiv:2606.02418
+> **supplemental** Table II — *"All verified codes at n = 288 (98 polynomial
+> representations, 49 distinct codes), sorted by FOM = kd²/n descending"*,
+> caption *"d and FOM use MILP exact distances"* — class Y row:
+> `Y (18,8) | 1+xy⁴+x¹⁴y | 1+xy²+x²y⁷ | k = 8 | d = 20 | FOM = 11.1`.
+> The supplement numbers its own tables from I (I–III = the CSS catalog by
+> block length, n = 144/288/360; IV–X = the non-CSS PBB catalog, whose codes
+> take **four** polynomials `(A,B,C,D)`) and refers to the main text as
+> "main text Table N". **Main-text Table 2 does not list this code** — it is a
+> much shorter table in the four-polynomial format. Every note in the repo
+> carried the bare "Table II", which reads as the main-text table; corrected
+> in place at A20 §1 (with a full citation note), A20 §7, and A33 §0.
+> Independently re-derived here: `(18,8)` with those polynomials gives
+> `n = 288`, `k = 8`, and `FOM = kd²/n = 8·400/288 = 11.1` — matching the row.
 
 > **Priority — reconciled 2026-08-11 (this pass).** Three sites called this
 > "the program's first certified `d = 20`" outright: the A20 §7 addendum, the
