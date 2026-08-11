@@ -45,12 +45,20 @@ DATA.mkdir(parents=True, exist_ok=True)
 
 
 def census(binp, tag, Gsys, I1, G1, I2, G2, bases, W, rpair, deadline):
-    """Complete weight-<=W census of the given cosets; dedup across windows."""
+    """Complete weight-<=W census of the given cosets; dedup across windows.
+
+    The C kernel enumerates window patterns |S| >= 1 only, so the
+    empty-window coset-base element of each window must be checked here
+    (the A33 §8 erratum: this edge missed 15+2 vectors pre-fix)."""
     hits: dict[int, int] = {}  # vec_int -> base index
     nodes = 0
     for wi, (window, Gs, r) in enumerate(
             [(I1, G1, rpair[0]), (I2, G2, rpair[1])]):
         cb = [coset_base(Gs, window, b) for b in bases]
+        for j, cbv in enumerate(cb):
+            w = int(cbv.sum())
+            if 0 < w <= W:
+                hits[v2i(cbv)] = j
         res = run_window(binp, f"{tag}_w{wi}", Gs, cb, r, W, deadline)
         nodes += res["nodes"] * len(bases)
         for j, hx in res.pop("hit_rows"):

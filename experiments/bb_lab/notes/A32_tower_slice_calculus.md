@@ -150,7 +150,7 @@ kernel-asserted):
 |---|---|---|---|
 | logicals, all 255 classes | ≤ 10 | w8: 2, w10: 36 — **all 38 outside im p_x***; **d(GB) = 8 census-complete** (formerly SAT ladders) | 2.5e8 |
 | W-cosets (3 classes) | ≤ 16 | w14: 6, w16: 68; **minima = 14 REPRODUCED** (A24 §2.6's SAT → BZ) | 4.5e8 |
-| W-cosets | ≤ 22 | {14: 6, 16: 68, 18: 1,627, 20: 19,873, 22: 175,057}; 8,848,363 vectors | 1.9e10 |
+| W-cosets | ≤ 22 | {14: 6, 16: 68, 18: 1,627, 20: 19,873, 22: 175,057}; 8,848,365 vectors (count corrected +2 per the A33 §8 empty-window erratum — orbit table unchanged, both extra elements' cap-0 fibers empty; `census()` fixed and this row re-run post-fix) | 1.9e10 |
 | stabilizers | ≤ 16 | {6: 1, 10: 6, 12: 21, 14: 64, 16: 333} — **no weight-8 stabilizers**: 4th instance of the Prop-10 weight-gap pattern (gross, A20-Y4, BY, now GB) | 1.5e8 |
 | stabilizers | ≤ 22 | {…, 18: 1,733, 20: 10,602, 22: 64,619}; 3,481,595 vectors | 6.3e9 |
 
