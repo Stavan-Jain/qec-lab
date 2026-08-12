@@ -130,6 +130,7 @@ elements (screen tier); T1 passes are enrichment only.
 | T1p0x_c2_s052 | Z₁₄×Z₉ `y²+x⁶+x⁶y⁴` / `y⁶+x⁵y⁴+x⁶` | 300 | 95.3 s | **DOUBLING-REFUTED** | safe-class coset of weight **14** < 20 (T1 UNDET false-pass, exposed) |
 | FRESH0_Z7xZ9_s052 | Z₁₄×Z₉ `1+xy⁸+x⁶y³` / `1+y+x⁶y⁵` | 300 | 111.9 s | **DOUBLING-REFUTED** | base = NEW [[126,12,10]] code (d_base = 10 exact in-run, not in the corpus store); safe floor min **14** |
 | FRESH1_Z7xZ9_s052 | Z₁₄×Z₉ `1+x⁵y+x⁶y³` / `1+x⁶y+x⁶y⁸` | 300 | 127.2 s | **DOUBLING-REFUTED** | base = NEW [[126,12,10]] code (d_base = 10 exact in-run); safe floor min **14** |
+| T5FAM_r5c0_Z14xZ8 | Z₁₄×Z₈ `y+x+x³` / `xy⁷+x²+x⁴y` | 850 (heavy) | 798.0 s | **DOUBLING-REFUTED** | the census-14-passing family's first cell: d_base = 12 re-certified (5 s), census 64,175 classes at W = 22, safe floor refuted (killer at 16 per the §4.7b exact scans; the run also fell through to and refuted detect()'s second candidate, the Z₁₄×Z₄ [[112,·,8]] y-halving base, at 14 < 16) |
 
 Fresh candidates 2–5 (same funnel, s0 42–48, D1∧D2 all true) were
 constructed but not certified — the budget goes further elsewhere once
@@ -360,18 +361,24 @@ at W = 22, then **DOUBLING-REFUTED at the safe floor** (798 s; the
 run even fell through to detect()'s second candidate — the Z₁₄×Z₄
 y-halving base [[112,·,8]] — and refuted that too at 14 < 16).
 
-The complete-enumeration W = 22 scan of the whole orbit (549 s) then
-gave the exact anatomy: the code has exactly **7 light classes, all of
+The complete-enumeration W = 22 scans of the whole orbits
+(549–740 s/code) then gave the exact anatomy, IDENTICAL for all FIVE
+family members: each code has exactly **7 light classes, all of
 weight exactly 16 = d + 4, spanning a 3-dim subspace of the 6-dim H₁ —
 and every one of the 2,352 cells' 3-dim transfer images intersects that
-3-space (0 pass)**. The empty-at-14 signal was real but the killers sit
-at precisely 16: a codimension-3 light subspace that the reachable
-im Δ family cannot complement. This is the sharpest single-code picture
-of the obstruction the session produced: not density this time
-(11% light), but an ALIGNMENT — the reachable transfer images and the
-light subspace are locked together. Why the seam geometry forces that
-alignment is a clean open question (it smells like the A8 "why
-anchorability selects heavy im Δ" mechanism question, inverted).
+3-space (0 pass, per code, 5/5)**. The family's y-axes were already dead at
+census-14 (28 lights at 12/14 each). The empty-at-14 signal was real
+but the killers sit at precisely 16: a codimension-3 light subspace
+that the reachable im Δ family cannot complement. This is the sharpest
+single-family picture of the obstruction the session produced: not
+density this time (11% light), but an ALIGNMENT — the reachable
+transfer images and the light subspace are locked together, uniformly
+across five distinct codes. Why the seam geometry forces that alignment
+is a clean open question (it smells like the A8 "why anchorability
+selects heavy im Δ" mechanism question, inverted), and the family is
+the natural first instance for any overlap-term certificate theory:
+its deficit is exactly 24 − 16 = 8, carried by just 7 classes in a
+3-space.
 
 ### 4.8 The exact whole-orbit triage (the census line)
 
@@ -408,9 +415,8 @@ front-end envelope — plus the tooling that decides any such question at
 
 1. **Every probed cell of every code at every in-envelope parameter
    point fails the safe floor** — sweeps (S0/T1), 28 exact T1.5 BZ
-   gates, 3 certify() runs, and the census line's exact whole-orbit
-   scans (§5.1 table: 300k+ unique cells, 0 passes at the running
-   census tiers).
+   gates, 4 certify() runs, and the census line's exact whole-orbit
+   scans (§5.1 table: > 1.04M unique cells at push, 0 certifiable).
 2. **The mechanism is light-class density, not the deficit wall**: at
    the flagship point the bulk of H₁ (72% sampled) is ≤ (d+4)-light,
    so every reachable k/2-dim transfer image hits a light class;
@@ -453,16 +459,16 @@ resumable ledgers.
 | Z₉×Z₆ | | y | 14 | 72 | 49,248 | 0 |
 | Z₇×Z₈ | [[112,6,12]] q→15.43 | x | 14 | 94 | 221,088 | **10,880** → all killed at W = 22 (§4.7b: the five-code family, 7 lights at exactly 16 each, 0/2,352 per code) |
 | Z₇×Z₈ | | y | 14 | 94 | 288,768 | 0 |
-| Z₆×Z₇ | [[84,6,10]] q→14.29 | x | 18 | 53+ (of 252, in flight at write-up) | 45,792+ | 0 |
+| Z₆×Z₇ | [[84,6,10]] q→14.29 | x | 18 | 195+ (of 252, in flight at write-up) | 168,480+ | 0 |
 | Z₆×Z₇ | | y | 18 | (in flight) | — | 0 at snapshot |
 
-Snapshot total: **> 920,000 unique presentation cells decided exactly;
-zero certifiable cells** — the only census-14 passes (the T5 family's
-10,880) are killed at the true floor by the weight-16 3-space
-(complete-enumeration W = 22 scans, ~9–12 min/code). The Z₆×Z₇ tail
-appends to `data/a36/triage_{x,y}_results.jsonl`; any late pass would
-be a headline change and is monitored, but 460+ codes of uniform
-structure price it low.
+Snapshot total (at push): **> 1,042,000 unique presentation cells
+decided exactly across 600+ code rows; zero certifiable cells** — the
+only census-14 passes (the T5 family's 10,880) are killed at the true
+floor by the weight-16 3-space (complete-enumeration W = 22 scans,
+549–740 s/code, 5/5 identical). The Z₆×Z₇ tail appends to
+`data/a36/triage_{x,y}_results.jsonl`; any late pass would be a
+headline change, but 600+ code rows of uniform structure price it low.
 
 ## 6. Reproduction map
 
