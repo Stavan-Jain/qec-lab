@@ -123,4 +123,52 @@ charged, verdict, tier)*
 
 ## 4. Session log
 
-*(running)*
+### 4.1 Screen validation (controls, all green)
+
+`scripts/a36_orbit_screen.py controls`:
+
+| control | expectation | outcome |
+|---|---|---|
+| A30-certified [[180,4,10]] Z₁₅×Z₆:x (known positive) | T0/T1 must not kill | S0 = 48 ≥ 20; T1 pass (1 orbit class, UNDET at budget — n = 360 UNSAT is certify()'s job) |
+| bb_108 stored-y (known negative, exact d_safe = 14 per A17 §8) | T1 kill + exact pin | S0 = 18 (< 20, T0 already kills); T1 kill, first-found 18; pin: SAT@14 / UNDET@12 ✓ |
+| [[126,12,10]] Z₇×Z₉ stored p0:x (A35 DOUBLING-REFUTED) | screen must kill | S0 = 28 (survives T0!); T1 kill at first-found 16–18 |
+| seam vectors | must equal `bb_lab.fibering.seam_offsets` exactly | asserted per (code, axis), green |
+
+Two design lessons the controls caught, both now in the tool:
+
+1. **UNSAT is the expensive direction.** A naive exact T1 (prove every
+   class ≥ 2d by SAT) hangs on the known-POSITIVE control — the A30
+   code's floors took 378–499 s via the compiled BZ kernel, and SAT is
+   worse. T1 is therefore a conflict-budgeted KILL screen (kills are
+   certificates; passes are enrichment), and certify() is the decider.
+2. **Single-orbit kernels need diversification.** Z₇×Z₉ k = 12 codes
+   have all 63 nonzero kernel classes in ONE G-orbit; one UNDET on the
+   single rep masked a weight-16 kill that the all-classes probe found.
+   T1 now probes several *translated members* per class (isomorphic
+   instances — one SAT kills, one UNSAT decides the class, extras are
+   solver diversification) plus a freeze-probe at cap d first (the A35
+   anatomy says most cells die AT d_base).
+
+### 4.2 The swap-twin lemma (found by the first sweep's own data)
+
+`BB(B, A)` is `BB(A, B)` with the two qubit blocks swapped — the SAME
+code, and the literal lift commutes with the block swap, so **the A↔B
+swap orbit direction produces the identical cover code**. In the first
+T1 sweep several swap-twin pairs got (pass, kill@18) — the pass side is
+an UNDET false-pass. Consequences, both implemented in the runner:
+kills cross-apply to the swap twin, and certify targets are deduped by
+swap class. (The swap stays in the sweep — probing both orientations is
+free diversification that caught exactly these false-passes.)
+
+### 4.3 T1 point sweeps ([[126,12,10]] Z₇×Z₉, floor 20)
+
+Stored-presentation baseline: S0 = 28, T1-killed (§4.1 control 3), A35
+certify DOUBLING-REFUTED. The x-axis orbit of pres 0 (3,528 unique
+cells): S0 histogram {10: 720, 24: 360, 26: 288, 28: 624, 30: 432,
+32: 216, 34: 336, 36: 96, 38: 144, 42: 264, **52: 48**} — the orbit has
+a 48-cell top stratum at S0 = 52, nearly twice the stored cell's 28,
+with x-supports concentrated at the top of the half-window (wrap-heavy
+"anchored" shape). T1 on the top 24: mix of SF-PASS and kill@18 cells;
+swap-consistent double-passes go to certify().
+
+*(results ledger §3 accumulates the certify verdicts)*
