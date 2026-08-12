@@ -431,7 +431,38 @@ front-end envelope — plus the tooling that decides any such question at
 
 ### 5.1 Census-line results of record
 
-*(table finalized at line completion — placeholder)*
+Exact whole-orbit scans (v1 orbits: doubled-axis translations of A and
+B × diagonal units × swap, deduped), one restricted light census per
+code, every cell decided by linear algebra. `pass` counts cells whose
+im Δ avoids every light class at the RUNNING census W (a pre-tier
+unless W = 2d − 2); kills are certificate-grade (complete BZ
+enumeration with node-count invariants). Rows deduped across the
+resumable ledgers.
+
+| group | point | axis | W | codes (rows) | cells decided | pass |
+|---|---|---|---|---|---|---|
+| Z₅×Z₁₂ | [[120,8,12]] q→19.2 | x | 14 | 14 | 11,200 | 0 |
+| Z₅×Z₁₂ | | y | 14 | 14 | 64,512 | 0 |
+| Z₆×Z₁₀ | [[120,8,12]] q→19.2 | x | 14 | 18 | 10,368 | 0 |
+| Z₆×Z₁₀ | | y | 14 | 18 | 28,800 | 0 |
+| Z₁₅×Z₃ | [[90,8,10]] q→17.78 (bb_90 incl.) | x | 14 | 15 | 32,400 | 0 |
+| Z₁₅×Z₃ | | y | 14 | 15 | 1,800 | 0 |
+| Z₇×Z₇ | [[98,6,12]] q→17.63 | x | 18 | 7 | 24,696 | 0 |
+| Z₇×Z₇ | | y | 18 | 7 | 24,696 | 0 |
+| Z₉×Z₆ | [[108,8,10]] q→14.81 (bb_108 family) | x | 14 | 72 | 116,640 | 0 |
+| Z₉×Z₆ | | y | 14 | 72 | 49,248 | 0 |
+| Z₇×Z₈ | [[112,6,12]] q→15.43 | x | 14 | 94 | 221,088 | **10,880** → all killed at W = 22 (§4.7b: the five-code family, 7 lights at exactly 16 each, 0/2,352 per code) |
+| Z₇×Z₈ | | y | 14 | 94 | 288,768 | 0 |
+| Z₆×Z₇ | [[84,6,10]] q→14.29 | x | 18 | 53+ (of 252, in flight at write-up) | 45,792+ | 0 |
+| Z₆×Z₇ | | y | 18 | (in flight) | — | 0 at snapshot |
+
+Snapshot total: **> 920,000 unique presentation cells decided exactly;
+zero certifiable cells** — the only census-14 passes (the T5 family's
+10,880) are killed at the true floor by the weight-16 3-space
+(complete-enumeration W = 22 scans, ~9–12 min/code). The Z₆×Z₇ tail
+appends to `data/a36/triage_{x,y}_results.jsonl`; any late pass would
+be a headline change and is monitored, but 460+ codes of uniform
+structure price it low.
 
 ## 6. Reproduction map
 
