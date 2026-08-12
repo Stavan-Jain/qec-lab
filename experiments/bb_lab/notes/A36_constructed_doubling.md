@@ -399,3 +399,22 @@ front-end envelope — plus the tooling that decides any such question at
 
 *(table finalized at line completion — placeholder)*
 
+## 6. Reproduction map
+
+All from `experiments/bb_lab/` (uv project); data under `data/a36/` is
+gitignored — results of record are the tables in this note.
+
+| claim | check |
+|---|---|
+| screen controls (pair72 pass / bb108-y kill+14-pin / A35-consistency kill) | `uv run python scripts/a36_orbit_screen.py controls` |
+| census controls (pair72 im Δ threads 6 lights) | `uv run python scripts/a36_light_census.py controls` (control 1; 2/3 are k = 12-scale, superseded by the oracle check below) |
+| transport sign −1 (decisive) | the identity-cycle test: §4.5 / `verify` mode on P72 both axes; tripwire asserted per variant in every scan |
+| k = 12 census+phi vs the certify oracle | 4/4 oracle cells (T1.5 exact min ≤ 14) have all-light im Δ at census-14 (§4.5 session log) |
+| T1 point exact refutations | `data/a36/t15_results.jsonl` (28 rows) + `scripts/a36_certify_runner.py --t15-only` |
+| certify verdicts | `data/a36/verdicts.jsonl` + `data/a36/runs/*/verdict_slim.json` |
+| orbit sweeps (S0/T1 tiers) | `scripts/a36_orbit_screen.py sweep --point T1..T6 --axis x/y` |
+| census line | `scripts/a36_triage_batch.sh -1` over `data/a36/triage_input.jsonl`; summary `scripts/a36_triage_summary.py` |
+| fresh sampler funnel | `scripts/a36_fresh_sampler.py --orders 7,9 --k 12 --d 10 --samples 120000 --seed 2` |
+| 72% density sample | §4.6c command (CodeCensus restricted census, seed 3, 200 classes) |
+| fresh codes' specs | `data/a36/fresh_Z7xZ9_k12_d10_x_candidates.jsonl`; FRESH0 = Z₇×Z₉ `1+xy⁸+x⁶y³`/`1+y+x⁶y⁵`, FRESH1 = `1+x⁵y+x⁶y³`/`1+x⁶y+x⁶y⁸` (bases read at exponents < 7) |
+
