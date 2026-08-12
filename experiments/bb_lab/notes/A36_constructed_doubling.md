@@ -129,6 +129,15 @@ elements (screen tier); T1 passes are enrichment only.
 |---|---|---|---|---|---|
 | T1p0x_c2_s052 | Z₁₄×Z₉ `y²+x⁶+x⁶y⁴` / `y⁶+x⁵y⁴+x⁶` | 300 | 95.3 s | **DOUBLING-REFUTED** | safe-class coset of weight **14** < 20 (T1 UNDET false-pass, exposed) |
 
+| FRESH0_Z7xZ9_s052 | Z₁₄×Z₉ `1+xy⁸+x⁶y³` / `1+y+x⁶y⁵` | 300 | 111.9 s | **DOUBLING-REFUTED** | base = NEW [[126,12,10]] code (d_base = 10 exact in-run, not in the corpus store); safe floor min **14** |
+| FRESH1_Z7xZ9_s052 | Z₁₄×Z₉ `1+x⁵y+x⁶y³` / `1+x⁶y+x⁶y⁸` | 300 | 127.2 s | **DOUBLING-REFUTED** | base = NEW [[126,12,10]] code (d_base = 10 exact in-run); safe floor min **14** |
+
+Fresh candidates 2–5 (same funnel, s0 42–48, D1∧D2 all true) were
+constructed but not certified — the budget goes further elsewhere once
+two independent fresh codes confirmed the point signature. Their specs
+are in `data/a36/fresh_Z7xZ9_k12_d10_x_candidates.jsonl` and in the
+sampler section of this note's reproduction map.
+
 ### 3.2 Screen-level closures (sound kills, no certify needed)
 
 | point | axis | orbit size | outcome |
@@ -292,6 +301,23 @@ certificate-doubling difficulty is exponential in k/2 at fixed density,
 so the viable q > 13.5 supply, if any, sits at SMALL k with many
 distinct codes per point (T6/Z₉×Z₆ strata — the triage line decides
 them exactly).
+
+### 4.6d The density argument closes descent twists too
+
+Under (R), EVERY free-ℤ₂ cover — literal lift or any A10-style
+sheet-twisted descent cover — has im p₁ = im δ₂ equal to SOME
+k/2-dimensional subspace of H₁(base) (A17 T2; which subspace varies
+with the cover). The light-density bound is subspace-agnostic: at 72%
+density every 63-element subspace hits lights with overwhelming
+probability, so at such a point **no free-ℤ₂ cover of any code admits a
+safe-floor certificate at all** — Mode 3 (descent twists) is closed by
+the same mechanism as Mode 1/2, not merely unexplored. The only
+conceivable q > 13.5 doubles at extremal points are overlap-rescued
+(A11's 41-row class), which the entire A30 certificate stack cannot
+currently see. Scope: the 72% figure is measured on one fresh code and
+corroborated by identical refutation signatures + all-light im Δ spans
+across four distinct codes at the point; "every code at the point" is
+an extrapolation with that support, not a theorem.
 
 ### 4.7 Ops lessons (recorded for reuse)
 
