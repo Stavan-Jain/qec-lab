@@ -258,6 +258,41 @@ which subspaces of H₁ are reachable; the light census directly
 identifies which codes have abstractly-avoidable light sets (the
 necessary condition for ANY cover of ANY class to pass).
 
+### 4.6c Mode 2 first yield + the extremality signature
+
+The scaled fresh sampler (120k weight-3 trials on Z₇×Z₉, seed 2) ran
+the full funnel — k-gate = 12, S0 ≥ 20, budgeted d-probe (no logical
+≤ 8 found), T1 SAT screen — and produced **6 candidates**; candidate 0
+certified as a genuine NEW [[126,12,10]] code (d_base = 10 exact,
+in-run) and then **DOUBLING-REFUTED at safe-floor min 14** — the same
+weight-14 signature as both docket codes' 27 exact T1.5 refutations.
+
+A fresh random code refuting identically to every corpus code at the
+point suggests the obstruction is **parameter-point-structural, not
+code-specific**. Working hypothesis (the *extremality hypothesis*):
+q_base > 6.75 codes are extremal packings whose H₁ is densely populated
+with light classes (the T1.5 oracle cells' im Δ spans were ≤ 14-light
+at 63/63), so every reachable transfer image hits one — certificate
+doubling needs slack (the A30 doubles had q_base 1.5–3.4; gross, the
+best-ever certified base, has q_base = 6.0 — BELOW this line's 6.75
+floor).
+
+**Density measurement (the mechanism, quantified).** 200 uniformly
+random H₁ classes of the fresh [[126,12,10]] code, exact restricted
+census at W = 14: **141/195 distinct classes are ≤ 14-light (72%)** —
+weights {10: 7, 12: 21, 14: 113}. A safe-floor pass needs all
+2^{k/2} − 1 = 63 classes of an im Δ simultaneously heavy:
+P ≈ (1 − 0.72)^63 ≈ 10⁻³⁵ for a random subspace. The point is
+structurally closed, independent of presentation and of code choice
+within the point — the first quantitative account of WHY the A35
+refutation anatomy froze at d…d+4 rather than the 2d − 2 wall: at
+extremal q_base the light classes are not a thin wall layer but the
+bulk of H₁. Span size 2^{k/2} − 1 also explains the k-dependence:
+certificate-doubling difficulty is exponential in k/2 at fixed density,
+so the viable q > 13.5 supply, if any, sits at SMALL k with many
+distinct codes per point (T6/Z₉×Z₆ strata — the triage line decides
+them exactly).
+
 ### 4.7 Ops lessons (recorded for reuse)
 
 - `run_window` .mat files are tag-named: concurrent censuses MUST use
