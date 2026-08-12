@@ -14,9 +14,6 @@ run Z5xZ12 y 18
 run Z5xZ12 x 18
 run Z6xZ10 x 18
 run Z6xZ10 y 18
-# q_cover 19.05 (k=12 -> W=14 fast tier)
-run Z7xZ9 x 14
-run Z7xZ9 y 14
 # q_cover 17.78 / 17.63
 run Z15xZ3 x 18
 run Z15xZ3 y 18
@@ -31,4 +28,8 @@ run Z7xZ8 y 18
 # q_cover 14.29
 run Z6xZ7 x 18
 run Z6xZ7 y 18
+# q_cover 19.05 LAST (k=12: full census ~ nodes x 4096 — the union
+# optimization in scan_code handles these; still the slow tail)
+run Z7xZ9 x 14
+run Z7xZ9 y 14
 echo "=== triage line COMPLETE ==="

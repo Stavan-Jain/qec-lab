@@ -79,6 +79,10 @@ POINTS: dict[str, dict] = {
             ("x*y^5 + x^4*y^7 + x^6*y", "y + x + x*y^2"),
         ],
     },
+    "P72": {  # pair72 base [[36,4,4]] — Lean-proven doubling control
+        "orders": (3, 6), "d": 4, "k": 4,
+        "pres": [("x^2 + y + y^3", "1 + x + y^2")],
+    },
     "T1s": {  # [[126,12,10]] extra store rows (maxsat-tandem exact d),
               # mined 2026-08-11 from bb_instances.duckdb; same point as T1
         "orders": (7, 9), "d": 10, "k": 12,

@@ -243,6 +243,21 @@ invisible to the whole A30 certificate machinery. This hunt targets
   w = 5 T4.2 family — |A| = |B| = 5 odd, but d ≥ 14 exceeds the
   front-end's DBASE_CAP, so those are not doubling bases for this line.
 
+### 4.6b Orbit dimensions not covered by v1 (queued extensions)
+
+The v1 equivalence set (A14 §15) uses only DIAGONAL unit automorphisms.
+Mixing automorphisms exist wherever the group has repeated prime parts
+and are absent from every sweep in program history: for Z₇×Z₇,
+Aut = GL₂(F₇) has order 2,016 vs the 36 diagonal units — a 56× larger
+orbit. The census line prices a mixing-extended scan at ~ms/cell (same
+one census per code), so it is cheap to add IF a diagonal scan shows
+near-misses. Z₉×Z₆ / Z₆×Z₁₀ / Z₁₅×Z₃ have smaller mixing families
+(shared Z₃/Z₂ parts). Descent twists (Mode 3) remain the second
+uncovered dimension — the twist changes the extension class and hence
+which subspaces of H₁ are reachable; the light census directly
+identifies which codes have abstractly-avoidable light sets (the
+necessary condition for ANY cover of ANY class to pass).
+
 ### 4.7 Ops lessons (recorded for reuse)
 
 - `run_window` .mat files are tag-named: concurrent censuses MUST use

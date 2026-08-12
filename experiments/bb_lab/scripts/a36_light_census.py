@@ -97,8 +97,13 @@ class CodeCensus:
         return out
 
     def light_census(self, W: int, deadline_s: float = 1200.0,
-                     threads: int = 4) -> dict[int, int]:
-        """{phi-label: min found weight <= W} over all 2^k - 1 classes.
+                     threads: int = 4,
+                     restrict: set[int] | None = None) -> dict[int, int]:
+        """{phi-label: min found weight <= W} over all 2^k - 1 classes
+        (or only the `restrict` label subset — the kernel checks every
+        node against every base, so census cost ~ nodes x n_bases, and
+        restricting to the orbit's REACHABLE union is the k = 12
+        enabler).
 
         Complete two-window BZ per class (same machinery as the
         front-end's d_side_exact); a class absent from the result has
@@ -116,10 +121,19 @@ class CodeCensus:
         lab_bits = (combos @ self.zreps.T) % 2               # (N, k)
         labels = (lab_bits.astype(np.int64)
                   @ (1 << np.arange(k, dtype=np.int64)))
+        if restrict is not None:
+            keep = np.array([int(la) in restrict for la in labels])
+            combos = combos[keep]
+            labels = labels[keep]
+            assert len(labels) == len(restrict), \
+                "phi labels do not biject onto the restriction set"
         r1, r2 = pair_radii(W)
         found: dict[int, int] = {}
+        n_classes = len(combos)
         for wi, (window, Gs, r) in enumerate(
                 [(bt.I1, bt.G1, r1), (bt.I2, bt.G2, r2)]):
+            if len(found) == n_classes:
+                break  # every class already light: walks can't add info
             # batched coset_base: systematic window => the sequential
             # reduction is linear, c = t0 + t0[window] @ Gs
             Cb = (combos + (combos[:, window] @ Gs)) % 2
@@ -132,17 +146,26 @@ class CodeCensus:
                 lab = int(labels[j])
                 if lab not in found or int(ws[j]) < found[lab]:
                     found[lab] = int(ws[j])
-            bases = list(Cb)
-            for c0 in range(0, len(bases), NOFF_MAX):
+            # walk only the classes not already proven light (base
+            # weights prove lightness before any walk; the chunk count,
+            # not the node walk, dominates wall time at k = 12) — the
+            # LIGHT SET is exact either way, minima are upper bounds
+            rem = [j for j in range(len(labels))
+                   if int(labels[j]) not in found]
+            for c0 in range(0, len(rem), NOFF_MAX):
+                if len(found) == n_classes:
+                    break
+                idx = rem[c0:c0 + NOFF_MAX]
                 res = run_window(
                     bt.binp, f"census_w{wi}_c{c0 // NOFF_MAX}", Gs,
-                    bases[c0:c0 + NOFF_MAX], r, W, deadline,
+                    [Cb[j] for j in idx], r, W, deadline,
                     threads=threads, workdir=self.wd)
+                # only the weight + coset index are needed; junk-heavy
+                # codes emit MILLIONS of hit rows and unpack3 per row
+                # (big-int -> array python loop) was a 5-CPU-min burn
                 for j, hx in res.pop("hit_rows"):
-                    from bb_lab.cosetbz import unpack3
-                    v = unpack3(hx, bt.n)
-                    w = int(v.sum())
-                    lab = int(labels[c0 + j])
+                    w = int(hx, 16).bit_count()
+                    lab = int(labels[idx[j]])
                     assert w % 2 == 0, "odd 1-cycle?! parity broken"
                     if lab not in found or w < found[lab]:
                         found[lab] = w
@@ -235,10 +258,14 @@ def _span(gens: list[int]) -> set[int]:
 def verify_transport(point: str, axis: str, pres_i: int, W: int,
                      threads: int) -> int:
     """Fix the translation sign and validate the whole transport chain:
-    for sampled cells, hit-weight multisets (span cap lights) computed
-    via (a) identity census + transport vs (b) the cell's OWN census
-    must agree.  Returns the validated sign (+1 or -1); raises if
-    neither validates."""
+    for sampled cells, the SCAN currency (|span cap lights|, |span|)
+    computed via (a) identity census + transport vs (b) the cell's OWN
+    census must agree.  [Not weight multisets: census minima are upper
+    bounds under the lazy walk filters — only the light SET is exact,
+    and the scan only consumes the set.]  Returns the validated sign
+    (+1 or -1); raises if neither validates.  Run this on a point whose
+    code has a nontrivial light/heavy split (e.g. P72) — an all-light
+    code cannot discriminate."""
     spec = POINTS[point]
     orders, d = spec["orders"], spec["d"]
     a_s, b_s = spec["pres"][pres_i]
@@ -266,8 +293,8 @@ def verify_transport(point: str, axis: str, pres_i: int, W: int,
             zg = kernel_basis(Ap, Bp).reshape(-1, ap.ell, ap.m)
             gens = _cell_seam_labels(cc0, ap, zg, Asup, Bsup, u, v,
                                      swap, ta, tb, sign)
-            hits_a = sorted(lights0[h]
-                            for h in _span(gens) & set(lights0))
+            span_a = _span(gens)
+            sig_a = (len(span_a & set(lights0)), len(span_a))
             # ground truth: the cell's own census
             A2, B2 = ap.cell_polys(Asup, Bsup, ta, tb)
             cc_cell = CodeCensus((ap.ell, ap.m), A2, B2, d)
@@ -276,9 +303,9 @@ def verify_transport(point: str, axis: str, pres_i: int, W: int,
                       for su, sv in zip(
                           ap.seam_grids(A2, zg).reshape(zg.shape[0], -1),
                           ap.seam_grids(B2, zg).reshape(zg.shape[0], -1))]
-            hits_b = sorted(lights_c[h]
-                            for h in _span(gens_c) & set(lights_c))
-            if hits_a != hits_b:
+            span_b = _span(gens_c)
+            sig_b = (len(span_b & set(lights_c)), len(span_b))
+            if sig_a != sig_b:
                 all_ok = False
                 break
         if all_ok:
@@ -358,19 +385,32 @@ def scan_code(orders: tuple[int, int], A_sup, B_sup, d: int, axis: str,
     A0, B0 = ap.variant_supports(1, 1, False)
     t0 = time.time()
     cc0 = CodeCensus((ap.ell, ap.m), A0, B0, d)
-    lights = cc0.light_census(W, threads=threads)
-    light_set = set(lights)
-    hist = Counter(lights.values())
+    # transport tripwire: pulled-back seams must be cycles of the
+    # IDENTITY complex (the sign test that settled -1; asserted on the
+    # first off-diagonal cell of every variant)
+    from bb_lab.checks import circulant
+    A0p = Poly.from_support([tuple(t) for t in A0], cc0.G)
+    B0p = Poly.from_support([tuple(t) for t in B0], cc0.G)
+    MA0 = circulant(A0p).astype(np.uint8) % 2
+    MB0 = circulant(B0p).astype(np.uint8) % 2
+    nb0 = ap.ell * ap.m
+
+    def _cycle_ok(t: np.ndarray) -> bool:
+        return not ((MB0 @ t[:nb0] + MA0 @ t[nb0:]) % 2).any()
+
+    # pass 1 (pure linear algebra): every cell's im Delta span; census
+    # only the REACHABLE union of classes (kernel cost ~ nodes x bases)
     us, vs = units(ap.ell), units(ap.m)
-    n_cells = n_pass = 0
-    survivors = []
-    seen: set = set()
     from bb_lab.fibering import kernel_basis
+    cell_list: list[tuple] = []
+    reach: set[int] = set()
+    seen: set = set()
     for u, v, swap in itertools.product(us, vs, (False, True)):
         Asup, Bsup = ap.variant_supports(u, v, swap)
         Ap = Poly.from_support([tuple(t) for t in Asup], cc0.G)
         Bp = Poly.from_support([tuple(t) for t in Bsup], cc0.G)
         zg = kernel_basis(Ap, Bp).reshape(-1, ap.ell, ap.m)
+        tripwired = False
         for ta in range(ap.ell):
             for tb in range(ap.ell):
                 A2, B2 = ap.cell_polys(Asup, Bsup, ta, tb)
@@ -378,21 +418,41 @@ def scan_code(orders: tuple[int, int], A_sup, B_sup, d: int, axis: str,
                 if key in seen:
                     continue
                 seen.add(key)
-                n_cells += 1
+                if not tripwired and (ta, tb) == (0, 1):
+                    SUc = ap.seam_grids(A2, zg).reshape(zg.shape[0], -1)
+                    SVc = ap.seam_grids(B2, zg).reshape(zg.shape[0], -1)
+                    tw = np.concatenate([SUc[0], SVc[0]]).astype(np.uint8)
+                    tw = _transport_to_identity(
+                        tw, ap, pow(u, -1, ap.ell), pow(v, -1, ap.m),
+                        swap, ta, tb, sign)
+                    assert _cycle_ok(tw), (
+                        "transport tripwire: pulled-back seam is not an "
+                        "identity cycle — sign/convention regression")
+                    tripwired = True
                 gens = _cell_seam_labels(cc0, ap, zg, Asup, Bsup, u, v,
                                          swap, ta, tb, sign)
                 span = _span(gens)
                 if len(span) != (1 << len(gens)) - 1:
                     # degenerate im Delta (dependent/zero seam classes):
-                    # the (R) doubling structure is broken here — record
-                    # as non-pass, never as a survivor
+                    # the (R) doubling structure is broken — non-pass
+                    cell_list.append((A2, B2, None))
                     continue
-                if not (span & light_set):
-                    n_pass += 1
-                    if len(survivors) < max_survivors:
-                        survivors.append(
-                            {"A": poly_str(A2), "B": poly_str(B2),
-                             **ap.cover_spec(A2, B2)})
+                cell_list.append((A2, B2, span))
+                reach |= span
+    lights = cc0.light_census(W, threads=threads, restrict=reach)
+    light_set = set(lights)
+    hist = Counter(lights.values())
+    n_cells = n_pass = 0
+    survivors = []
+    for A2, B2, span in cell_list:
+        n_cells += 1
+        if span is None:
+            continue
+        if not (span & light_set):
+            n_pass += 1
+            if len(survivors) < max_survivors:
+                survivors.append({"A": poly_str(A2), "B": poly_str(B2),
+                                  **ap.cover_spec(A2, B2)})
     lbasis: list[int] = []
     for lab in lights:
         cur = lab
