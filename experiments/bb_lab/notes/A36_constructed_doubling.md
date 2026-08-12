@@ -225,9 +225,18 @@ logical cosets per code (labels = the symplectic pairing
 φ(v) = (v·zrep_j)ⱼ, presentation-canonical) turns the whole orbit sweep
 into exact linear algebra (~ms/cell, no SAT, no UNDET):
 `scripts/a36_light_census.py` — with the presentation transport
-(translations/units/swap as coordinate isomorphisms) validated
-empirically against per-cell ground-truth censuses before any scan
-(`verify` mode fixes the translation sign by hit-multiset equality).
+(translations/units/swap as coordinate isomorphisms) validated three
+ways: (a) the `verify` mode's per-cell ground-truth comparison in the
+scan currency (|span ∩ lights|, |span|) on P72; (b) the DECISIVE
+identity-cycle test — for ta ≠ tb only the correct pull-back of a
+cell's seam is a 1-cycle of the identity complex, which pins the
+translation sign to −1 on T6/T1/P72 both axes (+1 pull-backs are not
+even cycles); (c) a 4/4 oracle check on k = 12: cells with exact T1.5
+minima ≤ 14 have all-light im Δ at census-14. A per-variant tripwire
+asserts (b) inside every scan. [First-draft verify compared census
+minima multisets — WRONG currency: under the lazy walk filters the
+minima are upper bounds; only the light SET is exact, and the scan
+consumes only the set.]
 
 **Epistemic caveat (recorded for all wall statistics here and in
 A35):** a safe-floor refutation refutes the CERTIFICATE ROUTE, not
