@@ -68,6 +68,30 @@ def _slim(v: dict) -> dict:
     return {**{k: w for k, w in v.items() if k != "stages"}, "stages": keep}
 
 
+def _cover_cell(r: dict) -> dict:
+    """The certify() cover spec for a screen record.
+
+    New-format records carry cover_orders/cover_A/cover_B; old-format
+    ones are reconstructed: record polys live in the CANONICAL frame
+    (doubled axis first), so axis-y records swap coordinates back."""
+    if "cover_orders" in r:
+        return {"orders": r["cover_orders"], "A": r["cover_A"],
+                "B": r["cover_B"]}
+    if "orders" in r:  # first-generation merge (x-axis only)
+        return {"orders": r["orders"], "A": r["A"], "B": r["B"]}
+    import sys as _sys
+    _sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from a36_orbit_screen import POINTS, parse_poly, poly_str
+    orders = POINTS[r["point"]]["orders"]
+    if r["axis"] == "x":
+        return {"orders": [2 * orders[0], orders[1]],
+                "A": r["A"], "B": r["B"]}
+    A = [(f, e) for (e, f) in parse_poly(r["A"])]
+    B = [(f, e) for (e, f) in parse_poly(r["B"])]
+    return {"orders": [orders[0], 2 * orders[1]],
+            "A": poly_str(sorted(A)), "B": poly_str(sorted(B))}
+
+
 def classify(v: dict | None, killed: bool) -> tuple[str, str]:
     if v is None:
         return ("BUDGET", "outer wall kill" if killed else "child died")
@@ -243,10 +267,7 @@ def main() -> None:
     for r in finals:
         if certified_runs >= args.max_cells:
             break
-        key = "cover_A" if "cover_A" in r else "A"
-        keyb = "cover_B" if "cover_B" in r else "B"
-        keyo = "cover_orders" if "cover_orders" in r else "orders"
-        cell = {"orders": r[keyo], "A": r[key], "B": r[keyb]}
+        cell = _cover_cell(r)
         t15 = t15_exact_safe_floor(cell, d_base, budget_s=90.0)
         with t15_ledger.open("a") as fh:
             fh.write(json.dumps({"cell": cell, "point": src["point"],
@@ -260,7 +281,7 @@ def main() -> None:
             continue
         tag = (f"{src['point']}p{r['pres']}{r['axis']}_"
                f"s0{r['s0']}_"
-               f"{abs(hash(r[key] + r[keyb])) % 10**8:08d}")
+               f"{abs(hash(cell['A'] + cell['B'])) % 10**8:08d}")
         certified_runs += 1
         run_with_ladder({**cell, "tag": tag}, args.heavy,
                         spent_s=t15.get("wall_s", 0.0))

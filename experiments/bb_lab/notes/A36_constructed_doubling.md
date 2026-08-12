@@ -118,8 +118,28 @@ Before any screen verdict is trusted:
 
 ## 3. Results ledger
 
-*(appended as runs land; every certify() call gets a row — wall s, budget
-charged, verdict, tier)*
+Every certify()/T1.5 verdict lands here. Tier: certify() and T1.5 rows
+are **certified computational data** (complete-enumeration BZ with node
+count invariants) — NOT kernel-checked Lean; T0/T1 kills are sound coset
+elements (screen tier); T1 passes are enrichment only.
+
+### 3.1 certify() calls
+
+| tag | cover | budget | wall | verdict | detail |
+|---|---|---|---|---|---|
+| T1p0x_c2_s052 | Z₁₄×Z₉ `y²+x⁶+x⁶y⁴` / `y⁶+x⁵y⁴+x⁶` | 300 | 95.3 s | **DOUBLING-REFUTED** | safe-class coset of weight **14** < 20 (T1 UNDET false-pass, exposed) |
+
+### 3.2 Screen-level closures (sound kills, no certify needed)
+
+| point | axis | orbit size | outcome |
+|---|---|---|---|
+| T3 [[90,8,10]] Z₁₅×Z₃ (bb_90) | y | 72–144 cells/pres ×3 pres | **entire orbit raw-seam-frozen: S0 = 10 = d_base on every cell** (S0 kill = genuine weight-10 coset element; matches A14 §14 stored-y) |
+| T3 [[90,8,10]] Z₁₅×Z₃ (bb_90) | x | 1,800 cells/pres ×3 pres (identical S0 histograms — one code) | 12 k-gate fails/pres; **all 24 top-stratum T1 probes freeze-kill at 10 in ~0.02 s each**; finalists 0 (strata below S0 = 30 unprobed — see §4.4) |
+
+**bb_90 verdict: the v1 presentation orbit (doubled-axis translations ×
+diagonal units × swap) is dead on both axes** — the orbit-sweep question
+A14 §14 left open for bb_90 now has the bb_108 answer. The freeze is at
+d_base exactly, not the 2d−2 wall.
 
 ## 4. Session log
 
@@ -172,3 +192,38 @@ with x-supports concentrated at the top of the half-window (wrap-heavy
 swap-consistent double-passes go to certify().
 
 *(results ledger §3 accumulates the certify verdicts)*
+
+### 4.4 T1 point closed by exact T1.5 gates; T2/T2b/T4 screen-dead
+
+The full T1.5 (exact BZ safe-floor) gate over every swap-consistent
+T1-finalist of the [[126,12,10]] point, both axes: **27 exact
+refutations, 0 certifications** — x: {14: 8, 10: 2},
+y: {16: 10, 14: 4, 12: 3}. Combined with the sweeps' sound kills, all
+three docket presentations are dead on both axes at the probed strata,
+with exact safe minima ∈ {10, 12, 14, 16} — never even reaching the
+2d − 2 = 18 wall value. T2 (Z₆×Z₁₀) and T2b (Z₅×Z₁₂) x/y sweeps at
+floor 24: 0 finalists (kills 20–22 = at/below the wall); T4 (Z₇×Z₇)
+both axes: 0 finalists (kills 18–22).
+
+### 4.5 The pivot: light-class censuses (safe floors are CODE data)
+
+The uniform refutation weights forced the right abstraction into view:
+a seam-coset minimum is the min weight of a *homology class* of
+H₁(base) — a code invariant — and a presentation cell passes the safe
+floor iff its transfer image im Δ (the span of its κ = k/2 basis-seam
+classes) avoids every light class (class-min ≤ 2d − 2; all class minima
+are even, A17 parity). So ONE complete BZ census over all 2^k − 1
+logical cosets per code (labels = the symplectic pairing
+φ(v) = (v·zrep_j)ⱼ, presentation-canonical) turns the whole orbit sweep
+into exact linear algebra (~ms/cell, no SAT, no UNDET):
+`scripts/a36_light_census.py` — with the presentation transport
+(translations/units/swap as coordinate isomorphisms) validated
+empirically against per-cell ground-truth censuses before any scan
+(`verify` mode fixes the translation sign by hit-multiset equality).
+
+**Epistemic caveat (recorded for all wall statistics here and in
+A35):** a safe-floor refutation refutes the CERTIFICATE ROUTE, not
+necessarily the cover's true distance — the A9 rows-112–152 /
+A11 41-row overlap-rescued doubles have SF-false yet d(cover) = 2d,
+invisible to the whole A30 certificate machinery. This hunt targets
+*certifiable* doubles; "dead" always means certificate-dead.

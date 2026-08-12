@@ -79,6 +79,18 @@ POINTS: dict[str, dict] = {
             ("x*y^5 + x^4*y^7 + x^6*y", "y + x + x*y^2"),
         ],
     },
+    "T1s": {  # [[126,12,10]] extra store rows (maxsat-tandem exact d),
+              # mined 2026-08-11 from bb_instances.duckdb; same point as T1
+        "orders": (7, 9), "d": 10, "k": 12,
+        "pres": [
+            ("y^4 + y^5 + x", "x*y^3 + x^3*y + x^5*y^4"),
+            ("y^4 + y^5 + x", "x*y^2 + x^3*y^4 + x^5*y"),
+            ("y^4 + y^5 + x", "y^8 + x + x^2*y^3"),
+            ("y^4 + y^5 + x", "1 + x^3*y + x^5*y^3"),
+            ("y^4 + y^5 + x", "x^2 + x^4*y^7 + x^6*y"),
+            ("y^4 + y^5 + x", "y^7 + x^3*y^8 + x^5*y"),
+        ],
+    },
     "T2": {  # [[120,8,12]] -> [[240,8,24]] q=19.20
         "orders": (6, 10), "d": 12, "k": 8,
         "pres": [
@@ -423,8 +435,9 @@ class AxisProblem:
         else:
             orders = (2 * self.orders_orig[0], self.orders_orig[1])
             A_o, B_o = A2, B2
-        return {"orders": list(orders), "A": poly_str(sorted(A_o)),
-                "B": poly_str(sorted(B_o))}
+        return {"cover_orders": list(orders),
+                "cover_A": poly_str(sorted(A_o)),
+                "cover_B": poly_str(sorted(B_o))}
 
 
 # ------------------------------------------------------------------- sweep
@@ -488,7 +501,7 @@ def sweep(point: str, axis: str, pres_idx: int | None, t1_cap: int,
             r = ap.t1_cell(A2, B2)
             rec = {"point": point, "pres": pi, "axis": axis,
                    "A": poly_str(A2), "B": poly_str(B2), "s0": val,
-                   "stage": "t1", **r}
+                   "stage": "t1", **r, **ap.cover_spec(A2, B2)}
             all_records.append(rec)
             status = ("SF-PASS" if r["pass"] else
                       f"kill@{r.get('kill_weight')}")
