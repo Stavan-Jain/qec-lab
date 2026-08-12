@@ -1,6 +1,7 @@
 import QEC.Stabilizer.Codes.BivariateBicycle.Gross
 import QEC.Stabilizer.Codes.BivariateBicycle.Z3Z6
 import QEC.Stabilizer.Codes.BivariateBicycle.Z5Z15F2A6
+import QEC.Stabilizer.Codes.BivariateBicycle.Bb288
 import QEC.Stabilizer.Codes.BivariateBicycle.BaseFloors
 
 /-!
@@ -18,6 +19,9 @@ the shared parametric theory lives in `Framework/Homological/BB*`
                   (the canonical complete instance to copy)
 - `Z5Z15F2A6/`  — the `[[150,8,8]] → [[300,8,16]]` two-tier instance
                   (A17 line, in progress; minimal starting skeleton)
+- `Bb288/`      — the `[[288,12,18]]` record code over the gross base
+                  (twisted lift, deficit rung; two-tier via
+                  `BBTargetFloor`, base floor from the library)
 - `BaseFloors/` — class-member analytic base floors (BB90, BB108, Z6Z14)
                   via `BBSmallCycle` (the A15/A16 class small-cycle theorem)
 

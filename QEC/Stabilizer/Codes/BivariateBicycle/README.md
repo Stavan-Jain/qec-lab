@@ -16,6 +16,7 @@ per-module one-liner maps live in the umbrella docstrings (`Gross.lean`,
 | `Z3Z6/` | pair72 `[[36,4,4]] → [[72,4,8]]` | d = 8 unconditional (the canonical complete instance — copy this shape) |
 | `Z5Z15F2A6/` | `[[150,8,8]] → [[300,8,16]]` two-tier | in progress (A17 line; minimal starting skeleton to copy) |
 | `BaseFloors/` | class-member base floors (BB90, BB108, Z6Z14) | d ≥ 6 kernel-checked via `BBSmallCycle` (A15/A16 class theorem) |
+| `Bb288/` | `[[288,12,18]]` over the **gross** base (twisted lift, deficit rung `18 < 2·12`) | two-tier (Z5Z15F2A6 shape): witness + base floor (= library `gross_chain_distance_eq_12`) + target-floor assembly (`BBTargetFloor`) kernel-side; the two sector floors are named hypotheses backed by the qec-lab A36 certificate layer |
 
 ## Task router
 
@@ -31,7 +32,9 @@ per-module one-liner maps live in the umbrella docstrings (`Gross.lean`,
   Class-G file.
 - **Add a new instance**: follow "Adding an instance" below.
 - **Change the doubling layer itself**: `Framework/Homological/BBDoubling.lean`
-  (not this directory); its per-instance inputs are documented there.
+  (not this directory); its per-instance inputs are documented there.  The
+  deficit-target (`m ≤ 2d`) assemblies live in
+  `Framework/Homological/BBTargetFloor.lean`.
 
 ## Hypothesis-discharge map (gross)
 
