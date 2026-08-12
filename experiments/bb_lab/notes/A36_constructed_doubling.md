@@ -227,3 +227,30 @@ necessarily the cover's true distance — the A9 rows-112–152 /
 A11 41-row overlap-rescued doubles have SF-false yet d(cover) = 2d,
 invisible to the whole A30 certificate machinery. This hunt targets
 *certifiable* doubles; "dead" always means certificate-dead.
+
+### 4.6 Supply widening + code identities
+
+- S0 histograms identify code classes cheaply: the T1 docket's pres 1
+  and pres 2 share identical histograms on both axes (one code), pres 0
+  differs — the point had TWO distinct codes, both now T1.5-dead.
+- Supply mined for the census line (`data/a36/triage_input.jsonl`,
+  501 rows): merit CSVs + store rows across
+  Z₆×Z₇ (252) / Z₇×Z₈ (94) / Z₉×Z₆ (72 — bb_108's parameter point, but
+  possibly other CODES than bb_108) / Z₇×Z₉ (35) / Z₆×Z₁₀ (18) /
+  Z₅×Z₁₂ (14) / Z₇×Z₇ (7) / Z₁₅×Z₃ (store rows).
+- Sibling A35 Lane-D observation (their lane, logged here for docket
+  awareness): [[126,12,≥14]] floors landing at q_floor = 18.67 on the
+  w = 5 T4.2 family — |A| = |B| = 5 odd, but d ≥ 14 exceeds the
+  front-end's DBASE_CAP, so those are not doubling bases for this line.
+
+### 4.7 Ops lessons (recorded for reuse)
+
+- `run_window` .mat files are tag-named: concurrent censuses MUST use
+  per-instance workdirs (fixed; the original shared dir was a
+  collision).
+- Wall-killing a python runner does NOT kill its `cosetbz` C
+  subprocess — a killed control run left a 4-thread zombie grinding a
+  ~10¹² node window (load 48 on 10 cores) until manually killed. Kill
+  the process GROUP or `pkill -f cosetbz` after any wall kill.
+- `tail`-piped background jobs buffer: write logs to files and poll
+  the files, not the pipe.

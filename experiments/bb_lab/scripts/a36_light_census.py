@@ -107,26 +107,32 @@ class CodeCensus:
         t0 = _t.monotonic()
         deadline = t0 + deadline_s
         bt = self.bt
-        combos = []
-        labels = []
-        for c in range(1, 1 << self.k):
-            L = np.zeros(bt.n, dtype=np.uint8)
-            for j in range(self.k):
-                if (c >> j) & 1:
-                    L ^= self.xreps[j]
-            combos.append(L)
-            labels.append(self.phi(L))
+        k = self.k
+        # batched combos + labels (the per-element python loop was the
+        # k = 12 bottleneck: 4095 x 2 coset reductions)
+        masks = ((np.arange(1, 1 << k, dtype=np.int64)[:, None]
+                  >> np.arange(k)[None, :]) & 1).astype(np.uint8)
+        combos = (masks @ self.xreps) % 2                    # (N, n)
+        lab_bits = (combos @ self.zreps.T) % 2               # (N, k)
+        labels = (lab_bits.astype(np.int64)
+                  @ (1 << np.arange(k, dtype=np.int64)))
         r1, r2 = pair_radii(W)
         found: dict[int, int] = {}
         for wi, (window, Gs, r) in enumerate(
                 [(bt.I1, bt.G1, r1), (bt.I2, bt.G2, r2)]):
-            bases = [coset_base(Gs, window, L) for L in combos]
-            for j, b in enumerate(bases):
-                w = int(b.sum())
-                if w <= W:
-                    lab = labels[j]
-                    if lab not in found or w < found[lab]:
-                        found[lab] = w
+            # batched coset_base: systematic window => the sequential
+            # reduction is linear, c = t0 + t0[window] @ Gs
+            Cb = (combos + (combos[:, window] @ Gs)) % 2
+            assert not Cb[:, window].any()
+            for spot in (0, min(7, len(combos) - 1)):
+                assert (Cb[spot] == coset_base(
+                    Gs, window, combos[spot])).all()
+            ws = Cb.sum(axis=1)
+            for j in np.nonzero(ws <= W)[0]:
+                lab = int(labels[j])
+                if lab not in found or int(ws[j]) < found[lab]:
+                    found[lab] = int(ws[j])
+            bases = list(Cb)
             for c0 in range(0, len(bases), NOFF_MAX):
                 res = run_window(
                     bt.binp, f"census_w{wi}_c{c0 // NOFF_MAX}", Gs,
@@ -136,7 +142,7 @@ class CodeCensus:
                     from bb_lab.cosetbz import unpack3
                     v = unpack3(hx, bt.n)
                     w = int(v.sum())
-                    lab = labels[c0 + j]
+                    lab = int(labels[c0 + j])
                     assert w % 2 == 0, "odd 1-cycle?! parity broken"
                     if lab not in found or w < found[lab]:
                         found[lab] = w
@@ -375,14 +381,28 @@ def scan_code(orders: tuple[int, int], A_sup, B_sup, d: int, axis: str,
                 n_cells += 1
                 gens = _cell_seam_labels(cc0, ap, zg, Asup, Bsup, u, v,
                                          swap, ta, tb, sign)
-                if not (_span(gens) & light_set):
+                span = _span(gens)
+                if len(span) != (1 << len(gens)) - 1:
+                    # degenerate im Delta (dependent/zero seam classes):
+                    # the (R) doubling structure is broken here — record
+                    # as non-pass, never as a survivor
+                    continue
+                if not (span & light_set):
                     n_pass += 1
                     if len(survivors) < max_survivors:
                         survivors.append(
                             {"A": poly_str(A2), "B": poly_str(B2),
                              **ap.cover_spec(A2, B2)})
+    lbasis: list[int] = []
+    for lab in lights:
+        cur = lab
+        for b in lbasis:
+            cur = min(cur, cur ^ b)
+        if cur:
+            lbasis.append(cur)
     return {"n_lights": len(lights),
             "light_hist": dict(sorted(hist.items())),
+            "light_span_dim": len(lbasis), "k": cc0.k,
             "n_cells": n_cells, "n_pass": n_pass,
             "survivors": survivors,
             "wall_s": round(time.time() - t0, 1)}
