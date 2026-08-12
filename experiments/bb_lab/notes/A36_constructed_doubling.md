@@ -302,6 +302,16 @@ so the viable q > 13.5 supply, if any, sits at SMALL k with many
 distinct codes per point (T6/Z₉×Z₆ strata — the triage line decides
 them exactly).
 
+**Fresh-sampler funnel numbers** (`scripts/a36_fresh_sampler.py`,
+120,000 weight-3 trials on Z₇×Z₉, 823 s): 283 k = 12 pairs (2.4·10⁻³)
+→ 193 with S0 ≥ 20 (top stratum 52, matching the corpus orbits' tops)
+→ 12 T1-probed after 41 d-probe kills across the ranked head → **6
+SF-screen survivors**, of which 2 were certified as genuinely new
+[[126,12,10]] codes (d_base = 10 exact) before refuting at 14. D1∧D2
+held on every T1-probed candidate (the discovery-sieve prior selects
+itself: among high-S0 k = 12 pairs, Sidon-disjoint structure is the
+norm).
+
 ### 4.6d The density argument closes descent twists too
 
 Under (R), EVERY free-ℤ₂ cover — literal lift or any A10-style
@@ -318,6 +328,17 @@ currently see. Scope: the 72% figure is measured on one fresh code and
 corroborated by identical refutation signatures + all-light im Δ spans
 across four distinct codes at the point; "every code at the point" is
 an extrapolation with that support, not a theorem.
+
+### 4.6e Observed: seam re-routing is sometimes a no-op
+
+Several (code, axis) combinations have reach = exactly 2^{k/2} − 1 —
+the ENTIRE orbit shares one transfer image (e.g. Z₅×Z₁₂:x, Z₆×Z₁₀
+both axes at W = 14: reach = 15 classes, all weight-12-light). There,
+presentation moves cannot re-route seams at all, and the doubling
+verdict is a pure code invariant. Other combinations (Z₅×Z₁₂:y) spread
+across ≥ 60–120 classes. The dichotomy correlates with the doubled
+axis's structure and deserves a clean statement (queued; likely related
+to A8's "why anchorability selects heavy im Δ" mechanism question).
 
 ### 4.7 Ops lessons (recorded for reuse)
 
