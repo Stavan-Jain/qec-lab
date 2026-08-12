@@ -348,6 +348,31 @@ across ≥ 60–120 classes. The dichotomy correlates with the doubled
 axis's structure and deserves a clean statement (queued; likely related
 to A8's "why anchorability selects heavy im Δ" mechanism question).
 
+### 4.7b The T5 family — the session's live thread, and its exact death
+
+The census line found the first (and only) family with EMPTY ≤ 14 light
+sets: **five distinct Z₇×Z₈ [[112,6,12]] codes** (all A = y + x + x³,
+Bs = `xy⁷+x²+x⁴y`, `x²y³+x³y⁴+x⁵y⁵`, `xy⁴+x⁵y²+x⁶y³`, `x³y³+x⁴y⁴+x⁶y⁵`,
+`xy²+x⁵+x⁶y`), each with 2,176/2,352 x-cells passing census-14 —
+target cover [[224,6,24]], q = 15.43. The heavy certify() on the first
+code's top cell: d_base = 12 re-certified in-run, census 64,175 classes
+at W = 22, then **DOUBLING-REFUTED at the safe floor** (798 s; the
+run even fell through to detect()'s second candidate — the Z₁₄×Z₄
+y-halving base [[112,·,8]] — and refuted that too at 14 < 16).
+
+The complete-enumeration W = 22 scan of the whole orbit (549 s) then
+gave the exact anatomy: the code has exactly **7 light classes, all of
+weight exactly 16 = d + 4, spanning a 3-dim subspace of the 6-dim H₁ —
+and every one of the 2,352 cells' 3-dim transfer images intersects that
+3-space (0 pass)**. The empty-at-14 signal was real but the killers sit
+at precisely 16: a codimension-3 light subspace that the reachable
+im Δ family cannot complement. This is the sharpest single-code picture
+of the obstruction the session produced: not density this time
+(11% light), but an ALIGNMENT — the reachable transfer images and the
+light subspace are locked together. Why the seam geometry forces that
+alignment is a clean open question (it smells like the A8 "why
+anchorability selects heavy im Δ" mechanism question, inverted).
+
 ### 4.8 The exact whole-orbit triage (the census line)
 
 `scripts/a36_triage_batch.sh` over `data/a36/triage_input.jsonl`
