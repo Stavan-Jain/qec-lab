@@ -128,7 +128,6 @@ elements (screen tier); T1 passes are enrichment only.
 | tag | cover | budget | wall | verdict | detail |
 |---|---|---|---|---|---|
 | T1p0x_c2_s052 | Z₁₄×Z₉ `y²+x⁶+x⁶y⁴` / `y⁶+x⁵y⁴+x⁶` | 300 | 95.3 s | **DOUBLING-REFUTED** | safe-class coset of weight **14** < 20 (T1 UNDET false-pass, exposed) |
-
 | FRESH0_Z7xZ9_s052 | Z₁₄×Z₉ `1+xy⁸+x⁶y³` / `1+y+x⁶y⁵` | 300 | 111.9 s | **DOUBLING-REFUTED** | base = NEW [[126,12,10]] code (d_base = 10 exact in-run, not in the corpus store); safe floor min **14** |
 | FRESH1_Z7xZ9_s052 | Z₁₄×Z₉ `1+x⁵y+x⁶y³` / `1+x⁶y+x⁶y⁸` | 300 | 127.2 s | **DOUBLING-REFUTED** | base = NEW [[126,12,10]] code (d_base = 10 exact in-run); safe floor min **14** |
 
@@ -340,6 +339,18 @@ across ≥ 60–120 classes. The dichotomy correlates with the doubled
 axis's structure and deserves a clean statement (queued; likely related
 to A8's "why anchorability selects heavy im Δ" mechanism question).
 
+### 4.8 The exact whole-orbit triage (the census line)
+
+`scripts/a36_triage_batch.sh` over `data/a36/triage_input.jsonl`
+(501 presentations mined from the merit CSVs + store across every
+in-envelope parameter point), per group and axis: one identity-variant
+light census (restricted to the orbit's reachable class union), then
+every unique v1-orbit cell decided EXACTLY by linear algebra
+(transport sign −1, validated by the identity-cycle test and tripwired
+per variant in-run). Results table in §5; the running census W per
+group is a pre-tier (kills are final; a pass at W < 2d − 2 would still
+need T1.5/certify — none appeared).
+
 ### 4.7 Ops lessons (recorded for reuse)
 
 - `run_window` .mat files are tag-named: concurrent censuses MUST use
@@ -351,3 +362,40 @@ to A8's "why anchorability selects heavy im Δ" mechanism question).
   the process GROUP or `pkill -f cosetbz` after any wall kill.
 - `tail`-piped background jobs buffer: write logs to files and poll
   the files, not the pipe.
+
+## 5. Session-1 verdict
+
+**No constructed pair with q_cover > 13.5 certified.** The session's
+product is the opposite and (we argue) more valuable result: a
+mechanism, measured and validated, for WHY the certificate-doubling
+route cannot start from any q_base > 6.75 corpus stratum inside the
+front-end envelope — plus the tooling that decides any such question at
+~10⁴ presentations/hour instead of ~1 certify/10 min.
+
+1. **Every probed cell of every code at every in-envelope parameter
+   point fails the safe floor** — sweeps (S0/T1), 28 exact T1.5 BZ
+   gates, 3 certify() runs, and the census line's exact whole-orbit
+   scans (§5.1 table: 300k+ unique cells, 0 passes at the running
+   census tiers).
+2. **The mechanism is light-class density, not the deficit wall**: at
+   the flagship point the bulk of H₁ (72% sampled) is ≤ (d+4)-light,
+   so every reachable k/2-dim transfer image hits a light class;
+   P(avoid) ≈ 10⁻³⁵ at k = 12. The A35 freeze anatomy (d…d+4, never
+   2d − 2) is this density seen from the refutation side.
+3. **The closure extends to all free-ℤ₂ covers under (R)** (descent
+   twists included — §4.6d): at such points nothing the A30 certificate
+   stack can see will ever certify. The only doubles that could exist
+   there are overlap-rescued — invisible to current certificates.
+4. **Corollary for the FOM program**: one-rung certificate doubling
+   cannot cross q > 13.5 from the existing corpus; the routes that
+   remain are (a) overlap-term certificate theory (A11 S4(b), now THE
+   bottleneck), (b) A32-style two-level tower calculus on mid-q bases
+   (the [[360,12,24]] q = 19.2 pattern — per-code, theory-route), and
+   (c) the sibling A35 Lane-D direct floors (their ledger already
+   carries [[126,12,≥14]] certified floors, i.e. q ≥ 18.67 with
+   exactness open — the point-discovery lane, not the doubling lane).
+
+### 5.1 Census-line results of record
+
+*(table finalized at line completion — placeholder)*
+
