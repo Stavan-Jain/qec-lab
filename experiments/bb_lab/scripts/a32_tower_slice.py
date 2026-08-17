@@ -621,6 +621,11 @@ def _preimage(M: np.ndarray, Wb: list[int], Wp: list[int]) -> list[int]:
     Wmat = np.array([i2v(x, n) for x in Wb], dtype=np.uint8) \
         if Wb else np.zeros((0, n), dtype=np.uint8)
     F = np.array(kernel_basis(Wmat), dtype=np.uint8)
+    if F.size == 0:
+        # span(Wb) is the full codomain: its annihilator is empty (the
+        # np.array above is 1-D, the matmul would raise) and the preimage
+        # of the full space is the whole domain.
+        return [v2i(v) for v in np.eye(M.shape[1], dtype=np.uint8)]
     QM = (F @ M) % 2
     return [v2i(v) for v in kernel_basis(QM)]
 
