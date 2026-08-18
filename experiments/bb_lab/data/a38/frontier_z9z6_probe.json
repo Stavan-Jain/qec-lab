@@ -1,0 +1,45 @@
+{
+ "census": {
+  "nodes": 971710,
+  "stabs": 29952,
+  "coset_elements": 195363,
+  "d_L1": 4,
+  "d_tau_L1": 4,
+  "stab_whist": {
+   "6": 36,
+   "8": 216,
+   "10": 1080,
+   "12": 5184,
+   "14": 23436
+  }
+ },
+ "tau_witness": {
+  "weight": 8,
+  "u_weight": 4,
+  "u_support": [
+   11,
+   28,
+   30,
+   31
+  ],
+  "v_support": [
+   20,
+   23,
+   55,
+   58,
+   60,
+   61,
+   63,
+   64
+  ],
+  "verdict": "d([[108,4]]) <= 8 certified (explicit logical; upper bound only)"
+ },
+ "floor": {
+  "W": 6,
+  "nodes": 24856,
+  "empty": true,
+  "d_exact": 8,
+  "a39_crosscheck": "A39 phase2 CERTIFIED_FLOOR 8, closed \u2014 values agree"
+ },
+ "wall_s": 8.6
+}
