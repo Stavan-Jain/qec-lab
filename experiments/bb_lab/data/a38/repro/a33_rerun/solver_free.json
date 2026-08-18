@@ -1,0 +1,48 @@
+{
+ "d0": {
+  "weight6_vectors": 84,
+  "classes_attaining": 24,
+  "seam1_classes_attaining": 0,
+  "nodes": 6016
+ },
+ "h3": {
+  "weight10_vectors": 72,
+  "classes_attaining": 12,
+  "seam_classes_attaining": 0,
+  "nodes": 12157822
+ },
+ "y2_stabs": {
+  "vectors": 165517,
+  "whist": {
+   "6": 36,
+   "8": 36,
+   "10": 252,
+   "12": 1368,
+   "14": 5436,
+   "16": 26721,
+   "18": 131668
+  },
+  "mu": 6
+ },
+ "seam1_census8": {
+  "vectors": 0,
+  "whist": {}
+ },
+ "h1_union": {
+  "y2_orbit_reps": 4605,
+  "lifts": 8302,
+  "stab_lifts": 3328,
+  "logical_lifts": 4974,
+  "min_logical_lift_w": 12,
+  "tau1_family": 72,
+  "classes": 1655,
+  "equals_banked": true,
+  "wall_s": 13.3
+ },
+ "d1_tower": {
+  "seam1_fibers_empty": true,
+  "stab_branch_min": 12,
+  "beta0": "dead by d0 = 6 (parity + tau)"
+ },
+ "wall_s": 22.9
+}

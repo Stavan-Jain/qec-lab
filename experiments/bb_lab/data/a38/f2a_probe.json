@@ -1,0 +1,63 @@
+{
+ "census": {
+  "vectors": 33588,
+  "weight_hist": {
+   "6": 72,
+   "10": 432,
+   "12": 2268,
+   "14": 3888,
+   "16": 26928
+  },
+  "orbits": 469,
+  "nodes": 7502279774
+ },
+ "kappa_split": {
+  "c0_inv": 8,
+  "c1_N1E2": 16,
+  "c2_E1N2": 16,
+  "c3_E1E2": 26
+ },
+ "quotient_code": {
+  "n": 16,
+  "k": 0,
+  "kappa": 8
+ },
+ "stats": {
+  "additive_weight_vectors": 0,
+  "all_components_bounded_leW": 0,
+  "pure_sector_vectors": {
+   "c0_inv": 0,
+   "c1_N1E2": 0,
+   "c2_E1N2": 0,
+   "c3_E1E2": 0
+  },
+  "vN_zero_vectors": 288,
+  "component_weight_max": {
+   "c0_inv": 108,
+   "c1_N1E2": 84,
+   "c2_E1N2": 84,
+   "c3_E1E2": 60
+  },
+  "vN_weight_hist": {
+   "0": 288,
+   "36": 720,
+   "54": 12744,
+   "72": 6120,
+   "90": 13104,
+   "108": 612
+  }
+ },
+ "pricing": {
+  "direct_nodes": 7502279774,
+  "factored_walk_nodes_at_measured_Wc": {
+   "c0_inv": 510,
+   "c1_N1E2": 131069,
+   "c2_E1N2": 131069,
+   "c3_E1E2": 117588917
+  },
+  "factored_sum": 117851565
+ },
+ "verdict": "DOES NOT FACTOR at W = 16: the odd-CRT components of censused vectors are unbounded (33588 of 33588 vectors have a component above the census bound; invariant components sit in 18Z by the coset-union weight law, so ANY W < 18 census is invisible to the invariant sector except through cancellation) and weight is not additive across sectors (33588 failures). The walk cannot be split into per-sector walks at the census bound; the 2-part stays combinatorial and the odd part enters only through cross-sector cancellation.",
+ "nominal_gain_if_it_had_factored": 63.659,
+ "wall_s": 19.0
+}
