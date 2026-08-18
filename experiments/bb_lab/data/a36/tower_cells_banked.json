@@ -1,0 +1,56 @@
+{
+ "part0": {
+  "k": [
+   12,
+   12,
+   12,
+   8
+  ],
+  "k_GX": 12,
+  "folds_commute": true
+ },
+ "part1": {
+  "square_checks": 200,
+  "converse_lifts": 60,
+  "random_cycles_obstructed": 60
+ },
+ "part2_ranks": {
+  "py": 6,
+  "px": 6,
+  "pb": 6,
+  "ty": 6,
+  "tx": 6,
+  "tb": 6
+ },
+ "seam": {
+  "dim": 6,
+  "classes": 63,
+  "orbit_sizes": [
+   3,
+   3,
+   9,
+   12,
+   36
+  ],
+  "reps": [
+   "0x340",
+   "0x600",
+   "0x180",
+   "0x140",
+   "0x40"
+  ],
+  "stab_orders": [
+   24,
+   24,
+   8,
+   6,
+   2
+  ]
+ },
+ "pair_R3": {
+  "seam_eq_ker_px": true,
+  "dim_W": 0
+ },
+ "duality": "spot-checked at G8",
+ "wall_s": 0.4
+}
