@@ -69,7 +69,7 @@ low-weight logical operators, one verifies a short list of concrete statements
 about the 72-qubit code, plus a single one-line identity in a group algebra, and
 the distance of the big code follows. This document develops the argument from
 scratch for a reader who knows the BB construction, group theory, and basic ring
-theory, but no ``distance technology.'' Everything except two clearly flagged
+theory, but no ``distance technology.'' Everything except three clearly flagged
 finite inputs is proved in full. We close with the general template, a gallery of
 codes where doubling provably fails, and the list of verified instances,
 including machine-checked (Lean) versions.
@@ -148,7 +148,7 @@ polynomials, two blocks of qubits, the CSS check matrices); basic group theory
 (quotients, cosets); and basic ring theory (ideals, quotient rings,
 homomorphisms). We do \emph{not} assume familiarity with homology, covering
 spaces, Fourier analysis on groups, or any prior distance-bounding technique.
-Two hard finite facts about the base code are used as explicitly flagged black
+Three hard finite facts about the base code are used as explicitly flagged black
 boxes (they are theorems of the program, with precise statements and pointers);
 everything else is proved in full, at a deliberate pace.
 
@@ -681,7 +681,7 @@ lose, and for that we need to know something real about the base code.
 
 \subsection{Input 1: the base code has no small cycles}
 
-Here is the first of the two black-box inputs. Note carefully that it speaks
+Here is the first of the three black-box inputs. Note carefully that it speaks
 about \emph{cycles}, not just logicals: stabilizers are included.
 
 \begin{inputbox}[Input (T-A): no small cycles in the base]
@@ -1101,7 +1101,7 @@ argument --- note every item lives on the base side:
   (Section~\ref{sec:tightness}).
 \end{enumerate}
 
-I1 and the two flagged black boxes (I2, I4) are finite statements about the
+The three flagged black boxes (I1, I2, I4) are finite statements about the
 72-qubit code. I3 is one line of polynomial algebra. I5 is one evaluation of
 an explicit linear functional. That is the entire bill of materials for
 $d(\mathrm{gross}) = 12$.
@@ -1895,7 +1895,7 @@ only the $63$ classes of $\imD$ are reachable as shadows.
 \subsection{Input 3: the confined classes are heavy}
 
 Why is being trapped in $\imD$ bad news for a lightweight logical? Because of
-the third and final input --- the deepest one:
+the third and final black-box input --- the deepest one:
 
 \begin{inputbox}[Input (M-im): heavy classes]
 \textbf{Theorem} (program write-up, Part II; fully analytic, machine-verified).
