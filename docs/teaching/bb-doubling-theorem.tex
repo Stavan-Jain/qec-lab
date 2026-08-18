@@ -1209,8 +1209,29 @@ So only $\wt{b} \in \{2,4,6,8,10\}$ can occur strictly between the rungs.
 
 \subsection{Input 2: the light-stabilizer classification}
 
-Which stabilizers of weight $\leq 11$ actually exist? Two families are easy to
-write down.
+Take stock of what the easy rungs leave. Between $b = 0$ and $\wt{b} \geq
+12$, the floor~\eqref{eq:M} must be won from the overflow term, on a
+sliding scale --- the lighter the shadow, the more the counting has to
+extract:
+\begin{center}
+\begin{tabular}{lccccc}
+\toprule
+shadow weight $\wt{b}$ & $2$ & $4$ & $6$ & $8$ & $10$\\
+overflow $m(b)$ needed & $5$ & $4$ & $3$ & $2$ & $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+And an overflow bound is not weight arithmetic: $m(b)$ quantifies over
+\emph{every} dangerous logical with shadow $b$, and the only handle we will
+get on such a logical is geometric --- the next subsection pins it against
+the checks that \emph{produce} $b$, inside the few cells those checks
+touch. For that we must know each light stabilizer individually: not how
+many cells it occupies, but which cells, produced by which checks.
+(Terminology: call a nonzero stabilizer \emph{light} if its weight is at
+most $11$ --- nonzero, but strictly below the floor we are chasing; by
+parity its weight is then one of the five columns above.) The business of
+this subsection is the census: which light stabilizers exist, and what do
+they look like? Two families are easy to write down.
 
 \begin{definition}\label{def:hexdpair}
 A \emph{hexagon} is a single $Z$-check, viewed as a stabilizer:
@@ -1219,13 +1240,14 @@ Section~\ref{sec:setup} stamped at $g$, with three cells in each block; write
 $h(g)$ for its 6-cell support. A \emph{D-pair} is $S(\delta_g + \delta_h)$
 with $g - h \in dA \cup dB$ (``D'' for \emph{difference}: the two generating
 cells are offset by an element of the difference sets of
-Definition~\ref{def:diffsets}). Its weight is exactly $10$: on one block the two translates
-overlap in exactly one cell (multiplicity-freeness of the difference sets) and
-cancel there --- $Z \cdot Z = I$ on the shared qubit --- giving
-$3 + 3 - 2 = 4$; on the other block $g - h$ avoids the
-other difference set (disjointness!), giving $6$. The union of the two
-hexagons has $11$ cells: the $10$ of $\suppop b$ plus the one cancelled cell,
-which we call $q^*$.
+Definition~\ref{def:diffsets}). Its weight is exactly $10$: on one block
+($L$ if $g - h \in dB$, $R$ if $g - h \in dA$) the two translates overlap in
+exactly one cell (multiplicity-freeness of the difference sets) and cancel
+there --- $Z \cdot Z = I$ on the shared qubit --- giving $3 + 3 - 2 = 4$; on
+the other block $g - h$ avoids the other difference set (disjointness!),
+giving $6$. The \emph{window} of a D-pair is the $11$-cell union of its two
+hexagons: the $10$ cells of its support plus the one cancelled cell, which
+we call $q^*$. (The window of a hexagon is just its support $h(g)$.)
 \end{definition}
 
 \begin{figure}[ht]
@@ -1290,10 +1312,17 @@ D-pair counting rung.}
 \label{fig:hexdpair}
 \end{figure}
 
-Figure~\ref{fig:hexdpair} draws both objects. For gross's base there are
-$36$ hexagons (one per cell) and $216$ D-pairs ($36$ choices of $g$, $12$
-possible offsets, halved because $\{g,h\}$ is unordered). The hard theorem
---- our second black box --- is that there is nothing else:
+Figure~\ref{fig:hexdpair} draws both objects. Note the distinction the
+D-pair forces between where the \emph{stabilizer} acts (its $10$-cell
+support) and where its \emph{stamps} act (its $11$-cell window): the
+cancelled cell $q^*$ sits in the second but not the first. The distinction
+looks like bookkeeping; the counting rungs will run on it. For gross's base
+there are $36$ hexagons (one per cell) and $216$ D-pairs ($36$ choices of
+$g$, $12$ possible offsets, halved because $\{g,h\}$ is unordered) ---
+$252$ light stabilizers so far, inside a stabilizer group of dimension $30$
+($\dim_{\F_2} K = 6$ from Section~\ref{sec:lift}, so $\operatorname{im} S$
+has $2^{36-6}$ elements: over a billion). The hard theorem --- our second
+black box --- is that among that billion there is nothing else:
 
 \begin{inputbox}[Input (CLASS): light stabilizers are classified]
 \textbf{Theorem} (program write-up, \S6.3; fully hand-proved). Every nonzero
@@ -1302,29 +1331,51 @@ particular there are no stabilizers of weights $2, 4,$ or $8$, and the minimum
 stabilizer weight is $6$.
 \end{inputbox}
 
-It is worth pausing on what kind of problem this is. In pictures: you hold
-a two-board stencil --- $\suppop B$ for the $L$ board, $\suppop A$ for the
-$R$ board --- and you may stamp it, in lockstep on both boards, at any set
-of positions of the torus; stamps add mod 2. The stabilizer group is
-everything you can produce, and the classification asks \emph{which
-low-weight pictures are producible, and how}. Few stamps are controlled by
-Definition~\ref{def:diffsets}: one stamp always weighs exactly $6$; two
-stamps weigh $12 - 2(\text{overlaps})$, and multiplicity-freeness plus
-disjointness cap the overlaps at one, so two stamps weigh $10$ or $12$.
-The theorem's real content is about \emph{many} stamps: no orchestration
-of dozens of stamps cancels below $12$, except the one- and two-stamp
-patterns already listed. That is genuinely special to the code, not a
-formality --- the $\Z_6 \times \Z_{14}$ cousin appearing in
-Section~\ref{sec:window} has weight-$8$ pictures whose cheapest production
-takes $36$ stamps. (At the extreme, the stamp-sets whose picture is
-entirely \emph{blank} are exactly the relations $K$ of
-Section~\ref{sec:lift}.) In classical terms this is the low-weight-codeword
-problem for the linear code spanned by all translates of the double stencil
---- BB codes were in fact born as ``quasi-cyclic'' objects of classical
-coding theory \cite{kovalevpryadko} --- but no off-the-shelf classical
-theorem delivers the census: the named distance bounds for cyclic and
-abelian codes see only the odd part of the group, and here the interesting
-cancellations live in the $2$-part.
+Read against the ledger that opened the subsection, the census is exactly
+the verdict the counting needs, with nothing to spare. The empty columns
+are the fatal ones: a stabilizer of weight $2$, $4$, or $8$ would owe more
+overflow than any window of it could yield --- a window contains every cell
+its stamps touch, so it has at least $6$ cells, and at least $11$ the
+moment two stamps are involved (Section~\ref{sec:window} turns this remark
+into arithmetic). The two inhabited columns owe the least, and the
+classification hands each its geometry: windows of $6$ and $11$ cells that
+will turn out to yield \emph{precisely} the $3$ and $1$ owed. Collecting is
+the next subsection's business; the rest of this one reflects on what kind
+of statement we have just swallowed.
+
+In pictures: you hold a two-board stencil --- $\suppop B$ for the $L$
+board, $\suppop A$ for the $R$ board --- and you may stamp it, in lockstep
+on both boards, at any set of positions of the torus; stamps add mod 2. The
+stabilizer group is everything you can produce, and the classification asks
+\emph{which light pictures are producible, and how}. (``How'' is never
+unique: two stamp-sets produce the same picture exactly when they differ by
+an element of the relation space $K$ of Section~\ref{sec:lift} --- the
+stamp-sets whose picture is entirely \emph{blank}.)
+
+Where, then, does the theorem's content live? Not in few stamps ---
+Definition~\ref{def:diffsets} settles those. One stamp always weighs
+exactly $6$; two stamps weigh $12 - 2(\text{overlaps})$, and
+multiplicity-freeness plus disjointness cap the overlaps at one, so two
+stamps weigh $10$ or $12$. Hexagons and D-pairs are therefore not clever
+discoveries: they are the complete inventory of what one or two stamps can
+make below weight $12$. The content is about \emph{many} stamps: however
+many you use, a picture lighter than $12$ was already producible by one or
+two --- no orchestration of dozens of stamps cancels its way to a genuinely
+new light pattern. That is special to the code, not a formality. The
+$\Z_6 \times \Z_{14}$ cousin of Section~\ref{sec:instances} has
+weight-$8$ pictures whose \emph{cheapest} production takes $36$ stamps
+spanning a $110$-cell window --- light stabilizers that no small window
+pins down --- and for exactly that family no analytic rung is known
+(Section~\ref{sec:window} prices the missing rung in this currency; the
+cousin's doubling is nonetheless verified, by other means).
+
+In classical terms this is the low-weight-codeword problem for the linear
+code spanned by all translates of the double stencil --- BB codes were in
+fact born as ``quasi-cyclic'' objects of classical coding theory
+\cite{kovalevpryadko} --- but no off-the-shelf classical theorem delivers
+the census: the named distance bounds for cyclic and abelian codes see only
+the odd part of the group, and here the interesting cancellations live in
+the $2$-part.
 
 (How does one prove such a thing? By a finite case analysis on the ``layer
 profile'' of the two blocks of $b = S(z)$, run in a Fourier-like coordinate
@@ -2306,6 +2357,8 @@ dangerous / safe & $[p(v)] = 0$ / $[p(v)] \neq 0$ & Def.~\ref{def:sectors}\\
 $m(b)$ & minimum sheet overflow over shadow $b$ & \S\ref{sec:dangerous}\\
 hexagon, D-pair & the two light-stabilizer families &
 Def.~\ref{def:hexdpair}\\
+window $U$ & union of the supports of a production's checks &
+Def.~\ref{def:hexdpair}, \S\ref{sec:window}\\
 $u^*$ & the explicit weight-6 base logical~\eqref{eq:ustar} &
 \S\ref{sec:warmup}\\
 \bottomrule
