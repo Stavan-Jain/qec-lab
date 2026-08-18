@@ -1,0 +1,64 @@
+##### RUN a36_tower_cells at t=0.0s
+[  0.1s] Part 0: codes built, k = 12/12/12/8; Lemma 1 constructor asserts PASS on all three rungs
+[  0.2s]   other route G8->(6,12)->(6,6) built (k(GX) = 12); folds commute
+[  0.2s] Part 1: parity exhaustive (kernel bases even, all 5 frames) => every cycle even
+[  0.5s]   200 two-level slice/carry/square checks; converse lifts 60/60 on true shadows; 60/60 random gross cycles obstructed (delta law: expect ~ 60*(1 - 2^-6) = 59)
+[  0.5s] Part 2: rank p* = rank tau* = 6 all rungs; exactness cover-side 3/3, base-side on (R) rungs y,x only; sigma* = id on y,x; != id on bottom  [A35 row REPRODUCED]
+[  0.5s]   SEAM = im p_y*: dim 6, 63 classes in 5 translation orbits, sizes [3, 3, 9, 12, 36], class-stab orders [24, 24, 8, 6, 2]
+[  0.5s]   R3 pair identity: SEAM = ker p_x* (dim 6); W = p_x*(SEAM) = 0 — sector A EMPTY one rung down  [A35 pair(0,1) REPRODUCED]
+[  0.6s]   X<->Z duality spot-check OK => Z-side floors follow from X-side
+total 0.6s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a36/tower_cells.json
+##### EXIT a36_tower_cells rc=0 at t=0.7s
+##### RUN a36_direct_close at t=0.7s
+[   0.2s] tower + seam built: 5 orbit reps ['0x340', '0x600', '0x180', '0x140', '0x40']
+[  26.5s]   window 0: r=8, nodes 6.623e+09 (exact assert OK), wall 25.74s
+[  30.4s]   window 1: r=7, nodes 8.794e+08 (exact assert OK), wall 3.41s
+[  32.4s] offset S: 33588 stabilizer vectors <= 16, weight hist {6: 72, 10: 432, 12: 2268, 14: 3888, 16: 26928}; 469 translation orbits {6: 1, 10: 6, 12: 33, 14: 54, 16: 375}
+[  32.4s]   membership gate: 40/40 random row-sums present in the census
+[  32.4s] offset R0 (class 0x340, orbit size 3): 6 elements <= 16
+[  32.4s] offset R1 (class 0x600, orbit size 3): 18 elements <= 16
+[  32.4s] offset R2 (class 0x180, orbit size 9): 70 elements <= 16
+[  32.4s] offset R3 (class 0x140, orbit size 12): 199 elements <= 16
+[  32.4s] offset R4 (class 0x40, orbit size 36): 102 elements <= 16
+[  32.4s] seam census total: 395 elements, weight hist {12: 3, 14: 18, 16: 374}  [minima >= 12 = d(gross) VERIFIED; naive SeamCosetFloor-18 is FALSE on the censused orbits]
+[  32.4s] rung cell: sectors = 2^12, kappa = 66
+[  32.6s] V1: 4096/4096 sector linear trick OK + hexagon rung M=6 PASS (lane restricted<=5, 0.2s)
+[  36.1s] dangerous rungs: 469/469 PASS (3.5s, lanes {'restricted<=5': 1, 'restricted<=3': 6, 'restricted<=2': 33, 'restricted<=1': 54, 'restricted<=0': 375})  [+ G-transport => all stabilizer shadows <= 16]
+[  36.5s] seam rungs: 395/395 PASS (0.4s, lanes {'restricted<=0': 374, 'restricted<=1': 18, 'restricted<=2': 3})  [+ G-transport => all 63 seam-class cosets]
+[  36.7s] covariance: 3+3 translated reps re-rung, verdicts identical
+[  36.7s] WITNESS re-verified end-to-end: weight 18, sector seam, |b| = 12 (class 0x40), m1 = 3; 2nd level |beta| = 0, m2 = 6, stab: True
+
+[  36.7s] ASSEMBLY — d([[288,12,18]]) = 18:
+  |v| <= 16, b = p_y(v):
+  1. b = 0:      |v| = 2|u| >= 2 d(gross) = 24   [d(gross) = 12 KERNEL-
+                 CHECKED in QECLean — branch needs only >= 10]
+  2. b stab:     census <= 16 complete (33588
+                 vectors, 469 orbits, exact
+                 node counts) + 469 rungs
+                 ALL PASS + G-transport
+  3. [b] != 0:   [b] in SEAM (63 classes, 5 orbits); censuses <= 16
+                 complete + 395 seam rungs ALL
+                 PASS + G-transport
+  => d >= 18;  witness => d <= 18.  Z side by transpose duality.
+  d([[288,12,18]]) = 18 — certificate tier, no SAT on the critical path.
+
+total 36.7s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a36/direct_close.json
+##### EXIT a36_direct_close rc=0 at t=37.6s
+##### RUN a36_witness at t=37.6s
+[   0.2s] loaded 469 stab orbit reps + 395 seam elements
+[   0.7s] L1 stab|b|=14@M=3: 54 rungs, finds so far 0, witness: False (0.5s)
+[   0.7s] L1 seam|b|=12@M=4: 2 rungs, finds so far 4, witness: True (0.0s)
+[   0.7s] WITNESS verified end-to-end: weight 18, sector seam, |b| = 12 (class 0x40), m1 = 3; 2nd level |beta| = 0 m2 = 6 stab: True; all 4 finds >= 18
+total 0.7s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a36/witness_hunt.json
+##### EXIT a36_witness rc=0 at t=38.4s
+##### RUN a36_descent at t=38.4s
+[   0.2s] direct targets: 469 stab keys, 114 seam keys
+[   0.6s] bb72 stab census <= 16: 9495 vectors {6: 36, 10: 216, 12: 486, 14: 1944, 16: 6813}, 272 orbits [1.15e+07 nodes]
+[   1.0s] bb72 cycle census <= 8: 1110 cycles {6: 120, 8: 990}; d(B72) = 6 CENSUS-COMPLETE (84 weight-6 nontrivial logicals) [solver-free re-derivation; 1.51e+08 nodes]
+[   1.0s] tau-family: 36 stab + 1074 seam lifts; base-exactness prediction asserted 1110/1110
+[   1.0s] deep-lane gate: 8/8 fibers identical shallow vs deep at cap <= 4
+[   1.2s] fibers: 272 over bb72 stab orbit reps, 552 lifts (470 stab / 82 seam), 36 empty (13%) [0.2s]
+[   1.2s] KEY-SET EQUALITY: stab 469 == direct 469; seam 114 == direct 114  [census completeness re-derived from n = 72 data]
+total 1.2s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a36/descent.json
+##### EXIT a36_descent rc=0 at t=39.8s
+##### A36 SUITE DONE 39.8s

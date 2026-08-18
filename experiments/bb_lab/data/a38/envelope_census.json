@@ -1,0 +1,4997 @@
+{
+ "rows": [
+  {
+   "name": "Z3xZ3:best-exact",
+   "source": "corpus:b78e8b27ffa1fef2",
+   "orders": [
+    3,
+    3
+   ],
+   "A": "1 + y + x",
+   "B": "y + x + x*y",
+   "d_target": 4,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 9,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z3xZ4:best-exact",
+   "source": "corpus:10c7c615296bea5f",
+   "orders": [
+    3,
+    4
+   ],
+   "A": "y + x + x^2",
+   "B": "1 + x*y^2 + x^2*y^2",
+   "d_target": 4,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 3,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      3,
+      4
+     ],
+     "n": 24,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 10
+    },
+    {
+     "lm": [
+      3,
+      2
+     ],
+     "n": 12,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 4
+    },
+    {
+     "lm": [
+      3,
+      1
+     ],
+     "n": 6,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 1
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 2,
+   "G1_log10_nodes_per_level": [
+    1.0,
+    0.6,
+    0.0
+   ],
+   "G1_nodes_bottom": 1,
+   "G1_win_factor_vs_top": 10.0,
+   "G2_mu": 6,
+   "G2_cap_max": -2,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z3xZ5:best-exact",
+   "source": "corpus:0558ff082fa2ec09",
+   "orders": [
+    3,
+    5
+   ],
+   "A": "y + x + x^2",
+   "B": "y^2 + x*y^3 + x^2",
+   "d_target": 6,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 15,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z3xZ6:best-exact",
+   "source": "corpus:107145e3a7a4f1ad",
+   "orders": [
+    3,
+    6
+   ],
+   "A": "1 + y + x",
+   "B": "y + y^5 + x^2*y^2",
+   "d_target": 6,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 4,
+   "G1_log10_nodes_per_level": [
+    2.2,
+    1.5
+   ],
+   "G1_nodes_bottom": 35,
+   "G1_win_factor_vs_top": 4.3,
+   "G2_mu": 6,
+   "G2_cap_max": -1,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z3xZ7:best-exact",
+   "source": "corpus:00fe366c68ea3ca4",
+   "orders": [
+    3,
+    7
+   ],
+   "A": "y + y^3 + x",
+   "B": "x*y^2 + x*y^6 + x^2",
+   "d_target": 6,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 21,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z3xZ8:best-exact",
+   "source": "corpus:02da3994871af2b4",
+   "orders": [
+    3,
+    8
+   ],
+   "A": "y^3 + x*y + x^2",
+   "B": "y^7 + x*y + x^2*y^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    3
+   ],
+   "odd_part": 3,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      3,
+      8
+     ],
+     "n": 48,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 22
+    },
+    {
+     "lm": [
+      3,
+      4
+     ],
+     "n": 24,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 10
+    },
+    {
+     "lm": [
+      3,
+      2
+     ],
+     "n": 12,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 4
+    },
+    {
+     "lm": [
+      3,
+      1
+     ],
+     "n": 6,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 1
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 6,
+   "G1_log10_nodes_per_level": [
+    3.3,
+    2.4,
+    1.4,
+    0.3
+   ],
+   "G1_nodes_bottom": 2,
+   "G1_win_factor_vs_top": 1023.0,
+   "G2_mu": 6,
+   "G2_cap_max": 0,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z4xZ6:best-exact",
+   "source": "corpus:1c6a3d8720c882db",
+   "orders": [
+    4,
+    6
+   ],
+   "A": "1 + y + y^2",
+   "B": "y^3 + y^5 + x^2*y^4",
+   "d_target": 4,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 3,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      4,
+      6
+     ],
+     "n": 48,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 20
+    },
+    {
+     "lm": [
+      2,
+      6
+     ],
+     "n": 24,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 8
+    },
+    {
+     "lm": [
+      1,
+      6
+     ],
+     "n": 12,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 4
+    },
+    {
+     "lm": [
+      1,
+      3
+     ],
+     "n": 6,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 1
+    }
+   ],
+   "k_chain": [
+    8,
+    8,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 2,
+   "G1_log10_nodes_per_level": [
+    1.3,
+    0.9,
+    0.6,
+    0.0
+   ],
+   "G1_nodes_bottom": 1,
+   "G1_win_factor_vs_top": 20.0,
+   "G2_mu": 6,
+   "G2_cap_max": -2,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z3xZ9:best-exact",
+   "source": "corpus:00b9e4fd731f1b23",
+   "orders": [
+    3,
+    9
+   ],
+   "A": "1 + y + x",
+   "B": "y^7 + y^8 + x^2*y^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 27,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z4xZ7:best-exact",
+   "source": "corpus:00f9d6b339b567d7",
+   "orders": [
+    4,
+    7
+   ],
+   "A": "y + y^3 + x",
+   "B": "x*y^4 + x^3*y + x^3*y^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    0
+   ],
+   "odd_part": 7,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      4,
+      7
+     ],
+     "n": 56,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 25
+    },
+    {
+     "lm": [
+      2,
+      7
+     ],
+     "n": 28,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 11
+    },
+    {
+     "lm": [
+      1,
+      7
+     ],
+     "n": 14,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 4
+    }
+   ],
+   "k_chain": [
+    6,
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 6,
+   "G1_log10_nodes_per_level": [
+    3.5,
+    2.5,
+    1.4
+   ],
+   "G1_nodes_bottom": 24,
+   "G1_win_factor_vs_top": 122.9,
+   "G2_mu": 6,
+   "G2_cap_max": 0,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z5xZ6:best-exact",
+   "source": "corpus:0074fcf4700c972b",
+   "orders": [
+    5,
+    6
+   ],
+   "A": "y + y^2 + x",
+   "B": "y^3 + y^5 + x^2*y^4",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 15,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      5,
+      6
+     ],
+     "n": 60,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 28
+    },
+    {
+     "lm": [
+      5,
+      3
+     ],
+     "n": 30,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 13
+    }
+   ],
+   "k_chain": [
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 6,
+   "G1_log10_nodes_per_level": [
+    3.6,
+    2.7
+   ],
+   "G1_nodes_bottom": 468,
+   "G1_win_factor_vs_top": 8.7,
+   "G2_mu": 6,
+   "G2_cap_max": 0,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z5xZ7:best-exact",
+   "source": "corpus:0079661669111733",
+   "orders": [
+    5,
+    7
+   ],
+   "A": "y + y^3 + x",
+   "B": "y + y^2 + x^2*y^4",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 35,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z3xZ12:best-exact",
+   "source": "corpus:09b7b108b7bca278",
+   "orders": [
+    3,
+    12
+   ],
+   "A": "1 + y + y^5",
+   "B": "y^11 + x*y^2 + x^2*y^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 9,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      3,
+      12
+     ],
+     "n": 72,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 32
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "k_chain": [
+    8,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 6,
+   "G1_log10_nodes_per_level": [
+    3.8,
+    2.8,
+    1.6
+   ],
+   "G1_nodes_bottom": 40,
+   "G1_win_factor_vs_top": 150.4,
+   "G2_mu": 6,
+   "G2_cap_max": 0,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z4xZ9:best-exact",
+   "source": "corpus:00470a062578e708",
+   "orders": [
+    4,
+    9
+   ],
+   "A": "y^4 + y^5 + x",
+   "B": "x*y^2 + x^2*y + x^3*y^3",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    0
+   ],
+   "odd_part": 9,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      4,
+      9
+     ],
+     "n": 72,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 34
+    },
+    {
+     "lm": [
+      2,
+      9
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      1,
+      9
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 8,
+   "G1_log10_nodes_per_level": [
+    4.8,
+    3.5,
+    2.2
+   ],
+   "G1_nodes_bottom": 161,
+   "G1_win_factor_vs_top": 369.8,
+   "G2_mu": 6,
+   "G2_cap_max": 1,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z6xZ6:best-exact",
+   "source": "corpus:0306714d1d6bbf9b",
+   "orders": [
+    6,
+    6
+   ],
+   "A": "1 + y^2 + x",
+   "B": "y^4 + x*y + x^4*y^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 34
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 6,
+   "G1_log10_nodes_per_level": [
+    3.9,
+    2.9,
+    2.0
+   ],
+   "G1_nodes_bottom": 91,
+   "G1_win_factor_vs_top": 78.8,
+   "G2_mu": 6,
+   "G2_cap_max": 0,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z3xZ13:best-exact",
+   "source": "corpus:00346e8e98f7bbb5",
+   "orders": [
+    3,
+    13
+   ],
+   "A": "y + x + x^2",
+   "B": "1 + x*y^10 + x^2*y",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 39,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z6xZ7:best-exact",
+   "source": "corpus:0041fdeb930bfebf",
+   "orders": [
+    6,
+    7
+   ],
+   "A": "y + y^3 + x",
+   "B": "x + x^3*y^4 + x^4*y^5",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    0
+   ],
+   "odd_part": 21,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     0,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      7
+     ],
+     "n": 84,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 39
+    },
+    {
+     "lm": [
+      3,
+      7
+     ],
+     "n": 42,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 18
+    }
+   ],
+   "k_chain": [
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 8,
+   "G1_log10_nodes_per_level": [
+    5.0,
+    3.7
+   ],
+   "G1_nodes_bottom": 5034,
+   "G1_win_factor_vs_top": 20.3,
+   "G2_mu": 6,
+   "G2_cap_max": 1,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z15xZ3:best-exact",
+   "source": "corpus:0c9795230892eeaa",
+   "orders": [
+    15,
+    3
+   ],
+   "A": "y + y^2 + x^3",
+   "B": "x + x^5 + x^6",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 45,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z3xZ15:best-exact",
+   "source": "corpus:13a48e543b3ae432",
+   "orders": [
+    3,
+    15
+   ],
+   "A": "1 + y + y^2",
+   "B": "y^6 + x + x^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 45,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z5xZ9:best-exact",
+   "source": "corpus:089c8ac6624293a2",
+   "orders": [
+    5,
+    9
+   ],
+   "A": "y + y^2 + x",
+   "B": "y^8 + x*y + x^2*y^6",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 45,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z4xZ12:best-exact",
+   "source": "corpus:001963fecd6ff1a2",
+   "orders": [
+    4,
+    12
+   ],
+   "A": "y + y^2 + x",
+   "B": "x*y^2 + x*y^9 + x^3*y",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    2
+   ],
+   "odd_part": 3,
+   "two_part": 16,
+   "depth": 4,
+   "fold_chain": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      4,
+      12
+     ],
+     "n": 96,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 46
+    },
+    {
+     "lm": [
+      2,
+      12
+     ],
+     "n": 48,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 22
+    },
+    {
+     "lm": [
+      1,
+      12
+     ],
+     "n": 24,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 10
+    },
+    {
+     "lm": [
+      1,
+      6
+     ],
+     "n": 12,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 4
+    },
+    {
+     "lm": [
+      1,
+      3
+     ],
+     "n": 6,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 1
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    6.2,
+    4.6,
+    3.0,
+    1.5,
+    0.3
+   ],
+   "G1_nodes_bottom": 2,
+   "G1_win_factor_vs_top": 864823.0,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z7xZ7:best-exact",
+   "source": "corpus:22d095170a4c9afa",
+   "orders": [
+    7,
+    7
+   ],
+   "A": "1 + y + x",
+   "B": "y + x*y^4 + x^4",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 49,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z9xZ6:best-exact",
+   "source": "corpus:0027f27f1ed8fa87",
+   "orders": [
+    9,
+    6
+   ],
+   "A": "1 + y + x",
+   "B": "x^2*y + x^6 + x^7*y^5",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 27,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      9,
+      6
+     ],
+     "n": 108,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 52
+    },
+    {
+     "lm": [
+      9,
+      3
+     ],
+     "n": 54,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 25
+    }
+   ],
+   "k_chain": [
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    6.5,
+    4.9
+   ],
+   "G1_nodes_bottom": 83680,
+   "G1_win_factor_vs_top": 38.1,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z7xZ8:best-exact",
+   "source": "corpus:00f33021fc9f0dd3",
+   "orders": [
+    7,
+    8
+   ],
+   "A": "y^2 + x*y + x^3",
+   "B": "y^4 + x^2*y^7 + x^6*y^6",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    3
+   ],
+   "odd_part": 7,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      7,
+      8
+     ],
+     "n": 112,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 53
+    },
+    {
+     "lm": [
+      7,
+      4
+     ],
+     "n": 56,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 25
+    },
+    {
+     "lm": [
+      7,
+      2
+     ],
+     "n": 28,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 11
+    },
+    {
+     "lm": [
+      7,
+      1
+     ],
+     "n": 14,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 4
+    }
+   ],
+   "k_chain": [
+    6,
+    6,
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    6.5,
+    4.9,
+    3.2,
+    1.5
+   ],
+   "G1_nodes_bottom": 30,
+   "G1_win_factor_vs_top": 116835.0,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z5xZ12:best-exact",
+   "source": "corpus:71d17a5680f4a232",
+   "orders": [
+    5,
+    12
+   ],
+   "A": "y^3 + x*y + x^2",
+   "B": "y^9 + x^2*y^8 + x^4",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 15,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      5,
+      12
+     ],
+     "n": 120,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 56
+    },
+    {
+     "lm": [
+      5,
+      6
+     ],
+     "n": 60,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 26
+    },
+    {
+     "lm": [
+      5,
+      3
+     ],
+     "n": 30,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 11
+    }
+   ],
+   "k_chain": [
+    8,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    6.7,
+    5.0,
+    3.2
+   ],
+   "G1_nodes_bottom": 1584,
+   "G1_win_factor_vs_top": 2912.3,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z6xZ10:best-exact",
+   "source": "corpus:03a11d7e7b3a22cb",
+   "orders": [
+    6,
+    10
+   ],
+   "A": "y^2 + y^3 + x",
+   "B": "x^2*y^2 + x^4*y + x^5",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 15,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      10
+     ],
+     "n": 120,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 56
+    },
+    {
+     "lm": [
+      3,
+      10
+     ],
+     "n": 60,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 26
+    },
+    {
+     "lm": [
+      3,
+      5
+     ],
+     "n": 30,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 11
+    }
+   ],
+   "k_chain": [
+    8,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    6.7,
+    5.0,
+    3.2
+   ],
+   "G1_nodes_bottom": 1584,
+   "G1_win_factor_vs_top": 2912.3,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z21xZ3:best-exact",
+   "source": "corpus:07bb458cf8458b5c",
+   "orders": [
+    21,
+    3
+   ],
+   "A": "y + y^2 + x^3",
+   "B": "x^3 + x^4 + x^11",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 63,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z3xZ21:best-exact",
+   "source": "corpus:0890ce532c5be3a3",
+   "orders": [
+    3,
+    21
+   ],
+   "A": "1 + y + y^2",
+   "B": "y^6 + x + x^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 63,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z7xZ9:best-exact",
+   "source": "corpus:4910aa204f1071d4",
+   "orders": [
+    7,
+    9
+   ],
+   "A": "y + x + x^3",
+   "B": "y^6 + x^4*y^2 + x^5*y^4",
+   "d_target": 14,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 63,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z12xZ6:best-exact",
+   "source": "corpus:3a69e281e8d24e58",
+   "orders": [
+    12,
+    6
+   ],
+   "A": "y^3 + x + x^2",
+   "B": "x*y + x*y^2 + x^4",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    7.0,
+    5.3,
+    3.7,
+    1.8
+   ],
+   "G1_nodes_bottom": 61,
+   "G1_win_factor_vs_top": 171710.0,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z8xZ9:best-exact",
+   "source": "corpus:870187bb51afb35e",
+   "orders": [
+    8,
+    9
+   ],
+   "A": "y^4 + y^5 + x^2",
+   "B": "x*y^3 + x^3*y^2 + x^5*y^4",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    3,
+    0
+   ],
+   "odd_part": 9,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      8,
+      9
+     ],
+     "n": 144,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 68
+    },
+    {
+     "lm": [
+      4,
+      9
+     ],
+     "n": 72,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 32
+    },
+    {
+     "lm": [
+      2,
+      9
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      1,
+      9
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    8,
+    8,
+    8,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 8,
+   "G1_log10_nodes_per_level": [
+    6.0,
+    4.7,
+    3.3,
+    2.2
+   ],
+   "G1_nodes_bottom": 161,
+   "G1_win_factor_vs_top": 5710.0,
+   "G2_mu": 6,
+   "G2_cap_max": 1,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z15xZ5:best-exact",
+   "source": "corpus:1e26a857c394e70f",
+   "orders": [
+    15,
+    5
+   ],
+   "A": "1 + y + x",
+   "B": "y^3 + x + x^11",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 75,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z5xZ15:best-exact",
+   "source": "corpus:1125d0a25ff25616",
+   "orders": [
+    5,
+    15
+   ],
+   "A": "1 + y + x",
+   "B": "y^6 + x + x*y^2",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 75,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z7xZ11:best-exact",
+   "source": "corpus:1e6e791ebce284c9",
+   "orders": [
+    7,
+    11
+   ],
+   "A": "y^3 + x*y + x^3",
+   "B": "x^2*y^8 + x^3*y^10 + x^5",
+   "d_target": 16,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 77,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z6xZ13:best-exact",
+   "source": "corpus:1886e26d78e78c44",
+   "orders": [
+    6,
+    13
+   ],
+   "A": "y^3 + x^2*y + x^4",
+   "B": "1 + x^2*y^5 + x^4*y^7",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    0
+   ],
+   "odd_part": 39,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     0,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      13
+     ],
+     "n": 156,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 74
+    },
+    {
+     "lm": [
+      3,
+      13
+     ],
+     "n": 78,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 37
+    }
+   ],
+   "k_chain": [
+    8,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 8,
+   "G1_log10_nodes_per_level": [
+    6.1,
+    4.9
+   ],
+   "G1_nodes_bottom": 82991,
+   "G1_win_factor_vs_top": 15.5,
+   "G2_mu": 6,
+   "G2_cap_max": 1,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z9xZ9:best-exact",
+   "source": "corpus:0a478329896a5561",
+   "orders": [
+    9,
+    9
+   ],
+   "A": "y^3 + x + x^2",
+   "B": "y^2 + y^6 + x^3*y",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 81,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z6xZ14:best-exact",
+   "source": "corpus:15631198717f6cb7",
+   "orders": [
+    6,
+    14
+   ],
+   "A": "y + y^3 + x",
+   "B": "x*y^6 + x^2*y^2 + x^5*y^7",
+   "d_target": 16,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 21,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      14
+     ],
+     "n": 168,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 81
+    },
+    {
+     "lm": [
+      3,
+      14
+     ],
+     "n": 84,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 39
+    },
+    {
+     "lm": [
+      3,
+      7
+     ],
+     "n": 42,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 18
+    }
+   ],
+   "k_chain": [
+    6,
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 14,
+   "G1_log10_nodes_per_level": [
+    9.6,
+    7.4,
+    5.0
+   ],
+   "G1_nodes_bottom": 94182,
+   "G1_win_factor_vs_top": 44393.2,
+   "G2_mu": 6,
+   "G2_cap_max": 4,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z7xZ12:best-exact",
+   "source": "corpus:087073d334367af3",
+   "orders": [
+    7,
+    12
+   ],
+   "A": "y + x + x^3",
+   "B": "x^3*y + x^4*y^6 + x^6*y^5",
+   "d_target": 16,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 21,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      7,
+      12
+     ],
+     "n": 168,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 81
+    },
+    {
+     "lm": [
+      7,
+      6
+     ],
+     "n": 84,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 39
+    },
+    {
+     "lm": [
+      7,
+      3
+     ],
+     "n": 42,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 18
+    }
+   ],
+   "k_chain": [
+    6,
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 14,
+   "G1_log10_nodes_per_level": [
+    9.6,
+    7.4,
+    5.0
+   ],
+   "G1_nodes_bottom": 94182,
+   "G1_win_factor_vs_top": 44393.2,
+   "G2_mu": 6,
+   "G2_cap_max": 4,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z15xZ6:best-exact",
+   "source": "corpus:283d1016d4bb650a",
+   "orders": [
+    15,
+    6
+   ],
+   "A": "y^2 + y^4 + x^3",
+   "B": "1 + x + x^11",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 45,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 16,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 82
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 41
+    }
+   ],
+   "k_chain": [
+    16,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 8,
+   "G1_log10_nodes_per_level": [
+    6.3,
+    5.1
+   ],
+   "G1_nodes_bottom": 124312,
+   "G1_win_factor_vs_top": 15.5,
+   "G2_mu": 6,
+   "G2_cap_max": 1,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z6xZ15:best-exact",
+   "source": "corpus:e1dd16da47756c6c",
+   "orders": [
+    6,
+    15
+   ],
+   "A": "1 + x + x^2",
+   "B": "y^5 + y^10 + x^3",
+   "d_target": 4,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    0
+   ],
+   "odd_part": 45,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     0,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      15
+     ],
+     "n": 180,
+     "k": 40,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 70
+    },
+    {
+     "lm": [
+      3,
+      15
+     ],
+     "n": 90,
+     "k": 40,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 25
+    }
+   ],
+   "k_chain": [
+    40,
+    40
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 2,
+   "G1_log10_nodes_per_level": [
+    1.8,
+    1.4
+   ],
+   "G1_nodes_bottom": 25,
+   "G1_win_factor_vs_top": 2.8,
+   "G2_mu": 6,
+   "G2_cap_max": -2,
+   "G3_k_base": 40,
+   "G3_dispatch_flag": "beyond-demonstrated (k>12)",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z9xZ10:best-exact",
+   "source": "corpus:5eee4bb40a82c20e",
+   "orders": [
+    9,
+    10
+   ],
+   "A": "y^4 + x*y + x^2",
+   "B": "x^4*y^5 + x^6*y^2 + x^8*y",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 45,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     5
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      9,
+      10
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      9,
+      5
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "k_chain": [
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 16,
+   "G1_log10_nodes_per_level": [
+    10.9,
+    8.3
+   ],
+   "G1_nodes_bottom": 223848239,
+   "G1_win_factor_vs_top": 349.1,
+   "G2_mu": 6,
+   "G2_cap_max": 5,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z7xZ14:best-exact",
+   "source": "corpus:07c4da0f722f0a58",
+   "orders": [
+    7,
+    14
+   ],
+   "A": "1 + y + x",
+   "B": "x^2*y^9 + x^3*y + x^3*y^12",
+   "d_target": 16,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 49,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     7
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      7,
+      14
+     ],
+     "n": 196,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 95
+    },
+    {
+     "lm": [
+      7,
+      7
+     ],
+     "n": 98,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 46
+    }
+   ],
+   "k_chain": [
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 14,
+   "G1_log10_nodes_per_level": [
+    10.1,
+    7.9
+   ],
+   "G1_nodes_bottom": 75358718,
+   "G1_win_factor_vs_top": 171.3,
+   "G2_mu": 6,
+   "G2_cap_max": 4,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z3xZ35:best-exact",
+   "source": "corpus:254b6f09cd3836bb",
+   "orders": [
+    3,
+    35
+   ],
+   "A": "1 + y^5 + y^15",
+   "B": "1 + x + x^2",
+   "d_target": 2,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 105,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z5xZ21:best-exact",
+   "source": "corpus:28d4c77876e15cc8",
+   "orders": [
+    5,
+    21
+   ],
+   "A": "y^19 + x*y + x^2",
+   "B": "x*y^7 + x^2*y^9 + x^3*y^3",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 105,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z7xZ15:best-exact",
+   "source": "corpus:51569bd07608d81b",
+   "orders": [
+    7,
+    15
+   ],
+   "A": "y + y^2 + x",
+   "B": "x^3*y^14 + x^4*y + x^5*y^9",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 105,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z6xZ18:best-exact",
+   "source": "corpus:26da8bcb0ef73398",
+   "orders": [
+    6,
+    18
+   ],
+   "A": "1 + y^2 + x",
+   "B": "y^6 + y^13 + x^2*y^3",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 27,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     9
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      18
+     ],
+     "n": 216,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 106
+    },
+    {
+     "lm": [
+      3,
+      18
+     ],
+     "n": 108,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 52
+    },
+    {
+     "lm": [
+      3,
+      9
+     ],
+     "n": 54,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 25
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 16,
+   "G1_log10_nodes_per_level": [
+    11.5,
+    9.0,
+    6.4
+   ],
+   "G1_nodes_bottom": 2533985,
+   "G1_win_factor_vs_top": 139679.0,
+   "G2_mu": 6,
+   "G2_cap_max": 5,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z3xZ42:best-exact",
+   "source": "corpus:bc68f116591cdfee",
+   "orders": [
+    3,
+    42
+   ],
+   "A": "y + y^3 + x",
+   "B": "y^13 + y^23 + x^2",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 63,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     21
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      3,
+      42
+     ],
+     "n": 252,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 123
+    },
+    {
+     "lm": [
+      3,
+      21
+     ],
+     "n": 126,
+     "k": 6,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 60
+    }
+   ],
+   "k_chain": [
+    6,
+    6
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 16,
+   "G1_log10_nodes_per_level": [
+    12.1,
+    9.5
+   ],
+   "G1_nodes_bottom": 3443132799,
+   "G1_win_factor_vs_top": 343.0,
+   "G2_mu": 6,
+   "G2_cap_max": 5,
+   "G3_k_base": 6,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z12xZ12:best-exact",
+   "source": "corpus:93952eebb6680eea",
+   "orders": [
+    12,
+    12
+   ],
+   "A": "y^3 + x + x^2",
+   "B": "y^2 + y^7 + x^3",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    2
+   ],
+   "odd_part": 9,
+   "two_part": 16,
+   "depth": 4,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      12
+     ],
+     "n": 288,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 138
+    },
+    {
+     "lm": [
+      6,
+      12
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      3,
+      12
+     ],
+     "n": 72,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 32
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    8,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 16,
+   "G1_log10_nodes_per_level": [
+    12.5,
+    9.9,
+    7.3,
+    4.4,
+    1.8
+   ],
+   "G1_nodes_bottom": 62,
+   "G1_win_factor_vs_top": 48308562059.0,
+   "G2_mu": 6,
+   "G2_cap_max": 5,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "Z9xZ6:frontier-ub",
+   "source": "corpus:00f8eb7a479fb286",
+   "orders": [
+    9,
+    6
+   ],
+   "A": "1 + y + x",
+   "B": "x^2*y^3 + x^2*y^4 + x^4*y^4",
+   "d_target": 26,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 27,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      9,
+      6
+     ],
+     "n": 108,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 52
+    },
+    {
+     "lm": [
+      9,
+      3
+     ],
+     "n": 54,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 25
+    }
+   ],
+   "k_chain": [
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 24,
+   "G1_log10_nodes_per_level": [
+    11.6,
+    7.5
+   ],
+   "G1_nodes_bottom": 28354130,
+   "G1_win_factor_vs_top": 12978.9,
+   "G2_mu": 6,
+   "G2_cap_max": 9,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "AMBER"
+  },
+  {
+   "name": "Z5xZ12:frontier-ub",
+   "source": "corpus:67a2831a001e5a08",
+   "orders": [
+    5,
+    12
+   ],
+   "A": "y^2 + y^4 + x",
+   "B": "x*y^7 + x^4*y^2 + x^4*y^3",
+   "d_target": 30,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 15,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      5,
+      12
+     ],
+     "n": 120,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 58
+    },
+    {
+     "lm": [
+      5,
+      6
+     ],
+     "n": 60,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 28
+    },
+    {
+     "lm": [
+      5,
+      3
+     ],
+     "n": 30,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 13
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 28,
+   "G1_log10_nodes_per_level": [
+    13.3,
+    8.4,
+    4.2
+   ],
+   "G1_nodes_bottom": 16382,
+   "G1_win_factor_vs_top": 1149020919.1,
+   "G2_mu": 6,
+   "G2_cap_max": 11,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "AMBER"
+  },
+  {
+   "name": "Z6xZ10:frontier-ub",
+   "source": "corpus:6af04624dc561601",
+   "orders": [
+    6,
+    10
+   ],
+   "A": "y^2 + x*y + x^2",
+   "B": "x*y^8 + x^2*y^7 + x^3*y",
+   "d_target": 30,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 15,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      10
+     ],
+     "n": 120,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 58
+    },
+    {
+     "lm": [
+      3,
+      10
+     ],
+     "n": 60,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 28
+    },
+    {
+     "lm": [
+      3,
+      5
+     ],
+     "n": 30,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 13
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 28,
+   "G1_log10_nodes_per_level": [
+    13.3,
+    8.4,
+    4.2
+   ],
+   "G1_nodes_bottom": 16382,
+   "G1_win_factor_vs_top": 1149020919.1,
+   "G2_mu": 6,
+   "G2_cap_max": 11,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "AMBER"
+  },
+  {
+   "name": "Z7xZ9:frontier-ub",
+   "source": "corpus:002c58be570030db",
+   "orders": [
+    7,
+    9
+   ],
+   "A": "y + y^2 + x",
+   "B": "y^8 + x^2*y^7 + x^4",
+   "d_target": 30,
+   "d_kind": "ub",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 63,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z12xZ6:frontier-ub",
+   "source": "corpus:78e5102334fc2096",
+   "orders": [
+    12,
+    6
+   ],
+   "A": "1 + y + x",
+   "B": "x^5*y^5 + x^6*y^5 + x^8",
+   "d_target": 36,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 70
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 34
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 34,
+   "G1_log10_nodes_per_level": [
+    16.2,
+    10.2,
+    5.1,
+    2.4
+   ],
+   "G1_nodes_bottom": 254,
+   "G1_win_factor_vs_top": 58224659083108.7,
+   "G2_mu": 6,
+   "G2_cap_max": 14,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "RED"
+  },
+  {
+   "name": "Z8xZ9:frontier-ub",
+   "source": "corpus:11a74d9c1a529d34",
+   "orders": [
+    8,
+    9
+   ],
+   "A": "y^2 + x*y + x^2",
+   "B": "x*y^4 + x^2*y^3 + x^4*y^5",
+   "d_target": 36,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    3,
+    0
+   ],
+   "odd_part": 9,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     4
+    ],
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     1
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      8,
+      9
+     ],
+     "n": 144,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 70
+    },
+    {
+     "lm": [
+      4,
+      9
+     ],
+     "n": 72,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 34
+    },
+    {
+     "lm": [
+      2,
+      9
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      1,
+      9
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 34,
+   "G1_log10_nodes_per_level": [
+    16.2,
+    10.2,
+    5.1,
+    2.4
+   ],
+   "G1_nodes_bottom": 254,
+   "G1_win_factor_vs_top": 58224659083108.7,
+   "G2_mu": 6,
+   "G2_cap_max": 14,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "RED"
+  },
+  {
+   "name": "Z6xZ13:frontier-ub",
+   "source": "corpus:077e0623368f0858",
+   "orders": [
+    6,
+    13
+   ],
+   "A": "y + x + x^2",
+   "B": "y^6 + x*y + x^5*y^6",
+   "d_target": 38,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    0
+   ],
+   "odd_part": 39,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     0,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      13
+     ],
+     "n": 156,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 76
+    },
+    {
+     "lm": [
+      3,
+      13
+     ],
+     "n": 78,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 37
+    }
+   ],
+   "k_chain": [
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 36,
+   "G1_log10_nodes_per_level": [
+    17.4,
+    11.1
+   ],
+   "G1_nodes_bottom": 119766321570,
+   "G1_win_factor_vs_top": 1927366.4,
+   "G2_mu": 6,
+   "G2_cap_max": 15,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "RED"
+  },
+  {
+   "name": "Z9xZ9:frontier-ub",
+   "source": "corpus:494e553d325acafe",
+   "orders": [
+    9,
+    9
+   ],
+   "A": "1 + y + x",
+   "B": "x^3*y^3 + x^5*y^6 + x^5*y^7",
+   "d_target": 40,
+   "d_kind": "ub",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 81,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "Z6xZ14:frontier-ub",
+   "source": "corpus:99c66d7806b09f32",
+   "orders": [
+    6,
+    14
+   ],
+   "A": "y^4 + x*y + x^2",
+   "B": "x^2*y + x^3 + x^4*y^4",
+   "d_target": 36,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 21,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      14
+     ],
+     "n": 168,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 82
+    },
+    {
+     "lm": [
+      3,
+      14
+     ],
+     "n": 84,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 40
+    },
+    {
+     "lm": [
+      3,
+      7
+     ],
+     "n": 42,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 19
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 34,
+   "G1_log10_nodes_per_level": [
+    17.4,
+    11.6,
+    6.0
+   ],
+   "G1_nodes_bottom": 1048363,
+   "G1_win_factor_vs_top": 258442101330.2,
+   "G2_mu": 6,
+   "G2_cap_max": 14,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "RED"
+  },
+  {
+   "name": "Z7xZ12:frontier-ub",
+   "source": "corpus:b8b649a5e1472c42",
+   "orders": [
+    7,
+    12
+   ],
+   "A": "y^5 + x*y + x^2",
+   "B": "x^3*y^2 + x^4*y^10 + x^5*y^3",
+   "d_target": 42,
+   "d_kind": "ub",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 21,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      7,
+      12
+     ],
+     "n": 168,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 82
+    },
+    {
+     "lm": [
+      7,
+      6
+     ],
+     "n": 84,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 40
+    },
+    {
+     "lm": [
+      7,
+      3
+     ],
+     "n": 42,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 19
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 40,
+   "G1_log10_nodes_per_level": [
+    19.1,
+    12.0,
+    6.0
+   ],
+   "G1_nodes_bottom": 1048574,
+   "G1_win_factor_vs_top": 11209637174172.8,
+   "G2_mu": 6,
+   "G2_cap_max": 17,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "RED"
+  },
+  {
+   "name": "zoo:bb72",
+   "source": "zoo",
+   "orders": [
+    6,
+    6
+   ],
+   "A": "x^3 + y + y^2",
+   "B": "y^3 + x + x^2",
+   "d_target": 6,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "k_chain": [
+    12,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 4,
+   "G1_log10_nodes_per_level": [
+    2.7,
+    2.1,
+    1.3
+   ],
+   "G1_nodes_bottom": 20,
+   "G1_win_factor_vs_top": 24.8,
+   "G2_mu": 6,
+   "G2_cap_max": -1,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "zoo:bb90",
+   "source": "zoo",
+   "orders": [
+    15,
+    3
+   ],
+   "A": "x^9 + y + y^2",
+   "B": "1 + x^2 + x^7",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": false,
+   "v2_per_axis": [
+    0,
+    0
+   ],
+   "odd_part": 45,
+   "two_part": 1,
+   "depth": 0,
+   "verdict": "no-deck",
+   "note": "|G| odd: wall W1 (odd-|G| lanes only)"
+  },
+  {
+   "name": "zoo:bb108",
+   "source": "zoo",
+   "orders": [
+    9,
+    6
+   ],
+   "A": "x^3 + y + y^2",
+   "B": "y^3 + x + x^2",
+   "d_target": 10,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 27,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      9,
+      6
+     ],
+     "n": 108,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 50
+    },
+    {
+     "lm": [
+      9,
+      3
+     ],
+     "n": 54,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 23
+    }
+   ],
+   "k_chain": [
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 8,
+   "G1_log10_nodes_per_level": [
+    5.4,
+    4.1
+   ],
+   "G1_nodes_bottom": 12949,
+   "G1_win_factor_vs_top": 21.0,
+   "G2_mu": 6,
+   "G2_cap_max": 1,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "zoo:gross",
+   "source": "zoo",
+   "orders": [
+    12,
+    6
+   ],
+   "A": "x^3 + y + y^2",
+   "B": "y^3 + x + x^2",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    7.0,
+    5.3,
+    3.7,
+    1.8
+   ],
+   "G1_nodes_bottom": 61,
+   "G1_win_factor_vs_top": 171710.0,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "zoo:bb288",
+   "source": "zoo",
+   "orders": [
+    12,
+    12
+   ],
+   "A": "x^3 + y^2 + y^7",
+   "B": "y^3 + x + x^2",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    2
+   ],
+   "odd_part": 9,
+   "two_part": 16,
+   "depth": 4,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      12
+     ],
+     "n": 288,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 138
+    },
+    {
+     "lm": [
+      6,
+      12
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      3,
+      12
+     ],
+     "n": 72,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 32
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    8,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 16,
+   "G1_log10_nodes_per_level": [
+    12.5,
+    9.9,
+    7.3,
+    4.4,
+    1.8
+   ],
+   "G1_nodes_bottom": 62,
+   "G1_win_factor_vs_top": 48308562059.0,
+   "G2_mu": 6,
+   "G2_cap_max": 5,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:bravyi360",
+   "source": "a35-docket",
+   "orders": [
+    30,
+    6
+   ],
+   "A": "x^9 + y + y^2",
+   "B": "y^3 + x^25 + x^26",
+   "d_target": 24,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 45,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     3
+    ],
+    [
+     0,
+     15
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 174
+    },
+    {
+     "lm": [
+      30,
+      3
+     ],
+     "n": 180,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 86
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 41
+    }
+   ],
+   "k_chain": [
+    12,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 22,
+   "G1_log10_nodes_per_level": [
+    17.0,
+    13.5,
+    9.8
+   ],
+   "G1_nodes_bottom": 6349125438,
+   "G1_win_factor_vs_top": 14454220.7,
+   "G2_mu": 6,
+   "G2_cap_max": 8,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:ibm288Y",
+   "source": "a35-docket",
+   "orders": [
+    18,
+    8
+   ],
+   "A": "1 + x*y^4 + x^14*y",
+   "B": "1 + x*y^2 + x^2*y^7",
+   "d_target": 20,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    3
+   ],
+   "odd_part": 9,
+   "two_part": 16,
+   "depth": 4,
+   "fold_chain": [
+    [
+     1,
+     4
+    ],
+    [
+     1,
+     2
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      18,
+      8
+     ],
+     "n": 288,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 140
+    },
+    {
+     "lm": [
+      18,
+      4
+     ],
+     "n": 144,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 68
+    },
+    {
+     "lm": [
+      18,
+      2
+     ],
+     "n": 72,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 32
+    }
+   ],
+   "k_chain": [
+    8,
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 18,
+   "G1_log10_nodes_per_level": [
+    13.7,
+    10.8,
+    7.8
+   ],
+   "G1_nodes_bottom": 58115144,
+   "G1_win_factor_vs_top": 862787.9,
+   "G2_mu": 6,
+   "G2_cap_max": 6,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:gross_xx",
+   "source": "a35-docket",
+   "orders": [
+    12,
+    6
+   ],
+   "A": "x^3 + y + y^2",
+   "B": "y^3 + x + x^2",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    7.0,
+    5.3,
+    3.7
+   ],
+   "G1_nodes_bottom": 4942,
+   "G1_win_factor_vs_top": 2119.4,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:bb288_yxx",
+   "source": "a35-docket",
+   "orders": [
+    12,
+    12
+   ],
+   "A": "x^3 + y^2 + y^7",
+   "B": "y^3 + x + x^2",
+   "d_target": 18,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    2
+   ],
+   "odd_part": 9,
+   "two_part": 16,
+   "depth": 4,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     0,
+     6
+    ],
+    [
+     0,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      12
+     ],
+     "n": 288,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 138
+    },
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 14
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    12,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 16,
+   "G1_log10_nodes_per_level": [
+    12.5,
+    9.9,
+    7.1,
+    4.4
+   ],
+   "G1_nodes_bottom": 22817,
+   "G1_win_factor_vs_top": 131267513.2,
+   "G2_mu": 6,
+   "G2_cap_max": 5,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:c37x_360420",
+   "source": "a35-docket",
+   "orders": [
+    30,
+    6
+   ],
+   "A": "1 + y + x",
+   "B": "y^4 + x + x^11*y^2",
+   "d_target": 20,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 45,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     15
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 178
+    },
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 18,
+   "G1_log10_nodes_per_level": [
+    14.7,
+    11.9,
+    9.0
+   ],
+   "G1_nodes_bottom": 932778747,
+   "G1_win_factor_vs_top": 479405.1,
+   "G2_mu": 6,
+   "G2_cap_max": 6,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:e5e50yy_360420",
+   "source": "a35-docket",
+   "orders": [
+    15,
+    12
+   ],
+   "A": "1 + y + x",
+   "B": "y^4 + x^8*y^2 + x^13",
+   "d_target": 20,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    2
+   ],
+   "odd_part": 45,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     1,
+     6
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      15,
+      12
+     ],
+     "n": 360,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 178
+    },
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 18,
+   "G1_log10_nodes_per_level": [
+    14.7,
+    11.9,
+    9.0
+   ],
+   "G1_nodes_bottom": 932778747,
+   "G1_win_factor_vs_top": 479405.1,
+   "G2_mu": 6,
+   "G2_cap_max": 6,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:c37xx_720",
+   "source": "a35-docket",
+   "orders": [
+    60,
+    6
+   ],
+   "A": "1 + y + x",
+   "B": "y^4 + x + x^11*y^2",
+   "d_target": 20,
+   "d_kind": "question",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 45,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     30
+    ],
+    [
+     0,
+     15
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      60,
+      6
+     ],
+     "n": 720,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 358
+    },
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 178
+    },
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 18,
+   "G1_log10_nodes_per_level": [
+    17.4,
+    14.7,
+    11.9,
+    9.0
+   ],
+   "G1_nodes_bottom": 932778747,
+   "G1_win_factor_vs_top": 271429571.8,
+   "G2_mu": 6,
+   "G2_cap_max": 6,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:a8_336",
+   "source": "a35-docket",
+   "orders": [
+    12,
+    14
+   ],
+   "A": "1 + y + x^3*y^3",
+   "B": "1 + x + x^2*y^7",
+   "d_target": 12,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    2,
+    1
+   ],
+   "odd_part": 21,
+   "two_part": 8,
+   "depth": 3,
+   "fold_chain": [
+    [
+     0,
+     6
+    ],
+    [
+     1,
+     7
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      12,
+      14
+     ],
+     "n": 336,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 162
+    },
+    {
+     "lm": [
+      6,
+      14
+     ],
+     "n": 168,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 78
+    },
+    {
+     "lm": [
+      6,
+      7
+     ],
+     "n": 84,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 36
+    }
+   ],
+   "k_chain": [
+    12,
+    12,
+    12
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 10,
+   "G1_log10_nodes_per_level": [
+    9.0,
+    7.4,
+    5.7
+   ],
+   "G1_nodes_bottom": 510414,
+   "G1_win_factor_vs_top": 1822.7,
+   "G2_mu": 6,
+   "G2_cap_max": 2,
+   "G3_k_base": 12,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:bravyi756",
+   "source": "a35-docket",
+   "orders": [
+    21,
+    18
+   ],
+   "A": "x^3 + y^10 + y^17",
+   "B": "y^5 + x^3 + x^19",
+   "d_target": 34,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 189,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     9
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      21,
+      18
+     ],
+     "n": 756,
+     "k": 16,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 370
+    },
+    {
+     "lm": [
+      21,
+      9
+     ],
+     "n": 378,
+     "k": 16,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 181
+    }
+   ],
+   "k_chain": [
+    16,
+    16
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 32,
+   "G1_log10_nodes_per_level": [
+    27.7,
+    22.6
+   ],
+   "G1_nodes_bottom": 38823473408563260807481,
+   "G1_win_factor_vs_top": 119593.3,
+   "G2_mu": 6,
+   "G2_cap_max": 13,
+   "G3_k_base": 16,
+   "G3_dispatch_flag": "beyond-demonstrated (k>12)",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "RED"
+  },
+  {
+   "name": "docket:cover300",
+   "source": "a35-docket",
+   "orders": [
+    5,
+    30
+   ],
+   "A": "1 + y + x",
+   "B": "x*y^6 + x*y^10 + x^2*y^12",
+   "d_target": 16,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    0,
+    1
+   ],
+   "odd_part": 75,
+   "two_part": 2,
+   "depth": 1,
+   "fold_chain": [
+    [
+     1,
+     15
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      5,
+      30
+     ],
+     "n": 300,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 146
+    },
+    {
+     "lm": [
+      5,
+      15
+     ],
+     "n": 150,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 71
+    }
+   ],
+   "k_chain": [
+    8,
+    8
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 14,
+   "G1_log10_nodes_per_level": [
+    11.4,
+    9.2
+   ],
+   "G1_nodes_bottom": 1644431213,
+   "G1_win_factor_vs_top": 162.8,
+   "G2_mu": 6,
+   "G2_cap_max": 4,
+   "G3_k_base": 8,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  },
+  {
+   "name": "docket:pair72",
+   "source": "a35-docket",
+   "orders": [
+    6,
+    6
+   ],
+   "A": "x^2 + y + y^3",
+   "B": "1 + x + y^2",
+   "d_target": 8,
+   "d_kind": "exact",
+   "C1": true,
+   "v2_per_axis": [
+    1,
+    1
+   ],
+   "odd_part": 9,
+   "two_part": 4,
+   "depth": 2,
+   "fold_chain": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     3
+    ]
+   ],
+   "levels": [
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 34
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "k_chain": [
+    4,
+    4,
+    4
+   ],
+   "C2": true,
+   "parity_scope_top": true,
+   "W": 6,
+   "G1_log10_nodes_per_level": [
+    3.9,
+    2.9,
+    2.0
+   ],
+   "G1_nodes_bottom": 91,
+   "G1_win_factor_vs_top": 78.8,
+   "G2_mu": 6,
+   "G2_cap_max": 0,
+   "G3_k_base": 4,
+   "G3_dispatch_flag": "ok",
+   "G5": "unknown (needs per-level distances)",
+   "verdict": "GREEN"
+  }
+ ],
+ "meta": {
+  "corpus_rows": 58350,
+  "corpus_groups": 47,
+  "frontier_rows": 10,
+  "zoo_family_only": [
+   "qcga (BB family)",
+   "bb5 (weight-5 family)",
+   "bicycle",
+   "generalized_bicycle"
+  ],
+  "calibration_rows": 11,
+  "verdict_counts": {
+   "no-deck": 23,
+   "GREEN": 41,
+   "AMBER": 3,
+   "RED": 6
+  },
+  "wall_s": 3.2
+ }
+}

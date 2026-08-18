@@ -1,0 +1,26 @@
+{
+ "top": {
+  "sector_dim": 8,
+  "kappa": 68
+ },
+ "bot": {
+  "sector_dim": 8,
+  "kappa": 32
+ },
+ "hexagon_M7": {
+  "verdict": "PASS",
+  "lane": "restricted<=6",
+  "w_b": 6,
+  "M": 7,
+  "sectors_nontrivial": 240
+ },
+ "planted": {
+  "pv_weight": 26,
+  "overflow": 10,
+  "found_min_overflow": 10,
+  "lane": "bz",
+  "n_viol": 540,
+  "secs": 500.8
+ },
+ "wall_s": 501.1
+}

@@ -1,0 +1,112 @@
+{
+ "part0": {
+  "k": [
+   8,
+   8,
+   8
+  ],
+  "composite_fold": "consistent",
+  "overflow_square": "degenerate (same-axis, one path)"
+ },
+ "part1": {
+  "random_cycles": 200,
+  "converse_lifts": 3
+ },
+ "part2_ranks": {
+  "p2": 4,
+  "p1": 4,
+  "tau2": 4,
+  "tau1": 4
+ },
+ "seam": {
+  "classes": [
+   6,
+   27,
+   29,
+   104,
+   110,
+   115,
+   117,
+   137,
+   143,
+   146,
+   148,
+   225,
+   231,
+   250,
+   252
+  ],
+  "orbit_sizes": [
+   12,
+   3
+  ],
+  "reps": [
+   6,
+   115
+  ],
+  "stab_orders": [
+   6,
+   24
+  ]
+ },
+ "rung1_lattice": {
+  "seam1_orbit_sizes": [
+   12,
+   3
+  ],
+  "W2_dim": 4,
+  "W2_classes": [
+   "0xf",
+   "0x36",
+   "0x39",
+   "0x54",
+   "0x5b",
+   "0x62",
+   "0x6d",
+   "0x91",
+   "0x9e",
+   "0xa7",
+   "0xa8",
+   "0xc5",
+   "0xca",
+   "0xf3",
+   "0xfc"
+  ],
+  "rep_pushforwards": {
+   "0x6": "0x36",
+   "0x73": "0xf3"
+  },
+  "seam_cap_K1": [],
+  "K1_dim": 4
+ },
+ "bezout": "both witnesses re-verified as convolution identities",
+ "seamC_dictionary": {
+  "mask_to_class": {
+   "0x1": "0xe1",
+   "0x2": "0x92",
+   "0x3": "0x73",
+   "0x4": "0x94",
+   "0x5": "0x75",
+   "0x6": "0x6",
+   "0x7": "0xe7",
+   "0x8": "0x68",
+   "0x9": "0x89",
+   "0xa": "0xfa",
+   "0xb": "0x1b",
+   "0xc": "0xfc",
+   "0xd": "0x1d",
+   "0xe": "0x6e",
+   "0xf": "0x8f"
+  },
+  "mask1_orbit_size": 12,
+  "mask3_orbit_size": 3
+ },
+ "duality": "spot-checked at Y8",
+ "a32_comparison": {
+  "rank_tau_top": 6,
+  "rank_p_top": 6,
+  "ker_tau_eq_im_p": false,
+  "deck_trivial_top": false
+ },
+ "wall_s": 0.6
+}
