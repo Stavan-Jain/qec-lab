@@ -1,0 +1,49 @@
+{
+ "V1": {
+  "eps_eq_one_plus_sigma": true,
+  "slice_eps_form": 60
+ },
+ "V2_mstar_table": [
+  {
+   "tower": "a36",
+   "cell": "seam |x|=12 (class 0x40)",
+   "m_star": 3,
+   "lightest_over_x": 18,
+   "deficit_bound_at_t18": 3,
+   "note": "SATURATES the bound \u2014 d-attaining cell"
+  },
+  {
+   "tower": "a36",
+   "cell": "stab |x|=14 stratum (54 orbits)",
+   "m_star": ">= 3 (0 finds at M=3)",
+   "lightest_over_x": ">= 20",
+   "deficit_bound_at_t18": 2,
+   "note": "EXCEEDS the bound by >= 1"
+  },
+  {
+   "tower": "a33",
+   "cell": "seam |x|=18",
+   "m_star": 2,
+   "lightest_over_x": 22,
+   "deficit_bound_at_t20": 1,
+   "note": "exceeds by 1"
+  },
+  {
+   "tower": "a33",
+   "cell": "seam |x|=14",
+   "m_star": 4,
+   "lightest_over_x": 22,
+   "deficit_bound_at_t20": 3,
+   "note": "exceeds by 1"
+  }
+ ],
+ "V3": {
+  "covered": 1,
+  "of": 469,
+  "coverage_hist": {
+   "|b|=6,M=6": 1
+  },
+  "all_pass_eq_banked": true
+ },
+ "wall_s": 0.7
+}
