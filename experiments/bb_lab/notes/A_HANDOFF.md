@@ -197,6 +197,25 @@ A4 Theorem D).
 >   upgrade — registry line A7, `docs/gross-distance-proof.md`
 >   Props 30–31).
 >
+> **A38 (2026-08-18, `A38_descent_generalization_plan.md`): the
+> distance-descent generalization thread is CHARTERED.** Goal: analytic
+> theory that reduces the computational burden of distance computation —
+> widen the certificate tier's envelope and replace its enumeration
+> layers with theorems. Fronts: F1 odd-deck (Maschke) calculus (idempotent
+> splitting N = Σ_H h; systematize A22-CRT/A29-fibering/A24-designs into a
+> second calculus; controls bb_90, [[98,6,12]], f2a6), F2 census killers
+> (odd-Fourier factorization, the A29 ε-recursion residue, analytic carry
+> floors, wall theory, witness heredity), F3 the complexity ledger
+> (descent width + the exponent-halving theorem the 9.4 min → 105 s →
+> 31 s measurements already show), F4 non-abelian central-σ / GB /
+> non-CSS scope, F5 engine + Lean census/rung certificate species.
+> Forcing targets: [[756,16,≤34]] (RED 1e22.6 — an odd-part wall) and
+> [[720,4]] doubling (RED cap 16). Registry note: A35/A36 are each
+> claimed twice on unmerged parallel branches and A37 once ((M)-
+> robustness); defensive rows added, next free = A39. Session map
+> S1–S5 in the note; S1 = engine skeleton + corpus envelope census +
+> R4 methods closure, all-validation.
+>
 > **A33 (2026-08-11, `A33_ibm288_d20_certificate.md`): the calculus
 > ports — d([[288,8,20]]) = 20, the program's first certified d = 20
 > for a previously published code** (A30 §5.5 reached certificate-tier
