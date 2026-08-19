@@ -1,0 +1,11 @@
+[   0.0s] P1: reproducing the banked gross stab census (BZ, W = 16)
+[  16.8s]   census REPRODUCED: 33588 vectors {6: 72, 10: 432, 12: 2268, 14: 3888, 16: 26928}, 469 orbits, 7.502e+09 nodes (exact)
+[  16.8s] P2: idempotent system (4-way odd-CRT split)
+[  16.8s]   partition of unity + orthogonality + idempotency: PASS
+[  16.8s] P3: Maschke rank bookkeeping + the invariant weight law
+[  16.8s]   kappa split {'c0_inv': 8, 'c1_N1E2': 16, 'c2_E1N2': 16, 'c3_E1E2': 26} (sum 66 EXACT); invariant sector = quotient [[16,0]] code over Z4xZ2, kappa = 8
+[  19.0s]   invariant components: weights in 18Z as forced (law: coset unions x parity); distribution {0: 288, 36: 720, 54: 12744, 72: 6120, 90: 13104, 108: 612}
+[  19.0s] P4: additivity |v| = sum|v_c| on 0/33588; all components <= 16 on 0/33588; pure-sector {'c0_inv': 0, 'c1_N1E2': 0, 'c2_E1N2': 0, 'c3_E1E2': 0}; vN = 0 on 288/33588; per-component max weights {'c0_inv': 108, 'c1_N1E2': 84, 'c2_E1N2': 84, 'c3_E1E2': 60}
+[  19.0s] P5 VERDICT: DOES NOT FACTOR at W = 16: the odd-CRT components of censused vectors are unbounded (33588 of 33588 vectors have a component above the census bound; invariant components sit in 18Z by the coset-union weight law, so ANY W < 18 census is invisible to the invariant sector except through cancellation) and weight is not additive across sectors (33588 failures). The walk cannot be split into per-sector walks at the census bound; the 2-part stays combinatorial and the odd part enters only through cross-sector cancellation.
+[  19.0s]   pricing: direct 7.50e+09 nodes vs factored-sum 1.18e+08 at measured Wc (x63.66) — plus a recombination product the direct walk never pays
+[  19.0s] total 19.0s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a38/f2a_probe.json

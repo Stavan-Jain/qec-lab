@@ -1,0 +1,86 @@
+##### RUN a33_tower_cells at t=0.0s
+[  0.1s] Part 0: frames built, k = 8/8/8; Deck constructor asserts (chain map, stab transport, twist-invariance, sections) PASS on both rungs
+[  0.1s]   composite fold = the unique Z4-deck fold Y8->Y2 (overflow square DEGENERATE: one path)
+[  0.1s] Part 1: parity lemma exhaustive (kernel bases even, Y2/Y4/Y8) => every cycle weight is even
+[  0.3s]   200 two-level slice/carry checks, 3 converse lifts OK
+[  0.3s] Part 2: rank p* = rank tau* = 4 = k/2 at BOTH rungs; exactness im tau* = ker p*, ker tau* = im p*; sigma* = id (DeckTrivialOnH1, H4) both rungs
+[  0.3s]   SEAM = im p2*: dim 4, 15 classes, orbits [12, 3], class-stab orders [6, 24]  [A20 SS5 12+3 REPRODUCED]
+[  0.3s]   rung-1 lattice: SEAM1 = im p1* dim 4, orbits [12, 3]; W2 = p1*(SEAM): dim 4 (15 classes); rep pushforwards {'0x6': '0x36', '0x73': '0xf3'}; |SEAM cap ker p1*| = 0 classes
+[  0.4s]   Bezout witnesses verified: 1+y^4 in (A8,B8), 1+y^2 in (A4,B4)  [(R) both rungs, kernel-level]
+[  0.4s]   seamC dictionary: the 15 iota(seamC zeta) classes == SEAM \ 0 EXACTLY; chain-mask 0x1 -> class 0xe1 (orbit 12-sized idx 0), 0x3 -> class 0x73 (orbit idx 1)
+[  0.4s]   X<->Z duality spot-check (antipode + block swap) OK => Z-side floors follow from X-side
+[  0.6s]   A32-tower comparison (top y-rung, (R) fails): rank tau_y* = 6, ker tau_y* = im p_y*: False, sigma_y* = id: False
+total 0.6s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a33/tower_cells.json
+##### EXIT a33_tower_cells rc=0 at t=0.8s
+##### RUN a33_validate_banked at t=0.8s
+[  0.2s] (a) census: 1,655/1,655 rows are lab Y4-stabilizers; bands {6: 1, 10: 6, 12: 33, 14: 54, 16: 375, 18: 1186}
+[  0.3s]     v7 analytic census == SAT census as G-canonical class sets (1,655 == 1,655)
+[  0.4s]     rung-1 decomposition: all transport+slice asserts pass; beta=0 records 2; distinct nonzero Y2-shadow orbits 602 (compression 2.7x)
+    ... 400/1655 (2s)
+    ... 800/1655 (3s)
+    ... 1200/1655 (4s)
+    ... 1600/1655 (5s)
+[  5.1s] (b) H2 re-derived: 1,655/1,655 rungs PASS at target 20 (deterministic restricted lanes) — banked SAT agreement 1655/1655
+      w6: n=1 tot=0.7s max=0.706s
+      w10: n=6 tot=0.1s max=0.015s
+      w12: n=33 tot=0.1s max=0.005s
+      w14: n=54 tot=0.2s max=0.005s
+      w16: n=375 tot=1.1s max=0.006s
+      w18: n=1186 tot=2.5s max=0.004s
+[  5.1s] (c) weight-20 Y8 witness: verified nontrivial X-logical; tower profile b=0 (tau-diagonal), sheet u = weight-10 Y4 logical, u-shadow |beta|=10 m2=0
+[  5.1s]     ladder witnesses re-verified: weight-10 Y4 logical, weight-6 Y2 logical
+total 5.1s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a33/banked_validation.json
+##### EXIT a33_validate_banked rc=0 at t=6.1s
+##### RUN a33_h5_close at t=6.1s
+[  0.1s] seam reps: 12-orbit class 0x6, 3-orbit class 0x73
+[148.1s]   window 0: r=9, nodes 5.776e+10 (exact-count assert OK), wall 145.68s
+[170.7s]   window 1: r=8, nodes 8.482e+09 (exact-count assert OK), wall 21.08s
+[170.7s] BZ pass complete: 6.624e+10 nodes; empty-window base weights [0, 30, 40, 0, 42, 40] (all > 18 except handled)
+[178.8s] offset S: 118932 stabilizer vectors <= 18, weight hist {6: 72, 12: 2268, 18: 85344, 10: 432, 14: 3888, 16: 26928}; G-canonical classes = 1,655 == banked EXACTLY  [H1 re-derived DIRECT]
+[178.8s] offset R3: coset EMPTY at <= 18 => naive SeamCosetFloor 20 HOLDS on the 3-orbit (H5 vacuous there; matches v7_seam engine + explains the banked 0x3 SAT BUDGET)
+[179.0s] offset R12: 1,680 elements (weights {18: 1590, 16: 84, 14: 6}), all verified class-0x6 logicals; 280 G-canonical classes  [v7_seam counts REPRODUCED]
+[179.0s] banked cross-checks: 278/278 safe_m_floors elements in census (dying census was 2 classes short of 280); v7_seam 280 classes == census EXACTLY; SAT@18 witness present
+[183.6s] seam rungs: 1,680/1,680 PASS (4.6s, lanes {'restricted<=0': 1590, 'restricted<=1': 84, 'restricted<=2': 6}); banked-agreement elements 1668 (all 6 translates of each banked class PASS)
+[183.6s] covariance spot-check: translated elements give identical verdicts (3/3)
+[183.6s] tightness probe w18: {'w': 18, 'first_hit_M': 3, 'min_overflow': 2, 'lightest_logical_over_w': 22}
+[183.7s] tightness probe w14: {'w': 14, 'first_hit_M': 5, 'min_overflow': 4, 'lightest_logical_over_w': 22}
+total 183.7s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a33/h5_direct.json
+H5 CLOSED (direct): 12-orbit = 1,680/1,680 element rungs PASS; 3-orbit = coset empty (floor >= 20 outright); all 15 classes by G-transport.
+##### EXIT a33_h5_close rc=0 at t=189.9s
+##### RUN a33_h5_descent at t=189.9s
+[  0.1s] descent targets: class 0x6 -> Y2 class 0x36; 0x73 -> 0xf3; dead branches: SEAM cap K1 = 0 (measured)
+[  0.1s] validation gate: deep MITM == size-4 lane on 2 rung-1 fibers  [EXACT]
+[  4.5s] Y2 censuses: class 0x36 coset 105328 elements <= 18 {10: 18, 12: 162, 14: 1470, 16: 11910, 18: 91768}; class 0xf3 coset 81108 elements {12: 6, 14: 120, 16: 5910, 18: 75072} [empty-window weights [22, 18]/[20, 24]]
+[ 45.9s] 12-orbit descent: 105328 fibers (95412 carry-infeasible), 38714 lifts, 1680 in SEAM -> 1680 distinct class-0x6 elements
+[ 74.9s] 3-orbit descent: 81108 fibers (77226 carry-infeasible), 8460 lifts, 0 in SEAM -> 0 elements (expect 0)
+[ 74.9s] DESCENT == DIRECT: the 1,680 elements re-derived exactly from n = 72 censuses (=> identical rung verdicts; 4a's 1,680/1,680 PASS applies)
+[ 75.0s] 50-element re-rung sample: 50/50 PASS
+[ 75.2s] appendix: a32 census() empty-window audit: {'logical<=10': {'empty_in_range': 15, 'truly_missed': 15}, 'wcoset<=16': {'empty_in_range': 0, 'truly_missed': 0}, 'wcoset<=22': {'empty_in_range': 2, 'truly_missed': 2}}
+    logical<=10: 15 missed vectors, ALL in stored orbits => per-orbit consumers (sector B, dby, d(GB)=8) UNAFFECTED; erratum = vector counts only (1,623 -> 1,638)
+    missed wcoset<=22 element: orbit enumerable via translate = True; 0 flat lifts, rungs none needed
+    missed wcoset<=22 element: orbit enumerable via translate = True; 0 flat lifts, rungs none needed
+total 75.2s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a33/h5_descent.json
+##### EXIT a33_h5_descent rc=0 at t=265.3s
+##### RUN a33_solver_free at t=265.3s
+[  0.2s] (c) d0 = 6 DIRECT: 255-class census to 6 — 84 weight-6 logicals in 24 classes (none lighter; parity kills 7); banked witness present; seam1 classes attaining: 0  [6.02e+03 nodes]
+[  2.0s] (d) H3 = LogicalFloor 10 DIRECT: 255-class census to 10 — no element below 10; 72 weight-10 logicals in 12 classes (banked u10 + H6-sheet present; 0 in SEAM: light logicals concentrate outside im p2*)  [1.22e+07 nodes]
+[  6.1s] Y2 stab census <= 18: 165517 vectors {6: 36, 8: 36, 10: 252, 12: 1368, 14: 5436, 16: 26721, 18: 131668} (mu(Y2) = 6)  [5.81e+07 nodes]
+[  6.1s] seam1-coset census <= 8: 0 logicals {} across the 15 classes  [4.69e+04 nodes]
+[  6.1s] (b) d1 seam1 branch: all 0 lift fibers at cap (8-|g|)/2 EMPTY [carry-infeasible] — no sub-10 logical with nonzero shadow class
+[  9.5s] (a) fiber union: 165517 Y2-stabs -> 4605 orbit reps; running caps (18-|beta|)/2 ...
+    ... 500/4605 reps (14s)
+    ... 1000/4605 reps (16s)
+    ... 1500/4605 reps (17s)
+    ... 2000/4605 reps (18s)
+    ... 2500/4605 reps (19s)
+    ... 3000/4605 reps (20s)
+    ... 3500/4605 reps (21s)
+    ... 4000/4605 reps (21s)
+    ... 4500/4605 reps (22s)
+[ 22.9s] (a) fiber union == banked 1,655 classes EXACTLY (13s): 8302 lifts (3328 stab, 4974 logical, min logical weight 12 >= 10 => (b) stab branch closed), tau1-family 72
+[ 22.9s] (b) d1 = 10 TOWER-DERIVED: seam1 fibers empty + stab-branch lifts >= 10 + beta=0 dead by d0; witness = (d)'s weight-10 census
+total 22.9s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-af5cae285be3d8caa/experiments/bb_lab/data/a33/solver_free.json
+
+ASSEMBLY (see A33 note): H1 (4 derivations) + H2 (1,655 deterministic rungs) + H3 (direct BZ + tower) + H4 (Bezout + sigma* = id) + H5 (direct BZ census + 1,680 rungs + descent) + H6 (verified witness) => d(Y8) = 20, certificate tier, no SAT on the critical path.
+##### EXIT a33_solver_free rc=0 at t=288.3s
+##### A33 SUITE DONE 288.3s

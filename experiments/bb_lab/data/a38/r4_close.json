@@ -1,0 +1,150 @@
+{
+ "part0": {
+  "k": [
+   12,
+   12,
+   8
+  ],
+  "pair": {
+   "dim_S": 6,
+   "dim_K": 6,
+   "dim_SK": 2,
+   "dim_W": 4,
+   "K_in_S": false
+  },
+  "seam_orbit_sizes": [
+   3,
+   3,
+   9,
+   12,
+   36
+  ],
+  "seam_classes_SK": 3,
+  "seam_classes_A": 60
+ },
+ "part1": {
+  "cycles": 1110,
+  "weight_hist": {
+   "6": 120,
+   "8": 990
+  },
+  "d_B72": 6,
+  "n_min": 84,
+  "nodes": 151229280
+ },
+ "bz_pass": {
+  "kappa": 30,
+  "W": 10,
+  "r_pair": [
+   5,
+   4
+  ],
+  "nodes": 206366,
+  "offsets": 6
+ },
+ "stab_census": {
+  "vectors": 252,
+  "weight_hist": {
+   "6": 36,
+   "10": 216
+  },
+  "orbits": 7,
+  "orbit_weight_hist": {
+   "6": 1,
+   "10": 6
+  }
+ },
+ "seam_census": {
+  "elements": 0,
+  "weight_hist": {},
+  "per_orbit": {
+   "R0": 0,
+   "R1": 0,
+   "R2": 0,
+   "R3": 0,
+   "R4": 0
+  }
+ },
+ "dangerous_rungs": {
+  "rungs": 7,
+  "verdicts": {
+   "PASS": 7
+  },
+  "lanes": {
+   "restricted<=2": 1,
+   "restricted<=0": 6
+  }
+ },
+ "seam_rungs": {
+  "rungs": 0,
+  "verdicts": {},
+  "lanes": {}
+ },
+ "witness": {
+  "weight": 12,
+  "sector": "diagonal",
+  "gamma_w": 6,
+  "m1": 6,
+  "w6_classes_in_imp": 0,
+  "w6_classes_out_imp": 84,
+  "v_support": [
+   0,
+   3,
+   6,
+   15,
+   24,
+   30,
+   36,
+   39,
+   42,
+   51,
+   60,
+   66
+  ]
+ },
+ "b36_ground": {
+  "stab_whist": {
+   "6": 18,
+   "8": 45,
+   "10": 108
+  },
+  "stab_orbits": 10,
+  "wcoset_whist": {
+   "8": 216,
+   "10": 1584
+  },
+  "wcoset_orbits": 102,
+  "light_cycles": {
+   "4": 54
+  }
+ },
+ "sectorB": {
+  "tau_stab": 0,
+  "tau_seam": 0,
+  "tau_other": 54,
+  "ker_vs_imp_agree": 36,
+  "ker_vs_imp_disagree": 18
+ },
+ "sectorC": {
+  "fibers": 10,
+  "lifts": 11,
+  "empty": 5,
+  "stab": 7,
+  "seam": 0,
+  "other": 4
+ },
+ "sectorA": {
+  "fibers": 102,
+  "lifts": 84,
+  "empty": 48,
+  "seam": 0,
+  "other_leakage": 84
+ },
+ "equality": {
+  "stab_keys": 7,
+  "seam_keys": 0,
+  "stab_equal": true,
+  "seam_equal": true
+ },
+ "wall_s": 5.7
+}

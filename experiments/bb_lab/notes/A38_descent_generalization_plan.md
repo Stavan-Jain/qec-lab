@@ -237,8 +237,8 @@ into a second calculus:
 
 | target | role | status/verdict today |
 |---|---|---|
-| banked A32/A33/A36 structure asserts | regression floor for any engine change | a35 screen green (7.4 s) |
-| R4-regime methods closure (gross_xx lower pair) | completes the 2×2 regime coverage; values already known | open (A36 §10.3) |
+| banked A32/A33/A36 structure asserts | regression floor for any engine change | **S1**: promoted to `bb_lab.tower.validate_banked()`; gate green 12.9 s, 11/11 towers field-identical to the banked screen incl. RNG stream; all three closures re-run headlessly, outputs identical mod timing (A38_s1_validation_log §1–2) |
+| R4-regime methods closure (gross_xx lower pair) | completes the 2×2 regime coverage; values already known | **CLOSED S1** (5.7 s): d(gross) = 12 re-derived certificate-tier; coverage 4/4; seam cosets census-EMPTY at the 2·d(mid) ceiling; descent leakage quantified (84/84 sector-A lifts outside SEAM; ker τ\* vs im p\* 36/54) — log §3 |
 | a8_336 [[336,12,12]] full closure | third group shape | **check at merge**: the parallel A37 line reports an end-to-end 19.5 s run (commit `bfa0edb`) — do not duplicate |
 | [[720,4]] freeze at W = 18–22 | first re-double tower decision (A14 §13 question) | GREEN, unexecuted (A35 §8.2) |
 | [[720,4]] doubling (cap 16) | F2b/F2c forcing target | RED |
@@ -246,7 +246,8 @@ into a second calculus:
 | bb_90 / [[98,6,12]] / f2a6 base | F1 controls (banked distances) | no-deck today (W1) |
 | cheapest central-σ mitten code | F4a first non-abelian tower | unscoped |
 | A18 coprime-pair (cyclic) corpus rows | F4b GB lane, already in-corpus | unframed |
-| corpus envelope census (41 groups + zoo) | F5 burden table | not run |
+| corpus envelope census (41 groups + zoo) | F5 burden table | **RUN S1** (now 47 groups): 73 rows — GREEN 41 / AMBER 3 / RED 6 / no-deck 23; every exact-d rep with a deck GREEN; **the open frontier is CAP-bound (caps 9–17 within the node envelope) — the corpus wall is W3, not W2**; calibration 11/11 == banked (log §4, `data/a38/envelope_census.md`) |
+| F2a factorization probe (a36 census) | F2a falsify-first | **ABSENT S1** (19 s): census reproduced exactly, then the odd-CRT split measured — invariant components ∈ 18ℤ (coset-union law), additivity 0/33,588, all-bounded 0/33,588: the walk does not factor at the census bound; any odd coupling law must be a cancellation law (log §5) |
 
 ## §5 Known-false ledger (inherited; do not re-propose)
 
@@ -283,6 +284,11 @@ not distance claims.
   reproduction of the three banked closures; R4 methods closure; F2a
   factorization probe against one banked census. All-validation session;
   no new distance claims expected.
+  **EXECUTED 2026-08-18** — all five items landed, no new distance
+  claims: `bb_lab.tower` + gate green; 3/3 closures reproduced
+  exact-mod-timing; R4 coverage 4/4; burden map 73 rows (frontier is
+  cap-bound ⟹ sharpens S3); F2a measured ABSENT with the 18ℤ
+  obstruction (feeds S2). Log: `A38_s1_validation_log.md`.
 - **S2**: F1 session 1 — idempotent-splitting formalization, F1-Q1/Q2 on
   the three odd controls; verdict on whether the odd calculus exists
   beyond A29.

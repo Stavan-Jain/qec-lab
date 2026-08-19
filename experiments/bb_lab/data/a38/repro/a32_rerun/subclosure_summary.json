@@ -1,0 +1,110 @@
+{
+ "sectorB": {
+  "rungs": 38,
+  "verdicts": {
+   "PASS": 38
+  },
+  "violations": 0
+ },
+ "sectorA14": {
+  "fibers": [
+   {
+    "beta_canon": 4814676879332975583488,
+    "m2_hist": {
+     "2": 1,
+     "3": 2,
+     "4": 2
+    },
+    "lifts": 5,
+    "verdicts": {
+     "PASS": 5
+    },
+    "wall_s": 0.04
+   },
+   {
+    "beta_canon": 4943799584249348628544,
+    "m2_hist": {
+     "1": 1,
+     "4": 8
+    },
+    "lifts": 9,
+    "verdicts": {
+     "PASS": 9
+    },
+    "wall_s": 0.08
+   },
+   {
+    "beta_canon": 305775828501401228544033,
+    "m2_hist": {
+     "1": 1,
+     "4": 12
+    },
+    "lifts": 13,
+    "verdicts": {
+     "PASS": 13
+    },
+    "wall_s": 0.1
+   },
+   {
+    "beta_canon": 308141337362177917468692,
+    "m2_hist": {
+     "4": 4,
+     "3": 2
+    },
+    "lifts": 6,
+    "verdicts": {
+     "PASS": 6
+    },
+    "wall_s": 0.05
+   },
+   {
+    "beta_canon": 314039681616044808493089,
+    "m2_hist": {
+     "4": 5,
+     "1": 1,
+     "3": 1
+    },
+    "lifts": 7,
+    "verdicts": {
+     "PASS": 7
+    },
+    "wall_s": 0.05
+   },
+   {
+    "beta_canon": 2427932866072240738828296,
+    "m2_hist": {
+     "4": 6,
+     "2": 1,
+     "3": 2
+    },
+    "lifts": 9,
+    "verdicts": {
+     "PASS": 9
+    },
+    "wall_s": 0.07
+   }
+  ],
+  "violations": 0,
+  "total_rungs": 49
+ },
+ "covariance": {
+  "translation": [
+   3,
+   1
+  ],
+  "m2_profile": [
+   2
+  ]
+ },
+ "sectorA16": {
+  "fibers": 68,
+  "total_rungs": 246,
+  "lift_m2_hist": {
+   "3": 178,
+   "2": 46,
+   "1": 22
+  },
+  "violations": 0
+ },
+ "wall_s": 2.9
+}

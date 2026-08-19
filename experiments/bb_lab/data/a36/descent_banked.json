@@ -1,0 +1,37 @@
+{
+ "b72_stab_census": {
+  "vectors": 9495,
+  "weight_hist": {
+   "6": 36,
+   "10": 216,
+   "12": 486,
+   "14": 1944,
+   "16": 6813
+  },
+  "orbits": 272,
+  "nodes": 11460947
+ },
+ "b72_cycle_census": {
+  "cycles": 1110,
+  "weight_hist": {
+   "6": 120,
+   "8": 990
+  },
+  "d_B72": 6,
+  "n_min": 84,
+  "nodes": 151229280
+ },
+ "fibers": {
+  "fibers": 272,
+  "lifts": 552,
+  "empty": 36,
+  "empty_rate": 0.132
+ },
+ "equality": {
+  "stab_keys": 469,
+  "seam_keys": 114,
+  "stab_equal": true,
+  "seam_equal": true
+ },
+ "wall_s": 1.0
+}

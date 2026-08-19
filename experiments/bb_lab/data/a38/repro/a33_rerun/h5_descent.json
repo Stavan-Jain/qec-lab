@@ -1,0 +1,69 @@
+{
+ "y2_censuses": {
+  "class12": "0x36",
+  "n12": 105328,
+  "whist12": {
+   "10": 18,
+   "12": 162,
+   "14": 1470,
+   "16": 11910,
+   "18": 91768
+  },
+  "class3": "0xf3",
+  "n3": 81108,
+  "whist3": {
+   "12": 6,
+   "14": 120,
+   "16": 5910,
+   "18": 75072
+  },
+  "nodes": 116230288
+ },
+ "descent": {
+  "n12_fibers": 105328,
+  "n12_vacuous": 95412,
+  "n12_lifts": 38714,
+  "n12_seam": 1680,
+  "equals_direct": true,
+  "elements": 1680,
+  "n3_fibers": 81108,
+  "n3_vacuous": 77226,
+  "n3_lifts": 8460,
+  "n3_elements": 0
+ },
+ "a32_census_edge": {
+  "audit": {
+   "logical<=10": {
+    "empty_in_range": 15,
+    "truly_missed": 15
+   },
+   "wcoset<=16": {
+    "empty_in_range": 0,
+    "truly_missed": 0
+   },
+   "wcoset<=22": {
+    "empty_in_range": 2,
+    "truly_missed": 2
+   }
+  },
+  "logical_missed_all_in_stored_orbits": 15,
+  "wcoset22_patch": [
+   {
+    "species": "wcoset<=22",
+    "w": 22,
+    "orbit_enumerable": true,
+    "flat_lifts": 0,
+    "rungs": []
+   },
+   {
+    "species": "wcoset<=22",
+    "w": 22,
+    "orbit_enumerable": true,
+    "flat_lifts": 0,
+    "rungs": []
+   }
+  ],
+  "verdict": "A32 d=24 assembly UNAFFECTED (per-orbit consumers covered; missed band-22 elements patched directly)"
+ },
+ "wall_s": 75.2
+}

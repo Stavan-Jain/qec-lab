@@ -1,0 +1,1533 @@
+{
+ "towers": [
+  {
+   "name": "bravyi360",
+   "tag": "VAL-A32",
+   "d_top": 24,
+   "levels": [
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 174
+    },
+    {
+     "lm": [
+      30,
+      3
+     ],
+     "n": 180,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 86
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 41
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/7",
+       "1": "0/3",
+       "2": "0/10",
+       "3": "0/10"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "x",
+     "fold_to": 15,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/9",
+       "1": "0/3",
+       "2": "0/10",
+       "3": "0/8"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      17.0,
+      13.5,
+      9.8
+     ],
+     "win_factor_vs_top": 14454220.7
+    }
+   ],
+   "notes": "A32 instance: mixed-axis, top rung (R)-fails, d=24 CLOSED"
+  },
+  {
+   "name": "ibm288Y",
+   "tag": "VAL-A33",
+   "d_top": 20,
+   "levels": [
+    {
+     "lm": [
+      18,
+      8
+     ],
+     "n": 288,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 140
+    },
+    {
+     "lm": [
+      18,
+      4
+     ],
+     "n": 144,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 68
+    },
+    {
+     "lm": [
+      18,
+      2
+     ],
+     "n": 72,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 32
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 4,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 1,
+      "empty_rate": 0.033,
+      "by_cap": {
+       "0": "1/13",
+       "1": "0/5",
+       "2": "0/6",
+       "3": "0/6"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 2,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/2",
+       "1": "0/5",
+       "2": "0/7",
+       "3": "0/16"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 4,
+     "dim_K": 4,
+     "dim_SK": 0,
+     "K_in_S": false,
+     "one_branch": true,
+     "dim_W": 4,
+     "reach_preimage_eq_S": false
+    }
+   ],
+   "costs": [
+    {
+     "W": 18,
+     "mu": 6,
+     "cap_max": 6,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      13.7,
+      10.8,
+      7.8
+     ],
+     "win_factor_vs_top": 862787.9
+    }
+   ],
+   "notes": "A33 instance: same-axis, all-(R), d=20 CLOSED"
+  },
+  {
+   "name": "gross_xx",
+   "tag": "NEW",
+   "d_top": 12,
+   "levels": [
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 14
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/23",
+       "2": "0/7"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "x",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 2,
+      "empty_rate": 0.067,
+      "by_cap": {
+       "0": "2/13",
+       "1": "0/11",
+       "2": "0/6"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 2,
+     "K_in_S": false,
+     "one_branch": false,
+     "dim_W": 4,
+     "reach_preimage_eq_S": false
+    }
+   ],
+   "costs": [
+    {
+     "W": 10,
+     "mu": 6,
+     "cap_max": 2,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      7.0,
+      5.3,
+      3.7
+     ],
+     "win_factor_vs_top": 2119.4
+    }
+   ],
+   "notes": "retrospective target: gross over bb72 over (3,6)"
+  },
+  {
+   "name": "bb288_yxx",
+   "tag": "NEW",
+   "d_top": 18,
+   "levels": [
+    {
+     "lm": [
+      12,
+      12
+     ],
+     "n": 288,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 138
+    },
+    {
+     "lm": [
+      12,
+      6
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 14
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/8",
+       "1": "0/1",
+       "2": "0/14",
+       "3": "0/7"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "x",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6,
+     "fibers": {
+      "tried": 30,
+      "empty": 1,
+      "empty_rate": 0.033,
+      "by_cap": {
+       "0": "1/13",
+       "1": "0/4",
+       "2": "0/11",
+       "3": "0/2"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "x",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/2",
+       "1": "0/9",
+       "2": "0/13",
+       "3": "0/6"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 6,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    },
+    {
+     "i": 1,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 2,
+     "K_in_S": false,
+     "one_branch": false,
+     "dim_W": 4,
+     "reach_preimage_eq_S": false
+    }
+   ],
+   "costs": [
+    {
+     "W": 16,
+     "mu": 6,
+     "cap_max": 5,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      12.5,
+      9.9,
+      7.1,
+      4.4
+     ],
+     "win_factor_vs_top": 131267513.2
+    }
+   ],
+   "notes": "published record [[288,12,18]]; y-quotient IS gross (y^7 = y mod 6) -> 4-level tower to n=36"
+  },
+  {
+   "name": "c37x_360420",
+   "tag": "NEW",
+   "d_top": 20,
+   "levels": [
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 178
+    },
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 15,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/9",
+       "1": "0/9",
+       "3": "0/12"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 2,
+      "empty_rate": 0.067,
+      "by_cap": {
+       "0": "2/5",
+       "1": "0/10",
+       "2": "0/3",
+       "3": "0/12"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 2,
+     "dim_K": 2,
+     "dim_SK": 2,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 18,
+     "mu": 6,
+     "cap_max": 6,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      14.7,
+      11.9,
+      9.0
+     ],
+     "win_factor_vs_top": 479405.1
+    }
+   ],
+   "notes": "A30 doubled code 37a70e02:x = [[360,4,20]]; mixed-axis"
+  },
+  {
+   "name": "e5e50yy_360420",
+   "tag": "NEW",
+   "d_top": 20,
+   "levels": [
+    {
+     "lm": [
+      15,
+      12
+     ],
+     "n": 360,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 178
+    },
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 1,
+      "empty_rate": 0.033,
+      "by_cap": {
+       "0": "1/9",
+       "1": "0/7",
+       "2": "0/1",
+       "3": "0/13"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/4",
+       "1": "0/7",
+       "2": "0/6",
+       "3": "0/13"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 2,
+     "dim_K": 2,
+     "dim_SK": 0,
+     "K_in_S": false,
+     "one_branch": true,
+     "dim_W": 2,
+     "reach_preimage_eq_S": false
+    }
+   ],
+   "costs": [
+    {
+     "W": 18,
+     "mu": 6,
+     "cap_max": 6,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      14.7,
+      11.9,
+      9.0
+     ],
+     "win_factor_vs_top": 479405.1
+    }
+   ],
+   "notes": "A30 doubled code 5e50a976:y = [[360,4,20]]; same-axis"
+  },
+  {
+   "name": "c37xx_720",
+   "tag": "FRONTIER",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      60,
+      6
+     ],
+     "n": 720,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 358
+    },
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 178
+    },
+    {
+     "lm": [
+      15,
+      6
+     ],
+     "n": 180,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 88
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 43
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 30,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/6",
+       "1": "0/11",
+       "2": "0/2",
+       "3": "0/11"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "x",
+     "fold_to": 15,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/12",
+       "1": "0/6",
+       "2": "0/1",
+       "3": "0/11"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 5,
+      "empty_rate": 0.167,
+      "by_cap": {
+       "0": "4/6",
+       "1": "1/12",
+       "2": "0/3",
+       "3": "0/9"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 2,
+     "dim_K": 2,
+     "dim_SK": 0,
+     "K_in_S": false,
+     "one_branch": true,
+     "dim_W": 2,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 1,
+     "dim_S": 2,
+     "dim_K": 2,
+     "dim_SK": 2,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 18,
+     "mu": 6,
+     "cap_max": 6,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      17.4,
+      14.7,
+      11.9,
+      9.0
+     ],
+     "win_factor_vs_top": 271429571.8
+    },
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      20.5,
+      17.1,
+      13.6,
+      10.0
+     ],
+     "win_factor_vs_top": 25520167558.5
+    },
+    {
+     "W": 30,
+     "mu": 6,
+     "cap_max": 12,
+     "verdict": "AMBER",
+     "log10_nodes_per_level": [
+      26.1,
+      21.5,
+      16.7,
+      11.6
+     ],
+     "win_factor_vs_top": 293750851157591.4
+    },
+    {
+     "W": 38,
+     "mu": 6,
+     "cap_max": 16,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      31.3,
+      25.3,
+      19.2,
+      12.6
+     ],
+     "win_factor_vs_top": 4.755213451348219e+18
+    }
+   ],
+   "notes": "rung-2 re-double [[720,4,?]]; freeze-vs-double open (A14 SS13 / A33 SS6 ranking #1); W=18 certifies d=20 if frozen, W=38 = full doubling budget"
+  },
+  {
+   "name": "a8_336",
+   "tag": "NEW",
+   "d_top": 12,
+   "levels": [
+    {
+     "lm": [
+      12,
+      14
+     ],
+     "n": 336,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 162
+    },
+    {
+     "lm": [
+      6,
+      14
+     ],
+     "n": 168,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 78
+    },
+    {
+     "lm": [
+      6,
+      7
+     ],
+     "n": 84,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 36
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/20",
+       "2": "0/10"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 7,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/16",
+       "1": "0/3",
+       "2": "0/11"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 6,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 10,
+     "mu": 6,
+     "cap_max": 2,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      9.0,
+      7.4,
+      5.7
+     ],
+     "win_factor_vs_top": 1822.7
+    }
+   ],
+   "notes": "A8/A29 [[336,12,12]] over its [[168,12,6]] base, then y"
+  },
+  {
+   "name": "bravyi756",
+   "tag": "FRONTIER",
+   "d_top": 34,
+   "levels": [
+    {
+     "lm": [
+      21,
+      18
+     ],
+     "n": 756,
+     "k": 16,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 370
+    },
+    {
+     "lm": [
+      21,
+      9
+     ],
+     "n": 378,
+     "k": 16,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 181
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 9,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 16,
+     "k_base": 16,
+     "R_holds": true,
+     "rank_p": 8,
+     "rank_tau": 8,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 8
+    }
+   ],
+   "pairs": [],
+   "costs": [
+    {
+     "W": 32,
+     "mu": 6,
+     "cap_max": 13,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      27.7,
+      22.6
+     ],
+     "win_factor_vs_top": 119593.3
+    }
+   ],
+   "notes": "[[756,16,<=34]]: ONE deck only (v2(18)=1, 21 odd); bottom n=378"
+  },
+  {
+   "name": "cover300",
+   "tag": "DEGENERATE-1LVL",
+   "d_top": 16,
+   "levels": [
+    {
+     "lm": [
+      5,
+      30
+     ],
+     "n": 300,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 146
+    },
+    {
+     "lm": [
+      5,
+      15
+     ],
+     "n": 150,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 71
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 15,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/4",
+       "1": "0/22",
+       "2": "0/4"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [],
+   "costs": [
+    {
+     "W": 14,
+     "mu": 6,
+     "cap_max": 4,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      11.4,
+      9.2
+     ],
+     "win_factor_vs_top": 162.8
+    }
+   ],
+   "notes": "A15's [[300,8,16]]: v2(30)=1 -> one-level = the A15/A30 architecture (already closed there)"
+  },
+  {
+   "name": "pair72",
+   "tag": "NEW-TINY",
+   "d_top": 8,
+   "levels": [
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 34
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 16
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 4,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 7
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": false,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/23",
+       "3": "0/7"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 4,
+     "k_base": 4,
+     "R_holds": true,
+     "rank_p": 2,
+     "rank_tau": 2,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 3,
+      "empty_rate": 0.1,
+      "by_cap": {
+       "0": "3/23",
+       "3": "0/7"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 2,
+     "dim_K": 2,
+     "dim_SK": 2,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 6,
+     "mu": 6,
+     "cap_max": 0,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      3.9,
+      2.9,
+      2.0
+     ],
+     "win_factor_vs_top": 78.8
+    }
+   ],
+   "notes": "[[72,4,8]] over [[36,4,4]] over (3,3); smallest 2-level"
+  }
+ ],
+ "no_deck": [
+  {
+   "name": "bb90",
+   "lm": [
+    15,
+    3
+   ],
+   "note": "[[90,8,10]] -- A19 survey: 'not a Z2-cover at all'"
+  },
+  {
+   "name": "bb98",
+   "lm": [
+    7,
+    7
+   ],
+   "note": "[[98,6,12]] (A16 host)"
+  },
+  {
+   "name": "f2a6_base",
+   "lm": [
+    5,
+    15
+   ],
+   "note": "[[150,8,8]] -- the A24 odd-|G| lane"
+  }
+ ],
+ "anchors": {
+  "a32_wcoset22": {
+   "formula": 19047376314.0,
+   "banked": 19000000000.0,
+   "ratio": 1.0
+  },
+  "a32_stab22": {
+   "formula": 6349125438.0,
+   "banked": 6300000000.0,
+   "ratio": 1.01
+  },
+  "a33_h5": {
+   "formula": 198733383306.0,
+   "banked": 66200000000.0,
+   "ratio": 3.0
+  },
+  "sectorC_1416_refiber": {
+   "fibers": 397,
+   "lifts": 4132,
+   "empty": 0,
+   "m2_hist": {
+    "0": 416,
+    "1": 554,
+    "2": 561,
+    "3": 1639,
+    "4": 962
+   }
+  },
+  "sectorC_heavy_empty_rates_banked": {
+   "18": {
+    "empty": 319,
+    "fibers": 1733,
+    "rate": 0.184
+   },
+   "20": {
+    "empty": 5635,
+    "fibers": 10602,
+    "rate": 0.532
+   },
+   "22": {
+    "empty": 55555,
+    "fibers": 64619,
+    "rate": 0.86
+   }
+  }
+ },
+ "bb288_bottom_demo": {
+  "d_exact": 4,
+  "stab_whist_le16": {
+   "6": 18,
+   "8": 45,
+   "10": 108,
+   "12": 639,
+   "14": 1422,
+   "16": 3411
+  },
+  "min_classes": 27,
+  "min_classes_outside_imp": 18,
+  "per_class_minima_complete": true
+ },
+ "parity_demo": {
+  "lm": [
+   6,
+   6
+  ],
+  "A": "1 + x + y + x*y",
+  "B": "y^3 + x + x^2",
+  "k": 4,
+  "odd_cycle_weight": 7
+ },
+ "wall_s": 4.7
+}

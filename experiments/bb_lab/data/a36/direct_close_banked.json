@@ -1,0 +1,118 @@
+{
+ "bz_pass": {
+  "kappa": 66,
+  "W": 16,
+  "r_pair": [
+   8,
+   7
+  ],
+  "nodes": 7502279774,
+  "offsets": 6
+ },
+ "stab_census": {
+  "vectors": 33588,
+  "weight_hist": {
+   "6": 72,
+   "10": 432,
+   "12": 2268,
+   "14": 3888,
+   "16": 26928
+  },
+  "orbits": 469,
+  "orbit_weight_hist": {
+   "6": 1,
+   "10": 6,
+   "12": 33,
+   "14": 54,
+   "16": 375
+  }
+ },
+ "seam_census": {
+  "elements": 395,
+  "weight_hist": {
+   "12": 3,
+   "14": 18,
+   "16": 374
+  },
+  "per_orbit": {
+   "R0": 6,
+   "R1": 18,
+   "R2": 70,
+   "R3": 199,
+   "R4": 102
+  }
+ },
+ "dangerous_rungs": {
+  "rungs": 469,
+  "verdicts": {
+   "PASS": 469
+  },
+  "lanes": {
+   "restricted<=5": 1,
+   "restricted<=3": 6,
+   "restricted<=2": 33,
+   "restricted<=1": 54,
+   "restricted<=0": 375
+  },
+  "wall_s": 2.9
+ },
+ "seam_rungs": {
+  "rungs": 395,
+  "verdicts": {
+   "PASS": 395
+  },
+  "lanes": {
+   "restricted<=0": 374,
+   "restricted<=1": 18,
+   "restricted<=2": 3
+  },
+  "wall_s": 0.3
+ },
+ "witness": {
+  "weight": 18,
+  "sector": "seam",
+  "shadow_w": 12,
+  "m1": 3,
+  "shadow_class": "0x40",
+  "beta_w": 0,
+  "m2": 6,
+  "beta_is_stab": true,
+  "b_support": [
+   0,
+   6,
+   12,
+   15,
+   18,
+   27,
+   36,
+   42,
+   48,
+   51,
+   54,
+   63
+  ],
+  "v_support": [
+   0,
+   3,
+   9,
+   12,
+   30,
+   33,
+   42,
+   51,
+   72,
+   84,
+   96,
+   105,
+   108,
+   120,
+   126,
+   129,
+   132,
+   138
+  ],
+  "finds_total": 4,
+  "finds_min": 18
+ },
+ "wall_s": 31.4
+}
