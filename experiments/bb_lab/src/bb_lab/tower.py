@@ -57,6 +57,7 @@ __all__ = [
     "support_str", "h1_map", "translation_mat", "rep_for",
     "translation_action", "translation_perms", "perm_for", "canon_key",
     "batch_keys", "orbits", "census_nodes", "enumerate_lifts",
+    "enumerate_lifts_deep", "RungCell",
     "liftable_codim", "fiber_sample", "screen_rung", "screen_tower",
     "gate_verdict", "tower_inventory", "A35_DOCKET", "A35_NO_DECK",
     "validate_banked",
@@ -689,6 +690,484 @@ def enumerate_lifts(deck: AxisDeck, beta: np.ndarray, cap: int,
             if prev is None or m2 < prev:
                 out[canon] = m2
     return out
+
+
+def enumerate_lifts_deep(deck: AxisDeck, beta: np.ndarray, cap: int,
+                         kernel_cap: int = 20) -> dict[int, int]:
+    """All v0 with E v0 = RHS beta, |v0 off supp(beta)| <= cap (cap <= 8).
+
+    The deep fiber lane: ordered-split MITM — X (sorted, size s) = low
+    part (size s//2) + high part (size (s+1)//2), lsb(high) > msb(low).
+    Complete by the exact-off-support subset-sum argument (see
+    :func:`enumerate_lifts`).  Verbatim library port of
+    ``a32_deep_fibers.enumerate_lifts_deep`` (28 banked deep fibers =
+    the regression battery; at caps <= 4 it must equal
+    :func:`enumerate_lifts` exactly — both asserted by the S2 gate)."""
+    assert cap <= 8
+    n = deck.base.n
+    E_cols = [v2i(deck.E[:, j]) for j in range(n)]
+    rhs = (deck.RHS @ beta) % 2
+    rhs_i = v2i(rhs)
+    bsupp = [int(j) for j in np.nonzero(beta)[0]]
+    bmask = v2i(beta)
+    bcols = [E_cols[j] for j in bsupp]
+    bb, bp = rref_ints(bcols)
+    rhs_res = reduce_int(rhs_i, bb, bp)
+    offb = [j for j in range(n) if not (bmask >> j) & 1]
+    red = {j: reduce_int(E_cols[j], bb, bp) for j in offb}
+    half = (cap + 1) // 2
+    # subsets by (size, reduced sum) -> list of index-masks
+    by_size: list[dict[int, list[int]]] = [dict() for _ in range(half + 1)]
+    by_size[0][0] = [0]
+    for s in range(1, half + 1):
+        for comb in combinations(offb, s):
+            m = 0
+            r = 0
+            for j in comb:
+                m |= 1 << j
+                r ^= red[j]
+            by_size[s].setdefault(r, []).append(m)
+    hits_X: set[int] = set()
+    for s in range(cap + 1):
+        a, b = (s + 1) // 2, s // 2
+        for asum, amasks in by_size[a].items():
+            bucket = by_size[b].get(rhs_res ^ asum)
+            if not bucket:
+                continue
+            for amask in amasks:
+                if a:
+                    alsb = (amask & -amask).bit_length() - 1
+                for bmask2 in bucket:
+                    if b == 0:
+                        if a == s:  # X = high part only
+                            hits_X.add(amask)
+                        continue
+                    if bmask2.bit_length() - 1 < alsb \
+                            and not (amask & bmask2):
+                        hits_X.add(amask | bmask2)
+    # per-X kernel enumeration (as in enumerate_lifts)
+    out: dict[int, int] = {}
+    for X in sorted(hits_X):
+        cols = bsupp + [j for j in range(n) if (X >> j) & 1]
+        b3: list[int] = []
+        p3: list[int] = []
+        h3: list[int] = []
+        deps: list[int] = []
+        for ci, j in enumerate(cols):
+            cur, h = E_cols[j], 1 << ci
+            for bb3, pp3, hh in zip(b3, p3, h3):
+                if (cur >> pp3) & 1:
+                    cur ^= bb3
+                    h ^= hh
+            if cur:
+                b3.append(cur)
+                p3.append((cur & -cur).bit_length() - 1)
+                h3.append(h)
+            else:
+                deps.append(h)
+        cur, hsel = rhs_i, 0
+        for bb3, pp3, hh in zip(b3, p3, h3):
+            if (cur >> pp3) & 1:
+                cur ^= bb3
+                hsel ^= hh
+        if cur:
+            continue
+        assert len(deps) <= kernel_cap, f"kernel 2^{len(deps)} at X={X:x}"
+        for kt in range(1 << len(deps)):
+            sel = hsel
+            for jj in range(len(deps)):
+                if (kt >> jj) & 1:
+                    sel ^= deps[jj]
+            v0_int = 0
+            for ci, j in enumerate(cols):
+                if (sel >> ci) & 1:
+                    v0_int |= 1 << j
+            m2 = bin(v0_int & ~bmask).count("1")
+            if m2 > cap:
+                continue
+            v0 = i2v(v0_int, n)
+            assert not (((deck.E @ v0) + rhs) % 2).any()
+            canon = min(v0_int, v0_int ^ bmask)
+            prev = out.get(canon)
+            if prev is None or m2 < prev:
+                out[canon] = m2
+    return out
+
+
+# ------------------------------------------------------------- rung engine
+class RungCell:
+    """The per-shadow rung engine for one deck cell base -> cover: the
+    a30/a33 ``YRungCell`` architecture, promoted (rank-generic — it
+    consumes only the :class:`TowerCode`/:class:`AxisDeck` interface).
+
+    Two rung species per cell:
+
+    ``rung(b, M)``       b a BASE STABILIZER (dangerous sector): PASS iff
+                         no NONTRIVIAL cover logical v with p(v) = b has
+                         overflow < M (so |v| = |b| + 2*overflow >=
+                         |b| + 2M).  Full sector dispatch (ker E / im S
+                         = H1(base), 2^k sectors; trivial excluded).
+                         Lanes: vacuous / all-trivial / restricted MITM
+                         (M-1 <= 8; sizes <= 6 verbatim a33, 7-8 via the
+                         a32 ordered-split) / coset-BZ.
+
+    ``seam_rung(w, M)``  w a coset element with NONZERO H1 class (safe
+                         sector): every cover cycle over w is
+                         automatically a nontrivial logical (stabilizer
+                         transport), so the rung is PURE FEASIBILITY —
+                         PASS iff no cover cycle over w has overflow
+                         < M.  Restricted lanes only.
+
+    Completeness of the restricted lane is the exact-off-support
+    subset-sum argument (A32 SS4).  The BZ lane (M-1 > 8) builds its
+    disjoint info-set pair and C kernel lazily via :mod:`bb_lab.cosetbz`
+    (base.n <= 192 there).  Falsify-first battery (the S2 gate): the
+    banked A33 1,655 dangerous + 1,680 seam verdicts, the banked A36
+    469 dangerous + 395 seam verdicts, the A32 deep-fiber dispatch, and
+    the a33 planted BZ-lane control — all must reproduce exactly."""
+
+    def __init__(self, name: str, base: TowerCode, cover: TowerCode,
+                 deck: AxisDeck):
+        assert deck.base is base and deck.cover is cover
+        self.name, self.base, self.cover, self.deck = name, base, cover, deck
+        self.n, self.nc = base.n, cover.n
+        self.E = deck.E                    # (cover.ng x base.n)
+        self.RHS_OP = deck.RHS
+        self.S_basis, self.S_piv = base.rsHX_b, base.rsHX_p
+        self.Sc_basis, self.Sc_piv = cover.rsHX_b, cover.rsHX_p
+        self.E_rows = [v2i(self.E[i]) for i in range(self.E.shape[0])]
+        self.E_cols = [v2i(self.E[:, j]) for j in range(self.n)]
+        # sectors = ker E / im S  (ker E = ker HZ(base): tau z cycle <=> z)
+        kerE = [v2i(kv) for kv in base.kerHZ]
+        sec, aug_b, aug_p = [], list(self.S_basis), list(self.S_piv)
+        for kv in kerE:
+            x = reduce_int(kv, aug_b, aug_p)
+            if x:
+                aug_b.append(x)
+                aug_p.append((x & -x).bit_length() - 1)
+                sec.append(kv)
+        self.sector_basis = sec
+        M01 = (deck.EMB[0] + deck.EMB[1]) % 2
+        self.sector_chain_shift = [
+            v2i((M01 @ i2v(t, self.n)) % 2) for t in self.sector_basis]
+        # linear-reduction trick: reduce_int is linear; precompute the
+        # reductions of the sector chain shifts (V1-validated per gate)
+        self.red_shift = [reduce_int(s, self.Sc_basis, self.Sc_piv)
+                          for s in self.sector_chain_shift]
+        self._bz = None                    # lazy BZ-lane state
+
+    # ------------------------------------------------------------ solving
+    def solve_E(self, rhs: np.ndarray):
+        n = self.n
+        basis, piv = [], []
+        for i in range(len(self.E_rows)):
+            cur = self.E_rows[i] | (int(rhs[i]) << n)
+            for b, p in zip(basis, piv):
+                if (cur >> p) & 1:
+                    cur ^= b
+            low = cur & ((1 << n) - 1)
+            if low:
+                p = (low & -low).bit_length() - 1
+                for k in range(len(basis)):
+                    if (basis[k] >> p) & 1:
+                        basis[k] ^= cur
+                basis.append(cur)
+                piv.append(p)
+            elif cur:
+                return None
+        x = np.zeros(n, dtype=np.uint8)
+        for b, p in zip(basis, piv):
+            x[p] = (b >> n) & 1
+        assert not ((self.E @ x + rhs) % 2).any()
+        return x
+
+    def chain_int(self, v0_int: int, b_vec: np.ndarray) -> int:
+        v0 = i2v(v0_int, self.n)
+        ch = (self.deck.EMB[0] @ v0
+              + self.deck.EMB[1] @ ((v0 + b_vec) % 2)) % 2
+        return v2i(ch)
+
+    # -------------------------------------------- restricted-lane MITM core
+    def _hits_X(self, b_vec: np.ndarray, rhs: np.ndarray, cap: int):
+        """All off-support sets X, |X| <= cap <= 8, with
+        XOR red[j] = rhs_res (the exact-subset-sum lane).  Sizes <= 6:
+        verbatim a33 joins; sizes 7-8: the a32 ordered-split."""
+        assert cap <= 8
+        n = self.n
+        bmask = v2i(b_vec)
+        bcols = [self.E_cols[j] for j in np.nonzero(b_vec)[0]]
+        bb, bp = rref_ints(bcols)
+        rhs_res = reduce_int(v2i(rhs), bb, bp)
+        offb = [j for j in range(n) if not (bmask >> j) & 1]
+        red = {j: reduce_int(self.E_cols[j], bb, bp) for j in offb}
+        by_val: dict[int, list[int]] = {}
+        for j in offb:
+            by_val.setdefault(red[j], []).append(j)
+        hits: set[tuple[int, ...]] = set()
+        if rhs_res == 0:
+            hits.add(())
+        if cap >= 1:
+            for j in by_val.get(rhs_res, []):
+                hits.add((j,))
+        if cap >= 2:
+            for j1 in offb:
+                for j2 in by_val.get(rhs_res ^ red[j1], []):
+                    if j2 > j1:
+                        hits.add((j1, j2))
+        if cap >= 3:
+            for j1, j2 in combinations(offb, 2):
+                for j3 in by_val.get(rhs_res ^ red[j1] ^ red[j2], []):
+                    if j3 > j2:
+                        hits.add((j1, j2, j3))
+        pair_sum: dict[int, list[tuple[int, int]]] = {}
+        if cap >= 4:
+            for j1, j2 in combinations(offb, 2):
+                pair_sum.setdefault(red[j1] ^ red[j2], []).append((j1, j2))
+            for val, prs in pair_sum.items():
+                for j3, j4 in pair_sum.get(rhs_res ^ val, []):
+                    for j1, j2 in prs:
+                        if j2 < j3:
+                            hits.add((j1, j2, j3, j4))
+        if cap >= 5:
+            for j1, j2, j3 in combinations(offb, 3):
+                tgt = rhs_res ^ red[j1] ^ red[j2] ^ red[j3]
+                for j4, j5 in pair_sum.get(tgt, []):
+                    if j4 > j3:
+                        hits.add((j1, j2, j3, j4, j5))
+        if cap >= 6:
+            tri_sum: dict[int, list[tuple[int, int, int]]] = {}
+            for tri in combinations(offb, 3):
+                tri_sum.setdefault(
+                    red[tri[0]] ^ red[tri[1]] ^ red[tri[2]], []).append(tri)
+            for t1 in combinations(offb, 3):
+                tgt = rhs_res ^ red[t1[0]] ^ red[t1[1]] ^ red[t1[2]]
+                for t2 in tri_sum.get(tgt, []):
+                    if t2[0] > t1[2]:
+                        hits.add(t1 + t2)
+        if cap >= 7:
+            # a32 ordered-split for sizes 7..cap: X = low (s//2) + high
+            # ((s+1)//2), lsb(high) > msb(low) — mask-based, exactly as
+            # enumerate_lifts_deep
+            half = (cap + 1) // 2
+            by_size: list[dict[int, list[int]]] = \
+                [dict() for _ in range(half + 1)]
+            by_size[0][0] = [0]
+            for s in range(1, half + 1):
+                for comb in combinations(offb, s):
+                    m = 0
+                    r = 0
+                    for j in comb:
+                        m |= 1 << j
+                        r ^= red[j]
+                    by_size[s].setdefault(r, []).append(m)
+            deep_hits: set[int] = set()
+            for s in range(7, cap + 1):
+                a, b = (s + 1) // 2, s // 2
+                for asum, amasks in by_size[a].items():
+                    bucket = by_size[b].get(rhs_res ^ asum)
+                    if not bucket:
+                        continue
+                    for amask in amasks:
+                        alsb = (amask & -amask).bit_length() - 1
+                        for bmask2 in bucket:
+                            if bmask2.bit_length() - 1 < alsb \
+                                    and not (amask & bmask2):
+                                deep_hits.add(amask | bmask2)
+            for m in deep_hits:
+                tup = []
+                x = m
+                while x:
+                    j = (x & -x).bit_length() - 1
+                    tup.append(j)
+                    x &= x - 1
+                hits.add(tuple(tup))
+        return hits
+
+    def _expand_X(self, b_vec: np.ndarray, X: tuple[int, ...],
+                  rhs_i: int, kernel_cap: int = 16):
+        """All solutions v0 with supp(v0) <= supp(b) u X (may be none)."""
+        cols = [int(j) for j in np.nonzero(b_vec)[0]] + list(X)
+        b3: list[int] = []
+        p3: list[int] = []
+        h3: list[int] = []
+        deps: list[int] = []
+        for ci, j in enumerate(cols):
+            cur, h = self.E_cols[j], 1 << ci
+            for bb3, pp3, hh in zip(b3, p3, h3):
+                if (cur >> pp3) & 1:
+                    cur ^= bb3
+                    h ^= hh
+            if cur:
+                b3.append(cur)
+                p3.append((cur & -cur).bit_length() - 1)
+                h3.append(h)
+            else:
+                deps.append(h)
+        cur, hsel = rhs_i, 0
+        for bb3, pp3, hh in zip(b3, p3, h3):
+            if (cur >> pp3) & 1:
+                cur ^= bb3
+                hsel ^= hh
+        if cur:
+            return
+        assert len(deps) <= kernel_cap, f"kernel 2^{len(deps)} at X={X}"
+        for kt in range(1 << len(deps)):
+            sel = hsel
+            for jj in range(len(deps)):
+                if (kt >> jj) & 1:
+                    sel ^= deps[jj]
+            v0_int = 0
+            for ci, j in enumerate(cols):
+                if (sel >> ci) & 1:
+                    v0_int |= 1 << int(j)
+            yield v0_int
+
+    # -------------------------------------------------------- the BZ lane
+    def _bz_state(self):
+        from . import cosetbz
+        if self._bz is None:
+            assert self.n <= cosetbz.NMAX, \
+                f"BZ lane needs base.n <= {cosetbz.NMAX}, got {self.n}"
+            I1, G1, I2, G2, kappa = cosetbz.disjoint_info_sets(self.base.HX)
+            self._bz = {"I1": I1, "G1": G1, "I2": I2, "G2": G2,
+                        "kappa": kappa, "binp": cosetbz.build_kernel()}
+        return self._bz
+
+    @property
+    def kappa(self) -> int:
+        return self._bz_state()["kappa"]
+
+    # ------------------------------------------------------ dangerous rung
+    def rung(self, b_vec: np.ndarray, M: int, deadline: float,
+             validate_sectors: bool = False,
+             full_viols: bool = False) -> dict:
+        n = self.n
+        wb = int(b_vec.sum())
+        rhs = (self.RHS_OP @ b_vec) % 2
+        v0p = self.solve_E(rhs)
+        if v0p is None:
+            return {"verdict": "PASS", "lane": "vacuous", "w_b": wb, "M": M}
+        v0p_i = v2i(v0p)
+        base_chain = self.chain_int(v0p_i, b_vec)
+        red_base = reduce_int(base_chain, self.Sc_basis, self.Sc_piv)
+        r = len(self.sector_basis)
+        nontriv = []
+        for t in range(1 << r):
+            acc = red_base
+            ti = 0
+            for j in range(r):
+                if (t >> j) & 1:
+                    acc ^= self.red_shift[j]
+                    ti ^= self.sector_basis[j]
+            if validate_sectors:  # V1: the linear trick == direct reduce
+                ch = base_chain
+                for j in range(r):
+                    if (t >> j) & 1:
+                        ch ^= self.sector_chain_shift[j]
+                assert (reduce_int(ch, self.Sc_basis, self.Sc_piv) != 0) \
+                    == (acc != 0), "linear sector scan mismatch"
+            if acc != 0:
+                nontriv.append(v0p_i ^ ti)
+        if not nontriv:
+            return {"verdict": "PASS", "lane": "all-trivial", "w_b": wb,
+                    "M": M}
+        bmask = v2i(b_vec)
+        rhs_i = v2i(rhs)
+        viols = []
+
+        def check(v0_int: int):
+            ov = bin(v0_int & ~bmask).count("1")
+            if ov > M - 1:
+                return
+            v0v = i2v(v0_int, n)
+            assert not ((self.E @ v0v + rhs) % 2).any()
+            ch = self.chain_int(v0_int, b_vec)
+            if reduce_int(ch, self.Sc_basis, self.Sc_piv) == 0:
+                return
+            wt = bin(ch).count("1")
+            assert wt == wb + 2 * ov, "slice identity violated"
+            viols.append({"overflow": ov, "weight": wt,
+                          "v0_hex": f"{v0_int:x}"})
+
+        if M - 1 <= 8:
+            lane = f"restricted<={M-1}"
+            for X in sorted(self._hits_X(b_vec, rhs, M - 1)):
+                for v0_int in self._expand_X(b_vec, X, rhs_i):
+                    check(v0_int)
+        else:
+            from .cosetbz import coset_base, run_window, unpack3
+            lane = "bz"
+            bz = self._bz_state()
+            Wp = M - 1 + wb
+            r1 = Wp // 2
+            r2 = max(Wp - r1 - 1, 0)
+            if len(nontriv) > 256:
+                return {"verdict": "ABORT", "lane": lane, "w_b": wb, "M": M,
+                        "reason": f"{len(nontriv)} offsets > 256"}
+            bases_v = [i2v(v, n) for v in nontriv]
+            for wi, (window, Gs) in enumerate(
+                    [(bz["I1"], bz["G1"]), (bz["I2"], bz["G2"])]):
+                rr = r1 if wi == 0 else r2
+                bases = [coset_base(Gs, window, bv) for bv in bases_v]
+                for bv in bases:
+                    check(v2i(bv))
+                res = run_window(bz["binp"],
+                                 f"rungcell_{self.name}_w{wi}",
+                                 Gs, bases, rr, Wp, deadline)
+                for j, hx in res.pop("hit_rows"):
+                    check(v2i(unpack3(hx, n)))
+        if viols:
+            ov_hist: dict[int, int] = {}
+            for x in viols:
+                ov_hist[x["overflow"]] = ov_hist.get(x["overflow"], 0) + 1
+            return {"verdict": "VIOLATION", "lane": lane, "w_b": wb, "M": M,
+                    "violations": viols if full_viols else viols[:5],
+                    "n_viol": len(viols),
+                    "min_overflow": min(ov_hist),
+                    "ov_hist": {str(k): v
+                                for k, v in sorted(ov_hist.items())}}
+        return {"verdict": "PASS", "lane": lane, "w_b": wb, "M": M,
+                "sectors_nontrivial": len(nontriv)}
+
+    # ----------------------------------------------------------- seam rung
+    def seam_rung(self, w_vec: np.ndarray, M: int) -> dict:
+        """Feasibility rung over a nonzero-class coset element w."""
+        assert M - 1 <= 8, "seam rung implemented for restricted lanes only"
+        n = self.n
+        ww = int(w_vec.sum())
+        rhs = (self.RHS_OP @ w_vec) % 2
+        v0p = self.solve_E(rhs)
+        if v0p is None:
+            return {"verdict": "PASS", "lane": "vacuous", "w_w": ww, "M": M}
+        wmask = v2i(w_vec)
+        rhs_i = v2i(rhs)
+        viols = []
+        for X in sorted(self._hits_X(w_vec, rhs, M - 1)):
+            for v0_int in self._expand_X(w_vec, X, rhs_i):
+                ov = bin(v0_int & ~wmask).count("1")
+                if ov > M - 1:
+                    continue
+                v0v = i2v(v0_int, n)
+                assert not ((self.E @ v0v + rhs) % 2).any()
+                ch = self.chain_int(v0_int, w_vec)
+                # stabilizer transport: w non-stab => chain non-stab
+                assert reduce_int(ch, self.Sc_basis, self.Sc_piv) != 0, \
+                    "cycle over non-stab w reduced to a cover stab?!"
+                wt = bin(ch).count("1")
+                assert wt == ww + 2 * ov
+                viols.append({"overflow": ov, "weight": wt,
+                              "v0_hex": f"{v0_int:x}"})
+        if viols:
+            ov_hist: dict[int, int] = {}
+            for x in viols:
+                ov_hist[x["overflow"]] = ov_hist.get(x["overflow"], 0) + 1
+            return {"verdict": "VIOLATION", "lane": f"restricted<={M-1}",
+                    "w_w": ww, "M": M, "violations": viols[:5],
+                    "n_viol": len(viols), "min_overflow": min(ov_hist),
+                    "ov_hist": {str(k): v
+                                for k, v in sorted(ov_hist.items())}}
+        return {"verdict": "PASS", "lane": f"restricted<={M-1}", "w_w": ww,
+                "M": M}
 
 
 # ------------------------------------------------------------- rung screen

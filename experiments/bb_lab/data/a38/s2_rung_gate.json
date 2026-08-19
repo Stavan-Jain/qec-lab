@@ -1,0 +1,102 @@
+{
+ "A1": {
+  "fibers": 397,
+  "equal": true
+ },
+ "A2": {
+  "fibers": 28,
+  "lifts": 2371,
+  "rungs": 2030,
+  "violations": 0,
+  "flat22_rungs": 895,
+  "banked_checked": 341,
+  "light_logical_hits": 0,
+  "verdicts": {
+   "PASS": 2030
+  },
+  "lift_hist": {
+   "6": 1,
+   "22": 1768,
+   "20": 464,
+   "16": 21,
+   "18": 67,
+   "10": 6,
+   "12": 41,
+   "14": 3
+  }
+ },
+ "B1": {
+  "rungs": 1655,
+  "exact_match": true
+ },
+ "B2": {
+  "rungs": 1680,
+  "exact_match": true
+ },
+ "B3": {
+  "verdict": "PASS",
+  "lane": "restricted<=6",
+  "w_b": 6,
+  "M": 7,
+  "sectors_nontrivial": 240
+ },
+ "B4": {
+  "planted": {
+   "pv_weight": 26,
+   "overflow": 10
+  },
+  "M9_deep": {
+   "verdict": "VIOLATION",
+   "lane": "restricted<=8",
+   "ov_hist": {
+    "8": 8
+   },
+   "secs": 32.0
+  },
+  "M11_bz": {
+   "verdict": "VIOLATION",
+   "n_viol": 540,
+   "min_overflow": 8,
+   "ov_hist": {
+    "8": 15,
+    "9": 110,
+    "10": 415
+   },
+   "banked_min_overflow_10": "truncation artifact (violations[:5])",
+   "secs": 1472.9
+  },
+  "lane_agreement_ov_le_8": [
+   "22000040008800100100000000000000143",
+   "30020000400088000421000000000000000",
+   "400088001011000000000000001420",
+   "402000040008800101000000000000080142",
+   "410020000400088001521000000000080001",
+   "420000400088001010100000000000081421",
+   "420800001000220041840000000000000040",
+   "800001000220040940000000000080041"
+  ]
+ },
+ "C": {
+  "bz_nodes": 7502279774,
+  "stab": 33588,
+  "orbits": 469,
+  "seam": 395,
+  "dangerous_pass": 469,
+  "seam_pass": 395,
+  "lanes_dangerous": {
+   "restricted<=5": 1,
+   "restricted<=3": 6,
+   "restricted<=2": 33,
+   "restricted<=1": 54,
+   "restricted<=0": 375
+  },
+  "lanes_seam": {
+   "restricted<=0": 374,
+   "restricted<=1": 18,
+   "restricted<=2": 3
+  },
+  "witness": "re-verified",
+  "exact_match": true
+ },
+ "wall_s": 1570.5
+}

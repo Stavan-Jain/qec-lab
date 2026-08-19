@@ -1,0 +1,104 @@
+{
+ "gb_orbit_battery": {
+  "6": {
+   "orbit_fibers": 1,
+   "empty": 0,
+   "cap": 8,
+   "bound_hist": {
+    "0": 1
+   },
+   "certified_empty": 0,
+   "wt_rhs_max": 0,
+   "min_m2_hist": {
+    "0": 1
+   },
+   "certified_rate_of_empties": null
+  },
+  "10": {
+   "orbit_fibers": 6,
+   "empty": 0,
+   "cap": 6,
+   "bound_hist": {
+    "0": 6
+   },
+   "certified_empty": 0,
+   "wt_rhs_max": 0,
+   "min_m2_hist": {
+    "0": 6
+   },
+   "certified_rate_of_empties": null
+  },
+  "12": {
+   "orbit_fibers": 21,
+   "empty": 0,
+   "cap": 5,
+   "bound_hist": {
+    "0": 19,
+    "1": 2
+   },
+   "certified_empty": 0,
+   "wt_rhs_max": 12,
+   "min_m2_hist": {
+    "0": 19,
+    "3": 1,
+    "1": 1
+   },
+   "certified_rate_of_empties": null
+  },
+  "14": {
+   "orbit_fibers": 64,
+   "empty": 0,
+   "cap": 4,
+   "bound_hist": {
+    "1": 11,
+    "0": 53
+   },
+   "certified_empty": 0,
+   "wt_rhs_max": 14,
+   "min_m2_hist": {
+    "1": 1,
+    "0": 53,
+    "3": 8,
+    "2": 2
+   },
+   "certified_rate_of_empties": null
+  },
+  "16": {
+   "orbit_fibers": 333,
+   "empty": 0,
+   "cap": 3,
+   "bound_hist": {
+    "0": 216,
+    "1": 117
+   },
+   "certified_empty": 0,
+   "wt_rhs_max": 12,
+   "min_m2_hist": {
+    "0": 216,
+    "2": 24,
+    "3": 54,
+    "1": 39
+   },
+   "certified_rate_of_empties": null
+  }
+ },
+ "total": {
+  "empties": 0,
+  "certified": 0
+ },
+ "banked_heavy_context": {
+  "18": {
+   "empty": 319,
+   "fibers": 1733
+  },
+  "20": {
+   "empty": 5635,
+   "fibers": 10602
+  },
+  "22": {
+   "empty": 55555,
+   "fibers": 64619
+  }
+ },
+ "wall_s": 7.9
+}
