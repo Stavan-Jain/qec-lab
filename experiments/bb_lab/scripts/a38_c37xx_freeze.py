@@ -61,8 +61,16 @@ d(L2) = 10 are consumed at A30 certificate tier and TRIPWIRED in-run
 (any nontrivial L1-cycle <= 18 or L2-cycle < 10 found anywhere
 contradicts the bank => hard assert).
 
-Usage: python a38_c37xx_freeze.py 18   (Q1)
-       python a38_c37xx_freeze.py 22   (Q2)
+Usage: python a38_c37xx_freeze.py 18                  (Q1, one shot)
+       python a38_c37xx_freeze.py 22 --census-only    (Q2 phase 1)
+       python a38_c37xx_freeze.py 22 --rungs-only     (Q2 phase 2)
+       python a38_c37xx_freeze.py 22                  (Q2, one shot)
+
+The two-phase Q2 split exists because the harness kills background
+tasks at ~1 h wall: phase 1 runs the censuses + gates and CHECKPOINTS
+the L1 obligations (orbit-rep supports, data/a38/c37xx/ckpt_W22_*);
+phase 2 reloads them (re-verifying every vector: weight, stab/seam
+membership, class) and runs the rungs + assembly.
 
 Output: data/a38/c37xx/freeze_W{W}.json + rungs_W{W}.jsonl
 """
@@ -270,10 +278,15 @@ def whist(vs) -> dict[str, int]:
 def main() -> None:
     W = int(sys.argv[1]) if len(sys.argv) > 1 else 18
     assert W in (18, 22)
+    census_only = "--census-only" in sys.argv
+    rungs_only = "--rungs-only" in sys.argv
+    assert not (census_only and rungs_only)
     TARGET = W + 2
     WC = 16 if W == 18 else 18       # all-class window-census bound
     t0 = time.monotonic()
-    out: dict = {"W": W, "target": TARGET, "WC": WC}
+    out: dict = {"W": W, "target": TARGET, "WC": WC,
+                 "phase": ("census" if census_only else
+                           "rungs" if rungs_only else "full")}
 
     def log(msg: str) -> None:
         print(f"[{time.monotonic()-t0:7.1f}s] {msg}", flush=True)
@@ -686,6 +699,32 @@ def main() -> None:
             f"are nontrivial L1-logicals, weight >= d(L1) = {D_L1} > "
             f"{W} (A30 certificate consumed; no census needed)")
         out["L1_seam"] = {"dead_by_certificate": True, "d_L1": D_L1}
+
+    # ---- checkpoint the L1 obligations (the harness kills background
+    # tasks at ~1 h wall; phase 2 = a38_c37xx_rungs.py reloads them,
+    # RE-VERIFIES every vector, and runs the rungs + assembly)
+    with (DATA / f"ckpt_W{W}_stab1.jsonl").open("w") as f:
+        for b in stab1_reps:
+            f.write(json.dumps({
+                "w": int(b.sum()),
+                "support": sorted(int(j) for j in np.nonzero(b)[0]),
+            }) + "\n")
+    with (DATA / f"ckpt_W{W}_seam1.jsonl").open("w") as f:
+        for v in seam1_reps:
+            f.write(json.dumps({
+                "w": int(v.sum()),
+                "support": sorted(int(j) for j in np.nonzero(v)[0]),
+            }) + "\n")
+    log(f"checkpoint written: {len(stab1_reps)} stab + "
+        f"{len(seam1_reps)} seam orbit-rep supports")
+    if census_only:
+        out["wall_s"] = round(time.monotonic() - t0, 1)
+        (DATA / f"freeze_W{W}_census.json").write_text(
+            json.dumps(out, indent=1))
+        log(f"census phase complete ({out['wall_s']}s) -> "
+            f"{DATA / f'freeze_W{W}_census.json'}; run "
+            f"a38_c37xx_rungs.py {W} for phase 2")
+        return
 
     # --------------------------------------------------- 4. the rungs
     cell = RungCell("c37xx_top", L[1], L[0], deck0)

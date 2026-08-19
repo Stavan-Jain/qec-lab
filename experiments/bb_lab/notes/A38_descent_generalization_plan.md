@@ -152,6 +152,15 @@ into a second calculus:
   r−1 floors with **no new census** — multi-level assembly from one
   censused level. Direct payoff: fiber caps stop growing with depth
   ([[720]] doubling, cap 16 → recursion instead).
+  **S2 RESOLUTION (log §3): the bare-number form is FALSE** (banked m\*
+  is element-dependent — the naive SeamCosetFloor refutations, restated
+  as data); the true statement is CENSUS-CARRYING — the kernel-shift
+  lemma: ker E = Z(base) exactly, so level-r rung/fiber candidates =
+  particular lift ⊕ level-(r−1) cycle census in the window
+  |x| + cap + ov(v0p), stabilizer-only when the window < d(base).
+  Validated on banked towers + executed at [[720]] scale. What remains
+  of F2b: shrink the WINDOW-population cost (the honest residual — the
+  heavy-shadow windows near n/2 are dense), not the cap.
 - **F2c analytic carry floors**: fibers enumerate weight-bounded
   solutions of the linear carry system E v₀ = R b; class-level
   solvability is already free (= δ). The 86–93% measured infeasibility is
@@ -240,13 +249,13 @@ into a second calculus:
 | banked A32/A33/A36 structure asserts | regression floor for any engine change | **S1**: promoted to `bb_lab.tower.validate_banked()`; gate green 12.9 s, 11/11 towers field-identical to the banked screen incl. RNG stream; all three closures re-run headlessly, outputs identical mod timing (A38_s1_validation_log §1–2) |
 | R4-regime methods closure (gross_xx lower pair) | completes the 2×2 regime coverage; values already known | **CLOSED S1** (5.7 s): d(gross) = 12 re-derived certificate-tier; coverage 4/4; seam cosets census-EMPTY at the 2·d(mid) ceiling; descent leakage quantified (84/84 sector-A lifts outside SEAM; ker τ\* vs im p\* 36/54) — log §3 |
 | a8_336 [[336,12,12]] full closure | third group shape | **check at merge**: the parallel A37 line reports an end-to-end 19.5 s run (commit `bfa0edb`) — do not duplicate |
-| [[720,4]] freeze at W = 18–22 | first re-double tower decision (A14 §13 question) | GREEN, unexecuted (A35 §8.2) |
-| [[720,4]] doubling (cap 16) | F2b/F2c forcing target | RED |
+| [[720,4]] freeze at W = 18–22 | first re-double tower decision (A14 §13 question) | **S2: DECIDED — d([[720,4]]) ≥ 24 certificate tier; the A14 §13 freeze REFUTED on this tower** (Q1 W=18: d ≥ 20, 334 s, 6,462 rungs; Q2 W=22: 109,011 + 145 rungs ALL PASS, both directions armed — the freeze carrier (flat lifts over the weight-20 seam orbit) is EMPTY; kernel-shift lane carried all 95 deep-cap cells; two completeness gates each phase incl. the independent y-quotient re-derivation; banked A30 2,203-cell census + SeamCosetFloor-20 re-derived; d(L3) = 10 exact free; no upper bound claimed — doubling d = 40? stays RED). Log §2 |
+| [[720,4]] doubling (cap 16) | F2b/F2c forcing target | RED; S2's kernel-shift lane removes the n-blind cap wall for LIGHT shadows (window below d(mid)); the heavy-shadow window cost is the honest residual |
 | [[756,16,≤34]] (cap 13, 1e22.6) | F1/F2a flagship — the odd-part wall | RED, quantified |
 | bb_90 / [[98,6,12]] / f2a6 base | F1 controls (banked distances) | no-deck today (W1) |
 | cheapest central-σ mitten code | F4a first non-abelian tower | unscoped |
 | A18 coprime-pair (cyclic) corpus rows | F4b GB lane, already in-corpus | unframed |
-| corpus envelope census (41 groups + zoo) | F5 burden table | **RUN S1** (now 47 groups): 73 rows — GREEN 41 / AMBER 3 / RED 6 / no-deck 23; every exact-d rep with a deck GREEN; **the open frontier is CAP-bound (caps 9–17 within the node envelope) — the corpus wall is W3, not W2**; calibration 11/11 == banked (log §4, `data/a38/envelope_census.md`) |
+| corpus envelope census (41 groups + zoo) | F5 burden table | **RUN S1** (now 47 groups): 73 rows — GREEN 41 / AMBER 3 / RED 6 / no-deck 23; every exact-d rep with a deck GREEN; calibration 11/11 == banked (log §4, `data/a38/envelope_census.md`). **S2 correction**: the 8 "cap-bound" open rows were priced against SAMPLED d_ub values (d_lb None; A39: 0/88 tight) — the cheapest closes at **d = 8 exact** (S2 §6, == A39 independently); the genuine W3 instances are certified-large-d codes ([[720]] W22, [[756]]), and the corpus rows await A39's corpus-merge for certified re-pricing |
 | F2a factorization probe (a36 census) | F2a falsify-first | **ABSENT S1** (19 s): census reproduced exactly, then the odd-CRT split measured — invariant components ∈ 18ℤ (coset-union law), additivity 0/33,588, all-bounded 0/33,588: the walk does not factor at the census bound; any odd coupling law must be a cancellation law (log §5) |
 
 ## §5 Known-false ledger (inherited; do not re-propose)
@@ -289,11 +298,34 @@ not distance claims.
   exact-mod-timing; R4 coverage 4/4; burden map 73 rows (frontier is
   cap-bound ⟹ sharpens S3); F2a measured ABSENT with the 18ℤ
   obstruction (feeds S2). Log: `A38_s1_validation_log.md`.
-- **S2**: F1 session 1 — idempotent-splitting formalization, F1-Q1/Q2 on
-  the three odd controls; verdict on whether the odd calculus exists
-  beyond A29.
-- **S3**: F2b ε-recursion + F2c carry floors, targeting the [[720]]
-  doubling upgrade; execute the [[720]] freeze (GREEN) as its warm-up.
+- **S2 (RE-RANKED at the S1 checkpoint, executed 2026-08-18)**: the
+  original S2 was F1 odd-controls; S1's evidence re-ranked — the
+  measured frontier was cap-shaped (W3), so the F2b/F2c program
+  (original S3) was pulled forward. **EXECUTED**: (1) rung engine +
+  deep fiber lane promoted into `bb_lab.tower` (`RungCell`,
+  `enumerate_lifts_deep`), gate green vs EVERY banked rung battery
+  (a32 deep fibers + 2,030 rungs, a33 1,655 + 1,680 per-row, a36
+  full direct-close through library parts; one banked artifact found
+  and resolved — the a33 planted `found_min_overflow` was a
+  violations[:5] truncation, no production impact); (2) the [[720,4]]
+  freeze question DECIDED: **d ≥ 24 certificate tier — the A14 §13
+  freeze REFUTED** (Q1 d ≥ 20 subsumed; the first same-axis re-double
+  that certifiably gains distance; the §13 battery's five freeze
+  instances stand as per-instance data, not a law); (3) F2b: number-only
+  recursion REFUTED on banked m\*, the census-carrying kernel-shift
+  lemma (ker E = Z(base)) validated banked + at scale — the
+  ε-recursion chapter now has its exact statement and its executable
+  form; (4) F2c: time-boxed NEGATIVE (syndrome-weight floor vacuous
+  on 425 ground-truth fibers); (5) stretch: the cheapest cap-bound
+  corpus row closed **d = 8 exact** (cross-checks A39) and the
+  S1 frontier framing corrected (sampled ubs, not real cap demand).
+  Log: `A38_s2_cap_frontier_log.md`.
+- **S3 (next)**: F1 session 1 — idempotent-splitting formalization,
+  F1-Q1/Q2 on the three odd controls; verdict on whether the odd
+  calculus exists beyond A29. Carries S1's F2a constraint (coupling
+  laws must be cancellation-shaped) and S2's kernel-shift precedent
+  (census-carrying, not number-only, recursions). If the [[720]] Q2
+  outcome names new F2 residue, triage it here first.
 - **S4**: F3 write-up + literature pass; F4a mitten central-σ port.
 - **S5+**: F4b GB sweep; Lean certificate species ongoing with QECLean.
 - **Checkpoints**: re-rank after S2 and S3. Thread-level fallback: if F1
@@ -314,3 +346,10 @@ not distance claims.
   branches; renumber-at-merge owed per the A15/A28-A29/A34 precedent —
   the cross-references above will need patching when that lands (this
   note cites the tower-calculus claimants as A35/A36 throughout).
+- **A39** (PR #23, parallel): the pre-registered falsification test of
+  the descent machinery — 97 certificate-tier exact distances, 0/88
+  prior corpus d_ub tight, corpus-merge staged. This thread treats its
+  values as independent cross-checks (S2 §6 did exactly that on the
+  Z9xZ6 row: values agree by different machinery); the S1 burden map's
+  frontier section should be re-issued after its corpus-merge applies.
+  Next free number ≥ A40.

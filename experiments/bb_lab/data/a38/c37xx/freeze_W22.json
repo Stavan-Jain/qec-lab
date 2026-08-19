@@ -1,0 +1,53 @@
+{
+ "W": 22,
+ "target": 24,
+ "phase": "rungs",
+ "L1_stab": {
+  "orbits": 109011,
+  "whist": {
+   "6": 1,
+   "10": 6,
+   "12": 88,
+   "14": 54,
+   "16": 1018,
+   "18": 5295,
+   "20": 12183,
+   "22": 90366
+  },
+  "mu1": 6
+ },
+ "L1_seam": {
+  "orbits": 145,
+  "whist": {
+   "20": 1,
+   "22": 144
+  }
+ },
+ "dangerous_rungs": {
+  "rungs": 109011,
+  "verdicts": {
+   "PASS": 109011
+  },
+  "lanes": {
+   "restricted<=0": 90366,
+   "restricted<=1": 12183,
+   "restricted<=2": 5295,
+   "restricted<=3": 1018,
+   "restricted<=4": 54,
+   "kernel-shift": 95
+  },
+  "xval_cells": 6,
+  "wall_s": 1295.8
+ },
+ "seam_rungs": {
+  "rungs": 145,
+  "verdicts": {
+   "PASS": 145
+  }
+ },
+ "verdict": {
+  "floor": 24,
+  "all_pass": true
+ },
+ "wall_s": 1388.1
+}

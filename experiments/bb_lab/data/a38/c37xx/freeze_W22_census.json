@@ -1,0 +1,88 @@
+{
+ "W": 22,
+ "target": 24,
+ "WC": 18,
+ "phase": "census",
+ "structure": {
+  "SEAM_dim": 2,
+  "R2_pair01": true,
+  "R3_pair12": true
+ },
+ "L3_stab": {
+  "vectors": 12715304,
+  "weight_hist": {
+   "6": 45,
+   "8": 45,
+   "10": 315,
+   "12": 1560,
+   "14": 5580,
+   "16": 29115,
+   "18": 182585,
+   "20": 1449684,
+   "22": 11046375
+  },
+  "orbits": 282574,
+  "mu": 6
+ },
+ "d_L3": 10,
+ "L2": {
+  "stab_orbits": 33689,
+  "stab_whist": {
+   "6": 1,
+   "10": 6,
+   "12": 42,
+   "14": 54,
+   "16": 478,
+   "18": 1622,
+   "20": 5734,
+   "22": 25752
+  },
+  "s1_orbits": 883,
+  "s1_whist": {
+   "20": 31,
+   "22": 852
+  },
+  "allclass_orbits": 2512,
+  "mu2": 6
+ },
+ "A30_crosscheck": {
+  "dangerous_2203": true,
+  "safe_floor_20_rederived": true
+ },
+ "L2_gate": {
+  "W": 14,
+  "stab_orbits": 103,
+  "s1_orbits": 0,
+  "equal": true
+ },
+ "L1_stab": {
+  "orbits": 109011,
+  "whist": {
+   "6": 1,
+   "10": 6,
+   "12": 88,
+   "14": 54,
+   "16": 1018,
+   "18": 5295,
+   "20": 12183,
+   "22": 90366
+  },
+  "mu1": 6,
+  "fibers_direct": 33688,
+  "fibers_kernel_shift": 1
+ },
+ "L1_gate": {
+  "W": 12,
+  "orbits": 95,
+  "equal": true,
+  "route": "independent y-quotient (30,3)"
+ },
+ "L1_seam": {
+  "orbits": 145,
+  "whist": {
+   "20": 1,
+   "22": 144
+  }
+ },
+ "wall_s": 2860.2
+}
