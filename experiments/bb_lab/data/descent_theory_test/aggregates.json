@@ -1,0 +1,30 @@
+{
+ "stats": {
+  "verdicts": {
+   "GREEN": 120,
+   "REFUSED": 10
+  },
+  "rank_law_violations": 0,
+  "lemma1_failures": 0,
+  "parity_consistency_flags": 0,
+  "g5_containment": {
+   "pass": 11,
+   "fail": 0,
+   "indeterminate": 3
+  }
+ },
+ "depth_regime_occupancy": {
+  "depth2|R1": 3,
+  "depth2|R2": 19,
+  "depth2|R3": 23,
+  "depth3|R1": 3,
+  "depth3|R2": 52,
+  "depth3|R3": 17,
+  "depth3|R4": 2,
+  "depth4|R1": 1,
+  "depth4|R2": 3,
+  "depth4|R3": 1,
+  "depth4|R4": 1
+ },
+ "wall_s": 38.1
+}

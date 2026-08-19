@@ -1,0 +1,24 @@
+{
+ "stats": {
+  "verdicts": {
+   "GREEN": 42,
+   "RED": 11,
+   "AMBER": 5
+  },
+  "row_class": {
+   "retrodiction": 24,
+   "prediction": 34
+  },
+  "rank_law_violations": 0,
+  "retro_ceiling_fail": 0,
+  "skipped_batch1_dupes": 0
+ },
+ "depth_regime_occupancy": {
+  "depth4|R2": 113,
+  "depth4|R4": 10,
+  "depth4|R1": 11,
+  "depth4|R3": 40
+ },
+ "results_file": "/Users/stavanjain/Code/qec-lab/.claude/worktrees/quantum-distance-presentation-73cb27/experiments/bb_lab/data/order144_sweep/results.jsonl",
+ "wall_s": 55.4
+}

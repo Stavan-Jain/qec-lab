@@ -1,0 +1,112 @@
+[   0.0s] [0] census node formula vs banked anchors
+[   0.0s]     a32_wcoset22: formula 1.90e+10 vs banked 1.90e+10 (x1.00)
+[   0.0s]     a32_stab22: formula 6.35e+09 vs banked 6.30e+09 (x1.01)
+[   0.0s]     a33_h5: formula 1.99e+11 vs banked 6.62e+10 (x3.00)
+[   0.0s] [0b] fiber enumerator vs banked A32 sector-C fibers
+[   1.8s]     397 orbit fibers (caps 4/3): 4132 lifts == banked 4,132 EXACTLY, m2-hist matches; 0 empty fibers
+[   2.1s]     banked heavy-band empty rates (caps 2/1/0): |b|=18: 319/1733 (18%), |b|=20: 5635/10602 (53%), |b|=22: 55555/64619 (86%)
+[   2.1s] --- bravyi360: top (30,6) A='x^9 + y + y^2' B='y^3 + x^25 + x^26'
+[   2.3s]     L0 (30,6): [[360,12]] |A|=3 |B|=3 kappa=174 even-cycles=True
+[   2.3s]     L1 (30,3): [[180,8]] |A|=3 |B|=3 kappa=86 even-cycles=True
+[   2.3s]     L2 (15,3): [[90,8]] |A|=3 |B|=3 kappa=41 even-cycles=True
+[   2.6s]     rung 0 (y->3): twisted=True R=False (k 12->8) rank p*=6 tau*=6 exact(cov/base)=True/False sigma*=id:False codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[   2.6s]     rung 1 (x->15): twisted=True R=True (k 8->8) rank p*=4 tau*=4 exact(cov/base)=True/True sigma*=id:True codim_lift=4 fibers: 0/30 empty (rate 0.0)
+[   2.7s]     pair (0,1): dim S=6 K=4 S^K=4 K<=S:True one-branch:False dim W=2 preimage=S:True
+[   2.7s]     costs @W=22: per-level log10 nodes = [17.0, 13.5, 9.8] win=1.4e+07x cap_max=8 -> GREEN
+[   2.7s]     bravyi360: ALL banked A32 structure REPRODUCED
+[   2.7s] --- ibm288Y: top (18,8) A='1 + x*y^4 + x^14*y' B='1 + x*y^2 + x^2*y^7'
+[   2.8s]     L0 (18,8): [[288,8]] |A|=3 |B|=3 kappa=140 even-cycles=True
+[   2.8s]     L1 (18,4): [[144,8]] |A|=3 |B|=3 kappa=68 even-cycles=True
+[   2.8s]     L2 (18,2): [[72,8]] |A|=3 |B|=3 kappa=32 even-cycles=True
+[   2.9s]     rung 0 (y->4): twisted=True R=True (k 8->8) rank p*=4 tau*=4 exact(cov/base)=True/True sigma*=id:True codim_lift=4 fibers: 1/30 empty (rate 0.033)
+[   3.1s]     rung 1 (y->2): twisted=True R=True (k 8->8) rank p*=4 tau*=4 exact(cov/base)=True/True sigma*=id:True codim_lift=4 fibers: 0/30 empty (rate 0.0)
+[   3.1s]     pair (0,1): dim S=4 K=4 S^K=0 K<=S:False one-branch:True dim W=4 preimage=S:False
+[   3.1s]     costs @W=18: per-level log10 nodes = [13.7, 10.8, 7.8] win=8.6e+05x cap_max=6 -> GREEN
+[   3.1s]     ibm288Y: ALL banked A33 structure REPRODUCED
+[   3.1s] --- gross_xx: top (12,6) A='x^3 + y + y^2' B='y^3 + x + x^2'
+[   3.1s]     L0 (12,6): [[144,12]] |A|=3 |B|=3 kappa=66 even-cycles=True
+[   3.1s]     L1 (6,6): [[72,12]] |A|=3 |B|=3 kappa=30 even-cycles=True
+[   3.1s]     L2 (3,6): [[36,8]] |A|=3 |B|=3 kappa=14 even-cycles=True
+[   3.2s]     rung 0 (x->6): twisted=False R=True (k 12->12) rank p*=6 tau*=6 exact(cov/base)=True/True sigma*=id:True codim_lift=6 fibers: 0/30 empty (rate 0.0)
+[   3.2s]     rung 1 (x->3): twisted=True R=False (k 12->8) rank p*=6 tau*=6 exact(cov/base)=True/False sigma*=id:False codim_lift=2 fibers: 2/30 empty (rate 0.067)
+[   3.2s]     pair (0,1): dim S=6 K=6 S^K=2 K<=S:False one-branch:False dim W=4 preimage=S:False
+[   3.2s]     costs @W=10: per-level log10 nodes = [7.0, 5.3, 3.7] win=2.1e+03x cap_max=2 -> GREEN
+[   3.2s]     gross_xx: A19 deck-survey k pattern REPRODUCED
+[   3.2s] --- bb288_yxx: top (12,12) A='x^3 + y^2 + y^7' B='y^3 + x + x^2'
+[   3.3s]     L0 (12,12): [[288,12]] |A|=3 |B|=3 kappa=138 even-cycles=True
+[   3.3s]     L1 (12,6): [[144,12]] |A|=3 |B|=3 kappa=66 even-cycles=True
+[   3.3s]     L2 (6,6): [[72,12]] |A|=3 |B|=3 kappa=30 even-cycles=True
+[   3.3s]     L3 (3,6): [[36,8]] |A|=3 |B|=3 kappa=14 even-cycles=True
+[   3.5s]     rung 0 (y->6): twisted=True R=True (k 12->12) rank p*=6 tau*=6 exact(cov/base)=True/True sigma*=id:True codim_lift=6 fibers: 0/30 empty (rate 0.0)
+[   3.5s]     rung 1 (x->6): twisted=False R=True (k 12->12) rank p*=6 tau*=6 exact(cov/base)=True/True sigma*=id:True codim_lift=6 fibers: 1/30 empty (rate 0.033)
+[   3.7s]     rung 2 (x->3): twisted=True R=False (k 12->8) rank p*=6 tau*=6 exact(cov/base)=True/False sigma*=id:False codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[   3.7s]     pair (0,1): dim S=6 K=6 S^K=6 K<=S:True one-branch:False dim W=0 preimage=S:True
+[   3.7s]     pair (1,2): dim S=6 K=6 S^K=2 K<=S:False one-branch:False dim W=4 preimage=S:False
+[   3.7s]     costs @W=16: per-level log10 nodes = [12.5, 9.9, 7.1, 4.4] win=1.3e+08x cap_max=5 -> GREEN
+[   3.7s]     bb288_yxx: y-quotient = (12,6) gross frame confirmed
+[   3.7s] --- c37x_360420: top (30,6) A='1 + y + x' B='y^4 + x + x^11*y^2'
+[   3.9s]     L0 (30,6): [[360,4]] |A|=3 |B|=3 kappa=178 even-cycles=True
+[   4.0s]     L1 (15,6): [[180,4]] |A|=3 |B|=3 kappa=88 even-cycles=True
+[   4.0s]     L2 (15,3): [[90,4]] |A|=3 |B|=3 kappa=43 even-cycles=True
+[   4.2s]     rung 0 (x->15): twisted=False R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[   4.3s]     rung 1 (y->3): twisted=True R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 2/30 empty (rate 0.067)
+[   4.3s]     pair (0,1): dim S=2 K=2 S^K=2 K<=S:True one-branch:False dim W=0 preimage=S:True
+[   4.3s]     costs @W=18: per-level log10 nodes = [14.7, 11.9, 9.0] win=4.8e+05x cap_max=6 -> GREEN
+[   4.3s] --- e5e50yy_360420: top (15,12) A='1 + y + x' B='y^4 + x^8*y^2 + x^13'
+[   4.4s]     L0 (15,12): [[360,4]] |A|=3 |B|=3 kappa=178 even-cycles=True
+[   4.5s]     L1 (15,6): [[180,4]] |A|=3 |B|=3 kappa=88 even-cycles=True
+[   4.5s]     L2 (15,3): [[90,4]] |A|=3 |B|=3 kappa=43 even-cycles=True
+[   4.8s]     rung 0 (y->6): twisted=False R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 1/30 empty (rate 0.033)
+[   4.9s]     rung 1 (y->3): twisted=True R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[   4.9s]     pair (0,1): dim S=2 K=2 S^K=0 K<=S:False one-branch:True dim W=2 preimage=S:False
+[   4.9s]     costs @W=18: per-level log10 nodes = [14.7, 11.9, 9.0] win=4.8e+05x cap_max=6 -> GREEN
+[   4.9s] --- c37xx_720: top (60,6) A='1 + y + x' B='y^4 + x + x^11*y^2'
+[   5.6s]     L0 (60,6): [[720,4]] |A|=3 |B|=3 kappa=358 even-cycles=True
+[   5.8s]     L1 (30,6): [[360,4]] |A|=3 |B|=3 kappa=178 even-cycles=True
+[   5.9s]     L2 (15,6): [[180,4]] |A|=3 |B|=3 kappa=88 even-cycles=True
+[   5.9s]     L3 (15,3): [[90,4]] |A|=3 |B|=3 kappa=43 even-cycles=True
+[   7.5s]     rung 0 (x->30): twisted=False R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[   7.7s]     rung 1 (x->15): twisted=False R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[   7.8s]     rung 2 (y->3): twisted=True R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 5/30 empty (rate 0.167)
+[   7.9s]     pair (0,1): dim S=2 K=2 S^K=0 K<=S:False one-branch:True dim W=2 preimage=S:False
+[   7.9s]     pair (1,2): dim S=2 K=2 S^K=2 K<=S:True one-branch:False dim W=0 preimage=S:True
+[   7.9s]     costs @W=18: per-level log10 nodes = [17.4, 14.7, 11.9, 9.0] win=2.7e+08x cap_max=6 -> GREEN
+[   7.9s]     costs @W=22: per-level log10 nodes = [20.5, 17.1, 13.6, 10.0] win=2.6e+10x cap_max=8 -> GREEN
+[   7.9s]     costs @W=30: per-level log10 nodes = [26.1, 21.5, 16.7, 11.6] win=2.9e+14x cap_max=12 -> AMBER
+[   7.9s]     costs @W=38: per-level log10 nodes = [31.3, 25.3, 19.2, 12.6] win=4.8e+18x cap_max=16 -> RED
+[   7.9s] --- a8_336: top (12,14) A='1 + y + x^3*y^3' B='1 + x + x^2*y^7'
+[   8.0s]     L0 (12,14): [[336,12]] |A|=3 |B|=3 kappa=162 even-cycles=True
+[   8.0s]     L1 (6,14): [[168,12]] |A|=3 |B|=3 kappa=78 even-cycles=True
+[   8.1s]     L2 (6,7): [[84,12]] |A|=3 |B|=3 kappa=36 even-cycles=True
+[   8.2s]     rung 0 (x->6): twisted=False R=True (k 12->12) rank p*=6 tau*=6 exact(cov/base)=True/True sigma*=id:True codim_lift=6 fibers: 0/30 empty (rate 0.0)
+[   8.3s]     rung 1 (y->7): twisted=True R=True (k 12->12) rank p*=6 tau*=6 exact(cov/base)=True/True sigma*=id:True codim_lift=6 fibers: 0/30 empty (rate 0.0)
+[   8.3s]     pair (0,1): dim S=6 K=6 S^K=6 K<=S:True one-branch:False dim W=0 preimage=S:True
+[   8.3s]     costs @W=10: per-level log10 nodes = [9.0, 7.4, 5.7] win=1.8e+03x cap_max=2 -> GREEN
+[   8.3s] --- bravyi756: top (21,18) A='x^3 + y^10 + y^17' B='y^5 + x^3 + x^19'
+[   9.2s]     L0 (21,18): [[756,16]] |A|=3 |B|=3 kappa=370 even-cycles=True
+[   9.4s]     L1 (21,9): [[378,16]] |A|=3 |B|=3 kappa=181 even-cycles=True
+[  10.7s]     rung 0 (y->9): twisted=True R=True (k 16->16) rank p*=8 tau*=8 exact(cov/base)=True/True sigma*=id:True codim_lift=8
+[  10.7s]     costs @W=32: per-level log10 nodes = [27.7, 22.6] win=1.2e+05x cap_max=13 -> RED
+[  10.7s] --- cover300: top (5,30) A='1 + y + x' B='x*y^6 + x*y^10 + x^2*y^12'
+[  10.8s]     L0 (5,30): [[300,8]] |A|=3 |B|=3 kappa=146 even-cycles=True
+[  10.9s]     L1 (5,15): [[150,8]] |A|=3 |B|=3 kappa=71 even-cycles=True
+[  11.0s]     rung 0 (y->15): twisted=False R=True (k 8->8) rank p*=4 tau*=4 exact(cov/base)=True/True sigma*=id:True codim_lift=4 fibers: 0/30 empty (rate 0.0)
+[  11.0s]     costs @W=14: per-level log10 nodes = [11.4, 9.2] win=1.6e+02x cap_max=4 -> GREEN
+[  11.0s] --- pair72: top (6,6) A='x^2 + y + y^3' B='1 + x + y^2'
+[  11.0s]     L0 (6,6): [[72,4]] |A|=3 |B|=3 kappa=34 even-cycles=True
+[  11.0s]     L1 (3,6): [[36,4]] |A|=3 |B|=3 kappa=16 even-cycles=True
+[  11.0s]     L2 (3,3): [[18,4]] |A|=3 |B|=3 kappa=7 even-cycles=True
+[  11.0s]     rung 0 (x->3): twisted=False R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 0/30 empty (rate 0.0)
+[  11.0s]     rung 1 (y->3): twisted=True R=True (k 4->4) rank p*=2 tau*=2 exact(cov/base)=True/True sigma*=id:True codim_lift=2 fibers: 3/30 empty (rate 0.1)
+[  11.0s]     pair (0,1): dim S=2 K=2 S^K=2 K<=S:True one-branch:False dim W=0 preimage=S:True
+[  11.0s]     costs @W=6: per-level log10 nodes = [3.9, 2.9, 2.0] win=7.9e+01x cap_max=0 -> GREEN
+[  11.0s] [1b] bb288/gross bottom layer (3,6): FULL enumeration
+[  18.4s]     (3,6): d = 4 EXACT (all 2^22 cycles enumerated); stab weight hist <=16: {6: 18, 8: 45, 10: 108, 12: 639, 14: 1422, 16: 3411}
+[  18.4s]     27 min-weight classes, 18 outside im p* (bb72 rung)  [light-outside-im-p* test]
+[  18.4s] [2] structural anti-instances (odd |G|: L1 fails, no deck)
+[  18.4s]     bb90 (15,3): |G| = 45 odd -> no Z2 deck. [[90,8,10]] -- A19 survey: 'not a Z2-cover at all'
+[  18.4s]     bb98 (7,7): |G| = 49 odd -> no Z2 deck. [[98,6,12]] (A16 host)
+[  18.4s]     f2a6_base (5,15): |G| = 75 odd -> no Z2 deck. [[150,8,8]] -- the A24 odd-|G| lane
+[  18.4s] [3] parity-scope demo: |A| even breaks Lemma 2
+[  18.4s]     (6,6) A='1 + x + y + x*y' B='y^3 + x + x^2': k=4, odd-weight cycle of weight 7 EXISTS -> Lemma 2 fails outside the odd-|A|,|B| scope
+[  18.4s] total 18.4s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/quantum-distance-presentation-73cb27/experiments/bb_lab/data/descent_theory_test/validation/screen.json
