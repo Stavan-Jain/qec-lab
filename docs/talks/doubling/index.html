@@ -290,13 +290,13 @@
           </pattern>
         </defs>
         <g data-frag="1">
-          <text class="t-cap" x="722" y="16" text-anchor="middle">the wall — d ≈ 16–18</text>
+          <text class="t-cap" x="722" y="16" text-anchor="middle"> limits — d ≈ 16–18</text>
           <rect x="156" y="26" width="800" height="36" rx="8" fill="#fff" stroke="#C8C4B8" stroke-width="1.25"/>
           <rect x="157" y="27" width="532" height="34" fill="rgba(32,35,42,.05)"/>
           <rect x="756" y="27" width="199" height="34" fill="url(#hatch2)" opacity=".5"/>
           <line x1="689" y1="22" x2="689" y2="66" stroke="#55534E" stroke-width="1.25" stroke-dasharray="4 3"/>
           <line x1="756" y1="22" x2="756" y2="66" stroke="#55534E" stroke-width="1.25" stroke-dasharray="4 3"/>
-          <text class="t-cap" x="422" y="48" text-anchor="middle">certifiable today · SAT / ILP</text>
+          <text class="t-cap" x="422" y="48" text-anchor="middle">certifiable today </text>
           <text class="t-mut" x="856" y="48" text-anchor="middle">out of reach</text>
           <g fill="#8A867C" font-size="12">
             <text x="156" y="82" text-anchor="middle">0</text>
@@ -305,7 +305,7 @@
             <text x="756" y="82" text-anchor="middle">18</text>
             <text x="956" y="82" text-anchor="middle">24</text>
           </g>
-          <text class="t-mut" x="556" y="100" text-anchor="middle">certified distance</text>
+          <text class="t-mut" x="556" y="100" text-anchor="middle"> distance</text>
         </g>
         <g data-frag="2">
           <ellipse cx="556" cy="300" rx="310" ry="135" fill="#fff" stroke="#C8C4B8" stroke-width="1.5"/>
@@ -328,8 +328,8 @@
       </svg>
     </div>
     <div class="sl-num">2 / 16</div>
-    <aside class="notes">For various families of practical quantum error correcting codes, one of the best ways to understand how effective the code will be in suppressing noise is to compute the distance of the code. Unfortunately, computing distance for BB codes is in general an NP-hard problem. Indeed for general qLDPC codes, the state of the art technique to certify distance is integer linear programming or SAT. Right now it is intractable to certify distance above 16–18 for BB codes. Over the past few weeks, I’ve been very interested in finding ways to reduce this computational burden.
-      <br><br>Suppose we have a stabilizer code S, which defines a codespace C. Okay, so recall that distance is the minimum weight logical operator, which means that it commutes with the stabilizers, that acts nontrivially on the codespace C. We call these nontrivial cycles. The key insight is that the space of logical operators has rich structure in a sense that I hope this presentation will make clear. The goal is to use this rich structure to find analytic reductions to the distance computation problem. In this presentation, I will show you one such analytic reduction, which I call the doubling argument.</aside>
+    <aside class="notes">For various families of practical quantum error correcting codes, one of the best ways to understand how effective the code will be in suppressing noise is to compute the distance of the code. Unfortunately, computing distance in general is an NP-hard problem. Indeed for general qLDPC codes, the state of the art technique to certify distance is integer linear programming or SAT. Right now it is intractable to certify distance above 16–18 for BB codes. Over the past few weeks, I’ve been very interested in finding ways to reduce this computational burden.
+      <br><br>Suppose we have a stabilizer code S defined on n qubits. For the rest of this presentation, I'm going to use this oval to represent the set of Pauli Operators on n qubits. A subset of those are the ones that commute with all of the stabilizer, which I'll call cycles. Since stabilizer commute with each other, they are themselves cycles. Okay, so recall that distance is the minimum weight nontrivial cycle, which means that it commutes with the stabilizers, and acts nontrivially on the codespace C. The key insight is that the space of cycles has rich structure for BB codes. The goal is to use this rich structure to find analytic reductions to the distance computation problem. In this presentation, I will show you one such analytic reduction, which I call the doubling argument.</aside>
   </section>
 
   <!-- ================= SLIDE 3 · theorem ================= -->
@@ -997,7 +997,7 @@
       </svg>
     </div>
     <div class="sl-num">12 / 16</div>
-    <aside class="notes">The dual question is whether nontrivial cover cycles fold to nontrivial base cycles. Again, the answer is not always. Three things can happen: p(v) can be 0, in which case v is diagonal and has twice the weight of p(v)’s base preimage — since we know that the base code cycles have weight ≥ 6, these cover nontrivial cycles have weight ≥ 12. The second thing that can happen is that p(v) is a nonzero stabilizer. The last thing that can happen is that p(v) is a nontrivial base cycle. (Names for these come on the next slide.)</aside>
+    <aside class="notes">The dual question is whether nontrivial cover cycles fold to nontrivial base cycles. Again, the answer is not always. Three things can happen: p(v) can be 0, in which case v is diagonal — the diagonal lift of a base cycle, with exactly twice its weight. A lifted stabilizer is a cover stabilizer, so a nontrivial diagonal v must be the lift of a nontrivial base cycle, whose weight is at least the base distance 6 — so v has weight ≥ 12. The second thing that can happen is that p(v) is a nonzero stabilizer. The last thing that can happen is that p(v) is a nontrivial base cycle. (Names for these come on the next slide.)</aside>
   </section>
 
   <!-- ================= SLIDE 13 ================= -->
@@ -1050,7 +1050,7 @@
       </svg>
     </div>
     <div class="sl-num">13 / 16</div>
-    <aside class="notes">The dual question is whether nontrivial cover cycles fold to nontrivial base cycles. Again, the answer is not always. Three things can happen: p(v) can be 0, in which case v is diagonal and has twice the weight of p(v)’s base preimage. Since we know that the base code cycles have weight ≥ 6, we can conclude that these cover nontrivial cycles have weight ≥ 12. This is the best case scenario. The second thing that can happen is that p(v) is a nonzero stabilizer. Let’s call these dangerous cycles. The last thing that can happen is that p(v) is a nontrivial base cycle. Let’s call these safe cycles. At this point, it suffices to show that dangerous and safe cycles all have weight ≥ 12. And we want to show this by appealing purely to the properties of the base code. Let’s tackle the safe sector first.</aside>
+    <aside class="notes">The dual question is whether nontrivial cover cycles fold to nontrivial base cycles. Again, the answer is not always. Three things can happen: p(v) can be 0, in which case v carries the same pattern on both sheets — v is the diagonal lift τ(b) of its one-sheet restriction b, with exactly twice its weight. Now, b is a base cycle, but why can’t it be a stabilizer? Recall from the diagonal lift slide that τ maps base stabilizers to cover stabilizers. So if b were a base stabilizer, v = τ(b) would be a cover stabilizer — but v is a nontrivial cycle. So b must be a nontrivial base cycle, its weight is at least the base distance 6, and v has weight ≥ 12. This is also why light base stabilizers are harmless in this sector: they do have light diagonal lifts, but those lifts are cover stabilizers — trivial cycles that never count toward the distance. This is the best case scenario. The second thing that can happen is that p(v) is a nonzero stabilizer. Let’s call these dangerous cycles. The last thing that can happen is that p(v) is a nontrivial base cycle. Let’s call these safe cycles. At this point, it suffices to show that dangerous and safe cycles all have weight ≥ 12. And we want to show this by appealing purely to the properties of the base code. Let’s tackle the safe sector first.</aside>
   </section>
 
   <!-- ================= SLIDE 14 ================= -->
@@ -1204,8 +1204,8 @@
       <div class="chips">
         <div class="chip" data-frag="4">
           <div class="chip-n">1</div>
-          <div><div class="chip-t">no light cycles</div>
-               <div class="chip-s">every base cycle weighs ≥ d</div></div>
+          <div><div class="chip-t">no light nontrivial cycles</div>
+               <div class="chip-s">every nontrivial base cycle weighs ≥ d</div></div>
         </div>
         <div class="chip" data-frag="5">
           <div class="chip-n">2</div>
@@ -1243,7 +1243,7 @@
     </div>
 
     <div class="sl-num">16 / 16</div>
-    <aside class="notes">In summary, if you have a base code and consider the cover code with the same polynomials but over a larger abelian group, then given these conditions, the cover code has double the distance of the base code. The conditions are: 1. the base code has no cycles with weight less than d. 2. Condition (R) holds, and the nontrivial cycles of the safe sector have weight ≥ 2d, which implies that the safe cycles have weight ≥ 2d. 3. The light stabilizers of the base have a windowed decomposition, which implies that the dangerous cycles have weight ≥ 2d.
+    <aside class="notes">In summary, if you have a base code and consider the cover code with the same polynomials but over a larger abelian group, then given these conditions, the cover code has double the distance of the base code. The conditions are: 1. the base code has no nontrivial cycles with weight less than d — that is, its distance really is at least d; light stabilizers are allowed, they lift to cover stabilizers and are handled by condition 3. 2. Condition (R) holds, and the nontrivial cycles of the safe sector have weight ≥ 2d, which implies that the safe cycles have weight ≥ 2d. 3. The light stabilizers of the base have a windowed decomposition, which implies that the dangerous cycles have weight ≥ 2d.
       <br><br>We have several examples of distance doubling pairs: [[72,12,6]] → [[144,12,12]] with A = x³+y+y², B = y³+x+x²; [[150,8,8]] → [[300,8,16]] with A = 1+x+y, B = xy⁶+xy¹⁰+x²y¹²; and [[180,4,10]] → [[360,4,20]] with A = 1+x+y, B = y⁴+x+x¹¹y².</aside>
   </section>
 
