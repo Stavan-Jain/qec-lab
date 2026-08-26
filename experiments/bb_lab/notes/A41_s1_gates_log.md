@@ -303,3 +303,18 @@ flight; results appended below.
    A40's odd-deck demand now share the F1 dependency. Verification +
    merge of that branch = owed (this log treats its numbers as
    reported, not independently re-derived).
+7. **A40 S2+S3 landed after this log's close** (same branch, PR #27):
+   **Theorem UB(r,1)** (d ≤ 12r for the whole b = 1 column; witness =
+   stacked A14-freeze-carrier bands) + **Theorem L1** (plane-regular
+   span floor: d ≥ ⌈3r/2⌉ for BOTH columns via gap dichotomy + the
+   plane-Koszul regular-sequence kill) ⟹ the b = 1 column is pinned
+   **Θ(√n) two-sided (1.5r ≤ d ≤ 12r)**; the per-cell cost lemma died
+   in both forms on certified data; L2 (matching constant) is one
+   named lemma (x-compression) from runnable. Two A41-relevant
+   imports: (i) **L1 stamps span floors on every corpus BB pair,
+   including this charter's mirrored-Sidon class and odd-|G| frames**
+   — check the Q3 constructive members against it (a Tier-F floor
+   mechanism independent of the coincidence-table program, possibly
+   competitive with the class theorem at large frames); (ii) the
+   per-cell refutation is a standing warning for any Tier-D "cost per
+   structure" argument — carried into Q4's known-false awareness.
