@@ -1,0 +1,20 @@
+frames: ['6x7', '5x9', '7x7', '5x10', '6x9', '5x11', '6x10', '7x9', '5x13', '6x11', '5x14', '7x10', '5x15', '7x11', '6x13', '9x9', '6x14', '5x17', '6x15', '9x10', '5x18']
+{"frame": "Z6xZ7", "G": 42, "poolA": 792, "poolB": 408, "zdA": 192, "zdB": 168, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 0.9}
+{"frame": "Z5xZ9", "G": 45, "poolA": 2388, "poolB": 618, "zdA": 1092, "zdB": 138, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 1.6}
+{"frame": "Z7xZ7", "G": 49, "poolA": 2052, "poolB": 2052, "zdA": 1512, "zdB": 1512, "d2_pairs": 144, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 2.3}
+{"frame": "Z5xZ10", "G": 50, "poolA": 3424, "poolB": 544, "zdA": 416, "zdB": 96, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 2.5}
+{"frame": "Z6xZ9", "stage": "structural", "members": 18}
+{"frame": "Z6xZ9", "G": 54, "poolA": 3996, "poolB": 1080, "zdA": 2832, "zdB": 708, "d2_pairs": 1440, "kpos_pairs": 216, "members": 18, "d_hist": {}, "sat_done": 0, "secs": 3.7}
+{"frame": "Z5xZ11", "G": 55, "poolA": 8060, "poolB": 1030, "zdA": 0, "zdB": 0, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 4.6}
+{"frame": "Z6xZ10", "stage": "structural", "members": 8}
+{"frame": "Z6xZ10", "G": 60, "poolA": 4298, "poolB": 848, "zdA": 626, "zdB": 352, "d2_pairs": 336, "kpos_pairs": 64, "members": 8, "d_hist": {}, "sat_done": 0, "secs": 4.6}
+{"frame": "Z7xZ9", "stage": "structural", "members": 15}
+{"frame": "Z7xZ9", "G": 63, "poolA": 8838, "poolB": 5004, "zdA": 3852, "zdB": 1962, "d2_pairs": 34956, "kpos_pairs": 540, "members": 15, "d_hist": {}, "sat_done": 0, "secs": 19.9}
+{"frame": "Z5xZ13", "G": 65, "poolA": 20140, "poolB": 1644, "zdA": 64, "zdB": 108, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 11.9}
+{"frame": "Z6xZ11", "G": 66, "poolA": 12800, "poolB": 1800, "zdA": 0, "zdB": 0, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 8.7}
+{"frame": "Z5xZ14", "G": 70, "poolA": 23872, "poolB": 1632, "zdA": 5968, "zdB": 96, "d2_pairs": 7008, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 18.2}
+{"frame": "Z7xZ10", "G": 70, "poolA": 11760, "poolB": 4920, "zdA": 528, "zdB": 1344, "d2_pairs": 9984, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 15.3}
+{"frame": "Z5xZ15", "stage": "structural", "members": 2103}
+{"frame": "Z5xZ15", "G": 75, "poolA": 42300, "poolB": 2460, "zdA": 30540, "zdB": 1500, "d2_pairs": 691008, "kpos_pairs": 67296, "members": 2103, "d_hist": {}, "sat_done": 0, "secs": 357.1}
+{"frame": "Z7xZ11", "G": 77, "poolA": 25650, "poolB": 8340, "zdA": 0, "zdB": 0, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 20.4}
+{"frame": "Z6xZ13", "G": 78, "poolA": 31252, "poolB": 2832, "zdA": 24, "zdB": 816, "d2_pairs": 960, "kpos_pairs": 0, "members": 0, "d_hist": {}, "sat_done": 0, "secs": 25.8}

@@ -1,0 +1,12 @@
+w=7 frames: ['9x10', '6x15']
+== Z9xZ10
+  pools (one DFS): A 1089816->155688 classes, B 668808->95544 (421s)
+  zd: A 29016, B 38340 (617s)
+{"frame": "Z9xZ10", "G": 90, "w": 7, "poolA": 155688, "poolB": 95544, "zdA": 29016, "zdB": 38340, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "rows": 0, "secs": 647.6}
+== Z6xZ15
+  pools (one DFS): A 3520608->502944 classes, B 0->0 (578s)
+  zd: A 0, B 0 (579s)
+{"frame": "Z6xZ15", "G": 90, "w": 7, "poolA": 502944, "poolB": 0, "zdA": 0, "zdB": 0, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "rows": 0, "secs": 578.6}
+TOTAL w=7 members: 0 across 2 frames
+w=7 frames: ['7x15', '5x21']
+== Z7xZ15

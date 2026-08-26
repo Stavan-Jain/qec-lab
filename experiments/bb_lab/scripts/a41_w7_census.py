@@ -180,12 +180,26 @@ def sweep_frame_w7(ell: int, m: int, out, log) -> dict:
     zdA = zd_filter(poolA) if have_both and zdB else []
     log(f"  zd: A {len(zdA)}, B {len(zdB)} ({time.time() - t0:.0f}s)")
 
+    # Vectorized D2 disjointness: pack difference-set bitmasks into
+    # uint64 word arrays and block-AND (the Python double loop dies at
+    # ~1e9 candidate pairs on rich frames).
+    words = (n + 63) // 64
+    def pack_masks(zd):
+        M = np.zeros((len(zd), words), dtype=np.uint64)
+        for i, (_, mask, _) in enumerate(zd):
+            for wd in range(words):
+                M[i, wd] = np.uint64((mask >> (64 * wd)) & ((1 << 64) - 1))
+        return M
+    MA, MB = pack_masks(zdA), pack_masks(zdB)
+
     n_pairs = n_kpos = 0
     reps: dict[tuple, tuple] = {}
-    for sa, ma, ca in zdA:
-        for sb, mb, cb in zdB:
-            if ma & mb:
-                continue
+    for ia in range(len(zdA)):
+        sa, ma, ca = zdA[ia]
+        hits = np.flatnonzero(
+            ~np.any(MB & MA[ia][None, :], axis=1))
+        for ib in hits:
+            sb, mb, cb = zdB[int(ib)]
             n_pairs += 1
             # packed hstack = [A | zero-pad | B | zero-pad]: the pad
             # columns are zero, so the GF(2) rank is that of [A | B];

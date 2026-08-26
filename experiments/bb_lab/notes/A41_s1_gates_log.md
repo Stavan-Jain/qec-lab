@@ -74,9 +74,17 @@ runs; Lemma E corroborated). Tail frames (9x9, 6x14, 5x17, 6x15,
 9x10, 5x18 — Entry 15's "in flight") are NEW data: results appended
 below when the run lands.
 
-MC falsifier gate (wmax 9, 800 iters, seed 20260712): PENDING — launch
-follows census completion; falsifiers, if any, print to the log
-directly.
+MC falsifier gate (wmax 9, 800 iters/member, seed 20260712, re-run
+this session over all 2,144 members, 399.5 s at 8 workers): **ZERO
+falsifiers** — Entry 15's headline verdict reproduced. Spectrum vs
+banked: **450 @ 10 EXACT**, 28 @ 12 exact (= 11+14+2+1 across
+frames), 75 @ 14 exact (= 52+4+5+14); the stochastic high buckets
+wobble within bucket (684/902/5 vs banked 681/906/4 at 16/18/20) — an
+expected seed-order artifact: per-member seeds are index-offset and
+this census orders frames differently, and 800 iterations saturate
+only the low weights (the orbit-boost argument). Gate reading: the
+witness-side data is bit-stable exactly where it is load-bearing
+(≤ 14) and bucket-stable above.
 
 ## §3 G4 — the k census (banked-scope snapshot)
 
@@ -137,12 +145,36 @@ cheap tiers are effectively free at n ≤ 252):
 
 Signals: (i) the population is largely SF@20-viable at the free tiers
 — Tier D is not dead on arrival; (ii) every CHEAP-REJECT so far is on
-an even axis, consistent with the charter's odd-axis design rule;
-(iii) three in-the-wild (R)-failures on an odd axis (Z₆×Z₉ y) — the
-k-gate is not automatic even off the 2-part, so the Bezout-by-
-construction lever is load-bearing, not decorative. Z₅×Z₁₅ (2,103 ×
-2 axes, the population that matters) runs after the MC pass; resumable
-(`--limit`/resume built in).
+an even axis, consistent with the charter's odd-axis design rule —
+and the reject values are **wall-shaped**: the five Z₆×Z₉-x cells all
+sit at cheap_min 18 = 2·10 − 2 (the A17 wall value) and the Z₆×Z₁₀-x
+cell at 16 (deficit 4); (iii) three in-the-wild (R)-failures on an
+odd axis (Z₆×Z₉ y, k 4 → 8: the k-doubling regime) — the k-gate is
+not automatic even off the 2-part, so the Bezout-by-construction
+lever is load-bearing, not decorative.
+
+**Z₅×Z₁₅ (2,103 members × both axes, 4,206 cells, 232 s):**
+
+| axis | CHEAP-PASS | CHEAP-REJECT | K-GATE-FAIL |
+|---|---|---|---|
+| x (double the 5-side) | 2,056 | 45 | 2 |
+| y (double the 15-side) | 2,087 | 1 | 15 |
+
+Cross-tab against the MC spectrum — **the 450 tight (mc_min = 10)
+members, i.e. the actual d = 2w family candidates**:
+
+| axis | pass | reject | (R)-fail |
+|---|---|---|---|
+| x | 404 | **44** | 2 |
+| y | **442 (98.2%)** | **0** | 8 |
+
+S1 verdict for Tier D: the designed rung is the **y-axis** — zero
+cheap-tier SF@20 failures among the tight candidates there, with (R)
+failing on only 8/450; every tight-member reject lives on the short
+x-axis. The class-wide safe floor is empirically near-uniform on the
+right axis — exactly the precondition a family-wide certificate
+needs. (Free tiers only: SF@20 survival is S4/BZ-certifiable per
+member but not yet certified; SF stays sufficient-not-necessary.)
 
 ## §6 G1b — the w = 7 census engine + first frame
 
@@ -161,10 +193,31 @@ Z₆×Z₉ (both axes, exact set equality), packed rank == `rank_f2` on
 my own)**: the first DFS version admitted supports with an order-2
 difference — the ordered difference multiset holds those twice, so
 they are never Sidon; the selftest's 25,860 ≠ 19,980 mismatch caught
-it before any production use. Pricing: Z₅×Z₁₇ raw Sidon-7 pool =
-3,823,680 supports in 284 s (DFS is fine; the rank filter was the
-wall the packing removes). First frame (5x17) in flight; results
-appended below.
+it before any production use.
+
+**First four frames — all EMPTY, two distinct mechanisms:**
+
+| frame | G | verdict |
+|---|---|---|
+| Z₅×Z₁₇ | 85 | poolB = 0 — **no mono-y Sidon 7-set exists** on a 5-column frame (B-side death; the B-first ordering skipped the 546k-class A filter) |
+| Z₆×Z₁₅ | 90 | poolB = 0 — same 6-column death |
+| Z₉×Z₁₀ | 90 | pools rich (155,688 A / 95,544 B classes), zd rich (29,016 / 38,340) — **d2_pairs = 0**: D1∧D2 needs 84 of the 89 nonzero differences, disjointness never packs |
+| Z₅×Z₁₇ A-pool datum | — | raw Sidon-7 pool 3.82M supports in 284 s (the DFS is fine; the packed rank removed the filter wall) |
+
+Structural reading (new, and it revises the charter's Tier-F scaling
+footing): **at w = 7 the counting bound |G| ≥ 85 is not achievable**
+— near-bound frames are D2-empty even when zd-rich, and thin axes
+(5, 6 columns) cannot host mono Sidon 7-sets at all. At w = 5 the
+members appeared at slack ×1.32–1.83 over the bound (|G| = 54, 75),
+so inhabitation at w = 7 is expected (if anywhere) at |G| ≈ 110–160
+on frames whose axes carry the good component fields (Entry 15's
+mechanism: 5, 7, 9, 10, 15-type axes = GF(8)/GF(16)/GF(64);
+11/13/17-type axes were empty at w = 5). Tier F's d = Θ(√n) survives
+iff the slack stays a constant factor — now an explicit Q3 question,
+not an assumption. Engineering landed for the fat frames: vectorized
+D2 pairing (packed-mask block-AND — the Python pair loop dies at
+~10⁹ candidates). Good-field probes (7x15, 5x21, |G| = 105) in
+flight; results appended below.
 
 ## §7 Q6 — the self-similarity probe: NO SIGNAL (park)
 
@@ -220,3 +273,19 @@ appended below.
 5. Merge debt for this branch: registry A40/A41 rows will conflict
    trivially with A40's worktree claim — renumber-at-merge precedent
    applies.
+6. **A40 session 1 landed while S1 ran** (branch
+   `worktree-agent-aafc19cdb2dd71190`, 5 commits, data force-added ✓):
+   headline **d([[432,12]]) = 24 EXACT certificate tier** — the
+   conjectured tour-de-gross value at (r,b) = (2,1), first proven
+   member beyond the BCGMRY pair, no SAT, ~20 min; b is a BIT (no
+   [[576,12]] member exists — the charter's §0 mention of a (2,2)
+   member is moot); [[432,12]] is a free **Z₃** cover of gross, so the
+   family hangs off gross by mixed decks and the ∀r column's missing
+   theory is exactly the odd-deck F1 lane (A40's P3 verdict: RED with
+   current technology; the family k-row ∀(r,b) is the GREEN sub-lane).
+   Charter cross-effects: Q6's vertical framing gets a concrete
+   family-specific instance (the tour-de-gross column is
+   gross-centered, not a rung chain); A41's Tier-D odd-axis rule and
+   A40's odd-deck demand now share the F1 dependency. Verification +
+   merge of that branch = owed (this log treats its numbers as
+   reported, not independently re-derived).
