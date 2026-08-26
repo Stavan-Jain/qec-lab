@@ -273,7 +273,42 @@ im-p₁*-cosets ≤ 18 = 19,411; all-class ≤ 16 = 7,780; L1 obligations =
 orbit reps; d(L1) = 12 EXACT ⟹ the b = 0 branch at W = 22 is dead
 (2·12 = 24 > 22).
 
-*(rung-phase verdict recorded below when the battery completes)*
+**Rung phase (470 s; checkpoint reloaded with every vector re-verified:
+weight, cycle, stab/seam-class membership)**: dangerous rungs
+**44,093/44,093 PASS** at target 24 (453 s; lanes r≤0: 34,184,
+r≤1: 7,117, r≤2: 2,091, r≤3: 589, r≤4: 54, **kernel-shift: 58** — every
+deep-cap cell went through the S2 F2b lane with ALL-CYCLE windows
+≤ 18, sound unconditionally because the window census is complete
+there; 6 lane cross-validations equal); seam rungs **68/68 PASS**;
+covariance 3/3; X↔Z duality spot-check.
+
+> **RESULT. d([[432,12]]) = 24 — EXACT, certificate tier.** Floor:
+> the complete W = 22 sweep (b = 0 branch dead by 2·d(L1) = 24 > 22;
+> dangerous + seam branches closed by the batteries + G-transport;
+> no SAT anywhere on the critical path; inputs d((18,6)) = 12,
+> d((9,6)) = 10, d((9,3)) = 6 all census-complete in-run, gates
+> exact). Upper: the verified weight-24 τ₀-witness. Z side by
+> transpose duality. Wall: 744 s census + 470 s rungs ≈ 20 min
+> (+ 49 s W16 shakedown).
+>
+> This is the **conjectured tour-de-gross value at (r,b) = (2,1)**:
+> the first member beyond the BCGMRY-identified pair (gross,
+> two-gross) with a proven distance anywhere (the paper has no
+> numerical value for it at all), the first confirmation instance of
+> the d = 6(2r+b−1) conjecture beyond the solver-known members, and
+> the largest-n exact BB distance at certificate tier in this repo
+> (n = 432 > 360). kd²/n = 16.
+>
+> Mechanism note: the closure decomposes the (2,1) value as
+> 6 →(Z₃ x-cover, ×2.0)→ 12 →(Z₂ y-cover, PERFECT doubling, deficit
+> 0)→ 24 — the top rung (18,6)→(18,12) is a new perfect-doubling
+> instance (at a non-member base frame), while the family's own
+> zigzag steps are not covers at all (§2.2).
+
+By-products banked (all census-complete exact, certificate tier):
+d((3,3)) = 2 ([[18,8,2]], exhaustive), d((9,3)) = 6, d((9,6)) = 10,
+d((18,6)) = 12 — the last is the "b = 2 frame" refuting the extended
+formula (§4.1.3).
 
 ## §4 P3 — the ∀r analytic lane: feasibility verdict
 
@@ -367,9 +402,9 @@ verdicts, never distance claims.
 - **AMBER — the bounded prefix, member by member, at certificate
   tier.** Pricing (§3): [[432]] GREEN at its conjecture-W (EXECUTED,
   §3); [[648]] AMBER at W = 22 (d ≥ 24 partial) / RED at its
-  conjecture W = 28 (cap 11) — the odd anchor (9,9) n = 162 bottom is
-  BZ-able and the tower is only depth 2, so W3 (cap growth), not W2,
-  is the binding wall; [[864]] GREEN at W = 22 / RED at W = 34;
+  conjecture W = 28 — BOTH walls bind there (bottom (9,9) census
+  1e15.1 nodes AND cap 11; the depth-2 tower has the least descent
+  leverage in the family); [[864]] GREEN at W = 22 / RED at W = 34;
   [[1152]]/[[1440]] RED at conjecture W. The kernel-shift lane (S2)
   moves light-shadow cells past the cap wall, so the honest frontier
   cost is window population, as the charter already records.
@@ -380,8 +415,75 @@ verdicts, never distance claims.
 
 ## §5 Falsified claims (session)
 
-*(kept per charter; filled at close)*
+- **The A13 §4 x-ladder parenthetical** ("level 2 is the known
+  [[288,12,18]]") — WRONG; corrected in place in
+  `A13_deck_tower_plan.md` (Z₂₄×Z₆ is not a family member; d ≤ 12 by
+  A14 §13's witness vs two-gross's certified 18; T3's mathematics
+  untouched).
+- **The "(2,2) member [[576,12]] with d̂ = 30" premise** (this thread's
+  own task framing + the memory note's implicit 2-parameter grid) —
+  no such member exists: b ∈ {0,1} is a bit in the paper (§1).
+- **The extended formula at b = 2** — the (18,6) frame (r = 1, "b = 2",
+  same fixed polynomials) has d = 12 EXACT (census-complete, §3.2),
+  not 6(2r+b−1) = 18: the b-bit restriction is forced by the values,
+  not notation.
+- **Generic swap-symmetry of the family frames** — FALSE as a generic
+  claim: the swapped literal quotient is the member code at
+  (6,12)↔(12,6) (verified equivalence, §2.2) but NOT at (12,18)↔(18,12)
+  under the full standard monomial move set (864 auts × 4 variants ×
+  shifts, exhaustive). Presentation/frame-sensitivity again (A11's
+  lesson, new instance).
+- **Session-internal tooling bugs caught by the gates** (recorded per
+  the falsify-first discipline): (i) my first equivalence verifier
+  compared `rref_ints` bases as ordered lists — the reduced basis is
+  canonical only as a set (false-negative on a true equivalence;
+  fixed, then verified); (ii) my first L2 gate compared a ≤ 14 direct
+  census against a ≤ 12 descent collection (window mismatch — the
+  666-vs-65 "failure" was the gate's own bug; fixed, and the W = 22 v2
+  gate then passed EXACTLY at ≤ 14 with the same 666 nontrivial
+  orbits derived independently by both routes). Neither reached any
+  claim.
+- (Respected, inherited: no SAT anywhere; witness weights reported as
+  upper bounds only; RED/AMBER/GREEN are cost verdicts; the §5
+  known-false ledger of A38 untouched.)
 
 ## §6 Residue / next steps
 
-*(filled at close)*
+1. **Lean packaging of the [[432,12,24]] certificate** — the same
+   census+rung data-carriage species as A36 §10.1/c37xx (charter F5);
+   this instance adds the composite-rank fact (seam shadows in
+   im(p₁*∘p₀*)) as a species worth designing once.
+2. **The (3,1)→(2,1) twisted-descent question** (A10-style: 2^6 sheet
+   twists on the y-extension of (18,12), compared to (3,1) under
+   monomial moves) — decides whether the b = 1 members chain by
+   twisted Z₂ covers; group theory does not exclude it (§2.2).
+3. **[[648,12]] = (3,0)**: the cheapest un-closed member. AMBER at
+   W = 22 (a d ≥ 24 partial floor is in the envelope today); its
+   conjecture W = 28 is cap-RED but kernel-shift-eligible on light
+   shadows — price the window populations first (S2's rule). Its
+   all-odd deck (Z₃×Z₃ over bb72) also makes it the natural F1
+   flagship after the charter's odd controls.
+4. **The family k-row ∀(r,b) theorem** (§4.3 GREEN target): reduce
+   dim F₂[Z_{6(r+b)}×Z_{6r}]/(A,B) = 6 to CRT × chain-ring analysis of
+   the one fixed Laurent pair; A13 T1–T3 supply the Z₂-tower half,
+   Maschke the odd half. The natural home for the thread's first ∀r
+   statement.
+5. **F1-Q1 calibration bank** (§4.2): the Z₃-cover ratio table
+   (3.0 → 2.5 → 2.0 → 2.0) + the k-preserving norm upper bound
+   d(cover) ≤ |deck|·d(base); any odd coupling law must reproduce the
+   drift and be cancellation-shaped (S1's F2a constraint).
+6. **Corpus merge**: new certificate-tier exacts from this session —
+   [[54,8,6]] (9,3), [[108,8,10]] (9,6), [[216,12,12]] (18,6),
+   [[18,8,2]] (3,3), and the [[432,12]] result (§3.2) — plus the
+   member k-row; feed A39's corpus-merge pipeline when its apply
+   lands.
+7. **Promote into `bb_lab.tower`**: the composite-rank screen output
+   (rank p_{i+1}*∘p_i* per adjacent pair — it collapsed the seam-shadow
+   fan-out 63 → 3 here), and the v2 direct-L2-primary census pattern as
+   a library lane (with the W16 v1 run as its regression battery).
+8. **Session 2 of this thread**: (a) close [[648]] partials; (b) the
+   (4,0) tower over the certified two-gross (its L2) — the first
+   member whose closure would consume an already-certified member
+   mid-level, A36-style; (c) the k-row theorem; (d) coordinate with
+   the A38 S3 odd-controls session (this thread's odd rungs are its
+   best-case instances).

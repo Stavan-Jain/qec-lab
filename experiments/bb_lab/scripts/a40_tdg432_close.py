@@ -7,49 +7,56 @@ pricing GREEN at W = 22, `data/a40/pricing.json`):
   L0 (18,12) [[432,12,?]]   d_conj = 24 (arXiv:2506.03094, conjecture)
      |  y-fold (deck sigma = y^6), twisted, (R): k 12->12, exact both,
      |  sigma* = id, rank p0* = 6  => SEAM = im p0* (63 classes)
-  L1 (18,6) [[216,12,?]]    d(L1) DISCOVERED here (complete <= W census)
+  L1 (18,6) [[216,12,?]]    d(L1) = 12 EXACT (measured here, W16 run)
      |  x-fold (x^9), twisted, non-(R): k 12->8, exact_cover only,
-     |  rank p1* = 6  => S1 = im p1* (63 of 255 classes)
-  L2 (9,6)  [[108,8,?]]     d(L2) DISCOVERED here
-     |  y-fold (y^3), twisted, (R): k 8->8, rank p2* = 4 (15 classes)
-  L3 (9,3)  [[54,8,?]]      d(L3) DISCOVERED here (direct BZ censuses)
+     |  rank p1* = 6; rank(p1* o p0*) = 2 => S1' = p1*(SEAM) has just
+     |  3 nontrivial classes — the seam shadows
+  L2 (9,6)  [[108,8,?]]     d(L2) = 10 EXACT (measured here)
+     |  y-fold (y^3), twisted, (R)
+  L3 (9,3)  [[54,8,?]]      d(L3) = 6 EXACT (direct BZ)
 
-No banked distances exist for L1/L2/L3 — everything is certified in-run,
-bottom-up, by COMPLETE weight-<= W census generation:
+No banked distances existed for L1/L2/L3 — every input is certified
+in-run by COMPLETE weight-window census generation (node-exact BZ walks
+at n <= 108; composed fibers cross-gated).
 
-  every Li-cycle v with |v| <= W has shadow P v in the (complete)
-  L(i+1) censuses with class in im p(i+1)* (+ stab), and overflow
-  <= (W - |shadow|)/2; the b = 0 branch is the tau-family over the
-  complete <= W/2 all-class census one level down.  Fibers enumerate
-  the lift sets exhaustively (deep MITM cap <= 8 at n <= 108; the
-  kernel-shift lane with ALL-CYCLE windows <= WC at n = 216, sound
-  unconditionally because ker E = Z(base) exactly and the window census
-  is complete to WC).
+ARCHITECTURE (v2, direct-L2-primary — the v1 descent-primary ran the
+banked W = 16 shakedown; at W = 22 the L3 fiber layer explodes, and
+rank(p1* o p0*) = 2 makes the direct route GREEN):
+
+  L2 censuses DIRECT (coset-BZ, exact node asserts):
+     stab <= W (1 base);  S1' 3 classes <= W;  im-p1* 63 classes
+     <= WNT = W-4 (feeds the nontrivial-L1 window censuses);
+     ALL 255 classes <= WALL = 16 (kernel-shift windows + tau2 sources
+     <= W/2 + the <= 14 gate slice + d(L2) exact).
+  L2 GATE: the <= 14 slice re-derived by DESCENT from L3 (tau3-family +
+     composed fibers over the L3 <= 14 censuses) — orbit key sets must
+     equal the direct slices exactly (stab AND nontrivial).
+  L1 obligations by descent from the L2 censuses (completeness by the
+     shadow-class law [P v] = p1*[v]):
+     stab1 <= W    from stab2 fibers + tau2   (stab shadows are stabs);
+     seam1 <= W    from stab2 + S1' fibers + tau2  (seam shadows lie in
+                   S1' u {0} u stab);
+     ntrv1 <= WNT  from stab2 + im-p1* fibers + tau2 (all classes) —
+                   the top kernel-shift windows + d(L1) exact.
+  L1 GATE: the <= 12 L1-stab census re-derived through the INDEPENDENT
+     y-quotient (18,3) deck.
+  Rungs at the top only (target W+2): dangerous per stab1 orbit rep,
+     seam per seam1 orbit rep; kernel-shift lane windows <= WNT
+     (all-cycle censuses complete there); every candidate re-verified
+     in-line; covariance; X<->Z duality spot-check.
 
 Questions (TARGET = W + 2; all cycles even — parity scope):
-  W = 16: all rungs PASS  =>  d([[432,12]]) >= 18 (matches two-gross).
-  W = 22: all rungs PASS  =>  d >= 24 = the conjectured value; any
-          violation/tau-find is an explicit verified logical => d <= w
-          (and the complete sweep makes the minimum found EXACT).
+  W = 16 (banked, v1): d >= 18. + tau0-witness 24 => 18 <= d <= 24.
+  W = 22: all rungs PASS => d >= 24; with the weight-24 tau0-witness
+          (= tau0 of a weight-12 non-SEAM L1-logical, re-verified) =>
+          **d([[432,12]]) = 24 EXACT, certificate tier** — the
+          conjectured value at (2,1). Any violation is an explicit
+          verified logical <= 22 => d < 24 (conjecture refuted at
+          (2,1)); the complete sweep makes the minimum exact.
 
-The witness side (either W): m_ns := min weight of a nontrivial
-L1-cycle <= W with class OUTSIDE SEAM gives the explicit L0-logical
-tau0(u) of weight 2 m_ns (exact_base at the top rung: ker tau0* =
-im p0* = SEAM, so non-SEAM classes lift to NONTRIVIAL tau-images) =>
-d <= 2 m_ns.  d(L1) = 12 with a non-SEAM minimizer + a PASS sweep at
-W = 22 would pin d = 24 EXACT.
-
-Gates (falsify-first, charter A38 s6.0): validate_banked() first; the
-L2 descent censuses == direct BZ censuses <= 14 (stab + all 255
-classes, orbit key sets); the <= 12 L1-stab census re-derived through
-the INDEPENDENT y-quotient (18,3); every census pass carries the exact
-node-count assert (cosetbz); every rung candidate re-verified in-line
-(E-system, membership, slice identity); covariance spot-checks;
-X<->Z duality spot-check.
-
-Usage: python a40_tdg432_close.py 16                 (shakedown, 1 shot)
-       python a40_tdg432_close.py 22 --census-only   (phase 1)
+Usage: python a40_tdg432_close.py 22 --census-only   (phase 1)
        python a40_tdg432_close.py 22 --rungs-only    (phase 2)
+       python a40_tdg432_close.py 16                 (one shot)
 
 Output: data/a40/tdg432/sweep_W{W}*.json + ckpt_W{W}_*.jsonl
 """
@@ -69,9 +76,9 @@ sys.path.insert(0, str(LAB / "scripts"))
 from bb_lab import cosetbz  # noqa: E402
 from bb_lab.tower import (  # noqa: E402
     AxisDeck, RungCell, TowerCode, batch_keys, colspace,
-    enumerate_lifts_deep, fold_support, h1_map, i2v, in_span,
-    kernel_ints, perm_for, rep_for, rref_ints, span_points,
-    translation_perms, v2i, validate_banked,
+    enumerate_lifts_deep, fold_support, gf2_rank, h1_map, i2v, in_span,
+    kernel_ints, perm_for, rep_for, rref_ints, span_eq, span_points,
+    translation_mat, translation_perms, v2i, validate_banked,
 )
 from a38_c37xx_freeze import (  # noqa: E402
     Collector, KernelShift, census_pass, row_lift_v0, whist,
@@ -82,24 +89,34 @@ DATA.mkdir(parents=True, exist_ok=True)
 
 A_L = [(0, 0), (0, 1), (3, -1)]
 B_L = [(0, 0), (1, 0), (-1, -3)]
+CH = 51                      # coset-class offsets per BZ pass
 
 
 def red(supp, lm):
     return frozenset((e[0] % lm[0], e[1] % lm[1]) for e in supp)
 
 
+def key_set(vecs, perms):
+    if not vecs:
+        return set()
+    return {bytes(k) for k in
+            batch_keys(np.array(vecs, dtype=np.uint8), perms)}
+
+
 def main() -> None:
-    W = int(sys.argv[1]) if len(sys.argv) > 1 else 16
+    W = int(sys.argv[1]) if len(sys.argv) > 1 else 22
     assert W in (16, 18, 22)
     census_only = "--census-only" in sys.argv
     rungs_only = "--rungs-only" in sys.argv
     assert not (census_only and rungs_only)
     TARGET = W + 2
-    WC = W - 4               # all-class window bound (>= 2*ceil(W/4))
+    WNT = W - 4      # nontrivial-window bound (top kernel-shift windows)
+    WALL = min(16, W)  # all-class census bound (L1-fiber ks windows)
     t0 = time.monotonic()
-    out: dict = {"W": W, "target": TARGET, "WC": WC,
+    out: dict = {"W": W, "target": TARGET, "WNT": WNT, "WALL": WALL,
                  "phase": ("census" if census_only else
-                           "rungs" if rungs_only else "full")}
+                           "rungs" if rungs_only else "full"),
+                 "architecture": "v2 direct-L2-primary"}
 
     def log(msg: str) -> None:
         print(f"[{time.monotonic()-t0:7.1f}s] {msg}", flush=True)
@@ -120,35 +137,35 @@ def main() -> None:
     deck2 = AxisDeck(L[2], L[3], 1)    # y: 6 -> 3
     for c in L:
         assert not any(int(kv.sum()) % 2 for kv in c.kerHZ), "parity!"
-    # screen-measured structure, hard-asserted (data/a40/pricing.json)
     Mp0, Mp1, Mp2 = h1_map(deck0), h1_map(deck1), h1_map(deck2)
     Mt0 = h1_map(deck0, tau=True)
     SEAMb, _ = rref_ints(list(colspace(Mp0)))
-    S1b, _ = rref_ints(list(colspace(Mp1)))
     P2b, _ = rref_ints(list(colspace(Mp2)))
-    assert len(SEAMb) == 6 and len(S1b) == 6 and len(P2b) == 4
+    comp = (Mp1 @ Mp0) % 2
+    S1pb, _ = rref_ints(list(colspace(comp)))
+    assert len(SEAMb) == 6 and len(P2b) == 4 and len(S1pb) == 2
+    assert gf2_rank([v2i(c) for c in Mp1.T]) == 6
     seam_set = span_points(SEAMb) - {0}
-    S1set = span_points(S1b) - {0}
+    imp1_set = span_points(rref_ints(list(colspace(Mp1)))[0]) - {0}
+    S1pset = span_points(S1pb) - {0}
     P2set = span_points(P2b) - {0}
-    assert len(seam_set) == 63 and len(S1set) == 63 and len(P2set) == 15
-    # top rung (R) + exactness (ker tau0* = im p0*): the witness machine
-    kt0b, _ = rref_ints(list(kernel_ints(Mt0)))
-    from bb_lab.tower import span_eq
+    assert len(seam_set) == 63 and len(imp1_set) == 63 \
+        and len(S1pset) == 3 and len(P2set) == 15
+    assert S1pset <= imp1_set
     assert span_eq(kernel_ints(Mt0), list(colspace(Mp0))), \
         "top rung exact_base fails?!"
-    St = np.eye(L[0].k, dtype=np.uint8)
-    from bb_lab.tower import translation_mat
-    assert (translation_mat(L[0], deck0.sigma) == St).all(), "sigma*!=id"
+    assert (translation_mat(L[0], deck0.sigma)
+            == np.eye(L[0].k, dtype=np.uint8)).all(), "sigma* != id"
     assert deck0.twisted() and deck1.twisted() and deck2.twisted()
-    # tau0(L1-stab) is an L0-STAB (b=0 branch transport), sampled
     for gi in range(0, L[1].ng, 27):
         tst = (deck0.TAU @ L[1].HX[gi]) % 2
         assert in_span(v2i(tst), L[0].rsHX_b, L[0].rsHX_p), \
             "tau0(stab) not stab: b=0 branch argument breaks"
-    log("tower + structure: k 12/12/8/8; SEAM dim 6 / S1 dim 6 / "
-        "im p2* dim 4; top rung (R)+exact+sigma*=id; tau0(stab)=stab "
-        "sampled — screen values reproduced, b=0 transport verified")
-    out["structure"] = {"k": [12, 12, 8, 8], "seam_dim": 6, "s1_dim": 6}
+    log("tower + structure: k 12/12/8/8; SEAM dim 6; rank(p1*p0*) = 2 "
+        "=> S1' = 3 classes; top rung (R)+exact+sigma*=id; "
+        "tau0(stab)=stab sampled")
+    out["structure"] = {"k": [12, 12, 8, 8], "seam_dim": 6,
+                        "s1prime_classes": 3}
     perms1 = translation_perms(L[1])
     perms2 = translation_perms(L[2])
     perms3 = translation_perms(L[3])
@@ -160,215 +177,215 @@ def main() -> None:
     ckpt_meta = DATA / f"ckpt_W{W}_meta.json"
 
     if not rungs_only:
-        # --------------------------------------------- 1. L3 (direct BZ)
-        hits3 = census_pass(binp, L[3],
-                            [("S", np.zeros(L[3].n, np.uint8))], W,
-                            "tdg432_L3stab")
-        s3v = [i2v(h, L[3].n) for h in sorted(hits3["S"])]
-        for v in s3v[:: max(1, len(s3v) // 40)]:
-            assert L[3].is_stab(v)
-        mu3 = min(int(v.sum()) for v in s3v)
-        assert mu3 >= 6, f"mu3 = {mu3} < 6"
-        c3 = Collector(L[3].n)
-        for v in s3v:
-            c3.add(v)
-        stab3_reps = c3.reps(perms3)
-        log(f"L3 stab <= {W}: {len(s3v)} vectors, "
-            f"{len(stab3_reps)} orbit reps, mu3 = {mu3}")
-        # im p2* cosets <= W (shadow classes of L2-cycles)
-        hits3p = census_pass(
-            binp, L[3],
-            [(f"C{c}", rep_for(L[3], c)) for c in sorted(P2set)], W,
-            "tdg432_L3p2cos")
-        cos3: dict[int, list[np.ndarray]] = {}
-        for c in sorted(P2set):
-            vs = [i2v(h, L[3].n) for h in sorted(hits3p[f"C{c}"])]
-            for v in vs[:: max(1, len(vs) // 10)]:
-                assert L[3].is_cycle(v) and not L[3].is_stab(v)
-                assert v2i(L[3].sig(v)) == c
-            cos3[c] = vs
-        n_cos3 = sum(len(v) for v in cos3.values())
-        # all-class <= W/2 (tau3 sources) + d(L3)
-        WT3 = W // 2
-        allcls = sorted(set(range(1, 1 << L[3].k)))
-        d_l3 = None
-        tau3_src: list[np.ndarray] = [v for v in s3v
-                                      if 2 * int(v.sum()) <= W]
-        CH = 51                     # offsets per pass (kernel cap 256)
-        for lo in range(0, len(allcls), CH):
-            chunk = allcls[lo:lo + CH]
-            hh = census_pass(
-                binp, L[3],
-                [(f"C{c}", rep_for(L[3], c)) for c in chunk],
-                max(WT3, 14), f"tdg432_L3all{lo}")
-            for c in chunk:
-                for h in sorted(hh[f"C{c}"]):
-                    v = i2v(h, L[3].n)
-                    w = int(v.sum())
-                    d_l3 = w if d_l3 is None else min(d_l3, w)
-                    if 2 * w <= W:
-                        tau3_src.append(v)
-        log(f"L3: im-p2* coset elements <= {W}: {n_cos3} over 15 "
-            f"classes; d(L3) = {d_l3} EXACT (all 255 classes censused "
-            f"<= {max(WT3, 14)}); tau3 sources {len(tau3_src)}")
-        out["L3"] = {"stab_vecs": len(s3v), "stab_orbits": len(stab3_reps),
-                     "p2cos_elems": n_cos3, "d_L3": d_l3}
-
-        # ------------------------------------- 2. L2 (descent from L3)
-        coll_stab2 = Collector(L[2].n)
-        coll_s1cos2 = Collector(L[2].n)
-        coll_all2 = Collector(L[2].n)     # all cycles <= WC (windows)
-        d_l2 = [None]
-
-        def classify_l2(b2: np.ndarray) -> None:
-            w = int(b2.sum())
-            if w == 0 or w > W:
-                return
-            if in_span(v2i(b2), L[2].rsHX_b, L[2].rsHX_p):
-                if w <= W:
-                    coll_stab2.add(b2)
-                if w <= WC:
-                    coll_all2.add(b2)
-                return
-            d_l2[0] = w if d_l2[0] is None else min(d_l2[0], w)
-            if v2i(L[2].sig(b2)) in S1set:
-                coll_s1cos2.add(b2)
-            if w <= WC:
-                coll_all2.add(b2)
-
-        n_tau3 = 0
-        for src in tau3_src:
-            b2 = (deck2.TAU @ src) % 2
-            assert L[2].is_cycle(b2)
-            classify_l2(b2)
-            n_tau3 += 1
-        nf = nl = 0
-        fib_srcs = ([(v, "stab") for v in stab3_reps] +
-                    [(Collector(L[3].n), c) for c in []])
-        # orbit reps for the 15 coset classes
-        cos3_reps = []
-        for c in sorted(P2set):
-            cc = Collector(L[3].n)
-            for v in cos3[c]:
-                cc.add(v)
-            cos3_reps.extend(cc.reps(perms3))
-        for beta in stab3_reps + cos3_reps:
-            cap = (W - int(beta.sum())) // 2
-            if cap < 0:
-                continue
-            lifts = enumerate_lifts_deep(deck2, beta, cap=min(cap, 8))
-            nf += 1
-            for v0c, m2 in sorted(lifts.items()):
-                classify_l2(deck2.lift(i2v(v0c, L[3].n), beta))
-                nl += 1
-            if nf % 500 == 0:
-                log(f"  ... L3 fibers {nf}/{len(stab3_reps)+len(cos3_reps)}"
-                    f" ({nl} lifts)")
-        stab2_reps = coll_stab2.reps(perms2)
-        s1cos2_reps = coll_s1cos2.reps(perms2)
-        all2_reps = coll_all2.reps(perms2)
-        mu2 = min(int(b.sum()) for b in stab2_reps)
-        assert mu2 >= 6
-        log(f"L2 descent: stab reps <= {W}: {len(stab2_reps)} "
-            f"{whist(stab2_reps)} (mu2 {mu2}); S1-coset reps <= {W}: "
-            f"{len(s1cos2_reps)} {whist(s1cos2_reps)}; all-cycle reps "
-            f"<= {WC}: {len(all2_reps)}; d(L2) = {d_l2[0]} EXACT "
-            f"(complete <= {W}); fibers {nf}, lifts {nl}, tau3 {n_tau3}")
-        out["L2"] = {"stab_orbits": len(stab2_reps),
-                     "stab_whist": whist(stab2_reps),
-                     "s1_orbits": len(s1cos2_reps),
-                     "all_orbits": len(all2_reps), "d_L2": d_l2[0],
-                     "mu2": mu2}
-
-        # 2G. GATE: direct BZ censuses at L2 <= 14 == the descent slice
-        WG = 14
-        dg_stab = census_pass(binp, L[2],
-                              [("S", np.zeros(L[2].n, np.uint8))], WG,
-                              "tdg432_L2gS")
-        gs = [i2v(h, L[2].n) for h in sorted(dg_stab["S"])]
-        cg = Collector(L[2].n)
-        for v in gs:
+        # ------------------------- 1. L2 primary censuses (direct BZ)
+        WG = 14                      # gate window
+        hits_s = census_pass(binp, L[2],
+                             [("S", np.zeros(L[2].n, np.uint8))], W,
+                             "tdg432v2_L2stab")
+        s2v = [i2v(h, L[2].n) for h in sorted(hits_s["S"])]
+        for v in s2v[:: max(1, len(s2v) // 50)]:
             assert L[2].is_stab(v)
-            cg.add(v)
-        kd = {bytes(k) for k in batch_keys(
-            np.array(cg.vecs, np.uint8), perms2)} if cg.vecs else set()
-        m14 = [b for b in stab2_reps if int(b.sum()) <= WG]
-        km = {bytes(k) for k in batch_keys(
-            np.array(m14, np.uint8), perms2)} if m14 else set()
-        assert kd == km, f"L2 stab gate FAIL {len(kd)} != {len(km)}"
-        # all 255 classes <= 14, chunked
-        cg2 = Collector(L[2].n)
-        n_dir_c = 0
-        alll2 = sorted(set(range(1, 1 << L[2].k)))
-        for lo in range(0, len(alll2), CH):
-            chunk = alll2[lo:lo + CH]
+        mu2 = min(int(v.sum()) for v in s2v)
+        assert mu2 >= 6
+        c2s = Collector(L[2].n)
+        for v in s2v:
+            c2s.add(v)
+        stab2_reps = c2s.reps(perms2)
+        log(f"L2 stab <= {W} (direct): {len(s2v)} vectors, "
+            f"{len(stab2_reps)} orbit reps {whist(stab2_reps)}, "
+            f"mu2 = {mu2}")
+
+        hits_p = census_pass(binp, L[2],
+                             [(f"C{c}", rep_for(L[2], c))
+                              for c in sorted(S1pset)], W,
+                             "tdg432v2_L2s1p")
+        c2p = Collector(L[2].n)
+        n_s1p = 0
+        for c in sorted(S1pset):
+            for h in sorted(hits_p[f"C{c}"]):
+                v = i2v(h, L[2].n)
+                assert L[2].is_cycle(v) and not L[2].is_stab(v)
+                assert v2i(L[2].sig(v)) == c
+                c2p.add(v)
+                n_s1p += 1
+        s1p_reps = c2p.reps(perms2)
+        log(f"L2 S1'-cosets <= {W} (direct, 3 classes): {n_s1p} "
+            f"elements, {len(s1p_reps)} orbit reps {whist(s1p_reps)}")
+
+        c2i = Collector(L[2].n)
+        n_imp1 = 0
+        imp1_sorted = sorted(imp1_set)
+        for lo in range(0, len(imp1_sorted), CH):
+            chunk = imp1_sorted[lo:lo + CH]
             hh = census_pass(binp, L[2],
                              [(f"C{c}", rep_for(L[2], c)) for c in chunk],
-                             WG, f"tdg432_L2gC{lo}")
+                             WNT, f"tdg432v2_L2imp1_{lo}")
             for c in chunk:
                 for h in sorted(hh[f"C{c}"]):
                     v = i2v(h, L[2].n)
                     assert L[2].is_cycle(v) and not L[2].is_stab(v)
-                    cg2.add(v)
-                    n_dir_c += 1
-        # nontrivial comparison at the honest common window: the descent
-        # all-cycle collection stops at WC, so compare <= min(WG, WC)
-        WGC = min(WG, WC)
-        cgc = [v for v in cg2.vecs if int(v.sum()) <= WGC]
-        kd2 = {bytes(k) for k in batch_keys(
-            np.array(cgc, np.uint8), perms2)} if cgc else set()
-        m14c = [b for b in all2_reps
-                if int(b.sum()) <= WGC
-                and not in_span(v2i(b), L[2].rsHX_b, L[2].rsHX_p)]
-        km2 = {bytes(k) for k in batch_keys(
-            np.array(m14c, np.uint8), perms2)} if m14c else set()
-        assert kd2 == km2, \
-            f"L2 all-class gate FAIL at <= {WGC}: " \
-            f"{len(kd2)} != {len(km2)}"
-        # d(L2) cross-check from the direct pass (complete to WG >= WC)
-        if n_dir_c:
-            dmin_dir = min(int(v.sum()) for v in cg2.vecs)
-            assert dmin_dir == d_l2[0], (dmin_dir, d_l2[0])
-        log(f"L2 GATE: direct BZ <= {WG} == descent slice EXACTLY "
-            f"(stab {len(kd)} orbits; nontrivial {len(kd2)} orbits, "
-            f"d(L2) cross-checked) — composed fibers census-complete")
-        out["L2_gate"] = {"stab_orbits": len(kd),
-                          "ntrv_orbits": len(kd2), "equal": True}
+                    c2i.add(v)
+                    n_imp1 += 1
+        imp1_reps = c2i.reps(perms2)
+        log(f"L2 im-p1*-cosets <= {WNT} (direct, 63 classes): "
+            f"{n_imp1} elements, {len(imp1_reps)} orbit reps")
+
+        c2a = Collector(L[2].n)       # ALL cycles <= WALL (stab + ntrv)
+        d_l2 = None
+        alll2 = sorted(set(range(1, 1 << L[2].k)))
+        for v in s2v:
+            if int(v.sum()) <= WALL:
+                c2a.add(v)
+        for lo in range(0, len(alll2), CH):
+            chunk = alll2[lo:lo + CH]
+            hh = census_pass(binp, L[2],
+                             [(f"C{c}", rep_for(L[2], c)) for c in chunk],
+                             WALL, f"tdg432v2_L2all_{lo}")
+            for c in chunk:
+                for h in sorted(hh[f"C{c}"]):
+                    v = i2v(h, L[2].n)
+                    w_ = int(v.sum())
+                    d_l2 = w_ if d_l2 is None else min(d_l2, w_)
+                    c2a.add(v)
+        all2_reps = c2a.reps(perms2)
+        assert d_l2 == 10, f"d(L2) = {d_l2} != the banked W16-run 10"
+        log(f"L2 all-class <= {WALL} (direct, 255 classes): "
+            f"{len(all2_reps)} orbit reps; d(L2) = {d_l2} EXACT")
+        out["L2"] = {"stab_orbits": len(stab2_reps),
+                     "stab_whist": whist(stab2_reps),
+                     "s1p_orbits": len(s1p_reps),
+                     "imp1_orbits": len(imp1_reps),
+                     "all_orbits_WALL": len(all2_reps),
+                     "d_L2": d_l2, "mu2": mu2}
+
+        # ------------------- 2. L3 censuses + the L2 descent GATE <= 14
+        hits3 = census_pass(binp, L[3],
+                            [("S", np.zeros(L[3].n, np.uint8))], WG,
+                            "tdg432v2_L3stab")
+        s3v = [i2v(h, L[3].n) for h in sorted(hits3["S"])]
+        for v in s3v[:: max(1, len(s3v) // 40)]:
+            assert L[3].is_stab(v)
+        mu3 = min(int(v.sum()) for v in s3v)
+        assert mu3 >= 6
+        c3 = Collector(L[3].n)
+        for v in s3v:
+            c3.add(v)
+        stab3_reps = c3.reps(perms3)
+        c3p = Collector(L[3].n)
+        hits3p = census_pass(
+            binp, L[3],
+            [(f"C{c}", rep_for(L[3], c)) for c in sorted(P2set)], WG,
+            "tdg432v2_L3p2cos")
+        for c in sorted(P2set):
+            for h in sorted(hits3p[f"C{c}"]):
+                v = i2v(h, L[3].n)
+                assert L[3].is_cycle(v) and not L[3].is_stab(v)
+                c3p.add(v)
+        cos3_reps = c3p.reps(perms3)
+        # all-class <= 7 for tau3 sources (2w <= 14) + d(L3)
+        tau3_src = [v for v in s3v if 2 * int(v.sum()) <= WG]
+        d_l3 = None
+        allcls3 = sorted(set(range(1, 1 << L[3].k)))
+        for lo in range(0, len(allcls3), CH):
+            chunk = allcls3[lo:lo + CH]
+            hh = census_pass(binp, L[3],
+                             [(f"C{c}", rep_for(L[3], c)) for c in chunk],
+                             WG, f"tdg432v2_L3all_{lo}")
+            for c in chunk:
+                for h in sorted(hh[f"C{c}"]):
+                    v = i2v(h, L[3].n)
+                    w_ = int(v.sum())
+                    d_l3 = w_ if d_l3 is None else min(d_l3, w_)
+                    if 2 * w_ <= WG:
+                        tau3_src.append(v)
+        assert d_l3 == 6, f"d(L3) = {d_l3} != the banked W16-run 6"
+        log(f"L3 censuses <= {WG}: {len(stab3_reps)} stab + "
+            f"{len(cos3_reps)} im-p2* coset orbit reps; d(L3) = {d_l3} "
+            f"EXACT; tau3 sources {len(tau3_src)}")
+        out["L3"] = {"stab_orbits": len(stab3_reps),
+                     "p2cos_orbits": len(cos3_reps), "d_L3": d_l3}
+
+        gate_stab = Collector(L[2].n)
+        gate_ntrv = Collector(L[2].n)
+
+        def classify_gate(b2: np.ndarray) -> None:
+            w_ = int(b2.sum())
+            if w_ == 0 or w_ > WG:
+                return
+            if in_span(v2i(b2), L[2].rsHX_b, L[2].rsHX_p):
+                gate_stab.add(b2)
+            else:
+                gate_ntrv.add(b2)
+
+        for src in tau3_src:
+            b2 = (deck2.TAU @ src) % 2
+            assert L[2].is_cycle(b2)
+            classify_gate(b2)
+        nfg = 0
+        for beta in stab3_reps + cos3_reps:
+            cap = (WG - int(beta.sum())) // 2
+            if cap < 0:
+                continue
+            lifts = enumerate_lifts_deep(deck2, beta, cap=min(cap, 8))
+            nfg += 1
+            for v0c, m2 in sorted(lifts.items()):
+                classify_gate(deck2.lift(i2v(v0c, L[3].n), beta))
+        kdesc_s = key_set(gate_stab.reps(perms2), perms2)
+        kdir_s = key_set([b for b in stab2_reps if int(b.sum()) <= WG],
+                         perms2)
+        assert kdesc_s == kdir_s, \
+            f"L2 stab gate FAIL {len(kdesc_s)} != {len(kdir_s)}"
+        kdesc_n = key_set(gate_ntrv.reps(perms2), perms2)
+        kdir_n = key_set(
+            [b for b in all2_reps
+             if int(b.sum()) <= WG
+             and not in_span(v2i(b), L[2].rsHX_b, L[2].rsHX_p)],
+            perms2)
+        assert kdesc_n == kdir_n, \
+            f"L2 ntrv gate FAIL {len(kdesc_n)} != {len(kdir_n)}"
+        log(f"L2 GATE: descent-from-L3 <= {WG} == direct slices EXACTLY "
+            f"(stab {len(kdir_s)} orbits, nontrivial {len(kdir_n)} "
+            f"orbits; {nfg} fibers) — composed fibers census-complete")
+        out["L2_gate"] = {"stab_orbits": len(kdir_s),
+                          "ntrv_orbits": len(kdir_n), "equal": True}
 
         # --------------------------------- 3. L1 obligations (descent)
-        ks_fib1 = KernelShift(deck1, all2_reps, complete_to=WC)
+        ks_fib1 = KernelShift(deck1, all2_reps, complete_to=WALL)
         coll_stab1 = Collector(L[1].n)
         coll_seam1 = Collector(L[1].n)
-        coll_ntrv1 = Collector(L[1].n)    # nontrivial <= WC (top windows)
+        coll_ntrv1 = Collector(L[1].n)
         d_l1 = [None]
 
         def classify_l1(b1: np.ndarray) -> None:
-            w = int(b1.sum())
-            if w == 0 or w > W:
+            w_ = int(b1.sum())
+            if w_ == 0 or w_ > W:
                 return
             if in_span(v2i(b1), L[1].rsHX_b, L[1].rsHX_p):
                 coll_stab1.add(b1)
                 return
-            d_l1[0] = w if d_l1[0] is None else min(d_l1[0], w)
+            d_l1[0] = w_ if d_l1[0] is None else min(d_l1[0], w_)
             if v2i(L[1].sig(b1)) in seam_set:
                 coll_seam1.add(b1)
-            if w <= WC:
+            if w_ <= WNT:
                 coll_ntrv1.add(b1)
 
         n_tau2 = 0
-        for w_, bucket in ks_fib1.by_w.items():
-            if 2 * w_ <= W:
-                for zi in bucket:
-                    b1 = (deck1.TAU @ i2v(zi, L[2].n)) % 2
-                    assert L[1].is_cycle(b1)
-                    classify_l1(b1)
-                    n_tau2 += 1
-        log(f"L1 tau2-family: {n_tau2} sources")
+        for u in ([v for v in s2v if 2 * int(v.sum()) <= W] +
+                  [v for v in c2a.vecs
+                   if not in_span(v2i(v), L[2].rsHX_b, L[2].rsHX_p)
+                   and 2 * int(v.sum()) <= W]):
+            b1 = (deck1.TAU @ u) % 2
+            assert L[1].is_cycle(b1)
+            classify_l1(b1)
+            n_tau2 += 1
+        log(f"L1 tau2-family: {n_tau2} sources (all classes <= {W//2})")
         nfd = nfk = 0
-        for b2 in sorted(stab2_reps + s1cos2_reps,
-                         key=lambda b: -int(b.sum())):
+        fiber_plan = ([(b, W) for b in stab2_reps] +
+                      [(b, W) for b in s1p_reps] +
+                      [(b, WNT) for b in imp1_reps])
+        for b2, Wb in sorted(fiber_plan, key=lambda t: -int(t[0].sum())):
             wb2 = int(b2.sum())
-            cap = (W - wb2) // 2
+            cap = (Wb - wb2) // 2
             if cap < 0:
                 continue
             if cap <= 6:
@@ -379,40 +396,45 @@ def main() -> None:
             else:
                 v0p, ovp = row_lift_v0(deck1, b2)
                 B = wb2 + cap + ovp
-                assert B <= WC, \
-                    f"L1-fiber kernel-shift window {B} > WC = {WC}"
-                rhs = (deck1.RHS @ b2) % 2
-                seen_v0: set[int] = set()
-                bmask = v2i(b2)
-                for v0i in ks_fib1.candidates(b2, v0p, cap):
-                    canon = min(v0i, v0i ^ bmask)
-                    if canon in seen_v0:
-                        continue
-                    seen_v0.add(canon)
-                    v0 = i2v(v0i, L[2].n)
-                    assert not (((deck1.E @ v0) + rhs) % 2).any()
-                    classify_l1(deck1.lift(v0, b2))
-                nfk += 1
-            if (nfd + nfk) % 1000 == 0:
-                log(f"  ... L2 fibers {nfd+nfk}/"
-                    f"{len(stab2_reps)+len(s1cos2_reps)}")
+                if B <= WALL:
+                    rhs = (deck1.RHS @ b2) % 2
+                    seen_v0: set[int] = set()
+                    bmask = v2i(b2)
+                    for v0i in ks_fib1.candidates(b2, v0p, cap):
+                        canon = min(v0i, v0i ^ bmask)
+                        if canon in seen_v0:
+                            continue
+                        seen_v0.add(canon)
+                        v0 = i2v(v0i, L[2].n)
+                        assert not (((deck1.E @ v0) + rhs) % 2).any()
+                        classify_l1(deck1.lift(v0, b2))
+                    nfk += 1
+                else:
+                    assert cap <= 8
+                    lifts = enumerate_lifts_deep(deck1, b2, cap=cap)
+                    for v0c, m2 in sorted(lifts.items()):
+                        classify_l1(deck1.lift(i2v(v0c, L[2].n), b2))
+                    nfd += 1
+            if (nfd + nfk) % 2000 == 0:
+                log(f"  ... L2 fibers {nfd+nfk}/{len(fiber_plan)}")
         stab1_reps = coll_stab1.reps(perms1)
         seam1_reps = coll_seam1.reps(perms1)
         ntrv1_reps = coll_ntrv1.reps(perms1)
         mu1 = min(int(b.sum()) for b in stab1_reps)
         assert mu1 >= 6
-        log(f"L1 descent censuses <= {W}: stab reps {len(stab1_reps)} "
-            f"{whist(stab1_reps)} (mu1 {mu1}); SEAM-coset reps "
+        assert d_l1[0] == 12, \
+            f"d(L1) = {d_l1[0]} != the banked W16-run 12"
+        log(f"L1 descent censuses: stab reps <= {W}: {len(stab1_reps)} "
+            f"{whist(stab1_reps)} (mu1 {mu1}); SEAM-coset reps <= {W}: "
             f"{len(seam1_reps)} {whist(seam1_reps)}; nontrivial reps "
-            f"<= {WC}: {len(ntrv1_reps)}; d(L1) = "
-            f"{d_l1[0] if d_l1[0] is not None else f'> {W}'} "
-            f"(complete <= {W}); fibers {nfd} direct + {nfk} "
+            f"<= {WNT}: {len(ntrv1_reps)} {whist(ntrv1_reps)}; "
+            f"d(L1) = {d_l1[0]} EXACT; fibers {nfd} direct + {nfk} "
             f"kernel-shift")
         out["L1"] = {"stab_orbits": len(stab1_reps),
                      "stab_whist": whist(stab1_reps),
                      "seam_orbits": len(seam1_reps),
                      "seam_whist": whist(seam1_reps),
-                     "ntrv_orbits_WC": len(ntrv1_reps),
+                     "ntrv_orbits_WNT": len(ntrv1_reps),
                      "d_L1": d_l1[0], "mu1": mu1}
 
         # 3G. GATE: <= 12 L1-stab census via the INDEPENDENT y-quotient
@@ -425,7 +447,7 @@ def main() -> None:
         permsy = translation_perms(LY)
         hitsy = census_pass(binp, LY,
                             [("S", np.zeros(LY.n, np.uint8))], WG1,
-                            "tdg432_LYgS")
+                            "tdg432v2_LYgS")
         syv = [i2v(h, LY.n) for h in sorted(hitsy["S"])]
         cy = Collector(LY.n)
         for v in syv:
@@ -437,7 +459,7 @@ def main() -> None:
             chunk = ally[lo:lo + CH]
             hh = census_pass(binp, LY,
                              [(f"C{c}", rep_for(LY, c)) for c in chunk],
-                             WG1 // 2, f"tdg432_LYgC{lo}")
+                             WG1 // 2, f"tdg432v2_LYgC{lo}")
             for c in chunk:
                 for h in sorted(hh[f"C{c}"]):
                     v = i2v(h, LY.n)
@@ -463,12 +485,9 @@ def main() -> None:
                 if 0 < w_ <= WG1 and \
                         in_span(v2i(b1), L[1].rsHX_b, L[1].rsHX_p):
                     coll_y.add(b1)
-        yreps = coll_y.reps(perms1)
-        kdy = {bytes(k) for k in batch_keys(
-            np.array(yreps, np.uint8), perms1)} if yreps else set()
-        m12 = [b for b in stab1_reps if int(b.sum()) <= WG1]
-        kmx = {bytes(k) for k in batch_keys(
-            np.array(m12, np.uint8), perms1)} if m12 else set()
+        kdy = key_set(coll_y.reps(perms1), perms1)
+        kmx = key_set([b for b in stab1_reps if int(b.sum()) <= WG1],
+                      perms1)
         assert kdy == kmx, f"L1 gate FAIL {len(kdy)} != {len(kmx)}"
         log(f"L1 GATE: <= {WG1} L1-stab census re-derived through the "
             f"independent y-quotient (18,3) [[{LY.n},{LY.k}]] "
@@ -489,8 +508,8 @@ def main() -> None:
                                           for j in np.nonzero(b)[0]),
                     }) + "\n")
         ckpt_meta.write_text(json.dumps(
-            {"d_L1": d_l1[0], "d_L2": d_l2[0], "d_L3": d_l3,
-             "mu1": mu1}, indent=1))
+            {"d_L1": d_l1[0], "d_L2": d_l2, "d_L3": d_l3,
+             "mu1": mu1, "WNT": WNT}, indent=1))
         log(f"checkpoint: {len(stab1_reps)} stab + {len(seam1_reps)} "
             f"seam + {len(ntrv1_reps)} nontrivial orbit reps + meta")
         if census_only:
@@ -502,9 +521,10 @@ def main() -> None:
     else:
         meta = json.loads(ckpt_meta.read_text())
         d_l1 = [meta["d_L1"]]
-        d_l2 = [meta["d_L2"]]
+        d_l2 = meta["d_L2"]
         d_l3 = meta["d_L3"]
         mu1 = meta["mu1"]
+        assert meta["WNT"] == WNT
 
         def load(path, checker):
             reps = []
@@ -535,14 +555,11 @@ def main() -> None:
         ntrv1_reps = load(ckpt_ntrv, chk_ntrv)
         log(f"checkpoint reloaded + re-verified: {len(stab1_reps)} stab "
             f"+ {len(seam1_reps)} seam + {len(ntrv1_reps)} nontrivial; "
-            f"d(L1) = {d_l1[0]}, d(L2) = {d_l2[0]}, d(L3) = {d_l3}")
+            f"d(L1) = {d_l1[0]}, d(L2) = {d_l2}, d(L3) = {d_l3}")
 
     # ------------------------------------------- 4. the witness ladder
-    # m_ns = min weight of a nontrivial L1-cycle <= W with class outside
-    # SEAM: tau0(u) is then a verified NONTRIVIAL L0-logical, wt 2|u|.
     wit = None
     cand = sorted(seam1_reps + ntrv1_reps, key=lambda v: int(v.sum()))
-    seen_w = set()
     for u in cand:
         if v2i(L[1].sig(u)) in seam_set:
             continue
@@ -561,23 +578,21 @@ def main() -> None:
             f"class) VERIFIED end-to-end => d([[432,12]]) <= "
             f"{wit['w_L0']}")
     else:
-        log(f"tau0-witness: no non-SEAM nontrivial L1-cycle <= "
-            f"{WC if not rungs_only else WC} found -> no tau upper "
-            f"bound from this window")
+        log("tau0-witness: none in the window")
     out["tau_witness"] = wit
 
     # --------------------------------------------------- 5. the rungs
     d_L1_eff = d_l1[0] if d_l1[0] is not None else W + 1
     cell = RungCell("tdg432_top", L[1], L[0], deck0)
     ks_top = KernelShift(deck0, stab1_reps + ntrv1_reps,
-                         complete_to=WC)
+                         complete_to=WNT)
 
     def kernel_shift_rung(b: np.ndarray, M: int) -> dict:
         wb = int(b.sum())
         v0p, ovp = row_lift_v0(deck0, b)
         B = wb + (M - 1) + ovp
-        assert B <= WC, \
-            f"top kernel-shift window {B} > WC (cell |b|={wb} M={M})"
+        assert B <= WNT, \
+            f"top kernel-shift window {B} > WNT (cell |b|={wb} M={M})"
         rhs = (deck0.RHS @ b) % 2
         viols = []
         seen_v0: set[int] = set()
@@ -622,14 +637,14 @@ def main() -> None:
             r = cell.rung(b, M, time.monotonic() + 3600)
             if n_xval < 3:
                 v0p, ovp = row_lift_v0(deck0, b)
-                if wb + (M - 1) + ovp <= WC:
+                if wb + (M - 1) + ovp <= WNT:
                     rks = kernel_shift_rung(b, M)
                     assert rks["verdict"] == r["verdict"], "LANE MISMATCH"
                     n_xval += 1
         else:
             v0p, ovp = row_lift_v0(deck0, b)
             B = wb + (M - 1) + ovp
-            if B <= WC:
+            if B <= WNT:
                 r = kernel_shift_rung(b, M)
                 if n_xval < 6 and (M - 1) <= 6:
                     rd = cell.rung(b, M, time.monotonic() + 3600)
@@ -698,7 +713,7 @@ def main() -> None:
         bt = b[perm_g]
         v0p, ovp = row_lift_v0(deck0, bt)
         B = int(bt.sum()) + (M - 1) + ovp
-        rt = (kernel_shift_rung(bt, M) if B <= WC
+        rt = (kernel_shift_rung(bt, M) if B <= WNT
               else cell.rung(bt, M, time.monotonic() + 600))
         assert rt["verdict"] == v0_verd, "covariance broken"
     log("covariance: 3 translated reps re-rung, verdicts transport")
@@ -711,9 +726,9 @@ def main() -> None:
             f"({sum(verd.values())} PASS) + seam ({sum(verd2.values())} "
             f"PASS) + G-transport => NO nontrivial X-logical of weight "
             f"<= {W}: d([[432,12]]) >= {TARGET} at certificate tier "
-            f"(consuming d(L1) = {d_l1[0]}, d(L2) = {d_l2[0]}, both "
-            f"measured census-complete in-run). Z side by transpose "
-            f"duality.")
+            f"(consuming d(L1) = {d_l1[0]}, d(L2) = "
+            f"{d_l2 if not rungs_only else d_l2}, both measured "
+            f"census-complete in-run). Z side by transpose duality.")
         out["verdict"] = {"floor": TARGET, "all_pass": True}
         if wit and wit["w_L0"] == TARGET:
             log(f"WITH the tau0-witness at weight {wit['w_L0']}: "

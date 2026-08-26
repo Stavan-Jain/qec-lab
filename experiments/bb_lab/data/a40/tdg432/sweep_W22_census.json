@@ -1,0 +1,72 @@
+{
+ "W": 22,
+ "target": 24,
+ "WNT": 18,
+ "WALL": 16,
+ "phase": "census",
+ "architecture": "v2 direct-L2-primary",
+ "structure": {
+  "k": [
+   12,
+   12,
+   8,
+   8
+  ],
+  "seam_dim": 6,
+  "s1prime_classes": 3
+ },
+ "L2": {
+  "stab_orbits": 33691,
+  "stab_whist": {
+   "6": 1,
+   "10": 6,
+   "12": 24,
+   "14": 54,
+   "16": 280,
+   "18": 971,
+   "20": 4704,
+   "22": 27651
+  },
+  "s1p_orbits": 72977,
+  "imp1_orbits": 19411,
+  "all_orbits_WALL": 7780,
+  "d_L2": 10,
+  "mu2": 6
+ },
+ "L3": {
+  "stab_orbits": 193,
+  "p2cos_orbits": 1974,
+  "d_L3": 6
+ },
+ "L2_gate": {
+  "stab_orbits": 85,
+  "ntrv_orbits": 666,
+  "equal": true
+ },
+ "L1": {
+  "stab_orbits": 44093,
+  "stab_whist": {
+   "6": 1,
+   "10": 6,
+   "12": 51,
+   "14": 54,
+   "16": 589,
+   "18": 2091,
+   "20": 7117,
+   "22": 34184
+  },
+  "seam_orbits": 68,
+  "seam_whist": {
+   "22": 68
+  },
+  "ntrv_orbits_WNT": 5727,
+  "d_L1": 12,
+  "mu1": 6
+ },
+ "L1_gate": {
+  "orbits": 58,
+  "equal": true,
+  "k_LY": 8
+ },
+ "wall_s": 744.2
+}
