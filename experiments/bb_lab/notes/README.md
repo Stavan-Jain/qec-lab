@@ -7,10 +7,12 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A40.** (A35–A37 rows below were added defensively on
-2026-08-18 from a cross-ref sweep of unmerged branches — the A25 precedent.
-A35 and A36 are each claimed **twice** in parallel; renumber-at-merge is owed
-per the A15/A28–A29/A34 precedent.)
+**Next free number: A42.** (A40 and A41 were claimed 2026-08-25 by parallel
+sessions — A40 here, A41 = the closed-form family-construction charter on its
+own branch; expect a trivial registry merge. A35–A37 rows below were added
+defensively on 2026-08-18 from a cross-ref sweep of unmerged branches — the
+A25 precedent. A35 and A36 are each claimed **twice** in parallel;
+renumber-at-merge is owed per the A15/A28–A29/A34 precedent.)
 
 | # | Line | Note file(s) | Status |
 |---|------|--------------|--------|
@@ -54,6 +56,7 @@ per the A15/A28–A29/A34 precedent.)
 | A36 | **claimed twice in parallel**: (a) bb288 [[288,12,18]] — d = 18 END-TO-END certificate tier in ~31 s, no SAT (A35(a)'s #1 port; first R3-regime closure; first kernel-checked mid-level consumed, d(gross) = 12; d(B72) = 6 census-complete; Lean two-tier shipped, QECLean `claude/a36-bb288-d18`); (b) constructed doubling pairs (q > 13.5 by design) — T5 family 5/5 exactly closed, >1.04M cells | (a) `A36_bb288_d18_certificate.md` @ branch `claude/tower-slice-calculus-generalize-410ed1`; (b) @ branches `claude/a36-constructed-doubling` / `claude/high-fom-bb-codes-2356f1` | both on unmerged branches; rows added defensively 2026-08-18 |
 | A37 | (M)-robustness conjecture line: A37.1–A37.4 proof stack (A37.2 generalized to any weights via injective cell-to-pair charging), Front-A sweep 17/17 Tier-D cells certified, any-weight edge-bound falsification pass (704 D1&D2 pairs, 8,448 checks, 0 violations), a8_336 [[336,12,12]] end-to-end 19.5 s + two new exact cover distances; session-1 referee verdict SOUND-WITH-FIXES applied | note @ unmerged worktree-agent branch (claim commit `86b6400`) | active on unmerged branch; row added defensively 2026-08-18 |
 | A38 | **Distance-descent generalization thread — the charter**: cost-ladder goal (widen T1 / raise T3), fronts F1 odd-deck (Maschke) calculus, F2 analytic census replacement (odd-Fourier factorization, ε-recursion, carry floors, wall theory, witness heredity), F3 complexity ledger (descent width, exponent-halving theorem), F4 non-abelian/GB/non-CSS scope, F5 engine + Lean certificate species; walls W1–W7, validation docket, inherited known-false ledger, session map S1–S5 | `A38_descent_generalization_plan.md` | claimed 2026-08-18 (charter; sessions log against it) |
+| A40 | **Tour-de-gross d-column** (arXiv:2506.03094 family, r ∈ ℤ, b ∈ {0,1}, ℓ = 6(r+b), m = 6r, FIXED Laurent A = 1+y+x³y⁻¹, B = 1+x+x⁻¹y⁻³; conjectured d = 6(2r+b−1)): source the family from the paper, map its internal cover lattice mechanically, price/close the first unproven member, verdict on the ∀r analytic lane | `A40_tour_de_gross_column.md` | claimed 2026-08-25 (session 1) |
 | A39 | **Pre-registered falsification test of the descent machinery** (feeds A38 F3/F5): A35 screen extracted bit-exact → 164-row frozen-prediction cohort (96 frontier + anchors/scope/parity strata + 58-code order-144 sweep folded in under a retrodiction rule, manifest-sealed) → closures + SAT ground-truth arm + equal-compute head-to-head. Verdicts: (i) 0 structural violations/381 rungs PASS; (ii) node formula **×1.0000** on 152/152 censuses PASS; (iii) GREEN-closure 39.1% **FAIL as registered** (74 counterexample-exacts below loose G5 ceilings — median gap 4, 0 containment failures; 10 memory-envelope stops = the unpriced storage axis; resolution 92.8%; RED 0/11 ✓, refusals 10/10 ✓); (iv) certificate-vs-SAT **17/17 agree, 0 disagreements** PASS; (v) equal compute **128/154 vs 47/154**, SAT-only uniquely closed 0. Yields: **97 new certificate-tier exacts** (incl. two [[288,4,18]] sandwich joins, [[168,4,16]], nine d=14, wt-3×wt-4 [[120,4,14]] sans parity) + 17 floors; 0/88 prior d_ub tight; 11/58 random order-144 codes double (lower bound); corpus merge script dry-run-clean (79 updates + 67 inserts, first non-solver `d_method` tier), apply owed | `A39_descent_theory_validation.md` | done 2026-08-18 (corpus-merge apply + upstream `_preimage` fix + G5/G6 recalibration = owed; full artifacts `data/descent_theory_test/` + `data/order144_sweep/`) |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
