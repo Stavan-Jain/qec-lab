@@ -600,8 +600,17 @@ min 12; band loads down to 1 exist).**
 12/8/8 over (18,18)→(9,18)→(9,9), rank(p₁*∘p₀*) = 2 again ⟹ 3 S1'
 classes; bottom-walk totals ~1e10.1 (W=14, d ≥ 16) / ~1e11.0 (W=16,
 d ≥ 18) / ~1e11.9 (W=18, d ≥ 20) / ~1e13.6 (W=22, d ≥ 24: RED today).
-A d((3,0)) ≥ 18 partial floor is GREEN (~minutes of walks + one descent
-layer) — first-priority execution next session. **(3,1)**: anchor (6,9)
+A d((3,0)) ≥ 18 partial floor is GREEN — **EXECUTED in-session**
+(`a40_s2_t30_close.py`, `s2_t30_W16.json`, 87.7 s): TWO-ROUTE design —
+both mid orderings ((18,18)→(9,18)→(9,9) and (18,18)→(18,9)→(9,9)) run
+as complete independent closures whose agreement replaces the
+independent-quotient gate (neither mid has a second Z₂ deck). Per
+route: (9,9) direct BZ censuses (node-exact; stab ≤ 16, S1'-3 ≤ 16,
+im-p₁*-15 ≤ 12, all-class ≤ 8), one descent layer, complete ntrv ≤ 12
+window EMPTY ⟹ d(mid) ≥ 14 both mids, b = 0 branch dead; 1,043
+dangerous rungs ALL PASS at target 18 per route, seam census EMPTY
+≤ 16. **d([[648,12]]) ≥ 18, certificate tier, no SAT** — the first
+floor on the (3,0) member (conjecture value 30; no upper bound known). **(3,1)**: anchor (6,9)
 walks are cheap (1e9.5–1e11.4) but TWO stacked descent layers (n = 216,
 432) above the anchor are the real cost — architecture-bound, not
 walk-bound. The b = 1 members now carry banked upper bounds (§7.1), so
