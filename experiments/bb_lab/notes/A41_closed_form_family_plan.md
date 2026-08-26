@@ -60,14 +60,15 @@ vertical route as the stretch front Q6 rather than excluding it.
 | ingredient | status | where |
 |---|---|---|
 | w = 3 class theorem: mirrored-Sidon class ⟹ d ≥ 6, μ ≥ 6, all free-Z₂ covers inherit | UNCONDITIONAL | `A16_class_theorem_writeup.md` |
-| w = 5 conjecture (d ≥ 10) + port map + attack sequence | drafted; empirical gate PASSED: **450 members exactly at d = 2w = 10, zero falsifiers** (T4.2, commit 56e2cf6) | `A17_w5_class_plan.md` |
+| w = 5 conjecture (d ≥ 10) + port map + attack sequence | drafted; empirical gate: **zero falsifiers over 2,144 members** (MC ≤ 9, 800 iters/member); **450 Z₅×Z₁₅ members witness-certified d ≤ 10** — "exactly 2w" is conditional on the class floor (one member carried to d ≥ 9 by UNSAT rounds; one Z₇×Z₉ member floor-certified d ≥ 10 by the 7.5 h coset ladder, 56e2cf6); tightness at 2w is **exclusively a Z₅×Z₁₅ phenomenon** (small frames overshoot — A5 log Entry 15) | `A17_w5_class_plan.md`, A5 log Entry 15 |
+| w = 5 split map (E16–E25, **unmerged branch `worktree-agent-aa0d7676f1aee3b4c`**): (1,k≤5), (2,2) four-line pigeonhole, (3,3)/P-33, (2,4)/P-K4, even splits census-complete — CLOSED; (4,4) profile table proven + adversarially confirmed (clean-room exact match); (1,7)/(3,5) profile layers census-CLEAN, (1,7) structure-empty on the live population; partition-existence/coverage kill = the class's leading profile-killer (4 profiles, named-lemma-family candidate) | REMAINING: P-26 completion (a10/a11/a15q — the sharded launchd re-runs were **lost with the deleted worktree**, engine + shard tooling + validation banked in git; a11 had ≥ 560 abstract terminals streaming, first-pass all rank-8 FREE), (4,4)/(1,7)/(3,5) abstract tables, J5 even-frame residue | A5 log Entries 16–25 + durability postscript (5cd4ec2) |
 | D1∧D2 alone ⟹ floor ≥ 2w is **FALSE** (char-2 Frobenius squares; [[98,12,4]] wt-4 logical); the (iii) mirrored condition + `is_frobenius_related` gate (1887dd0) are load-bearing | falsified/guarded | two-sided/Frobenius line (memory + A16 §5.2) |
 | odd-weight scope is provably necessary (parity is the engine; A11 E3: C-safe ⟹ doubling fails weight-agnostically — (M)-robustness must consume parity) | settled | A11 E3, A15-P3 |
 | k-side class-wide mechanism: (R) ⟺ ε ∈ (A,B) ⟺ k preserved; level-free Bezout witnesses exist ((1+x²)B² = 1+x⁶ served every gross-tower level) | THEOREM + precedent | A12, A13 T3 |
 | per-rung floor machinery: deficit-wall theorem (Lean), safe sector = ker τ₁ (L0), pushforward T2 | proved | `A17_deficit_wall.md` |
-| (M)-robustness line (dangerous sector never binds alone ⟹ SF ⟺ doubles): A37.1–A37.4 stack; any-weight edge-bound falsification pass 704 D1&D2 pairs / 8,448 checks / 0 violations | active, parallel, unmerged | A37 (registry row) |
+| (M)-robustness line (dangerous sector never binds alone ⟹ SF ⟺ doubles): A37.1–A37.4 stack; any-weight edge-bound falsification pass 704 D1&D2 pairs / 8,448 checks / 0 violations; **Lemma A37.2 (spread bound) now proven for ANY weights** via injective cell-to-pair charging (c953764, unmerged `worktree-agent-a7abc8e521d53153e`) with an explicit cross-session note: the D1/D2 half ports to w = 5 verbatim, only the parity round-up needs odd weights — Q5 route (i) strengthened | active, parallel, unmerged | A37 (registry row) + c953764 |
 | analytic census/floor technology, Lean-complete per-instance (LightClassification, SeamCosetFloor 16, base floor 8) | done at f2a6/cover300 | A21, A22, A23 |
-| `SidonConvBound` (Lean) — Sidon convolution weight bound, the natural class-wide census lever | exists, commit fa62959, **reachability unverified** (possibly unpushed) | goal-2 line (A5/A16) |
+| `SidonConvBound` (Lean) — the A17 Lemma V image bound, "first analytic class-level lemma in Lean" | **reachable**: QECLean local branch `a17/sidon-conv-image-bound` @ fa62959 (unmerged, not on any remote — upstreaming owed) | audited S1 |
 | the model Tier-D instance: [[150,8,8]] → [[300,8,16]] fully Lean-proven, unconditional | done | A15 line, `cover300_*` in QECLean |
 | certification engine: `bb_lab.tower` (validate_banked, RungCell, deep fibers), `bb_lab.doubling_certify`, a5/a14 cover-cascade battery, A29 fibering (odd part) | promoted, gated | A38 S1/S2 |
 | discovery-side sibling: A36(b) constructed doubling pairs (q > 13.5 by design), T5 family 5/5 exactly closed | unmerged branches `claude/a36-constructed-doubling`, `claude/high-fom-bb-codes-2356f1` | registry row |
@@ -75,12 +76,22 @@ vertical route as the stretch front Q6 rather than excluding it.
 
 ## §2 Fronts
 
-**Q1 — the w = 5 class theorem.** Execute `A17_w5_class_plan.md` §2 from
-wherever it actually stands (S1 audits the a17_w5 artifacts first). The
-named big item is the coincidence-table rebuild (A16 §5.3's analog as a
-cancellation-pattern classification). Known hazard, do not walk into it:
+**Q1 — the w = 5 class theorem (close the residue).** The split map is
+much further along than the plan note: E16–E25 (unmerged branch
+`worktree-agent-aa0d7676f1aee3b4c`) closed (1,k≤5)/(2,2)/(3,3)/(2,4)/
+even-splits outright and proved+confirmed the (4,4) profile table.
+What remains: (a) **re-run and harvest P-26** (a10/a11/a15q — the
+sharded relaunch died with its worktree; `a17_e20_p26_engine.py`
+`--shard`/`--terminals-out` + `a17_e21_p26_merge.py` are banked and
+validated, a13's 4-shard reproduction was byte-exact; a11 is the live
+one: ≥ 560 abstract terminals, first-pass classifier said all rank-8
+FREE — the P-33 endgame pipeline consumes them); (b) the (4,4)
+strata runs (lean-battery variant first — the audited redundancy in
+the incremental battery is worth ~5–6×); (c) (1,7)/(3,5) abstract
+tables; (d) J5 even-frame residue. Known hazard, do not walk into it:
 the pentagonal/torsion "Ann = 0" kills were w=3-specific — the T4.2 zd
-data shows GF(16)/GF(64) *do* admit vanishing 5-term sums.
+data shows GF(16)/GF(64) *do* admit vanishing 5-term sums. Merge debt:
+this branch must land on main before S2 builds on it.
 
 **Q2 — the ∀-odd-w statement.** Uniformize: which A16 pieces are
 w-generic (PAR, (1,1)-by-D2, no-period, no-2-torsion — already marked
