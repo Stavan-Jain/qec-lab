@@ -1084,6 +1084,69 @@ the potential radius — Theorem UB(r,1) then pins d(C_{r,1}) ∈
 b = 1 conjecture exactly. This is the honest restatement of the L2/L3
 ladder after this session: the compression lemma is no longer on it.
 
+### §9.7.1 The periodic leg of L-W: decomposition, pilots, survivors
+
+A closed walk's cheap recurrent behavior decomposes into periodic
+phases (§9.4); for the wall lemma L-W the periodic leg is "no usable
+y-spanning phase below rate 2". This session closed its structure:
+
+> **Decomposition (exhaustive, elementary).** A y-spanning period-p
+> phase at x-order ℓ (any shear d) either (i) has an x-gap ≥ 4 — then
+> the one-axis windowing move lifts it to an x-COMPACT cylinder phase,
+> the atlas's territory (§9.5: none below rate 2 for p ≤ 8, ∀ℓ); or
+> (ii) has all x-gaps ≤ 3 — then it occupies ≥ ⌈ℓ/4⌉ columns, so its
+> rate is ≥ ⌈ℓ/4⌉/p ≥ 2 whenever ℓ ≥ 8p − 3. **The whole periodic
+> leg at p ≤ 8 therefore reduces to the FINITE frame list
+> {(ℓ, p): 6 | ℓ, 12 ≤ ℓ ≤ 8p − 4}**: 11 frame families within the
+> walk kernel's reach ((12, 2..8), (18, 3..5), (24, 4) — pilots
+> below) and 22 needing the descent lane ((18, 6..8) through
+> (60, 8); named residue).
+
+**The pruning pilot** (`a40_s4_prune_pilot.py`): for each in-reach
+frame family, complete node-exact censuses of ALL cycles ≤ 2p over
+every class of every shear (stabilizers included), filtered to
+y-spanning, then tested against the local-reduction catalog (single
+H_X rows + row-pair sums ≤ 10: any cycle holding > half of a catalog
+generator cannot be class-minimal). Survivors below rate 2 are
+classified by triviality, x-winding character (re-placement at
+doubled ℓ), and the b = 1 CLOSURE ARITHMETIC: a (p,d)-phase tiles a
+member (6r+6, 6r) only if p | 6r and (6r/p)·d ≡ 0 mod (6r+6) — the
+generalization of §9.4's b-bit mechanism to every shear.
+
+**Pilot results** (`s4_prune_pilot_l{12,18,24}.json`; ℓ=12 all
+p ≤ 7 all shears zero skips, 428 s; ℓ=18 p ≤ 5 (+ the counting-covered
+p = 2, and (18, 6..7) recorded as descent-lane residue, one
+no-info-set skip); ℓ=24 p ≤ 4 (three no-info-set skips at p = 4)):
+
+- **ℓ=18: 14,400 y-spanning orbits, 3,132 below rate 2 — ALL
+  PRUNED, zero survivors.  ℓ=24: 4,272 orbits, 2,160 below rate 2 —
+  ALL PRUNED, zero survivors.** On the b = 1-relevant swept frames,
+  class-minimality alone eliminates every sub-rate-2 periodic orbit.
+- **ℓ=12: 936 survivors — every one NONTRIVIAL** — concentrated in
+  exactly four shear families: (p,d) = (4,4) w6 (rate 1.5, 48),
+  (5,7) w8 (rate 1.6, 120), (6,3) w10 (rate 5/3; 402 x-winding + 30
+  twist-compact), (7,2) w12 (84), (7,10) w8 (rate 8/7, 84) + w12
+  (168).  **NONE of the 936 closes around any b = 1 member
+  (r ≤ 2000, closure arithmetic): the b = 1 walk system has no usable
+  sub-rate-2 periodic phase anywhere in the swept range.**
+- Correction logged (§9.8): the §9.4/§9.5 dichotomy "x-compact
+  (atlas) vs x-winding (Θ(ℓ))" is NOT exhaustive on shear frames —
+  30 of the (12,6,3) survivors are **twist-compact** (compact on the
+  TWISTED cylinder Z²/⟨(d,p)⟩, equivalently straight-cylinder compact
+  phases of a SHEARED polynomial pair): a new object class the
+  compact atlas (twist 0 only) does not cover.  They too are
+  b1-non-closers; their systematic classification (the atlas engine
+  over the shear orbit of the pair) is named residue.
+- Consistency controls: the tight rate-2 populations reproduce known
+  censuses exactly — (12,6,0) and (12,6,6) each carry 1,884 tight
+  survivors = the banked count of gross's weight-12 logicals; the
+  (7,10) frame's 1,680 rate-2 objects sit beside its cheap family as
+  the k-triage predicted.
+
+The aperiodic half of L-W (domains-with-walls: finite stretches of
+cheap phases glued by transition walls) remains the open core; the
+periodic classification above fixes its input alphabet.
+
 ### §9.8 Falsified claims (session 4)
 
 - **The §8.2 defect-graph formulation** ("nodes = interface states,
@@ -1108,6 +1171,17 @@ ladder after this session: the compression lemma is no longer on it.
   kernel takes n = 288..504 — it caps at 192 (3×64-bit words);
   caught by the kernel's own assertion before any census was
   claimed.
+- **The compact/winding dichotomy as stated in §9.4–§9.5** — not
+  exhaustive on shear frames: TWIST-COMPACT phases (compact on
+  Z²/⟨(d,p)⟩) are a third class, found by the pilot at (12,6,3)
+  (30 objects, w10).  The atlas's verdict stands for twist 0; the
+  twisted classification is opened as residue.  (No claim consumed
+  the incomplete dichotomy: the pilot that exposed it also verified
+  the b1-closure kill for every survivor.)
+- "The local catalog suffices on the periodic landscape" (the
+  pilot's working hypothesis) — FALSE at ℓ = 12: four shear
+  families survive it; they die instead by the closure arithmetic.
+  At ℓ = 18/24 the catalog does suffice.
 - (Respected: witness weights as upper bounds only; RED/AMBER/GREEN
   as cost verdicts; no SAT anywhere; every gate script re-verifies
   its vectors end-to-end.)
@@ -1127,7 +1201,15 @@ ladder after this session: the compression lemma is no longer on it.
 3. **L-P beyond p = 8**: push the atlas to p = 10−11 (engine as is)
    and formulate the exact-constant induction for general p; the
    (ℓ,12) row (= B12: d((ℓ,12)) = 24?) is the natural next base
-   theorem, with (18,12) = 24 already certified as its anchor.
+   theorem, with (18,12) = 24 already certified as its anchor.  A
+   module-theoretic route (compact-support H₁ of the Laurent-in-x /
+   Artinian-in-y complex) could give ∀p in one shot.
+3b. **The twisted-compact atlas** (the §9.7.1 correction): run the
+   compact engine over the shear orbit of the pair (transformed
+   supports per twist class); finite per period.  Also the periodic-
+   leg descent list (22 frame families, (18,6) … (60,8)) and the
+   p = 8 @ ℓ = 12 layer (W = 16 cost wall — the one swept-range gap,
+   priced ~hours with today's kernel).
 4. **The x-lane run of the same program** (pair (B,Ā)): atlas done;
    the mirrored comb/stack/triage gates are cheap and owed for
    symmetry of the record.
