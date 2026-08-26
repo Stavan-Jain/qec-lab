@@ -413,7 +413,7 @@ verdicts, never distance claims.
   §4.1. A closed-form ∀r distance law is a different research program
   (exactly the A38 F1+F2 arc), not a session.
 
-## §5 Falsified claims (session)
+## §5 Falsified claims (session 1)
 
 - **The A13 §4 x-ladder parenthetical** ("level 2 is the known
   [[288,12,18]]") — WRONG; corrected in place in
@@ -447,7 +447,7 @@ verdicts, never distance claims.
   upper bounds only; RED/AMBER/GREEN are cost verdicts; the §5
   known-false ledger of A38 untouched.)
 
-## §6 Residue / next steps
+## §6 Residue / next steps (session 1)
 
 1. **Lean packaging of the [[432,12,24]] certificate** — the same
    census+rung data-carriage species as A36 §10.1/c37xx (charter F5);
@@ -487,3 +487,187 @@ verdicts, never distance claims.
    mid-level, A36-style; (c) the k-row theorem; (d) coordinate with
    the A38 S3 odd-controls session (this thread's odd rungs are its
    best-case instances).
+
+
+## §7 SESSION 2 (2026-08-26) — the strongest honest attack on the conjecture
+
+Directive: attempt the proof of d = 6(2r+b−1) ∀(r,b). Session-1's P3
+verdict (RED ∀r with current technology) was the standing prior; the
+attack decomposed into the upper half (P4), floor extensions (P5), and
+the lower-half skeleton (P6). Scripts `a40_s2_*.py`, data
+`data/a40/s2_*.json`; `validate_banked()` green before every stage.
+
+### §7.1 P4 — the upper half: THEOREM for the b = 1 column; open for b = 0, r ≥ 3
+
+**Falsify-first archaeology first** (`a40_s2_staircase.py`,
+`s2_staircase_archaeology.json`): the "staircase of translated weight-6
+bb72 blocks" reading of 6(2r+b−1) is REFUTED as a description of the
+proven minimum witnesses — gross's 1,884 weight-12 logicals include 258
+single-cell forms and every ragged 2-cell split (1+11 … 6+6); the a36
+two-gross w18 witness crosses ALL FOUR deck cells (weights 4,4,8,2, and
+all 144 translates cross 4); and NO weight-18 sum of three w6-translates
+in staircase cells is even a cycle at (2,0) (0 finds over the full
+84×6⁴ same-block space + 20k mixed samples, `a40_s2_ub_hunt.py`). What
+the witnesses actually show is a **y-band structure**: band weights
+(12) at gross, (12,6) at two-gross, (12,12) at [[432]] — i.e.
+6(2r+b−1) = one 6-band + (r−1+b) 12-bands.
+
+**The building block**: L12, an explicit x-local weight-12 pattern
+(support in an x-window of width 4; 12 exponent triples recorded in
+`s2_ub_bands.json`), which is a nontrivial logical of EVERY
+(ℓ ≥ 12, 6)-frame flat (kernel-checked at ℓ = 12, 18, 24, 30; the
+ℓ-uniformity is structural — no x-wrap is used). L12 is precisely the
+class of object behind A14 §13's freeze ("the undoubled-direction
+logical, lifted"): the freeze carrier and the family's witness block
+are the same thing.
+
+> **Theorem UB(r,1) [upper half, b = 1 column].** For every r ≥ 1,
+> d(C_{r,1}) ≤ 12r = 6(2r+1−1). Witness: **v_{r,1} = Σ_{j=0}^{r−1}
+> y^{6j}·L12** (the y-transfer of L12 along the Z_r y-deck
+> (6(r+1), 6r) → (6(r+1), 6)).
+> Proof ingredients and their tiers:
+> (i) weight 12r — bands y-disjoint by construction;
+> (ii) v is an X-cycle — L12 is an (ℓ,6)-cycle (finite local identity,
+> x-window; kernel-checked ℓ = 12..30) and transfers of cycles along
+> literal-lift decks are cycles (chain-map identity);
+> (iii) nontriviality — the **cylinder dual certificate** u: an
+> x-PERIODIC (period 6), y-LOCAL (one band, no y-wrap) Z-side cycle
+> (12 triples per period, `s2_ub_dual3.json`), which is a Z-cycle of
+> every member (periodicity absorbs the x-wrap at every ℓ ≡ 0 (6);
+> y-locality absorbs the y-wrap at every m ≥ 12; m = 6 = r=1 checked
+> directly) and pairs ⟨u, v_{r,1}⟩ = 1 (u meets only band 0; one
+> finite computation). u ∈ ker H_X and odd pairing ⟹ v ∉ rowspace
+> H_X.
+> **Claim tier**: closed-form witness + closed-form dual certificate;
+> every ingredient kernel-verified at r = 1..6 (n ≤ 3024,
+> `s2_ub_bands.json`, `s2_ub_dual3.json`); the ∀r extension rests on
+> the locality/periodicity uniformity arguments stated above
+> (hand-proof grade, this note; Lean packaging = residue). No SAT
+> anywhere.
+
+Corollaries banked NOW (witness grade for the codes, the witnesses
+themselves exact): **d([[864,12]]) ≤ 36, d([[1440,12]]) ≤ 48,
+d([[2160,12]]) ≤ 60, d([[3024,12]]) ≤ 72** — the first upper bounds of
+any kind on the (3,1), (4,1), (5,1), (6,1) members.
+
+**The b = 0 column stays OPEN for r ≥ 3, with the obstruction mapped**:
+the natural generalizations of the (2,0) witness all fail —
+U0 (its 12-band) x-winds and does not self-stack (the U0-stack + U1
+forms are non-cycles at (3,0)..(6,0), kernel-checked); the pure
+y-transfer and the diagonal/helical transfers of L12 both overshoot to
+12r (the −6 is exactly one band's discount); a weight-6 x-winding seam
+band would need x-spacing ℓ/6 = r, i.e. an r-DEPENDENT pattern, so no
+fixed local identity supplies it. The b = 0 upper half needs a genuinely
+new seam construction (named residue), or the conjecture's b = 0 values
+are wrong above r = 2 — no evidence either way.
+
+### §7.2 P6 — the lower half: the per-cell lemma is dead; what survives
+
+The proposed reduction "(i) staircase cell-count [geometry] + (ii) any
+nontrivial logical pays ≥ 6 = d(bb72) per crossed cell" **fails at
+(ii), in every form, on certified data** (`a40_s2_band_audit.py`):
+
+- per-cell-each ≥ 6: the a36 two-gross witness has a cell of load 2;
+  certified (18,6)-logicals have cells of load 1;
+- total ≥ 6·(cells crossed): the a36 witness crosses 4 cells at weight
+  18 < 24; five certified (18,6)-logicals of weight 16 cross 3 cells
+  (16 < 18; e.g. cell loads (2,6,8), (1,6,9), (2,3,11)).
+
+What the audits DO support (shadow evidence, not a lemma): the
+**locality dichotomy**. Min weight of certified (18,6)-logicals by
+crossed-cell count t: {1: 12, 2: 12, 3: 16}; at (2,1) the session-1
+sweep proves there is NO nontrivial logical ≤ 22 at all — in
+particular none touching fewer y-bands than the witness. The surviving
+lower-half skeleton is therefore NOT cell accounting but:
+(i) y-band-sparse logicals are CYLINDER logicals (frame-independent
+objects; their x-local minimum is 12 = L12, measured), and
+(ii) y-spanning logicals pay per-band with band minima governed by
+boundary-defect matching — the b = 0 witness's (12,6) profile shows
+band minima below 12 exist when the bands interact. A lower-half proof
+needs cylinder-code distance theory (min weights of the strip/cylinder
+codes and their defect-coupled stacks) — connected to, but not
+supplied by, F1/F2: the F2b census-carrying refutation does not block
+this route (it concerned ε-recursion in d alone), but nothing in the
+current toolbox proves the cylinder minima either. **Lower half ∀r:
+open; the cleanest route is now named (cylinder minima + defect
+coupling), with its first two required constants measured (x-local
+min 12; band loads down to 1 exist).**
+
+### §7.3 P5 — floors: corrected pricing (no new executions this session)
+
+`a40_s2_reprice.py` (`s2_reprice.json`), v2-architecture arithmetic
+(deepest BZ-able anchor + composite-rank fan-out): **(3,0)**: k chain
+12/8/8 over (18,18)→(9,18)→(9,9), rank(p₁*∘p₀*) = 2 again ⟹ 3 S1'
+classes; bottom-walk totals ~1e10.1 (W=14, d ≥ 16) / ~1e11.0 (W=16,
+d ≥ 18) / ~1e11.9 (W=18, d ≥ 20) / ~1e13.6 (W=22, d ≥ 24: RED today).
+A d((3,0)) ≥ 18 partial floor is GREEN (~minutes of walks + one descent
+layer) — first-priority execution next session. **(3,1)**: anchor (6,9)
+walks are cheap (1e9.5–1e11.4) but TWO stacked descent layers (n = 216,
+432) above the anchor are the real cost — architecture-bound, not
+walk-bound. The b = 1 members now carry banked upper bounds (§7.1), so
+partial floors there close two-sided gaps: e.g. (3,1) at W = 22 would
+give 24 ≤ d ≤ 36.
+
+### §7.4 The distance to "the conjecture is proven" (exact statement)
+
+- **Proven / certified now**: d = 6(2r+b−1) EXACTLY at (1,0), (1,1),
+  (2,0), (2,1) — four members, certificate tier or better (two are
+  Lean-backed). Upper half at b = 1: theorem (§7.1) — d ≤ conjecture
+  for the whole column. Upper half at b = 0: r ≤ 2 only. Lower half:
+  nothing ∀r; per-member floors are certificate-executable to roughly
+  d ≥ 18–24 at n ≤ 900 with today's engine.
+- **Open**: b = 0 upper half r ≥ 3; ALL lower halves r ≥ 3; the ∀r
+  lower half has no working route (the per-cell route died in §7.2;
+  the cylinder route is named but unbuilt). The session-1 P3 verdict
+  (RED ∀r with current technology) STANDS, now with the upper half's
+  b = 1 column carved out as proven.
+
+### §7.5 Falsified claims (session 2)
+
+- **The staircase-of-w6-blocks witness mechanism** — refuted three
+  ways (§7.1): witness archaeology (cell shapes ragged; 4-cell
+  two-gross witness), the exhaustive same-block staircase search at
+  (2,0) (0 cycles), and the translate-orbit scan (no 3-cell form).
+- **The per-cell cost lemma, both forms** (the proposed lower-half
+  ingredient (ii)) — refuted on certified logicals: per-cell-each ≥ 6
+  dies at cell loads 1–2; total ≥ 6·(cells) dies on the a36 witness
+  (18 < 24) and on five (18,6)-logicals (16 < 18) — `s2_band_audit`.
+- **The band-stack dual certificate** (u = swapbar(v)) — pairs EVEN at
+  every r (structural: r·c + even cross terms); replaced by the
+  cylinder dual (x-periodic, y-local), which works.
+- **The naive window-kernel dual** — the (18,12)-window kernel used
+  order-12 y-wraps and is not frame-portable (caught when flat
+  placement failed at r = 3; replaced by the true cylinder kernel).
+- **U0-stacking for the b = 0 column** — the a36 witness's 12-band
+  winds x and does not self-stack; (r−1)·U0 + U1 is a non-cycle at
+  every (r,0), r = 3..6 (kernel-checked).
+- **Session-internal tooling bug caught**: the first band audit read
+  the (18,6)-frame checkpoint vectors in the (18,12) frame — its
+  output was discarded and the audit re-run in the correct frame
+  (§7.2); no claim consumed the bad numbers.
+- (Respected: witness weights reported as upper bounds only; no SAT;
+  RED/AMBER/GREEN cost verdicts; the P3 RED verdict not inflated.)
+
+### §7.6 Residue / next steps (session 2)
+
+1. **The b = 0 seam construction** (upper half r ≥ 3): a weight-6
+   x-winding band with r-dependent spacing, or a different −6
+   mechanism; the (3,0) partial floors (next item) would also bound
+   how wrong the conjecture could be there.
+2. **d((3,0)) ≥ 18 partial floor** — GREEN-priced (~1e11 walks + one
+   descent layer, §7.3); the v2 architecture ports with (9,9) as the
+   BZ anchor (composite rank 2 again). First execution slot next
+   session.
+3. **The cylinder-code distance theory** (the named lower-half route,
+   §7.2): min weights of the y-cylinder codes at each ℓ and the
+   defect-coupled band stacks; the freeze connection (L12 = the A14
+   §13 carrier) suggests the A14/A17 safe-floor machinery is the
+   right starting toolbox.
+4. **Lean packaging of Theorem UB(r,1)**: v_{r,1}/u are closed-form;
+   the kernel checks are small decides; the ∀r uniformity arguments
+   are the interesting formalization content (window locality +
+   periodicity) — a natural QECLean target next to BBDeckTower.
+5. **The k-row ∀(r,b) theorem** (session-1 residue, unchanged) — now
+   also an ingredient of UB(r,1)'s cleanest packaging.
+6. Corpus-merge additions from S2: the four new b = 1 upper bounds
+   (witness grade) + the L12/dual closed forms as reusable patterns.
