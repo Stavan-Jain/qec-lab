@@ -1,0 +1,6 @@
+w=7 frames: ['5x17']
+== Z5xZ17
+  pools (one DFS): A 3823680->546240 classes, B 0->0 (376s)
+  zd: A 0, B 0 (376s)
+{"frame": "Z5xZ17", "G": 85, "w": 7, "poolA": 546240, "poolB": 0, "zdA": 0, "zdB": 0, "d2_pairs": 0, "kpos_pairs": 0, "members": 0, "rows": 0, "secs": 376.5}
+TOTAL w=7 members: 0 across 1 frames

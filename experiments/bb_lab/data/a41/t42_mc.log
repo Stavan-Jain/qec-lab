@@ -1,0 +1,23 @@
+2144 members from data/a41/t42_w5_census.jsonl
+[100/2144] falsifiers so far: 0
+[200/2144] falsifiers so far: 0
+[300/2144] falsifiers so far: 0
+[400/2144] falsifiers so far: 0
+[500/2144] falsifiers so far: 0
+[600/2144] falsifiers so far: 0
+[700/2144] falsifiers so far: 0
+[800/2144] falsifiers so far: 0
+[900/2144] falsifiers so far: 0
+[1000/2144] falsifiers so far: 0
+[1100/2144] falsifiers so far: 0
+[1200/2144] falsifiers so far: 0
+[1300/2144] falsifiers so far: 0
+[1400/2144] falsifiers so far: 0
+[1500/2144] falsifiers so far: 0
+[1600/2144] falsifiers so far: 0
+[1700/2144] falsifiers so far: 0
+[1800/2144] falsifiers so far: 0
+[1900/2144] falsifiers so far: 0
+[2000/2144] falsifiers so far: 0
+[2100/2144] falsifiers so far: 0
+{"members": 2144, "falsifiers": 0, "mc_min_hist": {"10": 450, "12": 28, "14": 75, "16": 684, "18": 902, "20": 5}, "secs": 399.5}
