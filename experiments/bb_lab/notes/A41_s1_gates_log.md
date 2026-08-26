@@ -122,8 +122,20 @@ with D1/D2/(a′)/non-Frobenius imposed on the exponent data and the
 Bezout witness (charter §3 lever 1) built into the doubleton
 structure (the gross witness (1+x²)B² = 1+x⁶ telescopes through
 exactly this shape via Frobenius squaring). Designing and enumerating
-first members = S2-facing residue; the ansatz is now data-backed
+fresh members = S2-facing residue; the ansatz is now data-backed
 rather than guessed.
+
+**The S2 seed cohort** (joined filters: mc_min = 10 ∧ k = 8 ∧ y-axis
+CHEAP-PASS ∧ (1,2,2) A-shape): **296 members**. Canonical first —
+the named S2 starting member:
+
+    A = 1 + y + x·y² + x·y¹⁰ + x²·y⁶
+    B = 1 + y² + x + x²·y³ + x³·y²
+
+a [[150,8,10]]-candidate whose designed y-rung targets [[300,8,20]] —
+note the resonance with the Lean-proven cover300 pair
+([[150,8,8]] → [[300,8,16]]): same n and k, two more units of
+distance at both levels if Tier D lands.
 
 ## §5 G3 — Tier-D screen (cheap tiers, floor 20 = 2·(2w))
 
@@ -264,9 +276,11 @@ flight; results appended below.
    6x15, 9x10, then 7x13/7x14/9x11/10x10) — budget by the 5x17
    timing; any member found ⟹ MC pass at wmax 13 (falsifier gate for
    d < 2w = 14).
-3. Q3: enumerate the ansatz family's first members (w = 3 sanity =
-   gross; w = 5 must land inside the 2,103; w = 7 fresh), Bezout
-   witness extraction on the doubleton shape.
+3. Q3: the seed cohort is cut (296 members; canonical seed named in
+   §4). S2 opens there: BZ/S4-certify the seed's y-rung SF@20 + (M)
+   (A30 machinery, ≤ 8.4 min/code precedent), extract its Bezout
+   witness, then generalize the exponent pattern across the cohort;
+   w = 7 fresh members pend the fat-frame hunt (§6).
 4. Q1 residue (S2): re-run P-26 shards + (4,4) strata with outputs
    OUTSIDE the worktree (ops lesson §1); merge
    `worktree-agent-aa0d7676f1aee3b4c` to main first.
