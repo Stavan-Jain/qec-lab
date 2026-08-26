@@ -1,0 +1,49 @@
+{
+ "rows": [
+  {
+   "tag": "S1 stack (18,6)->(18,12) x2",
+   "lm": [
+    18,
+    12
+   ],
+   "weight": 24,
+   "rate": 2.0,
+   "max_y_gap": 1,
+   "nontrivial": true
+  },
+  {
+   "tag": "S2 stack (12,12)->(12,24) x2",
+   "lm": [
+    12,
+    24
+   ],
+   "weight": 36,
+   "rate": 1.5,
+   "max_y_gap": 2,
+   "nontrivial": true
+  },
+  {
+   "tag": "S2 stack (12,12)->(12,36) x3",
+   "lm": [
+    12,
+    36
+   ],
+   "weight": 54,
+   "rate": 1.5,
+   "max_y_gap": 2,
+   "nontrivial": true
+  },
+  {
+   "tag": "S3 stack (12,6)->(12,12) x2",
+   "lm": [
+    12,
+    12
+   ],
+   "weight": 24,
+   "rate": 2.0,
+   "max_y_gap": 1,
+   "nontrivial": true
+  }
+ ],
+ "wall_s": 1.3
+}

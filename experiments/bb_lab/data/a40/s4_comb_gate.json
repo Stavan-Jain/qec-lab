@@ -1,0 +1,104 @@
+{
+ "C1_combs": [
+  {
+   "lm": [
+    12,
+    12
+   ],
+   "period": 6,
+   "weight": 12,
+   "rate": 1.0,
+   "max_y_gap": 1,
+   "max_slab": 5
+  },
+  {
+   "lm": [
+    18,
+    12
+   ],
+   "period": 6,
+   "weight": 12,
+   "rate": 1.0,
+   "max_y_gap": 1,
+   "max_slab": 5
+  },
+  {
+   "lm": [
+    18,
+    18
+   ],
+   "period": 6,
+   "weight": 18,
+   "rate": 1.0,
+   "max_y_gap": 1,
+   "max_slab": 5
+  },
+  {
+   "lm": [
+    12,
+    16
+   ],
+   "period": 8,
+   "weight": 12,
+   "rate": 0.75,
+   "max_y_gap": 3,
+   "max_slab": 5
+  }
+ ],
+ "C2_recurrence": {
+  "frame": [
+   18,
+   12
+  ],
+  "n_random_cycles": 20
+ },
+ "C3_telescope": "asserted in C1 (sum_j W_j == 4|v|)",
+ "C4_tooth_sweep": [
+  {
+   "lm": [
+    12,
+    12
+   ],
+   "tooth": [
+    [
+     0,
+     0
+    ]
+   ],
+   "period": 6,
+   "weight": 12,
+   "rate": 1.0
+  },
+  {
+   "lm": [
+    12,
+    24
+   ],
+   "tooth": [
+    [
+     0,
+     0
+    ]
+   ],
+   "period": 8,
+   "weight": 18,
+   "rate": 0.75
+  },
+  {
+   "lm": [
+    18,
+    12
+   ],
+   "tooth": [
+    [
+     0,
+     0
+    ]
+   ],
+   "period": 6,
+   "weight": 12,
+   "rate": 1.0
+  }
+ ],
+ "wall_s": 1.4
+}

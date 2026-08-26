@@ -1,0 +1,6 @@
+{
+ "W1": "witness x-winds and y-winds (naive re-placements at (24,12) and (12,24) are not cycles)",
+ "W2": "L12 x-local nontrivial at (l,6), l = 12..42 step 6",
+ "W3": "witness species excluded from all b=1 members; b=0 needs r even with Theta(r^2) 2D-stack cost",
+ "wall_s": 1.3
+}

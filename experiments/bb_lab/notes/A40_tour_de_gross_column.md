@@ -829,3 +829,302 @@ lesson.
 6. b = 0 seam construction: untouched this session (per scope); the
    strip/defect machinery, once L2-grade, is expected to hand over
    the −6.
+
+## §9 SESSION 4 (2026-08-26) — the compression lemma dissolved: combs,
+## stacks, the phase atlas, and Theorem B6
+
+Directive: prove the compression lemma (§8.2's one missing ingredient)
+and close the b = 1 gap. What actually happened: falsify-first testing
+of the §8.2 formulation itself REFUTED it before any compression proof
+could matter — the defect-graph min-mean-cycle plan is vacuous as
+stated — and the correct replacement architecture was then built and
+gated. In it, the compression lemma's two halves DISSOLVE: the
+finiteness half is free (light slabs are finite by weight, heavy slabs
+pay pointwise), and the "x-periodic-reducible" half becomes a phase
+classification, executed this session as an exhaustive certificate
+(the compact-phase atlas, p ≤ 8, both transfer lanes). By-product: the
+strip-minima residue (§8.4 item 1) is CLOSED at m = 6 for all ℓ
+simultaneously, giving **Theorem B6 — d((ℓ,6)) = 12 for every
+6 | ℓ ≥ 12 — the thread's first ∀ℓ exact-distance statement** (modulo
+four named finite certificates, GREEN-priced). Scripts
+`a40_s4_*.py`, data `data/a40/s4_*.json`; `validate_banked()` green
+before every stage.
+
+### §9.1 Gate C — the comb refutation: §8.2's formulation was vacuous
+
+`a40_s4_comb_gate.py` (`s4_comb_gate.json`). "Combs" — sums of single
+X-stabilizer generators (H_X rows) tiled with y-period 6 at x-fixed
+position — are TRIVIAL y-spanning cycles of weight m (rate 1/row,
+max cyclic y-gap 1, max 4-row slab weight 5) at every member frame
+tested ((12,12), (18,12), (18,18)); at frames with 8 | m the period-8
+comb reaches rate 3/4 ((12,16), (12,24); C4 tooth sweep: 3/4 is the
+cheapest tiled boundary over all 2×2-window teeth and periods 4..9).
+Since the §8.2 defect graph contains these cycles, its min mean cycle
+is ≤ 3/4 — far below the target rate 2 — so "d(wrapping) ≥ r·(min
+mean cycle) − C" was VACUOUS as formulated, no matter what state
+truncation (compression) licensed it. The compression lemma was not
+the missing ingredient; triviality-blindness was. (G4 as specced in
+§8.2 would have measured ≤ 1 and proven nothing.)
+
+Also pinned mechanically (gate C2, 20 random cycles at (18,12)): the
+row recurrence
+E_j: (1+x^{−1})v₁[j] + x·v₁[j−3] + v₂[j] + v₂[j+1] + x^{−3}v₂[j−1] = 0
+(convention `circulant(P)[g,h] = P(g−h)`, X-cycles B̄v₁ + Āv₂ = 0),
+and the **block-2 determinism**: v₂[j+1] is forced by
+(v₁[j], v₁[j−3], v₂[j], v₂[j−1]) — the member is a convolutional code
+in y over F₂[x]/(x^ℓ−1) with block-1 rows as free inputs (and,
+mirrored, a convolutional code in x with block-2 columns forced at
+offset +3). Gate C3: the slab telescope Σ_j W_j = 4|v| (W_j = weight
+of rows j−3..j, both blocks; cyclic, exact).
+
+### §9.2 The reformed cost frame: slab amortization kills the
+### finiteness half of compression
+
+Reparametrize the y-walk cost as ŵ_j := W_j/4. On closed (torus)
+walks Σ_j ŵ_j = |v| EXACTLY (C3), and the b = 1 target d = 12r = 2m
+becomes "mean slab weight ≥ 8". Consequences:
+
+- **Heavy steps pay pointwise.** Any row j with W_j ≥ 8 contributes
+  ŵ_j ≥ 2 by itself. No state bookkeeping, no truncation license, no
+  compression is needed for heavy slabs — the original lemma's
+  "x-extent ≤ w₀" demand was aimed at exactly these states and is
+  unnecessary.
+- **The light core is finite for free.** States with W ≤ 7 carry ≤ 7
+  qubits; two occupied columns interact through a check only at
+  x-distance ≤ 4, and bridging an x-gap of size g inside 4 rows costs
+  ≥ g/4 ≥ the whole light budget for g > 28 — so light states, taken
+  up to x-translation with inter-cluster gaps saturated at "far", form
+  a FINITE, r-independent set. This is the compression lemma's
+  finiteness content, obtained free of charge below the heavy line.
+- **L1 is the trivial case**: y-spanning ⟹ every slab nonempty ⟹
+  ŵ ≥ 1/4 ⟹ |v| ≥ m/4 — §8.1 recovered in one line.
+
+The remaining difficulty is exactly the light core's cheap cycles —
+and gate C shows the cheapest of them are TRIVIAL (combs live at slab
+weight ≤ 5). The floor argument must therefore be minimality- and
+class-aware, never purely geometric:
+
+- **Local reduction (proven, elementary).** A class-minimal logical v
+  satisfies |v + z| ≥ |v| for EVERY stabilizer z, in particular every
+  x-local one: no local generator's boundary may overlap v in more
+  than half its support. This prunes the comb states (a comb overlaps
+  its own tooth fully) and is sound for ANY catalog of local
+  generators — an incomplete catalog only weakens, never falsifies,
+  the resulting bound.
+
+### §9.3 Gate S — quotient stacks: any transfer floor must be
+### class-aware (`a40_s4_stack_gate.py`)
+
+The y-deck transfer τ (stacking) of certified minima, all end-to-end
+re-verified:
+
+| stack | weight (rate) | nontrivial |
+|---|---|---|
+| (18,6) w12 → (18,12) ×2 | 24 (2/row) | YES — equals the certified d = 24; the b = 1 minimum IS a stack of the rate-2 base phase |
+| (12,12) a36 w18 → (12,24) ×2 | 36 (1.5/row) | YES |
+| (12,12) a36 w18 → (12,36) ×3 | 54 (1.5/row) | YES |
+| (12,6) w12 → (12,12) ×2 | 24 (2/row) | YES — but the (12,12) witness at 18 < 24: at b = 0 the stack is not minimal |
+
+Rate-1.5 NONTRIVIAL y-spanning logicals therefore exist at (12,12k):
+**no frame-free rate-2 transfer bound holds on the family's frame
+grid** — the floor is a property of (frame class + homology), not of
+the transfer system. Cheap sub-rate-2 behavior must be classified and
+killed per class: trivial recurrent behavior by local reduction
+(§9.2), and periodic nontrivial behavior — "phases" — by the frame
+analysis below.
+
+### §9.4 The phase theory: sheared frames, winding, the b-bit
+
+A y-periodic walk segment with period p and x-drift d per period is
+exactly an X-cycle of the BB code on the quotient lattice
+Z²/⟨(ℓ,0),(d,p)⟩. `a40_s4_phase_triage.py` (Smith normal form +
+transported supports, cross-checked against the rectangular frames)
+maps k over all shears for ℓ ∈ {12,18}, p ≤ 8: k ∈ {0,4,8,12}
+depending on (p, d mod structure); k > 0 frames exist at EVERY p
+(including p = 1, where weight < 2p = 2 is impossible anyway, and
+p = 6, where d ∈ {0,6,12} gives the k = 12 rectangular-equivalent
+frames). So rank alone kills nothing: phases must be excluded by
+WEIGHT (censuses), which splits by winding character:
+
+- **x-winding phases pay Θ(ℓ).** Gate W (`a40_s4_winding_gate.py`):
+  the a36 witness pattern uses BOTH wraps (naive re-placement at
+  (24,12) and (12,24) is not a cycle), so as an x-period-12 object it
+  enters a frame only through x-stacking, at cost ∝ ℓ/12 per y-period
+  — 2D-stacking arithmetic (18·(r/2)² = Θ(r²) ≫ 12r at (6r,6r))
+  removes the witness species from every large member. Sharper, the
+  **b-bit mechanism**: tiling a member (6(r+b), 6r) by the witness
+  species needs 12 | 6r AND 12 | 6(r+b) — at b = 1 this forces r even
+  and r odd simultaneously: IMPOSSIBLE at every b = 1 member (pure
+  arithmetic, asserted to r < 200). The witness species — the −6
+  discount carrier at (2,0) — never touches the b = 1 column.
+- **x-compact phases are the real threat** — and they are now
+  certified away below rate 2 for p ≤ 8 (§9.5).
+
+### §9.5 The compact-phase atlas: exhaustive, both lanes, p ≤ 8
+### (`a40_s4_phase_atlas.py`, `_ext.py`, `a40_s4_compact_triviality.py`)
+
+Block-2 determinism makes every x-compact period-p object a
+zero-to-zero walk of a finite x-automaton (state = 6 columns' worth of
+F₂^p data; the free input is one column, the forced column solves the
+unique most-advanced term — uniqueness asserted per pair). Exhaustive
+BFS over (state, accumulated cost ≤ Wcap) with DAG path readout
+enumerates ALL x-compact cycles of weight ≤ Wcap up to x-translation;
+every readout is independently re-verified as a cycle on an embedding
+torus. Lanes: pair (A,B) (the y-lane) and pair (B,Ā) (= the θ′-image,
+θ′: (x,y) ↦ (y^{−1},x), θ′(A) = B, θ′(B) = Ā — the x-lane/strip
+sector in rotated coordinates; the 90° rotation is NOT a code
+equivalence, consistent with S1's exhaustive (12,18)↔(18,12) failure,
+but it intertwines the two cycle systems exactly, boundaries to
+boundaries).
+
+> **Atlas verdict (certificate tier, exhaustive).** For BOTH lanes
+> and every period p ≤ 8: NO nontrivial x-compact cycle of weight
+> < 2p exists. Counts (identical between the lanes — the θ′ duality
+> visible in data): 0/0/4/5/42/350/884 compact cycles at
+> p = 2..8, Wcap = 2p−1, ALL trivial. Positive control: at p = 6,
+> Wcap = 12, the engine finds the nontrivial minimum at exactly 12
+> (66 objects — the L12 species); at Wcap = 14 the nontrivial
+> spectrum is {12: 66, 14: 444} — the rate-2 floor is achieved
+> exactly, is isolated (nothing at 13), and the next band sits at
+> rate 7/3.
+>
+> **Compact triviality (closing ∀ℓ).** Every one of the 2×1285
+> sub-rate-2 compact cycles has a COMPACT stabilizer generator s̃
+> (unique, produced by the deterministic x-march on the generator
+> equation, verified against both blocks, and re-verified as an
+> H_X-row combination on an embedding torus; max s̃-extent 7). Hence
+> each is trivial at EVERY torus (ℓ, p) that fits it — the atlas's
+> verdict is ℓ-uniform, not an artifact of one embedding.
+
+Consequence for the architecture: a class-minimal y-spanning logical
+cheaper than rate 2 cannot spend its length in x-compact periodic
+behavior of period ≤ 8 (no nontrivial such phase exists below rate 2,
+and trivial ones are barred by local reduction), nor in x-winding
+periodic behavior at large ℓ (Θ(ℓ) cost), nor in heavy slabs
+(pointwise ≥ 2). What is NOT yet excluded: x-compact phases of period
+> 8 (the pumping bound on periods is the light-core size, not 8), and
+aperiodic light behavior — the wall/domain accounting. These are the
+two named residual lemmas (§9.7).
+
+### §9.6 THEOREM B6 — the (ℓ,6) row of the family, ∀ℓ
+
+> **Theorem B6.** For every ℓ ≡ 0 (mod 6), ℓ ≥ 12:
+> d((ℓ,6)) = 12, with the minimum achieved x-locally (the L12
+> species). Status: proven, with four finite certificates named
+> below outstanding.
+> - Upper: L12 places as a nontrivial weight-12 logical at every
+>   (ℓ,6) — kernel-checked ℓ = 12..42 (gate W2), ∀ℓ by x-locality
+>   (no x-wrap is used; the S2 §7.1 uniformity argument).
+> - Lower, x-windowed branch (ALL ℓ at once): an (ℓ,6)-logical of
+>   weight ≤ 11 with an x-gap ≥ 4 lifts, by the one-axis windowing
+>   move of Lemma K, to an x-compact period-6 cylinder cycle of the
+>   same weight; the atlas is exhaustive there and every ≤ 11
+>   compact cycle is compactly trivial ⟹ the original was trivial.
+> - Lower, x-spanning branch: weight ≥ ⌈ℓ/4⌉ ≥ 12 for ℓ ≥ 45
+>   (Theorem L1); ℓ = 12 (gross, Lean-grade) and ℓ = 18
+>   (census-complete, §3.2) certified.
+> - **Outstanding (finite, named)**: the x-spanning branch at
+>   ℓ ∈ {24, 30, 36, 42} — d ≥ 12 certificates. Direct W = 11
+>   censuses exceed the walk kernel's n ≤ 192 cap
+>   (`a40_s4_b6_frames.py` aborted there — recorded); the GREEN
+>   route is one/two-rung descent per frame with walks at n ≤ 192
+>   quotients ((24,6)→(12,6); (30,6)→(15,6) n = 180 direct;
+>   (36,6)→(18,6)→(9,6) reusing the tdg432 pattern; (42,6) needs an
+>   odd Z₃ rung to (14,6) — the one W1-exposed member — or an NMAX
+>   lift of the kernel to 8 words).
+
+B6 closes §8.4 residue item 1 (the strip minima) at m = 6 in the
+strongest possible form (∀ℓ, exact), and it is precisely the base
+floor the stack analysis (§9.3) demands: the rate-2 phase row the
+b = 1 minima stack from is now a theorem row, not a per-frame
+observation.
+
+### §9.7 The reformed lower-half architecture, and what remains
+
+For a class-minimal nontrivial X-logical v of a member (Lemma K
+dichotomy: y-spanning, else x-spanning and the θ′-mirror of the same
+analysis applies):
+
+1. Slab-amortize (§9.2): |v| = Σ ŵ_j; heavy steps pay ≥ 2.
+2. Light steps live in the finite pruned light core (local reduction
+   against a generator catalog — sound for any catalog).
+3. Cheap light cycles = periodic phases: x-winding ones pay Θ(ℓ)
+   (§9.4); x-compact ones of period ≤ 8 do not exist below rate 2
+   (§9.5, atlas + compact triviality).
+4. **[L-P, open]** x-compact phases of period 9..N₀ (N₀ = the
+   light-core pumping bound): the strong-induction shape is "a cheap
+   period-p phase is itself a y-spanning cheap object at a p-row
+   frame", but the induction constants must be EXACT (a −C leak per
+   level multiplies along stacks — the same exactness discipline the
+   tower calculus already enforces); the atlas engine extends
+   mechanically (p = 8 cost 85 s; cost grows ~2^p per period, so
+   p ≤ 10−11 is the honest reach of the current Python engine).
+5. **[L-W, open]** the wall/domain accounting: a cheap walk decomposes
+   into phase domains and transition walls; the floor needs wall cost
+   ≥ 0 at b = 1 (the b = 0 witness realizes a wall discount of
+   exactly −6, so the accounting must be b-aware — the b-bit
+   mechanism of §9.4 is expected to be the discriminator). The
+   mechanical target is a Karp/potential certificate on the pruned
+   light core (min mean = 2 with explicit potentials); its
+   fixed-point structure (potential radius vs. the heavy threshold)
+   is one scalar iteration, not a circularity.
+
+With L-P and L-W, the assembly gives d(C_{r,1}) ≥ 12r − C with C from
+the potential radius — Theorem UB(r,1) then pins d(C_{r,1}) ∈
+[12r − C, 12r], and C = 0 on the pure-phase branch would close the
+b = 1 conjecture exactly. This is the honest restatement of the L2/L3
+ladder after this session: the compression lemma is no longer on it.
+
+### §9.8 Falsified claims (session 4)
+
+- **The §8.2 defect-graph formulation** ("nodes = interface states,
+  d(wrapping) ≥ r·(min mean cycle) − C") — VACUOUS as stated:
+  stabilizer combs put trivial y-spanning cycles at rate ≤ 3/4 in
+  every such graph (gate C1). Compression could not have saved it.
+- **The compression lemma as "the one missing ingredient" (§8.2,
+  §8.4 item 2)** — re-scoped out of existence: finiteness is free
+  below the heavy line, "x-periodic-reducible" is the phase
+  classification, and the actual missing pieces (triviality- and
+  class-awareness) were invisible to it.
+- **"Small-p phase frames have k = 0"** (this session's working
+  hypothesis before the triage) — FALSE: k > 0 shear frames exist at
+  every p ≥ 1 (`s4_phase_triage.json`); phases die by weight, not
+  rank.
+- **The 90° rotation θ as a code equivalence** — the one-bar
+  obstruction (θ(A) = B̄, θ(B) = A; every axis-swapping monomial map
+  leaves exactly one antipode unpaired) shows it is NOT one,
+  explaining S1's exhaustive (12,18)↔(18,12) failure; it survives as
+  an exact intertwiner of cycle systems (used for the x-lane).
+- Session-internal: the first B6 frame script assumed the walk
+  kernel takes n = 288..504 — it caps at 192 (3×64-bit words);
+  caught by the kernel's own assertion before any census was
+  claimed.
+- (Respected: witness weights as upper bounds only; RED/AMBER/GREEN
+  as cost verdicts; no SAT anywhere; every gate script re-verifies
+  its vectors end-to-end.)
+
+### §9.9 Residue / S5
+
+1. **The four B6 certificates** (ℓ ∈ {24,30,36,42} x-spanning at
+   W = 11): GREEN-priced descent wirings; (42,6) is the odd-rung
+   (F1) or NMAX-lift case.
+2. **L-W, the wall certificate**: build the pruned light-core graph
+   (states = W ≤ 7 slabs up to x-translation, gap-saturated;
+   transitions by the C2 recurrence; pruning by the generator
+   catalog seeded from the atlas's 2×1285 compact trivial cycles)
+   and compute the min-mean/potential certificate. The b = 0 −6 and
+   the b = 1 closure arithmetic must fall out of the wall terms.
+3. **L-P beyond p = 8**: push the atlas to p = 10−11 (engine as is)
+   and formulate the exact-constant induction for general p; the
+   (ℓ,12) row (= B12: d((ℓ,12)) = 24?) is the natural next base
+   theorem, with (18,12) = 24 already certified as its anchor.
+4. **The x-lane run of the same program** (pair (B,Ā)): atlas done;
+   the mirrored comb/stack/triage gates are cheap and owed for
+   symmetry of the record.
+5. **Lean**: B6 is a natural target next to L1 (the atlas is a
+   finite certificate; the windowing lift and L12 uniformity are the
+   same species as UB(r,1)'s arguments); the compact-generator
+   marches are `decide`-shaped.
+6. Corpus notes: the (12,16)/(12,24) rate-3/4 combs and the p ≤ 8
+   phase-frame k-map are reusable structure for any BB pair with
+   spans (4,4); the atlas engine is pair-generic.
