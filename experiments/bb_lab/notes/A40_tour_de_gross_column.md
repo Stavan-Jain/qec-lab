@@ -845,8 +845,8 @@ classification, executed this session as an exhaustive certificate
 (the compact-phase atlas, p ≤ 8, both transfer lanes). By-product: the
 strip-minima residue (§8.4 item 1) is CLOSED at m = 6 for all ℓ
 simultaneously, giving **Theorem B6 — d((ℓ,6)) = 12 for every
-6 | ℓ ≥ 12 — the thread's first ∀ℓ exact-distance statement** (modulo
-four named finite certificates, GREEN-priced). Scripts
+6 | ℓ ≥ 12 — the thread's first ∀ℓ exact-distance statement, all
+certificates closed in-session**. Scripts
 `a40_s4_*.py`, data `data/a40/s4_*.json`; `validate_banked()` green
 before every stage.
 
@@ -1010,8 +1010,8 @@ two named residual lemmas (§9.7).
 
 > **Theorem B6.** For every ℓ ≡ 0 (mod 6), ℓ ≥ 12:
 > d((ℓ,6)) = 12, with the minimum achieved x-locally (the L12
-> species). Status: proven, with four finite certificates named
-> below outstanding.
+> species). **Status: PROVEN — every finite certificate closed
+> in-session** (`a40_s4_b6_close.py`, `s4_b6_close.json`, 23 s).
 > - Upper: L12 places as a nontrivial weight-12 logical at every
 >   (ℓ,6) — kernel-checked ℓ = 12..42 (gate W2), ∀ℓ by x-locality
 >   (no x-wrap is used; the S2 §7.1 uniformity argument).
@@ -1023,15 +1023,24 @@ two named residual lemmas (§9.7).
 > - Lower, x-spanning branch: weight ≥ ⌈ℓ/4⌉ ≥ 12 for ℓ ≥ 45
 >   (Theorem L1); ℓ = 12 (gross, Lean-grade) and ℓ = 18
 >   (census-complete, §3.2) certified.
-> - **Outstanding (finite, named)**: the x-spanning branch at
->   ℓ ∈ {24, 30, 36, 42} — d ≥ 12 certificates. Direct W = 11
->   censuses exceed the walk kernel's n ≤ 192 cap
->   (`a40_s4_b6_frames.py` aborted there — recorded); the GREEN
->   route is one/two-rung descent per frame with walks at n ≤ 192
->   quotients ((24,6)→(12,6); (30,6)→(15,6) n = 180 direct;
->   (36,6)→(18,6)→(9,6) reusing the tdg432 pattern; (42,6) needs an
->   odd Z₃ rung to (14,6) — the one W1-exposed member — or an NMAX
->   lift of the kernel to 8 words).
+> - Lower, ℓ ∈ {24, 30, 36, 42}: **full d ≥ 12 floors by
+>   Z₂-descent, certificate tier, no SAT** (direct W = 11 windows
+>   exceed the walk kernel's n ≤ 192 cap — `a40_s4_b6_frames.py`
+>   records the abort; the descent route walks only n ≤ 192
+>   frames). Towers: (24,6)→(12,6); (30,6)→(15,6) (n = 180
+>   direct); (36,6)→(18,6)→(9,6); **(42,6)→(21,6)→(21,3), MIXED
+>   axes** — the x-mid (21,6) is uncensusable at n = 252, but its
+>   y-fold (21,3) has n = 126: the axis-generic machinery dissolves
+>   what looked like the odd-rung/F1 case. Per frame: complete base
+>   stab (μ ≥ 6, 7 orbit reps {6:1, 10:6} at every base) and
+>   all-class ≤ 11 censuses (EMPTY ⟹ the seam lane is empty), the
+>   b = 0 lane by τ-injectivity + 2·min(μ, d(L1)) ≥ 12, and 7
+>   dangerous rungs at target 12 per frame (restricted lanes,
+>   M ≤ 3, ALL PASS, covariance spot-checked). In-run
+>   re-derivations agree with banked values: d((9,6)) = 10,
+>   d((18,6)) ≥ 12, d((21,6)) ≥ 12 (new), d((21,3)) = 6 — the last
+>   is 2p at p = 3: another exact rate-2 base row, whose ≤ 11
+>   logicals all die on the way up the tower.
 
 B6 closes §8.4 residue item 1 (the strip minima) at m = 6 in the
 strongest possible form (∀ℓ, exact), and it is precisely the base
@@ -1105,9 +1114,10 @@ ladder after this session: the compression lemma is no longer on it.
 
 ### §9.9 Residue / S5
 
-1. **The four B6 certificates** (ℓ ∈ {24,30,36,42} x-spanning at
-   W = 11): GREEN-priced descent wirings; (42,6) is the odd-rung
-   (F1) or NMAX-lift case.
+1. ~~The four B6 certificates~~ — CLOSED in-session
+   (`a40_s4_b6_close.py`, §9.6): all four frames certified d ≥ 12 by
+   Z₂-descent in 23 s, including (42,6) via the mixed-axis
+   (21,6)/(21,3) tower. Theorem B6 carries no residue.
 2. **L-W, the wall certificate**: build the pruned light-core graph
    (states = W ≤ 7 slabs up to x-translation, gap-saturated;
    transitions by the C2 recurrence; pruning by the generator

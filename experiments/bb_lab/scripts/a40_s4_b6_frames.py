@@ -21,10 +21,10 @@ Control: at (24,6), one W = 12 run of the L12 class must be NONEMPTY
 
 STATUS (S4, recorded in note §9.6): the direct route ABORTS — the
 compiled walk kernel caps at n <= 192 qubits (cosetbz.NMAX = 3x64-bit
-words) and these frames have n = 288..504.  The four certificates are
-S5 residue via descent (walks at n <= 192 quotient frames), or an
-NMAX lift of the kernel.  The script guards the cap explicitly and
-exits with the residue message; it is kept as the assembly record.
+words) and these frames have n = 288..504.  The four certificates
+were then CLOSED the same session by Z2-descent with walks at n <=
+192 frames only — see a40_s4_b6_close.py.  This script guards the cap
+explicitly and exits; it is kept as the assembly record.
 """
 from __future__ import annotations
 
