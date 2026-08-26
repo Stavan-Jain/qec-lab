@@ -108,15 +108,275 @@ the family is the (r,b) zigzag. (Mechanical check: §2.1.)
 
 ## §2 P1 — the cover lattice (mechanical)
 
-*(filled by `scripts/a40_family_lattice.py`; see data/a40/)*
+`scripts/a40_family_lattice.py` (gate `validate_banked()` GREEN first, 1.9 s;
+4.2 s total) + `scripts/a40_swap_equivalence.py` (0.1 s);
+`data/a40/{family_lattice,swap_equivalence}.json`.
 
-## §3 P2 — pricing (and closure attempt) of the first unproven member
+### §2.1 Members and presentations
 
-*(filled after §2)*
+All 9 members (r ≤ 4, both b, plus (5,0); n = 72 … 1800) built from the
+fixed Laurent supports; **k = 12 mechanically confirmed for every one**
+(the paper's "we find k = 12", now machine-checked through n = 1800 —
+beyond A13 T3, which covers only the x-ladder). Presentation identities
+verified mechanically: bb72/gross = the paper supports times the unit
+shifts (y·A, x·B); two-gross = paper supports under (y ↦ y⁷; y⁷·A, x·B) =
+the stored BCGMRY form (x³+y²+y⁷, y³+x+x²).
+
+### §2.2 The lattice
+
+Method per ordered pair: (i) integer covering degree n'/n (a non-integer
+kills covers of EVERY kind); (ii) existence of any group quotient
+G' ↠ G (per-prime invariant criterion, brute-force cross-checked on all
+|G'| ≤ 300 pairs); (iii) literal-lift test on the axis-aligned projection
+(the fixed Laurent supports reduce with no collisions); (iv) for pairs
+with a quotient but no axis-aligned lift: enumerate ALL isomorphic
+divisor frames, transport through an explicit group isomorphism, and
+search the full standard monomial move set (Aut(G) incl. shears ×
+per-block monomial shifts × block swap × X↔Z duality), verifying any hit
+end-to-end on the parity matrices (HX and HZ rowspaces after the explicit
+qubit permutation).
+
+**Cover edges found (deck as Z_dx × Z_dy on (x,y)):**
+
+| cover → base | deck | kind |
+|---|---|---|
+| (1,1) → (1,0) | Z₂ × 1 | literal (the proven perfect doubling, d 6→12, Lean) |
+| (2,0) → (1,1) | 1 × Z₂ | literal (the A36 edge, deficit 6, d 12→18 certificate) |
+| (2,0) → (1,0) | Z₂ × Z₂ | literal (composite) |
+| **(2,1) → (1,1)** | **Z₃ × 1** | **equivalence-mediated: the (6,12) literal quotient of (2,1) IS the gross code** — shear automorphism x ↦ x⁹y, y ↦ x¹⁰y³ + shifts, verified on HX/HZ rowspaces. **[[432,12]] is a free Z₃ cover of gross.** |
+| (2,1) → (1,0) | Z₃ × Z₂ | literal |
+| (3,0) → (1,0) | Z₃ × Z₃ | literal — ALL-ODD deck (2-part trivial) |
+| (3,1) → (1,1) | Z₂ × Z₃ | literal |
+| (3,1) → (1,0) | Z₄ × Z₃ | literal |
+| (4,0) → (2,0) | Z₂ × Z₂ | literal — the pure-2 chain continues |
+| (4,0) → (1,1) | Z₂ × Z₄ | literal; (4,0) → (1,0): Z₄ × Z₄ |
+| **(4,1) → (1,1)** | **Z₅ × Z₂** | equivalence-mediated via the same (6,12)-frame identity |
+| (4,1) → (1,0) | Z₅ × Z₄ | literal |
+| (5,0) → (1,0) | Z₅ × Z₅ | literal — all-odd |
+
+**Non-edges (decisive):** no consecutive zigzag step beyond (1,1)→(2,0)
+is a cover of ANY degree — (2,0)→(2,1), (2,1)→(3,0), (3,0)→(3,1),
+(3,1)→(4,0), (4,0)→(4,1), (4,1)→(5,0) all have non-integer degree
+(3/2, 3/2, 4/3, 4/3, 5/4, 5/4). **(3,1) is NOT a cover of (2,1)** under
+literal quotients + the standard monomial move set (degree 2; the sole
+isomorphic divisor frame (12,18) fails all 864 automorphisms × 4
+variants × shifts) — the twisted-descent (A10-style) question is left
+open, and group theory does NOT exclude it (a y-axis Z₂ extension of
+(18,12) lives on Z₁₈×Z₂₄ ≅ Z₂₄×Z₁₈). (3,1)→(2,0) and (4,1)→(2,0) are
+impossible outright (no group quotient: 2-part exponent drops).
+
+### §2.3 Answers to the P1 key questions
+
+**(a) Does the family continue as a cover chain beyond (2,0)?** As a
+CHAIN, no — consecutive steps stop being covers immediately after
+two-gross. As a TREE rooted at gross, yes, in a precise sense: **every
+member except (3,0) and (5,0) is a free cover of gross** ((2,0): Z₂;
+(2,1): Z₃; (3,1): Z₂×Z₃; (4,0): Z₂×Z₄; (4,1): Z₅×Z₂). The exceptions are
+exactly the (r odd, b = 0) members, whose 2-part (2,2) is too small to
+cover gross's (4,2) — they hang off bb72 by all-odd decks (Z₃×Z₃, Z₅×Z₅).
+The [[432,12]] member is NOT a cover of [[288,12,18]] (degree 3/2) — the
+two d-conjecture steps 18→24 CANNOT be a single cover step; but
+[[432,12]] IS a Z₃ cover of the kernel-checked [[144,12,12]], with
+d-conjecture ratio 24/12 = 2 over a degree-3 cover (so "perfect doubling
+arithmetic" does not even apply — the odd-deck coupling law, charter
+F1-Q1, is the relevant unknown).
+
+**(b) The [[576,12]] question dissolves.** b ∈ {0,1} means **no
+(2,2) member and no [[576,12]] member exists** (§1 item 1). A14 §16's
+safe-floor negatives on [[576,12]] literal-lift doubles of two-gross
+concern non-members; no reconciliation is needed. (Had a (2,2) member
+existed, SF-death would still only have killed the doubling-template
+ROUTE, not bounded d — but the premise is empty.)
+
+**(c) Uniform decomposition.** Every member decomposes as
+bb72 → (odd part) → (2-part tower): the deck of (r,b) over bb72 is
+Z_{r+b} × Z_r, whose 2-part is a free iterated-Z₂ tower (the calculus
+lane) and whose odd part is Z_{odd(r+b)} × Z_{odd(r)} (the F1 lane).
+Equivalently: (r,b) = a free Z₂-tower of depth v₂(r+b)+v₂(r) over the
+"odd anchor" member/frame (6·odd(r+b), 6·odd(r)). The d-column therefore
+splits into (i) certifying odd-anchor distances (F1 / direct census) and
+(ii) climbing 2-towers (the working calculus). The zigzag ORDER of the
+paper is irrelevant to the machinery.
+
+### §2.4 Corrections logged
+
+- The A13 §4 parenthetical ("x-ladder level 2 is the known
+  [[288,12,18]]") is wrong — §1. (24,6) has k = 12 (checked; T3 intact)
+  but d ≤ 12 (A14 §13 SAT witness, solver/witness grade), and it is not
+  a family member.
+- The task-level premise "(2,2) predicted d = 30" (and the memory note's
+  implicit 2-parameter grid) is out of family: b is a bit.
+- My first verifier compared `rref_ints` bases as ordered lists; the
+  reduced basis is canonical only as a SET (found via a
+  false-negative on a true equivalence; fixed, then the equivalence
+  verified). Recorded here because any future consumer of
+  `rref_ints` for span equality should use `span_eq`/sorted bases.
+
+## §3 P2 — pricing, and the [[432,12]] closure
+
+### §3.1 The pricing table (`scripts/a40_price_open_members.py`, 8.2 s;
+`data/a40/pricing.json`; gate re-passed first)
+
+Cost verdicts only (A35 gates + the S2 n-blind-cap correction as an
+extra MITM column), per member, at the partial-floor W's and the
+conjecture W = d̂ − 2:
+
+| member | tower (n chain) | k chain | W = 22 | conjecture W | verdict at conjecture |
+|---|---|---|---|---|---|
+| (2,1) [[432,12]] d̂ 24 | 432/216/108/54 (yxy) | 12/12/8/8 | GREEN | 22 | **GREEN — executed, §3.2** |
+| (3,0) [[648,12]] d̂ 30 | 648/324/162 (xy) | 12/8/8 | AMBER | 28 | RED (cap 11) |
+| (3,1) [[864,12]] d̂ 36 | 864/432/216/108/54 | 12/12/12/8/8 | GREEN | 34 | RED (cap 14) |
+| (4,0) [[1152,12]] d̂ 42 | 1152/576/288/…/18 (depth 6) | 12×5/8/8 | GREEN | 40 | RED (cap 17) |
+| (4,1) [[1440,12]] d̂ 48 | 1440/720/360/180/90 | 12/12/12/8/8 | GREEN | 46 | RED (cap 20) |
+
+Notable structure: the (4,0) tower passes literally through the
+two-gross (12,12) and bb72 (6,6) frames — its L2 IS the two-gross, so
+two more Z₂ rungs sit on top of the certified d = 18; the (4,1) tower
+passes through a (30,6) frame. Every open member is GREEN at W = 22
+(d ≥ 24 partial floors are within the demonstrated envelope on all of
+them); the conjecture-W wall is W3 (fiber caps), where the S2
+kernel-shift lane covers light shadows and window population is the
+honest residual cost.
+
+### §3.2 The [[432,12]] closure (`scripts/a40_tdg432_close.py`;
+`data/a40/tdg432/`)
+
+Two runs, `validate_banked()` green before each; every census a
+node-exact BZ walk or a gated composed-fiber derivation; every rung
+candidate re-verified in-line; no SAT anywhere.
+
+**W = 16 shakedown (v1 descent-primary architecture, 48.8 s, banked)**:
+all gates EXACT (L2 direct-vs-descent; the independent (18,3)
+y-quotient re-derivation of the L1-stab census); 701 dangerous rungs
+ALL PASS at target 18, seam census EMPTY ≤ 16 ⟹ **d ≥ 18 at
+certificate tier**, plus the τ₀-witness (below) ⟹ 18 ≤ d ≤ 24.
+By-products, all census-complete EXACT: **d((9,3)) = 6** ([[54,8,6]]),
+**d((9,6)) = 10** ([[108,8,10]]), **d((18,6)) = 12** ([[216,12,12]]).
+
+**The τ₀-witness**: the top rung is (R) with exact_base (ker τ₀* =
+im p₀* = SEAM), so τ₀ of the weight-12 minimum L1-logical (whose class
+is outside SEAM) is a VERIFIED nontrivial [[432,12]] X-logical of
+weight 24 ⟹ d ≤ 24. (Checked end-to-end: cycle, non-stabilizer, slice
+identity |τu| = 2|u|.)
+
+**W = 22 production (v2 direct-L2-primary architecture; census phase
+744 s + rung phase, two-phase checkpoint per the 1-h ops rule)**. The
+v2 architecture exists because the v1 L3-fiber layer explodes at
+W = 22 while the composite-rank fact **rank(p₁* ∘ p₀*) = 2** collapses
+the seam-shadow classes to 3 of 255 — the direct BZ walks then price at
+~7e11 nodes total. Census phase, all gates EXACT again (L2
+descent-vs-direct at ≤ 14: stab 85 = 85, nontrivial 666 = 666; the
+(18,3) gate; d(L2) = 10 and d(L3) = 6 and d(L1) = 12 re-derived
+in-run): L2-stab ≤ 22 = 33,691 orbit reps; S1'-cosets ≤ 22 = 72,977;
+im-p₁*-cosets ≤ 18 = 19,411; all-class ≤ 16 = 7,780; L1 obligations =
+**44,093 dangerous + 68 seam (all weight-22) + 5,727 nontrivial ≤ 18**
+orbit reps; d(L1) = 12 EXACT ⟹ the b = 0 branch at W = 22 is dead
+(2·12 = 24 > 22).
+
+*(rung-phase verdict recorded below when the battery completes)*
 
 ## §4 P3 — the ∀r analytic lane: feasibility verdict
 
-*(time-boxed assessment; no proof attempts)*
+Time-boxed assessment (no proof attempts), against the A15 T3c route
+("the tour-de-gross ∀r column runs entirely through Z₄+ frames") and the
+A38 charter fronts. **Verdict: RED on "the full d-column is provable
+rung-wise with current technology" — with the burden itemized below and
+two AMBER/GREEN sub-lanes.** RED/AMBER/GREEN are cost/feasibility
+verdicts, never distance claims.
+
+### §4.1 The structural facts the verdict rests on (P1, mechanical)
+
+1. **The column is not a rung-chain.** No consecutive step beyond
+   (1,1)→(2,0) is a cover of any degree (§2.2), so no induction along
+   the zigzag exists. "Rung-wise" can only mean: per-member 2-part
+   towers + odd-deck rungs off gross/bb72 + a uniformity argument over
+   the deck family Z_{(r+b)} × Z_r.
+2. **Odd decks are unavoidable.** (r odd, b = 0) members have all-odd
+   decks (Z₃×Z₃, Z₅×Z₅ …) and 2-part (2,2) too small to cover gross;
+   (2,1)/(3,1)/(4,1) hang off gross with odd deck factors. Wall W1 is
+   load-bearing for the family, not incidental.
+3. **The b-bit is forced by the values, not just stated**: the "b = 2"
+   frame (18,6) — same fixed polynomials, r = 1 — has **d = 12 exact**
+   (measured census-complete this session, §3), while the extended
+   formula 6(2r+b−1) would demand 18. Extrapolating the formula off the
+   bit is FALSE. (Constraint on any future closed-form family theorem.)
+4. **The +6 law forces specific floors on NON-member intermediates**:
+   along the pure-Z₂ chain (2^j,0), d̂ = 2·d̂_prev + 6, so e.g. the
+   (4,0) = [[1152,12,d̂=42]] tower needs its non-member mid (12,24) to
+   carry d ≥ 21 (the per-rung τ-ceiling d ≤ 2·d(mid)); A14 §16's SF
+   hunts on exactly that intermediate (as a two-gross double) were
+   SF-negative (sampled) — so the value-carrying content on the pure-Z₂
+   chain must come from the census/tower machinery (or its F2 analytic
+   replacement), NOT the doubling template. The doubling theorem covers
+   exactly one edge of the family ((1,0)→(1,1)) and cannot cover any
+   r ≥ 2 step even in principle (the increments are +6, not ×2).
+
+### §4.2 The named missing pieces (with owners)
+
+- **F1-Q1, the odd-deck coupling law** (charter A38 F1; session S3 is
+  next and unstarted). The family supplies best-case structure — every
+  family cover is k-preserving (k ≡ 12 measured through r = 5, §2.1),
+  so by Maschke the twisted sectors are homology-free (the odd analog
+  of deck-triviality/(R)) — and THIS SESSION supplies exact calibration
+  data the law must reproduce (all census-complete, §3):
+
+  | Z₃ x-cover | d(base) → d(cover) | ratio |
+  |---|---|---|
+  | (3,3) [[18,8,2]] → (9,3) [[54,8,6]] | 2 → 6 | 3.0 |
+  | (3,6) [[36,8,4]] → (9,6) [[108,8,10]] | 4 → 10 | 2.5 |
+  | (6,6) [[72,12,6]] → (18,6) [[216,12,12]] | 6 → 12 | 2.0 |
+  | gross → (2,1) [[432,12,·]] (via §2.2 equivalence) | 12 → 24 (conj.; ≥ 18 certified, → §3) | 2.0 |
+
+  The ratio drifts 3.0 → 2.0 as d(base) grows: the coupling is
+  element-dependent, not a deck-order multiple — consistent with A38
+  S1's F2a falsification (any odd coupling law must be
+  cancellation-shaped). The k-preserving norm map gives the easy half,
+  d(cover) ≤ |deck|·d(base) (τ of a minimum-weight base logical);
+  the FLOOR half is the open calculus.
+- **The bivariate chain-ring atoms at unbounded depth** (A15 T3c's two
+  named-open lemmas, inherited from A1 §4): minimum weights of
+  rad^t(F₂[Z₄×Z₂]) for general (non-monomial-like) ideals, and a
+  weight-distortion bound between Hamming weight and chain-ring DFT
+  coordinates. The family needs them not just at Z₄-depth: the 2-parts
+  of the frames are Z_{2^{1+v₂(r+b)}} × Z_{2^{1+v₂(r)}}, unbounded
+  along r = 2^j. Özadam–Özbudak Thm 3.6 supplies the per-axis
+  ⟨(x−1)^i⟩ ⊂ F₂[Z_{2^s}] ladders at every depth; the BIVARIATE
+  general-ideal gap is the blocker, at every depth ≥ 4.
+- **The odd-part growth**: odd parts 3·odd(r+b) × 3·odd(r) are
+  unbounded along the column; the semisimple side needs per-character
+  (BCH-style) floors per isotypic block — F1-Q1 again, now with S1's
+  constraint that census weight does NOT factor along the odd CRT
+  (additivity 0/33,588 at gross) — the floors must survive
+  cross-sector cancellation.
+- **Uniformity in r**: the k-row precedent (A13 T3's level-free Bezout
+  witness) shows what a uniform statement looks like; no analog exists
+  for any value-carrying floor. The charter's F2b resolution (S2) says
+  the true recursion is CENSUS-CARRYING, which is exactly what does NOT
+  scale to ∀r without new theory (the window-population residual).
+
+### §4.3 The achievable sub-lanes
+
+- **GREEN — the family k-row ∀(r,b) as a theorem.** k ≡ 12 is
+  machine-checked through n = 1800 here (§2.1); the statement reduces
+  to dim F₂[Z_{6(r+b)}×Z_{6r}]/(A,B) = 6 uniformly — a
+  commutative-algebra statement about one fixed Laurent pair, CRT over
+  the odd part × chain rings over the 2-part, with A13 T1/T2/T3
+  supplying the Z₂-tower half and Maschke the odd half. Named as the
+  natural first ∀r theorem of the thread (it is the paper's "we find
+  k = 12" made rigorous).
+- **AMBER — the bounded prefix, member by member, at certificate
+  tier.** Pricing (§3): [[432]] GREEN at its conjecture-W (EXECUTED,
+  §3); [[648]] AMBER at W = 22 (d ≥ 24 partial) / RED at its
+  conjecture W = 28 (cap 11) — the odd anchor (9,9) n = 162 bottom is
+  BZ-able and the tower is only depth 2, so W3 (cap growth), not W2,
+  is the binding wall; [[864]] GREEN at W = 22 / RED at W = 34;
+  [[1152]]/[[1440]] RED at conjecture W. The kernel-shift lane (S2)
+  moves light-shadow cells past the cap wall, so the honest frontier
+  cost is window population, as the charter already records.
+- **RED — everything ∀r about d.** Two hard names (F1-Q1 floor half;
+  bivariate chain-ring atoms at depth), plus the structural facts of
+  §4.1. A closed-form ∀r distance law is a different research program
+  (exactly the A38 F1+F2 arc), not a session.
 
 ## §5 Falsified claims (session)
 
