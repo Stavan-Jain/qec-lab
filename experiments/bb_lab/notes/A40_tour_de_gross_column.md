@@ -680,3 +680,152 @@ give 24 ≤ d ≤ 36.
    also an ingredient of UB(r,1)'s cleanest packaging.
 6. Corpus-merge additions from S2: the four new b = 1 upper bounds
    (witness grade) + the L12/dual closed forms as reusable patterns.
+
+## §8 SESSION 3 (2026-08-26) — the cylinder lane: a proven ∀(r,b) growing floor (ladder level L1)
+
+Directive: build the cylinder distance theory (the S2 §7.6 lower-half
+route), ladder L1 = any ∀r linear floor / L2 = matching constants / L3
+= the full conjecture. Scripts `a40_s3_*.py`, data `data/a40/s3_*`;
+`validate_banked()` green before all work. **Level reached: L1, as a
+theorem — plus the two-sided Θ(√n) pin for the b = 1 column when
+combined with §7.1.** L2 formulated with its gates run and its one
+missing lemma named. L3 untouched (per scope).
+
+### §8.1 Theorem L1 — the gap-dichotomy floor
+
+Formulating the cylinder theory's sector split exposed an elementary
+route that closes L1 outright before any transfer machinery: the
+two sectors (y-local vs y-wrapping) are governed by a single
+no-fully-local-logicals lemma, which for translation-invariant codes
+is a commutative-algebra fact.
+
+**Machine-verified constants (gate K1)**: from the fixed Laurent
+supports, every Z-check reads qubit rows spanning ≤ 4 and columns
+spanning ≤ 4, and every X-stabilizer row likewise (spans s_x = s_y
+= 4).
+
+**Gate K2 (the regularity certificate)**: Res_y(y·A, x·y³·B) =
+1 + x + x² + x⁴ + x⁵ + x¹¹ + x¹³ ≠ 0 in F₂[x] (exact 5×5 Sylvester
+determinant over F₂[x], `a40_s3_l1_gates.py`), and the y-coefficient
+contents are 1 — so A and B are coprime up to units, V(A,B) is
+finite, ht(A,B) = 2 = dim F₂[x^±,y^±], and the Laurent ring is
+Cohen–Macaulay: **(A,B) — hence (B̄,Ā) — is a regular sequence**, so
+the plane Koszul homology H₁ vanishes: every finitely-supported plane
+X-cycle is a finitely-supported plane X-boundary.
+
+> **Lemma K (no windowed logicals).** No nontrivial X-logical of any
+> member has both a cyclic x-gap ≥ 4 and a cyclic y-gap ≥ 4 in its
+> support. *Proof.* With both gaps ≥ 4 = span, no member check reads
+> support across either wrap, so v's member syndrome equals the plane
+> syndrome of its window reading ṽ; ṽ is a plane cycle, hence by
+> regularity ṽ = ∂̃₂(w̃) with w̃ of finite support; reducing mod
+> (x^ℓ−1, y^m−1) intertwines ∂̃₂ with the member stabilizer map, so
+> v ∈ rowspace(H_X) — trivial. ∎
+
+> **Theorem L1.** For any BB code on Z_ℓ×Z_m whose polynomial pair is
+> plane-regular with per-axis check spans (s_x, s_y):
+> d ≥ min(⌈ℓ/s_x⌉, ⌈m/s_y⌉). For the tour-de-gross pair (spans 4,4):
+> **d ≥ min(⌈ℓ/4⌉, ⌈m/4⌉)**. *Proof.* Let v be a nontrivial X-logical.
+> If its y-support has all cyclic gaps ≤ 3, consecutive occupied rows
+> are ≤ 4 apart around Z_m, so ≥ ⌈m/4⌉ rows are occupied and
+> |v| ≥ ⌈m/4⌉. Otherwise v has a y-gap ≥ 4; by Lemma K it has no
+> x-gap ≥ 4, so ≥ ⌈ℓ/4⌉ columns are occupied. The Z side is the
+> transpose code with the same spans. ∎
+
+> **Corollary (the family floor).** d(C_{r,b}) ≥ ⌈6r/4⌉ = ⌈3r/2⌉ for
+> every r ≥ 1, b ∈ {0,1} — a growing, Θ(√n) floor for the whole
+> tour-de-gross family (≈ 0.18·√n at b = 0), both columns, no solver
+> anywhere. **Combined with Theorem UB(r,1) (§7.1): the b = 1 column
+> has PROVEN two-sided bounds ⌈3r/2⌉ ≤ d(C_{r,1}) ≤ 12r — the
+> distance is pinned to Θ(√n) = Θ(r) by proof.**
+
+**Claim tier**: hand proof; its two computational inputs are the
+machine-verified span constants and the exact resultant; the
+falsify-first battery (gate K3) audited **7,765 certified nontrivial
+logicals** across five banked populations (bb72 w6, gross ≤ 12
+recomputed census-complete, (18,6) ≤ 22, the a36 two-gross witness,
+the [[432]] w24 witness) — **zero both-windowed logicals** and every
+counting inequality holds. Lean packaging (resultant + counting) is a
+natural, small target.
+
+**Positioning (guarded, per A31 discipline)**: the mechanism —
+no-local-logicals for translation-invariant codes via a module/variety
+condition — is Haah-adjacent commutative algebra, and BB-as-
+coupled-toric readings suggest such floors are folklore-adjacent; the
+A31 sweep found every published BB-proper distance solver-derived and
+no proven floor for this family. Claim only: *the first stated and
+certified growing distance floor for the tour-de-gross family, with
+the b = 1 column's Θ(√n) pinned two-sided*. A dedicated literature
+pass (Haah 2013 module framework; [Lia+25]; quasi-cyclic classical
+floors) is owed before any external superlative — residue.
+
+### §8.2 The cylinder/defect theory (L2) — formulated, gated, one lemma short
+
+The L2 target (d ≥ 12r − 6) needs the per-band cost 12, beyond
+counting. The theory as formulated: minimal logicals split into
+(i) the y-local sector = strip objects (y-window, no wrap), which by
+Lemma K must x-wind — **gate G1-lite: the strip code has strip-k = 6
+independent of ℓ ∈ {12,18} and window height h ∈ {1,2,3}** (the
+x-winding half of k = 12; the y-local sector is a fixed 6-class
+object at every size); their exact minima (the strip-distance
+function μ(ℓ)) are the sector's constants — floor ⌈ℓ/4⌉ proven,
+exact values unmeasured (the transfer computation needs the
+compression lemma below or heavy pruning: named residue); and
+(ii) the y-wrapping sector, whose objects touch ≥ ⌈m/4⌉ rows (proven)
+and which the defect graph models: nodes = interface states (the
+restriction to 4 consecutive rows), edges = per-band continuations,
+weight = per-band cost; d(wrapping) ≥ r · (min mean cycle) − C.
+**Gate G2 (the killers reproduced)**: the wt-16 3-cell (18,6)
+logicals and the a36 witness are y-wrapping-sector objects at m = 6
+and 12 (sector histogram: 6,491 y-wrap-only + 1,274 both-wrap of
+7,765; zero x-wrap-only in these populations); per-row loads go down
+to **1** (measured minimum), so no per-row counting can reach 12r —
+the mean-cycle formulation is genuinely necessary, and the low-load
+rows must be paid for by their neighborhoods (exactly what a transfer
+argument captures). **Gate G3 (x-localization license)**: x-extents
+of all 7,765 certified logicals concentrate at 3–10 (histogram
+banked); no unboundedness observed — resolution (a) is licensed as an
+observation, but the **compression lemma** ("minimal ⟹ x-extent
+≤ w₀, or x-periodic-reducible") is UNPROVEN and is the one missing
+ingredient between the defect graph and an L2 theorem. **Gate G4: not
+run** — without the compression lemma the interface state space is
+not truncatable honestly (4 rows × w₀ columns × 2 blocks ≈ 2^96 raw);
+running it on an unlicensed truncation would measure nothing
+citable. The F2b refutation does not block any of this, precisely
+because the defect graph's nodes carry interface STATES (census-like
+data), not bare numbers — the S2 kernel-shift lesson is the same
+lesson.
+
+### §8.3 Falsified claims (session 3)
+
+- "Per-occupied-row cost ≥ 2" (an L2 shortcut candidate) — dead
+  before claiming: measured minimum row load = 1 on the banked
+  populations.
+- "U1 witnesses small strip minima" (an early G1 reading) — U1's
+  cycle-ness at (6,6) uses the y-wrap, so it is not a strip cycle;
+  no strip-minimum claim survives it.
+- The Koszul lemma's falsification attempt (gate K3: hunt a
+  both-windowed certified logical) — 0/7,765; the lemma stands.
+- (Respected: cost verdicts vs distance claims; no SAT; tier
+  statements exact; the S2 per-cell refutations untouched.)
+
+### §8.4 Residue / S4
+
+1. **Exact strip minima μ(ℓ)** (the y-local sector constants): a
+   pruned x-transfer/Viterbi at strip-k = 6, or an algebraic route
+   through the 6-dim strip homology; feeds L2's x-sector.
+2. **The compression lemma** (minimal ⟹ x-local/x-periodic-
+   reducible): the gate to G4 and the wrapping sector's mean-cycle
+   theorem; G3's histogram is its evidence base.
+3. **The literature pass** (Haah's module framework, [Lia+25],
+   quasi-cyclic floors) before any external claim about L1's novelty.
+4. **The corpus sweep corollary**: stamp d ≥ min(⌈ℓ/s_x⌉, ⌈m/s_y⌉)
+   on every corpus BB code (spans + resultant are cheap per pair) —
+   free floors for every frame, including the odd-|G| rows the
+   Z₂-calculus cannot touch (W1-independent!).
+5. **Lean**: Theorem L1 end-to-end (span constants by `decide`, the
+   resultant by exact arithmetic, the counting argument); would make
+   the family floor the library's first ∀r distance statement.
+6. b = 0 seam construction: untouched this session (per scope); the
+   strip/defect machinery, once L2-grade, is expected to hand over
+   the −6.
