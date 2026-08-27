@@ -1,0 +1,129 @@
+{
+ "C1_witness": {
+  "weight": 18,
+  "p": 12,
+  "d": 0,
+  "rate": 1.5,
+  "slab_min": 2,
+  "slab_max": 12,
+  "all_light": false,
+  "y_spanning": true,
+  "window_pruned": false,
+  "n_prune_events": 0
+ },
+ "C2_comb_l18": {
+  "weight": 6,
+  "p": 6,
+  "d": 0,
+  "rate": 1.0,
+  "slab_min": 2,
+  "slab_max": 5,
+  "all_light": true,
+  "y_spanning": true,
+  "window_pruned": true,
+  "n_prune_events": 1
+ },
+ "C2_comb_l12": {
+  "weight": 6,
+  "p": 6,
+  "d": 0,
+  "rate": 1.0,
+  "slab_min": 2,
+  "slab_max": 5,
+  "all_light": true,
+  "y_spanning": true,
+  "window_pruned": true,
+  "n_prune_events": 1
+ },
+ "C3_L12": {
+  "n": 66,
+  "n_placed": 66,
+  "rate": 2.0,
+  "slab_min_over_family": 5,
+  "slab_max_over_family": 11
+ },
+ "C4_l12_survivors": [
+  {
+   "p": 4,
+   "d": 4,
+   "weight": 6,
+   "rate": 1.5,
+   "n": 48,
+   "n_light": 48,
+   "slab_max": 6,
+   "slab_min": 6
+  },
+  {
+   "p": 5,
+   "d": 7,
+   "weight": 8,
+   "rate": 1.6,
+   "n": 120,
+   "n_light": 60,
+   "slab_max": 8,
+   "slab_min": 5
+  },
+  {
+   "p": 6,
+   "d": 3,
+   "weight": 10,
+   "rate": 1.6666666666666667,
+   "n": 432,
+   "n_light": 72,
+   "slab_max": 9,
+   "slab_min": 5
+  },
+  {
+   "p": 7,
+   "d": 2,
+   "weight": 12,
+   "rate": 1.7142857142857142,
+   "n": 84,
+   "n_light": 0,
+   "slab_max": 9,
+   "slab_min": 5
+  },
+  {
+   "p": 7,
+   "d": 10,
+   "weight": 8,
+   "rate": 1.1428571428571428,
+   "n": 84,
+   "n_light": 84,
+   "slab_max": 7,
+   "slab_min": 2
+  },
+  {
+   "p": 7,
+   "d": 10,
+   "weight": 12,
+   "rate": 1.7142857142857142,
+   "n": 168,
+   "n_light": 0,
+   "slab_max": 10,
+   "slab_min": 3
+  }
+ ],
+ "mu_light_l12_upper": 1.1428571428571428,
+ "universe": [
+  {
+   "l": 12,
+   "window4_states": 12910834345,
+   "window4_per_translation": 1075902862,
+   "window5_upper": 768831457224260266,
+   "window5_per_translation_with_constraint": 15641916040532
+  },
+  {
+   "l": 18,
+   "window4_states": 231325515709,
+   "window4_per_translation": 12851417539,
+   "window5_upper": 279185085000562388772,
+   "window5_per_translation_with_constraint": 59167032241940
+  }
+ ],
+ "constraint_lemma": {
+  "n_random_4windows": 200,
+  "n_extended_ok": 200
+ },
+ "wall_s": 4.2
+}
