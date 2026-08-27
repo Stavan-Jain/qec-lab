@@ -1339,8 +1339,8 @@ Controls, all PASS:
 > (18,·) and (24,·) families through p = 8, including (24,5).
 >
 > **Trivial side (the pruning-catalog sufficiency, extended).** At
-> every frame swept, EVERY trivial y-spanning sub-rate-2 orbit (about
-> 2,000 orbit reps per ℓ across p = 6..8, combs included) is pruned
+> every frame swept, EVERY trivial y-spanning sub-rate-2 orbit
+> (~4,000 orbit reps per ℓ across p = 6..8, combs included) is pruned
 > by the local-reduction catalog (single H_X rows + pair sums ≤ 10).
 > The S4 claim "the catalog suffices on the ℓ = 18/24 periodic
 > landscape" now holds through p = 8.
@@ -1348,6 +1348,15 @@ Controls, all PASS:
 The exact spectrum replication between ℓ = 18 and ℓ = 24 — same
 weights, same orbit-rep counts, same pruned/unpruned split — is a
 measured fact about both species (§10.4).
+
+**ℓ = 30 extension (same session, same machine).**  The p ∈ {5, 6, 8}
+layers of the (30,·) column (p = 7 is the F1 odd-fold gap: (30,7)
+folds only to n = 210 > 192 and (1,105) has no even axis): p = 5 all
+20 k>0 frames EMPTY; p = 6: exactly TC63 at (30,6,3) (w10 ×1,
+unpruned, closure-dead — the twisted-cylinder descent prediction
+d ≡ 3 (mod ℓ) confirmed at a FOURTH column); p = 8: all 20 k>0
+frames EMPTY (depth-2, bottom n = 120, 264 s).  Trivial side: all
+pruned, every frame swept.
 
 ### §10.4 The two species (banked objects)
 
@@ -1515,14 +1524,26 @@ is a MOMENTUM BUDGET:
    mechanical step: the wall/interface cost table between the three
    phase families (rate-2 tight, TC63, W7) under the window engine.
 2. **p ≥ 9 periodic leg**: dense censuses priced RED (κ ≥ 77,
-   W ≥ 17: ~days/frame); straight atlas p = 9 in flight
-   (`a40_s5_atlas_p9.py`); the L-P induction (exact constants) is
-   still the ∀p route.
-3. **The W7 mechanism**: univariate structure of the cyclic
-   (ℓ,7,ℓ−2) frames (Z_{7ℓ}); the ĝ = u²+u+1 pattern of the line
-   classes (12/21 directions — why this factor, and why weight-3
-   everywhere); the (30,7,28) same-spectrum prediction (F1 odd-fold
-   territory).
+   W ≥ 17: ~days/frame); the straight atlas at p = 9 (Wcap 17) was
+   run and KILLED at ~8 GB RSS pre-cap — the pure-Python BFS+DAG
+   engine's memory envelope ends at p = 8 (measured; §9.9's "honest
+   reach ~p ≤ 10" was optimistic — a compiled or disk-backed engine
+   is needed; `s5_atlas_p9.json` records the abort).  The L-P
+   induction (exact constants) is still the ∀p route.
+3. **The W7 mechanism — now half-pinned (measured in-session).**
+   The (ℓ,7,d) k = 4 frames are cyclic (Z_{7ℓ}) and their univariate
+   images share the factor z² + z + 1 (the F₄ ω-point; it divides
+   z^{7ℓ}−1 since 3 | 7ℓ for every 6 | ℓ) at EVERY k = 4 shear, at
+   ℓ = 18 and 24 — the ω-eigenspace IS the k = 4 (2 blocks × deg 2),
+   and the SAME ĝ = u²+u+1 runs through all 12 non-monomial line
+   directions: one ω-point of the pair unifies the line H₁, the
+   (ℓ,7,·) ranks, and (plausibly) the two-sided thread's Frobenius
+   motif.  What remains open is the CHIRALITY selection: only
+   d ≡ −2 (mod ℓ) has weight-8 representatives in its ω-class — a
+   cyclic-code minimum-distance question on Z_{7ℓ} per shear (the
+   sharpest next question).  The (30,7,28) same-spectrum prediction
+   stands (F1 odd-fold territory for the census; the ω-rank part is
+   already checkable univariately).
 4. **ℓ ∈ {30, 36, ...} columns**: the descent machinery covers any
    ℓ with even-axis folds reaching n ≤ 192; (30,7) does not fold —
    F1 or a bigger kernel.

@@ -1,0 +1,399 @@
+{
+ "phase": "l30p6",
+ "frames": [
+  {
+   "p": 6,
+   "d": 0,
+   "k": 12,
+   "orders": [
+    6,
+    30
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 5580
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.5
+  },
+  {
+   "p": 6,
+   "d": 3,
+   "k": 8,
+   "orders": [
+    3,
+    60
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 90
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 6,
+   "trivial_whist": {
+    "6": 1,
+    "8": 1,
+    "10": 4
+   },
+   "n_nontrivial": 1,
+   "nontrivial_whist": {
+    "10": 1
+   },
+   "survivors": [
+    {
+     "weight": 10,
+     "y_spanning": true,
+     "prunable": false,
+     "x_winds": false,
+     "b1_closure_r": null,
+     "pts": [
+      [
+       0,
+       0,
+       31
+      ],
+      [
+       0,
+       0,
+       41
+      ],
+      [
+       0,
+       0,
+       44
+      ],
+      [
+       0,
+       2,
+       30
+      ],
+      [
+       0,
+       2,
+       40
+      ],
+      [
+       0,
+       2,
+       43
+      ],
+      [
+       1,
+       2,
+       31
+      ],
+      [
+       1,
+       2,
+       32
+      ],
+      [
+       1,
+       2,
+       33
+      ],
+      [
+       1,
+       2,
+       39
+      ]
+     ]
+    }
+   ],
+   "trivial_yspan_reps": 6,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.5
+  },
+  {
+   "p": 6,
+   "d": 6,
+   "k": 12,
+   "orders": [
+    6,
+    30
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 1350
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.4
+  },
+  {
+   "p": 6,
+   "d": 9,
+   "k": 8,
+   "orders": [
+    3,
+    60
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.4
+  },
+  {
+   "p": 6,
+   "d": 12,
+   "k": 12,
+   "orders": [
+    6,
+    30
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.5
+  },
+  {
+   "p": 6,
+   "d": 15,
+   "k": 8,
+   "orders": [
+    3,
+    60
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.6
+  },
+  {
+   "p": 6,
+   "d": 18,
+   "k": 12,
+   "orders": [
+    6,
+    30
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.5
+  },
+  {
+   "p": 6,
+   "d": 21,
+   "k": 8,
+   "orders": [
+    3,
+    60
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.6
+  },
+  {
+   "p": 6,
+   "d": 24,
+   "k": 12,
+   "orders": [
+    6,
+    30
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.6
+  },
+  {
+   "p": 6,
+   "d": 27,
+   "k": 8,
+   "orders": [
+    3,
+    60
+   ],
+   "W": 11,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     3,
+     30
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 0
+   },
+   "n_cover_cycles": 7,
+   "n_trivial": 7,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 7,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 4.6
+  }
+ ],
+ "wall_s": 47.6
+}

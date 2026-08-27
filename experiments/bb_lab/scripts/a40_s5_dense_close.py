@@ -73,7 +73,7 @@ sys.argv = _argv
 
 DATA = LAB / "data" / "a40"
 CKPT = DATA / "s5_dense"
-L = 18
+L = 18   # default; the l24* phases rebind it (and the pilot module's)
 
 
 def fold_code(code, o, ax, name):
@@ -212,6 +212,7 @@ def close_frame(binp, p, d, log, depth2=False):
     W = 2 * p - 1
     cover, o = quotient_code(L, p, d)
     name = f"({L},{p},{d})"
+    assert __import__("a40_s4_prune_pilot").L == L, "pilot L mismatch"
     log(f"[{name}] k={cover.k} orders={o} n={cover.n} W={W} "
         f"depth={2 if depth2 else 1}")
     t0 = time.monotonic()
@@ -288,7 +289,8 @@ def close_frame(binp, p, d, log, depth2=False):
                trivial_yspan_reps=n_ty, trivial_yspan_unpruned=n_tu,
                wall_s=wall)
     CKPT.mkdir(parents=True, exist_ok=True)
-    (CKPT / f"p{p}_d{d}.json").write_text(json.dumps(row, indent=1))
+    stem = f"p{p}_d{d}.json" if L == 18 else f"l{L}_p{p}_d{d}.json"
+    (CKPT / stem).write_text(json.dumps(row, indent=1))
     return row
 
 
@@ -368,6 +370,33 @@ def main():
     elif phase == "p8rest":
         for d in (2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17):
             out["frames"].append(close_frame(binp, 8, d, log))
+    elif phase.startswith("l") and "p" in phase:
+        Lrun = int(phase[1:phase.index("p")])
+        globals()["L"] = Lrun
+        __import__("a40_s4_prune_pilot").L = Lrun
+        p = int(phase[phase.index("p") + 1:].removesuffix("probe"))
+        depth2 = p == 8            # bottom n <= 192 vs the fat base
+        seen = {}
+        kmap = []
+        for d in range(Lrun):
+            cov, o = quotient_code(Lrun, p, d)
+            if cov.k == 0:
+                continue
+            key = (tuple(o), tuple(sorted(cov.A.support)),
+                   tuple(sorted(cov.B.support)))
+            if key in seen:
+                log(f"({Lrun},{p},{d}) k={cov.k}: duplicate of "
+                    f"({Lrun},{p},{seen[key]}) — skipping")
+                out["frames"].append(dict(p=p, d=d, k=cov.k,
+                                          duplicate_of=seen[key]))
+                continue
+            seen[key] = d
+            kmap.append(d)
+        log(f"l={Lrun} p={p}: k>0 distinct shears {kmap}")
+        probe_only = phase.endswith("probe")
+        for d in (kmap[:1] if probe_only else kmap):
+            out["frames"].append(close_frame(binp, p, d, log,
+                                             depth2=depth2))
     else:
         raise SystemExit(f"unknown phase {phase}")
 
