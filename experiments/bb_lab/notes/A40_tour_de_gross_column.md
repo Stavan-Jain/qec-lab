@@ -1354,12 +1354,20 @@ measured fact about both species (§10.4).
 **TC63 — the twist-compact (6,3) family.**  Weight 10, rate 5/3,
 y-period 6, x-drift +3; slab profile [5,9] (NOT light: it crosses the
 heavy boundary); catalog- and window-unpruned; present at ℓ = 12
-(the pilot's 30), 18, 24.  The TWISTED-COMPACT ATLAS
-(`a40_s5_twisted_atlas.py`, §9.9 item 3b executed) classifies it
-∀ℓ: with g = gcd(t,p), the twisted cylinder Z²/⟨(t,p)⟩ ≅ Z × Z_g by
-a unimodular change of basis, so every twist class reduces to the S4
-straight automaton on a transformed pair at period g.  Verdict
-(exhaustive, both lanes, p ≤ 8): **(6,3) is the ONLY twist class
+(the pilot's 30), 18, 24 — it lives on the lattice ⟨(3,6)⟩ and
+descends exactly to the frames with d ≡ 3 (mod ℓ), which is where
+(and only where) the censuses find it.  The TWISTED-COMPACT ATLAS
+(`a40_s5_twisted_atlas.py`, §9.9 item 3b executed): with
+g = gcd(t,p), the twisted cylinder Z²/⟨(t,p)⟩ ≅ Z × Z_g by a
+unimodular change of basis, so each twist LATTICE reduces to the S4
+straight automaton on a transformed pair at period g.  SCOPE: the
+sweep covers the lattice window 0 ≤ t < p (NOT "t mod p" — the
+y ↦ y·x^k change maps ⟨(t,p)⟩ to ⟨(t+kp,p)⟩ only by TRANSFORMING
+the pair, so ⟨(t,p)⟩ and ⟨(t+p,p)⟩ are genuinely different systems
+for the fixed pair, and a frame (ℓ,p,d) receives descent from every
+⟨(d+ℓk, p)⟩; the frame-level truth is protected by Theorem P's
+censuses regardless).  Verdict (exhaustive on the window, both
+lanes, p ≤ 8): **⟨(3,6)⟩ is the ONLY twist lattice with |t| < p
 carrying any sub-rate-2 nontrivial compact object** (min weight 10,
 found in both lanes — the θ′ duality again — and re-verified
 end-to-end on the (42,6,3) torus); (4,2), (6,2), (6,4), (8,2),
@@ -1439,7 +1447,12 @@ is refuted as a statement, not merely unreached.
 
 For the b = 1 member (ℓ, m) = (6r+6, 6r), the periodic input
 alphabet at p ≤ 8 is now: rate-≥2 phases, plus two closure-dead
-chiral species.  The correct wall statement is a MOMENTUM BUDGET:
+chiral species — proven at the censused columns ℓ ∈ {12, 18, 24}
+(members r ≤ 3), and conjectured ∀ℓ on the strength of the exact
+ℓ-replication (the ∀ℓ alphabet needs either per-ℓ censuses, which
+the descent machine makes ~minutes per column while even-axis folds
+reach n ≤ 192, or the L-P induction).  The correct wall statement
+is a MOMENTUM BUDGET:
 
 - Any drift-blind window-potential certificate (ŵ + ΔΦ ≥ 2 on the
   pruned light core) is impossible — W7's w8 cycle is light,
@@ -1519,7 +1532,10 @@ chiral species.  The correct wall statement is a MOMENTUM BUDGET:
    pivots — needs a 2-column block-march; currently closed via θ′);
    the line-species unbounded-extent corner; window-realization of
    the trivial-side pruning for p = 6..8 (verified global-catalog-
-   wise; the H = 5 window realization is verified for combs only).
+   wise; the H = 5 window realization is verified for combs only);
+   the twist lattices with |t| ≥ p (transformed-pair atlas runs —
+   finite per (p, ℓ-window); the swept frames are already protected
+   by Theorem P, so this matters only for un-censused ℓ).
 7. **Lean**: Theorem P's census certificates are decide-shaped
    (finite lists + lift arithmetic); the member-protection
    arithmetic ((7s+1) ∤ 2s, 2(r+1) ∤ r) is a two-line Lean lemma —

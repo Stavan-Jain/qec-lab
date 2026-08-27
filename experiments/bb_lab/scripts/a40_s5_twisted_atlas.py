@@ -5,7 +5,12 @@ sub-rate-2 spectrum of TWIST-COMPACT phases, p <= 8, both lanes.
 Object: a y-period-p phase with x-drift t that is compact on the
 twisted cylinder Z^2/<(t,p)> (uses neither the x^l nor any further
 relation) — the third species class the S4 pilot exposed at (12,6,3).
-Twist class = t mod p (basis change y -> y x^k shifts t by kp).
+SCOPE: the sweep covers the twist-lattice window 0 <= t < p.  (The
+basis change y -> y x^k maps <(t,p)> to <(t+kp,p)> only by
+TRANSFORMING the pair, so <(t,p)> and <(t+p,p)> are different systems
+for the fixed pair; a frame (l,p,d) receives descent from every
+<(d+lk, p)>.  Frames swept by the S5 censuses are protected by
+Theorem P regardless; the |t| >= p lattices are recorded residue.)
 
 Reduction (exact): with g = gcd(t, p), the unimodular matrix
 W = [[p/g, -t/g], [a, b]] (a t + b p = g) maps Z^2/<(t,p)> ~= Z x Z_g:
