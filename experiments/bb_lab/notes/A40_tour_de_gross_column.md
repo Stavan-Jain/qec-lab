@@ -1220,3 +1220,307 @@ periodic classification above fixes its input alphabet.
 6. Corpus notes: the (12,16)/(12,24) rate-3/4 combs and the p ≤ 8
    phase-frame k-map are reusable structure for any BB pair with
    spans (4,4); the atlas engine is pair-generic.
+
+## §10 SESSION 5 (2026-08-27) — the periodic leg closed at ℓ = 18/24,
+## two chiral species, and the drift-blind wall certificate refuted
+
+Directive: advance the L-W wall certificate — build the ℓ = 18 pruned
+light-core transfer graph, extract its bi-recurrent part, and compute
+the min-mean/potential certificate.  What actually happened,
+falsify-first: the mandated pricing REFUTED the buildability of the
+literal Stage-1 graph (a structural obstruction, §10.1), and the
+periodic content the graph was meant to certify was obtained instead
+by a cheaper, stronger instrument — fiber-complete Z₂-descent censuses
+of every sheared frame (18/24, p ≤ 8), which CLOSED the periodic leg
+on both columns and discovered that the hoped-for certificate target
+is FALSE as stated: the pruned light core at ℓ = 18 contains a
+nontrivial y-spanning cycle at rate 8/7, and no constant-C rate-2
+statement can hold uniformly on the (18,·) column (explicit sub-2m
+logicals at (18,63)/(18,36)/(24,48), end-to-end).  What survives — and
+is now sharply supported — is the closure-constrained (member) form:
+both cheap species are CHIRAL, closure-dead on the entire b = 1 column
+by pure arithmetic, and the wall lemma becomes a momentum-budget
+statement (§10.7).  Scripts `a40_s5_*.py`, data `data/a40/s5_*`;
+`validate_banked()` green before every stage.
+
+### §10.1 Stage-1 pricing: the light-core graph is not materializable
+### (`a40_s5_lightcore.py`, `s5_lightcore.json`)
+
+The mandated RED/AMBER/GREEN gate, with the counts computed exactly
+and the structure lemma verified mechanically:
+
+- Universe: 4+4-row windows (the dynamics+cost state) number
+  Σ_{w≤7} C(8ℓ, w) = 2.3e11 at ℓ = 18 (1.3e10 per x-translation);
+  the 5+5-row window (the smallest that can SEE a tooth — a single
+  H_X generator spans 5 consecutive rows: block-1 cy−1..cy+1,
+  block-2 cy..cy+3) is bounded by 2.8e20 (~6e13 after translation
+  and the internal constraint).  RED at every fidelity.
+- **Constraint lemma (mechanical, 200/200).** A 4-row window
+  carries NO internal E_j constraint: every random light 4+4 window
+  extends to an admissible bi-infinite walk (forced-v₂ forward,
+  forced-v₁ backward — the x·v₁[j−3] pivot is monomial, hence
+  solvable backward).  A 5-row window carries exactly ONE (E_{j−1}).
+  Consequence: reachability prunes (essentially) nothing; the only
+  cut is BI-RECURRENCE, a greatest fixed point that requires
+  materializing the universe.  There is no seed set: light cycles
+  need not contain any enumerable anchor (dense cycles have no
+  3-gap; the y-spanning states are the whole universe).
+- The charter's cluster reduction is exact at ℓ = 18 (no gap can
+  saturate: the light-bridge bound 28 exceeds ℓ) — but it only
+  divides the count by ℓ.  The reduction that would make the space
+  small is a PER-CLUSTER POTENTIAL DECOMPOSITION (Φ = Σ_clusters φ
+  + gap terms, verified on the single-cluster transition system) —
+  named as the S6+ route, not executed.
+- Verdict: RED; and §10.3–§10.5 show the plain certificate the
+  graph was to compute is FALSE anyway — the pricing gate did its
+  job twice over.
+
+The session's engine deliverable is instead the exact WINDOW
+MACHINERY the future certificate needs, fully validated: the
+drift-periodic unroller (a (p,d)-phase vector on the SNF-normalized
+quotient torus → walk rows with row(y+p) = x^d row(y), re-verified
+against E_j for every j), slab weights with the exact telescope
+Σ W_j = 4|v|, and the H = 5 window-prune rule (≥ 4 of 6 cells of a
+fully visible tooth ⟹ not class-minimal).  Controls: combs are
+window-pruned (1 event); all 936 banked ℓ = 12 pilot survivors
+re-verify and are window-UNpruned (consistent with their global
+verdicts); the a36 witness re-verifies at rate 1.5.
+
+### §10.2 The fiber-complete descent census machine
+### (`a40_s5_price.py`, `a40_s5_dense_close.py`)
+
+The periodic-leg frames (ℓ, p, d) with n = 36p resp. 48p > 192 are
+censused COMPLETELY (weight ≤ 2p−1, every class, stabilizers
+included) through an even-axis Z₂ fold: every cover cycle v with
+|v| ≤ W has base shadow b = P(v) with |v| = |b| + 2·overflow, so the
+union of (i) the τ-lane over all base cycles u with 2|u| ≤ W (b = 0:
+v = τ(u), free-deck elementary, τ-injectivity asserted per deck) and
+(ii) `enumerate_lifts_deep` fibers with cap (W−|b|)//2 over base
+translation-orbit reps is the full census up to cover translation
+(fold-equivariance: cover translations surject onto base
+translations; covariance spot-checked per frame).  For (24,8) a
+second fold (depth 2, bottom n = 96) repeats the pattern one level
+down.  No SAT anywhere; every produced vector re-verified
+(`is_cycle`, weight, class).
+
+Controls, all PASS:
+- **A (engine).** (18,5,1): the descent census, translation-expanded,
+  equals the direct kernel census EXACTLY (90 elements).
+- **B (banked).** (18,6,0) ≅ rectangular (18,6): nontrivial ≤ 11
+  EMPTY, matching d((18,6)) = 12 (census-complete, §3.2); trivial
+  reps {6:1, 10:6} = the B6 base pattern.  Likewise (24,6,0) EMPTY
+  matches Theorem B6 at (24,6).
+- **C (depth-2).** (18,6,3) run depth-2 ((3,36)→(3,18)→(3,9))
+  reproduces the depth-1 census exactly (counts and survivor orbit).
+- Ops: the naive per-class node bill overprices by ~150× —
+  `census_pass` walks one shared tree per ≤ 51 offsets (the pricing
+  script's calibration row); all 72 frames of §10.3 cost 11 min
+  total where the naive bill said 7+ hours.
+
+### §10.3 THEOREM P18/P24 — the periodic leg at ℓ ∈ {18, 24}, p ≤ 8
+
+> **Theorem P (periodic-leg closure; certificate tier, no SAT).**
+> Over ALL sheared frames Z²/⟨(ℓ,0),(d,p)⟩ with ℓ ∈ {18, 24},
+> 2 ≤ p ≤ 8, d ∈ Z_ℓ, the complete list of NONTRIVIAL X-cycles of
+> weight < 2p (= sub-rate-2 periodic phases of the y-walk system) is:
+>
+> | frame | species | weights (orbit reps) | catalog-unpruned |
+> |---|---|---|---|
+> | (18,6,3) | twist-compact TC63 | 10 ×1 | 1 |
+> | (18,7,16) | winding W7 (d ≡ −2) | 8 ×1, 10 ×4, 12 ×40 | 3 |
+> | (24,6,3) | TC63 | 10 ×1 | 1 |
+> | (24,7,22) | W7 (d ≡ −2) | 8 ×1, 10 ×4, 12 ×40 | 3 |
+>
+> Every other (ℓ, p ≤ 8, d) frame is EMPTY (k = 0 frames by rank;
+> k > 0 frames by census: p = 8 empty at BOTH ℓ, all 28 frames).
+> Combined with the S4 pilot (p ≤ 5 at 18; p ≤ 4 at 24 — the three
+> (24,4,·) skips are k = 0 frames, nontrivial-empty by rank) and the
+> compact atlas, this closes §9.7.1's descent-lane residue for the
+> (18,·) and (24,·) families through p = 8, including (24,5).
+>
+> **Trivial side (the pruning-catalog sufficiency, extended).** At
+> every frame swept, EVERY trivial y-spanning sub-rate-2 orbit (about
+> 2,000 orbit reps per ℓ across p = 6..8, combs included) is pruned
+> by the local-reduction catalog (single H_X rows + pair sums ≤ 10).
+> The S4 claim "the catalog suffices on the ℓ = 18/24 periodic
+> landscape" now holds through p = 8.
+
+The exact spectrum replication between ℓ = 18 and ℓ = 24 — same
+weights, same orbit-rep counts, same pruned/unpruned split — is a
+measured fact about both species (§10.4).
+
+### §10.4 The two species (banked objects)
+
+**TC63 — the twist-compact (6,3) family.**  Weight 10, rate 5/3,
+y-period 6, x-drift +3; slab profile [5,9] (NOT light: it crosses the
+heavy boundary); catalog- and window-unpruned; present at ℓ = 12
+(the pilot's 30), 18, 24.  The TWISTED-COMPACT ATLAS
+(`a40_s5_twisted_atlas.py`, §9.9 item 3b executed) classifies it
+∀ℓ: with g = gcd(t,p), the twisted cylinder Z²/⟨(t,p)⟩ ≅ Z × Z_g by
+a unimodular change of basis, so every twist class reduces to the S4
+straight automaton on a transformed pair at period g.  Verdict
+(exhaustive, both lanes, p ≤ 8): **(6,3) is the ONLY twist class
+carrying any sub-rate-2 nontrivial compact object** (min weight 10,
+found in both lanes — the θ′ duality again — and re-verified
+end-to-end on the (42,6,3) torus); (4,2), (6,2), (6,4), (8,2),
+(8,4), (8,6) are empty ((6,4)-BAbar has a genuinely unsolvable
+column march — tied top terms with singular sum — and is closed by
+its θ′-image (4,2)-AB at the transported window Wcap 11: empty).
+g = 1 classes are LINE systems: over F₂[u,u⁻¹] the cycle module is
+(P̄_u, Q̄_u)/ĝ · R and the boundary module (P̄_u, Q̄_u) · R, so
+H₁ ≅ R/(ĝ): nontrivial line-compacts exist iff ĝ = gcd(P̄_u, Q̄_u)
+is non-monomial.  Measured: exactly 12 of 21 directions are
+non-monomial — ALL through the same factor u² + u + 1 — and every
+generator sits at rate ≥ 3/row: **no sub-rate-2 line species**
+(cross-validated: a cheap line element of x-extent < ℓ would appear
+in the §10.3 censuses; none does.  The unbounded-extent corner —
+|h·gen| < |gen| cancellations — is thin formal residue).
+
+**W7 — the winding (7,−2) family.**  Weights {8, 10, 12} (rates
+8/7..12/7), y-period 7, x-drift ≡ −2 (mod ℓ); present at ℓ = 12
+((12,7,10), the pilot), 18, 24 with IDENTICAL spectrum and weights —
+**the "x-winding pays Θ(ℓ)" heuristic is false in general** (§9.4's
+argument was and remains specific to the witness species' stacking
+arithmetic).  The w8 member is ALL-LIGHT (slabs [2,7]) and unpruned:
+**μ_light(ℓ=18) ≤ 8/7 and μ_light(ℓ=12) ≤ 8/7** — the pruned strict
+light core is NOT cycle-free at either ℓ.  Not twist-compact (the
+(7,2)-line class has rate-≥3 floors), so it genuinely uses the x^ℓ
+relation at each ℓ while keeping constant weight; note its frames
+(ℓ,7,ℓ−2) are CYCLIC groups Z_{7ℓ} — a univariate/cyclotomic-gcd
+mechanism is the natural suspect (open; the (30,7,28) prediction —
+same spectrum — is stated for a future odd-fold session: (30,7)
+folds to n = 210 > 192 and (1,105) has no even axis, the F1 case).
+
+**Chirality (measured, new).**  Both species are ONE-SIGNED in
+drift: (18,7,2), (24,7,2) (the +2 mirror) and (18,6,15), (24,6,21)
+(the −3 mirror) are all EMPTY.  Cheap drift exists in one direction
+only — this is what gives the closure arithmetic its teeth (§10.7).
+
+### §10.5 Stack certificates: the uniform column statement is FALSE;
+### the member column is arithmetically protected
+
+Each species closes exactly on the tori its closure arithmetic
+permits, and the stacks are genuine (end-to-end torus verification,
+weight/cycle/class):
+
+- W7 ×9 at (18,63): **d((18,63)) ≤ 72 < 126 = 2m**;
+- TC63 ×6 at (18,36): **d((18,36)) ≤ 60 < 72 = 2m**;
+- TC63 ×8 at (24,48): **d((24,48)) ≤ 80 < 96 = 2m**.
+
+(UB tier only — witness weights are upper bounds.)  Hence **no
+constant C makes "d((18,m)) ≥ 2m − C for all y-spanning-sector m"
+true** — at m = 63k the deficit grows linearly.  The charter's
+Stage-1 target ("μ = 2 with finite Φ ⟹ d ≥ 2m − C for EVERY (18,m)")
+is refuted as a statement, not merely unreached.
+
+> **Member protection (arithmetic, ∀r).**  A (p,d)-phase tiles the
+> b = 1 member (6(r+1), 6r) only if p | 6r and
+> (6r/p)·d ≡ 0 mod 6(r+1).  For W7 (p = 7, d ≡ −2): 7 | r and
+> (7s+1) | 2s — impossible for every s ≥ 1.  For TC63 (p = 6,
+> d = 3): 2(r+1) | r — impossible for every r.  **Neither species
+> touches any b = 1 member, at any r** — the b-bit mechanism of
+> §9.4, now carried by the only two sub-rate-2 species in existence
+> at p ≤ 8.
+
+### §10.6 Light-core measurements (`s5_lightcore.json`)
+
+- The a36 witness (rate 1.5 at (12,12)) has slabs [2,12]: it is NOT
+  a light-core cycle — its cheapness lives partly in the heavy
+  region.  The charter control "μ_pruned(ℓ=12) = 1.5 via the
+  witness" is superseded: the true light-core bound is ≤ 8/7 (W7's
+  w8), at both ℓ = 12 and 18.
+- The L12 species at (18,6) (rate 2): slab range [5,11] across the
+  66-object family — even the tight species oscillates through the
+  heavy boundary; the future potential certificate must price
+  boundary crossings, not avoid them.
+- Combs: window-pruned within one tooth alignment, as designed.
+
+### §10.7 The sharpened L-W target (what survives, exactly)
+
+For the b = 1 member (ℓ, m) = (6r+6, 6r), the periodic input
+alphabet at p ≤ 8 is now: rate-≥2 phases, plus two closure-dead
+chiral species.  The correct wall statement is a MOMENTUM BUDGET:
+
+- Any drift-blind window-potential certificate (ŵ + ΔΦ ≥ 2 on the
+  pruned light core) is impossible — W7's w8 cycle is light,
+  unpruned, and has mean 8/7; it also closes on the ℓ-drift cover
+  (9 periods, drift −18 ≡ 0), so grading by drift alone cannot
+  save rate 2 either (the (18,63) logical is real).  The grading
+  that works must see the y-length: the species needs 7 | m
+  (and 63 | m with the drift), which no member m = 6r with
+  ℓ = 6r+6 satisfies compatibly.
+- Chirality makes this quantitative: at a member, a W7 domain of
+  T rows banks deficit (6/7)·T and drift −2T/7, and NO cheap
+  structure with opposite drift exists (the +2 frames are empty) —
+  the return drift must be paid at non-species rates.  The wall
+  lemma's member form: species domains cannot wrap (closure
+  arithmetic), so each domain's deficit + return-drift cost is
+  chargeable against its walls and complement.  This is the open
+  aperiodic half, unchanged in kind but with its alphabet, deficits
+  (6/7 and 1/3 per row), and the chirality lever now pinned by
+  data.
+
+### §10.8 Falsified claims (session 5)
+
+- **The charter's Stage-1 certificate target** ("min mean 2 with
+  potential radius C on the pruned ℓ=18 light core ⟹ d ≥ 2m − C
+  for every (18,m)") — FALSE: μ_light(18) ≤ 8/7 (explicit light
+  unpruned nontrivial cycle), and the (18,63k) stacks kill every
+  constant C.  The salvageable statement is the member/closure-
+  constrained form (§10.7).
+- **"μ_pruned(ℓ=12) = 1.5, realized by the a36 witness"** (charter
+  control) — the witness is not light (slab 12); the light-core
+  minimum is ≤ 8/7 via W7's w8 member (which IS all-light).
+- **"x-winding phases pay Θ(ℓ)"** as a general mechanism — false:
+  W7 has weight 8 at ℓ = 12, 18, 24.  (§9.4's claim survives only
+  as proven: for the witness species via stacking arithmetic.)
+- **The S4 `x_winds` classifier is representative-dependent** (found
+  by the depth-2 control: the same (18,6,3) orbit reports
+  False/True across translates).  Its re-placement lifts one
+  section per point; a False verdict (a closing section exhibited)
+  is sound, a True verdict is not.  The S4 (12,6,3) split "402
+  x-winding + 30 twist-compact" degrades to "≥ 30 twist-compact-
+  representable; winding count an upper bound"; no banked claim
+  consumed a True verdict alone (b1-closure is arithmetic; the
+  witness-species cost is the b-bit argument).  The twisted atlas
+  is the sound classifier.
+- **The naive census pricing** (nodes × classes) — overprices ~150×;
+  `census_pass` shares one walk per ≤ 51 offsets.  Pricing scripts
+  must calibrate against a real chunked run.
+- Session-internal: the first universe-pricing draft claimed "no
+  internal constraint in ANY window" — corrected mechanically: 4-row
+  windows none, 5-row windows exactly one (E_{j−1}).
+- (Respected: witness weights as upper bounds; RED/AMBER/GREEN as
+  cost verdicts; no SAT on certificate paths; every consumed vector
+  re-verified end-to-end.)
+
+### §10.9 Residue / S6
+
+1. **The member wall lemma (momentum-budget form, §10.7)** — the
+   aperiodic half of L-W: charge species-domain deficits + one-signed
+   return drift against walls at m = 6r, ℓ = 6r+6.  The first
+   mechanical step: the wall/interface cost table between the three
+   phase families (rate-2 tight, TC63, W7) under the window engine.
+2. **p ≥ 9 periodic leg**: dense censuses priced RED (κ ≥ 77,
+   W ≥ 17: ~days/frame); straight atlas p = 9 in flight
+   (`a40_s5_atlas_p9.py`); the L-P induction (exact constants) is
+   still the ∀p route.
+3. **The W7 mechanism**: univariate structure of the cyclic
+   (ℓ,7,ℓ−2) frames (Z_{7ℓ}); the ĝ = u²+u+1 pattern of the line
+   classes (12/21 directions — why this factor, and why weight-3
+   everywhere); the (30,7,28) same-spectrum prediction (F1 odd-fold
+   territory).
+4. **ℓ ∈ {30, 36, ...} columns**: the descent machinery covers any
+   ℓ with even-axis folds reaching n ≤ 192; (30,7) does not fold —
+   F1 or a bigger kernel.
+5. **The per-cluster potential decomposition** (the only identified
+   route to a materializable light-core certificate; §10.1).
+6. **Small formal residues**: the (6,4)-BAbar direct march (tied
+   pivots — needs a 2-column block-march; currently closed via θ′);
+   the line-species unbounded-extent corner; window-realization of
+   the trivial-side pruning for p = 6..8 (verified global-catalog-
+   wise; the H = 5 window realization is verified for combs only).
+7. **Lean**: Theorem P's census certificates are decide-shaped
+   (finite lists + lift arithmetic); the member-protection
+   arithmetic ((7s+1) ∤ 2s, 2(r+1) ∤ r) is a two-line Lean lemma —
+   natural first S6 formalization targets alongside B6.
