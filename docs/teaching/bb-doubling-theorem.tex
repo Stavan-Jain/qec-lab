@@ -681,8 +681,16 @@ lose, and for that we need to know something real about the base code.
 
 \subsection{Input 1: the base code has no small cycles}
 
-Here is the first of the three black-box inputs. Note carefully that it speaks
-about \emph{cycles}, not just logicals: stabilizers are included.
+Here is the first of the three black-box inputs. It speaks about
+\emph{cycles}, not just logicals: stabilizers are included. For gross the two
+halves happen to meet at the same number --- the lightest stabilizers, the
+checks themselves, weigh exactly $6 = d(\base)$ --- and the hand proof
+delivers the all-cycles form in one sweep. Keep the halves mentally separate
+anyway: the warm-up bound below consumes the full form, but the doubling
+argument proper will only ever use the \emph{logical} half, $d(\base) \geq
+6$. The distinction becomes load-bearing the moment the template meets codes
+whose checks are lighter than their distance (see the remarks closing
+Section~\ref{sec:window}).
 
 \begin{inputbox}[Input (T-A): no small cycles in the base]
 \textbf{Theorem A} (proved in the program's write-up, fully by hand). The base
@@ -726,8 +734,8 @@ statement is exactly sharp: the explicit weight-6 element
 u^* \;=\; \bigl(z^*,\, 0\bigr), \qquad
 z^* = 1 + y + y^2 + y^5 + x^3 + x^3y^4
 \end{equation}
-satisfies $A z^* = 0$ (check it: six cancellations) and is a nontrivial
-logical, so $d(\base) = 6$.
+satisfies $A z^* = 0$ (check it: the eighteen monomials of the product cancel
+in nine pairs) and is a nontrivial logical, so $d(\base) = 6$.
 
 \subsection{The projection bound}
 
@@ -1087,8 +1095,10 @@ And here is the promised accounting of what must be \emph{known} to run the
 argument --- note every item lives on the base side:
 
 \begin{enumerate}[leftmargin=2.4em,label=\textbf{I\arabic*.}]
-\item \textbf{(T-A)} No nonzero base cycle of weight $\leq 5$
-  (Section~\ref{sec:warmup}); plus the explicit weight-6 logical $u^*$.
+\item \textbf{(T-A)} No nonzero base cycle of weight $\leq 5$ --- in
+  particular $d(\base) \geq 6$, which is the half the floors below actually
+  consume (Section~\ref{sec:warmup}); plus the explicit weight-6 logical
+  $u^*$.
 \item \textbf{(CLASS)} A classification of the base's \emph{light
   stabilizers}: every nonzero stabilizer of weight $\leq 11$ is one of two
   explicit families (Section~\ref{sec:dangerous}).
@@ -1184,7 +1194,8 @@ vacuously.) The dangerous floor we are after reads:
 \texorpdfstring{$b$}{b}}
 
 \emph{Rung $b = 0$.} Then $v$ is diagonal: $v = \tau(u)$ with $[u] \notin
-\imD$; in particular $u \neq 0$, so $\wt{u} \geq 6$ by (T-A) and $\wt{v} =
+\imD$; in particular $[u] \neq 0$ (the zero class lies in $\imD$), so $u$ is
+a nontrivial logical, $\wt{u} \geq 6 = d(\base)$, and $\wt{v} =
 2\wt{u} \geq 12$. (This is the warm-up's Case 2, upgraded with the lift
 criterion: nontriviality of $v$ needs $[u]\notin\imD$, and that is all it
 needs.)
@@ -1560,8 +1571,9 @@ six cells of $h$ split between them:
 One of the two --- call it $w$ --- therefore has at most $3$ cells on $h$,
 hence $\wt{w} \leq 3 + 2 = 5$ in total. But $[w] = [u'] \notin \imD$
 (adding the stabilizer $b$ does not move the class); in particular
-$[w] \neq 0$, since the zero class lies in $\imD$, so $w \neq 0$. A
-nonzero cycle of weight $\leq 5$ contradicts (T-A).
+$[w] \neq 0$, since the zero class lies in $\imD$: $w$ is a nontrivial
+logical of weight $\leq 5$, contradicting $d(\base) = 6$ --- the logical
+half of (T-A).
 
 \emph{D-pairs.} Let $b = b_1 + b_2$ with constituent hexagons
 $b_1 = S(\delta_g)$, $b_2 = S(\delta_h)$, and window
@@ -1578,7 +1590,8 @@ u',\qquad u' + b_1,\qquad u' + b_2,\qquad u' + b_1 + b_2 ,
 and count their total weight twice.
 \begin{itemize}[leftmargin=2em]
 \item \emph{From below.} Each of the four has class $[u'] \notin \imD$,
-  hence is nonzero, hence weighs $\geq 6$ by (T-A). Total: $\geq 24$.
+  hence has nonzero class, hence is a nontrivial logical and weighs
+  $\geq 6 = d(\base)$. Total: $\geq 24$.
 \item \emph{Exactly, cell by cell.} All four are supported inside $U$
   ($u'$ is, and so are $b_1$ and $b_2$). At a cell $q \in U$, at least
   one of $b_1(q), b_2(q)$ equals $1$ --- that is what $q \in U$ means ---
@@ -1733,8 +1746,9 @@ so $\suppop b \subseteq U$, with equality exactly when nothing cancelled.
 \end{definition}
 
 \begin{lemma}[window averaging]\label{lem:window}
-Let $d$ be a \emph{cycle floor} for the base (every nonzero base cycle,
-stabilizers included, has weight $\geq d$), and let $b \neq 0$ admit a
+Let $d$ be a \emph{logical floor} for the base (every \emph{nontrivial} base
+cycle has weight $\geq d$ --- the distance itself, $d = d(\base)$, always
+qualifies), and let $b \neq 0$ admit a
 windowed decomposition with window $U$. Then
 \[
 m(b) \;\geq\; \Bigl\lceil\, d - \tfrac{|U|}{2} \,\Bigr\rceil ,
@@ -1755,8 +1769,9 @@ Now average. For each of the $2^r$ subsets $T$ of the $r$ check positions,
 \[
 u'_T \;:=\; u' + \textstyle\sum_{g \in T} S(\delta_g)
 \]
-is a cycle of class $[u'] \notin \imD$, hence nonzero, hence of weight
-$\geq d$: total weight $\geq 2^r d$. Count the same total cell by cell.
+is a cycle of class $[u'] \notin \imD$ --- adding stabilizers moves nothing
+at the class level --- hence of nonzero class, hence a nontrivial logical of
+weight $\geq d$: total weight $\geq 2^r d$. Count the same total cell by cell.
 Off $U$ every $u'_T$ agrees with $u'$: contribution $2^r e$. At a cell
 $q \in U$, the map $T \mapsto \sum_{g \in T} S(\delta_g)(q)$ is a
 \emph{nonzero} $\F_2$-linear functional of the indicator of $T$ (nonzero
@@ -1784,8 +1799,8 @@ For a doubling pair as in Section~\ref{sec:cover} (any
 $\Z_\ell \times \Z_m$, same polynomials upstairs), suppose:
 \begin{itemize}[leftmargin=3.2em]
 \item[\textbf{(P)}] $\wt{A}$ and $\wt{B}$ are odd \hfill (parity)
-\item[\textbf{(F)}] every nonzero base cycle has weight $\geq d$
-  \hfill (cycle floor)
+\item[\textbf{(F)}] every nontrivial base cycle has weight $\geq d$
+  \hfill (logical floor: $d \leq d(\base)$)
 \item[\textbf{(W)}] every base stabilizer $b$ with
   $0 < \wt{b} \leq 2d - 2$ admits a windowed decomposition with
   $|U| \leq \wt{b} + 1$ \hfill (small windows)
@@ -1797,7 +1812,7 @@ Then every nontrivial dangerous logical of the cover has weight $\geq 2d$.
 (P) gives $\varepsilon(A) = \varepsilon(B) = 1$, so stabilizer weights are
 even (\S\ref{sec:dangerous}.2) and the possible shadows are $b = 0$, even
 $\wt{b} \in [2,\, 2d{-}2]$, and $\wt{b} \geq 2d$. The first is the diagonal
-rung: $v = \tau(u)$ with $[u] \notin \imD$, so $u \neq 0$ and (F) gives
+rung: $v = \tau(u)$ with $[u] \notin \imD$, so $[u] \neq 0$ and (F) gives
 $\wt{v} = 2\wt{u} \geq 2d$. The last is trivial. For the middle, (W) and
 Lemma~\ref{lem:window} give
 \[
@@ -1833,11 +1848,23 @@ Three remarks locate this statement in the landscape.
   (R) yet has distance $8 < 10 = 2d$, failing through a weight-6
   stabilizer: the first observed dangerous-sector bind, and the program's
   proof that its odd-weight scope restriction is necessary.
-\item \emph{(F) is the cycle floor, not the distance.} It bounds
-  stabilizers too, and the averaging consumes exactly that (``every
-  $u'_T$ weighs $\geq d$'' --- most of the $u'_T$ differ from $u'$ by
-  stabilizers). This is why Input (T-A) was stated for \emph{cycles} from
-  the start.
+\item \emph{(F) is the distance, not an all-cycles floor.} It is tempting
+  to demand more --- ``every nonzero base cycle, stabilizers included,
+  weighs $\geq d$'' --- on the grounds that the averaging weighs vectors
+  $u'_T = u' + \sum_{g \in T} S(\delta_g)$ that differ from $u'$ by
+  stabilizers. But differing \emph{by} a stabilizer is not being one:
+  adding stabilizers never moves the class, so every cycle the argument
+  ever weighs has the same nontrivial class $[u'] \notin \imD$, and the
+  distance bounds it. The distinction is not cosmetic. For gross the two
+  floors coincide (the lightest stabilizers and the lightest logicals both
+  weigh $6$), so Input (T-A) could be quoted wholesale; but a base whose
+  checks are lighter than its distance --- the $[[150,8,8]]$ and
+  $[[180,4,10]]$ bases of Section~\ref{sec:instances} have weight-6 checks
+  --- satisfies \emph{no} all-cycles floor at $d$, and the stronger
+  phrasing would wrongly disqualify exactly the codes the template exists
+  for. Light stabilizers are harmless everywhere in the argument: on the
+  diagonal rung they lift to cover \emph{stabilizers}
+  (Lemma~\ref{lem:transport}(4)), which never count toward the distance.
 \end{enumerate}
 
 % ==================================================================
@@ -2061,7 +2088,7 @@ Suppose:
 \item \textbf{(floors)} Both base-side floors hold at $2d$:
   \emph{dangerous:} $\wt{b} + 2m(b) \geq 2d$ for every base stabilizer $b$
   --- packaged with precise hypotheses as
-  Theorem~\ref{thm:genericfloor}: parity, a cycle floor, and small
+  Theorem~\ref{thm:genericfloor}: parity, the distance floor, and small
   windows for all light stabilizers;
   \emph{safe:} every base cycle with class in $\imD \setminus 0$ has weight
   $\geq 2d$.
@@ -2117,11 +2144,18 @@ the doubled direction. Doubling is a property of how $A$ and $B$ entangle the
 two directions, never of the covering construction alone.
 
 \paragraph{(R) fails: $k$ jumps.}
-Over the base $\Z_3 \times \Z_3$ with $A = 1 + y + y^2$, $B = 1 + x^2 + x^4$
-(a perfectly legitimate BB pair), the $x$-doubled cover has $k = 16$ against
-the base's $k = 8$. By Theorem~\ref{thm:A12}, (R) fails: the swap acts
-nontrivially on classes, no Bezout certificate exists, and the safe-sector
-confinement collapses. The program's screens found such failures even among
+Over the base $\Z_3 \times \Z_3$ with $A = 1 + y + y^2$, $B = 1 + y + x^2$
+(a perfectly legitimate weight-3 pair, exponents in range), the $x$-doubled
+cover has $k = 8$ against the base's $k = 4$. By Theorem~\ref{thm:A12}, (R)
+fails: the swap acts nontrivially on classes, no Bezout certificate exists,
+and the safe-sector confinement collapses. Exponent games supply further
+failures: for the base pair $A = 1 + y + y^2$, $B = 1 + x + x^2$, the
+canonical cover (lift the exponents as written) keeps $k = 8$ and satisfies
+(R), while lifting $B$ through the equivalent expression $1 + x^2 + x^4$
+($x^4 = x$ downstairs, but not upstairs) produces a \emph{different} cover
+with $k = 16$, which fails (R) --- condition (R) belongs to the cover
+presentation, not to the base code, a first taste of the presentation
+sensitivity below. The program's screens found such failures even among
 polynomial shapes closely resembling the IBM family --- (R) is genuinely a
 hypothesis, not folklore.
 
@@ -2140,14 +2174,23 @@ have one presentation whose cover doubles and another whose cover does not
 (the covers are then genuinely different codes, one of distance $12$ and one
 of distance $6$). Doubling statements must always name the presentation.
 
-\paragraph{Towers stall.}
-One might hope to iterate: double again to $d = 24$. In every instance
-examined, the second same-axis doubling \emph{freezes} --- the re-doubled
-cover keeps the first cover's distance, for toric-like reasons (the once-used
-doubling direction is now the bottleneck). Among the program's stored codes,
-the hunt for a second rung produced a striking empirical wall: candidate
-covers kept failing at exactly $2d - 2$. The one-step theorem is, for now,
-exactly one step.
+\paragraph{Towers usually stall.}
+One might hope to iterate: double again to $d = 24$. In every early instance
+examined, the second same-axis doubling \emph{froze} --- the re-doubled
+cover kept the first cover's distance, for toric-like reasons (the once-used
+doubling direction is now the bottleneck). But the freeze is a strong
+tendency, not a law: the program's descent machinery later certified $d \geq
+24 > 20$ for the same-axis re-double $[[360,4,20]] \to [[720,4]]$, the first
+re-double certifiably \emph{gaining} distance (its full doubling question,
+$d = 40$, remains open, priced at fiber caps twice anything yet
+demonstrated). The failed candidates, meanwhile, kept turning up spoilers
+just below $2d$, and the near-miss has a theorem in it: with odd-weight
+polynomials every cycle has even weight, so a cover that falls short of $2d$
+can fall only to an even value, $2d - 2$ at best --- a wall attained exactly
+at least once ($[[72,8,6]] \to [[144,8,10]]$, a first doubling). Early
+reports that failures landed at \emph{exactly} $2d - 2$ across the board
+dissolved on inspection: those were solver witness weights, upper bounds,
+not minima. The doubling \emph{theorem} is, for now, exactly one step.
 
 % ==================================================================
 \section{Verified instances and formal status}
@@ -2177,6 +2220,9 @@ solver-exact; partially analytic\\
 $[[150,8,8]] \to [[300,8,16]]$ ($y$) &
 $\Z_5{\times}\Z_{15} \to \Z_5{\times}\Z_{30}$ &
 Lean, unconditional; \emph{no solver}\\
+$[[180,4,10]] \to [[360,4,20]]$ (2 codes) &
+$\Z_{15}{\times}\Z_6$, $x$ and $y$ doubles &
+end-to-end base-side certificates\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2185,8 +2231,10 @@ Notes, in order. \emph{Gross}: both floors were eventually proven fully by
 hand (surveyable case tables), and the complete chain --- construction, both
 floors, witness, duality --- is machine-checked in Lean
 (\texttt{grossStabilizerCode\_hasCodeDistance\_12\_uncond}); the axiom audit
-shows nothing beyond the standard axioms plus Lean's verified native code
-evaluation. \emph{Pair72}: a deliberately small second instance over a
+shows nothing beyond Lean's three standard axioms --- every finite check runs
+through the kernel proper (an earlier assembly leaned on Lean's verified
+native evaluator; it has since been fully de-nativized).
+\emph{Pair72}: a deliberately small second instance over a
 different base group; all four template conditions are discharged inside Lean
 (\texttt{pair72\_pauli\_distance\_eq\_8}), with (R) certified by the even
 simpler identity $p \cdot B = 1 + x^3$. \emph{The $\Z_6{\times}\Z_{14}$
@@ -2194,10 +2242,20 @@ pair}: the first instance whose group lies outside gross's, found by a
 systematic search for bases satisfying the template's structural gates ---
 evidence that the mechanism, not the specific group, is doing the work.
 \emph{Cover300}: the program's first distance-16 theorem with every step
-either hand-proved or kernel-checked --- the three floor inputs are themselves
+either hand-proved or machine-checked --- the three floor inputs are themselves
 Lean theorems (\texttt{logicalFloor\_8}, \texttt{lightClassification},
 \texttt{seamCosetFloor\_16}), making
-\texttt{cover300\_pauli\_distance\_eq\_16} unconditional.
+\texttt{cover300\_pauli\_distance\_eq\_16} unconditional. (Unlike gross, the
+pair72 and cover300 assemblies still run their finite sweeps through Lean's
+native evaluator, so they carry the compiler-trust axiom and currently live
+on a parked branch: the library's \texttt{main} admits kernel-only proofs.)
+\emph{The $[[180,4,10]]$ pair}: both $\Z_{15}\times\Z_6$ codes with those
+parameters double, on both axes, entirely by base-side certificates ---
+$d([[360,4,20]]) = 20$ at certificate tier, while a direct SAT attack on the
+$n = 360$ cover cannot even \emph{find} a weight-20 witness in a comparable
+budget. These bases, like cover300's, have weight-6 checks and $d > 6$: the
+instances that exist precisely because hypothesis (F) is the distance and
+not an all-cycles floor (Section~\ref{sec:window}, closing remarks).
 
 The reduction is also an enormous computational lever even when one settles
 for solver certificates: certifying the base-side conditions costs seconds
@@ -2232,6 +2290,10 @@ safe-sector structure; seam-carry formulas &
 \texttt{notes/A14\_safe\_floor\_criterion\_plan.md}\\
 the $[[300,8,16]]$ campaign &
 \texttt{notes/A17\_*.md}, \texttt{A21--A23}\\
+the $[[180,4,10]] \to [[360,4,20]]$ certificates &
+\texttt{notes/A30\_coset\_bz\_doubling\_certificates.md}\\
+the $[[720,4]]$ freeze refutation &
+\texttt{notes/A38\_s2\_cap\_frontier\_log.md}\\
 Lean: parametric cover/doubling layer &
 \texttt{Framework/Homological/BBCover,BBDoubling}\\
 \bottomrule
@@ -2245,9 +2307,10 @@ Lean: parametric cover/doubling layer &
 \texttt{QECLean}.\par}
 
 \paragraph{An interactive companion.}
-\texttt{docs/teaching/bb-cell-explorer.html} is a self-contained page (open it
-in any browser; no server, no dependencies) that draws the objects of this
-document for a code of your choosing. You supply $\ell$, $m$, $A$, $B$; it
+Next to this document's source sits \texttt{bb-cell-explorer.html}, a
+self-contained page (open it in any browser; no server, no dependencies)
+that draws the objects of this document for a code of your choosing. You
+supply $\ell$, $m$, $A$, $B$; it
 stamps checks on the two blocks, paints cycles and reports their sector,
 applies $p$, $\tau$ and $\sigma$ with the slice identity computed live, solves
 for a Bezout certificate for (R), and lists the relations $K$ with their seam
@@ -2323,7 +2386,7 @@ which says exactly $[u] = [\Delta\zeta] \in \imD$. \qed
 % ==================================================================
 
 \begin{center}
-\small
+\footnotesize
 \begin{tabular}{lll}
 \toprule
 symbol & meaning & where\\
