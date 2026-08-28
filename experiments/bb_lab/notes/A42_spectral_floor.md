@@ -512,9 +512,20 @@ spectrum {12: 66, 14: 444} confirms the 7p/3-stratum's objects at
 14.  The heavy 6-class stratum at 3p and the 12-class stratum at
 7p/3 are the levers Stage 2's member assembly can pull: a member
 whose logical classes are forced into a heavy stratum floors ABOVE
-2p — a candidate spectral mechanism for the b-bit.  (Which H-coords
-each stratum occupies — transverse vs tangency-tower — is the
-first question of the next session.)
+2p — a candidate spectral mechanism for the b-bit.
+
+**Strata decode (p = 6, full span closure, in-session):** the heavy
+3p stratum lies entirely in ker(π) and contains ALL of im(π)
+(3 classes) plus 3 further kernel classes (the transverse-summand
+candidates); the middle 7p/3 stratum is entirely OUTSIDE ker(π);
+the floor stratum = 36 non-kernel + 9 kernel classes.  Economy:
+generic classes are cheap; the scheme-distinguished rays —
+π-multiples of honest classes and the pure transverse skyscraper —
+are the expensive ones.  (Note [πσ₀] is cheap and in ker π but NOT
+in im π: σ₀ itself is not a syzygy — the lifting obstruction is
+what separates the fresh socle from im(π).)  Identifying the
+member-forced classes inside this stratification is the Stage-2
+lever.
 
 ### §2.3 S1 remaining plan
 
