@@ -285,26 +285,49 @@ class Racer:
                     break
                 level_novel += int(novel.size)
                 seen = np.union1d(seen, novel)
-                outs, costs = self.expand(novel)
-                for a in range(1 << self.p):
-                    ns, co = outs[a], costs[a]
-                    if c == 0 and a == 0:
-                        keep = ns != zero
-                        ns, co = ns[keep], co[keep]
-                    for w in np.unique(co):
-                        cw = c + int(w)
-                        if cw > cap:
-                            continue
-                        sel = ns[co == w]
-                        zs = sel[(sel & smask) == 0]
-                        if zs.size and cw > 0:
-                            accs = (zs >> np.uint64(5 * self.p)) \
-                                .astype(int)
-                            for acv in np.unique(accs):
-                                returns.setdefault(cw, set()) \
-                                    .add(int(acv))
-                        sel = self.canon(sel)
-                        buckets.setdefault(cw, []).append(sel)
+                CH = 4096
+                for lo in range(0, novel.size, CH):
+                    chunk = novel[lo:lo + CH]
+                    outs, costs = self.expand(chunk)
+                    for a in range(1 << self.p):
+                        ns, co = outs[a], costs[a]
+                        if c == 0 and a == 0:
+                            keep = ns != zero
+                            ns, co = ns[keep], co[keep]
+                        for w in np.unique(co):
+                            cw = c + int(w)
+                            if cw > cap:
+                                continue
+                            sel = ns[co == w]
+                            zs = sel[(sel & smask) == 0]
+                            if zs.size and cw > 0:
+                                accs = (zs >> np.uint64(5 * self.p)) \
+                                    .astype(int)
+                                for acv in np.unique(accs):
+                                    returns.setdefault(cw, set()) \
+                                        .add(int(acv))
+                            sel = np.unique(self.canon(sel))
+                            buckets.setdefault(cw, []).append(sel)
+                    # in-slice compaction of the fattest buckets
+                    for cw in list(buckets.keys()):
+                        arrs3 = buckets[cw]
+                        tot = sum(x.size for x in arrs3)
+                        if len(arrs3) > 512 or tot > 1 << 23:
+                            merged = np.unique(np.concatenate(arrs3))
+                            merged = merged[~np.isin(merged, seen,
+                                            assume_unique=False)]
+                            buckets[cw] = [merged] if merged.size \
+                                else []
+            # per-level compaction of future buckets: dedup + prune
+            # states already expanded (min-cost semantics) — the
+            # memory lever that lets deep levels fit the budget.
+            for cw in list(buckets.keys()):
+                arrs2 = buckets[cw]
+                if len(arrs2) > 1 or (arrs2 and arrs2[0].size > 1 << 20):
+                    merged = np.unique(np.concatenate(arrs2))
+                    merged = merged[~np.isin(merged, seen,
+                                             assume_unique=False)]
+                    buckets[cw] = [merged] if merged.size else []
             rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
             state["levels"].append(
                 {"c": c, "novel": level_novel,
