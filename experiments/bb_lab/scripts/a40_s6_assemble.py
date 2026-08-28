@@ -90,13 +90,20 @@ def master_D_quarters(strata, hmax=HMAX, dmax=30):
     for h in range(1, hmax + 1):
         for d in range(-dmax, dmax + 1):
             cands = [3 * h]                    # u>=5: (2-5/4)h -> 3h/4
-            for u, s in strata.items():
-                if (h, d) in s["table"]:
-                    cands.append(8 * h - s["table"][(h, d)])
+            for u in (1, 2, 3, 4):
+                if u in strata:
+                    s = strata[u]
+                    if (h, d) in s["table"]:
+                        cands.append(8 * h - s["table"][(h, d)])
+                    else:
+                        cap = 8 * h - (s["gcap"] + 1)
+                        ana = 8 * h - u * h
+                        cands.append(min(cap, ana))
                 else:
-                    cap = 8 * h - (s["gcap"] + 1)
-                    ana = 8 * h - u * h
-                    cands.append(min(cap, ana))
+                    # stratum not enumerated (u >= 3 exact priced
+                    # RED: the min-slab floor forces multi-point
+                    # rows, branching ~120/node): analytic bound
+                    cands.append(8 * h - u * h)
             out[(h, d)] = max(cands)
     return out
 

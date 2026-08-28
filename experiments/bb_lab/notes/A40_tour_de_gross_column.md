@@ -1561,3 +1561,295 @@ is a MOMENTUM BUDGET:
    (finite lists + lift arithmetic); the member-protection
    arithmetic ((7s+1) ∤ 2s, 2(r+1) ∤ r) is a two-line Lean lemma —
    natural first S6 formalization targets alongside B6.
+
+## §11 SESSION 6 (2026-08-27) — the momentum budget instrumented:
+## drift defined, the light frontier measured, ghost passages
+## discovered, and the boundary-coupling wall named
+
+Directive: advance L-W in the §10.7 momentum-budget form — define
+drift soundly, measure the deficit-vs-drift Pareto frontier of light
+pruned walk segments by weight-capped BnB, assemble a member floor,
+and cash it out at (ℓ,m) = (24,18) = [[864,12]].  What happened: the
+drift definition and its species verification are DONE and banked;
+the frontier engine is built and validated (never materializing the
+light core); the measured frontier REFUTED two of the three charter
+hypotheses as stated — not by species geometry but by a genuinely
+new object this session verified end-to-end: GHOST PASSAGES, cheap
+near-vacuum light interludes admitted by the run-boundary
+relaxation.  The assembled floors are correspondingly modest and
+honestly scoped; the binding obstruction is now a named, concrete
+lemma (the boundary coupling), not a vague "aperiodic half".
+Scripts `a40_s6_*.py`, data `data/a40/s6_*`; `validate_banked`
+green before every stage.
+
+### §11.1 The drift definition (banked) and its verification
+### (`a40_s6_drift.py`, `s6_drift.json`)
+
+**Definition.**  Work on the universal cover of the x-circle (rows =
+subsets of Z × {blk}, no wrap; the recurrence E_j wrap-free).  For a
+fragment on rows [t0, t1], the per-slab anchor A_j := min occupied
+column of rows [j−3, j]; the fragment drift
+δ := A_{t1} − A_{t0+3} ∈ Z.  Additivity is definitional: fragments
+glued on a shared 4-row window telescope, δ(AB) = δ(A) + δ(B)
+(verified mechanically).  On drift-periodic loops (row(y+p) =
+row(y) + s on the cover) the per-period anchor difference equals s
+for EVERY anchor convention — loop drift is gauge-free (verified:
+min- and max-anchor agree per period).  A torus phase's INTEGER
+drift is determined mechanically by cover-lift trial: exactly one
+s ≡ d (mod ℓ) admits a wrap-free lift (no false accepts possible —
+a straddling rep assignment breaks E), and a phase with NO
+admissible lift for any s genuinely winds x.
+
+**Species verification (the charter's demand, exact).**
+| object | frame | cover drift | slabs (1 period) | light |
+|---|---|---|---|---|
+| W7 w8 | (18,7,16) | **−2 per 7 rows** | [7,6,5,4,2,3,5] min 2 | ALL |
+| W7 w8 | (24,7,22) | **−2 per 7 rows** | same profile | ALL |
+| TC63 w10 | (18,6,3) | **+3 per 6 rows** | [9,6,6,6,5,8] max 9 | no |
+| TC63 w10 | (24,6,3) | **+3 per 6 rows** | same | no |
+
+3-period extents: W7 10–12 (embeds at every ℓ ≥ 16); TC63 17–18
+(at ℓ = 18 a ≥ 3-period TC63 run already wrap-interacts; at ℓ = 24
+runs of ≤ 4 periods are cover-visible).  Window-pruned: none.
+Deficits per period: 6 (W7), 2 (TC63).
+
+**Winding detection (new, load-bearing for control (c)).**  The a36
+witness at (12,12) has NO compact cover lift for any s ∈ {0, ±12} —
+mechanical confirmation of gate W's "uses both wraps".  All 48
+all-light (4,4)-w6 pilot survivors at ℓ = 12 are the same: the
+witness species IS the (4,4) family (3 periods = the w18 witness),
+and its −6 discount lives in the WRAPPED/winding corner, invisible
+to cover fragments.  The ℓ = 12 W7-twin (7,10)-w8 lifts at −2.
+
+### §11.2 The connectivity lemma (the teleport killer)
+
+E_j evaluated at column c touches exactly v1[j]{c, c+1},
+v1[j−3]{c−1}, v2[j]{c}, v2[j+1]{c}, v2[j−1]{c+3}: footprint spans
+(Δx, Δy) ≤ (4, 4).  Supports separated beyond one footprint SPLIT:
+E(v) = E(S1) ⊕ E(S2) on disjoint constraint sets, so each component
+of a closed cycle is a cycle (verified on fragments and on an
+embedding torus).  A class-minimal nontrivial logical therefore has
+(4,4)-CONNECTED support: trivial components could be subtracted;
+several nontrivial components would each be lighter logicals.
+Consequence: "teleport" adversaries (far cheap flashers faking
+drift at O(1) cost) do not exist in minimal logicals, and the
+per-fragment drift bookkeeping is anchored to a single connected
+object.
+
+### §11.3 The frontier engine (`a40_s6_frontier.py`,
+### `s6_frontier_u*.json`)
+
+The mandated enumeration lane, built and validated:
+
+- **Min-window stratification** (the pricing move that beats the
+  seed wall): every fragment splits at its first minimum-weight
+  4-row window u.  For u ≥ 5, every slab ≥ 5 gives the ANALYTIC
+  bound D ≤ (2 − u/4)h ≤ 0.75h < (6/7)h — below the species rate,
+  no enumeration needed.  For u ≤ 4 the split window is a connected
+  ≤ 4-point full-content window (~4e5 seeds vs ~2e8 for u ≤ 7 —
+  the 4-row shadow of §10.1's materialization wall, avoided).
+- **Two marches** from the split window: forward (v2-forced, free
+  v1 inputs) and backward (v1-forced via the monomial pivot, free
+  v2 inputs), each a cost-ordered Dijkstra on the slab-sum g with
+  dominance on the normalized 7/8-row dynamic state, per-slab
+  W ∈ [u, 7], the H = 5 window rule checked on the forced row
+  BEFORE input branching, (4,4)-local growth, y-spanning by
+  construction.  Tables minG(h, δ) are COMPLETE below the cost cap
+  (each piece of a split costs at most the whole).
+- **Composition**: loose join (min over seeds independently per
+  side) can only overstate deficits — sound for the assembly;
+  MATCHED (per-seed) join at u = 1 (8 seeds) measures the
+  looseness: 253 buckets differ, by up to 3.25 deficit.
+- **Universal envelope** (unconditional, all h): slabs ≥ 1 give
+  g ≥ h, so D(h, δ) ≤ 1.75h always.
+- **Validation**: every species sub-fragment whose min slab lands
+  in the stratum is dominated by the tables (57/57 at u = 2); the
+  drift script's fragments re-verify through the engine's
+  conventions.
+- **Pricing verdicts** (measured): u = 1, 2 exact strata GREEN
+  (18M nodes / 213 s at u = 2, g ≤ 24); u = 3, 4 exact strata RED
+  in this engine — the min-slab floor forces multi-point rows,
+  branching ~120/node (24M pushes at g ≤ 8) — their analytic
+  bounds (1.25h, h) are dominated by the u ≤ 2 tables anyway, so
+  the master table loses nothing.
+
+### §11.4 GHOST PASSAGES — the discovery, end-to-end verified
+### (`a40_s6_ghost_verify.py`, `s6_ghost_verify.json`)
+
+The frontier is NOT species-dominated in the transient regime.  The
+run-boundary relaxation (E_{t0}..E_{t0+2} unenforced — exactly
+right for a maximal light run entered from a heavy slab) admits
+**ghost passages**: near-vacuum stretches sustaining slab weights
+1–3 for many slabs.  Mechanism: with zero v1, the forward recurrence
+is v2[t+1] = v2[t] + x^{−3} v2[t−1] — a Sierpinski/(1+u)^t weight
+law 2^{popcount(t)} that self-limits forward coasts to ~8 slabs;
+the BACKWARD march's free v2 inputs run the recursion in reverse
+(each step can cancel), coasting much longer.  Verified specimen
+(reconstructed from the search, independently checked through
+CoverFragment: E_j, slabs, window rule, anchors): rows [−9, 3],
+weight 6, TEN slabs [2,2,4,2,2,3,1,1,1,1], drift +5, unpruned.
+A run entered from a heavy boundary can genuinely fade to weight
+~1/slab and revive.
+
+Matched-join frontier at u = 1 (real fragments only, g ≤ 30):
+D grows ~1.5/slab through h ≈ 11, then BENDS — marginal deficits
++1.0, +0.75, +0.75, +1.0, +0.75 over h = 12..16 — and the
+certified transient D(h) − (6/7)h SATURATES at 7.25–7.5 across
+h = 12..16 (T0 = 7.50, also realized by a u = 2 bucket at
+(14, +6)): within the certified range the frontier reads exactly
+as "species rate + a bounded boundary transient",
+D(h) ≈ (6/7)h + 7.4.
+
+**Hypothesis verdicts (charter Stage 1):**
+- (i) "D > 0 only on one drift sign" — **REFUTED**: ghost deficits
+  carry BOTH signs (the verified specimen drifts +5; best-D buckets
+  appear at δ ∈ [−6, +6] and beyond).  Chirality is a property of
+  the sustained species, not of the transient frontier.
+- (ii) D ≤ a·|δ| + C0 — reshaped: the drift-extreme region carries
+  ghost deficit too (D ≈ 21 at |δ| ≥ 16 within caps); a winding
+  kill must come from the closed-branch buckets, not a per-|δ|
+  slope.
+- (iii) "the frontier is achieved by species runs" — **split
+  verdict**: transient regime (h ≲ 12) ghost-dominated (species
+  beaten by ~2×); sustained regime consistent with species
+  extremality (the matched bend drops the marginal rate through
+  6/7 by h = 14), but the caps end before an asymptotic claim.
+
+### §11.5 Stability and scope of the tables
+
+- smax (new points/row) 3 → 4 at g ≤ 16: IDENTICAL tables — the
+  cap is not binding.
+- Growth radius dil 4 → 6 at g ≤ 16: 218 buckets get cheaper, 65
+  new (mostly drift-extremes, some near δ = 0 by 0.5 deficit) —
+  the (4,4)-adjacent growth restriction IS binding; production
+  tables are scoped "radius-4 prefix-connected growth" and every
+  floor below carries that condition.  (Fully sound closure of the
+  scope = chained same-row placements + connect-later pioneers —
+  converging strands — both named residue; dil-6 production priced
+  ~7× = RED today.)
+- Wrapped corner: fragments of torus extent ≥ ℓ−3 that
+  wrap-interact without winding are NOT enumerated (the ℓ = 12
+  witness species is the mechanical proof such objects exist and
+  carry deficit).  At ℓ = 24 this is a listed conditionality;
+  winding-by-±24 IS covered (extent cap 34).
+
+### §11.6 The assembly and the (24,18) floors
+### (`a40_s6_assemble.py`, `s6_assembly.json`)
+
+**The assembly (y-spanning sector).**  For a class-minimal
+nontrivial y-spanning X-logical v of (24,18): v is connected
+(§11.2); 4|v| = Σ_j W_j over the 18 slabs (exact telescope); heavy
+slabs (W ≥ 8) pay ≥ 2 pointwise; maximal light runs are boundary-
+relaxed light fragments, deficit-bounded by the frontier tables;
+the walk partitions cyclically into r ≥ 0 runs and ≥ r heavy
+blocks.  Drift: anchor slips across heavy slabs are NOT weight-
+bounded by any lemma proven this session (a slip can ride branches
+bridged elsewhere in the connected walk), so the MIXED branch is
+assembled WITHOUT the closure lever — the drift/momentum constraint
+survives only on the all-light branch (r = 0 heavies: the walk is
+one 19-slab fragment with equal end windows and total cover drift
+≡ 0 mod 24, winding = ±24 included).
+
+**Floors (member (24,18) = [[864,12]], y-sector):**
+- MIXED branch: max Σ D over run partitions (heavy slips free)
+  = 26.25 at one 17-slab run ⟹ **w ≥ 10**.
+- ALL-LIGHT branch: per min-window stratum: u = 1 (matched,
+  g ≤ 30): (19, δ ≡ 0 mod 24) buckets empty ⟹ w ≥ 8; u = 2
+  (loose, g ≤ 28): ⟹ w ≥ 7; u ≥ 5 analytic ⟹ w ≥ 23 ⟹ **w ≥ 7**.
+- **T1 (certificate-shaped, scope-listed): d_Y(24,18) ≥ 7**, the
+  binding branch being the all-light u = 2 cost cap.  Scope
+  conditions: radius-4 prefix-connected growth (§11.5), no
+  wrap-interacting non-winding fragments, loose join at u = 2,
+  smax 3 (measured non-binding), boundary-relaxed run semantics
+  (exact for runs, the source of ghosts).
+- **T2 (conjectural: D(h, δ) ≤ min(1.75h, (6/7)h + T0) with
+  T0 = 7.50 — the measured saturation, extrapolated beyond caps):
+  mixed ≥ 8, all-light ≥ 21 (sustained species rate) ⟹
+  d_Y(24,18) ≥ 8**; the T2 gap to 2m = 36 is dominated by the
+  per-boundary ghost transient (~7.5 per run) which the T2 form
+  grants freely.
+- Sector combination: the x-spanning sector is L1's mirror branch
+  (⌈24/4⌉ = 6, untouched today) ⟹ **d(24,18) ≥ 6 overall** —
+  +1 over the banked ⌈18/4⌉ = 5, with the y-sector at +2 (T1).
+  The flagship ≥ 20 was NOT reached; the reason is structural and
+  now precisely named (§11.8 residue 1).
+
+**Controls (all PASS, `s6_assembly.json`):**
+- (a) the S5 stacks: the species D-rate is present in the tables
+  through the caps and the mixed IP never invokes closure — the
+  (18,63)/(18,36)/(24,48) sub-2m stacks are PERMITTED by the
+  assembly (at (18,63) the same arithmetic gives floor ≤ 126 − 54
+  = 72 = the stack weight: the inequality degrades exactly where
+  it must).
+- (b) (18,12) instantiation: mixed floor 7 ≤ 24 = d((18,12)) ✓.
+- (c) the b = 0 (12,12) witness (w18 = 2m − 6): mechanically
+  confirmed to live in the wrapped/winding corner (no compact
+  cover lift), i.e. the −6 is the admitted wrapped-corner term the
+  cover-scoped assembly must and does exclude from its own scope.
+
+### §11.7 Falsified claims (session 6)
+
+- **Charter hypothesis (i)** ("D > 0 only on one drift sign") —
+  REFUTED: ghost deficits at both signs, near-symmetric
+  (max-D at δ > 0 vs δ < 0 differs by ≤ 0.75 through h = 17).
+- **Charter hypothesis (iii)** ("the frontier is achieved by
+  species runs; aperiodic segments never beat them") — REFUTED in
+  the transient regime (ghosts beat species ~2× below h ≈ 12);
+  the sustained regime is species-consistent (the saturation).
+- **"First-row boundary-debt charging trims the ghosts"** (this
+  session's own working idea) — FALSE: ghosts coast to low-debt
+  endpoints (penalized tables ≈ pure tables at u = 1); the debt
+  lives deeper than one forced row.
+- **"u ≤ 4 exact strata are uniformly feasible"** — u ≥ 3 exact
+  enumeration is RED (the min-slab floor forces multi-point rows,
+  branching ~120/node, 24M pushes at g ≤ 8); their analytic
+  bounds are dominated by u ≤ 2 tables, so nothing is lost.
+- **The loose min-window join as a near-exact proxy** — it
+  over-grants materially (383 buckets at u = 1, g ≤ 30, up to
+  ~5 deficit); matched joins are required wherever affordable.
+- Session-internal: the first drift-script lift gate (per-period
+  extent ≤ ℓ − 5) would have falsely rejected compact lifts —
+  removed after noting wrap-free admissibility already excludes
+  false accepts; the first assembly run treated absent u = 3, 4
+  strata as absent-not-analytic (unsound direction) — fixed the
+  same hour.
+- (Respected: witness weights as upper bounds; RED/AMBER/GREEN
+  verdicts before every big run; no SAT anywhere; every consumed
+  vector re-verified end-to-end; the S4 x_winds classifier not
+  used.)
+
+### §11.8 Residue / S7
+
+1. **The boundary-coupling lemma — the sharpest next question.**
+   The ghosts are real fragments of the relaxed run semantics, and
+   the relaxation is EXACT per run — but two runs sharing one
+   heavy slab cannot both coast freely: the ghost's backward
+   E-extension forces specific content on the boundary rows, which
+   are the neighbouring run's rows.  The loose IP ignores this
+   cross-boundary E-consistency entirely; charging it needs the
+   interface-matched composition (run tables keyed by 3-row
+   boundary states, heavy transitions as weight-≥8 interface
+   moves) — the finite-interface form of §10.1's per-cluster
+   decomposition.  This is where the T2 gap (~7.5 per boundary)
+   lives, and with it the road from floor ~8 to 36 − C.
+2. **Deeper caps + dil-6 production**: every +4 in g-cap = +1 on
+   the all-light floor mechanically; dil-6 production (~7×) and
+   chained/connect-later growth close the enumeration scope.
+3. **The wrapped corner at ℓ = 24** (extent ≥ 21 non-winding
+   wrap-interacting fragments): torus-mode enumeration (mod-24
+   columns, lifted-slip drift) — the ℓ = 12 witness demonstrates
+   the corner is real.
+4. **The x-sector mirror pass** (pair (B, Ā), 24 rows of width
+   18): same engine, mirrored; would lift the overall floor to
+   min(d_Y, mirror-floor) beyond 6.
+5. **The closed-branch per-seed search** at (24,18) (no relaxed
+   E at all — ghosts die): even moderate caps could push the
+   all-light branch well past the open-bucket bound; priced RED
+   at deep caps today, unpriced at shallow.
+6. **Stage 4 (W7 ω-mechanism) untouched** — §10.9 item 3 stands
+   as stated.
+7. **Lean**: the drift additivity (telescope), the footprint/
+   splitting lemma, and the (2 − u/4)h analytic strata are
+   two-line-to-decide-shaped; the frontier tables are finite
+   certificates once the engine's soundness contract (complete-
+   below-cap) is stated.

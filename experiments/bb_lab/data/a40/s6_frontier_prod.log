@@ -1,0 +1,221 @@
+=== S6 frontier production Thu Aug 27 19:08:10 CDT 2026 ===
+--- stratum u=1 gcap=24 start Thu Aug 27 19:08:10 CDT 2026 ---
+stratum u=1: generating full-content seeds...
+  8 seeds (0.0 s)
+fwd u=1: {'n_seeds': 8, 'popped': 47629, 'pushed': 47629, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'wall_s': 0.3} — 78 (h,delta) buckets
+[bwd u=1] popped 200000 pushed 1627357 heap 1427357 g=12 4.5s
+[bwd u=1] popped 400000 pushed 1839301 heap 1439301 g=13 5.9s
+[bwd u=1] popped 600000 pushed 2034526 heap 1434526 g=14 7.3s
+[bwd u=1] popped 800000 pushed 2247549 heap 1447549 g=15 8.8s
+[bwd u=1] popped 1000000 pushed 2550939 heap 1550939 g=16 10.5s
+[bwd u=1] popped 1200000 pushed 2748719 heap 1548719 g=16 12.0s
+[bwd u=1] popped 1400000 pushed 2992107 heap 1592107 g=17 13.6s
+[bwd u=1] popped 1600000 pushed 3355662 heap 1755662 g=18 15.7s
+[bwd u=1] popped 1800000 pushed 3412877 heap 1612877 g=19 16.9s
+[bwd u=1] popped 2000000 pushed 3417875 heap 1417875 g=20 17.8s
+[bwd u=1] popped 2200000 pushed 3418119 heap 1218119 g=21 18.8s
+[bwd u=1] popped 2400000 pushed 3418123 heap 1018123 g=22 19.8s
+[bwd u=1] popped 2600000 pushed 3418123 heap 818123 g=22 20.8s
+[bwd u=1] popped 2800000 pushed 3418123 heap 618123 g=23 21.8s
+[bwd u=1] popped 3000000 pushed 3418123 heap 418123 g=23 22.8s
+[bwd u=1] popped 3200000 pushed 3418123 heap 218123 g=24 23.9s
+[bwd u=1] popped 3400000 pushed 3418123 heap 18123 g=24 24.8s
+bwd u=1: {'n_seeds': 8, 'popped': 3418123, 'pushed': 3418123, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'wall_s': 24.9} — 146 (h,delta) buckets
+best deficit per h (composed pure | penalized):
+  h=1: D=1.75@delta=0  |  Dpen=1.75@delta=0
+  h=2: D=3.50@delta=0  |  Dpen=3.50@delta=0
+  h=3: D=5.25@delta=0  |  Dpen=5.25@delta=0
+  h=4: D=7.00@delta=2  |  Dpen=7.00@delta=2
+  h=5: D=8.75@delta=2  |  Dpen=8.75@delta=2
+  h=6: D=10.50@delta=2  |  Dpen=10.50@delta=2
+  h=7: D=12.25@delta=2  |  Dpen=12.25@delta=2
+  h=8: D=13.75@delta=2  |  Dpen=13.75@delta=2
+  h=9: D=15.00@delta=4  |  Dpen=15.00@delta=4
+  h=10: D=16.50@delta=4  |  Dpen=16.50@delta=4
+  h=11: D=18.00@delta=4  |  Dpen=18.00@delta=4
+  h=12: D=19.00@delta=6  |  Dpen=19.00@delta=6
+  h=13: D=20.50@delta=6  |  Dpen=20.50@delta=6
+  h=14: D=22.00@delta=6  |  Dpen=22.00@delta=6
+  h=15: D=23.00@delta=3  |  Dpen=23.00@delta=3
+  h=16: D=23.75@delta=3  |  Dpen=23.75@delta=3
+  h=17: D=24.00@delta=0  |  Dpen=24.00@delta=0
+species validation (stratum 1): 0 sub-fragments checked, 0 violations
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s6_frontier_u1prod.json (25.3 s)
+--- stratum u=1 done Thu Aug 27 19:08:36 CDT 2026 ---
+--- stratum u=2 gcap=28 start Thu Aug 27 19:08:36 CDT 2026 ---
+stratum u=2: generating full-content seeds...
+  284 seeds (0.0 s)
+[fwd u=2] popped 200000 pushed 550935 heap 348669 g=12 1.8s
+[fwd u=2] popped 400000 pushed 599974 heap 197591 g=15 2.7s
+[fwd u=2] popped 600000 pushed 684217 heap 81815 g=21 3.8s
+fwd u=2: {'n_seeds': 284, 'popped': 688393, 'pushed': 690831, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'wall_s': 4.2} — 145 (h,delta) buckets
+[bwd u=2] popped 200000 pushed 8776855 heap 8576855 g=10 39.3s
+[bwd u=2] popped 400000 pushed 10046793 heap 9646793 g=11 49.5s
+[bwd u=2] popped 600000 pushed 10636931 heap 10036931 g=11 55.6s
+[bwd u=2] popped 800000 pushed 11129558 heap 10329558 g=12 60.8s
+[bwd u=2] popped 1000000 pushed 11183578 heap 10183578 g=12 62.1s
+[bwd u=2] popped 1200000 pushed 11395552 heap 10195552 g=12 65.2s
+[bwd u=2] popped 1400000 pushed 12147426 heap 10747426 g=13 72.8s
+[bwd u=2] popped 1600000 pushed 12148438 heap 10548438 g=13 73.7s
+[bwd u=2] popped 1800000 pushed 12188719 heap 10388719 g=13 75.0s
+[bwd u=2] popped 2000000 pushed 12191231 heap 10191231 g=13 75.9s
+[bwd u=2] popped 2200000 pushed 12192648 heap 9992648 g=13 76.7s
+[bwd u=2] popped 2400000 pushed 12234614 heap 9834614 g=13 78.0s
+[bwd u=2] popped 2600000 pushed 12239203 heap 9639203 g=13 79.0s
+[bwd u=2] popped 2800000 pushed 12242033 heap 9442033 g=13 80.1s
+[bwd u=2] popped 3000000 pushed 12360397 heap 9360397 g=13 82.7s
+[bwd u=2] popped 3200000 pushed 12738639 heap 9538639 g=13 87.3s
+[bwd u=2] popped 3400000 pushed 13167799 heap 9767799 g=14 92.1s
+[bwd u=2] popped 3600000 pushed 13174453 heap 9574453 g=14 93.2s
+[bwd u=2] popped 3800000 pushed 13185553 heap 9385553 g=14 94.1s
+[bwd u=2] popped 4000000 pushed 13187749 heap 9187749 g=14 95.0s
+[bwd u=2] popped 4200000 pushed 13187955 heap 8987955 g=14 95.9s
+[bwd u=2] popped 4400000 pushed 13247557 heap 8847557 g=14 97.2s
+[bwd u=2] popped 4600000 pushed 13328046 heap 8728046 g=14 98.9s
+[bwd u=2] popped 4800000 pushed 13370366 heap 8570366 g=14 100.1s
+[bwd u=2] popped 5000000 pushed 13559477 heap 8559477 g=14 102.5s
+[bwd u=2] popped 5200000 pushed 14131395 heap 8931395 g=15 108.6s
+[bwd u=2] popped 5400000 pushed 14134501 heap 8734501 g=15 109.6s
+[bwd u=2] popped 5600000 pushed 14179411 heap 8579411 g=15 110.8s
+[bwd u=2] popped 5800000 pushed 14185125 heap 8385125 g=15 111.8s
+[bwd u=2] popped 6000000 pushed 14192902 heap 8192902 g=15 112.7s
+[bwd u=2] popped 6200000 pushed 14221357 heap 8021357 g=15 114.2s
+[bwd u=2] popped 6400000 pushed 14246380 heap 7846380 g=15 115.4s
+[bwd u=2] popped 6600000 pushed 14265931 heap 7665931 g=15 116.3s
+[bwd u=2] popped 6800000 pushed 14454411 heap 7654411 g=15 118.8s
+[bwd u=2] popped 7000000 pushed 15284478 heap 8284478 g=16 127.4s
+[bwd u=2] popped 7200000 pushed 15297583 heap 8097583 g=16 129.1s
+[bwd u=2] popped 7400000 pushed 15316754 heap 7916754 g=16 130.1s
+[bwd u=2] popped 7600000 pushed 15317089 heap 7717089 g=16 131.0s
+[bwd u=2] popped 7800000 pushed 15391071 heap 7591071 g=16 133.0s
+[bwd u=2] popped 8000000 pushed 15398031 heap 7398031 g=16 133.9s
+[bwd u=2] popped 8200000 pushed 15400245 heap 7200245 g=16 134.8s
+[bwd u=2] popped 8400000 pushed 15693953 heap 7293953 g=16 138.4s
+[bwd u=2] popped 8600000 pushed 16598223 heap 7998223 g=17 147.9s
+[bwd u=2] popped 8800000 pushed 16616110 heap 7816110 g=17 149.2s
+[bwd u=2] popped 9000000 pushed 16628488 heap 7628488 g=17 150.2s
+[bwd u=2] popped 9200000 pushed 16639302 heap 7439302 g=17 151.1s
+[bwd u=2] popped 9400000 pushed 16645492 heap 7245492 g=17 152.1s
+[bwd u=2] popped 9600000 pushed 16648334 heap 7048334 g=17 153.0s
+[bwd u=2] popped 9800000 pushed 17093710 heap 7293710 g=17 158.3s
+[bwd u=2] popped 10000000 pushed 17924315 heap 7924315 g=18 168.6s
+[bwd u=2] popped 10200000 pushed 17940548 heap 7740548 g=18 170.1s
+[bwd u=2] popped 10400000 pushed 17952330 heap 7552330 g=18 171.2s
+[bwd u=2] popped 10600000 pushed 17960435 heap 7360435 g=18 172.3s
+[bwd u=2] popped 10800000 pushed 17967596 heap 7167596 g=18 173.4s
+[bwd u=2] popped 11000000 pushed 18067935 heap 7067935 g=18 176.1s
+[bwd u=2] popped 11200000 pushed 19097069 heap 7897069 g=19 187.9s
+[bwd u=2] popped 11400000 pushed 19103195 heap 7703195 g=19 189.1s
+[bwd u=2] popped 11600000 pushed 19104071 heap 7504071 g=19 190.2s
+[bwd u=2] popped 11800000 pushed 19120711 heap 7320711 g=19 191.4s
+[bwd u=2] popped 12000000 pushed 19214239 heap 7214239 g=19 195.0s
+[bwd u=2] popped 12200000 pushed 19702334 heap 7502334 g=19 202.4s
+[bwd u=2] popped 12400000 pushed 20255087 heap 7855087 g=20 209.7s
+[bwd u=2] popped 12600000 pushed 20271912 heap 7671912 g=20 211.5s
+[bwd u=2] popped 12800000 pushed 20348467 heap 7548467 g=20 213.4s
+[bwd u=2] popped 13000000 pushed 20376333 heap 7376333 g=20 214.5s
+[bwd u=2] popped 13200000 pushed 20717075 heap 7517075 g=20 219.3s
+[bwd u=2] popped 13400000 pushed 21163066 heap 7763066 g=21 225.6s
+[bwd u=2] popped 13600000 pushed 21172330 heap 7572330 g=21 226.8s
+[bwd u=2] popped 13800000 pushed 21250332 heap 7450332 g=21 228.9s
+[bwd u=2] popped 14000000 pushed 21467226 heap 7467226 g=21 233.2s
+[bwd u=2] popped 14200000 pushed 21638049 heap 7438049 g=21 238.0s
+[bwd u=2] popped 14400000 pushed 22092474 heap 7692474 g=22 245.2s
+[bwd u=2] popped 14600000 pushed 22097053 heap 7497053 g=22 246.5s
+[bwd u=2] popped 14800000 pushed 22102245 heap 7302245 g=22 247.6s
+[bwd u=2] popped 15000000 pushed 22118830 heap 7118830 g=22 248.7s
+[bwd u=2] popped 15200000 pushed 22120672 heap 6920672 g=22 249.7s
+[bwd u=2] popped 15400000 pushed 22134059 heap 6734059 g=22 250.8s
+[bwd u=2] popped 15600000 pushed 22185148 heap 6585148 g=23 253.3s
+[bwd u=2] popped 15800000 pushed 22185148 heap 6385148 g=23 254.4s
+[bwd u=2] popped 16000000 pushed 22185532 heap 6185532 g=23 255.7s
+[bwd u=2] popped 16200000 pushed 22185532 heap 5985532 g=23 257.0s
+[bwd u=2] popped 16400000 pushed 22186577 heap 5786577 g=23 258.0s
+[bwd u=2] popped 16600000 pushed 22188525 heap 5588525 g=23 259.1s
+[bwd u=2] popped 16800000 pushed 22191128 heap 5391128 g=24 260.7s
+[bwd u=2] popped 17000000 pushed 22191138 heap 5191138 g=24 261.8s
+[bwd u=2] popped 17200000 pushed 22191138 heap 4991138 g=24 262.9s
+[bwd u=2] popped 17400000 pushed 22191238 heap 4791238 g=24 264.0s
+[bwd u=2] popped 17600000 pushed 22191238 heap 4591238 g=24 265.1s
+[bwd u=2] popped 17800000 pushed 22191250 heap 4391250 g=24 266.2s
+[bwd u=2] popped 18000000 pushed 22191437 heap 4191437 g=24 267.4s
+[bwd u=2] popped 18200000 pushed 22191784 heap 3991784 g=25 268.8s
+[bwd u=2] popped 18400000 pushed 22191810 heap 3791810 g=25 270.1s
+[bwd u=2] popped 18600000 pushed 22191810 heap 3591810 g=25 271.4s
+[bwd u=2] popped 18800000 pushed 22191810 heap 3391810 g=25 272.6s
+[bwd u=2] popped 19000000 pushed 22191810 heap 3191810 g=25 273.8s
+[bwd u=2] popped 19200000 pushed 22191827 heap 2991827 g=25 275.0s
+[bwd u=2] popped 19400000 pushed 22191840 heap 2791840 g=26 276.3s
+[bwd u=2] popped 19600000 pushed 22191840 heap 2591840 g=26 277.5s
+[bwd u=2] popped 19800000 pushed 22191840 heap 2391840 g=26 278.6s
+[bwd u=2] popped 20000000 pushed 22191840 heap 2191840 g=26 279.8s
+[bwd u=2] popped 20200000 pushed 22191840 heap 1991840 g=26 280.9s
+[bwd u=2] popped 20400000 pushed 22191842 heap 1791842 g=27 282.2s
+[bwd u=2] popped 20600000 pushed 22191842 heap 1591842 g=27 283.5s
+[bwd u=2] popped 20800000 pushed 22191842 heap 1391842 g=27 284.7s
+[bwd u=2] popped 21000000 pushed 22191842 heap 1191842 g=27 285.9s
+[bwd u=2] popped 21200000 pushed 22191842 heap 991842 g=27 287.2s
+[bwd u=2] popped 21400000 pushed 22191842 heap 791842 g=28 288.6s
+[bwd u=2] popped 21600000 pushed 22191842 heap 591842 g=28 289.8s
+[bwd u=2] popped 21800000 pushed 22191842 heap 391842 g=28 291.0s
+[bwd u=2] popped 22000000 pushed 22191842 heap 191842 g=28 292.2s
+bwd u=2: {'n_seeds': 284, 'popped': 22191842, 'pushed': 22191842, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'wall_s': 293.2} — 150 (h,delta) buckets
+best deficit per h (composed pure | penalized):
+  h=1: D=1.50@delta=0  |  Dpen=1.50@delta=0
+  h=2: D=3.00@delta=0  |  Dpen=3.00@delta=0
+  h=3: D=4.50@delta=0  |  Dpen=4.50@delta=0
+  h=4: D=6.00@delta=2  |  Dpen=6.00@delta=2
+  h=5: D=7.50@delta=2  |  Dpen=7.50@delta=2
+  h=6: D=9.00@delta=1  |  Dpen=9.00@delta=1
+  h=7: D=10.50@delta=1  |  Dpen=10.50@delta=1
+  h=8: D=11.75@delta=5  |  Dpen=11.75@delta=5
+  h=9: D=13.00@delta=5  |  Dpen=13.00@delta=5
+  h=10: D=14.50@delta=6  |  Dpen=14.50@delta=6
+  h=11: D=15.75@delta=6  |  Dpen=15.75@delta=6
+  h=12: D=17.00@delta=7  |  Dpen=17.00@delta=7
+  h=13: D=18.50@delta=6  |  Dpen=18.50@delta=6
+  h=14: D=19.50@delta=6  |  Dpen=19.50@delta=6
+  h=15: D=20.25@delta=3  |  Dpen=20.25@delta=3
+  h=16: D=21.00@delta=8  |  Dpen=21.00@delta=8
+  h=17: D=21.75@delta=5  |  Dpen=21.75@delta=5
+species validation (stratum 2): 75 sub-fragments checked, 0 violations
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s6_frontier_u2prod.json (299.7 s)
+--- stratum u=2 done Thu Aug 27 19:13:36 CDT 2026 ---
+--- stratum u=3 gcap=30 start Thu Aug 27 19:13:36 CDT 2026 ---
+stratum u=3: generating full-content seeds...
+  10040 seeds (0.0 s)
+[fwd u=3] popped 200000 pushed 4037929 heap 3837868 g=8 14.0s
+[fwd u=3] popped 400000 pushed 4167164 heap 3766900 g=9 15.4s
+[fwd u=3] popped 600000 pushed 4256852 heap 3656588 g=9 16.6s
+[fwd u=3] popped 800000 pushed 4272477 heap 3471639 g=9 17.4s
+[fwd u=3] popped 1000000 pushed 4535862 heap 3535024 g=10 19.4s
+[fwd u=3] popped 1200000 pushed 4538101 heap 3337263 g=10 20.2s
+[fwd u=3] popped 1400000 pushed 4538765 heap 3136948 g=10 21.1s
+[fwd u=3] popped 1600000 pushed 4539218 heap 2937401 g=10 21.9s
+[fwd u=3] popped 1800000 pushed 5392585 heap 3583791 g=12 26.6s
+[fwd u=3] popped 2000000 pushed 5481273 heap 3471451 g=12 27.6s
+[fwd u=3] popped 2200000 pushed 5696152 heap 3461129 g=13 29.6s
+[fwd u=3] popped 2400000 pushed 5702036 heap 3264754 g=13 30.4s
+[fwd u=3] popped 2600000 pushed 5708427 heap 3069118 g=13 31.2s
+[fwd u=3] popped 2800000 pushed 5762983 heap 2923182 g=13 32.3s
+[fwd u=3] popped 3000000 pushed 5917406 heap 2873768 g=14 33.8s
+[fwd u=3] popped 3200000 pushed 5919034 heap 2675217 g=14 34.7s
+[fwd u=3] popped 3400000 pushed 5937914 heap 2493943 g=14 35.6s
+[fwd u=3] popped 3600000 pushed 5943367 heap 2299370 g=14 36.4s
+[fwd u=3] popped 3800000 pushed 6060618 heap 2216340 g=15 37.8s
+[fwd u=3] popped 4000000 pushed 6070440 heap 2026092 g=15 38.8s
+[fwd u=3] popped 4200000 pushed 6089227 heap 1844866 g=15 39.7s
+[fwd u=3] popped 4400000 pushed 6157574 heap 1713144 g=16 40.9s
+[fwd u=3] popped 4600000 pushed 6162716 heap 1518282 g=16 41.9s
+[fwd u=3] popped 4800000 pushed 6217443 heap 1372956 g=17 43.0s
+[fwd u=3] popped 5000000 pushed 6222318 heap 1177827 g=17 44.0s
+[fwd u=3] popped 5200000 pushed 6276969 heap 1032436 g=18 45.1s
+[fwd u=3] popped 5400000 pushed 6338379 heap 893802 g=19 46.3s
+[fwd u=3] popped 5600000 pushed 6339394 heap 694798 g=19 47.3s
+[fwd u=3] popped 5800000 pushed 6415537 heap 570550 g=20 48.6s
+[fwd u=3] popped 6000000 pushed 6496476 heap 449838 g=21 49.9s
+[fwd u=3] popped 6200000 pushed 6701048 heap 453638 g=24 51.6s
+[fwd u=3] popped 6400000 pushed 6713623 heap 265937 g=27 52.6s
+[fwd u=3] popped 6600000 pushed 6713638 heap 65944 g=29 53.6s
+fwd u=3: {'n_seeds': 10040, 'popped': 6665944, 'pushed': 6713638, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'wall_s': 53.8} — 163 (h,delta) buckets
+[bwd u=3] popped 200000 pushed 24215006 heap 24015006 g=8 429.7s
