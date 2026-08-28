@@ -1,293 +1,126 @@
 {
- "p3": {
-  "p": 3,
-  "cap": 8,
-  "levels": [
-   {
-    "c": 0,
-    "novel": 1,
-    "seen": 1,
-    "rss_mb": 35,
-    "t": 0.0
-   },
-   {
-    "c": 1,
-    "novel": 0,
-    "seen": 1,
-    "rss_mb": 35,
-    "t": 0.0
-   },
-   {
-    "c": 2,
-    "novel": 1,
-    "seen": 2,
-    "rss_mb": 35,
-    "t": 0.0
-   },
-   {
-    "c": 3,
-    "novel": 3,
-    "seen": 5,
-    "rss_mb": 35,
-    "t": 0.0
-   },
-   {
-    "c": 4,
-    "novel": 3,
-    "seen": 8,
-    "rss_mb": 35,
-    "t": 0.0
-   },
-   {
-    "c": 5,
-    "novel": 7,
-    "seen": 15,
-    "rss_mb": 35,
-    "t": 0.0
-   },
-   {
-    "c": 6,
-    "novel": 32,
-    "seen": 47,
-    "rss_mb": 36,
-    "t": 0.0
-   },
-   {
-    "c": 7,
-    "novel": 57,
-    "seen": 104,
-    "rss_mb": 36,
-    "t": 0.0
-   },
-   {
-    "c": 8,
-    "novel": 113,
-    "seen": 217,
-    "rss_mb": 36,
-    "t": 0.0
-   }
-  ],
-  "lane": "AB (theta'-dual lane by banked duality)",
-  "returns": {
-   "6": [
-    0,
-    9,
-    10,
-    11
-   ],
-   "8": [
-    9,
-    11
-   ]
-  },
-  "nontrivial_costs": [
-   6,
-   8
-  ],
-  "wall_s": 0.0
- },
- "p5": {
-  "p": 5,
-  "cap": 11,
+ "p9": {
+  "p": 9,
+  "cap": 16,
   "levels": [
    {
     "c": 0,
     "novel": 1,
     "seen": 1,
     "rss_mb": 36,
-    "t": 0.0
+    "t": 0.1
    },
    {
     "c": 1,
     "novel": 0,
     "seen": 1,
     "rss_mb": 36,
-    "t": 0.0
+    "t": 0.1
    },
    {
     "c": 2,
     "novel": 1,
     "seen": 2,
     "rss_mb": 36,
-    "t": 0.0
+    "t": 0.2
    },
    {
     "c": 3,
     "novel": 2,
     "seen": 4,
     "rss_mb": 36,
-    "t": 0.0
+    "t": 0.4
    },
    {
     "c": 4,
-    "novel": 4,
-    "seen": 8,
+    "novel": 6,
+    "seen": 10,
     "rss_mb": 36,
-    "t": 0.0
+    "t": 0.6
    },
    {
     "c": 5,
-    "novel": 15,
-    "seen": 23,
-    "rss_mb": 36,
-    "t": 0.0
+    "novel": 21,
+    "seen": 31,
+    "rss_mb": 37,
+    "t": 1.1
    },
    {
     "c": 6,
-    "novel": 29,
-    "seen": 52,
-    "rss_mb": 36,
-    "t": 0.0
+    "novel": 49,
+    "seen": 80,
+    "rss_mb": 38,
+    "t": 1.6
    },
    {
     "c": 7,
-    "novel": 73,
-    "seen": 125,
-    "rss_mb": 36,
-    "t": 0.0
+    "novel": 143,
+    "seen": 223,
+    "rss_mb": 40,
+    "t": 2.0
    },
    {
     "c": 8,
-    "novel": 188,
-    "seen": 313,
-    "rss_mb": 36,
-    "t": 0.0
+    "novel": 376,
+    "seen": 599,
+    "rss_mb": 44,
+    "t": 2.4
    },
    {
     "c": 9,
-    "novel": 385,
-    "seen": 698,
-    "rss_mb": 37,
-    "t": 0.1
+    "novel": 939,
+    "seen": 1538,
+    "rss_mb": 54,
+    "t": 2.8
    },
    {
     "c": 10,
-    "novel": 909,
-    "seen": 1607,
-    "rss_mb": 37,
-    "t": 0.1
+    "novel": 2437,
+    "seen": 3975,
+    "rss_mb": 78,
+    "t": 3.1
    },
    {
     "c": 11,
-    "novel": 1992,
-    "seen": 3599,
-    "rss_mb": 39,
-    "t": 0.1
-   }
-  ],
-  "lane": "AB (theta'-dual lane by banked duality)",
-  "returns": {
-   "6": [
-    0
-   ],
-   "10": [
-    0
-   ]
-  },
-  "nontrivial_costs": [],
-  "wall_s": 0.1
- },
- "p6": {
-  "p": 6,
-  "cap": 13,
-  "levels": [
-   {
-    "c": 0,
-    "novel": 1,
-    "seen": 1,
-    "rss_mb": 39,
-    "t": 0.0
-   },
-   {
-    "c": 1,
-    "novel": 0,
-    "seen": 1,
-    "rss_mb": 39,
-    "t": 0.0
-   },
-   {
-    "c": 2,
-    "novel": 1,
-    "seen": 2,
-    "rss_mb": 39,
-    "t": 0.0
-   },
-   {
-    "c": 3,
-    "novel": 2,
-    "seen": 4,
-    "rss_mb": 39,
-    "t": 0.0
-   },
-   {
-    "c": 4,
-    "novel": 5,
-    "seen": 9,
-    "rss_mb": 39,
-    "t": 0.1
-   },
-   {
-    "c": 5,
-    "novel": 15,
-    "seen": 24,
-    "rss_mb": 39,
-    "t": 0.1
-   },
-   {
-    "c": 6,
-    "novel": 33,
-    "seen": 57,
-    "rss_mb": 39,
-    "t": 0.1
-   },
-   {
-    "c": 7,
-    "novel": 80,
-    "seen": 137,
-    "rss_mb": 39,
-    "t": 0.2
-   },
-   {
-    "c": 8,
-    "novel": 199,
-    "seen": 336,
-    "rss_mb": 40,
-    "t": 0.2
-   },
-   {
-    "c": 9,
-    "novel": 465,
-    "seen": 801,
-    "rss_mb": 40,
-    "t": 0.2
-   },
-   {
-    "c": 10,
-    "novel": 1109,
-    "seen": 1910,
-    "rss_mb": 42,
-    "t": 0.2
-   },
-   {
-    "c": 11,
-    "novel": 2486,
-    "seen": 4396,
-    "rss_mb": 45,
-    "t": 0.2
+    "novel": 6024,
+    "seen": 9999,
+    "rss_mb": 129,
+    "t": 3.3
    },
    {
     "c": 12,
-    "novel": 5695,
-    "seen": 10091,
-    "rss_mb": 52,
-    "t": 0.2
+    "novel": 14739,
+    "seen": 24738,
+    "rss_mb": 213,
+    "t": 3.5
    },
    {
     "c": 13,
-    "novel": 12254,
-    "seen": 22345,
-    "rss_mb": 59,
-    "t": 0.3
+    "novel": 35602,
+    "seen": 60340,
+    "rss_mb": 384,
+    "t": 3.8
+   },
+   {
+    "c": 14,
+    "novel": 84536,
+    "seen": 144876,
+    "rss_mb": 781,
+    "t": 4.4
+   },
+   {
+    "c": 15,
+    "novel": 197735,
+    "seen": 342611,
+    "rss_mb": 1864,
+    "t": 5.7
+   },
+   {
+    "c": 16,
+    "novel": 455964,
+    "seen": 798575,
+    "rss_mb": 3214,
+    "t": 9.5
    }
   ],
   "lane": "AB (theta'-dual lane by banked duality)",
@@ -299,13 +132,17 @@
     0
    ],
    "12": [
-    0,
-    8
+    0
+   ],
+   "14": [
+    0
+   ],
+   "16": [
+    0
    ]
   },
-  "nontrivial_costs": [
-   12
-  ],
-  "wall_s": 0.3
+  "nontrivial_costs": [],
+  "aborted": "RSS",
+  "wall_s": 9.5
  }
 }
