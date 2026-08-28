@@ -119,9 +119,14 @@ def quotient_code(l, p, d, name=None):
     assert o1 * o2 == l * p, (l, p, d, D)
 
     def tr(supp):
-        return frozenset(((e[0] * V[0][0] + e[1] * V[1][0]) % o1,
-                          (e[0] * V[0][1] + e[1] * V[1][1]) % o2)
-                         for e in supp)
+        # F2 transport: terms whose images collide in the quotient must
+        # cancel mod 2 (keep odd-count images only), not merge.
+        cnt: dict[tuple[int, int], int] = {}
+        for e in supp:
+            key = ((e[0] * V[0][0] + e[1] * V[1][0]) % o1,
+                   (e[0] * V[0][1] + e[1] * V[1][1]) % o2)
+            cnt[key] = cnt.get(key, 0) ^ 1
+        return frozenset(k for k, v in cnt.items() if v)
 
     return TowerCode(name or f"shear(l={l},p={p},d={d})", (o1, o2),
                      tr(A_L), tr(B_L)), (o1, o2)

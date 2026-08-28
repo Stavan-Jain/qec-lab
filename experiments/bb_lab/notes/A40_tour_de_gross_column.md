@@ -1162,6 +1162,17 @@ periodic classification above fixes its input alphabet.
   hypothesis before the triage) — FALSE: k > 0 shear frames exist at
   every p ≥ 1 (`s4_phase_triage.json`); phases die by weight, not
   rank.
+- **Correction (2026-08-28, found by A42 S0 gate G5)**: the triage's
+  original `tr()` transported supports into a frozenset, merging
+  quotient-collided terms instead of cancelling them mod 2 (F2); the
+  10 rows (ℓ,p,d) = (12,1,0),(12,1,9),(12,2,9),(12,3,1),(12,3,2),
+  (18,1,0),(18,1,15),(18,2,15),(18,3,1),(18,3,2) were banked-k = 4
+  ARTIFACTS with true BB-quotient k = 0.  All diffs conservative
+  (banked 4 > true 0), so the phantom frames were merely censused
+  unnecessarily — every census verdict stands.  Script made
+  parity-aware and `s4_phase_triage.json` regenerated (survivor rows
+  26 → 24); the "k > 0 at every p" bullet above survives on the
+  corrected grid.
 - **The 90° rotation θ as a code equivalence** — the one-bar
   obstruction (θ(A) = B̄, θ(B) = A; every axis-swapping monomial map
   leaves exactly one antipode unpaired) shows it is NOT one,
