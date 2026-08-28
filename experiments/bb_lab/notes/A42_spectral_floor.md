@@ -278,6 +278,67 @@ p = 6, the purity lemma candidate):
 > never win there).  The quantitative "mixed patterns never beat
 > 2p" statement is the named open lemma of this stage.
 
+### §2.2.1 The σ-conditioned h-DP: exact m = 1 floors, SAT-free
+### (`a42_s1_jointdp.py`, `s1_jointdp.json`)
+
+The relaxation gap closed.  For p = 3·2^a the CRT
+R_p ≅ Λ' × Λ is a bijection on contents, so for ANY cycle v:
+
+> wt(v) = Σ_cols tab[(z'_col, λ_col)]   (identity, not a bound)
+
+where tab is the exact 2^p-element weight table, the Λ'-contents are
+(B̂'h, Ã'h) for a unique h (freeness ⟸ unimodularity of the barren
+row — Theorem A's lemma), and the λ-contents form a class-nontrivial
+ω-syzygy σ.  Fixing σ, min over h is a shortest path (state =
+(h_{c−3}, h_{c−2}, h_{c−1}) ∈ Λ'³; structure constants y³ and y+y²),
+with EXACT λ=0 tail costs on both sides (Dijkstra to/from the
+all-zero state — free-boundary relaxation demonstrably leaks:
+it returned 10 < 12 at p = 6; the exact tails return 12).
+
+Results (exhaustive over class-nontrivial σ with ≤ smax slots, gaps
+≤ 3 by splitting, up to x-translation):
+- p = 3: floor 6 over 4,170 σ (smax 6) — matches banked exactly.
+- p = 6: **floor 12 over 55,287 σ (smax 7)** — the atlas value,
+  re-derived with no SAT and no BFS.
+- p = 12 (a = 2): running; the pure 3-slot σ prices at 24.
+
+Claim tier: certificate (exact linear algebra + shortest paths;
+independently re-runnable) with the STATED SCOPE ω-support ≤ smax
+slots; the σ-size gap (smax < s < 2p) is closed today only
+solver-tier (the CylWindow SAT minimizes over ALL supports at once:
+p=6 UNSAT ≤ 11 window-complete).  Closing it certificate-tier needs
+a per-slot cost ≥ 2-type lemma for large mixed patterns — open.
+
+**Stage-2 consequence (B12 sketch, contingent on floor(12) = 24):**
+by Lemma K + the L1 spanning branch, d((ℓ,12)) ≥ min(24, ⌈ℓ/4⌉) on
+the windowed/spanning dichotomy, so d((ℓ,12)) = 24 for all
+6 | ℓ ≥ 93 (UB: two stacked L12's, x-local); (12,12) = 18 is the
+TOROIDAL exception — its minima are gap-free in both axes (measured,
+12/12 witnesses), i.e. two-gross beats the cylinder floor only by
+wrapping.  The intermediate ℓ need B6-style per-ℓ descents.  This is
+the second row of the B6 ladder; the b = 1 column consumes rows
+p = 6r, so the ∀a floor theorem (deformation cascade) is the
+gateway to the column.
+
+### §2.2.2 The deformation calculus (the ∀a mechanism, in progress)
+
+Λ_a ≅ F₄[π]/(π^{2^a}) (equal characteristic; ζ = y + π + π² + ...
+Artin–Schreier–Teichmüller-style), and the pair becomes
+
+> Ã_ω = (x³+1) + π,   B̂_ω = (1+x+x²) + π(x+x²)(y+1).
+
+Deforming the residue syzygy σ₀ = (1, 1+x) order-by-order in π: the
+order-1 obstruction is h₀·[ζ²(x+x³) + 1] ≡ 0 mod (1+x+x²), and the
+bracket vanishes at x = ζ² (the TANGENT point) but not at x = ζ (the
+transverse point) — so lifting forces (x+ζ) | h₀.  The tangency of
+V(A,B) is exactly what lets deformations through on one branch; the
+transverse branch blocks them and forces support growth
+(supp((x+ζ)^k) = 2^{popcount(k)}).  The support-doubling intuition
+lives at EXACT class level (not the level-≥ℓ filtration the S-table
+measured — that is falsified-item 1's resolution).  Working out the
+full cascade (all orders, both brackets) is the named route to
+floor(3·2^a) = 6·2^a ∀a, hence to the b = 1 member rows.
+
 ### §2.3 S1 remaining plan
 
 1. Theorem A write-up (done in substance: §2.1 + the machine checks;
