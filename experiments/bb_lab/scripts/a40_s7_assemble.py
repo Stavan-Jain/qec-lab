@@ -33,6 +33,13 @@ light runs):
        split FWD_u(1+a) + BWD_1(b) (s6-style; delta-blind exact)
        with the fat credit where applicable.
    floor = 36 - max(DP)/4.
+   Refinements: pieces are stratum-coupled (u -> u_next; the post
+   piece is granted the u_next bwd table, the seed subtraction is
+   u_next's); absent enumerated buckets are granted
+   min(g-cap bound, loose split) — the loose split bounds EVERY
+   link; the whole r>=2 computation is evaluated at BOTH heavy-
+   class semantics (W <= 14 full-depth completeness, W <= 16 with
+   the larger fat credit) and the better sound floor is taken.
 
 Scope conditions carried by every floor (unchanged from s6 unless
 noted): radius-dil prefix-connected growth with smax new points per
@@ -108,26 +115,51 @@ def load_closed():
 
 
 def load_links():
-    """Deepest link tables per stratum u."""
+    """Merge link tables per stratum across files: certified
+    buckets merge unconditionally (each is a real enumerated
+    object); the per-h absent-bucket cap gcap_by_h[h] = max gcap
+    over files whose complete_h >= h (completeness required for
+    the absent => expensive direction)."""
+    return {14: _load_links_class(14), 16: _load_links_class(16)}
+
+
+def _load_links_class(wstar):
+    """Link tables under the class semantics 'enumerated heavy
+    W <= wstar': certs merge from every file (any enumerated object
+    is a real link); the absent=>expensive completeness only from
+    files run at whcap == wstar."""
     out = {}
     for p in sorted(glob.glob(str(DATA / "s7_link_*.json"))):
         d = json.loads(Path(p).read_text())
         pr = d["params"]
         u = pr["u"]
-        if u in out and out[u]["gcap"] >= pr["gcap"]:
-            continue
         assert d["info"]["trunc_extent"] == 0
-        tabL = {tuple(map(int, k.split(","))): g
-                for k, g in d["tab_link_L"].items()}
-        tabP = {tuple(map(int, k.split(","))): g
-                for k, g in d["tab_pre"].items()}
-        out[u] = dict(gcap=pr["gcap"], kmax=pr["kmax"],
-                      whcap=pr["whcap"], tabL=tabL, tabP=tabP,
-                      dcap=pr["dcap"],
-                      trunc_dcap=d["info"]["trunc_dcap"],
-                      complete_h=d["info"].get("complete_h",
-                                               pr["hcap"]),
-                      src=Path(p).name)
+        ch = d["info"].get("complete_h", pr["hcap"])
+        rec = out.setdefault(u, dict(tabL={}, gcap_by_h={},
+                                     kmax=pr["kmax"], whcap=wstar,
+                                     dcap=pr["dcap"], srcs=[],
+                                     trunc_dcap=0))
+        assert pr["kmax"] == rec["kmax"]
+        for k, g in d["tab_link_L"].items():
+            kk = tuple(map(int, k.split(",")))
+            if kk not in rec["tabL"] or rec["tabL"][kk] > g:
+                rec["tabL"][kk] = g
+        if pr["whcap"] == wstar:
+            for h in range(1, ch + 1):
+                if rec["gcap_by_h"].get(h, -1) < pr["gcap"]:
+                    rec["gcap_by_h"][h] = pr["gcap"]
+        rec["trunc_dcap"] += d["info"]["trunc_dcap"]
+        rec["srcs"].append(Path(p).name)
+    for u in list(out):
+        rec = out[u]
+        if not rec["gcap_by_h"]:
+            del out[u]            # no completeness at this class
+            continue
+        rec["gcap"] = max(rec["gcap_by_h"].values())
+        rec["complete_h"] = max(
+            (h for h, g in rec["gcap_by_h"].items()
+             if g == rec["gcap"]), default=0)
+        rec["src"] = "+".join(rec["srcs"])
     return out
 
 
@@ -265,11 +297,13 @@ def bwd_q(s6, u, h):
     return max(cands) if cands else min(cap, ana)
 
 
-def loose_q(s6, u, u_next, h, long_or_deep_only, fat):
+def loose_q(s6, u, u_next, h, long_or_deep_only, fat, whcap=WHCAP):
     """Loose-split bound (quarters) for a link of h slabs: seed
     stratum u (pre slabs >= u), next-seed stratum u_next (post
     slabs >= u_next), one heavy block.  long_or_deep_only: restrict
-    to L >= KMAX+1 (else any L).  fat: subtract the fat credit."""
+    to L >= KMAX+1 (else any L).  fat: subtract the fat credit for
+    a heavy slab W >= whcap + 1 (whcap = the stratum's enumerated
+    heavy cap; analytic strata use the base 14)."""
     best = None
     for L in range(1, h - 1):
         if long_or_deep_only and L <= KMAX:
@@ -284,7 +318,7 @@ def loose_q(s6, u, u_next, h, long_or_deep_only, fat):
                 continue
             v = fa + bb
             if fat:
-                v -= (WHCAP + 1 - 8)
+                v -= (whcap + 1 - 8)
             if best is None or v > best:
                 best = v
     return best
@@ -299,23 +333,27 @@ def link_options_q(links, s6, u, u_next, h):
     outs = []
     seed_term = 8 - min(u_next, 5)
     rec = links.get(u)
-    deep = rec is None or u > 2 or h > rec["complete_h"]
+    deep = rec is None or u > 2 or \
+        rec["gcap_by_h"].get(h) is None
     if not deep:
         certs = [8 * h - g for (hh, L, d), g in rec["tabL"].items()
                  if hh == h]
-        cap = 8 * h - (rec["gcap"] + 1)
+        cap = 8 * h - (rec["gcap_by_h"][h] + 1)
         vl = loose_q(s6, u, u_next, h, False, False)
         if vl is not None:
             cap = min(cap, vl)
         val_a = max(certs + [cap])
         outs.append((val_a - seed_term, "a"))
     # bc options: long blocks (any u); fat (any u, any L); the
-    # loose split at any L for analytic strata / deep h.
+    # loose split at any L for analytic strata / deep h.  The fat
+    # threshold is the stratum's enumerated whcap (base WHCAP for
+    # analytic strata).
+    wh_u = rec["whcap"] if (rec is not None and u <= 2) else WHCAP
     cands = []
     v_long = loose_q(s6, u, u_next, h, True, False)
     if v_long is not None:
         cands.append(v_long)
-    v_fat = loose_q(s6, u, u_next, h, False, True)
+    v_fat = loose_q(s6, u, u_next, h, False, True, whcap=wh_u)
     if v_fat is not None:
         cands.append(v_fat)
     if deep:
@@ -347,6 +385,7 @@ def floor_r2(links, s6):
                     opts[(u, un, h)] = oo
     # DP-free: state (length, count<=2, has_bc, first_u, next_u)
     dp = {}
+    par = {}
     for u in STRATA:
         dp[(0, 0, 0, u, u)] = 0
     for n in range(1, M + 1):
@@ -364,9 +403,18 @@ def floor_r2(links, s6):
                     nv = pv + v
                     if nv > dp.get(k2, NEG):
                         dp[k2] = nv
-    best_free = max((v for (n, c, fb, fu, un), v in dp.items()
-                     if n == M and c == 2 and fb == 1 and fu == un),
-                    default=NEG)
+                        par[k2] = (key, (uu, un, h, v, typ))
+    best_free, bk = max(
+        ((v, k) for k, v in dp.items()
+         if k[0] == M and k[1] == 2 and k[2] == 1
+         and k[3] == k[4]), key=lambda t: t[0],
+        default=(NEG, None))
+    pieces_used = []
+    k = bk
+    while k in par:
+        k0, pc = par[k]
+        pieces_used.append(pc)
+        k = k0
     best_free_a = max((v for (n, c, fb, fu, un), v in dp.items()
                        if n == M and c == 2 and fb == 0
                        and fu == un), default=NEG)
@@ -380,17 +428,17 @@ def floor_r2(links, s6):
             continue
         cert = {}
         for (h, L, d), g in rec["tabL"].items():
-            if h > rec["complete_h"]:
-                continue
             k = (h, d)
             if k not in cert or cert[k] < 8 * h - g:
                 cert[k] = 8 * h - g
-        hmax_c = min(M + 1, rec["complete_h"])
+        hmax_c = min(M + 1, max(rec["gcap_by_h"], default=0))
         for h in range(3, hmax_c + 1):
+            if rec["gcap_by_h"].get(h) is None:
+                continue
             caps = {}
             for un in STRATA:
                 vl = loose_q(s6, u, un, h, False, False)
-                cap = 8 * h - (rec["gcap"] + 1)
+                cap = 8 * h - (rec["gcap_by_h"][h] + 1)
                 caps[un] = min(cap, vl) if vl is not None else cap
             for d in range(-30, 31):
                 base = cert.get((h, d), NEG)
@@ -426,6 +474,9 @@ def floor_r2(links, s6):
     return fl, dict(dp_free_bc=best_free / 4,
                     dp_free_a_only=best_free_a / 4,
                     dp_closure=best_clo / 4,
+                    free_bc_argmax=[
+                        dict(u=uu, u_next=un, h=h, val_q=v, typ=t)
+                        for (uu, un, h, v, t) in pieces_used],
                     floor=fl)
 
 
@@ -440,21 +491,28 @@ def main():
     s6 = load_s6()
     print("closed inputs:", {f"{k}": v for k, v in
                              sorted(closed.items())}, flush=True)
-    print("link inputs:", {u: dict(gcap=r['gcap'], src=r['src'],
-                                   buckets=len(r['tabL']),
-                                   trunc_dcap=r['trunc_dcap'])
-                           for u, r in links.items()}, flush=True)
+    for wstar, lk in sorted(links.items()):
+        print(f"link inputs (class W<={wstar}):",
+              {u: dict(gcap=r['gcap'], complete_h=r['complete_h'],
+                       buckets=len(r['tabL']))
+               for u, r in lk.items()}, flush=True)
 
     f0, per0 = floor_r0(closed)
     print(f"\nALL-LIGHT (r=0): floor {f0}; strata {per0}",
           flush=True)
     f1, per1 = floor_r1(closed, s6)
     print(f"r=1: floor {f1}; branches {per1}", flush=True)
-    if links:
-        f2, det2 = floor_r2(links, s6)
-        print(f"r>=2: floor {f2}; {det2}", flush=True)
-    else:
-        f2, det2 = 0, dict(note="no link tables yet")
+    f2, det2 = 0, dict(note="no link tables yet")
+    for wstar, lk in sorted(links.items()):
+        if not lk:
+            continue
+        global WHCAP_R2
+        f2w, det2w = floor_r2(lk, s6)
+        print(f"r>=2 (class W<={wstar}): floor {f2w}; {det2w}",
+              flush=True)
+        if f2w > f2:
+            f2, det2 = f2w, dict(det2w, class_whcap=wstar)
+    if f2 == 0:
         print("r>=2: NO LINK TABLES — floor 0 placeholder",
               flush=True)
     fH = 2 * M
@@ -466,7 +524,7 @@ def main():
     # ---- T2' (conjectural tier) ------------------------------------
     # per-link transient: T_link = max certified D - (6/7)(h - L)
     T_link, wit = -1e9, None
-    for u, rec in links.items():
+    for u, rec in links.get(14, {}).items():
         for (h, L, d), g in rec["tabL"].items():
             t = (2 * h - g / 4) - (6 / 7) * (h - L)
             if t > T_link:
@@ -525,9 +583,11 @@ def main():
     out = dict(
         closed_inputs={f"{k[0]},{k[1]}": v
                        for k, v in sorted(closed.items())},
-        link_inputs={u: dict(gcap=r["gcap"], src=r["src"],
-                             buckets=len(r["tabL"]))
-                     for u, r in links.items()},
+        link_inputs={f"w{wstar}": {u: dict(gcap=r["gcap"],
+                                           complete_h=r["complete_h"],
+                                           buckets=len(r["tabL"]))
+                                   for u, r in lk.items()}
+                     for wstar, lk in sorted(links.items())},
         floor_r0=f0, r0_strata=per0,
         floor_r1=f1, r1_branches=per1,
         floor_r2=f2, r2_detail=det2,

@@ -1,0 +1,4 @@
+  seed 1: 3371643 nodes, 4 link buckets, rss 3125MB
+  RED: RSS near budget after seed 1; stopping early (specimens are demonstrations, partial coverage is honest)
+  h=6: D=6.0 g=24 delta=-2 slabs=[1, 2, 2, 4, 8, 7] slip=-1 ghost(pre,post)=(3,0) E-verified
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s7_specimens_u1_g25_d10.json (64.9 s)

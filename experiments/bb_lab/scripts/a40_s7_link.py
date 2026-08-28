@@ -308,10 +308,18 @@ class LinkMarch:
                 aborted = f"RED: frontier {len(layer)} > 3M"
                 break
             nxt = {}
+            nexp = 0
             for (dyn, anch, phase, L, dlt), (g, xlo, xhi) \
                     in layer.items():
                 self.expand_layer(g, dyn, phase, L, h, dlt, anch,
                                   xlo, xhi, nxt)
+                nexp += 1
+                if nexp % 16384 == 0 and _rss_mb() > 2048:
+                    aborted = (f"RED: RSS {_rss_mb()} MB > 2048 "
+                               f"mid-layer h={h}")
+                    break
+            if aborted:
+                break
             self.nodes_popped += len(layer)
             self.nodes_pushed += len(nxt)
             if log:

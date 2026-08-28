@@ -1864,3 +1864,317 @@ one 19-slab fragment with equal end windows and total cover drift
    two-line-to-decide-shaped; the frontier tables are finite
    certificates once the engine's soundness contract (complete-
    below-cap) is stated.
+
+## §12 SESSION 7 (2026-08-28) — the boundary coupling charged:
+## links, the pinch, closed marches, and d_Y(24,18) >= 11
+
+Directive: prove the boundary-coupling lemma — adjacent light runs
+cannot both extract full transient deficit through a heavy
+interface — and reassemble.  What happened: the lemma got THREE
+independent teeth this session, each mechanically verified: (i) the
+LINK DECOMPOSITION, which makes the interface an enumerable object
+(forward-only marches through the heavy block, E-consistency
+enforced end to end); (ii) the PINCH LEMMA, a three-line
+combinatorial bound killing double-vacuum interfaces at short
+blocks; (iii) the CLOSED MARCH, which replaces the s6 open-bucket
+all-light readout with exact cycle closure and EXHAUSTS the u = 1
+stratum outright.  The measured interface tax is 2.0-2.75 per
+boundary in the certified range (vs the ~7.5 the s6 accounting
+granted); the reassembled y-sector floor is d_Y(24,18) >= 11 (T1',
+scope-listed), +4 over s6.  En route: an anchor-aliasing gap in the
+s6 delta-resolved readouts was found, fixed, and retroactively
+discharged; and the session's first parallel launch OOM'd the
+machine — the ops rules that now govern every march are recorded in
+§12.9.  Scripts `a40_s7_*.py`, data `data/a40/s7_*`;
+`validate_banked` green before every stage.
+
+### §12.1 The link decomposition (the bookkeeping that makes the
+### interface enumerable)
+
+Split every maximal light run at its first minimum-weight window
+(the SEED).  The cyclic walk = seeds + LINKS, where link_i runs
+from seed_i (inclusive) upward through run i's forward piece, heavy
+block i, run (i+1)'s below-seed piece, ENDING AT seed_{i+1}
+(inclusive).  Mechanical consequences (all verified):
+- every slab lies in exactly one link except seed slabs (exactly
+  two), so sum g_link = 4|v| + sum u_i and the deficit telescope
+  D_total = sum_i [D_link_i - (2 - u_{i+1}/4)] is exact;
+- drift telescopes with NO uncounted anchor steps — the s6
+  assembly's free heavy slips are now MEASURED inside links, so
+  closure (sum delta == 0 mod 24, winding included) applies to
+  every all-enumerated configuration;
+- every E_j is enforced by exactly one link (a forward march
+  reaching final row s enforces E_{s-1}; the next link, seeded on
+  rows [s-3, s], enforces from E_s): the cross-boundary
+  E-consistency the s6 loose join ignored is now structural;
+- the forward recurrence is monic in v2[t+1], so a forward march
+  from a full-content seed window enumerates EVERY admissible
+  continuation: the long BACKWARD ghost coasts of s6 appear as
+  post-phase content driven from the block below.  Forward-only
+  marches suffice — and the forward tree is the cheap one.
+
+### §12.2 The pinch lemma (proven; the combinatorial tooth)
+
+**Lemma.**  For a heavy block of L <= 3 slabs between light slabs
+b (exit) and b+L+1 (entry): rows(slab b+1) = {b-2..b+1} is
+contained in rows(slab b) u rows(slab b+L+1) exactly when L <= 3,
+hence W_b + W_{b+L+1} >= W_{b+1} >= 8.  Double-vacuum interfaces
+are impossible at short heavy blocks — a ghost cannot fade to
+vacuum against its own interface.  Scope: the covering fails at
+L >= 4 (an interior fat row can feed every heavy slab), though
+lone rows are E-dead (E_{t-1} = v2[t] forces them to 0), so the
+L >= 4 escape is not free either — unquantified, listed residue.
+Verified mechanically (row-covering identity for L = 1..6) and on
+the only sub-rate-2 species that crosses the heavy line: TC63's
+real blocks have exit + entry = 5 + 6 = 11 >= 8, and all 60 of its
+crossing segments are dominated by the analytic link grant
+(`s7_validate.json`).
+
+### §12.3 The anchor-aliasing finding (s6 ledger item, discharged)
+
+The s6 March's dominance key (7-row state, h, delta) OMITS the
+current slab's anchor: v2[t-3] was dropped from the state, and the
+anchor of rows [t-3, t] is not a function of the remaining rows.
+Two merged paths can differ in anchor, so their futures differ by a
+delta shift: **delta-RESOLVED bucket completeness fails** (at u=1
+g<=24, de-aliasing adds 2 reachable buckets), while delta-BLIND
+per-h minima are EXACT (the merged representative reaches every
+(h', g') the discarded path could, at <= its cost).  Consequences:
+s6's mixed floor (delta-blind) stands as banked; s6's all-light
+(19, delta == 0) emptiness readouts carried a latent caveat — now
+RETROACTIVELY DISCHARGED, because the s7 closed march (alias-free:
+its state is the full 4-row window = the slab) proves strictly
+stronger emptiness (u=2 to g<=55 vs s6's g<=28).  All s7 engines
+carry the anchor in the dominance key; the s7 kmax=0 regression
+DOMINATES the s6 fwd table with per-h minima equal.
+
+### §12.4 The closed march and the r in {0, 1} branches
+
+Per-seed forward march whose state is the full last-4-rows window
+(8 masks — anchors alias-free by construction); readout after
+exactly m steps demands normalized-state equality with the seed and
+total drift == 0 (mod ell) (winding +-24 covered).  Emptiness below
+a g-cap gives w >= ceil((gcap + 1 - u)/4) for the stratum; the seed
+slab's double count is subtracted exactly.
+
+**Controls.**  (i) Positive: seeded at the L12 rate-2 species' own
+minimum window at (18, 6) (profile [11,10,7,7,6,7], one L=2 block,
+smax/dil relaxed to 8), the march detects EXACTLY ONE closure, at
+g = sum slabs + u = 54, delta = 0, phase POST — the certified
+d((18,6)) = 12 object, found through its own heavy block at exact
+cost.  (ii) The heap and layered engines produce identical tables
+and closed sets at equal caps.  (iii) (18,12): the certified
+minimum (L12 x2, every slab W = 8) sits in the ALL-HEAVY branch at
+exactly 2m = 24 — the s7 assembly admits it by construction — and
+the closed marches instantiated at (m, ell) = (12, 18) find
+nothing cheaper in the light branches (all-light u=1 empty to
+g <= 40 in 0.3 s, one-block u=1 empty to g <= 30; no aborts):
+the machinery is coherent at the certified frame.
+
+**Results at (24, 18), y-sector, scope = radius-4/smax-3 growth,
+extent <= 34, |delta| <= 30 (every truncation counter ZERO in every
+production run):**
+
+| branch | stratum | result | floor |
+|---|---|---|---|
+| all-light (r=0) | u=1 | **EXHAUSTED at g<=76, trunc_g False** — no walk at ANY weight | infinity |
+| | u=2 | empty g <= 55 | >= 14 |
+| | u=3 | empty g <= 63 | >= 16 |
+| | u=4 / u>=5 | analytic | 18 / 23 |
+| r=1, block L<=2, W<=14 | u=1 | empty g <= 42 | >= 11 |
+| | u=2 | empty g <= 47 | >= 12 |
+| | u>=3 | analytic 17u+8 | >= 15 |
+| r=1, L>=3 | any | Dbest(18-L) delta-blind | >= 14 |
+| r=1, fat (W>=15) | any | Dbest credit -1.75 | >= 13 |
+
+The u=1 all-light EXHAUSTION is the session's sharpest single fact:
+the u=1 stratum's forward tree from every seed dies of
+E-consistency + the window rule before 19 slabs at EVERY budget
+(53,372 nodes total, 0.5 s) — the s6 "+4 g-cap = +1 floor"
+staircase is simply over on that stratum.  STABILITY-CHECKED on
+the growth scope: at smax 4, at dil 6, and at both jointly
+(g <= 56-60), the tree still exhausts with zero closures
+(`s7_closed_k0_stability.json`) — the exhaustion is not an
+artifact of the production caps.  (The g46 refinement of
+r=1 u=1 was half-run when the OOM incident killed its two heaviest
+seeds; 6/8 seeds are banked empty at g<=46 and the two others stand
+at g<=42 — the honest claim stays 11, and g>=45 would give 12.)
+
+### §12.5 The link tables and the measured interface tax
+
+Engine: the LinkMarch — phase-scheduled forward march (light
+[u,7] -> heavy [8,whcap] x L<=2 -> light [1,7]) with the anchor in
+the key, run as a layered BFS (atomic h-layers, two layers in
+memory, tables complete through the last finished layer) under the
+§12.9 ops guards.  Stratum u=1 tables are COMPLETE to g <= 26 at
+heavy class W <= 14 and to g <= 24 at W <= 16 (byseed, no aborts,
+all counters zero).  Stratum u=2 is RED at today's budget (the
+heavy-entry fan: 33M states at layer 3 whole-tree, ~2 h byseed) —
+u=2 links enter the assembly through loose grants only.
+
+**The certified tax table (u=1, L=1).**  J = max certified link
+deficit; s6grant = what the s6 accounting granted the same slabs
+(fwd table + free heavy + bwd table, delta-blind):
+
+| h | J(h) | s6grant | tax |
+|---|---|---|---|
+| 4 | 3.25 (g=19, delta=-6) | 5.25 | **2.00** |
+| 6 | 6.00 (g=24, delta=-2) | 8.75 | **2.75** |
+| 7 | 7.75 (g=25, delta=-2) | 10.50 | **2.75** |
+
+- **There is NO h=5 crossing at g <= 26 at all** — a parity-like
+  rigidity of minimal interfaces (cheapest h=4 and h=6 crossings
+  exist, h=5 does not); and every certified crossing is L=1 (a
+  two-slab block costs >= 27 with its tails).
+- The cheapest crossing weighs g = 19 against the naive
+  seed+block+post floor of 11: erecting a heavy slab out of a
+  stratum-1 seed costs ~8 extra weight in E-consistency alone.
+- T_link := max certified [D - (6/7)(h - L)] = **2.61** — the
+  per-boundary transient the s6 T2 read as ~7.5 (T0 per run end,
+  two ends per interface) collapses by ~2/3 when the interface E's
+  are enforced.
+- **The two-ghost verdict (charter Stage 1): two ghosts cannot
+  share an interface at full deficit.**  Standalone, the s6 matched
+  frontier pays ~1.5/slab through the transient; through one
+  enforced heavy slab the joint object pays J(h)/h ~ 1.1/slab with
+  a per-interface tax of 2-2.75, and the deficit-maximal specimens
+  are NOT vacuum-vacuum compositions (§12.6): the vacuum side must
+  re-inflate to make the block's weight, exactly the pinch
+  mechanism, and the E-forced debt row does the rest.
+
+### §12.6 Specimens (`a40_s7_tax.py specimens`,
+### `s7_specimens_*.json`) — the lemma in one object
+
+Deficit-maximal links replayed from march parents and verified
+INDEPENDENTLY through CoverFragment (every E including the heavy
+block, slab classes, window rule, weight, drift — exact matches
+asserted), search-narrowed to |delta| <= 10 (specimen search only;
+any found object is fully verified, so narrowing is sound).  The
+certified h=6 optimum (D = 6.0, g = 24, delta = -2):
+
+    slabs [1, 2, 2, 4, 8, 7], slip across the block = -1,
+    ghost stretches (pre, post) = (3, 0).
+
+Read it: a genuine 3-slab ghost approach ([1,2,2]) must RE-INFLATE
+(slab 4) before the heavy slab is even erectable — the pinch
+mechanism in vivo (exit 4 + entry 7 = 11 >= 8) — and the post side
+is NOT a ghost at all: the E-forced debt row through the block
+makes the second coast impossible.  The two-ghost composition of
+the charter is refuted in the strongest concrete sense: the
+deficit-maximal crossings have ONE ghost side; vacuum-vacuum
+interfaces never appear.  The h=7 optimum (D = 7.75, g = 25,
+delta = -2, from a different seed) repeats the pattern one slab
+longer: slabs [1, 1, 2, 2, 4, 8, 7], slip -1, ghost (4, 0) — a
+four-slab coast, the same forced re-inflation, the same non-ghost
+entry side.  Both deficit-maximal certified crossings share the
+shape; it is the boundary-coupling mechanism, photographed.
+
+### §12.7 Stage-2: the heavy-slip status (measured, not proven)
+
+Within every enumerated link the anchor slip across the block is
+MEASURED by the march's drift telescope — the closure constraint on
+the r>=2 all-enumerated branch and on the r in {0,1} closed
+branches therefore needs no separate slip lemma.  Outside the
+enumerated scope the general weight-bound lemma remains OPEN: a
+scope-free "slip <= f(block weight)" is not provable by the pinch
+alone (left spurs built over many rows can absorb large jumps at
+light-granted cost), so long blocks (L >= 3) and fat blocks stay
+closure-free in the assembly — the honest boundary of today's
+closure lever.  Measured slip on the verified deficit-maximal
+specimen: -1 column across its L=1 block — minimal interfaces
+barely slip; adversarial slips, if any, live in the fat/long
+blocks outside today's enumeration.
+
+### §12.8 The reassembly: d_Y(24, 18) >= 11 (T1')
+
+Branch floors (min = the floor):
+
+- all-heavy: >= 36.  all-light: >= 14 (u=2 cap).  r=1: >= 11
+  (u=1 short cap; fat 13, long 14).
+- r>=2 (the link DP, stratum-coupled pieces (u -> u_next), seed
+  double-count subtracted, per-piece grants = certified J /
+  capbound-capped-by-loose / loose with fat credit): DP-closure
+  (all links enumerated, sum delta == 0 mod 24) grants 23.5;
+  DP-free (>= 1 non-enumerated link, no closure) grants 25.25 at
+  the binding composition [(u=2 piece, loose-fat) + (u=1 piece at
+  the loose cap)] => **floor 11**.  Evaluated at BOTH heavy-class
+  semantics (W<=14 full-depth, W<=16 with fat credit 2.25): both
+  give 11 — the fat-heavy escape through the LOOSE side of the
+  free branch is the binding leak, 0.25 deficit short of 12.
+- **T1' (certificate-shaped, scope-listed): d_Y(24,18) >= 11** —
+  +4 over s6's 7; the overall floor stays d(24,18) >= 6 through
+  the untouched x-sector mirror (unchanged residue).
+- T2' (conjectural tier): with the MEASURED T_link = 2.61 replacing
+  the s6 per-run transient 7.5, the extrapolated mixed floor is
+  >= 11 as well — the certificate and conjectural tiers now agree,
+  because the boundary transient is no longer the dominant unknown.
+
+**Controls (all PASS, `s7_assembly.json`):** (a) the S5 stacks:
+W7 x9 at (18,63) is all-light and every closed-march claim is
+(24,18)-specific g-cap emptiness far below the stack's g = 288 —
+admitted; TC63's stacks cross heavy blocks whose links are
+dominated by the analytic grant (60/60) and whose closure sums are
+0 mod ell at the stack frames ((24,48): 8 x (+3) = +24 == 0);
+(b) (18,12): floor <= 24 with the certified minimum in the
+all-heavy branch at exactly 2m; (c) the b=0 (12,12) witness stays
+in the wrapped/winding corner (no compact cover lift,
+`s6_drift.json`), the -6 an admitted scope term; at l=24 the
+wrapped corner remains a listed condition.
+
+### §12.9 Falsified claims and ops incidents (session 7)
+
+- **The first parallel launch OOM'd the machine** (concurrent
+  heap marches at ~10M entries each; the user force-quit them).  Standing rules for
+  every s7+ march, enforced IN CODE: sequential runs only; hard
+  2 GB RSS budget checked between AND inside layers; frontier
+  > 3M states = RED abort; atomic layers so an abort still leaves
+  tables complete through `complete_h`; reprice at reduced caps
+  before any relaunch.  The heap engine was replaced by a layered
+  BFS (identical tables, proven on-shell) for exactly this reason.
+- **Whole-tree link marches are RED** at production caps (u=1 g24:
+  6.2M states at layer 4; u=2 g26: 33M at layer 3, caught only at
+  7 GB by the between-layer check — the mid-layer check exists
+  because of it).  byseed (per-seed sequential, tables merged) is
+  the production mode; dominance across seeds is only an
+  optimization, so the merged tables are identical.
+- **u=2 link enumeration RED at today's budget** (byseed ~2 h);
+  killed twice; u=2 pieces enter via loose grants.  W<=16-class
+  u=1 enumeration RED at g26 (4.3M fan on one seed), complete at
+  g24.
+- **s6 delta-resolved bucket completeness** — the anchor-aliasing
+  item of §12.3: the METHOD is retired; no banked s6 number
+  changes (mixed floors delta-blind; all-light superseded by
+  stronger s7 results).
+- **The uncoupled r>=2 free DP** (every post piece granted the
+  stratum-1 bwd table) leaked to floor 9 before the (u, u_next)
+  stratum coupling was added — never claimed, caught same hour.
+- byseed `complete_h` initially conflated "tree died" (complete at
+  every h) with "aborted at h" — fixed; a dead frontier has no
+  descendants.
+- (Respected: witness weights as upper bounds; RED/AMBER/GREEN
+  before every big run; no SAT anywhere; every consumed vector
+  re-verified end-to-end; nothing re-proposed from §9.8/§10.8/
+  §11.7.)
+
+### §12.10 Residue / S8
+
+1. **r=1 u=1 at g >= 45** (2 seeds, ~1-3 h guarded) lifts r=1 to
+   12; the r>=2 free branch then binds at 11 — its levers, in
+   order: boundary-weight-RESOLVED fwd/bwd tables (charge the
+   pinch inside the loose split — the 0.25 gap), kmax=3
+   enumeration, u=2 links via a heavy-entry-restricted seed fan.
+2. The h=5 interface gap (no crossing at g <= 26): understand the
+   parity mechanism — it smells like the two-step debt row forcing
+   an even/odd obstruction; a proof would turn the tax table into
+   a tax THEOREM for minimal interfaces.
+3. Deeper u=1 link caps certify J at h in [8, 13] where today the
+   loose cap rules (needs g ~ 30-35: RED whole, AMBER byseed
+   overnight).
+4. The x-sector mirror pass (lifts the overall floor past 6); the
+   wrapped corner at l=24; the W7 omega-mechanism (§10.9 item 3)
+   — all unchanged.
+5. Lean: the pinch lemma and the row-covering identity are
+   decide-shaped; the link/closed tables are finite certificates
+   once the layered-march soundness contract (complete-below-cap,
+   anchor-keyed dominance) is stated; the L12 closure control is
+   the natural first mechanized witness.

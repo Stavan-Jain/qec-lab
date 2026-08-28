@@ -202,9 +202,10 @@ def replay(m, key, seeds):
 
 
 def specimens(args):
-    """Sequential per-seed parented runs (memory-bounded); the
-    top-D POST specimens per h are replayed and independently
-    verified through CoverFragment."""
+    """Sequential per-seed parented runs; each seed's top-D POST
+    specimens are replayed and verified immediately, then the march
+    is dropped (memory-bounded).  The verified records are merged
+    per h across seeds."""
     t0 = time.time()
     sys.argv = [sys.argv[0]]
     from a40_s6_drift import CoverFragment
@@ -215,18 +216,23 @@ def specimens(args):
             resource.RUSAGE_SELF).ru_maxrss // (1024 * 1024)
     sds = [w8 for w8 in seeds_full(args.u)
            if sum(wt(r) for r in w8) == args.u]
-    best = {}
-    marches = []
-    for si, w8 in enumerate(sds):
+    lo, hi = 0, len(sds)
+    if args.seeds:
+        lo, hi = map(int, args.seeds.split(":"))
+    best = {}                     # h -> verified record dict
+    infos = []
+    for si in range(lo, hi):
+        w8 = sds[si]
         m = ParentedLinkMarch(args.u, kmax=args.kmax,
                               whcap=args.whcap, gcap=args.gcap,
-                              hcap=args.hcap)
+                              hcap=args.hcap, dcap=args.dcap)
         info = m.run([w8], log=False)
-        marches.append(m)
+        infos.append(info["popped"])
         print(f"  seed {si}: {info['popped']} nodes, "
               f"{len(m.tab_link)} link buckets, rss {rss_mb()}MB",
               flush=True)
-        assert rss_mb() < 2048, "RED: RSS budget"
+        stop_after = rss_mb() > 1900
+        cand = {}
         for key in m.parents:
             dyn, anch, phase, L, h, dlt = key
             if phase != POST:
@@ -235,69 +241,69 @@ def specimens(args):
             if g is None:
                 continue
             D = 2 * h - g / 4
-            if h not in best or D > best[h][0]:
-                best[h] = (D, key, g, si)
-    info = dict(seeds=len(sds))
-    ver = []
-    for h in sorted(best)[-args.n:]:
-        D, key, g, si = best[h]
-        m = marches[si]
-        rows, chain = replay(m, key, sds)
-        lo, hi = min(rows), max(rows)
-        fr = CoverFragment([rows[j] for j in range(lo, hi + 1)], lo)
-        ok = fr.admissible()
-        sl = fr.slabs()
-        # phase schedule from the chain: slab classes
-        classes = []
-        for node in chain:
-            phase = node[2]
-            classes.append("H" if phase == HEAVY else
-                           ("pre" if phase == PRE else "post"))
-        heavy_idx = [i for i, w in enumerate(sl) if w >= 8]
-        # pinch check on the specimen's block
-        pinch_ok = True
-        if heavy_idx:
-            a, b = heavy_idx[0], heavy_idx[-1]
-            if a > 0 and b < len(sl) - 1 and b - a + 1 <= 3:
-                pinch_ok = sl[a - 1] + sl[b + 1] >= 8
-        wgt = fr.weight()
-        drift = fr.drift()
-        # ghost-grade analysis: longest <=2/slab stretch on each
-        # side of the block
-        if heavy_idx:
-            a, b = heavy_idx[0], heavy_idx[-1]
-            pre_sl, post_sl = sl[:a], sl[b + 1:]
-        else:
-            pre_sl, post_sl = sl, []
+            if h not in cand or D > cand[h][0]:
+                cand[h] = (D, key, g)
+        for h, (D, key, g) in cand.items():
+            if h in best and best[h]["D"] >= D:
+                continue
+            rows, chain = replay(m, key, [w8])
+            lo, hi = min(rows), max(rows)
+            fr = CoverFragment([rows[j] for j in range(lo, hi + 1)],
+                               lo)
+            ok = fr.admissible()
+            sl = fr.slabs()
+            heavy_idx = [i for i, w in enumerate(sl) if w >= 8]
+            pinch_ok = True
+            slip = None
+            if heavy_idx:
+                a, b = heavy_idx[0], heavy_idx[-1]
+                if a > 0 and b < len(sl) - 1 and b - a + 1 <= 3:
+                    pinch_ok = sl[a - 1] + sl[b + 1] >= 8
+                anchors = fr.anchors()
+                if 0 < a and b + 1 < len(anchors):
+                    slip = anchors[b + 1] - anchors[a - 1]
+                pre_sl, post_sl = sl[:a], sl[b + 1:]
+            else:
+                pre_sl, post_sl = sl, []
 
-        def longest_ghost(ws):
-            run = bst = 0
-            for w in ws:
-                run = run + 1 if w <= 2 else 0
-                bst = max(bst, run)
-            return bst
-        dlt_key = key[5]
-        rec = dict(h=h, D=round(D, 3), g=g, delta=dlt_key,
-                   admissible=bool(ok), slabs=sl,
-                   match_g=bool(sum(sl) + args.u * 0 == g or True),
-                   weight=wgt, drift=drift,
-                   window_pruned=bool(fr.window_prune_events()),
-                   pinch_ok=bool(pinch_ok),
-                   ghost_pre=longest_ghost(pre_sl),
-                   ghost_post=longest_ghost(post_sl))
-        # exact re-verification: g equals slab sum? (march g = sum
-        # of slab weights incl. seed slab)
-        assert ok, f"specimen h={h} FAILS independent E-check"
-        assert sum(sl) == g, (sum(sl), g, "slab-sum mismatch")
-        assert drift == dlt_key, (drift, dlt_key, "drift mismatch")
-        assert not fr.window_prune_events()
-        ver.append(rec)
-        print(f"  h={h}: D={D:.2f} g={g} delta={dlt_key} slabs={sl} "
-              f"ghost(pre,post)=({rec['ghost_pre']},"
-              f"{rec['ghost_post']}) E-verified", flush=True)
-    out = dict(info=info, params=vars(args), specimens=ver,
+            def longest_ghost(ws):
+                run = bst = 0
+                for w_ in ws:
+                    run = run + 1 if w_ <= 2 else 0
+                    bst = max(bst, run)
+                return bst
+            dlt_key = key[5]
+            assert ok, f"specimen h={h} FAILS E-check"
+            assert sum(sl) == g, (sum(sl), g)
+            assert fr.drift() == dlt_key, (fr.drift(), dlt_key)
+            assert not fr.window_prune_events()
+            assert pinch_ok, (h, sl, "pinch violated!")
+            best[h] = dict(
+                h=h, D=round(D, 3), g=g, delta=dlt_key,
+                slabs=sl, weight=fr.weight(),
+                block_weight=(sum(sl[heavy_idx[0]:heavy_idx[-1]
+                                     + 1]) if heavy_idx else 0),
+                slip_across_block=slip,
+                ghost_pre=longest_ghost(pre_sl),
+                ghost_post=longest_ghost(post_sl),
+                seed=si)
+        del m
+        if stop_after:
+            print(f"  RED: RSS near budget after seed {si}; "
+                  f"stopping early (specimens are demonstrations, "
+                  f"partial coverage is honest)", flush=True)
+            break
+    ver = [best[h] for h in sorted(best)][-args.n:]
+    for rec in ver:
+        print(f"  h={rec['h']}: D={rec['D']} g={rec['g']} "
+              f"delta={rec['delta']} slabs={rec['slabs']} "
+              f"slip={rec['slip_across_block']} ghost(pre,post)="
+              f"({rec['ghost_pre']},{rec['ghost_post']}) "
+              f"E-verified", flush=True)
+    out = dict(params=vars(args), n_nodes=infos, specimens=ver,
                wall_s=round(time.time() - t0, 1))
-    p = DATA / f"s7_specimens_u{args.u}_g{args.gcap}.json"
+    p = DATA / (f"s7_specimens_u{args.u}_g{args.gcap}"
+                f"_d{args.dcap}.json")
     p.write_text(json.dumps(out, indent=1))
     print(f"wrote {p} ({out['wall_s']} s)", flush=True)
 
@@ -386,6 +392,8 @@ def main():
     s.add_argument("--kmax", type=int, default=1)
     s.add_argument("--whcap", type=int, default=14)
     s.add_argument("--hcap", type=int, default=19)
+    s.add_argument("--dcap", type=int, default=30)
+    s.add_argument("--seeds", type=str, default="")
     s.add_argument("--n", type=int, default=10)
     s = sub.add_parser("tax")
     s.add_argument("--link", type=str, required=True)

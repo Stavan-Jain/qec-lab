@@ -1,0 +1,39 @@
+{
+ "params": {
+  "cmd": "specimens",
+  "u": 1,
+  "gcap": 25,
+  "kmax": 2,
+  "whcap": 14,
+  "hcap": 19,
+  "dcap": 10,
+  "seeds": "1:8",
+  "n": 12
+ },
+ "n_nodes": [
+  3371643
+ ],
+ "specimens": [
+  {
+   "h": 6,
+   "D": 6.0,
+   "g": 24,
+   "delta": -2,
+   "slabs": [
+    1,
+    2,
+    2,
+    4,
+    8,
+    7
+   ],
+   "weight": 9,
+   "block_weight": 8,
+   "slip_across_block": -1,
+   "ghost_pre": 3,
+   "ghost_post": 0,
+   "seed": 1
+  }
+ ],
+ "wall_s": 64.9
+}
