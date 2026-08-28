@@ -339,6 +339,46 @@ measured — that is falsified-item 1's resolution).  Working out the
 full cascade (all orders, both brackets) is the named route to
 floor(3·2^a) = 6·2^a ∀a, hence to the b = 1 member rows.
 
+### §2.2.3 THE STABILIZATION (S1e, `a42_s1_hfiltration.py`)
+
+> **H(a) ≅ F₄[π]/(π²) ⊕ F₄ for a = 1, 2, 3** (dim_F₂ 6; im π = 2;
+> π² = 0 on H; window-stable at two widths per depth; a = 0: F₄²).
+
+The cylinder ω-homology STABILIZES at depth 1: the class inventory
+is the SAME six dimensions at every period p = 3·2^a, a ≥ 1 (and,
+since the ω-factor ring does not see the odd dilation, at every
+p = 3m·2^a).  The ∀p floor problem is thereby reshaped: not an
+unbounded ladder of new classes, but ONE fixed inventory (a height-2
+π-tower plus a height-1 summand) whose per-class minimal realization
+costs must scale like 2p.  Claim tier: exhaustive linear algebra at
+a ≤ 3, two windows each; the ∀a statement is the natural
+quotient-functoriality theorem to prove next.
+
+### §2.2.4 The member synthesis: the conjecture's b-bit is the
+### K-dichotomy
+
+2p at p = m = 6r is EXACTLY the conjectured b = 1 distance 12r.
+Lemma K splits any member logical into:
+- **windowized branch** (some x-gap ≥ 4): unrolls to a compact
+  period-m cylinder cycle, same weight, cylinder-nontrivial whenever
+  torus-nontrivial (trivializers reduce); so the cylinder floor
+  floor(m) = 2m = 12r bounds this branch — the whole b = 1
+  conjecture value, from this lane alone if floor(m) = 2m holds ∀m
+  of the form 6r;
+- **toroidal branch** (gap-free in both axes): where two-gross
+  actually lives — its d = 18 = 12r − 6 (r = 2, b = 0) minima are
+  measured gap-free (12/12), i.e. b = 0's conjectured 6(2r−1) is the
+  TOROIDAL branch's floor, one wrap-discount (−6) below the
+  cylinder.
+
+So the family law d = 6(2r + b − 1) = [cylinder floor at b = 1] /
+[toroidal floor at b = 0], and the b-bit's entire job is to forbid
+the wrap discount — the spectral face of A40 §11's
+boundary-coupling wall.  The division of labor is now clean: this
+lane owns the cylinder half (stabilized H + cost scaling); the
+toroidal half is the wall/momentum program (A40), with the
+(12,12)-style gap-free minima as its witnesses.
+
 ### §2.3 S1 remaining plan
 
 1. Theorem A write-up (done in substance: §2.1 + the machine checks;
