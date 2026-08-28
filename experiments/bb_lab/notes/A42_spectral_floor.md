@@ -495,6 +495,27 @@ floor architecture now reads:
 Both open lemmas are quantitative-combinatorial, not structural —
 the structural half (classes, costs, scaling) is done.
 
+### §2.2.6 The class-weight profile (S1g): the complete cost law
+### (`a42_s1_classprofile.py`, `s1_classprofile.json`)
+
+Min realization weight PER nonzero H-class (63 classes), by the
+h-DP, same σ-scope:
+
+> p = 6:  {12: 45 classes, 14: 12, 18: 6}
+> p = 12: {24: 45 classes, 28: 12, 36: 6}
+
+The strata counts (45, 12, 6) are IDENTICAL (Theorem H's fixed
+inventory) and the weights are exactly **{2p, 7p/3, 3p}** at both
+periods — the closed-form class-weight law candidate for all
+p = 3·2^a, a ≥ 1.  Cross-check: the atlas's p = 6 nontrivial
+spectrum {12: 66, 14: 444} confirms the 7p/3-stratum's objects at
+14.  The heavy 6-class stratum at 3p and the 12-class stratum at
+7p/3 are the levers Stage 2's member assembly can pull: a member
+whose logical classes are forced into a heavy stratum floors ABOVE
+2p — a candidate spectral mechanism for the b-bit.  (Which H-coords
+each stratum occupies — transverse vs tangency-tower — is the
+first question of the next session.)
+
 ### §2.3 S1 remaining plan
 
 1. Theorem A + Theorem H write-ups (substance done; polish owed —
