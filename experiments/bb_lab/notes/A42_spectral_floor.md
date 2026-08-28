@@ -23,6 +23,29 @@ Artin–Schreier quadratic extensions, the variety enumeration, the
 local-multiplicity engine, the frame k-formula), consumed by staged
 scripts `a42_s*.py`; data in `data/a42/`.
 
+**State of the lane (2026-08-28, session 2 — read §2.4–§2.8 first;
+two session-1 items corrected there):**
+- The b = 1 WINDOWED-BRANCH THEOREM is assembled (§2.8): windowed
+  member logicals floor at 12r via floor_cyl(6r); r = 1
+  unconditional, r = 2 certificate to the jet level (+24 modulo the
+  L-band corner), general r modulo (L-pure, L-band).  The b = 1
+  problem reduces to the toroidal sector (handed to A40).
+- S1h's residue register PROVEN blind at a >= 1 (ker = ker(pi);
+  identically zero at a = 2): the S1h p = 12 "floor > 11 racer
+  certificate" RETRACTED to solver tier; floor(9) (a = 0)
+  re-certified.  Repair SHIPPED: the two-branch full-depth jet
+  engine, jointly class-complete, ground-truth-validated on all
+  315 atlas cycles (§2.5, §2.5b).
+- The named 11+11 sandwich FALSIFIED as a certificate (block
+  double-pay with witnesses; the sound variant's frontier shell is
+  2^{2p+1} at cost 0) — §2.4.1.
+- New machine checks: Theorem A at p = 10, 11, 13, 14; Theorem H
+  inventory at p = 15 (dim 4) and p = 18 (dim 6 — the r = 3 member
+  period); parity columns = 3 at all six (§2.6).
+- L-band pure half at s >= p CLOSED (cost-1 rigidity + pure >= 2);
+  the beta-lemma (barren-only columns cost >= 3 at m = 1) pinned
+  (§2.7).
+
 **State of the lane (2026-08-28, session 1):**
 - V(A,B) exact: T (transverse) ⊕ G (tangency, mult 2) F₄ orbits +
   W (F₁₂₈, ord 127); spectral k-formula validated on 272 frames +
@@ -587,7 +610,10 @@ checkpoints banked):
   had independently reached floor > 15).
 - p = 12: floor = 24 exactly at certificate tier over the ≤ 7-slot
   ω-scope (h-DP, 99,399 σ); unrestricted: racer level 11 complete
-  (all returns trivial) ⟹ floor > 11 certificate; SAT ⟹ floor ≥ 14
+  (all returns trivial) ⟹ floor > 11 certificate [S2 CORRECTION:
+  the racer's classifier is provably vacuous at a = 2 — this
+  sub-claim is retracted to solver tier; see §2.5, ledger §3.7; the
+  jet engine's runs supersede it]; SAT ⟹ floor ≥ 14
   solver-tier; UB 24 realized.  The racer's p = 12 wall is TIME
   (×2.7/level ⟹ cap 22 ≈ days) plus an identified memory bug-let
   (bucket insertions un-deduped across inputs — fix known); the
@@ -603,12 +629,249 @@ Remaining:
    reach; the 127-line margin rides the same assembly.
 3. The sandwich racer (closes p = 12 and plausibly p = 15, 18, 24 —
    the whole small-period ladder at unrestricted certificate tier).
+   [S2: FALSIFIED-as-named and retired — §2.4.1, ledger §3.6; the
+   jet engine (§2.5b) is the successor instrument.]
 4. The B12 row (d((ℓ,12)) = 24 ∀ 6 | ℓ ≥ 93, toroidal exception at
    (12,12)); then the (ℓ, 6r)-row ladder toward the b = 1 column.
 5. Decode the heavy strata's H-coordinates fully (transverse vs
    im(π) identification at p = 12; Stage-2 lever).
 
 ---
+
+## §2.4 SESSION 2 (2026-08-28): the sandwich autopsy, the register
+## audit, the jet repair, and the windowed-branch assembly
+
+Scope: the named p = 12 closer (§2.3 item 3) is dissected and
+FALSIFIED as a complete certificate; a deeper audit then finds a
+soundness gap in the S1h register itself at 2-adic depth a >= 1,
+retracting one banked p = 12 sub-claim; the repaired (class-complete)
+jet engine is built, validated on ground truth, and run; new-period
+fills machine-check Theorems A and H; L-pure/L-band are sharpened
+with one new closed piece; the b = 1 windowed-branch theorem is
+assembled with exact conditionality.  All data in `data/a42/s2_*`;
+scripts `a42_s2_{sandwich,racer_deep,fills,registers,jet_racer}.py`.
+
+### §2.4.1 The sandwich, falsified-as-named (s2_sandwich_analysis)
+
+Ground work, all asserted mechanically: the REVERSED automaton is the
+same generic Automaton class on the x -> x^-1 pair (derived shape
+(nf, no, forced_blk, adv_f, adv_o, top_j) = (2, 3, 0, 1, 0, 3));
+every atlas cycle at p in {3, 6} (354 cycles) replays through BOTH
+directions — fwd consumes v1-columns left-to-right, bwd consumes
+v2-columns right-to-left, each march emitting the other block's
+columns exactly and returning to zero at accumulated cost = weight —
+with the per-cut state contents and the cost formulas
+P_F(g) = |v1[<=g]| + |v2[<=g+2]|, Q_B(g) = |v1[>=g-1]| + |v2[>=g]|
+asserted at every cut of every cycle.
+
+The join trilemma (the reason "11 + 11 = 22" cannot certify):
+1. BOTH-STANDARD marches double-pay the shared 5-column block:
+   P_F(g) + Q_B(g) = w + s(g) at EVERY cut (identity, verified).  A
+   (11, 11)-join therefore reaches only cycles with a cut where
+   s(g) <= 22 - w.  Witnesses: ALL 66 nontrivial weight-12 cycles at
+   p = 6 have min_g max(P_F, Q_B) in [10, 12] — excess over w/2 up
+   to +6; a (6, 6)-join finds NONE of them.  Minimal nontrivial
+   cycles are block-dense (min interior s >= 2, most cuts heavy).
+2. EXACT-PARTITION pairing (bwd charged on exit): P_F + Bx = w with
+   Bx = Q_B - s; the max-cut argument is airtight (the F-jump columns
+   lie in the shared block, so Bx(g*) <= Wcap - CF - 1: caps
+   (11, 10) cover all w <= 22), and measured balance on real cycles
+   is fine (min-max <= w/2 + 2) — but the exit-charged frontier
+   contains the FREE-SUFFIX SHELL: states reachable at exclusive
+   cost 0 = 2^{2p+1} exactly (measured complete: 128 / 512 / 2048 at
+   p = 3 / 4 / 5; the recent two v2-inputs ride unpaid and the
+   third is confined to ker(1 + Y^{-1}), dim 1).  At p = 12 that is
+   2^25 = 33.5M states at cost ZERO, before any level growth — the
+   deep side is unenumerable.
+3. Every mixed charging scheme interpolates between 1 and 2: the
+   heavy-jump mass sits in the 5-column seam and must be paid by a
+   side (coverage hole) or by nobody (frontier explosion).  The seam
+   is the automaton's memory depth — irreducible for exactness.
+
+Verdict: §2.3 item 3 RETIRED (ledger §3.6).  What survives of the
+two-sided idea: nothing needed — the deep standard racer plus the
+class-register repair below supersedes it.
+
+### §2.5 The register audit: S1h's classifier is blind at a >= 1
+### (s2_registers.json; the decisive session-2 finding)
+
+The S1h racer's nontriviality functional R_A = the pair of RESIDUE
+evaluations of the input-block omega-content at the two x-points of
+the residue gcd (y -> omega kills pi).  Exact computation of R_A on
+the OmegaWindow class space (invariance under trivial syzygies
+asserted mechanically; class reps for all 63 labels):
+
+- a = 0 (p = 9 scale): ker R_A = 0, both blocks.  The residue
+  register is COMPLETE at a = 0 — **floor(9) = 18 STANDS as
+  banked** (re-certified end-to-end by the new engine below).
+- a = 1 (p = 6): **ker R_A = ker(pi) — 15 of 63 classes — with
+  h-DP min weight 12 = the floor itself.**  The racer misses
+  floor-weight classes; the S1h p = 6 control passed only because
+  R_A-visible classes also realize 12 (the control conclusion stands
+  on the atlas census, not on the register).
+- a = 2 (p = 12): **R_A = 0 on ALL 63 classes** — and so is any
+  functional factoring through content mod pi^2 (including the
+  first-draft jet): the Tor-representative of a pi-torsion class of
+  order pi^nu is pi^{2^a - nu}-divisible, so at a = 2 every class
+  rep is pi^2-divisible and every mod-pi^2 evaluation dies.
+  Consequence: S1h's "p = 12 racer level 11, all returns trivial =>
+  floor > 11 (certificate)" claimed a classifier that was provably
+  vacuous — RETRACTED to solver tier (the independent SAT probe's
+  floor >= 14 is unaffected; the h-DP <= 7-slot floor 24 is
+  unaffected).  Ledger §3.7.
+
+### §2.5b The jet repair: full-depth branch registers, class-complete
+### in two runs (s2_registers.json; engine a42_s2_jet_racer.py)
+
+Theory, then machine verification:
+
+- Over Lambda_a the v1-block boundary multiplier Pbar_omega =
+  1 + ybar^{-1} + x^{-3} ybar has exactly 3 unit roots (Teichmueller
+  cube roots x 3rd-root rigidity); the two with residue != 1 are the
+  usable branch points x*_T, x*_V (residues omega, omega^2).  The
+  FULL-DEPTH register R = sum_c x*^{+c} ev(v1_c) in Lambda_a kills
+  boundaries exactly (x* is an exact Lambda_a-root) — the +c
+  convention is forced: the -c convention evaluates at x*^{-1},
+  which is a root on the OTHER branch, and loses one block's
+  invariance (found mechanically; a first-draft R_B failed its
+  assert exactly there).  Explicit constants at a = 2: Teichmueller
+  zeta = y + pi + pi^2, (1+pi)^{1/3} = 1 + pi + pi^2 + pi^3, both
+  verified to full depth in the engine's init asserts.
+- The tangency is visible as arithmetic: the two curves share their
+  branch point mod pi^2 exactly at the tangent branch (computed:
+  both deformed roots have t = 1 there) and separate at the
+  transverse branch — this is why residue registers exist at all,
+  and why full depth is needed beyond it.
+- Kernels on H (exact, both a): ker R(x*_tangent) = the 3
+  transverse classes (min weight 3p: 18 / 36 at p = 6 / 12);
+  ker R(x*_transverse) = 15 classes (min weight 14 / 28);
+  **joint kernel = 0 at a = 1 AND a = 2: two runs — one register
+  per branch — detect every nonzero class.**  Any two invariant
+  x*-twisted evaluations of the same block at the same branch
+  differ by a unit, so the engine's registers have these kernels.
+
+Engine: the S2b deep core (insertion-time dedup — the S1h "memory
+bug-let" fixed: 4 GB of duplicate bucket flow at p = 12 level 11
+collapses to ~0.5 GB; level 16 in 343 s vs level 11 in 151 s for
+S1h), states uint64 (5p bits), register a parallel uint8
+(dim Lambda_a <= 8), 9-byte void keys for dedup/membership,
+y-rotation canon with register co-rotation by ybar^s (commutation
+asserted), RSS-capped clean aborts, one branch per process.
+
+Validation stack (all green, `jet_racer.py controls`):
+- p=3 union-min nontrivial 6; p=6 union-min 12 (branch minima each).
+- p=9 both branches to level 16: no nonzero-register return —
+  floor(9) = 18 re-certified by the new engine.
+- **GROUND TRUTH: all 315 atlas cycles at p = 6 (66 nontrivial)
+  satisfy [embed-nontrivial <=> some branch register nonzero],
+  every single cycle** (engine-exact scalar replay).
+- 60 random explicit p = 12 boundaries (Pbar t, Qbar t) replay to
+  register 0 in both branches (a = 2 engine-exact invariance).
+- The p = 12 runs' per-level state counts and return spectra match
+  the register-free deep run (s2_racer12_deep) level by level.
+
+Production (p = 12, both branches, cap 18, RSS-capped):
+**see s2_jet12_{T,V}.json** — result recorded in §2.6.
+
+### §2.6 The compact-floor table after session 2
+
+| p | floor / H | tier | mechanism |
+|---|---|---|---|
+| 3 | 6 = 2p | certificate | atlas + DP + jet controls |
+| 5, 7 | H = 0 | theorem + machine | Theorem A; window LA |
+| 6 | 12 = 2p | certificate | atlas census + DP (s<=7) + jet |
+| 9 | 18 = 2p | **certificate (re-certified)** | jet engine both branches, a=0-complete register + parity + UB |
+| 10, 11, 13, 14 | H = 0 | theorem + machine (NEW) | Theorem A; dim Z_W = dim B_W at W in {6,9,12}; parity columns = 3 |
+| 12 | >= JET+2 unrestricted, ALL classes; = 24 over omega-support <= 7 slots; UB 24 | certificate (scoped) | jet two-branch runs + parity; h-DP; pure lift |
+| 15 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=5) | window LA; UB 30 = 2p via m-scaling |
+| 18 | dim H = 6 (NEW check) | Theorem H corroborated (a=1, m=3) | window LA; UB 36 = 2p; the r = 3 member period |
+
+(JET = the joint completed level of the two p = 12 jet runs; with
+parity the unrestricted all-class floor is JET + 2 when JET is even.
+The register-free deep run independently enumerated returns
+{6, 10, 12, 14, 16} through level 16 — all even, parity-consistent.)
+
+### §2.7 L-pure / L-band after session 2: statements, one new closed
+### piece, and the honest obstruction
+
+Fix p = 3m 2^a (3 | p, 127 coprime for now), the CRT frame of §2.2.
+Every compact cycle is (sigma, h) with sigma a class-nontrivial
+omega-syzygy (slots = columns with nonzero omega-content) and h the
+free barren parameter; wt = sum_cols tab[(z'(h), lambda(sigma))].
+
+Machine-pinned cost facts (s1_jointdp tables, re-verified):
+- **beta-lemma (m = 1)**: every column with zero omega-content and
+  nonzero barren content has weight >= 3 (a weight-2 such column
+  needs (y^2+y+1)^{2^a} | y^d + 1, i.e. 3*2^a | d < p — impossible
+  at m = 1; at m > 1 the bound drops to 2 and is realized).
+- **cost-1 rigidity**: free(lambda) = 1 exactly on the p monomial
+  contents lambda = y^j; every weight-1 column carries a NONZERO
+  barren monomial content as well.  Hence: an h = 0 (pure) cycle
+  has NO cost-1 slots — every slot costs pure(lambda) >= 2.
+- pure(lambda) >= 2 for every lambda (nonzero multiples of the
+  barren cofactor are never monomials).
+
+L-pure (unchanged statement): over sigma with <= S0 slots, no h
+beats the pure lift; certificate-true at (m = 1, a <= 2, S0 = 7)
+by DP exhaustion (55,287 / 99,399 sigma at p = 6 / 12).  ForAll-a:
+open; the deformation cascade (§2.2.2) remains the named route.
+
+L-band (slots s in [8, 2p-1]) — session-2 split:
+- **[NEW, closed] pure half at s >= p**: an h = 0 cycle with s
+  slots costs >= 2s >= 2p.  QED by cost-1 rigidity + pure >= 2.
+- pure half at s in [8, p-1]: open; DP-enumerable per p in
+  principle (needs smax = p - 1; the sigma-pattern count at
+  smax >= 8 with gap <= 4 spans is the wall).
+- mixed half (h != 0): open.  Session-2 structure: cost-1 slots
+  force h != 0 with MATCHED monomial barren content at the slot;
+  the barren pair (B'h, A'h) of any h != 0 has forced nonzero
+  columns at its run edges (f at c0 and c*+2 always, g at c*+3
+  always, g at c0 unless h_{c0} is socle) — each costing >= 3
+  (beta) when outside the slot pattern.  The taxes are O(1) per
+  h-run; the missing piece is a mechanism converting slot-count +
+  h-support into the 2p scaling.  The obstruction, precisely: h may
+  hide its entire barren support inside a wide slot pattern (the
+  linear system (B'h)|_complement = 0 has solutions for s >= ~8),
+  so per-slot accounting alone cannot exceed s + O(1).
+
+Corollary of the split: for the p = 12 target, the open corner
+after the jet runs is exactly [weight in {JET+2..22} even] x
+[s in [8, 23]] x [any h]; the h-DP covers s <= 7 at 24, the pure
+band covers h = 0, s >= 12 at >= 24.
+
+### §2.8 THE WINDOWED-BRANCH THEOREM (b = 1 column), with exact
+### conditionality — the session-2 assembly
+
+**Theorem W (b = 1 windowed branch).**  Let r >= 1, C_r the member
+on Z_{6r+6} x Z_{6r} (b = 1), m = 6r.  Let v be a nontrivial
+X-logical of C_r whose support has some cyclic x-gap >= 4 (the
+windowed branch of Lemma K).  Then wt(v) >= floor_cyl(m), the
+period-m compact-cylinder floor.  Consequently:
+- **r = 1: wt(v) >= 12 = 12r, UNCONDITIONAL** (floor_cyl(6) = 12,
+  certificate).
+- **r = 2: wt(v) >= JET + 2 unconditional at certificate tier**
+  (the two-branch jet runs; >= 16 already banked from level 14 =
+  the first even level both branches passed); **wt(v) >= 24 = 12r
+  under the L-band corner** ([{JET+2..22} even] x [s >= 8] only —
+  the h-DP settles s <= 7 at 24, UB realized).
+- **general r: wt(v) >= 12r = 2m under (L-pure + L-band at p = m)**
+  — plus, when 127 | r, the same two lemmas at the 127-factor (the
+  W-line skyscraper joins H(m) by Theorem H's uniform form; its
+  conjectured margin is >= 2m + the 2/127-margin of §2.2.3b).
+Proof: the Lemma-K unroll (an x-gap >= 4 logical lifts x-compactly
+to the period-m cylinder at the same weight, cylinder-nontrivial
+since trivializers reduce — banked, standard) + floor_cyl(m).  QED
+
+**Reduction handed to the A40 lane:** with Lemma K, the b = 1
+lower-bound problem is now EXACTLY: (i) the cylinder floor
+floor_cyl(6r) = 12r (this lane; conditional as above, r <= 2
+effectively closed), plus (ii) the doubly-spanning (toroidal,
+gap-free-both-axes) sector — where the conjectured b-bit mechanism
+is that the b = 1 twist forbids the two-gross wrap discount (A40
+§11's boundary-coupling wall).  Any b = 1 member counterexample to
+d = 12r must be toroidal.  The measured two-gross minima (12/12
+gap-free, §2.2) are the b = 0 witnesses that the toroidal sector is
+where the -6 discount lives.
 
 ## §3 Falsified / corrected (running ledger)
 
@@ -624,19 +887,47 @@ Remaining:
    refinement and the b = 1 blocking arithmetic.
 5. (cross-lane, conservative direction) 10 banked A40 triage rows
    are frozenset-collision phantoms (§1.5).
+6. (S2) The named meet-in-the-middle sandwich ("fwd 11 + bwd 11,
+   join on states") is NOT a complete certificate: both-standard
+   joins double-pay the 5-column block (all 66 nontrivial w = 12
+   cycles at p = 6 have min-max balance >= 10 > 6 — witnesses), and
+   the coverage-complete exact-partition variant has a 2^{2p+1}
+   zero-cost frontier shell (measured exactly at p <= 5).  §2.4.1;
+   `s2_sandwich_analysis.json`.
+7. (S2, retraction) The S1h racer's residue register is blind to
+   ker(pi) on H at depth a >= 1 (15/63 classes at a = 1, including
+   floor-weight classes; identically zero on ALL classes at a = 2 —
+   Tor-reps are pi^2-divisible).  S1h's "p = 12 racer floor > 11
+   (certificate)" is RETRACTED to solver tier (SAT >= 14 stands;
+   h-DP scoped 24 stands; floor(9) at a = 0 is UNAFFECTED — kernel
+   empty, machine-checked, and re-certified by the jet engine).
+   Repair: the two-branch full-depth jet registers, jointly
+   class-complete (§2.5, §2.5b; `s2_registers.json`).
 
 ## §4 Residue / next
 
 1. Independent verification of k = 26 at (762,762) by a second
    method; engage 2503.04699's gcd-law as the cross-check
    (k(762,762) = k(gcd, gcd) consistency).
-2. §2.3 items 2-4 (purity lemma; probes; p = 15).
-3. Stage 2 (members): the 2-D ω-bi-block structure on tori; the
+2. L-pure forall-a (deformation cascade) and the L-band mixed half
+   (§2.7's obstruction paragraph is the target statement); the
+   pure-half window s in [8, p-1] via a smarter sigma enumeration.
+3. The p = 12 jet runs' remaining corner: weights {JET+2..22} x
+   s >= 8 (h-DP owns s <= 7).  Deeper jet levels (each +2 closes
+   one even weight) or the L-band lemma close floor(12) = 24.
+4. Stage 2 (members): the 2-D omega-bi-block structure on tori; the
    tangency direction vs the member lattice (the b-bit); gates
-   d((18,12)) = 24, d((12,12)) = 18 (= two-gross), d((18,6)) = 12.
-4. The W7 chirality weight question, now spectrally posed: why does
-   the TANGENT F₄ class carry weight 8 at (ℓ,7,ℓ−2) while the
-   transverse class floors ≥ 14 — the local-multiplicity-2
+   d((18,12)) = 24, d((12,12)) = 18 (= two-gross), d((18,6)) = 12;
+   the toroidal-sector reduction of §2.8 is the interface to A40.
+5. The W7 chirality weight question, now spectrally posed: why does
+   the TANGENT F4 class carry weight 8 at (l,7,l-2) while the
+   transverse class floors >= 14 — the local-multiplicity-2
    structure as weight-softener (Stage 2 mechanism candidate).
-5. Lean targets: the unimodular lemma + Theorem A (decide-shaped);
-   the variety table as kernel certificates.
+6. Lean targets: the unimodular lemma + Theorem A (decide-shaped);
+   the variety table as kernel certificates; NEW: the register
+   soundness pair (invariance + joint-kernel emptiness) is
+   finite-linear-algebra shaped — a natural KernelCert candidate.
+7. The twisted-lattice extension of Theorem H (TC63 at <(3,6)>):
+   does Tor-purity cover twisted cylinders?  (Untouched in S2.)
+8. A40 §1 family-sourcing re-verification (flagged in §1.3):
+   still owed by the A40 lane.
