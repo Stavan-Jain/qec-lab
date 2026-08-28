@@ -1,0 +1,33 @@
+{
+ "params": {
+  "u": 1,
+  "m": 24,
+  "ell": 18,
+  "nHmax": 2,
+  "whcap": 19,
+  "gcap": 42,
+  "smax": 3,
+  "dil": 4,
+  "extent_cap": 14,
+  "dcap": 20,
+  "exact_dlt": true,
+  "seeds": [
+   0,
+   8
+  ]
+ },
+ "info": {
+  "n_seeds": 8,
+  "pushed": 8291380,
+  "popped": 8291388,
+  "trunc_g": true,
+  "trunc_extent": 7359467,
+  "trunc_dcap": 329,
+  "aborts": [],
+  "closed": 0,
+  "layer_peak": 1301923,
+  "wall_s": 684.8
+ },
+ "closed": [],
+ "verified": []
+}

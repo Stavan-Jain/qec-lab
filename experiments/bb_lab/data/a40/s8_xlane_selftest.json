@@ -1,0 +1,12 @@
+{
+ "footprint": {
+  "x_span": 4,
+  "y_span": 4
+ },
+ "additivity": {
+  "d1": -30,
+  "d2": -6,
+  "dall": -36
+ },
+ "wall_s": 0.9
+}

@@ -2178,3 +2178,239 @@ wrapped corner remains a listed condition.
    once the layered-march soundness contract (complete-below-cap,
    anchor-keyed dominance) is stated; the L12 closure control is
    the natural first mechanized witness.
+
+## §13 SESSION 8 (2026-08-28) — the x-sector mirror: d_X(24,18) >= 11
+## and the first double-digit OVERALL member floor, d(24,18) >= 11
+
+Directive: instantiate the S6/S7 transfer machinery on the
+theta'-image pair (B, Abar) and lift the OVERALL (24,18) floor past
+min(11, 6); then attack the heavy-slip weight bound.  What happened:
+the mirror turned out to be STRUCTURALLY CLEANER than the y-lane —
+the sector definition itself removes the wrapped corner, the winding
+branch, and the drift-mod-ell subtlety, and the walk's 24-slab
+telescope makes every stratum except (u = 1, n_H <= 2) die by
+COUNTING at the target — so the whole x-sector floor reduces to
+per-seed closed marches that run in minutes.  Result:
+**d_X(24,18) >= 11 (T1-mirror, scope-listed), hence
+d(24,18) >= min(d_Y, d_X) >= 11 — the first double-digit
+unconditional floor for a tour-de-gross member at (r,b) = (3,1)**
+([[864,12]]; the conjectured value is 36).  Engines
+`a40_s8_xlane.py` (mirror system + envelope-keyed closed march +
+replay verifier), `a40_s8_slip.py` (Stage 2); data `data/a40/s8_*`;
+`validate_banked` green before every stage.
+
+### §13.1 The mirror reduction (exact; the sector is the theorem)
+
+theta': (x, y) -> (y^-1, x) is a ring automorphism of
+F2[x^pm, y^pm] with (A o theta', B o theta') = (B, Abar): the AB
+code on Z_l x Z_m is isomorphic to the BAbar code on Z_m x Z_l
+(support map (a, b) -> (b, -a), blocks preserved, weights, cycles,
+stabilizers, and classes preserved — control-verified end to end).
+Lemma K transports (regularity of (A, B) maps through the
+automorphism), so a nontrivial X-logical of AB-(24,18) with a
+cyclic y-gap >= 4 (the x-sector = the complement of the S6/S7
+y-sector) has no x-gap >= 4, and its theta' image is a y-walk
+object of BAbar-(18,24) with:
+
+- all 24 walk slabs NONEMPTY (the telescope 4|v| = sum of 24 slab
+  weights, cyclic);
+- content on an x-INTERVAL of extent <= 18 - 4 = 14 — the y-gap
+  cuts the content circle, so the interval embedding is the
+  canonical cover lift, there is NO wrapped corner, NO winding
+  branch, and closure demands total anchor drift == 0 EXACTLY
+  (|dlt| <= extent - 1 <= 13 < 18 makes mod-18 closure literally
+  equal to exact closure).  The three scope conditions the y-lane
+  carries for these phenomena are THEOREMS at the mirror.
+
+The mirror recurrence (derived generically from the supports and
+machine-checked against the bit kernel): X-cycles of (B, Abar)
+satisfy A u1 + Bbar u2 = 0, i.e.
+
+  E'_t: u1[t] + u1[t-1] + x^3 u1[t+1] + (1+x^-1) u2[t]
+        + x u2[t-3] = 0
+
+— monic in u1[t+1] up to the unit x^3 (block 1 forced forward at
+offset -3, block-2 rows free: §9.1's mirrored convolutional
+structure).  Footprint spans (4,4) (connectivity lemma verbatim);
+the mirror tooth is (Bbar, A): blk1 (0,0),(-1,0),(1,3); blk2
+(0,0),(0,1),(3,-1); the H = 5 window rule is the same local
+reduction.  Forced-row reach: supp(u1[t+1]) sits within [-4, -2]
+of the window's columns (y-lane: [-3, +1]) — machine-derived.
+
+### §13.2 The counting collapse (why the mirror is cheap)
+
+For the (24,18) member the walk is 24 slabs of content width <= 14
+(vs the y-lane's 18 slabs of width <= 34 + wrapped corner).  With
+every slab >= 1 and heavy slabs >= 8 (n_H = # heavy slabs):
+4|v| >= 24 + 7 n_H, and min-slab u >= 2 gives 4|v| >= 48.  At
+target floor 11: only u = 1, n_H <= 2, per-heavy W <= 19 survives
+(u >= 2 -> 12; n_H >= 3 -> 12; any heavy W >= 20 -> 11); at target
+12 only u = 1, n_H <= 3, W <= 23 survives.  The infinite tail of
+strata the y-lane had to march is counting-dead at the mirror.
+
+### §13.3 The engine and its verification chain
+
+`MClosedMarch`: per-seed layered closed march (S7 semantics: full
+last-4-rows window state — alias-free anchors; completion prune;
+RSS <= 2 GB and frontier <= 3M ops guards in code; per-slab class
+light [u,7] / heavy [8, whcap] with an n_H counter instead of a
+block phase machine, so adjacent AND separated blocks are one
+lane).  Two mirror-specific soundness points, both new:
+
+- **the envelope (xlo, xhi) is part of the dominance key**: the
+  extent cap is the SECTOR DEFINITION here, so merging paths with
+  different envelopes under a binding extent test would
+  under-enumerate (kept-wide representative dies at the cap where
+  a discarded-narrow path would have closed).  The y-lane could
+  afford envelope-blind dominance because extent-34 was a listed
+  scope, not a claim boundary.
+- **trunc_dcap is benign by a width argument**: dlt is the anchor
+  offset from the seed in a common frame, so |dlt| <= envelope
+  width - 1; any candidate with |dlt| > 20 has width >= 22 > 14
+  and is extent-doomed regardless of check order (R0 counted 329
+  such candidates; extent prunes are the sector theorem working,
+  7.4M in R0).
+
+Verification chain (all green, `s8_xlane_selftest.json`,
+`s8_xlane_control.json`):
+
+- selftest: the recurrence terms, unique pivot, and (4,4) footprint
+  re-derived from the pair supports; the forced-row bit kernel ==
+  the generic set solve on 2000 random states; **400 random forced
+  walks re-verified admissible through the independent
+  MirrorFragment (generic E')**; drift additivity telescope; pinch
+  row-covering (pair-free, L <= 3).
+- **L12' control**: the BAbar p = 6 straight atlas has its own
+  66-member weight-12 family (the theta' twin of L12, banked S4
+  data).  Lifted: profile [7,8,9,7,8,9], extent 3, drift 0.  The
+  closed march seeded at its own minimum window detects EXACTLY
+  its closure at exact cost g = 55 = sum(profile) + u, dlt = 0,
+  n_H = 4; the parent-tracked replay reconstructs the object, the
+  MirrorFragment re-verifies every E', and the torus embedding
+  certifies it nontrivial on BAbar-(24,6) AND its theta' image
+  nontrivial on AB-(6,24) — the reduction validated end to end.
+- **TC63' control (the mirrored species, §10.4's demand)**: the
+  twisted-atlas transform for the BAbar <(3,6)> class regenerates
+  the w10 species; its mirror cover lift is admissible with
+  gauge-free anchor drift **+3 per 6 rows**, slabs [9,8,5,6,6,6],
+  deficit 2/period, re-verified nontrivial on the sheared (42,6,3)
+  torus — the mirror drift instrument measures the known mirrored
+  species correctly.
+- **(18,12) coherence via its x-sector**: the mirror march at
+  BAbar-(12,18) (content interval <= 8), u = 1, n_H <= 2,
+  W <= 19, g <= 48: **zero closures** (4 of 8 seeds exhaust
+  outright; 120 s) — no contradiction with the certified
+  d((18,12)) = 24, and the marched branches are empty far below
+  the certificate's weight.
+- **the b = 0 witness**: the a36 (12,12) witness occupies 4/12
+  y-rows with max cyclic y-gap 2 <= 3: it is a Y-SECTOR object —
+  the mirror scope excludes nothing about it and needs no wrapped
+  admitted term (its -6 stays charged to the y-side scope, §11.6
+  control (c) unchanged).
+- **member protection, mirrored**: TC63' needs 6 | 24 (yes) and
+  (24/6)*3 = 12 == 0 mod 18 (no) to wrap the member's mirror walk
+  — and in-sector winding is impossible, so the only sub-rate-2
+  species of the mirror alphabet at p <= 8 (the twisted atlas is
+  a both-lanes census) cannot appear.  No species input is
+  CONSUMED by the floors (they are enumerative + counting), so
+  the open W7-analog question for the BAbar lane is not a scope
+  condition — listed residue.
+
+### §13.4 The floors: d_X(24,18) >= 11, OVERALL d(24,18) >= 11
+
+Production run R0 (`s8_prod2418_u1_nh2_g42_s0_8.json`): u = 1,
+n_H <= 2, whcap 19, gcap 42, extent <= 14, smax 3 / dil 4, all 8
+seeds, per-seed trees EXHAUST by h ~ 7 (largest layer 1.30M), no
+aborts, 685 s, peak RSS 786 MB (in-budget): **ZERO closures**.
+Branch table for a class-minimal nontrivial x-sector logical:
+
+| branch | source | floor |
+|---|---|---|
+| u >= 2 | counting (2/slab x 24) | >= 12 |
+| u = 1, n_H >= 3 | counting (24 + 21)/4 | >= 12 |
+| u = 1, n_H <= 2, some W >= 20 | counting (43/4) | >= 11 |
+| u = 1, n_H <= 2, W <= 19 | R0 march empty g <= 42 | >= 11 |
+
+**T1-mirror (certificate-shaped, scope-listed):
+d_X(24,18) >= 11.**  Scope: smax-3 / dil-4 prefix-connected input
+placement (the growth scope, same discipline as S7) — and NOTHING
+ELSE: no wrapped corner, no winding branch, no boundary
+relaxation, no loose join, no conjectural tier.  Combined with S7:
+
+> **d(24,18) >= min(d_Y, d_X) >= 11** — [[864,12, >= 11]]
+> unconditional (X side; Z side by transpose duality as in §3.2),
+> up from 6.  The first double-digit member floor at (3,1), and
+> the sector split is now two-sided instrumented: 11 (y, S7
+> boundary-coupled) vs 11 (x, S8 counting + march).
+
+The floor-12 x-push (gcap 46, n_H <= 3, W <= 23) FAILED
+operationally: seeds 0-1 hit the 3M frontier guard at h = 4 (the
++4 budget fattens the shared light prefix; RSS guard held at
+1.5 GB).  Honest state: 6/8 seeds complete-and-empty at g <= 46;
+the claim stays 11 until the two fat seeds are closed (chunked
+h=2-layer splitting is the priced route; the OVERALL floor would
+stay 11 regardless because the y-sector binds).
+
+### §13.5 Stage 2 — the heavy-slip bound (caps proven; census built)
+
+- **Per-step anchor caps (LEMMA, machine-derived constants,
+  scope dil-D growth)**: every new cell (forced or input) sits
+  within [min(window) - max(D, F_left), max(window) + max(D,
+  F_right)] where the forced-row reaches are y-lane [-3, +1] and
+  mirror [-4, -2] (derived from the supports; verified on 6000
+  random states).  With D = 4: **A_{j+1} >= A_j - 4 (min gauge)
+  and Amax_{j+1} <= Amax_j + 4 (max gauge), per step, both
+  lanes.**  The caps are ONE-SIDED PER GAUGE: a min-anchor RIGHT
+  jump is a strand death, bounded by the slab span, and no local
+  footprint constant bounds it by local weight — the two-gauge
+  closure bookkeeping (both telescopes vanish on closed walks) is
+  the assembly route that survives this asymmetry.
+- **The exhaustive slip census** (`a40_s8_slip.py census`): the S7
+  link march with the heavy-entry drift IN the dominance key from
+  HEAVY onward, so tab_slip[(L, gH, slip)] is complete below cap
+  (the S7 instrumentation was representative-only and its banked
+  tables carried empty slip dicts); regression = banked byseed
+  tables reproduced exactly.  [Results below.]
+
+### §13.6 Falsified claims and incidents (session 8)
+
+- **The floor-12 mirror run as parametrized is RED** (two seeds >
+  3M frontier at h = 4) — banked as partial, no claim made.
+- Session-internal: the first Control-B seed-window indexing used
+  the subfragment slab offset off by 3 (caught by the exact-cost
+  closure assertion before any bank); the module initially
+  computed the tooth's blk2 support twice through a redundant
+  double-bar expression (cleaned, no numeric effect).
+- (Respected: witness weights as upper bounds; RED/AMBER/GREEN
+  cost verdicts before every big run — the coherence and R0 runs
+  were priced by the (18,12) pilot; sequential runs only, 2 GB
+  RSS + 3M frontier guards IN CODE, no /tmp, no SAT anywhere;
+  every consumed vector re-verified end to end; nothing
+  re-proposed from §9.8/§10.8/§11.7/§12.9.)
+
+### §13.7 Residue / S9
+
+1. **Mirror stability battery** (smax 4 / dil 6 re-runs of R0 at
+   production or reduced caps) — queued this session, results to
+   be appended; the S7 precedent says non-binding.
+2. **The floor-12 x-push**: chunk the h = 2 layer of the two fat
+   seeds (sound: cross-chunk dominance is only an optimization);
+   with it, d_X >= 12 needs only the banked counting.
+3. **The all-light exhaustion probe** (n_H = 0, gcap effectively
+   unbounded): does the mirror all-light stratum exhaust CAP-FREE
+   like the y-lane's (§12.4)?  Cheap, bankable as a mirrored
+   structural fact.
+4. **Stage-2 verdict**: run the census at g <= 24/26, test
+   |slip| <= c gH + c0 on it, then settle the strong local lemma
+   (the two-strand ghost-carrier adversary — a cheap left
+   excursion dying INTO the block — is the named refutation
+   candidate; the salvage is the two-gauge closure form).
+5. **The W7-analog question for the BAbar lane** (does a winding
+   constant-weight species exist in the mirror alphabet beyond
+   the twist-compact census?) — irrelevant to the banked floors,
+   relevant to the mirror's momentum-budget narrative.
+6. Lean: the theta' reduction is a monomial-substitution
+   isomorphism (formalizes as a support bijection); the counting
+   collapse is arithmetic on the slab telescope; the mirror
+   closed tables are finite certificates under the same
+   layered-march contract as §12.10 item 5.
