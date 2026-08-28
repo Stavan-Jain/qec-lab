@@ -40,8 +40,9 @@ two session-1 items corrected there):**
   double-pay with witnesses; the sound variant's frontier shell is
   2^{2p+1} at cost 0) — §2.4.1.
 - New machine checks: Theorem A at p = 10, 11, 13, 14; Theorem H
-  inventory at p = 15 (dim 4) and p = 18 (dim 6 — the r = 3 member
-  period); parity columns = 3 at all six (§2.6).
+  inventory at p = 15, 21 (dim 4) and p = 18, 24 (dim 6 — the r = 3
+  and r = 4 member periods; p = 24 is the first full-window a = 3
+  contact); parity columns = 3 at all eight (§2.6).
 - L-band pure half at s >= p CLOSED (cost-1 rigidity + pure >= 2);
   the beta-lemma (barren-only columns cost >= 3 at m = 1) pinned
   (§2.7).
@@ -385,7 +386,9 @@ Results (exhaustive over class-nontrivial σ with ≤ smax slots, gaps
 - p = 3: floor 6 over 4,170 σ (smax 6) — matches banked exactly.
 - p = 6: **floor 12 over 55,287 σ (smax 7)** — the atlas value,
   re-derived with no SAT and no BFS.
-- p = 12 (a = 2): **floor 24 over 99,399 σ (smax 7, 364 s)** — the
+- p = 12 (a = 2): **floor 24 over 99,399 σ (smax 7, 364 s)**
+  [S2: scope is smax 7 slots within a 10-column span — ledger
+  §3.8] — the
   FIRST exact compact floor beyond the atlas's memory wall (p ≤ 8),
   = 2p on the nose; independent SAT corroboration climbing
   (floor > 12 at last checkpoint) and the realized weight-24 object
@@ -393,7 +396,7 @@ Results (exhaustive over class-nontrivial σ with ≤ smax slots, gaps
 
 Claim tier: certificate (exact linear algebra + shortest paths;
 independently re-runnable) with the STATED SCOPE ω-support ≤ smax
-slots; the σ-size gap (smax < s < 2p) is closed today only
+slots [S2: within a 10-column span — ledger §3.8]; the σ-size gap (smax < s < 2p) is closed today only
 solver-tier (the CylWindow SAT minimizes over ALL supports at once:
 p=6 UNSAT ≤ 11 window-complete).  Closing it certificate-tier needs
 a per-slot cost ≥ 2-type lemma for large mixed patterns — open.
@@ -577,6 +580,8 @@ h-DP, same σ-scope:
 
 > p = 6:  {12: 45 classes, 14: 12, 18: 6}
 > p = 12: {24: 45 classes, 28: 12, 36: 6}
+> [S2: per-class minima over the smax-7-slot, 10-column-span scope
+> — ledger §3.8]
 
 The strata counts (45, 12, 6) are IDENTICAL (Theorem H's fixed
 inventory) and the weights are exactly **{2p, 7p/3, 3p}** at both
@@ -782,9 +787,11 @@ Production (p = 12, both branches, cap 18, RSS-capped):
 | 6 | 12 = 2p | certificate | atlas census + DP (s<=7) + jet |
 | 9 | 18 = 2p | **certificate (re-certified)** | jet engine both branches, a=0-complete register + parity + UB |
 | 10, 11, 13, 14 | H = 0 | theorem + machine (NEW) | Theorem A; dim Z_W = dim B_W at W in {6,9,12}; parity columns = 3 |
-| 12 | >= JET+2 unrestricted, ALL classes; = 24 over omega-support <= 7 slots; UB 24 | certificate (scoped) | jet two-branch runs + parity; h-DP; pure lift |
+| 12 | >= JET+2 unrestricted, ALL classes; = 24 over the (s <= 7, span <= 10, gaps <= 4) envelope (§3.8); UB 24 | certificate (scoped) | jet two-branch runs + parity; h-DP; pure lift |
 | 15 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=5) | window LA; UB 30 = 2p via m-scaling |
 | 18 | dim H = 6 (NEW check) | Theorem H corroborated (a=1, m=3) | window LA; UB 36 = 2p; the r = 3 member period |
+| 21 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=7) | window LA |
+| 24 | dim H = 6 (NEW check) | Theorem H corroborated (a=3, m=1 — first full-window a=3 contact) | window LA; the r = 4 member period |
 
 (JET = the joint completed level of the two p = 12 jet runs; with
 parity the unrestricted all-class floor is JET + 2 when JET is even.
@@ -836,8 +843,8 @@ L-band (slots s in [8, 2p-1]) — session-2 split:
 
 Corollary of the split: for the p = 12 target, the open corner
 after the jet runs is exactly [weight in {JET+2..22} even] x
-[s in [8, 23]] x [any h]; the h-DP covers s <= 7 at 24, the pure
-band covers h = 0, s >= 12 at >= 24.
+[s in [8, 23]] x [any h]; the h-DP covers its (s <= 7, span <= 10, gaps <= 4) envelope at
+24 (ledger §3.8), the pure band covers h = 0, s >= 12 at >= 24.
 
 ### §2.8 THE WINDOWED-BRANCH THEOREM (b = 1 column), with exact
 ### conditionality — the session-2 assembly
@@ -852,8 +859,9 @@ period-m compact-cylinder floor.  Consequently:
 - **r = 2: wt(v) >= JET + 2 unconditional at certificate tier**
   (the two-branch jet runs; >= 16 already banked from level 14 =
   the first even level both branches passed); **wt(v) >= 24 = 12r
-  under the L-band corner** ([{JET+2..22} even] x [s >= 8] only —
-  the h-DP settles s <= 7 at 24, UB realized).
+  under the L-band corner** ([{JET+2..22} even] x [outside the
+  (s <= 7, span <= 10, gaps <= 4) h-DP envelope] only — ledger
+  §3.8; UB realized).
 - **general r: wt(v) >= 12r = 2m under (L-pure + L-band at p = m)**
   — plus, when 127 | r, the same two lemmas at the 127-factor (the
   W-line skyscraper joins H(m) by Theorem H's uniform form; its
@@ -903,6 +911,25 @@ where the -6 discount lives.
    empty, machine-checked, and re-certified by the jet engine).
    Repair: the two-branch full-depth jet registers, jointly
    class-complete (§2.5, §2.5b; `s2_registers.json`).
+8. (S2, scope correction) The S1 sigma-enumerations (s1_jointdp,
+   s1_omegafloor, s1_classprofile) confined patterns to a 10-column
+   window (Wx = 10), but the splitting argument bounds only
+   consecutive-slot gaps (<= 3), not the span: a minimal 7-slot
+   sigma can span up to 1 + 6*3 = 19 columns.  Moreover the
+   enumerations also SKIP patterns with a consecutive-column gap
+   > 4 even inside the window, and the split justification for that
+   prune is incomplete for the (sigma, h) floor: a split sigma's
+   halves are separate syzygies, but a mixed h can bridge the gap,
+   and tab(z', lambda) can undercut tab(z', 0) by up to 2 per
+   column, so W(sigma, h) >= DP(sigma_L) does NOT follow columnwise.
+   Every banked "omega-support <= smax slots" certificate scope is
+   therefore really "<= smax slots, span <= 10, consecutive-column
+   gaps <= 4" — §2.2.1's floor-24, §2.2.6's class profile, and
+   §2.2.5's L-pure instance all carry the qualifier (annotated in
+   place).  The racer/jet certificates are scope-clean (they
+   enumerate CYCLES by weight over all supports) — the repair lane
+   for the corner is jet depth + L-band theory, not a wider
+   enumeration.
 
 ## §4 Residue / next
 

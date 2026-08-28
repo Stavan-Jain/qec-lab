@@ -120,5 +120,27 @@
   }
  },
  "all_match": true,
- "wall_s": 0.1
+ "wall_s": 0.1,
+ "21": {
+  "expect_dimH": 4,
+  "widths": {
+   "6": {
+    "dimH": 4
+   },
+   "9": {
+    "dimH": 4
+   }
+  }
+ },
+ "24": {
+  "expect_dimH": 6,
+  "widths": {
+   "6": {
+    "dimH": 6
+   },
+   "9": {
+    "dimH": 6
+   }
+  }
+ }
 }
