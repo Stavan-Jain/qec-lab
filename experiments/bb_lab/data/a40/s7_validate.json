@@ -1,0 +1,35 @@
+{
+ "tc63_pinch": [
+  {
+   "block": [
+    5,
+    6
+   ],
+   "L": 2,
+   "exit": 5,
+   "entry": 6,
+   "ok": true
+  },
+  {
+   "block": [
+    11,
+    12
+   ],
+   "L": 2,
+   "exit": 5,
+   "entry": 6,
+   "ok": true
+  },
+  {
+   "block": [
+    17,
+    18
+   ],
+   "L": 2,
+   "exit": 5,
+   "entry": 6,
+   "ok": true
+  }
+ ],
+ "tc63_links_checked": 60
+}
