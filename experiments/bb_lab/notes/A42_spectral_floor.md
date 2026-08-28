@@ -196,31 +196,52 @@ Target (L-P of A40 §9.7): no nontrivial x-compact phase of the
 period-p straight cylinder (either lane) has weight < 2p, ∀p ≥ 2.
 The spectral decomposition collapses this to a two-parameter family.
 
-### §2.1 Theorem A (barren periods) — proof sketch, to be written up
+### §2.1 Theorem A (barren periods) — the proof
 
-y^p − 1 = Π_{d | odd(p)} f_d^{2^{v₂(p)}} over F₂; the cylinder ring
-CRT-splits into Λ-Laurent factors Λ_f[x^±], Λ_f = F₂[y]/(f^{2^a}).
-For a factor whose root η has A(·,η), B(·,η) coprime in F_Q[x^±]
-(⟺ no variety point with that β = η — only ord η ∈ {1, 3, 127}
-fail, and ord η = 1 gives the unit x³), the residue Bezout identity
-lifts (nilpotent correction) to uÃ + vB̂ = unit over Λ_f[x^±], and a
-unimodular row kills homology outright:
+> **Unimodular lemma.** Over any commutative ring R, if
+> uA + vB = 1 then ker((f,g) ↦ Af+Bg) = im(h ↦ (Bh, Ah)), i.e. the
+> 3-term complex R → R² → R is exact in the middle.  *Proof.* A
+> boundary is a cycle (char-free: A(Bh) − B(Ah) = 0 by
+> commutativity; in char 2, +).  Conversely, given Af = Bg, set
+> h = vf + ug: then Bh = Bvf + Bug = (1−uA)f + uBg = f − u(Af−Bg)
+> = f, and Ah = Avf + Aug = vAf + (1−vB)g = g + v(Af−Bg) = g.  ∎
+> (It follows that the syzygy module of a unimodular row is FREE on
+> (B, A) — consumed by the h-DP and the cost assembly.)
 
-> **Unimodular lemma.** Over any commutative ring, if uA + vB = 1
-> then ker(f,g ↦ Af+Bg) = im(h ↦ (Bh, Ah)): given Af = Bg, take
-> h = vf + ug; then Bh = f + u(Af+Bg) = f and Ah = g + v(Af+Bg) = g.
+> **Theorem A.** Let p ≥ 1 with 3 ∤ p and 127 ∤ p.  Then the
+> period-p compact cylinder homology of the tour-de-gross pair
+> vanishes identically — no nontrivial compact phases at any
+> weight, both lanes, every 2-part.  *Proof.*  Write p = q·2^a, q
+> odd.  y^p − 1 = Π_{d | q} f_d^{2^a} over F₂ with f_d the
+> irreducible factors of order-d roots; CRT splits the cylinder
+> ring R_p[x^±] = Π_d Λ_d[x^±], Λ_d = F₂[y]/(f_d^{2^a}), and
+> homology is the direct sum over factors.  Fix d and a root η of
+> f_d, F_Q = F₂(η).  If d = 1: Ã(x, 1) = x³ (a unit times 1), so
+> the row is unimodular over the residue and, since the correction
+> terms lie in the nilpotent ideal (f_d) of Λ_d, any residue Bezout
+> identity uÃ + vB̂ = 1 + n lifts (n nilpotent because f_d^{2^a} =
+> 0, so 1 + n is a unit): the row is unimodular over Λ_d[x^±].
+> If d > 1: coprimality of Ã(x,η) = x³ + (η+η²) and B̂(x,η) =
+> 1 + (η³)(x+x²)·η-units in F_Q[x^±] fails only if they share a
+> root ξ ∈ F̄₂; any common root is nonzero (constant terms/leading
+> coefficients: B̂'s constant term is 1; Ã's roots are nonzero
+> unless η+η² = 0, i.e. d = 1), hence (ξ, η) ∈ V(Ã, B̂) — but the
+> variety table (§1.1) has ord β ∈ {3, 127} only, and 3 ∤ p,
+> 127 ∤ p exclude ord(η) ∈ {3, 127}.  So the residues are coprime,
+> Bezout lifts as above, and the unimodular lemma kills the
+> factor's homology.  All factors barren ⟹ H = 0.  The θ′-lane is
+> the antipode-automorphic image (its variety's β-orders are the
+> α-orders {3, 127} — same barren set).  ∎
 
-> **Theorem A.** For every p with 3 ∤ p and 127 ∤ p, the period-p
-> compact cylinder homology vanishes identically — no nontrivial
-> compact phases exist at ANY weight, both lanes, all 2-parts.
-
-This explains the atlas's emptiness at p ∈ {2,4,5,7,8} structurally
-and settles all non-multiples of 3 (and of 127) forever; the old
-"unbounded chain depth" wall is dodged because nilpotency of the
-2-part radical is all that is used.  For 3 | p (and 127 | p), the
-homology concentrates on the (y²+y+1)^{2^a}-factor (resp. the
-127-factor): **the ∀p problem reduces to the ω-chain family Λ_a,
-indexed only by a = v₂(p), plus classical block-weight arithmetic.**
+Machine checks: dim Z_W = dim B_W on windows at p = 5, 7 (banked,
+`s1_cylfloor.json`), consistent with the atlas's trivial-only
+verdicts at p ∈ {2,4,5,7,8}.  The old "unbounded chain depth" wall
+is dodged: only nilpotency of the 2-part radical is used.  For
+3 | p (and 127 | p) the homology concentrates on the
+(y²+y+1)^{2^a}-factor (resp. the 127-factor): **the ∀p problem
+reduces to the ω-chain family Λ_a plus classical block-weight
+arithmetic** — and Theorem H (§2.2.3b) then collapses the depth
+ladder too.
 
 ### §2.2 S1 executed state (2026-08-28): instruments, falsifications,
 ### realized 2p objects
