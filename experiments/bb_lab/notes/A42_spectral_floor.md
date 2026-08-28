@@ -427,17 +427,46 @@ lane owns the cylinder half (stabilized H + cost scaling); the
 toroidal half is the wall/momentum program (A40), with the
 (12,12)-style gap-free minima as its witnesses.
 
+### §2.2.5 The cost side (S1f): m-scaling exact; the ∀p architecture
+
+The ω-block ≅ Λ_a via the content map (injective — verified), so
+pure(λ) is the weight of the UNIQUE complementary-zero lift, and
+(`a42_s1_mscaling.py`, exact at (m,a) = (3,0), (5,0), (7,0), (3,1)):
+
+> **pure_{3m·2^a}(λ) = m · pure_{3·2^a}(λ) for every λ** — with the
+> base valuation buckets a=0: {2}, a=1: {2,4}, a=2: {2,4,4,8}
+> (pure(π^ν·unit) = 2m·2^{popcount(ν)}: the CMSS digit shadow).
+
+Combined with Theorem H (σ-side m-independent): the pure-lift UB is
+2p for EVERY p ≡ 0 mod 3, all m, all a ≤ 2 realized (and ∀a once a
+pure level-top σ is exhibited per a — it is: π^{2^a−1}σ₀).  The ∀p
+floor architecture now reads:
+
+  floor(p) = 2p for 3 | p, 127 ∤ p, provided
+  (L-pure)  mixed patterns never beat pure ones [open: the purity
+            lemma; certificate-true at m = 1, a ≤ 2 via the h-DP
+            with exhausted σ ≤ 7 slots; solver-corroborated at
+            p = 9, 12],
+  (L-band)  ω-supports in the band (7, 2p) slots never beat 2p
+            [open; counting gives only ≥ #slots].
+
+Both open lemmas are quantitative-combinatorial, not structural —
+the structural half (classes, costs, scaling) is done.
+
 ### §2.3 S1 remaining plan
 
-1. Theorem A write-up (done in substance: §2.1 + the machine checks;
-   polish owed).
-2. The purity lemma (mixed-pattern assembly bound) — the single
-   named gap between the instruments and "floor(p) = 2p for all
-   p = 3·2^a" at certificate tier; then the m-dilation and the
-   127-line margin for full ∀p.
+1. Theorem A + Theorem H write-ups (substance done; polish owed —
+   CM/regular-sequence lemma, localization bookkeeping, truncated
+   Teichmüller details).
+2. The purity lemma (L-pure) and the band lemma (L-band) — the two
+   named quantitative gaps to floor(p) = 2p ∀ 3 | p at certificate
+   tier; the 127-line margin (≥ 4·64 per 127-period vs 2·127) rides
+   the same assembly.
 3. p = 9 / p = 12 probes to completion (running; checkpointed,
    RSS-capped after the 2026-08-28 OOM sweep killed the first runs).
-4. p = 15 (m > 1 discriminator) once 1-3 settle the m = 1 spine.
+4. The B12 row (d((ℓ,12)) = 24 ∀ 6 | ℓ ≥ 93, toroidal exception at
+   (12,12)) — write up once the p = 12 corroboration lands; then
+   the (ℓ, 6r)-row ladder toward the b = 1 column.
 
 ---
 
