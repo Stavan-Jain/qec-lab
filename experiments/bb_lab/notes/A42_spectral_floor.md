@@ -513,6 +513,37 @@ floor architecture now reads:
 Both open lemmas are quantitative-combinatorial, not structural —
 the structural half (classes, costs, scaling) is done.
 
+### §2.2.5b THE RACER (S1h): floor(9) = 18 certified in 9 seconds
+### (`a42_s1_atlas9.py`, `s1_atlas9.json`)
+
+The S4 atlas automaton, re-engineered (coordinator direction): uint64
+bit-packed states, Dial-bucket min-cost BFS with zero-cost closure,
+np.unique/np.union1d dedup, y-rotation quotient (verified to
+commute), NO parent tracking — the state carries a 4-bit ω-class
+register pair (F₄ evaluations at the two x-points of the ω-gcd,
+per-step x₀⁻¹-rescaled so march-position drops out; v1's cofactor is
+a UNIT — B̄_ω ~ ĝ — so the input-block registers detect the syzygy
+parameter h(x₀) exactly, both points).  Registers are valid exactly
+when 3 | p (the switch-on condition; the p = 5 control caught the
+scope error — barren p classify by Theorem A instead, first-class
+falsification of the naive "always-on" functional).  Controls: p = 3
+min nontrivial 6 ✓; p = 5 returns {6, 10} all trivial-by-Theorem-A ✓;
+p = 6 boundary returns at {6, 10} classified TRIVIAL and first
+nontrivial exactly 12 ✓ (the decisive classifier control).
+
+> **floor(9) = 18 = 2p, CERTIFICATE tier.**  The p = 9 run completed
+> level 16 in 9 s: every compact cycle of weight ≤ 16 enumerated
+> with its class value (returns at {6, 10, 12, 14, 16}, ALL
+> registers zero), so no nontrivial compact cycle of weight ≤ 16
+> exists; the parity lemma excludes 17; the realized weight-18
+> object (§2.2) is the matching UB.  Lane AB; the θ′-lane by the
+> banked duality (assumption recorded in the JSON).  Ops note: peak
+> RSS 3.2 GB for seconds during the final level (the 2 GB check
+> fires at level granularity; the abort flag raised AFTER level 16
+> completed, so the certificate is unaffected).  This supersedes the
+> SAT probe (killed at floor > 15, checkpoint banked) at a stronger
+> tier and ~600× the speed; the S5 "memory wall at p = 9" is gone.
+
 ### §2.2.6 The class-weight profile (S1g): the complete cost law
 ### (`a42_s1_classprofile.py`, `s1_classprofile.json`)
 

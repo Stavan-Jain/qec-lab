@@ -331,6 +331,21 @@ class Racer:
         return state
 
 
+def run_generic(p: int, cap: int):
+    r = Racer(p)
+    r.validate(nsamples=800)
+    print(f"p={p}: validated; run cap {cap}", flush=True)
+    st = r.run(cap, log=lambda s: print(s, flush=True),
+               ckpt_path=DATA / f"s1_atlas_p{p}_ckpt.json")
+    nt = st.get("nontrivial_costs", [])
+    done_lv = max((lv["c"] for lv in st["levels"]), default=-1)
+    print(f"p={p}: completed level {done_lv}; nontrivial costs {nt}",
+          flush=True)
+    out_path = DATA / f"s1_atlas_p{p}.json"
+    out_path.write_text(json.dumps(st, indent=1))
+    print(f"wrote {out_path}", flush=True)
+
+
 def main():
     which = sys.argv[1] if len(sys.argv) > 1 else "all"
     out = {}
@@ -353,6 +368,9 @@ def main():
                       f"{sorted(st['returns'])} are ALL trivial by "
                       f"Theorem A (registers off)", flush=True)
             out[f"p{p}"] = st
+    if which == "generic":
+        run_generic(int(sys.argv[2]), int(sys.argv[3]))
+        return
     if which in ("all", "p9"):
         r = Racer(9)
         r.validate()
