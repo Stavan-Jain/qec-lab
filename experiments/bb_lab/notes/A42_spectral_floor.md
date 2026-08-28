@@ -23,6 +23,26 @@ Artin–Schreier quadratic extensions, the variety enumeration, the
 local-multiplicity engine, the frame k-formula), consumed by staged
 scripts `a42_s*.py`; data in `data/a42/`.
 
+**State of the lane (2026-08-28, session 1):**
+- V(A,B) exact: T (transverse) ⊕ G (tangency, mult 2) F₄ orbits +
+  W (F₁₂₈, ord 127); spectral k-formula validated on 272 frames +
+  members r ≤ 8; k-law: b = 1 column k = 12 ∀r (theorem), b = 0
+  jumps to 26 at 127 | r (formula tier; ingredients code-grounded).
+- Compact-phase floors: floor(3) = 6, floor(6) = 12,
+  **floor(12) = 24** — certificate tier over ω-support ≤ 7 slots
+  (h-DP, no SAT), solver-corroborated; barren periods (3∤p, 127∤p)
+  EMPTY at all weights (Theorem A, machine-checked p = 5, 7);
+  weight-2p objects realized at p = 9, 12 (new; atlas wall was
+  p ≤ 8).
+- **Theorem H (Tor-purity)**: H(period-p ω-homology) = M[π^{2^a}],
+  M = F₄ ⊕ F₄[t]/(t²) = transverse ⊕ tangency scheme structure —
+  the class inventory STABILIZES at depth 1 (dim 6 ∀a ≥ 1).
+- Cost side: pure(λ) = unique-lift weight; m-scaling exact
+  (pure_{3m·2^a} = m·pure_{3·2^a}); UB = 2p ∀ 3 | p.
+- Named open: L-pure (mixed patterns), L-band (8..2p−1 slot band) —
+  the two quantitative lemmas between here and floor(p) = 2p
+  ∀ 3 | p, hence the b = 1 member windowed branch at 12r.
+
 ---
 
 ## §1 S0 — the variety anchors (certificate tier, all gates green)
@@ -164,8 +184,9 @@ frozenset, merging colliding terms instead of cancelling mod 2 (at
 (12,1,0), y ↦ 1 makes A ↦ x³, a unit — true k = 0).  Direction is
 conservative everywhere (banked ≥ true): A40's censuses at those
 frames were unnecessary, not unsound; no true-k > 0 frame was
-missed.  Fix chip spawned for the A40 lane owner; not touching A40
-files from this lane.
+missed.  RESOLVED same-day: the A40 lane landed the parity-aware
+transport fix + regenerated table (commit 66e0e7b); this lane's G5
+diff pass is the detection record.
 
 ---
 
