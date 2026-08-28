@@ -29,11 +29,13 @@ scripts `a42_s*.py`; data in `data/a42/`.
   members r ≤ 8; k-law: b = 1 column k = 12 ∀r (theorem), b = 0
   jumps to 26 at 127 | r (formula tier; ingredients code-grounded).
 - Compact-phase floors: floor(3) = 6, floor(6) = 12,
-  **floor(12) = 24** — certificate tier over ω-support ≤ 7 slots
-  (h-DP, no SAT), solver-corroborated; barren periods (3∤p, 127∤p)
-  EMPTY at all weights (Theorem A, machine-checked p = 5, 7);
-  weight-2p objects realized at p = 9, 12 (new; atlas wall was
-  p ≤ 8).
+  **floor(9) = 18 (FULL certificate — racer + parity + UB)**,
+  **floor(12) = 24** (certificate over ω-support ≤ 7 slots via the
+  h-DP; unrestricted > 11 racer-certified, ≥ 14 solver; UB 24
+  realized); barren periods (3∤p, 127∤p) EMPTY at all weights
+  (Theorem A, machine-checked p = 5, 7); parity lemma (all compact
+  cycles even) halves every ladder; the atlas's p ≤ 8 wall is gone
+  (racer: p = 9 in 9 s).
 - **Theorem H (Tor-purity)**: H(period-p ω-homology) = M[π^{2^a}],
   M = F₄ ⊕ F₄[t]/(t²) = transverse ⊕ tangency scheme structure —
   the class inventory STABILIZES at depth 1 (dim 6 ∀a ≥ 1).
@@ -576,20 +578,35 @@ what separates the fresh socle from im(π).)  Identifying the
 member-forced classes inside this stratification is the Stage-2
 lever.
 
-### §2.3 S1 remaining plan
+### §2.3 S1 close-out state and remaining plan
 
-1. Theorem A + Theorem H write-ups (substance done; polish owed —
-   CM/regular-sequence lemma, localization bookkeeping, truncated
-   Teichmüller details).
-2. The purity lemma (L-pure) and the band lemma (L-band) — the two
-   named quantitative gaps to floor(p) = 2p ∀ 3 | p at certificate
-   tier; the 127-line margin (≥ 4·64 per 127-period vs 2·127) rides
-   the same assembly.
-3. p = 9 / p = 12 probes to completion (running; checkpointed,
-   RSS-capped after the 2026-08-28 OOM sweep killed the first runs).
+Session-1 final instrument states (all processes terminated clean,
+checkpoints banked):
+- p = 9: **floor(9) = 18 = 2p, CERTIFICATE tier** (racer level 16
+  complete + parity + realized UB; the SAT probe, killed superseded,
+  had independently reached floor > 15).
+- p = 12: floor = 24 exactly at certificate tier over the ≤ 7-slot
+  ω-scope (h-DP, 99,399 σ); unrestricted: racer level 11 complete
+  (all returns trivial) ⟹ floor > 11 certificate; SAT ⟹ floor ≥ 14
+  solver-tier; UB 24 realized.  The racer's p = 12 wall is TIME
+  (×2.7/level ⟹ cap 22 ≈ days) plus an identified memory bug-let
+  (bucket insertions un-deduped across inputs — fix known); the
+  right tool is a **meet-in-the-middle sandwich** (forward and
+  backward level-11 frontiers meet at 22 — both ends already
+  computed cheaply) — the named next move, which would close
+  floor(12) = 24 unrestricted.
+
+Remaining:
+1. Theorem A + Theorem H write-up polish (CM/regular-sequence lemma,
+   localization bookkeeping, truncated Teichmüller details).
+2. L-pure and L-band — now needed only where the sandwich doesn't
+   reach; the 127-line margin rides the same assembly.
+3. The sandwich racer (closes p = 12 and plausibly p = 15, 18, 24 —
+   the whole small-period ladder at unrestricted certificate tier).
 4. The B12 row (d((ℓ,12)) = 24 ∀ 6 | ℓ ≥ 93, toroidal exception at
-   (12,12)) — write up once the p = 12 corroboration lands; then
-   the (ℓ, 6r)-row ladder toward the b = 1 column.
+   (12,12)); then the (ℓ, 6r)-row ladder toward the b = 1 column.
+5. Decode the heavy strata's H-coordinates fully (transverse vs
+   im(π) identification at p = 12; Stage-2 lever).
 
 ---
 
