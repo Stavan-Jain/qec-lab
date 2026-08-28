@@ -395,17 +395,27 @@ def direct_probe(p: int, W: int, wmax: int):
     def rss_ok():
         return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss < RSS_CAP
 
-    # upward search: every UNSAT step banks "floor > w"; first SAT is
-    # exact (previous w-1 already UNSAT).
+    # PARITY (banked 2026-08-28, coordinator + mechanical check):
+    # every in-window variable lies in exactly 3 checks, so the sum of
+    # all check rows is the all-ones vector and every compact cycle
+    # has EVEN weight.  Probe even weights only; an UNSAT at 2p-2
+    # yields floor >= 2p outright.
+    state["parity"] = "even-only (all-ones in rowspace; verified)"
+    # upward search: every UNSAT step banks "floor > w" (and by parity
+    # "floor > w+1"); first SAT is exact (prior even weights UNSAT).
     best = None
-    for w in range(4, wmax + 1):
+    wstart = int(sys.argv[5]) if len(sys.argv) > 5 else 4
+    if wstart % 2:
+        wstart += 1
+    for w in range(wstart, wmax + 1, 2):
         ts = time.time()
         v = cw._solve_at(H, L, w)
         dt = round(time.time() - ts, 1)
         if v is None:
             state["steps"].append({"w": w, "sat": False, "s": dt})
-            state["floor_gt"] = w
-            print(f"  w<={w}: UNSAT ({dt} s) — floor > {w}", flush=True)
+            state["floor_gt"] = w + 1  # parity: odd w+1 impossible too
+            print(f"  w<={w}: UNSAT ({dt} s) — floor > {w+1} (parity)",
+                  flush=True)
         else:
             wt = int(v.sum())
             cw.verify(v, H, L)

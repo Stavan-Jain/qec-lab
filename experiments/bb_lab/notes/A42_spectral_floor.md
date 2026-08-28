@@ -243,6 +243,24 @@ reduces to the ω-chain family Λ_a plus classical block-weight
 arithmetic** — and Theorem H (§2.2.3b) then collapses the depth
 ladder too.
 
+### §2.1b Parity lemma (probe-halver; coordinator prompt + mechanical
+### verification)
+
+> **Lemma (even weights).** On the period-p cylinder (any p), every
+> compact cycle of either lane has EVEN weight.  *Proof.*  Each
+> qubit variable appears in exactly 3 = |Ā| = |B̄| checks (the three
+> support offsets are distinct), so the sum of ALL check rows is the
+> all-ones functional; a cycle zeroes every check, hence its weight
+> is 0 mod 2.  ∎  Verified mechanically on the exact window systems
+> at p ∈ {3, 6, 9, 12} (column weights identically 3); consistent
+> with every banked spectrum (atlas {12, 14}, species {8, 10, 12}).
+
+Consequences: weight-stepped probes run even weights only (halves
+every ladder), and UNSAT at 2p − 2 yields floor ≥ 2p outright: at
+p = 9, floor > 15 (banked) + UNSAT at 16 ⟹ floor = 18 = 2p with
+the realized UB — no w = 17 step needed; at p = 12 the ladder is
+14, 16, 18, 20, 22.
+
 ### §2.2 S1 executed state (2026-08-28): instruments, falsifications,
 ### realized 2p objects
 
