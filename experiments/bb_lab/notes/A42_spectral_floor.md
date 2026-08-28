@@ -300,7 +300,11 @@ Results (exhaustive over class-nontrivial σ with ≤ smax slots, gaps
 - p = 3: floor 6 over 4,170 σ (smax 6) — matches banked exactly.
 - p = 6: **floor 12 over 55,287 σ (smax 7)** — the atlas value,
   re-derived with no SAT and no BFS.
-- p = 12 (a = 2): running; the pure 3-slot σ prices at 24.
+- p = 12 (a = 2): **floor 24 over 99,399 σ (smax 7, 364 s)** — the
+  FIRST exact compact floor beyond the atlas's memory wall (p ≤ 8),
+  = 2p on the nose; independent SAT corroboration climbing
+  (floor > 12 at last checkpoint) and the realized weight-24 object
+  is the matching UB.
 
 Claim tier: certificate (exact linear algebra + shortest paths;
 independently re-runnable) with the STATED SCOPE ω-support ≤ smax
@@ -353,6 +357,50 @@ unbounded ladder of new classes, but ONE fixed inventory (a height-2
 costs must scale like 2p.  Claim tier: exhaustive linear algebra at
 a ≤ 3, two windows each; the ∀a statement is the natural
 quotient-functoriality theorem to prove next.
+
+### §2.2.3b THEOREM H (Tor-purity: the stabilization proven)
+
+Λ_a ≅ F₄[π]/(π^{2^a}) (equal characteristic; Teichmüller ζ = y + π
++ π² + ... solves ζ²+ζ+1 = 0).  Work over the Noetherian 2-dim ring
+S = F₄[π][x^±] with the (per-a truncated) pair; Ã = (x³+1) + π
+exactly.  Since V(Ã, B̂) ⊂ Spec S is finite and S is CM, (Ã, B̂) is
+a regular sequence, so the length-2 Koszul-shaped complex
+S → S² → S resolves M := S/(Ã, B̂), and base change to
+S/(π^{2^a}) gives
+
+> **H(a) = Tor₁^S(M, S/π^{2^a}) = M[π^{2^a}]** (π-power torsion of
+> the intersection module).
+
+Localize M at the π-nilpotent locus (π = x³+1 forces x ∈ {1, ζ,
+ζ²}; truncation-artifact roots x₀ of the eliminated ρ(x) =
+B̂|_{π=x³+1} have π = g₁(x₀) ≠ 0 acting invertibly — zero torsion):
+- x = 1: ρ(1) = ĝ(1) = 1, unit — dies.
+- x = ζ (transverse): ρ = t·unit (linear coefficient
+  1 + ζ²·ζ² = ζ² ≠ 0) — M_ζ ≅ F₄, π acts as 0.
+- x = ζ² (the TANGENT point): the linear terms cancel exactly
+  (1 + ζ²·ζ = 0) and the t²-coefficient is 1 + ζ² + ζ² = 1 —
+  M_{ζ²} ≅ F₄[t]/(t²), π acts as t·unit.
+
+Hence **H(0) = M[π] = F₄ ⊕ tF₄ ≅ F₄² (dim 4) and H(a) = M ≅
+F₄ ⊕ F₄[π]/(π²) (dim 6) for every a ≥ 1** — exactly the measured
+filtration (§2.2.3), now a theorem.  The compact-phase class
+inventory IS the scheme structure of the ω-slice of V(A,B): the
+height-2 π-tower = the tangency; the height-1 summand = the
+transverse point.  The same argument at the 127-factor (transverse,
+residue field F₁₂₈) gives its H = skyscraper ∀ depth; barren factors
+give 0 (Theorem A).  Uniformly:
+
+> **H(period-p cylinder) = ⊕_{variety points P with ord(β_P) | p}
+> (local ring of the ω-slice at P)[π_y^{2^{v₂(p)}}]**.
+
+Claim tier: hand proof over the measured a ≤ 3 verification; the
+write-up owes the CM/regular-sequence lemma, the localization
+bookkeeping, and the truncated-Teichmüller details — no gaps
+expected.  Consequence: the ∀p floor needs only the COST half (how
+the fixed classes' minimal realizations grow with p) — conjecturally
+floor(p) = 2p exactly for 3 | p (measured/DP: 6, 12, 24 at p = 3, 6,
+12; SAT: 18 at p = 9 pending), +∞ barren, ≥ 2p + 2/127-margin on
+the 127-line.
 
 ### §2.2.4 The member synthesis: the conjecture's b-bit is the
 ### K-dichotomy
