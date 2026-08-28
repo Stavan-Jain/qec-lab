@@ -1,0 +1,60 @@
+{
+ "f4_identification": [
+  {
+   "mult": 1,
+   "type": "diagonal (beta=alpha)"
+  },
+  {
+   "mult": 2,
+   "type": "antidiagonal (beta=alpha^2)"
+  }
+ ],
+ "dlog_g": 91,
+ "frame_127": {
+  "d_star": 36,
+  "k": 14,
+  "controls": [
+   37,
+   99
+  ]
+ },
+ "w7_chirality": [
+  {
+   "l": 12,
+   "d": 10,
+   "orbit": "antidiagonal",
+   "mult": 2
+  },
+  {
+   "l": 12,
+   "d": 2,
+   "orbit": "diagonal",
+   "mult": 1
+  },
+  {
+   "l": 18,
+   "d": 16,
+   "orbit": "antidiagonal",
+   "mult": 2
+  },
+  {
+   "l": 18,
+   "d": 2,
+   "orbit": "diagonal",
+   "mult": 1
+  },
+  {
+   "l": 24,
+   "d": 22,
+   "orbit": "antidiagonal",
+   "mult": 2
+  },
+  {
+   "l": 24,
+   "d": 2,
+   "orbit": "diagonal",
+   "mult": 1
+  }
+ ],
+ "wall_s": 0.1
+}
