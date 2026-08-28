@@ -1,0 +1,311 @@
+{
+ "p3": {
+  "p": 3,
+  "cap": 8,
+  "levels": [
+   {
+    "c": 0,
+    "novel": 1,
+    "seen": 1,
+    "rss_mb": 35,
+    "t": 0.0
+   },
+   {
+    "c": 1,
+    "novel": 0,
+    "seen": 1,
+    "rss_mb": 35,
+    "t": 0.0
+   },
+   {
+    "c": 2,
+    "novel": 1,
+    "seen": 2,
+    "rss_mb": 35,
+    "t": 0.0
+   },
+   {
+    "c": 3,
+    "novel": 3,
+    "seen": 5,
+    "rss_mb": 35,
+    "t": 0.0
+   },
+   {
+    "c": 4,
+    "novel": 3,
+    "seen": 8,
+    "rss_mb": 35,
+    "t": 0.0
+   },
+   {
+    "c": 5,
+    "novel": 7,
+    "seen": 15,
+    "rss_mb": 35,
+    "t": 0.0
+   },
+   {
+    "c": 6,
+    "novel": 32,
+    "seen": 47,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 7,
+    "novel": 57,
+    "seen": 104,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 8,
+    "novel": 113,
+    "seen": 217,
+    "rss_mb": 36,
+    "t": 0.0
+   }
+  ],
+  "lane": "AB (theta'-dual lane by banked duality)",
+  "returns": {
+   "6": [
+    0,
+    9,
+    10,
+    11
+   ],
+   "8": [
+    9,
+    11
+   ]
+  },
+  "nontrivial_costs": [
+   6,
+   8
+  ],
+  "wall_s": 0.0
+ },
+ "p5": {
+  "p": 5,
+  "cap": 11,
+  "levels": [
+   {
+    "c": 0,
+    "novel": 1,
+    "seen": 1,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 1,
+    "novel": 0,
+    "seen": 1,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 2,
+    "novel": 1,
+    "seen": 2,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 3,
+    "novel": 2,
+    "seen": 4,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 4,
+    "novel": 4,
+    "seen": 8,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 5,
+    "novel": 15,
+    "seen": 23,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 6,
+    "novel": 29,
+    "seen": 52,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 7,
+    "novel": 73,
+    "seen": 125,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 8,
+    "novel": 188,
+    "seen": 313,
+    "rss_mb": 36,
+    "t": 0.0
+   },
+   {
+    "c": 9,
+    "novel": 385,
+    "seen": 698,
+    "rss_mb": 37,
+    "t": 0.1
+   },
+   {
+    "c": 10,
+    "novel": 909,
+    "seen": 1607,
+    "rss_mb": 37,
+    "t": 0.1
+   },
+   {
+    "c": 11,
+    "novel": 1992,
+    "seen": 3599,
+    "rss_mb": 39,
+    "t": 0.1
+   }
+  ],
+  "lane": "AB (theta'-dual lane by banked duality)",
+  "returns": {
+   "6": [
+    0
+   ],
+   "10": [
+    0
+   ]
+  },
+  "nontrivial_costs": [],
+  "wall_s": 0.1
+ },
+ "p6": {
+  "p": 6,
+  "cap": 13,
+  "levels": [
+   {
+    "c": 0,
+    "novel": 1,
+    "seen": 1,
+    "rss_mb": 39,
+    "t": 0.0
+   },
+   {
+    "c": 1,
+    "novel": 0,
+    "seen": 1,
+    "rss_mb": 39,
+    "t": 0.0
+   },
+   {
+    "c": 2,
+    "novel": 1,
+    "seen": 2,
+    "rss_mb": 39,
+    "t": 0.0
+   },
+   {
+    "c": 3,
+    "novel": 2,
+    "seen": 4,
+    "rss_mb": 39,
+    "t": 0.0
+   },
+   {
+    "c": 4,
+    "novel": 5,
+    "seen": 9,
+    "rss_mb": 39,
+    "t": 0.1
+   },
+   {
+    "c": 5,
+    "novel": 15,
+    "seen": 24,
+    "rss_mb": 39,
+    "t": 0.1
+   },
+   {
+    "c": 6,
+    "novel": 33,
+    "seen": 57,
+    "rss_mb": 39,
+    "t": 0.1
+   },
+   {
+    "c": 7,
+    "novel": 80,
+    "seen": 137,
+    "rss_mb": 39,
+    "t": 0.2
+   },
+   {
+    "c": 8,
+    "novel": 199,
+    "seen": 336,
+    "rss_mb": 40,
+    "t": 0.2
+   },
+   {
+    "c": 9,
+    "novel": 465,
+    "seen": 801,
+    "rss_mb": 40,
+    "t": 0.2
+   },
+   {
+    "c": 10,
+    "novel": 1109,
+    "seen": 1910,
+    "rss_mb": 42,
+    "t": 0.2
+   },
+   {
+    "c": 11,
+    "novel": 2486,
+    "seen": 4396,
+    "rss_mb": 45,
+    "t": 0.2
+   },
+   {
+    "c": 12,
+    "novel": 5695,
+    "seen": 10091,
+    "rss_mb": 52,
+    "t": 0.2
+   },
+   {
+    "c": 13,
+    "novel": 12254,
+    "seen": 22345,
+    "rss_mb": 59,
+    "t": 0.3
+   }
+  ],
+  "lane": "AB (theta'-dual lane by banked duality)",
+  "returns": {
+   "6": [
+    0
+   ],
+   "10": [
+    0
+   ],
+   "12": [
+    0,
+    8
+   ]
+  },
+  "nontrivial_costs": [
+   12
+  ],
+  "wall_s": 0.3
+ }
+}
