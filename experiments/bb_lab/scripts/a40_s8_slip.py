@@ -66,9 +66,18 @@ PRE, HEAVY, POST = 0, 1, 2
 
 
 def _rss_mb():
-    import resource
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss \
-        // (1024 * 1024)
+    """CURRENT process RSS in MB (ps-based; ru_maxrss is a
+    lifetime peak — see a40_s8_xlane and §13.6)."""
+    import os
+    import subprocess
+    try:
+        out = subprocess.check_output(
+            ["ps", "-o", "rss=", "-p", str(os.getpid())])
+        return int(out.split()[0]) // 1024
+    except Exception:
+        import resource
+        return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss \
+            // (1024 * 1024)
 
 
 # ---------------------------------------------------------------------
@@ -179,27 +188,85 @@ class SlipLinkMarch:
             allm |= r
         anchor = lsb(allm)
         # key: (dyn, anch, phase, L, dlt, hin) with hin = None in
-        # PRE, (d_in,) in HEAVY, (d_in, slip) in POST (gH folded
-        # into the heavy-phase key via running block weight)
+        # PRE, (d_in, gH) in HEAVY, (d_in, gH, slip) in POST
         layer = {(dyn, anchor, PRE, 0, 0, None):
                  (u, anchor, allm.bit_length() - 1)}
         k = (1, 0)
         if k not in self.tab_pre or self.tab_pre[k] > u:
             self.tab_pre[k] = u
+        return self._run_layerset(layer, 1, log, rss_cap,
+                                  frontier_cap)
+
+    # recursive layer chunking (S8): a layer above split_thresh is
+    # partitioned and each chunk marched independently to
+    # completion.  Sound: cross-chunk dominance is only an
+    # optimization, so splitting can only OVER-explore; the tables
+    # (updated during expansion) merge automatically.  Guards run
+    # per chunk, with a mid-expansion RSS check.
+    SPLIT_THRESH = 180_000
+
+    def _run_layerset(self, layer, h, log, rss_cap, frontier_cap,
+                      depth=0):
+        import os
+        import pickle
+        import tempfile
         t0 = time.time()
-        h = 1
         while layer and h < self.hcap:
             rss = _rss_mb()
             if rss > rss_cap:
                 return f"RED: RSS {rss} MB at h={h}"
-            if len(layer) > frontier_cap:
-                return f"RED: frontier {len(layer)} at h={h}"
             nxt = {}
+            parts = []
+
+            def spill(d):
+                fd, pth = tempfile.mkstemp(
+                    suffix=f"_slip_d{depth}_h{h}.pkl")
+                with os.fdopen(fd, "wb") as f:
+                    pickle.dump(list(d.items()), f, protocol=4)
+                parts.append(pth)
+
+            nexp = 0
             for key, val in layer.items():
                 self.expand(key, val, h, nxt)
+                nexp += 1
+                if len(nxt) > self.SPLIT_THRESH:
+                    spill(nxt)
+                    nxt = {}
+                if nexp % 65536 == 0 and _rss_mb() > rss_cap:
+                    for pth in parts:
+                        os.remove(pth)
+                    return f"RED: RSS {_rss_mb()} MB mid-layer " \
+                        f"h={h}"
             self.nodes += len(layer)
-            if log and (h % 4 == 0 or len(nxt) > 400000):
-                print(f"[slip u={u} sid?] h={h + 1} states "
+            if parts:
+                if nxt:
+                    spill(nxt)
+                nxt = None
+                layer = None
+                if log:
+                    print(f"[slip d{depth}] h={h + 1} streamed "
+                          f"into {len(parts)} parts rss "
+                          f"{_rss_mb()}MB "
+                          f"{round(time.time() - t0, 1)}s",
+                          flush=True)
+                try:
+                    for pi, pth in enumerate(parts):
+                        with open(pth, "rb") as f:
+                            chunk = dict(pickle.load(f))
+                        os.remove(pth)
+                        ab = self._run_layerset(
+                            chunk, h + 1, log, rss_cap,
+                            frontier_cap, depth + 1)
+                        chunk = None
+                        if ab:
+                            return ab
+                finally:
+                    for pth in parts:
+                        if os.path.exists(pth):
+                            os.remove(pth)
+                return None
+            if log and (h % 4 == 0 or len(nxt) > 100000):
+                print(f"[slip d{depth}] h={h + 1} states "
                       f"{len(nxt)} rss {_rss_mb()}MB "
                       f"{round(time.time() - t0, 1)}s", flush=True)
             layer = nxt
@@ -338,10 +405,10 @@ def run_census(args):
                     for k, g in ref["tab_link"].items()}
         my_pre_ok = all(m.tab_pre.get(k) == g
                         for k, g in ref_pre.items()
-                        if g <= args.gcap)
+                        if g <= args.gcap and k[0] <= args.hcap)
         my_link_ok = all(m.tab_link.get(k) == g
                          for k, g in ref_link.items()
-                         if g <= args.gcap)
+                         if g <= args.gcap and k[0] <= args.hcap)
         # the slip-resolved keys can only ADD states, never change
         # the (h, dlt) minima; demand exact equality on in-cap rows
         reg = dict(ref=ref_name, pre_equal=bool(my_pre_ok),
@@ -391,6 +458,7 @@ def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("caps")
+    sub.add_parser("species")
     s = sub.add_parser("census")
     s.add_argument("--u", type=int, default=1)
     s.add_argument("--kmax", type=int, default=2)
@@ -405,9 +473,87 @@ def main():
         validate_banked(LAB / "data")
         print("validate_banked: PASS", flush=True)
         derive_caps()
+    elif args.cmd == "species":
+        species_check()
     else:
         run_census(args)
 
+
+
+
+# ---------------------------------------------------------------------
+# Stage 2c: per-step cap verification on the banked species lifts
+# (both lanes) — appended after the census run; invoked as `species`.
+# ---------------------------------------------------------------------
+
+def species_check():
+    from bb_lab.tower import validate_banked
+    validate_banked(LAB / "data")
+    print("validate_banked: PASS", flush=True)
+    out = {}
+    _argv = sys.argv
+    sys.argv = [_argv[0], "12", "8"]
+    from a40_s6_drift import lift_phase, load_survivor
+    from a40_s5_lightcore import Phase
+    sys.argv = _argv
+    rows = []
+    for name, l, p, d, w in [("W7_l18", 18, 7, 16, 8),
+                             ("W7_l24", 24, 7, 22, 8),
+                             ("TC63_l18", 18, 6, 3, 10),
+                             ("TC63_l24", 24, 6, 3, 10)]:
+        fname = ("s5_dense_p7.json" if (l, p) == (18, 7) else
+                 "s5_dense_p6.json" if (l, p) == (18, 6) else
+                 f"s5_dense_l24p{p}.json")
+        ph = Phase.from_quotient_pts(
+            l, p, d, load_survivor(fname, p, d, w))
+        fr, s = lift_phase(ph, n_periods=3)
+        anch = fr.anchors()
+        incs = [anch[i + 1] - anch[i] for i in range(len(anch) - 1)]
+        assert min(incs) >= -4, (name, incs)
+        rows.append(dict(name=name, min_step=min(incs),
+                         max_step=max(incs)))
+        print(f"  {name}: per-step anchor increments in "
+              f"[{min(incs)}, {max(incs)}] — left cap -4 respected",
+              flush=True)
+    # mirror species TC63' via the S8 control lift
+    from a40_s8_xlane import MirrorFragment, P_M, Q_M
+    from a40_s5_twisted_atlas import (
+        transform_class, tr_supp, atlas_run)
+    import numpy as np
+    w1, w2, gg = transform_class(6, 3)
+    trP = tr_supp(P_M, w1, w2, gg)
+    trQ = tr_supp(Q_M, w1, w2, gg)
+    rws, _ = atlas_run(trP, trQ, gg, 11)
+    pick = next(r for r in rws if r["nontrivial"]
+                and r["weight"] == 10)
+    Wm = np.array([[w1[0], w1[1]], [w2[0], w2[1]]], dtype=np.int64)
+    Wi = np.array([[Wm[1, 1], -Wm[0, 1]], [-Wm[1, 0], Wm[0, 0]]],
+                  dtype=np.int64)
+    base_pts = [(int(Wi[0, 0] * c + Wi[0, 1] * y),
+                 int(Wi[1, 0] * c + Wi[1, 1] * y), blk)
+                for (c, y, blk) in pick["pts"]]
+    rws2 = []
+    for t in range(0, 6 * 3 + 5):
+        s1, s2 = set(), set()
+        for (e0, e1, blk) in base_pts:
+            if (t - e1) % 6 == 0:
+                k = (t - e1) // 6
+                (s1 if blk == 0 else s2).add(e0 + 3 * k)
+        rws2.append((frozenset(s1), frozenset(s2)))
+    frT = MirrorFragment(rws2, 0)
+    assert frT.admissible()
+    anch = frT.anchors()
+    incs = [anch[i + 1] - anch[i] for i in range(len(anch) - 1)]
+    assert min(incs) >= -4, incs
+    rows.append(dict(name="TC63p_mirror", min_step=min(incs),
+                     max_step=max(incs)))
+    print(f"  TC63' (mirror): per-step increments in "
+          f"[{min(incs)}, {max(incs)}] — left cap -4 respected",
+          flush=True)
+    out["species_rows"] = rows
+    (DATA / "s8_slip_species.json").write_text(
+        json.dumps(out, indent=1))
+    print(f"wrote {DATA/'s8_slip_species.json'}", flush=True)
 
 if __name__ == "__main__":
     main()

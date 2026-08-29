@@ -2365,22 +2365,115 @@ stay 11 regardless because the y-sector binds).
   footprint constant bounds it by local weight — the two-gauge
   closure bookkeeping (both telescopes vanish on closed walks) is
   the assembly route that survives this asymmetry.
-- **The exhaustive slip census** (`a40_s8_slip.py census`): the S7
-  link march with the heavy-entry drift IN the dominance key from
-  HEAVY onward, so tab_slip[(L, gH, slip)] is complete below cap
-  (the S7 instrumentation was representative-only and its banked
-  tables carried empty slip dicts); regression = banked byseed
-  tables reproduced exactly.  [Results below.]
+- **The exhaustive slip census** (`a40_s8_slip.py census`,
+  `s8_slip_u1_g24/g26.json`): the S7 link march with the
+  heavy-entry drift IN the dominance key from HEAVY onward, so
+  tab_slip[(L, gH, slip)] is complete below cap (the S7
+  instrumentation was representative-only and its banked tables
+  carried empty slip dicts).  Regression: the banked byseed
+  pre/link tables reproduced EXACTLY at g <= 26, and the node
+  count matches the banked run to within the seed count
+  (17,005,749 vs 17,005,741) — the slip keys add nothing at these
+  caps.  **The complete census: every certified crossing is
+  L = 1, gH = 8, and the realized slips are {-3, -2, -1, 0}
+  (min_g 24, 26, 19, 24) — |slip| <= 3, and NO POSITIVE
+  (rightward) slip exists below g <= 26 at all.**  §12.7's
+  "measured slip -1 on the optima" was representative-thin: the
+  anchor can move 3 columns left across a minimal interface at
+  near-optimal cost.
+- **Species verification** (`species`, `s8_slip_species.json`):
+  per-step anchor increments of the banked lifts — W7 at 18/24
+  [-2, +2], TC63 at 18/24 [0, +2], TC63' mirror [0, +2] — all
+  within the left cap.  Zero violations anywhere in the enumerated
+  data: the charter's verification demand is met for the LEFT
+  direction.
+- **THE VERDICT (the honest split).**  (i) LEFTWARD slip is a
+  LEMMA: telescoping the per-step cap across an L-slab block
+  (L + 1 steps) gives leftward slip >= -4(L + 1), i.e.
+  |leftward slip| <= 4(L+1) <= W_block/2 + 4 using W >= 8L — the
+  charter's affine shape with machine constants (c, c0) = (1/2, 4),
+  scope dil-4.  (ii) RIGHTWARD slip has NO footprint cap (a
+  rightward jump is a strand DEATH onto a pre-existing right
+  neighbour) and the two-sided charter lemma is OPEN with two
+  named candidate resolutions pulling opposite ways:
+  - REFUTATION mechanism: the right neighbour is built earlier by
+    a dil-4 staircase (>= 1 cell per 4 columns of reach) whose
+    cost lands in LIGHT slabs far from the block — slip unbounded
+    in the block's own weight;
+  - PROOF mechanism (debris accounting): (1+x^-1) has no finite
+    kernel, so every staircase row leaves >= 2 forced v2-debris
+    cells in the adjacent slabs, and the debris wake costs
+    ~1-2/row until killed — hand simulation prices a rightward
+    relocation at ~4 weight per 4 columns CONCENTRATED at the
+    transition rows, i.e. slip <= ~1.0 x W(transition) + c0: the
+    relocation rows themselves go heavy and the jump is charged
+    to a BLOCK after all.
+  The census's empty positive side (g <= 26) is evidence for the
+  debris mechanism's strength at low cost; the discriminating
+  experiment is the census at g ~ 28-32 (queued): positive slips
+  appearing at light-adjacent cost refute, their continued absence
+  at growing caps supports the debris-accounting lemma.
+  **EXECUTED at g <= 30** (h <= 12, |dlt| <= 16;
+  `s8_slip_u1_g30.json`, streaming-chunked byseed, no aborts,
+  regression PASS, 34M nodes / 203 s): 14 classes, all L = 1,
+  gH in {8, 9}; realized slips fill the ENTIRE left range
+  {-8..0} at gH = 8 and STILL contain NO positive slip.  Two
+  sharp consequences: (a) **the left cap is TIGHT** — slip -8 =
+  -4(L+1) = -(W/2 + 4) is realized at g = 29 (table-certified;
+  specimen replay is residue): the lemma saturates, and the slip
+  is controlled by the STEP COUNT, not the block weight; (b) any
+  |slip| <= c (gH - 8) + c0 form needs c0 >= 8 — at the MINIMUM
+  block weight the anchor already jumps the full step allowance,
+  so the charter's small-constant weight form is refuted while
+  the L-form (equivalently W/2 + 4 via W >= 8L) stands, tight.
+  Rightward emptiness now extends through g <= 30.
+  (iii) Assembly consequence: the S7 free branch's binding
+  compositions bank NEGATIVE (leftward) drift on enumerated
+  pieces and need the free link to RETURN rightward — exactly the
+  unresolved direction.  If the debris route proves out, the
+  closure lever extends to ALL branches (the charter's Stage-2
+  goal) with constants ~(1, c0); if the staircase route wins, the
+  remaining gap is the L-W return-cost wall of §10.7 in
+  per-interface form.  Either way the missing piece is now ONE
+  named inequality about rightward relocation cost.
 
 ### §13.6 Falsified claims and incidents (session 8)
 
-- **The floor-12 mirror run as parametrized is RED** (two seeds >
-  3M frontier at h = 4) — banked as partial, no claim made.
+- **The floor-12 mirror run as parametrized is RED** (seeds 0-1 >
+  3M frontier at h = 4; seed 5 RSS; seeds 6-7 spuriously killed at
+  h = 1 by the ru_maxrss flaw below) — banked as partial (seeds
+  2-4 complete-and-empty at g <= 46), no claim made.
+- **ru_maxrss is a LIFETIME PEAK, not current RSS**: the S7-style
+  guard `getrusage(...).ru_maxrss` trips every subsequent seed
+  once one seed spikes — R1's seeds 6-7 were killed at h = 1
+  without running.  All S8 engines now guard on ps-based CURRENT
+  RSS (the S7 engines retain the flaw; their banked runs were
+  whole-run aborts where it made no difference — flagged for any
+  future byseed reuse).
+- **§12.7's "measured slip -1" was representative-thin** — the
+  exhaustive census realizes slip -3 at the same block class
+  (L = 1, gH = 8) barely above optimal cost.  No banked number
+  changes (the S7 assembly consumed dlt-resolved tables, not the
+  slip observations).
+- **Layer chunking took three tries to be sound-AND-in-budget**
+  (all failures caught by the in-code guards, no OOM): (1) a
+  split check at the top of the layer loop splits too LATE — the
+  fat child layer is already materialized (RSS abort); (2)
+  disk-spilling the chunk slices still holds every ancestor
+  layer across the recursion (RSS abort); (3) the fix that works:
+  STREAMING — flush the child dict to disk whenever it crosses
+  the threshold DURING expansion, then recurse per spilled part
+  (cross-part dominance lost = over-exploration only, sound;
+  g26 regression byte-identical, node count equal).  This is the
+  engine change that completed the g30 census and unlocks the
+  floor-12 re-run.
 - Session-internal: the first Control-B seed-window indexing used
   the subfragment slab offset off by 3 (caught by the exact-cost
   closure assertion before any bank); the module initially
   computed the tooth's blk2 support twice through a redundant
-  double-bar expression (cleaned, no numeric effect).
+  double-bar expression (cleaned, no numeric effect); the Stage-2
+  species/`main` dispatch was appended after the `__main__` guard
+  (NameError on first invocation, moved, no data effect).
 - (Respected: witness weights as upper bounds; RED/AMBER/GREEN
   cost verdicts before every big run — the coherence and R0 runs
   were priced by the (18,12) pilot; sequential runs only, 2 GB
@@ -2390,21 +2483,29 @@ stay 11 regardless because the y-sector binds).
 
 ### §13.7 Residue / S9
 
-1. **Mirror stability battery** (smax 4 / dil 6 re-runs of R0 at
-   production or reduced caps) — queued this session, results to
-   be appended; the S7 precedent says non-binding.
-2. **The floor-12 x-push**: chunk the h = 2 layer of the two fat
-   seeds (sound: cross-chunk dominance is only an optimization);
-   with it, d_X >= 12 needs only the banked counting.
+1. **Mirror stability battery**: smax-4 at g <= 42 EXECUTED —
+   zero closures, all 8 seeds, NO aborts (75 min,
+   `s8_stabA_u1_nh2_g42_s0_8.json`): the input-breadth scope cap
+   is not binding for the floor-11 claim.  dil-6 launched
+   (results appended when in).
+2. **The floor-12 x-push**: the streaming-chunked engine (§13.6)
+   removes the frontier wall; re-run at gcap 46 / nH <= 3 /
+   W <= 23; with it, d_X >= 12 needs only the banked counting.
+2b. **The slip -8 specimen replay**: reconstruct the saturating
+   (L=1, gH=8, slip=-8, g=29) link through CoverFragment
+   (per-seed parent-logged rerun at gcap 29) — turns the
+   table-certified saturation into a verified witness.
 3. **The all-light exhaustion probe** (n_H = 0, gcap effectively
    unbounded): does the mirror all-light stratum exhaust CAP-FREE
    like the y-lane's (§12.4)?  Cheap, bankable as a mirrored
    structural fact.
-4. **Stage-2 verdict**: run the census at g <= 24/26, test
-   |slip| <= c gH + c0 on it, then settle the strong local lemma
-   (the two-strand ghost-carrier adversary — a cheap left
-   excursion dying INTO the block — is the named refutation
-   candidate; the salvage is the two-gauge closure form).
+4. **The rightward-slip witness** (settles Stage 2's open half):
+   construct the two-strand fragment — a staircase-built right
+   strand + the anchor strand dying into the block — explicitly at
+   g ~ 30+ (census extension or hand construction through
+   CoverFragment); a verified witness refutes the two-sided local
+   lemma OUTRIGHT, and its measured cost-per-column IS the
+   empirical return-cost constant the L-W wall needs.
 5. **The W7-analog question for the BAbar lane** (does a winding
    constant-weight species exist in the mirror alphabet beyond
    the twist-compact census?) — irrelevant to the banked floors,

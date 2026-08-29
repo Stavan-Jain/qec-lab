@@ -1,0 +1,54 @@
+{
+ "params": {
+  "u": 1,
+  "m": 24,
+  "ell": 18,
+  "nHmax": 3,
+  "whcap": 23,
+  "gcap": 46,
+  "smax": 3,
+  "dil": 4,
+  "extent_cap": 14,
+  "dcap": 20,
+  "exact_dlt": true,
+  "seeds": [
+   0,
+   8
+  ]
+ },
+ "info": {
+  "n_seeds": 8,
+  "pushed": 16047894,
+  "popped": 7017985,
+  "trunc_g": true,
+  "trunc_extent": 26894072,
+  "trunc_dcap": 11987,
+  "aborts": [
+   {
+    "sid": 0,
+    "why": "RED: frontier 3472353 at h=4"
+   },
+   {
+    "sid": 1,
+    "why": "RED: frontier 3135139 at h=4"
+   },
+   {
+    "sid": 5,
+    "why": "RED: RSS 2069 MB > 2048 at h=5"
+   },
+   {
+    "sid": 6,
+    "why": "RED: RSS 2069 MB > 2048 at h=1"
+   },
+   {
+    "sid": 7,
+    "why": "RED: RSS 2069 MB > 2048 at h=1"
+   }
+  ],
+  "closed": 0,
+  "layer_peak": 3472353,
+  "wall_s": 1463.1
+ },
+ "closed": [],
+ "verified": []
+}

@@ -94,9 +94,19 @@ def bit(mask, i):
 
 
 def _rss_mb():
-    import resource
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss \
-        // (1024 * 1024)
+    """CURRENT process RSS in MB (ps-based; ru_maxrss is a
+    lifetime peak and would trip per-seed guards forever after one
+    spike — the R1 incident, §13.6)."""
+    import os
+    import subprocess
+    try:
+        out = subprocess.check_output(
+            ["ps", "-o", "rss=", "-p", str(os.getpid())])
+        return int(out.split()[0]) // 1024
+    except Exception:
+        import resource
+        return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss \
+            // (1024 * 1024)
 
 
 # ---------------------------------------------------------------------
@@ -295,6 +305,8 @@ class MClosedMarch:
                     layer_peak=self.layer_peak,
                     wall_s=round(time.time() - t0, 1))
 
+    SPLIT_THRESH = 180_000
+
     def _run_seed(self, sid, w8, log, rss_cap, frontier_cap):
         u = self.u
         seed_norm, _ = norm(tuple(w8))
@@ -303,23 +315,84 @@ class MClosedMarch:
             allm |= r
         layer = {(tuple(w8), 0, 0, lsb(allm),
                   allm.bit_length() - 1): u}
+        return self._run_layerset(layer, 1, sid, seed_norm, log,
+                                  rss_cap, frontier_cap)
+
+    # recursive layer chunking (see a40_s8_slip): a layer above
+    # SPLIT_THRESH is partitioned and each chunk marched to its own
+    # readout.  Sound: cross-chunk dominance is only an
+    # optimization (over-exploration), closures merge in
+    # self.closed; guards run per chunk with a mid-expansion RSS
+    # check.
+    def _run_layerset(self, layer, h, sid, seed_norm, log, rss_cap,
+                      frontier_cap, depth=0):
+        import os
+        import pickle
+        import tempfile
+        u = self.u
         t0 = time.time()
-        h = 1
         while layer and h < self.m + 1:
             rss = _rss_mb()
             if rss > rss_cap:
                 return f"RED: RSS {rss} MB > {rss_cap} at h={h}"
-            if len(layer) > frontier_cap:
-                return f"RED: frontier {len(layer)} at h={h}"
             nxt = {}
+            parts = []
+
+            def spill(d):
+                fd, pth = tempfile.mkstemp(
+                    suffix=f"_s8_sid{sid}_d{depth}_h{h}.pkl")
+                with os.fdopen(fd, "wb") as f:
+                    pickle.dump(list(d.items()), f, protocol=4)
+                parts.append(pth)
+
+            nexp = 0
             for (dyn, nH, dlt, xlo, xhi), g in layer.items():
                 self.expand(g, dyn, nH, h, dlt, xlo, xhi, nxt)
+                nexp += 1
+                if len(nxt) > self.SPLIT_THRESH:
+                    spill(nxt)
+                    nxt = {}
+                if nexp % 65536 == 0 and _rss_mb() > rss_cap:
+                    for pth in parts:
+                        os.remove(pth)
+                    return f"RED: RSS {_rss_mb()} MB mid-layer " \
+                        f"h={h}"
             self.nodes_popped += len(layer)
+            if parts:
+                if nxt:
+                    spill(nxt)
+                nxt = None
+                layer = None
+                if log:
+                    print(f"[s8 sid{sid} d{depth}] h={h + 1} "
+                          f"streamed into {len(parts)} parts rss "
+                          f"{_rss_mb()}MB "
+                          f"{round(time.time() - t0, 1)}s",
+                          flush=True)
+                try:
+                    for pth in parts:
+                        with open(pth, "rb") as f:
+                            chunk = dict(pickle.load(f))
+                        os.remove(pth)
+                        self.nodes_pushed += len(chunk)
+                        self.layer_peak = max(self.layer_peak,
+                                              len(chunk))
+                        ab = self._run_layerset(
+                            chunk, h + 1, sid, seed_norm, log,
+                            rss_cap, frontier_cap, depth + 1)
+                        chunk = None
+                        if ab:
+                            return ab
+                finally:
+                    for pth in parts:
+                        if os.path.exists(pth):
+                            os.remove(pth)
+                return None
             self.nodes_pushed += len(nxt)
             self.layer_peak = max(self.layer_peak, len(nxt))
-            if log and (h % 6 == 0 or len(nxt) > 300000):
-                print(f"[s8 u={u} nH<={self.nHmax} sid{sid}] "
-                      f"h={h + 1} states {len(nxt)} rss "
+            if log and (h % 6 == 0 or len(nxt) > 100000):
+                print(f"[s8 u={u} nH<={self.nHmax} sid{sid} "
+                      f"d{depth}] h={h + 1} states {len(nxt)} rss "
                       f"{_rss_mb()}MB {round(time.time() - t0, 1)}s",
                       flush=True)
             layer = nxt
