@@ -27,8 +27,9 @@ scripts `a42_s*.py`; data in `data/a42/`.
 two session-1 items corrected there):**
 - The b = 1 WINDOWED-BRANCH THEOREM is assembled (§2.8): windowed
   member logicals floor at 12r via floor_cyl(6r); r = 1
-  unconditional, r = 2 certificate to the jet level (+24 modulo the
-  L-band corner), general r modulo (L-pure, L-band).  The b = 1
+  unconditional at 12; **r = 2 at >= 18 certificate (floor(12) >=
+  18 unrestricted all-classes, the jet runs)**, = 24 modulo the
+  L-band corner; general r modulo (L-pure, L-band).  The b = 1
   problem reduces to the toroidal sector (handed to A40).
 - S1h's residue register PROVEN blind at a >= 1 (ker = ker(pi);
   identically zero at a = 2): the S1h p = 12 "floor > 11 racer
@@ -775,8 +776,30 @@ Validation stack (all green, `jet_racer.py controls`):
 - The p = 12 runs' per-level state counts and return spectra match
   the register-free deep run (s2_racer12_deep) level by level.
 
-Production (p = 12, both branches, cap 18, RSS-capped):
-**see s2_jet12_{T,V}.json** — result recorded in §2.6.
+Production (p = 12, cap 18, budget 1.3 h/branch, RSS-capped;
+after a lexsort rework of the pair-key path — the first flight spent
+80% of its time in numpy's VOID_compare, sampled and replaced by
+native u64/u8 lexsort + sort-merge membership, ~2.1x faster/level):
+- branch T: **level 18 COMPLETE** (7.57M novel, 12.9M seen, 4013 s,
+  peak 1.75 GB), returns {6,10,12,14,16,18} all even, NO nonzero
+  register;
+- branch V: level 17 complete (1519 s), then the time budget stopped
+  level 18 (banked per the coordinator's repricing directive —
+  per-level time grows ~x3.2, level 19+ is out of day-budget);
+  NO nonzero register.
+
+> **floor(12) >= 18 unrestricted, ALL classes — CERTIFICATE tier.**
+> Both branches enumerate every compact cycle of weight <= 17 with
+> their branch registers; no nonzero register appears; the joint
+> kernel is empty (s2_registers), so no nontrivial compact cycle of
+> weight <= 17 exists; parity excludes odd weights.  Lane AB; the
+> theta'-lane by the banked duality.  Sharpening from T's level 18:
+> a weight-18 nontrivial cycle, if any, must lie in the 3 T-blind
+> transverse classes (whose h-DP-envelope minimum is 36).  With the
+> realized UB, floor(12) in {18, 20, 22, 24}; = 24 modulo the
+> corner [{18 (transverse-only), 20, 22}] x [outside the h-DP
+> envelope].  Supersedes the retracted S1h sub-claim (§3.7) AND the
+> solver-tier >= 14.
 
 ### §2.6 The compact-floor table after session 2
 
@@ -787,16 +810,16 @@ Production (p = 12, both branches, cap 18, RSS-capped):
 | 6 | 12 = 2p | certificate | atlas census + DP (s<=7) + jet |
 | 9 | 18 = 2p | **certificate (re-certified)** | jet engine both branches, a=0-complete register + parity + UB |
 | 10, 11, 13, 14 | H = 0 | theorem + machine (NEW) | Theorem A; dim Z_W = dim B_W at W in {6,9,12}; parity columns = 3 |
-| 12 | >= JET+2 unrestricted, ALL classes; = 24 over the (s <= 7, span <= 10, gaps <= 4) envelope (§3.8); UB 24 | certificate (scoped) | jet two-branch runs + parity; h-DP; pure lift |
+| 12 | **>= 18 unrestricted, ALL classes**; = 24 over the (s <= 7, span <= 10, gaps <= 4) envelope (§3.8); UB 24 | certificate | jet runs (T level 18, V level 17) + parity; h-DP; pure lift |
 | 15 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=5) | window LA; UB 30 = 2p via m-scaling |
 | 18 | dim H = 6 (NEW check) | Theorem H corroborated (a=1, m=3) | window LA; UB 36 = 2p; the r = 3 member period |
 | 21 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=7) | window LA |
 | 24 | dim H = 6 (NEW check) | Theorem H corroborated (a=3, m=1 — first full-window a=3 contact) | window LA; the r = 4 member period |
 
-(JET = the joint completed level of the two p = 12 jet runs; with
-parity the unrestricted all-class floor is JET + 2 when JET is even.
-The register-free deep run independently enumerated returns
-{6, 10, 12, 14, 16} through level 16 — all even, parity-consistent.)
+(The register-free deep run independently enumerated returns
+{6, 10, 12, 14, 16} through level 16, and the jet runs' per-level
+novel counts match it exactly at levels 0..15, +6 states at 16 —
+the first fiber separation of the finer 8-bit register.)
 
 ### §2.7 L-pure / L-band after session 2: statements, one new closed
 ### piece, and the honest obstruction
@@ -856,12 +879,11 @@ windowed branch of Lemma K).  Then wt(v) >= floor_cyl(m), the
 period-m compact-cylinder floor.  Consequently:
 - **r = 1: wt(v) >= 12 = 12r, UNCONDITIONAL** (floor_cyl(6) = 12,
   certificate).
-- **r = 2: wt(v) >= JET + 2 unconditional at certificate tier**
-  (the two-branch jet runs; >= 16 already banked from level 14 =
-  the first even level both branches passed); **wt(v) >= 24 = 12r
-  under the L-band corner** ([{JET+2..22} even] x [outside the
-  (s <= 7, span <= 10, gaps <= 4) h-DP envelope] only — ledger
-  §3.8; UB realized).
+- **r = 2: wt(v) >= 18 unconditional at certificate tier** (the
+  two-branch jet runs, joint level 17 + parity); **wt(v) >= 24 =
+  12r under the L-band corner** ([{18 (transverse classes only, by
+  T's level 18), 20, 22}] x [outside the (s <= 7, span <= 10,
+  gaps <= 4) h-DP envelope] only — ledger §3.8; UB realized).
 - **general r: wt(v) >= 12r = 2m under (L-pure + L-band at p = m)**
   — plus, when 127 | r, the same two lemmas at the 127-factor (the
   W-line skyscraper joins H(m) by Theorem H's uniform form; its
@@ -939,9 +961,12 @@ where the -6 discount lives.
 2. L-pure forall-a (deformation cascade) and the L-band mixed half
    (§2.7's obstruction paragraph is the target statement); the
    pure-half window s in [8, p-1] via a smarter sigma enumeration.
-3. The p = 12 jet runs' remaining corner: weights {JET+2..22} x
-   s >= 8 (h-DP owns s <= 7).  Deeper jet levels (each +2 closes
-   one even weight) or the L-band lemma close floor(12) = 24.
+3. The p = 12 remaining corner: weights {18 (transverse-only),
+   20, 22} x outside the h-DP envelope.  Per-level jet time grows
+   ~x3.2 (level 18 = 44 min): levels 19-22 cost ~2.3/7.5/24/77 h —
+   beyond day-budget (coordinator repricing, 2026-08-28); the
+   certificate path forward is an earlier-terminating argument
+   (register early-exit / omega-structure routing / L-band).
 4. Stage 2 (members): the 2-D omega-bi-block structure on tori; the
    tangency direction vs the member lattice (the b-bit); gates
    d((18,12)) = 24, d((12,12)) = 18 (= two-gross), d((18,6)) = 12;

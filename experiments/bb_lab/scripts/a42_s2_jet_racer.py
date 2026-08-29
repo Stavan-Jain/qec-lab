@@ -21,10 +21,13 @@ a = 1, 2): two runs — one per branch — certify all classes.
 Engine: the S1h/S2b automaton core (validated against
 a40_s4_phase_atlas.Automaton.step), states in uint64 (5p bits, no
 register bits), registers in a parallel uint8 (Lambda_a has <= 8
-F2-dims for a <= 2), dedup/membership on 9-byte void keys,
-insertion-time dedup (the S2b memory fix), Dial buckets, y-rotation
-canonicalization with register co-rotation by ybar^s, RSS-capped
-clean aborts.
+F2-dims for a <= 2), pair dedup/membership by NATIVE u64/u8 lexsort
+and sort-merge (the first flight used 9-byte void keys and spent
+80% of its time in numpy's per-element VOID_compare — sampled,
+~20x slower), insertion-time dedup (the S2b memory fix), Dial
+buckets, y-rotation canonicalization with register co-rotation by
+ybar^s, RSS-capped clean aborts, one branch per process (ru_maxrss
+is a lifetime peak).
 
 Certificate semantics: completing level c in branch b enumerates all
 compact cycles of weight <= c with their branch-b register; "no
@@ -200,13 +203,41 @@ class JetRacer:
             br = np.where(better, rr, br)
         return bs, br
 
-    # ---------------- keys ----------------
+    # ---------------- pair keys (native lexsort; the first-flight
+    # V9-void-dtype path spent 80% of its time in VOID_compare) ------
     @staticmethod
-    def key(states: np.ndarray, regs: np.ndarray):
-        arr = np.empty(states.size, dtype=[("s", "<u8"), ("r", "u1")])
-        arr["s"] = states
-        arr["r"] = regs
-        return arr.view("V9").reshape(-1)
+    def dedup(ms: np.ndarray, mr: np.ndarray):
+        """Sort (lex by state, then reg) and drop duplicate pairs."""
+        o = np.lexsort((mr, ms))
+        ms, mr = ms[o], mr[o]
+        if ms.size <= 1:
+            return ms, mr
+        keep = np.empty(ms.size, dtype=bool)
+        keep[0] = True
+        keep[1:] = (ms[1:] != ms[:-1]) | (mr[1:] != mr[:-1])
+        return ms[keep], mr[keep]
+
+    @staticmethod
+    def member(qs, qr, ss, sr):
+        """Membership mask of pair-queries (qs, qr) — assumed
+        pair-deduped — in the pair-unique sorted store (ss, sr):
+        merge, lexsort, mark equal-neighbors.  Since each side is
+        duplicate-free, a query equals a neighbor iff that neighbor
+        is its store copy."""
+        if ss.size == 0:
+            return np.zeros(qs.size, dtype=bool)
+        ns = ss.size
+        all_s = np.concatenate([ss, qs])
+        all_r = np.concatenate([sr, qr])
+        o = np.lexsort((all_r, all_s))
+        eq = (all_s[o][1:] == all_s[o][:-1]) & \
+            (all_r[o][1:] == all_r[o][:-1])
+        inm = np.zeros(all_s.size, dtype=bool)
+        inm[1:] |= eq
+        inm[:-1] |= eq
+        back = np.empty_like(o)
+        back[o] = np.arange(o.size)
+        return inm[back[ns:]]
 
     # ---------------- validation ----------------
     def validate(self, nsamples=500, rng=None):
@@ -263,8 +294,8 @@ class JetRacer:
         buckets: dict[int, list] = {
             0: [(np.array([0], dtype=np.uint64),
                  np.zeros(1, dtype=np.uint8))]}
-        seen = self.key(np.array([0], dtype=np.uint64),
-                        np.zeros(1, dtype=np.uint8))
+        seen_s = np.array([0], dtype=np.uint64)
+        seen_r = np.zeros(1, dtype=np.uint8)
         returns: dict[int, set] = {}
         state = {"p": self.p, "cap": cap, "branch": self.branch,
                  "xstar": int(self.xstar), "levels": [],
@@ -287,17 +318,18 @@ class JetRacer:
                 arrs = buckets.pop(c)
                 sts = np.concatenate([x[0] for x in arrs])
                 rgs = np.concatenate([x[1] for x in arrs])
-                kk = self.key(sts, rgs)
-                _, uidx = np.unique(kk, return_index=True)
-                sts, rgs, kk = sts[uidx], rgs[uidx], kk[uidx]
-                fresh = ~np.isin(kk, seen)
+                sts, rgs = self.dedup(sts, rgs)
+                fresh = ~self.member(sts, rgs, seen_s, seen_r)
                 if c == 0 and level_novel == 0:
                     fresh[:] = True
-                sts, rgs, kk = sts[fresh], rgs[fresh], kk[fresh]
+                sts, rgs = sts[fresh], rgs[fresh]
                 if sts.size == 0:
                     break
                 level_novel += int(sts.size)
-                seen = np.unique(np.concatenate([seen, kk]))
+                seen_s = np.concatenate([seen_s, sts])
+                seen_r = np.concatenate([seen_r, rgs])
+                o = np.lexsort((seen_r, seen_s))
+                seen_s, seen_r = seen_s[o], seen_r[o]
                 for lo in range(0, sts.size, CHUNK):
                     cst = sts[lo:lo + CHUNK]
                     crg = rgs[lo:lo + CHUNK]
@@ -325,10 +357,8 @@ class JetRacer:
                         ms = np.concatenate([x[0] for x in lst])
                         mr = np.concatenate([x[1] for x in lst])
                         ms, mr = self.canon(ms, mr)
-                        k2 = self.key(ms, mr)
-                        _, ui = np.unique(k2, return_index=True)
-                        ms, mr, k2 = ms[ui], mr[ui], k2[ui]
-                        fr = ~np.isin(k2, seen)
+                        ms, mr = self.dedup(ms, mr)
+                        fr = ~self.member(ms, mr, seen_s, seen_r)
                         if fr.any():
                             buckets.setdefault(cw, []).append(
                                 (ms[fr], mr[fr]))
@@ -349,10 +379,8 @@ class JetRacer:
                     if len(arrs2) > 64 or tot > 1 << 22:
                         ms = np.concatenate([x[0] for x in arrs2])
                         mr = np.concatenate([x[1] for x in arrs2])
-                        k2 = self.key(ms, mr)
-                        _, ui = np.unique(k2, return_index=True)
-                        ms, mr, k2 = ms[ui], mr[ui], k2[ui]
-                        fr = ~np.isin(k2, seen)
+                        ms, mr = self.dedup(ms, mr)
+                        fr = ~self.member(ms, mr, seen_s, seen_r)
                         buckets[cw] = [(ms[fr], mr[fr])] if fr.any() \
                             else []
             if aborted:
@@ -360,12 +388,12 @@ class JetRacer:
             last_level_t = time.time() - lt0
             rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
             state["levels"].append(
-                {"c": c, "novel": level_novel, "seen": int(seen.size),
-                 "rss_mb": rss // 2 ** 20,
+                {"c": c, "novel": level_novel,
+                 "seen": int(seen_s.size), "rss_mb": rss // 2 ** 20,
                  "t": round(time.time() - t0, 1)})
             nontriv = sorted(w for w, rv in returns.items()
                              if any(v != 0 for v in rv))
-            log(f"  level {c}: novel {level_novel} seen {seen.size} "
+            log(f"  level {c}: novel {level_novel} seen {seen_s.size} "
                 f"rss {rss//2**20}MB t {time.time()-t0:.0f}s "
                 f"returns {sorted(returns)} nonzero-reg@{nontriv}")
             state["returns"] = {str(k): sorted(v)
@@ -522,7 +550,8 @@ def main():
         print(f"p=12 branch {tag} (xstar={r.xstar}): cap {cap}, "
               f"budget {budget/3600:.1f} h", flush=True)
         st = r.run(cap, log=lambda s: print(s, flush=True),
-                   ckpt_path=DATA / f"s2_jet12_{tag}_ckpt.json")
+                   ckpt_path=DATA / f"s2_jet12_{tag}_ckpt.json",
+                   time_budget_s=budget)
         done = max((lv["c"] for lv in st["levels"]), default=-1)
         nt = st.get("nonzero_reg_costs", [])
         print(f"p=12 branch {tag}: completed level {done}; "
