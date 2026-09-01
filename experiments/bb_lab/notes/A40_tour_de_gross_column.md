@@ -1193,6 +1193,12 @@ periodic classification above fixes its input alphabet.
   pilot's working hypothesis) — FALSE at ℓ = 12: four shear
   families survive it; they die instead by the closure arithmetic.
   At ℓ = 18/24 the catalog does suffice.
+- POST-FIX ADDENDUM (S8-era re-audit, `a40_s4_p3audit.py`): after
+  the tr() collision fix (66e0e7b), the pilot's p ≤ 3 rows were
+  re-censused on the CORRECTED quotient codes at ℓ ∈ {12, 18, 24} —
+  zero sub-rate-2 y-spanning orbits exist at ANY p ≤ 3 shear (3,456
+  orbits; `s4_p3audit_l{12,18,24}.json`).  The collision-frame
+  soundness gap is closed; no pilot-era conclusion changes.
 - (Respected: witness weights as upper bounds only; RED/AMBER/GREEN
   as cost verdicts; no SAT anywhere; every gate script re-verifies
   its vectors end-to-end.)
