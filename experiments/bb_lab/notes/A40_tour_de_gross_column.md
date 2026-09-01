@@ -2179,7 +2179,7 @@ wrapped corner remains a listed condition.
    anchor-keyed dominance) is stated; the L12 closure control is
    the natural first mechanized witness.
 
-## §13 SESSION 8 (2026-08-28) — the x-sector mirror: d_X(24,18) >= 11
+## §13 SESSION 8 (2026-08-28) — the x-sector mirror: d_X(24,18) >= 12
 ## and the first double-digit OVERALL member floor, d(24,18) >= 11
 
 Directive: instantiate the S6/S7 transfer machinery on the
@@ -2188,12 +2188,13 @@ min(11, 6); then attack the heavy-slip weight bound.  What happened:
 the mirror turned out to be STRUCTURALLY CLEANER than the y-lane —
 the sector definition itself removes the wrapped corner, the winding
 branch, and the drift-mod-ell subtlety, and the walk's 24-slab
-telescope makes every stratum except (u = 1, n_H <= 2) die by
+telescope makes every stratum except (u = 1, small n_H) die by
 COUNTING at the target — so the whole x-sector floor reduces to
-per-seed closed marches that run in minutes.  Result:
-**d_X(24,18) >= 11 (T1-mirror, scope-listed), hence
+per-seed closed marches that run in minutes-to-hours.  Result:
+**d_X(24,18) >= 12 (T1-mirror, scope-listed), hence
 d(24,18) >= min(d_Y, d_X) >= 11 — the first double-digit
-unconditional floor for a tour-de-gross member at (r,b) = (3,1)**
+unconditional floor for a tour-de-gross member at (r,b) = (3,1),
+with the y-sector now the binding side**
 ([[864,12]]; the conjectured value is 36).  Engines
 `a40_s8_xlane.py` (mirror system + envelope-keyed closed march +
 replay verifier), `a40_s8_slip.py` (Stage 2); data `data/a40/s8_*`;
@@ -2316,40 +2317,50 @@ Verification chain (all green, `s8_xlane_selftest.json`,
   the open W7-analog question for the BAbar lane is not a scope
   condition — listed residue.
 
-### §13.4 The floors: d_X(24,18) >= 11, OVERALL d(24,18) >= 11
+### §13.4 The floors: d_X(24,18) >= 12, OVERALL d(24,18) >= 11
 
-Production run R0 (`s8_prod2418_u1_nh2_g42_s0_8.json`): u = 1,
-n_H <= 2, whcap 19, gcap 42, extent <= 14, smax 3 / dil 4, all 8
-seeds, per-seed trees EXHAUST by h ~ 7 (largest layer 1.30M), no
-aborts, 685 s, peak RSS 786 MB (in-budget): **ZERO closures**.
-Branch table for a class-minimal nontrivial x-sector logical:
+Two production passes, both ALL 8 seeds, ZERO closures, zero
+aborts (every guard green; all numbers re-derived from the banked
+JSONs at close):
+
+- **R0** (`s8_prod2418_u1_nh2_g42_s0_8.json`): u = 1, n_H <= 2,
+  W <= 19, g <= 42, extent <= 14, smax 3 / dil 4 — per-seed trees
+  EXHAUST by h ~ 7 (largest layer 1.30M), 685 s, peak RSS 786 MB.
+- **R1'** (`s8_prod2418v2_u1_nh3_g46_s0_8.json`, the streaming
+  engine of §13.6): u = 1, n_H <= 3, W <= 23, g <= 46, same
+  scope — 31.2M states, layer peak 180,800 (the flush threshold),
+  5551 s, RSS ~0.25 GB throughout.  The run that had FAILED
+  operationally before the streaming rework (5/8 seeds aborted;
+  §13.6) completes clean.
+
+Branch table for a class-minimal nontrivial x-sector logical
+(4|v| = sum of the 24 slab weights; every slab >= 1):
 
 | branch | source | floor |
 |---|---|---|
-| u >= 2 | counting (2/slab x 24) | >= 12 |
-| u = 1, n_H >= 3 | counting (24 + 21)/4 | >= 12 |
-| u = 1, n_H <= 2, some W >= 20 | counting (43/4) | >= 11 |
-| u = 1, n_H <= 2, W <= 19 | R0 march empty g <= 42 | >= 11 |
+| u >= 2 | counting (2/slab x 24 = 48) | >= 12 |
+| u = 1, n_H >= 4 | counting (24 + 28)/4 | >= 13 |
+| u = 1, some heavy W >= 24 | counting (>= 47)/4 | >= 12 |
+| u = 1, n_H <= 3, W <= 23 | R1' march empty g <= 46 | >= 12 |
 
 **T1-mirror (certificate-shaped, scope-listed):
-d_X(24,18) >= 11.**  Scope: smax-3 / dil-4 prefix-connected input
+d_X(24,18) >= 12.**  Scope: smax-3 / dil-4 prefix-connected input
 placement (the growth scope, same discipline as S7) — and NOTHING
 ELSE: no wrapped corner, no winding branch, no boundary
-relaxation, no loose join, no conjectural tier.  Combined with S7:
+relaxation, no loose join, no conjectural tier.  Stability: the
+smax-4 and dil-6 batteries (§13.7 item 1) ran at the R0
+configuration (g <= 42, n_H <= 2), so the >= 11 floor is
+stability-backed on both scope axes; the 12th unit rests on R1'
+at production scope only (g46-level stability = listed residue).
+Combined with S7:
 
-> **d(24,18) >= min(d_Y, d_X) >= 11** — [[864,12, >= 11]]
-> unconditional (X side; Z side by transpose duality as in §3.2),
-> up from 6.  The first double-digit member floor at (3,1), and
-> the sector split is now two-sided instrumented: 11 (y, S7
-> boundary-coupled) vs 11 (x, S8 counting + march).
-
-The floor-12 x-push (gcap 46, n_H <= 3, W <= 23) FAILED
-operationally: seeds 0-1 hit the 3M frontier guard at h = 4 (the
-+4 budget fattens the shared light prefix; RSS guard held at
-1.5 GB).  Honest state: 6/8 seeds complete-and-empty at g <= 46;
-the claim stays 11 until the two fat seeds are closed (chunked
-h=2-layer splitting is the priced route; the OVERALL floor would
-stay 11 regardless because the y-sector binds).
+> **d(24,18) >= min(d_Y, d_X) = min(11, 12) >= 11** —
+> [[864,12, >= 11]] unconditional (X side; Z side by transpose
+> duality as in §3.2), up from 6.  The first double-digit member
+> floor at (3,1); the sector split is two-sided instrumented —
+> 11 (y, S7 boundary-coupled) vs 12 (x, S8 counting + march) —
+> and the Y-SECTOR is now the binding side: the next unit of
+> overall floor must come from §12.10's y-levers, not from x.
 
 ### §13.5 Stage 2 — the heavy-slip bound (caps proven; census built)
 
@@ -2439,10 +2450,12 @@ stay 11 regardless because the y-sector binds).
 
 ### §13.6 Falsified claims and incidents (session 8)
 
-- **The floor-12 mirror run as parametrized is RED** (seeds 0-1 >
-  3M frontier at h = 4; seed 5 RSS; seeds 6-7 spuriously killed at
-  h = 1 by the ru_maxrss flaw below) — banked as partial (seeds
-  2-4 complete-and-empty at g <= 46), no claim made.
+- **The floor-12 mirror run as FIRST parametrized was RED** (seeds
+  0-1 > 3M frontier at h = 4; seed 5 RSS; seeds 6-7 spuriously
+  killed at h = 1 by the ru_maxrss flaw below) — banked as partial
+  (seeds 2-4 complete-and-empty at g <= 46), no claim made from
+  it; SUPERSEDED same session by the streaming R1' (all 8 seeds
+  clean, §13.4).
 - **ru_maxrss is a LIFETIME PEAK, not current RSS**: the S7-style
   guard `getrusage(...).ru_maxrss` trips every subsequent seed
   once one seed spikes — R1's seeds 6-7 were killed at h = 1
@@ -2483,14 +2496,21 @@ stay 11 regardless because the y-sector binds).
 
 ### §13.7 Residue / S9
 
-1. **Mirror stability battery**: smax-4 at g <= 42 EXECUTED —
+1. **Mirror stability battery COMPLETE**: smax-4 at g <= 42 —
    zero closures, all 8 seeds, NO aborts (75 min,
-   `s8_stabA_u1_nh2_g42_s0_8.json`): the input-breadth scope cap
-   is not binding for the floor-11 claim.  dil-6 launched
-   (results appended when in).
-2. **The floor-12 x-push**: the streaming-chunked engine (§13.6)
-   removes the frontier wall; re-run at gcap 46 / nH <= 3 /
-   W <= 23; with it, d_X >= 12 needs only the banked counting.
+   `s8_stabA_u1_nh2_g42_s0_8.json`); dil-6 at g <= 42 — zero
+   closures, all 8 seeds, NO aborts (32 min via the streaming
+   engine, `s8_stabB_u1_nh2_g42_s0_8.json`).  NEITHER growth
+   scope cap is binding for the floor-11 claim — the same
+   stability shape as §12.4's y-lane exhaustion.
+2. **The floor-12 x-push: EXECUTED** — R1' clean (§13.4),
+   d_X >= 12 banked.  The next x-rungs, priced: (a) g46-level
+   stability re-runs (smax 4 / dil 6 at nH <= 3 — the streaming
+   engine makes them memory-flat; hours-scale); (b) x >= 13 needs
+   the u = 2 stratum marched (284 seeds, every slab >= 2, budget
+   ~50: tiny trees) plus nH <= 4 at g <= 50 — but the y-sector
+   binds the overall floor at 11, so x-rungs are generalization
+   evidence, not floor progress.
 2b. **The slip -8 specimen replay**: reconstruct the saturating
    (L=1, gH=8, slip=-8, g=29) link through CoverFragment
    (per-seed parent-logged rerun at gcap 29) — turns the
@@ -2510,7 +2530,21 @@ stay 11 regardless because the y-sector binds).
    constant-weight species exist in the mirror alphabet beyond
    the twist-compact census?) — irrelevant to the banked floors,
    relevant to the mirror's momentum-budget narrative.
-6. Lean: the theta' reduction is a monomial-substitution
+6. **Stage 3 (the h=5 / L=2 interface rigidity, §12.10 item 2)
+   NOT REACHED** this session — no proof work done, the
+   parity-like puzzle stands as S7 left it.  One new data point
+   from the census bears on the L-half: at g <= 30 (h <= 12)
+   every certified crossing class is STILL L = 1 (`slip_rows` of
+   `s8_slip_u1_g30.json`: no L = 2 entry) — the two-slab-block
+   exclusion extends 4 cost units beyond where S7 measured it.
+   (The h = 5 half is not re-derivable from the banked census
+   fields — the run does not store the h-resolved link table —
+   so its extension is unverified, listed as-is.)
+   **Stage 4 ((18,12) coherence + ell = 30) PARTIALLY reached**:
+   the (18,12) x-sector coherence ran as a CONTROL (§13.3, zero
+   closures, 4/8 seeds exhaust); the ell = 30 column's sector
+   floors were not attempted.
+7. Lean: the theta' reduction is a monomial-substitution
    isomorphism (formalizes as a support bijection); the counting
    collapse is arithmetic on the slab telescope; the mirror
    closed tables are finite certificates under the same
