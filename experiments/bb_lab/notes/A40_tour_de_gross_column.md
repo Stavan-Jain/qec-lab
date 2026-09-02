@@ -3382,9 +3382,13 @@ witnesses verified end to end, UNSAT never consumed): (12,12) ≤ 18
 finds the witness family in 0.2 s and (12,12) ≤ 17 / (18,12) ≤ 23
 time out (300 / 600 s) — the solver cannot certify emptiness where
 d is already certified, so its silence at (18,12) ≤ 24 (1,500 s)
-and in the mixed-class-restricted rerun (§16.3; 1,800 s) is
-uninformative.  Whether min_D(18,12) = 24 or > 24 is listed residue
-(§16.6); the L12-stack minimum is x-windowed and its class is pure-x.
+and in the mixed-class-restricted rerun (§16.3; 1,845 s,
+`s11_hunt_mixed.json`) is uninformative.  Whether min_D(18,12) = 24
+or > 24 is listed residue (§16.6); the L12-stack minimum is
+x-windowed and its class is pure-x.  The r = 3 falsification probe
+(mixed-class gap-dense at (24,18) ≤ 35, 1,539 s) found no witness —
+also uninformative, recorded only so it is not re-run at this
+budget.
 
 ### §16.3 THEOREM P — the parity law of cylinder images, and the
 ### mixed sector (`a40_s11_structure.py`, `s11_parity_law.json`,

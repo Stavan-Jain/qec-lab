@@ -44,3 +44,10 @@ validate_banked: PASS
 == control: mixed-class gap-dense at (12,12) <= 18 (witness family): (l,m)=(12,12) W<=18
   [mixed(12,12)<=18] solution 1: w=18 (0.0 s)
   [mixed(12,12)<=18] solution 2: w=18 (0.2 s)
+   -> w=18 sector=2D gap=gap-dense
+   -> w=18 sector=2D gap=gap-dense
+   status=timeout n=2 wall=301.1 s
+== mixed-class gap-dense at (18,12) <= 24: (l,m)=(18,12) W<=24
+   status=timeout n=0 wall=1844.5 s
+== mixed-class gap-dense at (24,18) <= 35: (l,m)=(24,18) W<=35
+   status=timeout n=0 wall=1539.0 s
