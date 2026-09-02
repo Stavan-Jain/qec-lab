@@ -93,9 +93,16 @@ def analyse(p, cap):
 
 
 def main():
+    import contextlib
+    import io
+    buf = io.StringIO()
     res = {}
-    for p, cap in ((3, 8), (6, 13)):
-        res[f"p{p}"] = analyse(p, cap)
+    with contextlib.redirect_stdout(buf):
+        for p, cap in ((3, 8), (6, 13)):
+            res[f"p{p}"] = analyse(p, cap)
+    text = buf.getvalue()
+    print(text, end="")
+    (DATA / "s4_sheets.log").write_text(text)
     (DATA / "s4_sheets.json").write_text(json.dumps(res, indent=1))
 
 

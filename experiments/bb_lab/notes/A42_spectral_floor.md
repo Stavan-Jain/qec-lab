@@ -23,6 +23,31 @@ Artin–Schreier quadratic extensions, the variety enumeration, the
 local-multiplicity engine, the frame k-formula), consumed by staged
 scripts `a42_s*.py`; data in `data/a42/`.
 
+**State of the lane (2026-09-01, session 4 — read §2.12–§2.16
+first):**
+- **The fibre theorem** (§2.12): for p = 3q, 3 ∤ q, R_p = F₂[Z_q] ×
+  F₄[Z_q] with Z₃-fibres of size 3 over the period-q cylinder and
+  per-fibre weights {1 singleton, 2 pair, 3 full}, so
+  wt = 2|S| + 3|s| − 4|S∩s| EXACTLY (machine-checked on every column
+  at p = 6, 12, 24).  The mixed half is the closed-form inequality
+  (HM): 4|S∩s| − 3|s| ≤ 2(|S| − 3q), SATURATED by every mixed floor
+  cycle at p = 3, 6 (51/66 of the p = 6 floor cycles are mixed; a
+  size-10 boundary hides entirely inside S in profile (10,1,0)) —
+  no rigidity proof exists; the halving-tight stratum is proven at
+  q = 1 (section-exclusion) and certificate-empty at q ≤ 4.
+- **Tower direction fixed** (§2.13): π^* injective (iso for a ≥ 2),
+  π_* = 0 (a ≥ 2); L-pure ∀a ⟺ no boundary shortens a pullback
+  (the classical Z₂-tower doubling, σ_* = id).
+- **p = 24 pure racer: negative with data** (§2.14): two engine
+  defects fixed, then the successor store blows 2.4 GB at level 14
+  (746 states, ×3.5–4.4 per 2 levels) — pure_floor(24) is not an
+  enumeration target.
+- **Envelope discharge complete** (§2.15): every scope in the
+  Theorem W chain LIFTED; only the per-class heavy-strata law stays
+  scoped (outside the chain).
+- **Theorem W FINAL** (§2.16): r = 1, 2 unconditional at 12r; r = 3
+  pure ≥ 36; general r modulo (R1) pure σ-floor ∀a + (R2) (HM) ∀q.
+
 **State of the lane (2026-09-01, session 3 — read §2.9–§2.11
 first):**
 - **floor(12) = 24 = 2p EXACTLY, unrestricted, CERTIFICATE tier**
@@ -1158,6 +1183,286 @@ analytic route matters for forall-a: the deformation cascade's
 target (the pure sigma-floor at all a) now yields the MIXED half to
 within the factor 2 for free.
 
+## §2.12 SESSION 4 (2026-09-01): THE FIBRE THEOREM — the CRT made
+## pointwise, and the exact residual of the mixed half
+## (`a42_s4_fiber.py`, `a42_s4_sheets.py`; data `s4_*`)
+
+Scope: p = 3q with 3 ∤ q (equivalently 9 ∤ p; at m = 1, q = 2^a).
+The member periods p = 6r are covered for 3 ∤ r; the r ≡ 0 (mod 3)
+periods (9 | p) need the Z_{3^k}-fibre analogue sketched at the end.
+
+### §2.12.1 The decomposition (theorem, elementary)
+
+Z_{3q} = Z_3 × Z_q (coprime orders), and F₂[Z_3] = F₂ × F₄ is
+semisimple, so
+
+> **R_p = F₂[Z_{3q}] = F₂[Z_q] × F₄[Z_q]**,  y ↦ (t, ζt)
+
+(t = the Z_q generator, ζ = the Z_3 character value).  At m = 1 this
+is §2.2's CRT Λ' × Λ on the nose: Λ' = F₂[y]/(y^q + 1) = F₂[Z_{2^a}]
+(because (y+1)^{2^a} = y^{2^a} + 1) and Λ = F₂[y]/((y²+y+1)^{2^a}) =
+F₄[t]/(t^q + 1) = F₄[Z_{2^a}] (the Teichmüller cube root ζ = y^q is
+EXACT in Λ: 1 + y^q + y^{2q} = 0 there; t = y^{1−q}).  For m > 1 the
+F₄[Z_q]-factor splits further into Λ_a (the Z_m-trivial part, which
+carries H by Theorem H) ⊕ barren F₄-extension pieces (the order-3d
+characters, d | m, d > 1).
+
+Geometrically: a cell (block, column c, y ∈ Z_{3q}) lies over the
+cell (block, c, y mod q) of the PERIOD-q cylinder, and the FIBRE
+{j, j+q, j+2q} is a coset of the order-3 subgroup.  Per fibre the
+triple (v₀, v₁, v₂) ∈ F₂³ maps bijectively to (s, μ) ∈ F₂ × F₄ with
+s = v₀+v₁+v₂ (the barren bit = the fold π_*) and μ = v₀ + ζv₁ + ζ²v₂
+(the ω-content = the ζ-twisted fold); the three sheets are s + Tr(μ),
+s + Tr(ζ²μ), s + Tr(ζμ).  Hamming weight per fibre:
+
+| (s, μ) | fibre | weight |
+|---|---|---|
+| (0, 0) | empty | 0 |
+| (1, μ ≠ 0) | SINGLETON (the cell sits at the zero-trace sheet) | 1 |
+| (0, μ ≠ 0) | PAIR (the two nonzero-trace sheets) | 2 |
+| (1, 0) | FULL | 3 |
+
+> **Fibre theorem.**  For every column, with S = {fibres with μ ≠ 0}
+> (the ω-support) and s = {fibres with s = 1} (the fold's support):
+>     pure(λ) = 2|S|,   pure'(z') = 3|s|,
+>     wt = n₁ + 2n₂ + 3n₃ = 2|S| + 3|s| − 4|S ∩ s|   (identity).
+> Machine-checked against the banked CRT pure table on ALL columns at
+> p = 6, 12 and on all 2²⁴ columns at p = 24 (part A; the barren
+> fold identity |fold| = |s| likewise at p = 6, 12).
+
+Consequences, immediate:
+- The halving lemma (§2.11) is the per-fibre statement "weight ≥ 1
+  wherever μ ≠ 0"; it is TIGHT exactly when every S-fibre is a
+  singleton, i.e. **S ⊆ s** — the halving-tight regime of S3c's
+  census is the stratum where the ω-support is contained in the
+  fold.  The halving partner (the cell's sheet) is determined by μ.
+- Barren-only columns cost 3 per fibre (the β-lemma is the FULL row
+  of the table); mixed fibres cost 1; the discount per joint fibre
+  relative to the pure lift is exactly 1, and the penalty per
+  barren-only fibre is exactly 3.
+
+### §2.12.2 The hiding-mass inequality (HM) — the exact residual
+
+Write ε(μ) = |S| − 3q (the excess of a class-nontrivial ω-cycle over
+the certified pure floor |S| ≥ 3q) and D(μ, s) = 4|S ∩ s| − 3|s| (the
+discount a barren boundary s buys).  By the identity,
+
+> **floor(3q) ≥ 6q  ⟺  [|S| ≥ 3q for every nontrivial μ]  ∧
+>   (HM):  4|S ∩ s| − 3|s| ≤ 2(|S| − 3q)  for every nontrivial μ
+>          and every barren boundary s = (B′h, A′h).**
+
+(HM) is the L-band mixed half, verbatim, in closed form.  Automatic
+regimes (no proof needed): |S| ≥ 6q; |s| ≤ 2ε; or 3|s ∖ S| ≥ |S ∩ s|
+(the boundary mostly outside S).  The HARD regime is 3q ≤ |S| < 6q
+with a boundary that sits mostly inside S and is larger than 2ε.
+
+### §2.12.3 Saturation: every mixed floor cycle is (HM)-tight
+### (part B, atlas p = 3, 6; sheet diagrams in `s4_sheets.log`)
+
+(w, (n₁,n₂,n₃), |S|, |s|, |S∩s|, ε, D, slack = w − 6q) : count —
+
+| p | profile | |S| | |s| | |S∩s| | ε | D | slack | count |
+|---|---|---|---|---|---|---|---|---|
+| 3 | (0,3,0) pure | 3 | 0 | 0 | 0 | 0 | 0 | 3 |
+| 3 | (3,0,1) | 3 | 4 | 3 | 0 | 0 | 0 | 3 |
+| 6 | (0,6,0) pure | 6 | 0 | 0 | 0 | 0 | 0 | 15 |
+| 6 | (6,0,2) | 6 | 8 | 6 | 0 | 0 | 0 | 3 |
+| 6 | (6,3,0) | 9 | 6 | 6 | 3 | 6 | 0 | 30 |
+| 6 | (10,1,0) | 11 | 10 | 10 | 5 | 10 | 0 | 18 |
+
+(Weight-8 nontrivial cycles at p = 3 all have slack 2.)  Readings:
+- **51 of the 66 nontrivial weight-12 cycles at p = 6 are MIXED**;
+  (10,1,0) has TEN singleton fibres and a boundary s of size 10
+  hiding ENTIRELY inside S (|s| = 2ε exactly) — the "s cannot hide in
+  S" rigidity shortcut is dead as a mechanism; the discount is real
+  and is paid for, to the last fibre, by excess ω-support.
+- (HM) is TIGHT along a whole family of profiles (ε = 0, 3, 5 at
+  p = 6): any proof must be sharp at all of them simultaneously —
+  the reason per-slot / per-run tax accounting (§2.7) could not
+  close.
+- **(6,0,2) is the Z₂-PULLBACK of (3,0,1)**: every column content is
+  a multiple of 1 + y³ (sheet diagram: fibres (x.., .x.) = cells
+  y ∈ {0, 3}); the p = 3 floor cycle with one full fibre lifts to
+  the p = 6 floor cycle with a full COLUMN (q = 2 full fibres) — the
+  overshoot |s ∖ S| scales with q.
+
+### §2.12.4 Section cycles and the halving-tight stratum (parts C/D,
+### probe tier unless stated)
+
+A SECTION cycle = all fibres singletons (n₂ = n₃ = 0): v is the graph
+of a Z₃-valued function on S, equivalently a class-nontrivial ω-cycle
+μ with values in F₄^× whose support indicator 1_S is itself a barren
+boundary; weight |S| — the cycle that would realize the halving
+bound with equality.
+- p = 3: NO nonzero section cycle at all (trivial included; UNSAT in
+  0 s at every weight ≤ 30 within 12 columns).  Analytic reason: at
+  q = 1 the barren A′ = A(x, 1) = x³ is a MONOMIAL, so A′h occupies
+  exactly the columns of h shifted by 3 while the twisted block-2
+  content spans [m₁+1, M₁+2] — the extreme columns cannot match (the
+  no-telescoping argument).  This degeneracy is q = 1 only.
+- p = 6: nonzero section cycles EXIST but are trivial (weight 6,
+  (6,0,0) — the atlas's trivial rows); no NONTRIVIAL section ≤ 13
+  (atlas-complete) — i.e. none at the floor.
+- p = 12: no nontrivial section ≤ 20 (probe UNSAT; ≤ 22 is anyway
+  certified empty by §2.9.3).
+- No-pair stratum (n₂ = 0 ⟺ S ⊆ s, the halving-tight regime): floor
+  = 6q at p = 3 (profile (3,0,1)) and p = 6 ((6,0,2)); at p = 12
+  empty ≤ 18 (probe) / ≤ 22 (certificate).  On this stratum (HM)
+  reads  |s ∖ S| ≥ ⌈(6q − |S|)/3⌉  ("a boundary containing the
+  ω-support overshoots it by ≥ (6q − |S|)/3 fibres"); at q = 1 this
+  is exactly section-exclusion, hence PROVEN; at q ≥ 2 it is
+  probe/certificate-tier only.
+- The minimal-support stratum |S| = 3q at weight 6q is inhabited at
+  p = 12 (the SAT returned the pure object; the (HM)-tight mixed
+  profiles at p = 12 are not enumerated).
+
+### §2.12.5 Where this leaves Stage 1 (honest verdict)
+
+Stage 1's lemma is NOT proven.  What changed: the mixed half is now
+the single closed-form inequality (HM) on pairs (nontrivial ω-cycle,
+barren boundary) of the PERIOD-q cylinder, with an exact saturation
+structure that rules out every rigidity-type proof and pins the
+proof's required sharpness.  The halving-tight stratum is proven at
+q = 1 (section-exclusion) and certificate-empty at q ≤ 4.  The
+mechanism visible in the data — the overshoot |s ∖ S| of a hiding
+boundary grows with q, and floor cycles lift along the Z₂-tower by
+pullback — points at the tower (next section), not at slot counting.
+
+Z_{3^k}-fibre remark (9 | p, i.e. 3 | r): with p = 3^k q′, 3 ∤ q′,
+the fibres are cosets of Z_{3^k}, F₂[Z_{3^k}] = F₂ × F₄ × F₆₄ × ⋯,
+the ω-content per fibre is again an element of F₄ (the order-3
+character), the pure fibre weight is 2·3^{k−1} (6 at p = 18) and a
+mixed fibre can still weigh 1 — so the halving constant is
+1/(2·3^{k−1}) (= 1/6 at p = 18, as §2.8 recorded) and no useful
+analytic partial exists for the r ≡ 0 (mod 3) mixed half from
+fibre counting alone.
+
+## §2.13 The 2-adic tower: pullback is injective, pushforward is
+## zero (a ≥ 2) — the direction of the cascade fixed
+
+For the Z₂-cover Z_{3q} → Z_{3q/2} (q = 2^a, a ≥ 1) the induced maps
+on the ω-homology H(a) = M[π^q] (Theorem H) are, by the resolution
+0 → S →(π^k) S → S/π^k → 0 and the lifted maps of resolutions:
+- **pullback π^*: H(a−1) → H(a) is the INCLUSION M[π^{q/2}] ⊆ M[π^q]**
+  — injective always; an ISOMORPHISM for a ≥ 2 (both sides = M);
+  H(0) ↪ H(1) with image M[π] (4 of the 6 dimensions);
+- **pushforward π_*: H(a) → H(a−1) is m ↦ π^{q/2} m — ZERO for a ≥ 2**
+  (π² M = 0), and m ↦ πm (image πM, dim 2) for a = 1.
+(Consistent with σ_* = id for a ≥ 2: σ = 1 + π^{q/2} on H.)  So for
+a ≥ 2 EVERY nontrivial class at level a is a pullback, every
+nontrivial cycle is ṽ = π^*(v) + ∂g̃ with v nontrivial one level
+down, |π^*v| = 2|v| (which is the banked UB 2p seen structurally),
+and the fold of a nontrivial cycle is always a boundary.  Machine
+witness: the p = 6 floor cycle (6,0,2) = π^*((3,0,1)) (§2.12.3).
+
+Therefore **L-pure ∀a ⟺ "no boundary shortens a pullback":
+min_g̃ |π^*v + ∂g̃| ≥ 2·floor(a−1)** — the classical doubling
+statement along a Z₂-tower with σ_* = id and constant k, i.e. the
+regime of the repo's tower calculus (A13 deck-tower descent for k;
+A28–A32/A35–A38 for d), which certifies rungs one at a time and has
+no uniform ∀-rung theorem either.  The deformation cascade (§2.2.2)
+is the same statement written in π-digits: with f = Σ π^i f_i the
+t-basis weight is Σ_k |Σ_{i ⊇ k} f_i| (Lucas), Tor-representatives
+are π^{q−2}-divisible and have weight (q/2)·(a p = 6 pure weight) —
+exactly 2p for the minimal p = 6 object — so the ∀a pure floor is
+"Tor-representatives are weight-minimal in their class".  Both
+open lemmas of the lane are now literally the same kind of statement
+(boundaries never help beyond the canonical representatives), one in
+the ω-direction (L-pure) and one in the barren direction (HM).
+
+## §2.14 The p = 24 pure racer: NEGATIVE WITH DATA (the r = 4 rung
+## is not a session-scale enumeration)
+
+The two-word engine (s3e) had never run at p = 24 (its session-3 log
+is empty).  Two defects fixed this session (both banked in the
+script): the inverse table was an O(nl²) scan (4·10⁹ pmul calls at
+dim 16 — never finishes; extended Euclid now, asserted per unit),
+and the bucket-sanity assertion tested π itself against the
+digit-shadow law (π = 1+y+y² has y-weight 3, pure 6: the law is the
+MINIMUM over the exact-valuation stratum, attained by (1+t)^ν —
+asserted that way now, all ν ≤ 7).  With those, branch T at cap 48:
+
+| level | 8 | 10 | 12 | 14 |
+|---|---|---|---|---|
+| novel states | 15 | 49 | 217 | 746 |
+| RSS (MB) | 115 | 270 | 866 | 2416 |
+
+RSS-abort after level 15 (twice — the 64-state batch fix did not
+help: the memory is the successor STORE, ~65,536 successors per
+state at all costs ≤ 48).  Growth ×3.5–4.4 per two levels (p = 12
+had ×2.8), so the level-48 frontier extrapolates to ~10⁹ states —
+and a corridor prune would need a backward pure table of the same
+size.  Verdict: **pure_floor(24) = 48 is NOT reachable by racer
+enumeration** (memory and time both), the coordinator's
+"minutes, fully de-risked" estimate is refuted (ledger §3.9), and
+the r = 4 rung has NO quantitative floor beyond the trivial from
+this lane (levels ≤ 15 complete, i.e. no pure nontrivial ≤ 15 —
+void).  Any p = 24 certificate must come from theory (the tower
+statement of §2.13), not from a bigger racer.
+
+## §2.15 Envelope discharge (Stage 3) — every scope in the Theorem W
+## chain is LIFTED
+
+| scoped claim (ledger §3.8 envelope: s ≤ 7, span ≤ 10, gaps ≤ 4) | where | status |
+|---|---|---|
+| floor(12) = 24 over the h-DP envelope | §2.2.1 | LIFTED — floor(12) = 24 unrestricted, certificate (§2.9.3) |
+| floor(6) = 12, floor(3) = 6 over the envelope | §2.2.1 | LIFTED — atlas censuses complete to 13 / 8 + jet/corridor controls |
+| L-pure instance (m = 1, a ≤ 2, S₀ = 7): no h beats pure | §2.2.5, §2.7 | LIFTED — implied by the unrestricted floors: every (σ, h) at p ≤ 12 has wt ≥ 2p = the pure minimum |
+| L-band pure half, s ∈ [8, p−1] | §2.7 | LIFTED at every 3 ∣ p ≤ 21 by the ω-racer (scope-free, §2.10) |
+| gap-prune bridging subtlety | §3.8 | MOOT — it concerned the retired σ-enumeration instrument; no chain ingredient uses it |
+| class-weight law {2p, 7p/3, 3p} per class | §2.2.6 | REMAINS scoped (per-class minima under the envelope are upper bounds on the true per-class minima; the 2p stratum is confirmed unrestricted by the racers' first nonzero registers at exactly 2p) — NOT in the Theorem W chain, flagged |
+
+No envelope-scoped ingredient survives in the Theorem W chain; the
+remaining conditionality is entirely the two lemmas (pure σ-floor
+∀p, HM ∀q), both scope-free statements.
+
+## §2.16 THEOREM W — FINAL FORM (session 4)
+
+**Theorem W (b = 1 windowed branch).**  Let r ≥ 1, C_r the member on
+Z_{6r+6} × Z_{6r}, p = 6r.  Every nontrivial X-logical v of C_r in
+the windowed branch of Lemma K (some cyclic x-gap ≥ 4) has
+wt(v) ≥ floor_cyl(6r), where floor_cyl(p) is the least weight of a
+class-nontrivial compact cycle of the period-p straight cylinder.
+Ingredients and tiers:
+- **r = 1: wt(v) ≥ 12 = 12r.  UNCONDITIONAL, certificate tier**
+  (floor(6) = 12: atlas census + h-DP + jet/corridor controls).
+- **r = 2: wt(v) ≥ 24 = 12r.  UNCONDITIONAL, certificate tier**
+  (floor(12) = 24 unrestricted: corridor jet, both branches level 22,
+  joint register kernel empty, parity, realized UB — §2.9.3).
+- **r = 3 (p = 18): wt(v) ≥ 36 = 12r for PURE unrolls (certificate,
+  ω-racer §2.10)**; for mixed unrolls: ≥ 36 modulo (HM) in its
+  Z₉-fibre form; no analytic partial (halving constant 1/6).
+- **r = 4 (p = 24): modulo BOTH lemmas** — pure σ-floor(24) = 48
+  (enumeration infeasible, §2.14; registers class-complete at a = 3)
+  and (HM) at q = 8.  No quantitative partial.
+- **general r: wt(v) ≥ 12r under (i) pure σ-floor(6r) = 12r
+  [certified 6r ≤ 21, i.e. r ≤ 3] and (ii) (HM) at q = 2r for 3 ∤ r
+  / its Z_{3^k}-fibre form for 3 ∣ r [certified q ≤ 4, i.e. r ≤ 2]**,
+  and, when 127 ∣ r, the same two pieces at the 127-factor (the
+  unrolled cycle may carry a W-component even though the member's k
+  does not — the caveat of §2.8 stands).
+Residual hypothesis, scoped as tightly as the corner was:
+  (R1) for every a ≥ 3 [and every odd m], every class-nontrivial
+       ω-syzygy over Λ_a has Σ_slots pure(λ) ≥ 2p — equivalently
+       (§2.13) no boundary shortens a pullback along the Z₂-tower;
+  (R2) (HM) for q ≥ 8 [and the Z₉-form at q = 6]: 4|S∩s| − 3|s| ≤
+       2(|S| − 3q) for every (nontrivial μ, barren boundary s) — the
+       inequality is saturated by the known floor cycles, so (R2)
+       is exactly "no cheaper hiding than the tight profiles".
+Proof of the theorem: Lemma K unroll (x-gap ≥ 4 lifts x-compactly at
+equal weight, cylinder-nontrivial since trivializers reduce — banked)
++ floor_cyl(6r) as tiered above.  QED
+
+**Corollary block.**  With Lemma K, the b = 1 conjecture's lower
+half d(C_r) ≥ 12r reduces to the doubly-spanning (toroidal) sector:
+any b = 1 counterexample to d = 12r must be gap-free in both axes
+(A40 §11 / the S11 comparison-theorem program, §16 of the A40 note,
+whose Theorem T / Prop O / Prop E were landing concurrently; if the
+comparison theorem closes, Theorem W's floors ARE the member floors,
+i.e. d(C_1) = 12 and d(C_2) = 24 outright and d(C_r) = 12r for all r
+modulo (R1)+(R2)).  Unconditionally today: d(C_1) ≥ min(12, tor₁),
+d(C_2) ≥ min(24, tor₂) with tor_r the toroidal-sector minimum.
+
 ## §3 Falsified / corrected (running ledger)
 
 1. S-law S_ℓ(a) = 3·2^{a−ℓ}: FALSE (S1, exhaustive; min slots = 3
@@ -1224,7 +1529,47 @@ within the factor 2 for free.
    for the corner is jet depth + L-band theory, not a wider
    enumeration.
 
+9. (S4, estimate refuted) The coordinator's "p = 24 pure racer:
+   minutes, fully de-risked" (S3 close): FALSE.  The s3e engine had
+   never executed at p = 24 (empty log); its init was O(nl²) at
+   dim 16 and its bucket assertion was wrong (π itself is not a
+   bucket minimum); once fixed, the input-major successor store
+   exceeds 2.4 GB at level 14 (746 states) and the cap-48 frontier
+   extrapolates to ~10⁹ states.  pure_floor(24) is NOT an
+   enumeration target (§2.14).
+10. (S4, mechanism refuted) "Barren boundaries cannot hide inside
+   the ω-support of a floor cycle" (the support-rigidity reading of
+   §2.11's "halving-tight columns determine their barren content"):
+   FALSE as a mechanism — at p = 6 the floor profile (10,1,0) has a
+   size-10 boundary entirely inside S with |s| = 2ε, and 51/66 floor
+   cycles are mixed; every mixed floor cycle SATURATES (HM)
+   (§2.12.3).  The rigidity that does hold is section-exclusion
+   (no NONTRIVIAL all-singleton cycle), proven only at q = 1.
+11. (S4, scope correction) The Z₃-fibre decomposition (§2.12)
+   requires 3 ∤ q, i.e. 9 ∤ p: it does NOT cover p = 18 (the r = 3
+   member period) or any r ≡ 0 (mod 3); those need the Z_{3^k}-fibre
+   form, where the halving constant degrades to 1/(2·3^{k−1}).
+   (The S3 halving lemma's "general m" remark is unaffected.)
+12. (S4, intuition corrected) "Pullback along the Z₂-tower kills
+   classes" (an implicit reading of the deformation-cascade
+   paragraph): backwards — π^* is injective (an isomorphism for
+   a ≥ 2) and π_* is zero (a ≥ 2), §2.13.
+
 ## §4 Residue / next
+
+[S4 state: the lane's two open lemmas are now (R1) the pure σ-floor
+∀a — equivalently "no boundary shortens a pullback" along the
+Z₂-tower (§2.13) — and (R2) the hiding-mass inequality (HM) ∀q
+(§2.12.2), saturated by the known floor cycles.  Enumeration is
+exhausted at p = 12 (both) and p ≤ 21 (pure); p = 24 is out of
+racer reach (§2.14).  The sharpest next question: PROVE (HM) on
+the halving-tight stratum at q ≥ 2 — "a barren boundary containing
+a nontrivial ω-support overshoots it by ≥ (6q − |S|)/3 fibres" —
+by exhibiting the overshoot as a pullback artefact (the p = 6
+witness is π^* of the p = 3 one, its overshoot a full column), then
+extend to the general stratum by the ε-accounting of §2.12.3.  A
+proof of (R1) is the tower doubling and belongs with the repo's
+tower calculus, restricted to the cylinder's σ_* = id regime.]
 
 1. Independent verification of k = 26 at (762,762) by a second
    method; engage 2503.04699's gcd-law as the cross-check
