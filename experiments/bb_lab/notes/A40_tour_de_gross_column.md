@@ -2752,3 +2752,88 @@ b=0 Y-sector classification, mirrored member protection
 > is 36; the next y-unit needs r0/r1 pushes (g >= 49/50) AND a
 > bc-wall attack, the next x-unit needs the u=2 mirror stratum
 > (§13.7 item 2b's pricing).
+
+### §14.5 Specimens, falsified claims, and incidents (session 9)
+
+- **The slip -8 saturation witness (§13.7 item 2b DISCHARGED)**:
+  parented replay at gcap 29 (`specimen` lane of
+  `a40_s9_slipext.py`, S7 ParentedLinkMarch + CoverFragment
+  verbatim; class recomputed FROM THE FRAGMENT): seed 0, g = 29,
+  slabs [1, 3, 5, 5, 8, 7], anchors [0, 0, -1, -1, -4, -9] —
+  slip -8 across the gH = 8, L = 1 block is TWO consecutive steps
+  each at the full -4 per-step cap; fragment E-admissible
+  end-to-end, 11 cells, drift -9 (`s9_specimen_slipm8.json`).
+  The left cap's tightness is now a verified object, not a table
+  row.
+- **FALSIFIED (same-session, mine): "K2 borrows finance small
+  rightward rises for free."**  En route to R0 I reasoned that
+  zero-input rises up to the borrow radius should exist.  V5
+  refuted it exhaustively (max rise 0 over 3.1M pairs) and R0
+  explains why (the mu-echo): the measured +1..+3 pre-transients
+  are ALL input-financed; the borrow radius 3 caps the financed
+  transient's reach, not a free allowance.
+- **The h = 5 interface hole is STRUCTURAL and deepens** (§12.10
+  item 2, §13.7 item 6): the g40 link table has crossings at
+  every h in {4, 6, 7, 8, 9, 10} (min-g 19, 24, 25, 30, 35, 40)
+  and NONE at h = 5 through g <= 40 — 21 cost units above the
+  h = 4 optimum.  The dead shapes are exactly the two 5-slab
+  patterns [1,a,b,8,c] (3-pre) and [1,a,8,b,c] (2-post), while
+  2-, 4-, 5-pre all live at post 1: NOT a parity — a hole at
+  exactly 5.  By contrast the L = 2 exclusion DISSOLVED at
+  g = 33 (first two-slab crossings, slips -3/-4, inside the
+  -4(L+1) cap): a cost phenomenon, not structure — the S7 puzzle
+  splits cleanly into one theorem target (h = 5) and one closed
+  measurement (L = 2).
+- **Incidents**: (i) `load_closed` has a latent schema fragility —
+  `s7_closed_k0_stability.json` (battery schema, no 'params')
+  breaks any RERUN of the S7 assembly loader; the banked
+  s7_assembly.json predates that file; the S9 shim filters
+  run-shaped files (flagged for future s7 reruns).  (ii) the
+  first replay-march draft (frame bookkeeping half-built) was
+  scrapped unused in favor of the S7 parented machinery — dead
+  code excised same session.  (iii) seed-1/seed-2 watcher +
+  specimen runs all exited clean; no stray processes at close.
+- (Respected: witness weights as upper bounds — the one witness
+  claimed is fragment-verified; RED/AMBER/GREEN pricing before
+  every run — g32 calibrated g34, g34 calibrated g40, the probe
+  priced the deepening before it ran; sequential heavy runs only;
+  2 GB RSS + frontier guards in code, streaming spills deleted on
+  use; no SAT anywhere; every consumed vector re-verified;
+  nothing re-proposed from the §9.8/§10.8/§11.7/§12.9/§13.6
+  ledgers.)
+
+### §14.6 Residue / S10
+
+1. **The financed-half constant** (the last daylight in the
+   charter's two-sided lemma): prove "net anchor rise <= 3 + #K1
+   inputs" — R0's mu-argument extended to count input
+   interventions (the K1 photo says each raises the frontier by
+   exactly 1).  Everything below the floors is already
+   input-charged by R0; this would make the wall's SLOPE a
+   theorem too.
+2. **The h = 5 hole**: prove the two dead 5-slab shapes from the
+   E-anatomy of a minimal crossing (S7's debt-row hint).  The
+   refined data (item above) makes it a two-case combinatorial
+   target.
+3. **The ladder-rate conjecture**: J(h+1) - J(h) = 3 quarters for
+   h >= 6 (measured at h = 6..10 on real certs, +5 g per slab).
+   A proof collapses the r >= 2 DP into closed form and yields an
+   ANALYTIC d_Y >~ 5m/4 (~7.5r) for every b = 1 member — the L-W
+   momentum budget in per-slab form, and the natural route to the
+   for-all-r toroidal statement with every constant traced.
+4. **The u = 2 census widening** (priced AMBER ~30-60 min: 284
+   seeds byseed-streaming at hcap ~8): moves the rightward
+   inequality's measured scope from u = 1 to the assembly's full
+   enumerated strata.  Not consumed by any current floor.
+5. **Next floor units**: y-13 needs r0 u2 g >= 51, r1 u1 g >= 50
+   (both AMBER with the streaming engine) AND a bc-wall attack
+   (pinch-charged loose splits or delta-resolved closure);
+   x-13 needs the u = 2 mirror stratum (284 seeds, tiny trees —
+   §13.7 item 2 pricing).  The W7-analog question for the BAbar
+   lane stays open, floors-irrelevant.
+6. **Lean**: R0 is a three-line induction over F2 Laurent
+   supports (decide-shaped once finitized to a width window); the
+   census emptiness tables are finite certificates under the
+   §12.10 layered-march contract extended by one refinement
+   lemma: streaming = a sound over-approximation of the layer
+   relation (C1's node-identity is its concrete witness).
