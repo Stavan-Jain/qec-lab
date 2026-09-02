@@ -249,6 +249,10 @@ def run_specimen(args):
         del m
         if found and args.first:
             break
+        if _rss_mb() > 2000:
+            print(f"  RSS {_rss_mb()}MB > 2000 after seed {si}: "
+                  f"stopping (S7 stop_after discipline)", flush=True)
+            break
     best = min(found, key=lambda r: r["g"]) if found else None
     if best:
         print(f"SPECIMEN VERIFIED: seed {best['sid']}, g "
