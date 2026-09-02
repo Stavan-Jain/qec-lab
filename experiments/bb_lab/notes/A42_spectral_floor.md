@@ -23,6 +23,35 @@ Artin–Schreier quadratic extensions, the variety enumeration, the
 local-multiplicity engine, the frame k-formula), consumed by staged
 scripts `a42_s*.py`; data in `data/a42/`.
 
+**State of the lane (2026-09-01, session 3 — read §2.9–§2.11
+first):**
+- **floor(12) = 24 = 2p EXACTLY, unrestricted, CERTIFICATE tier**
+  (§2.9.3): the corridor jet racer (register-reachability pruning
+  via the backward closure-distance table — the falsified
+  sandwich's sound remnant used as a PRUNE) completes both branches
+  through level 22 (85 s / 79 s on the gmax-21 table; the S2 corner
+  is EMPTY).  **Theorem W r = 2 is unconditional at 24 = 12r**;
+  B12's contingency resolves (d((l,12)) = 24 for 6 | l >= 93).
+- **Pure-half floor = 2p at EVERY p in {3,...,21}, 3 | p** (§2.10):
+  the omega-quotient pure racer (columns in Lambda_a, cost
+  pure(lambda), jet registers) — closes L-band's pure half at all
+  slot counts incl. p = 18, the r = 3 member period (Theorem W
+  r = 3 pure unrolls >= 36).
+- **Halving lemma + universal sigma-inequality** (§2.11):
+  tab >= pure/2 at m = 1 (one-line convolution proof, table-tight)
+  + sum pure >= 2p over class-nontrivial sigma => every
+  class-nontrivial compact cycle at p = 3·2^a has wt >= p, ANY h —
+  the mixed half analytically to within a factor 2; the remaining
+  gap = the hiding-mass inequality (sharpened §2.7).
+- Register kernels at a = 3 (p = 24, r = 4): joint kernel EMPTY
+  (s3d) — the next m = 1 rung de-risked; the two-word pure engine
+  is built and p=12-regression-exact (s3e).
+- Ledger 8b: the omega-direction subexponentiality hypothesis is
+  FALSE for the mixed frontier (omega-projection ~injective; the
+  BARREN direction saturates at ~6K windows); the pure sector's
+  omega-frontier is tiny and the halving discount is measured
+  (mixed level c ~ pure level 2c - 10).
+
 **State of the lane (2026-08-28, session 2 — read §2.4–§2.8 first;
 two session-1 items corrected there):**
 - The b = 1 WINDOWED-BRANCH THEOREM is assembled (§2.8): windowed
@@ -810,7 +839,7 @@ native u64/u8 lexsort + sort-merge membership, ~2.1x faster/level):
 | 6 | 12 = 2p | certificate | atlas census + DP (s<=7) + jet |
 | 9 | 18 = 2p | **certificate (re-certified)** | jet engine both branches, a=0-complete register + parity + UB |
 | 10, 11, 13, 14 | H = 0 | theorem + machine (NEW) | Theorem A; dim Z_W = dim B_W at W in {6,9,12}; parity columns = 3 |
-| 12 | **>= 18 unrestricted, ALL classes**; = 24 over the (s <= 7, span <= 10, gaps <= 4) envelope (§3.8); UB 24 | certificate | jet runs (T level 18, V level 17) + parity; h-DP; pure lift |
+| 12 | **= 24 = 2p EXACTLY, unrestricted, ALL classes** [S3] | **certificate** | corridor jet runs (both branches level 22 complete) + joint-kernel emptiness + parity + realized UB (§2.9.3) |
 | 15 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=5) | window LA; UB 30 = 2p via m-scaling |
 | 18 | dim H = 6 (NEW check) | Theorem H corroborated (a=1, m=3) | window LA; UB 36 = 2p; the r = 3 member period |
 | 21 | dim H = 4 (NEW check) | Theorem H corroborated (a=0, m=7) | window LA |
@@ -881,22 +910,30 @@ after the jet runs is exactly [weight in {JET+2..22} even] x
 ### §2.8 THE WINDOWED-BRANCH THEOREM (b = 1 column), with exact
 ### conditionality — the session-2 assembly
 
-**Theorem W (b = 1 windowed branch).**  Let r >= 1, C_r the member
-on Z_{6r+6} x Z_{6r} (b = 1), m = 6r.  Let v be a nontrivial
-X-logical of C_r whose support has some cyclic x-gap >= 4 (the
-windowed branch of Lemma K).  Then wt(v) >= floor_cyl(m), the
-period-m compact-cylinder floor.  Consequently:
+**Theorem W (b = 1 windowed branch; S3 revision).**  Let r >= 1,
+C_r the member on Z_{6r+6} x Z_{6r} (b = 1), m = 6r.  Let v be a
+nontrivial X-logical of C_r whose support has some cyclic x-gap
+>= 4 (the windowed branch of Lemma K).  Then wt(v) >=
+floor_cyl(m), the period-m compact-cylinder floor.  Consequently:
 - **r = 1: wt(v) >= 12 = 12r, UNCONDITIONAL** (floor_cyl(6) = 12,
   certificate).
-- **r = 2: wt(v) >= 18 unconditional at certificate tier** (the
-  two-branch jet runs, joint level 17 + parity); **wt(v) >= 24 =
-  12r under the L-band corner** ([{18 (transverse classes only, by
-  T's level 18), 20, 22}] x [outside the (s <= 7, span <= 10,
-  gaps <= 4) h-DP envelope] only — ledger §3.8; UB realized).
-- **general r: wt(v) >= 12r = 2m under (L-pure + L-band at p = m)**
-  — plus, when 127 | r, the same two lemmas at the 127-factor (the
-  W-line skyscraper joins H(m) by Theorem H's uniform form; its
-  conjectured margin is >= 2m + the 2/127-margin of §2.2.3b).
+- **r = 2: wt(v) >= 24 = 12r, UNCONDITIONAL at certificate tier**
+  [S3: floor_cyl(12) = 24 unrestricted — §2.9.3; the S2 corner is
+  gone].  The r = 2 windowed branch is CLOSED at the conjectured
+  value.
+- **r = 3: wt(v) >= 36 = 12r for PURE (h = 0) unrolls**
+  (pure_floor(18) = 36, §2.10); the mixed completion at p = 18 is
+  the open piece (m = 3 degrades the halving constant to 1/6).
+- **general r: wt(v) >= 12r = 2m under (pure sigma-floor at p = m
+  [certified m <= 21] + the hiding-mass factor-2 at p = m [closed
+  at m <= 12 by exhaustion; open above])** — plus, when 127 | r,
+  the same two pieces at the 127-factor (the W-line skyscraper
+  joins H(m) by Theorem H's uniform form).  Analytic partial at
+  the m = 1 rungs (r = 2^k): the halving lemma (§2.11) gives
+  wt(v) >= (pure sigma-floor at p = 6r)/2 = 6r once the pure floor
+  2p is certified there — done through p = 21; p = 24 (r = 4)
+  needs only the two-word pure run (registers already
+  class-complete at a = 3 — s3d).
 Proof: the Lemma-K unroll (an x-gap >= 4 logical lifts x-compactly
 to the period-m cylinder at the same weight, cylinder-nontrivial
 since trivializers reduce — banked, standard) + floor_cyl(m).  QED
@@ -985,6 +1022,47 @@ lex-sorted seen store (the stock member() re-merge-sorted the full
 level-18 flight); per-level prune stats; per-level counts of
 distinct omega- and barren-window projections of the novel frontier
 (the quotient-growth instrument for the S3 hypothesis).
+
+### §2.9.3 Production: floor(12) = 24 UNRESTRICTED — the corner is
+### dead (session 3 close)
+
+Backward tables (`run_table`): gmax 18 (1,135,415 canonical states,
+119 s, 308 MB) and gmax 21 (15,420,755 states — the level-21
+checkpoint of a budget-stopped gmax-22 build; levels 19/20/21 novel
+1.59M/3.77M/8.92M).  At gmax 21 the absent-branch prune fires
+whenever pcs <= cw - 2 — the unknown-mass channel is essentially
+closed.
+
+Corridor runs (cap 22 = W, per-level banked-return asserts green):
+- **branch V, gmax-18 table** (the first flight): levels 0..21
+  COMPLETE, RSS-abort mid-22.  Novel per level 16/17/18/19/20/21 =
+  594,934 / 1,137,619 / 2,083,778 / 3,640,379 / 6,066,882 /
+  9,632,587 (the 19+ frontier = the gmax-18 table's undecidable
+  heavy-window mass, absent-G 99.97% at L19); returns
+  {6,10,12,14,16,18,20} ALL ZERO-REGISTER; t = 2082 s to L21.
+- **branch T, gmax-21 table**: levels 0..22 COMPLETE in 85 s.
+  Novel at 18: 49,415 (unpruned: 7,570,280 — 153x); at 22: 112,420
+  (final-level zero-cost specialization); returns
+  {6,10,12,14,16,18,20,22} ALL ZERO-REGISTER.
+- **branch V, gmax-21 table** (rerun): levels 0..22 COMPLETE in
+  79 s; same zero-register verdict.
+
+> **floor(12) = 24 = 2p EXACTLY — UNRESTRICTED, CERTIFICATE TIER.**
+> Both branches enumerate every compact cycle of weight <= 22 with
+> their branch registers (corridor lemma sound per §2.9.1, battery
+> §2.9.2); no nonzero register appears; the joint kernel is empty
+> (s2_registers, a = 2) => no nontrivial compact cycle of weight
+> <= 22; the parity lemma excludes 23; the realized weight-24
+> object is the UB.  Lane AB; the theta'-lane by the banked
+> duality.  The §2.2.1/§3.8 envelope caveats at p = 12 are MOOT;
+> the {18-transverse, 20, 22} x outside-envelope corner is EMPTY;
+> B12's contingency resolves: **d((l,12)) = 24 for all
+> 6 | l >= 93** (Lemma K + the L1 spanning branch, §2.2.1).
+
+Cost comparison: the unpruned level-22 extrapolation was ~77 h; the
+corridor route (backward tables + both branch runs) totals under
+1.5 h, and with the gmax-21 table in hand a full branch certificate
+is EIGHTY-FIVE SECONDS.
 
 ## §2.10 The omega-quotient pure racer: THE PURE HALF FALLS AT
 ## EVERY PERIOD <= 21 (session 3, `a42_s3b_omega_racer.py`)
@@ -1162,12 +1240,12 @@ within the factor 2 for free.
    empty), which with halving gives floor_cyl(24) >= 24 toward
    r = 4; (ii) the hiding-mass rigidity argument (halving-tight
    columns determine their barren content).]
-3. The p = 12 remaining corner: weights {18 (transverse-only),
-   20, 22} x outside the h-DP envelope.  Per-level jet time grows
-   ~x3.2 (level 18 = 44 min): levels 19-22 cost ~2.3/7.5/24/77 h —
-   beyond day-budget (coordinator repricing, 2026-08-28); the
-   certificate path forward is an earlier-terminating argument
-   (register early-exit / omega-structure routing / L-band).
+3. The p = 12 remaining corner: CLOSED (S3, §2.9.3) — the corridor
+   prune is the earlier-terminating argument this item asked for;
+   floor(12) = 24 unrestricted.  The reusable instruments: the
+   gmax-21 backward table (85-s branch certificates) and the
+   corridor engine, which port to any period the racer's bit-width
+   reaches.
 4. Stage 2 (members): the 2-D omega-bi-block structure on tori; the
    tangency direction vs the member lattice (the b-bit); gates
    d((18,12)) = 24, d((12,12)) = 18 (= two-gross), d((18,6)) = 12;
