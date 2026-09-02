@@ -1,0 +1,130 @@
+{
+ "p": 24,
+ "cap": 48,
+ "branch": 0,
+ "xstar": 3264,
+ "levels": [
+  {
+   "c": 0,
+   "novel": 1,
+   "seen": 2,
+   "rss_mb": 56,
+   "t": 0.1
+  },
+  {
+   "c": 1,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 56,
+   "t": 0.1
+  },
+  {
+   "c": 2,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 56,
+   "t": 0.1
+  },
+  {
+   "c": 3,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 56,
+   "t": 0.1
+  },
+  {
+   "c": 4,
+   "novel": 1,
+   "seen": 3,
+   "rss_mb": 58,
+   "t": 0.1
+  },
+  {
+   "c": 5,
+   "novel": 0,
+   "seen": 3,
+   "rss_mb": 58,
+   "t": 0.1
+  },
+  {
+   "c": 6,
+   "novel": 2,
+   "seen": 5,
+   "rss_mb": 61,
+   "t": 0.2
+  },
+  {
+   "c": 7,
+   "novel": 0,
+   "seen": 5,
+   "rss_mb": 61,
+   "t": 0.2
+  },
+  {
+   "c": 8,
+   "novel": 15,
+   "seen": 20,
+   "rss_mb": 115,
+   "t": 1.3
+  },
+  {
+   "c": 9,
+   "novel": 0,
+   "seen": 20,
+   "rss_mb": 115,
+   "t": 1.3
+  },
+  {
+   "c": 10,
+   "novel": 49,
+   "seen": 69,
+   "rss_mb": 270,
+   "t": 4.7
+  },
+  {
+   "c": 11,
+   "novel": 0,
+   "seen": 69,
+   "rss_mb": 270,
+   "t": 4.7
+  },
+  {
+   "c": 12,
+   "novel": 217,
+   "seen": 286,
+   "rss_mb": 866,
+   "t": 26.3
+  },
+  {
+   "c": 13,
+   "novel": 0,
+   "seen": 286,
+   "rss_mb": 866,
+   "t": 26.3
+  },
+  {
+   "c": 14,
+   "novel": 746,
+   "seen": 1032,
+   "rss_mb": 2416,
+   "t": 95.7
+  },
+  {
+   "c": 15,
+   "novel": 0,
+   "seen": 1032,
+   "rss_mb": 2416,
+   "t": 95.7
+  }
+ ],
+ "engine": "two-word omega pure racer",
+ "lane": "AB (theta'-dual lane by banked duality)",
+ "returns": {
+  "12": [
+   0
+  ]
+ },
+ "nonzero_reg_costs": [],
+ "aborted": "RSS",
+ "wall_s": 185.0
+}

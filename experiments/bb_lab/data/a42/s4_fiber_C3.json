@@ -1,0 +1,102 @@
+{
+ "C": {
+  "p": 3,
+  "W": 12,
+  "classes": 4,
+  "tier": "probe",
+  "section": [
+   {
+    "w": 2,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 4,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 6,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 8,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 10,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 12,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 14,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 16,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 18,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 20,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 22,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 24,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 26,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 28,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 30,
+    "status": "unsat",
+    "s": 0.0
+   }
+  ],
+  "Smax": [
+   {
+    "Smax": 3,
+    "w": 30,
+    "status": "sat",
+    "s": 4,
+    "profile": [
+     18,
+     1,
+     2,
+     3
+    ],
+    "weight": 14,
+    "S": 3
+   }
+  ],
+  "wall_s": 0.0
+ }
+}

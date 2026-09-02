@@ -1,0 +1,52 @@
+{
+ "C": {
+  "p": 6,
+  "W": 10,
+  "classes": 6,
+  "tier": "probe",
+  "section": [
+   {
+    "w": 4,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 6,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 8,
+    "status": "unsat",
+    "s": 0.1
+   },
+   {
+    "w": 10,
+    "status": "unsat",
+    "s": 0.1
+   },
+   {
+    "w": 12,
+    "status": "unsat",
+    "s": 0.2
+   }
+  ],
+  "Smax": [
+   {
+    "Smax": 6,
+    "w": 12,
+    "status": "sat",
+    "s": 0,
+    "profile": [
+     34,
+     0,
+     6,
+     0
+    ],
+    "weight": 12,
+    "S": 6
+   }
+  ],
+  "wall_s": 0.5
+ }
+}

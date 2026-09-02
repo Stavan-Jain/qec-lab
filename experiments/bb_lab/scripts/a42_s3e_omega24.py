@@ -57,6 +57,20 @@ RSS_CAP = int(2.4 * 1024 ** 3)
 OMEGA2 = 0b111
 
 
+def pinv_mod(x: int, mod: int):
+    """Inverse of x in F2[y]/(mod) by extended Euclid; None if not a
+    unit."""
+    r0, r1 = mod, AL.pmod(x, mod)
+    s0, s1 = 0, 1
+    while r1:
+        q, r = AL.pdivmod(r0, r1)
+        r0, r1 = r1, r
+        s0, s1 = s1, s0 ^ AL.pmul(q, s1)
+    if r0 != 1:
+        return None
+    return AL.pmod(s0, mod)
+
+
 def lin_tables(dim, mulK):
     """lo/hi byte-split tables of the F2-linear map v -> mulK(v)."""
     lo = np.array([mulK(v) for v in range(256)], dtype=np.uint16)
@@ -95,12 +109,15 @@ class OmegaRacer2W:
             return red(AL.pmul(x_, y_))
 
         self.red, self.Lmul = red, mul
+        # S4 fix: the session-3 draft found inverses by an O(nl^2)
+        # scan (4e9 pmul calls at dim 16 — never finishes at p = 24);
+        # extended Euclid over F2[y] instead, asserted per unit.
         inv = {}
         for x_ in range(1, nl):
-            for y_ in range(1, nl):
-                if mul(x_, y_) == 1:
-                    inv[x_] = y_
-                    break
+            u_ = pinv_mod(x_, self.Lmod)
+            if u_ is not None:
+                assert mul(x_, u_) == 1
+                inv[x_] = u_
         ybar = red(0b10)
         ybi = inv[ybar]
         roots = []
@@ -340,7 +357,10 @@ class OmegaRacer2W:
                         per_cost.setdefault(int(w), []).append(
                             (zlo[sel], zhi[sel],
                              zrg[sel].astype(np.uint16)))
-                    if (i & 1023) == 1023 or i == lo.size - 1:
+                    # S4: flush every 64 states (1024 x 2^16-wide
+                    # expansions was ~1.3 GB at dim 16 — the level-13
+                    # RSS abort of the first p = 24 flight)
+                    if (i & 63) == 63 or i == lo.size - 1:
                         for cw, lst in per_cost.items():
                             mlo = np.concatenate([x[0] for x in lst])
                             mhi = np.concatenate([x[1] for x in lst])
@@ -427,13 +447,22 @@ def main():
         br = {"T": 0, "V": 1}[tag]
         r = OmegaRacer2W(24, br)
         r.validate()
-        # bucket sanity: pure(pi^nu * unit) = 2 * 2^popcount(nu)
-        L = r.red
+        # bucket sanity (S4 correction: the session-3 draft asserted
+        # pure(pi^nu) itself = 2*2^popcount(nu), but pi = 1+y+y^2 has
+        # y-weight 3 (pure 6) — the digit-shadow law is the MINIMUM
+        # over the valuation bucket, attained e.g. by (1+t)^nu with
+        # t = y^{1-q}; assert the ideal minima instead)
         pi = r.red(OMEGA2)
+        nl_ = 1 << r.dim
+        ideals = []
         z = 1
-        for nu in range(8):
-            assert r.P[z] == 2 * (1 << bin(nu).count("1")), (nu,)
+        for nu in range(9):
+            ideals.append({r.Lmul(z, u) for u in range(nl_)})
             z = r.Lmul(z, pi)
+        for nu in range(8):
+            stratum = ideals[nu] - ideals[nu + 1]   # exact valuation
+            mn = min(int(r.P[w]) for w in stratum)
+            assert mn == 2 * (1 << bin(nu).count("1")), (nu, mn)
         print(f"p=24 pure racer branch {tag} (xstar={r.xstar}): "
               f"cap {cap}, budget {budget/3600:.1f} h; digit-shadow "
               "buckets asserted", flush=True)

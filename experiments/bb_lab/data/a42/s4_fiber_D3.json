@@ -1,0 +1,38 @@
+{
+ "D": {
+  "p": 3,
+  "W": 12,
+  "tier": "probe",
+  "any_section": [
+   {
+    "w": "any",
+    "status": "unsat",
+    "s": 0.0
+   }
+  ],
+  "nopair": [
+   {
+    "w": 2,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 4,
+    "status": "unsat",
+    "s": 0.0
+   },
+   {
+    "w": 6,
+    "status": "sat",
+    "s": 0.0,
+    "profile": [
+     20,
+     3,
+     0,
+     1
+    ],
+    "weight": 6
+   }
+  ]
+ }
+}
