@@ -1,0 +1,9 @@
+link u=1 kmax=2 whcap=16 gcap=26 smax=3 dil=4: 8 raw seeds
+  seed 1/8: pushed 2541249 complete_h 19
+[link u=1] ABORT RED: frontier 4273661 > 3M — tables complete through h=4
+  seed 2/8: pushed 4346413 complete_h 4 ABORT RED: frontier 4273661 > 3M
+[link u=1] ABORT RED: frontier 3218451 > 3M — tables complete through h=4
+  seed 3/8: pushed 3288841 complete_h 4 ABORT RED: frontier 3218451 > 3M
+  seed 4/8: pushed 231827 complete_h 19
+  seed 5/8: pushed 0 complete_h 19
+  seed 6/8: pushed 2774190 complete_h 19

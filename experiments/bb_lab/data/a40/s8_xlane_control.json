@@ -1,0 +1,53 @@
+{
+ "L12p": {
+  "profile": [
+   7,
+   8,
+   9,
+   7,
+   8,
+   9
+  ],
+  "nH": 4,
+  "u": 7,
+  "g_target": 55,
+  "exact_hit": true,
+  "verified": {
+   "g": 55,
+   "weight": 12,
+   "nontrivial": true,
+   "ab_nontrivial": true
+  }
+ },
+ "TC63p": {
+  "drift_per_period": 3,
+  "one_period_slabs": [
+   9,
+   8,
+   5,
+   6,
+   6,
+   6
+  ],
+  "weight_per_period": 10,
+  "deficit_per_period": 2,
+  "window_pruned": false,
+  "torus_verify": {
+   "lstar": 42,
+   "weight": 10,
+   "is_cycle": true,
+   "nontrivial": true
+  }
+ },
+ "b0_witness": {
+  "occupied_rows": 4,
+  "max_y_gap": 2
+ },
+ "member_protection": {
+  "periods": 4,
+  "total_drift": 12,
+  "content_circle": 18,
+  "closes": false
+ },
+ "wall_s": 1.5
+}

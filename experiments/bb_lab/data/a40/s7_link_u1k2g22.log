@@ -1,0 +1,13 @@
+link u=1 kmax=2 whcap=14 gcap=22 smax=3 dil=4: 8 raw seeds
+  seed 1/8: pushed 471046 complete_h 7
+  seed 2/8: pushed 1136539 complete_h 8
+  seed 3/8: pushed 1558968 complete_h 9
+  seed 4/8: pushed 83926 complete_h 5
+  seed 5/8: pushed 0 complete_h 2
+  seed 6/8: pushed 791770 complete_h 6
+  seed 7/8: pushed 463265 complete_h 7
+  seed 8/8: pushed 133823 complete_h 6
+info: {'n_seeds': 8, 'popped': 4639337, 'pushed': 4639337, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'complete_h': 2, 'aborted': None, 'wall_s': 34.4}
+pre buckets 76, link buckets 2
+  link h=4: D=3.25 delta=-6 g=19
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s7_link_u1k2g22.json (34.5 s)

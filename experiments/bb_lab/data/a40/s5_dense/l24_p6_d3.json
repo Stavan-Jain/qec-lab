@@ -1,0 +1,96 @@
+{
+ "p": 6,
+ "d": 3,
+ "k": 8,
+ "orders": [
+  3,
+  48
+ ],
+ "W": 11,
+ "route": {
+  "depth": 1,
+  "fold_axis": 1,
+  "base_orders": [
+   3,
+   24
+  ],
+  "base_k": 8,
+  "mu_stab_base": 6,
+  "base_ntrv": 432
+ },
+ "n_cover_cycles": 7,
+ "n_trivial": 6,
+ "trivial_whist": {
+  "6": 1,
+  "8": 1,
+  "10": 4
+ },
+ "n_nontrivial": 1,
+ "nontrivial_whist": {
+  "10": 1
+ },
+ "survivors": [
+  {
+   "weight": 10,
+   "y_spanning": true,
+   "prunable": false,
+   "x_winds": false,
+   "b1_closure_r": null,
+   "pts": [
+    [
+     0,
+     0,
+     26
+    ],
+    [
+     0,
+     0,
+     36
+    ],
+    [
+     0,
+     0,
+     39
+    ],
+    [
+     0,
+     2,
+     25
+    ],
+    [
+     0,
+     2,
+     35
+    ],
+    [
+     0,
+     2,
+     38
+    ],
+    [
+     1,
+     2,
+     26
+    ],
+    [
+     1,
+     2,
+     27
+    ],
+    [
+     1,
+     2,
+     28
+    ],
+    [
+     1,
+     2,
+     34
+    ]
+   ]
+  }
+ ],
+ "trivial_yspan_reps": 6,
+ "trivial_yspan_unpruned": 0,
+ "wall_s": 1.4
+}

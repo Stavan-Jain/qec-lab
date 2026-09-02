@@ -1,0 +1,42 @@
+{
+ "a0": {
+  "dimZ": 18,
+  "classes": 4
+ },
+ "a1": {
+  "dimZ": 34,
+  "classes": 6
+ },
+ "a2": {
+  "dimZ": 62,
+  "classes": 6
+ },
+ "a3": {
+  "dimZ": 118,
+  "classes": 6
+ },
+ "a0_to_a1": {
+  "rank_pullback": 4,
+  "classes_below": 4,
+  "classes_above": 6,
+  "rank_pushforward": 2,
+  "pullback_iso": false,
+  "pushforward_zero": false
+ },
+ "a1_to_a2": {
+  "rank_pullback": 6,
+  "classes_below": 6,
+  "classes_above": 6,
+  "rank_pushforward": 0,
+  "pullback_iso": true,
+  "pushforward_zero": true
+ },
+ "a2_to_a3": {
+  "rank_pullback": 6,
+  "classes_below": 6,
+  "classes_above": 6,
+  "rank_pushforward": 0,
+  "pullback_iso": true,
+  "pushforward_zero": true
+ }
+}

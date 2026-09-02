@@ -1,0 +1,7 @@
+frame (254,3,108): spectral k = 14 via [{'fx': '1+x^2+x^4+x^6+x^7', 'ord': (127, 127), 'D': 7, 'localdim': 1}]; orders (1,762) 2-part (0,1)
+  TowerCode k = 14 (collision=False) [2 s]
+frame (254,3,109): spectral k = 0 via []; orders (1,762) 2-part (0,1)
+  TowerCode k = 0 (collision=False) [4 s]
+frame (254,3,107): spectral k = 0 via []; orders (1,762) 2-part (0,1)
+  TowerCode k = 0 (collision=False) [5 s]
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s0c_w_even_frame.json (5.4 s)

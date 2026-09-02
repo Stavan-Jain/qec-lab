@@ -1,0 +1,157 @@
+{
+ "A": {
+  "p6": "exact on all columns",
+  "p12": "exact on all columns",
+  "p24": "exact on all 2^24 columns"
+ },
+ "B": {
+  "p3": [
+   {
+    "nontrivial": 0,
+    "weight": 6,
+    "n1": 4,
+    "n2": 1,
+    "n3": 0,
+    "count": 3
+   },
+   {
+    "nontrivial": 0,
+    "weight": 8,
+    "n1": 4,
+    "n2": 2,
+    "n3": 0,
+    "count": 3
+   },
+   {
+    "nontrivial": 1,
+    "weight": 6,
+    "n1": 0,
+    "n2": 3,
+    "n3": 0,
+    "count": 3
+   },
+   {
+    "nontrivial": 1,
+    "weight": 6,
+    "n1": 3,
+    "n2": 0,
+    "n3": 1,
+    "count": 3
+   },
+   {
+    "nontrivial": 1,
+    "weight": 8,
+    "n1": 0,
+    "n2": 4,
+    "n3": 0,
+    "count": 3
+   },
+   {
+    "nontrivial": 1,
+    "weight": 8,
+    "n1": 3,
+    "n2": 1,
+    "n3": 1,
+    "count": 3
+   },
+   {
+    "nontrivial": 1,
+    "weight": 8,
+    "n1": 4,
+    "n2": 2,
+    "n3": 0,
+    "count": 21
+   }
+  ],
+  "p6": [
+   {
+    "nontrivial": 0,
+    "weight": 6,
+    "n1": 6,
+    "n2": 0,
+    "n3": 0,
+    "count": 6
+   },
+   {
+    "nontrivial": 0,
+    "weight": 10,
+    "n1": 8,
+    "n2": 1,
+    "n3": 0,
+    "count": 6
+   },
+   {
+    "nontrivial": 0,
+    "weight": 10,
+    "n1": 10,
+    "n2": 0,
+    "n3": 0,
+    "count": 30
+   },
+   {
+    "nontrivial": 0,
+    "weight": 12,
+    "n1": 0,
+    "n2": 6,
+    "n3": 0,
+    "count": 6
+   },
+   {
+    "nontrivial": 0,
+    "weight": 12,
+    "n1": 8,
+    "n2": 2,
+    "n3": 0,
+    "count": 3
+   },
+   {
+    "nontrivial": 0,
+    "weight": 12,
+    "n1": 10,
+    "n2": 1,
+    "n3": 0,
+    "count": 66
+   },
+   {
+    "nontrivial": 0,
+    "weight": 12,
+    "n1": 12,
+    "n2": 0,
+    "n3": 0,
+    "count": 132
+   },
+   {
+    "nontrivial": 1,
+    "weight": 12,
+    "n1": 0,
+    "n2": 6,
+    "n3": 0,
+    "count": 15
+   },
+   {
+    "nontrivial": 1,
+    "weight": 12,
+    "n1": 6,
+    "n2": 0,
+    "n3": 2,
+    "count": 3
+   },
+   {
+    "nontrivial": 1,
+    "weight": 12,
+    "n1": 6,
+    "n2": 3,
+    "n3": 0,
+    "count": 30
+   },
+   {
+    "nontrivial": 1,
+    "weight": 12,
+    "n1": 10,
+    "n2": 1,
+    "n3": 0,
+    "count": 18
+   }
+  ]
+ }
+}

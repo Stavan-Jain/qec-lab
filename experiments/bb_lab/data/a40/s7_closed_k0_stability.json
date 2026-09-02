@@ -1,0 +1,38 @@
+{
+ "smax4_dil4_g60": {
+  "n_seeds": 8,
+  "popped": 63221,
+  "pushed": 63213,
+  "trunc_g": false,
+  "trunc_extent": 0,
+  "trunc_dcap": 0,
+  "trunc_nodes": false,
+  "aborts": [],
+  "closed": 0,
+  "wall_s": 0.4
+ },
+ "smax3_dil6_g60": {
+  "n_seeds": 8,
+  "popped": 141087,
+  "pushed": 141079,
+  "trunc_g": false,
+  "trunc_extent": 0,
+  "trunc_dcap": 0,
+  "trunc_nodes": false,
+  "aborts": [],
+  "closed": 0,
+  "wall_s": 0.9
+ },
+ "smax4_dil6_g56": {
+  "n_seeds": 8,
+  "popped": 188695,
+  "pushed": 188687,
+  "trunc_g": false,
+  "trunc_extent": 0,
+  "trunc_dcap": 0,
+  "trunc_nodes": false,
+  "aborts": [],
+  "closed": 0,
+  "wall_s": 1.2
+ }
+}

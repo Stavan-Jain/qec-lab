@@ -1,0 +1,25 @@
+p=12 corridor branch T (xstar=12): cap 22 W 22 gmax 21 (bwd states 15420755), budget 3.5 h; asserting banked returns {6: [0], 10: [0], 12: [0], 14: [0], 16: [0], 18: [0]}
+  level 0: novel 1 seen 2 rss 164MB t 0s returns [] nonzero-reg@[] prune {'gen': 350, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 312}
+  level 1: novel 0 seen 2 rss 164MB t 0s returns [] nonzero-reg@[] prune {'gen': 0, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 0}
+  level 2: novel 1 seen 3 rss 167MB t 0s returns [] nonzero-reg@[] prune {'gen': 4072, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 3930}
+  level 3: novel 2 seen 5 rss 171MB t 0s returns [] nonzero-reg@[] prune {'gen': 8124, 'pruned_known': 0, 'pruned_absent': 7789, 'kept_absent': 0}
+  level 4: novel 8 seen 13 rss 178MB t 0s returns [] nonzero-reg@[] prune {'gen': 30385, 'pruned_known': 0, 'pruned_absent': 7684, 'kept_absent': 22130}
+  level 5: novel 27 seen 40 rss 181MB t 1s returns [] nonzero-reg@[] prune {'gen': 106511, 'pruned_known': 242, 'pruned_absent': 105136, 'kept_absent': 0}
+  level 6: novel 71 seen 111 rss 181MB t 1s returns [6] nonzero-reg@[] prune {'gen': 259454, 'pruned_known': 347, 'pruned_absent': 188805, 'kept_absent': 68266}
+  level 7: novel 224 seen 335 rss 181MB t 3s returns [6] nonzero-reg@[] prune {'gen': 797984, 'pruned_known': 2215, 'pruned_absent': 793218, 'kept_absent': 0}
+  level 8: novel 598 seen 933 rss 294MB t 5s returns [6] nonzero-reg@[] prune {'gen': 1922002, 'pruned_known': 4318, 'pruned_absent': 1768949, 'kept_absent': 144585}
+  level 9: novel 1418 seen 2351 rss 465MB t 9s returns [6] nonzero-reg@[] prune {'gen': 3927242, 'pruned_known': 9713, 'pruned_absent': 3913333, 'kept_absent': 0}
+  level 10: novel 2788 seen 5139 rss 563MB t 19s returns [6, 10] nonzero-reg@[] prune {'gen': 6023126, 'pruned_known': 17532, 'pruned_absent': 5864748, 'kept_absent': 135168}
+  level 11: novel 4704 seen 9843 rss 616MB t 26s returns [6, 10] nonzero-reg@[] prune {'gen': 7545724, 'pruned_known': 27953, 'pruned_absent': 7512808, 'kept_absent': 0}
+  level 12: novel 7092 seen 16935 rss 630MB t 35s returns [6, 10, 12] nonzero-reg@[] prune {'gen': 7561034, 'pruned_known': 43194, 'pruned_absent': 7403602, 'kept_absent': 108474}
+  level 13: novel 10588 seen 27523 rss 630MB t 43s returns [6, 10, 12] nonzero-reg@[] prune {'gen': 6812532, 'pruned_known': 46974, 'pruned_absent': 6761420, 'kept_absent': 0}
+  level 14: novel 14844 seen 42367 rss 641MB t 49s returns [6, 10, 12, 14] nonzero-reg@[] prune {'gen': 5168896, 'pruned_known': 64447, 'pruned_absent': 5091517, 'kept_absent': 8448}
+  level 15: novel 19695 seen 62062 rss 650MB t 53s returns [6, 10, 12, 14] nonzero-reg@[] prune {'gen': 3091814, 'pruned_known': 51868, 'pruned_absent': 3037527, 'kept_absent': 0}
+  level 16: novel 28736 seen 90798 rss 650MB t 56s returns [6, 10, 12, 14, 16] nonzero-reg@[] prune {'gen': 1642288, 'pruned_known': 62874, 'pruned_absent': 1576773, 'kept_absent': 0}
+  level 17: novel 36979 seen 127777 rss 650MB t 59s returns [6, 10, 12, 14, 16] nonzero-reg@[] prune {'gen': 616028, 'pruned_known': 35626, 'pruned_absent': 579112, 'kept_absent': 0}
+  level 18: novel 49415 seen 177192 rss 650MB t 64s returns [6, 10, 12, 14, 16, 18] nonzero-reg@[] prune {'gen': 187226, 'pruned_known': 19283, 'pruned_absent': 167011, 'kept_absent': 0}
+  level 19: novel 64311 seen 241503 rss 674MB t 68s returns [6, 10, 12, 14, 16, 18] nonzero-reg@[] prune {'gen': 40320, 'pruned_known': 4367, 'pruned_absent': 35724, 'kept_absent': 0}
+  level 20: novel 80258 seen 321761 rss 686MB t 74s returns [6, 10, 12, 14, 16, 18, 20] nonzero-reg@[] prune {'gen': 6809, 'pruned_known': 1716, 'pruned_absent': 4633, 'kept_absent': 0}
+  level 21: novel 94802 seen 416563 rss 696MB t 80s returns [6, 10, 12, 14, 16, 18, 20] nonzero-reg@[] prune {'gen': 608, 'pruned_known': 0, 'pruned_absent': 608, 'kept_absent': 0}
+  level 22: novel 112420 seen 528983 rss 708MB t 85s returns [6, 10, 12, 14, 16, 18, 20, 22] nonzero-reg@[] prune {'gen': 72, 'pruned_known': 0, 'pruned_absent': 10, 'kept_absent': 0}
+p=12 corridor branch T: completed level 22; nonzero-register costs []

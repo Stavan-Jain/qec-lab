@@ -1,0 +1,142 @@
+{
+ "p": 12,
+ "gmax_req": 18,
+ "levels": [
+  {
+   "g": 0,
+   "novel": 1,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.1
+  },
+  {
+   "g": 1,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.1
+  },
+  {
+   "g": 2,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.1
+  },
+  {
+   "g": 3,
+   "novel": 1,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.1
+  },
+  {
+   "g": 4,
+   "novel": 2,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.2
+  },
+  {
+   "g": 5,
+   "novel": 3,
+   "seen": 8,
+   "rss_mb": 37,
+   "t": 0.3
+  },
+  {
+   "g": 6,
+   "novel": 13,
+   "seen": 21,
+   "rss_mb": 37,
+   "t": 0.4
+  },
+  {
+   "g": 7,
+   "novel": 34,
+   "seen": 55,
+   "rss_mb": 42,
+   "t": 0.6
+  },
+  {
+   "g": 8,
+   "novel": 74,
+   "seen": 129,
+   "rss_mb": 50,
+   "t": 0.7
+  },
+  {
+   "g": 9,
+   "novel": 201,
+   "seen": 330,
+   "rss_mb": 69,
+   "t": 0.8
+  },
+  {
+   "g": 10,
+   "novel": 537,
+   "seen": 867,
+   "rss_mb": 116,
+   "t": 1.1
+  },
+  {
+   "g": 11,
+   "novel": 1288,
+   "seen": 2155,
+   "rss_mb": 205,
+   "t": 1.5
+  },
+  {
+   "g": 12,
+   "novel": 3169,
+   "seen": 5324,
+   "rss_mb": 242,
+   "t": 2.5
+  },
+  {
+   "g": 13,
+   "novel": 7915,
+   "seen": 13239,
+   "rss_mb": 292,
+   "t": 3.7
+  },
+  {
+   "g": 14,
+   "novel": 19454,
+   "seen": 32693,
+   "rss_mb": 292,
+   "t": 7.7
+  },
+  {
+   "g": 15,
+   "novel": 47213,
+   "seen": 79906,
+   "rss_mb": 292,
+   "t": 17.3
+  },
+  {
+   "g": 16,
+   "novel": 114551,
+   "seen": 194457,
+   "rss_mb": 292,
+   "t": 34.4
+  },
+  {
+   "g": 17,
+   "novel": 276653,
+   "seen": 471110,
+   "rss_mb": 292,
+   "t": 62.1
+  },
+  {
+   "g": 18,
+   "novel": 664305,
+   "seen": 1135415,
+   "rss_mb": 308,
+   "t": 117.6
+  }
+ ],
+ "engine": "backward closure-distance table (x^-1 pair, standard charging)",
+ "gmax_completed": 18,
+ "wall_s": 118.7
+}

@@ -1,0 +1,31 @@
+{
+ "3": {
+  "p": 3,
+  "a": 0,
+  "LB_sum_free": 3,
+  "UB_sum_pure": 6,
+  "realized": 6
+ },
+ "6": {
+  "p": 6,
+  "a": 1,
+  "LB_sum_free": 6,
+  "UB_sum_pure": 12,
+  "realized": 12
+ },
+ "9": {
+  "p": 9,
+  "a": 0,
+  "LB_sum_free": 3,
+  "UB_sum_pure": 18,
+  "realized": 18
+ },
+ "12": {
+  "p": 12,
+  "a": 2,
+  "LB_sum_free": 12,
+  "UB_sum_pure": 24,
+  "realized": 24
+ },
+ "wall_s": 31.0
+}

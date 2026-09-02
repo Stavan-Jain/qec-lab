@@ -1,0 +1,14 @@
+validate_banked: PASS
+s8 mirror closed: u=1 m=24 ell=18 nHmax=3 whcap=23 gcap=46 smax=3 dil=4 extent<=14: seeds [0, 8) of 8
+[s8 u=1 nH<=3 sid0] h=4 states 3472353 rss 1492MB 29.2s
+[s8 u=1 nH<=3 sid1] h=4 states 3135139 rss 1494MB 29.6s
+[s8 u=1 nH<=3 sid2] h=4 states 794612 rss 1494MB 47.4s
+[s8 u=1 nH<=3 sid2] h=7 states 0 rss 1494MB 244.4s
+[s8 u=1 nH<=3 sid3] h=4 states 437703 rss 1494MB 36.9s
+[s8 u=1 nH<=3 sid4] h=4 states 1489039 rss 1494MB 38.8s
+[s8 u=1 nH<=3 sid4] h=5 states 413658 rss 1494MB 314.2s
+[s8 u=1 nH<=3 sid4] h=7 states 0 rss 1494MB 413.4s
+[s8 u=1 nH<=3 sid5] h=4 states 2960814 rss 1494MB 30.1s
+[s8 u=1 nH<=3 sid5] h=5 states 2422423 rss 2069MB 601.8s
+info: {'n_seeds': 8, 'pushed': 16047894, 'popped': 7017985, 'trunc_g': True, 'trunc_extent': 26894072, 'trunc_dcap': 11987, 'aborts': [{'sid': 0, 'why': 'RED: frontier 3472353 at h=4'}, {'sid': 1, 'why': 'RED: frontier 3135139 at h=4'}, {'sid': 5, 'why': 'RED: RSS 2069 MB > 2048 at h=5'}, {'sid': 6, 'why': 'RED: RSS 2069 MB > 2048 at h=1'}, {'sid': 7, 'why': 'RED: RSS 2069 MB > 2048 at h=1'}], 'closed': 0, 'layer_peak': 3472353, 'wall_s': 1463.1}
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s8_prod2418_u1_nh3_g46_s0_8.json (1463.9 s)

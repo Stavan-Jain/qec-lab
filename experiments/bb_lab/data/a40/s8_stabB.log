@@ -1,0 +1,49 @@
+validate_banked: PASS
+s8 mirror closed: u=1 m=24 ell=18 nHmax=2 whcap=19 gcap=42 smax=3 dil=6 extent<=14: seeds [0, 8) of 8
+[s8 sid0 d0] h=3 streamed into 2 parts rss 95MB 0.7s
+[s8 sid0 d1] h=4 streamed into 13 parts rss 203MB 40.9s
+[s8 sid1 d0] h=3 streamed into 2 parts rss 138MB 0.7s
+[s8 sid1 d1] h=4 streamed into 8 parts rss 175MB 40.1s
+[s8 sid1 d2] h=5 streamed into 13 parts rss 247MB 42.3s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 254MB 16.2s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 264MB 11.9s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 273MB 14.1s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 282MB 12.8s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 266MB 12.7s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 273MB 13.8s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 256MB 13.3s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 264MB 12.8s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 271MB 12.6s
+[s8 u=1 nH<=2 sid1 d3] h=7 states 0 rss 279MB 12.8s
+[s8 sid2 d0] h=3 streamed into 2 parts rss 154MB 1.1s
+[s8 sid2 d1] h=4 streamed into 2 parts rss 146MB 36.2s
+[s8 sid3 d0] h=3 streamed into 2 parts rss 159MB 1.3s
+[s8 sid4 d0] h=3 streamed into 2 parts rss 138MB 1.4s
+[s8 sid4 d1] h=4 streamed into 3 parts rss 167MB 31.5s
+[s8 u=1 nH<=2 sid4 d2] h=7 states 0 rss 211MB 34.2s
+[s8 sid5 d0] h=3 streamed into 2 parts rss 147MB 0.9s
+[s8 sid5 d1] h=4 streamed into 8 parts rss 179MB 45.8s
+[s8 sid5 d2] h=5 streamed into 3 parts rss 254MB 31.5s
+[s8 u=1 nH<=2 sid5 d3] h=7 states 16 rss 265MB 34.1s
+[s8 u=1 nH<=2 sid5 d3] h=7 states 0 rss 274MB 23.4s
+[s8 u=1 nH<=2 sid5 d3] h=7 states 0 rss 252MB 19.1s
+[s8 u=1 nH<=2 sid5 d2] h=7 states 0 rss 188MB 23.0s
+[s8 u=1 nH<=2 sid5 d2] h=7 states 0 rss 199MB 42.1s
+[s8 u=1 nH<=2 sid5 d2] h=7 states 0 rss 210MB 33.5s
+[s8 sid6 d0] h=3 streamed into 2 parts rss 142MB 0.9s
+[s8 sid6 d1] h=4 streamed into 6 parts rss 174MB 44.8s
+[s8 sid6 d2] h=5 streamed into 8 parts rss 244MB 46.4s
+[s8 sid6 d3] h=6 streamed into 3 parts rss 314MB 31.9s
+[s8 u=1 nH<=2 sid6 d4] h=7 states 42132 rss 357MB 21.8s
+[s8 u=1 nH<=2 sid6 d4] h=7 states 4000 rss 356MB 22.5s
+[s8 u=1 nH<=2 sid6 d4] h=7 states 164 rss 330MB 19.1s
+[s8 u=1 nH<=2 sid6 d3] h=7 states 19 rss 250MB 23.1s
+[s8 u=1 nH<=2 sid6 d3] h=7 states 617 rss 269MB 41.9s
+[s8 u=1 nH<=2 sid6 d3] h=7 states 952 rss 282MB 32.8s
+[s8 u=1 nH<=2 sid6 d3] h=7 states 0 rss 280MB 24.1s
+[s8 u=1 nH<=2 sid6 d3] h=7 states 0 rss 284MB 20.6s
+[s8 u=1 nH<=2 sid6 d3] h=7 states 0 rss 252MB 43.4s
+[s8 u=1 nH<=2 sid6 d2] h=7 states 0 rss 209MB 44.1s
+[s8 u=1 nH<=2 sid7 d0] h=3 states 172025 rss 135MB 0.7s
+info: {'n_seeds': 8, 'pushed': 13698637, 'popped': 13698645, 'trunc_g': True, 'trunc_extent': 31994408, 'trunc_dcap': 51176, 'aborts': [], 'closed': 0, 'layer_peak': 180691, 'wall_s': 1899.7}
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s8_stabB_u1_nh2_g42_s0_8.json (1900.6 s)

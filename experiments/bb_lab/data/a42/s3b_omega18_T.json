@@ -1,0 +1,328 @@
+{
+ "p": 18,
+ "cap": 42,
+ "branch": 0,
+ "xstar": 12,
+ "levels": [
+  {
+   "c": 0,
+   "novel": 1,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 1,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 2,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 3,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 4,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 5,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 6,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 7,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 8,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 9,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 10,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 11,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 12,
+   "novel": 1,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 13,
+   "novel": 0,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 14,
+   "novel": 0,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 15,
+   "novel": 0,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 16,
+   "novel": 0,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 17,
+   "novel": 0,
+   "seen": 3,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 18,
+   "novel": 2,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 19,
+   "novel": 0,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 20,
+   "novel": 0,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 21,
+   "novel": 0,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 22,
+   "novel": 0,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 23,
+   "novel": 0,
+   "seen": 5,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 24,
+   "novel": 6,
+   "seen": 11,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 25,
+   "novel": 0,
+   "seen": 11,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 26,
+   "novel": 0,
+   "seen": 11,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 27,
+   "novel": 0,
+   "seen": 11,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 28,
+   "novel": 0,
+   "seen": 11,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 29,
+   "novel": 0,
+   "seen": 11,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 30,
+   "novel": 13,
+   "seen": 24,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 31,
+   "novel": 0,
+   "seen": 24,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 32,
+   "novel": 0,
+   "seen": 24,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 33,
+   "novel": 0,
+   "seen": 24,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 34,
+   "novel": 0,
+   "seen": 24,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 35,
+   "novel": 0,
+   "seen": 24,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 36,
+   "novel": 56,
+   "seen": 80,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 37,
+   "novel": 0,
+   "seen": 80,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 38,
+   "novel": 0,
+   "seen": 80,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 39,
+   "novel": 0,
+   "seen": 80,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 40,
+   "novel": 0,
+   "seen": 80,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 41,
+   "novel": 0,
+   "seen": 80,
+   "rss_mb": 37,
+   "t": 0.0
+  },
+  {
+   "c": 42,
+   "novel": 140,
+   "seen": 220,
+   "rss_mb": 37,
+   "t": 0.0
+  }
+ ],
+ "engine": "omega-quotient pure-half racer",
+ "lane": "AB (theta'-dual lane by banked duality)",
+ "returns": {
+  "36": [
+   0,
+   9,
+   14
+  ],
+  "42": [
+   0,
+   7,
+   9
+  ]
+ },
+ "nonzero_reg_costs": [
+  36,
+  42
+ ],
+ "wall_s": 0.0
+}

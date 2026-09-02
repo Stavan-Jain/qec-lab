@@ -1,0 +1,38 @@
+=== 2026-09-02 09:42:57 a43_s1_taxonomy
+=== gross(12,6): 1884 objects, 28 (kind,shape) families
+    144  W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax3|rmax4
+    144  2D|mixed|w12|nx8|ny5|gx2|gy1|blk(6, 6)|cmax3|rmax5
+     72  2D|mixed|w12|nx8|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3
+     72  2D|mixed|w12|nx7|ny4|gx3|gy2|blk(6, 6)|cmax3|rmax4
+     72  2D|mixed|w12|nx6|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3
+     72  2D|mixed|w12|nx6|ny6|gx3|gy0|blk(4, 8)|cmax4|rmax4
+     72  2D|mixed|w12|nx8|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3
+     72  2D|mixed|w12|nx7|ny6|gx2|gy0|blk(5, 7)|cmax3|rmax3
+     72  2D|mixed|w12|nx7|ny5|gx2|gy1|blk(5, 7)|cmax3|rmax3
+     72  2D|mixed|w12|nx7|ny5|gx2|gy1|blk(4, 8)|cmax3|rmax4
+     72  2D|mixed|w12|nx6|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3
+     72  2D|mixed|w12|nx7|ny6|gx2|gy0|blk(3, 9)|cmax3|rmax3
+     72  W_x|pure-x|w12|nx4|ny6|gx8|gy0|blk(8, 4)|cmax6|rmax3
+     72  W_x|pure-x|w12|nx5|ny5|gx7|gy1|blk(9, 3)|cmax5|rmax4
+     72  W_x|pure-x|w12|nx4|ny5|gx8|gy1|blk(6, 6)|cmax4|rmax4
+     72  W_x|pure-x|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax4
+     72  W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax3
+     72  W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax4
+     72  W_x|pure-x|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax5
+     72  W_x|pure-x|w12|nx6|ny6|gx6|gy0|blk(8, 4)|cmax4|rmax5
+     72  2D|mixed|w12|nx7|ny6|gx3|gy0|blk(6, 6)|cmax5|rmax6
+     36  2D|pure-y|w12|nx10|ny2|gx1|gy2|blk(12, 0)|cmax2|rmax8
+     36  2D|pure-y|w12|nx4|ny5|gx2|gy1|blk(0, 12)|cmax4|rmax4
+     36  2D|mixed|w12|nx8|ny4|gx1|gy1|blk(8, 4)|cmax2|rmax5
+     36  2D|mixed|w12|nx8|ny4|gx1|gy1|blk(4, 8)|cmax2|rmax4
+     36  W_x|pure-x|w12|nx3|ny6|gx9|gy0|blk(8, 4)|cmax4|rmax3
+     36  W_x|pure-x|w12|nx4|ny6|gx6|gy0|blk(4, 8)|cmax6|rmax3
+     12  2D|pure-y|w12|nx12|ny6|gx0|gy0|blk(6, 6)|cmax1|rmax2
+=== two-gross(12,12): 49 objects, 2 (kind,shape) families
+     48  2D|mixed|w18|nx12|ny12|gx0|gy0|blk(9, 9)|cmax2|rmax2
+      1  2D|mixed|w18|nx11|ny4|gx1|gy2|blk(18, 0)|cmax3|rmax8
+=== bb72(6,6): 84 objects, 3 (kind,shape) families
+     36  2D|mixed|w6|nx5|ny2|gx1|gy2|blk(6, 0)|cmax2|rmax4
+     36  2D|mixed|w6|nx2|ny5|gx2|gy1|blk(0, 6)|cmax4|rmax2
+     12  2D|mixed|w6|nx6|ny6|gx0|gy0|blk(3, 3)|cmax1|rmax1
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a43/s1_taxonomy.json

@@ -1,0 +1,48 @@
+{
+ "rows": [
+  {
+   "p": 9,
+   "m": 3,
+   "a": 0,
+   "n_lambda": 3,
+   "scaling_exact": true
+  },
+  {
+   "p": 15,
+   "m": 5,
+   "a": 0,
+   "n_lambda": 3,
+   "scaling_exact": true
+  },
+  {
+   "p": 21,
+   "m": 7,
+   "a": 0,
+   "n_lambda": 3,
+   "scaling_exact": true
+  },
+  {
+   "p": 18,
+   "m": 3,
+   "a": 1,
+   "n_lambda": 15,
+   "scaling_exact": true
+  }
+ ],
+ "base_bucket_by_valuation": {
+  "0": {
+   "0": 2
+  },
+  "1": {
+   "0": 2,
+   "1": 4
+  },
+  "2": {
+   "0": 2,
+   "1": 4,
+   "2": 4,
+   "3": 8
+  }
+ },
+ "wall_s": 0.0
+}

@@ -1,0 +1,8 @@
+C p=6 W=10: dimZ=42 dimB=36 classes=6
+  section, weight <= 4: unsat (0.0 s)
+  section, weight <= 6: unsat (0.0 s)
+  section, weight <= 8: unsat (0.1 s)
+  section, weight <= 10: unsat (0.1 s)
+  section, weight <= 12: unsat (0.2 s)
+  |S| <= 6, weight <= 12: sat (0.0 s) profile [34, 0, 6, 0] |S|=6 |s|=0 wt=12
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s4_fiber_C6.json

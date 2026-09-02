@@ -1,0 +1,59 @@
+=== phase2 waiting for production Thu Aug 27 19:18:18 CDT 2026 ===
+=== production done; matched u=1 @ gcap 30 Thu Aug 27 19:22:59 CDT 2026 ===
+u=1 matched join at gcap 30: 8 seeds
+fwd: {'popped': 49417, 'pushed': 49417, 'trunc_nodes': False, 'wall_s': 0.2}; 297 seeded entries
+[bwd u=1 seeded] popped 2000000 heap 2261500 g=20 20.7s
+[bwd u=1 seeded] popped 4000000 heap 1662814 g=26 36.4s
+bwd: {'popped': 5662821, 'pushed': 5662821, 'trunc_nodes': False, 'wall_s': 44.8}; 677 seeded entries
+MATCHED best-D per h (u=1):
+  h=1: D=1.75 delta=0 g=1
+  h=2: D=3.50 delta=0 g=2
+  h=3: D=5.25 delta=0 g=3
+  h=4: D=7.00 delta=1 g=4
+  h=5: D=8.50 delta=1 g=6
+  h=6: D=9.75 delta=3 g=9
+  h=7: D=11.25 delta=3 g=11
+  h=8: D=12.75 delta=3 g=13
+  h=9: D=13.75 delta=5 g=17
+  h=10: D=15.25 delta=5 g=19
+  h=11: D=16.75 delta=5 g=21
+  h=12: D=17.75 delta=2 g=25
+  h=13: D=18.50 delta=2 g=30
+  h=14: D=19.25 delta=4 g=35
+  h=15: D=20.25 delta=4 g=39
+  h=16: D=21.00 delta=4 g=44
+  h=17: D=21.25 delta=1 g=51
+loose < matched on 383 buckets (loose join looseness); largest gaps: [(13, 18, 27, 48), (14, 16, 29, 51), (15, 15, 33, 56), (13, 19, 29, 53), (14, 17, 29, 54)]
+[bwd u=1 seeded] popped 2000000 heap 71462 g=20 16.9s
+parented bwd run: {'popped': 2071462, 'pushed': 2071462, 'trunc_nodes': False, 'wall_s': 17.2}
+replaying bwd ghost: h=10, g=19, key-delta=5
+reconstructed ghost fragment rows [-9, 3]: admissible=True, weight=6, slabs=[2, 2, 4, 2, 2, 3, 1, 1, 1, 1], drift=5, window_pruned=False
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s6_ghost_verify.json (62.7 s)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s6_frontier_u1matched.json
+=== assembly Thu Aug 27 19:24:01 CDT 2026 ===
+loaded strata: [1, 2] (gcaps [30, 28])
+  u=1: gcap 30, 445 buckets, validation {'checked': 0, 'violations': 0, 'note': 'u=1: no species sub-fragment has min slab 1'}
+  u=2: gcap 28, 602 buckets, validation {'checked': 75, 'violations': 0}
+
+MIXED branch (>=1 heavy; heavy slips free, no closure lever): max sum D = 26.25 at (light slabs, runs) = (17, 1) => w >= 10
+  D_best(h) used: {1: 1.75, 2: 3.5, 3: 5.25, 4: 7.0, 5: 8.5, 6: 9.75, 7: 11.25, 8: 12.75, 9: 13.75, 10: 15.25, 11: 16.75, 12: 17.75}
+ALL-LIGHT branch (19-slab closed fragment, drift == 0 mod 24 incl. winding): w >= 7 (per-stratum {1: 8, 2: 7, 'u>=5': 23})
+
+T1 y-sector floor (scope-listed): d_Y(24,18) >= 7
+
+T2 transient: T0 = 7.50 realized by (u,h,delta,g) = (2, 14, 6, 34)
+  certified best-D curve (h: D, delta, u): {1: (1.75, 0, 1), 2: (3.5, 0, 1), 3: (5.25, 0, 1), 4: (7.0, 1, 1), 5: (8.5, 1, 1), 6: (9.75, 3, 1), 7: (11.25, 3, 1), 8: (12.75, 3, 1), 9: (13.75, 0, 1), 10: (15.25, 5, 1), 11: (16.75, 5, 1), 12: (17.75, 2, 1), 13: (18.5, 2, 1), 14: (19.5, 6, 2), 15: (20.25, 4, 1), 16: (21.0, 4, 1), 17: (21.75, 5, 2)}
+T2 (conjectural: alphabet p<=8 + transient cap T0=7.50): mixed floor >= 8; all-light sustained-rate >= 21; T2 floor >= 8
+
+hypothesis (i) one-sidedness: REFUTED
+  max D at delta>0 per h: {2: 3.5, 3: 5.25, 4: 7.0, 5: 8.5, 6: 9.75, 7: 11.25, 8: 12.75, 9: 13.75, 10: 15.25, 11: 16.75, 12: 17.75, 13: 18.5, 14: 19.5, 15: 20.25, 16: 21.0, 17: 21.75}
+  max D at delta<0 per h: {2: 3.25, 3: 5.0, 4: 6.75, 5: 8.25, 6: 9.5, 7: 11.0, 8: 12.5, 9: 13.5, 10: 14.5, 11: 16.0, 12: 17.5, 13: 18.25, 14: 19.0, 15: 20.0, 16: 20.5, 17: 21.25}
+hypothesis (ii) drift-extreme deficits (|delta| >= max(6,h)): {'2,-1': 3.0, '2,1': 3.0, '3,-1': 4.5, '3,1': 4.75, '4,-1': 6.0, '4,1': 6.25, '5,-1': 7.5, '5,1': 8.0, '6,-1': 9.25, '6,1': 9.5, '7,-1': 10.5, '7,1': 11.0, '8,-1': 11.5, '8,1': 12.0, '9,-1': 12.5, '9,1': 13.5, '10,-1': 13.75, '10,1': 14.5, '11,-1': 14.75, '11,1': 16.0, '12,-1': 15.75, '12,1': 16.5, '13,-1': 16.75, '13,1': 17.75, '14,-1': 17.25, '14,1': 18.75, '15,-1': 17.25, '15,1': 19.25, '16,1': 19.5}
+
+CONTROLS:
+  (a) species D-rate present in tables through the caps: PASS — the (18,63)/(18,36)/(24,48) stacks are PERMITTED (their frames' closure admits pure species; the member IP never uses closure on the mixed branch)
+  (b) (18,12) instantiation: mixed floor 7 <= 24: PASS
+  (c) b=0 witness in the wrapped corner (no cover lift): PASS — the -6 is the admitted wrapped/winding term at l=12; at l=24 the wrapped corner is a listed scope condition
+
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s6_assembly.json (0.0 s)
+=== phase2 done Thu Aug 27 19:24:01 CDT 2026 ===

@@ -1,0 +1,117 @@
+=== 2026-09-01 22:02:36 argv=['surgery', '--K', '4', '--gross-sample', '30', '--slack', '12', '--tl', '120']
+validate_banked: PASS
+[bb72(6,6)] images: {'(0, 1)': 6, '(1, 0)': 6, '(1, 1)': 6, '(1, -1)': 6, '(1, 2)': 6, '(1, -2)': 6, '(2, 1)': 6, '(2, -1)': 6, '(1, 3)': 6, '(1, -3)': 6, '(3, 1)': 6, '(3, -1)': 6, '(2, 3)': 6, '(2, -3)': 6, '(3, 2)': 6, '(3, -2)': 6}; Wx+Wy dim 12; covered 189/4095
+   w=6 2D sig=0x3e in_image=[] lam={}
+   w=6 2D sig=0x40 in_image=[] lam={}
+   w=6 2D sig=0x80 in_image=[] lam={}
+   w=6 2D sig=0xc0 in_image=[] lam={}
+   w=6 2D sig=0xd7 in_image=[] lam={}
+   w=6 2D sig=0xe9 in_image=[] lam={}
+   w=6 2D sig=0x100 in_image=[] lam={}
+   w=6 2D sig=0x141 in_image=[] lam={}
+   w=6 2D sig=0x17e in_image=[] lam={}
+   w=6 2D sig=0x1a9 in_image=[] lam={}
+   w=6 2D sig=0x1c0 in_image=[] lam={}
+   w=6 2D sig=0x200 in_image=[] lam={}
+   w=6 2D sig=0x240 in_image=[] lam={}
+   w=6 2D sig=0x257 in_image=[] lam={}
+   w=6 2D sig=0x269 in_image=[] lam={}
+   w=6 2D sig=0x2f8 in_image=[] lam={}
+   w=6 2D sig=0x300 in_image=[] lam={}
+   w=6 2D sig=0x317 in_image=[] lam={}
+   w=6 2D sig=0x380 in_image=[] lam={}
+   w=6 2D sig=0x3fe in_image=[] lam={}
+   w=6 2D sig=0x400 in_image=[] lam={}
+   w=6 2D sig=0x440 in_image=[] lam={}
+   w=6 2D sig=0x457 in_image=[] lam={}
+   w=6 2D sig=0x469 in_image=[] lam={}
+   w=6 2D sig=0x4aa in_image=[] lam={}
+   w=6 2D sig=0x500 in_image=[] lam={}
+   w=6 2D sig=0x517 in_image=[] lam={}
+   w=6 2D sig=0x580 in_image=[] lam={}
+   w=6 2D sig=0x5eb in_image=[] lam={}
+   w=6 2D sig=0x5fe in_image=[] lam={}
+[two-gross(12,12)] images: {'(0, 1)': 6, '(1, 0)': 6, '(1, 1)': 6, '(1, -1)': 6, '(1, 2)': 6, '(1, -2)': 6, '(2, 1)': 6, '(2, -1)': 6, '(1, 3)': 6, '(1, -3)': 6, '(3, 1)': 6, '(3, -1)': 6, '(2, 3)': 6, '(2, -3)': 6, '(3, 2)': 6, '(3, -2)': 6}; Wx+Wy dim 12; covered 189/4095
+   w=18 2D sig=0x3ad in_image=[] lam={}
+   w=18 2D sig=0x8df in_image=[] lam={}
+   w=18 2D sig=0x8df in_image=[] lam={}
+   w=18 2D sig=0x8df in_image=[] lam={}
+   w=18 2D sig=0x8df in_image=[] lam={}
+   w=18 2D sig=0x934 in_image=[] lam={}
+   w=18 2D sig=0x934 in_image=[] lam={}
+   w=18 2D sig=0x934 in_image=[] lam={}
+   w=18 2D sig=0x934 in_image=[] lam={}
+   w=18 2D sig=0xb49 in_image=[] lam={}
+   w=18 2D sig=0xb49 in_image=[] lam={}
+   w=18 2D sig=0xb49 in_image=[] lam={}
+   w=18 2D sig=0xb49 in_image=[] lam={}
+   w=18 2D sig=0xaa2 in_image=[] lam={}
+   w=18 2D sig=0xaa2 in_image=[] lam={}
+   w=18 2D sig=0xaa2 in_image=[] lam={}
+   w=18 2D sig=0xaa2 in_image=[] lam={}
+   w=18 2D sig=0xc9a in_image=[] lam={}
+   w=18 2D sig=0xc9a in_image=[] lam={}
+   w=18 2D sig=0xc9a in_image=[] lam={}
+   w=18 2D sig=0xc9a in_image=[] lam={}
+   w=18 2D sig=0x445 in_image=[] lam={}
+   w=18 2D sig=0x445 in_image=[] lam={}
+   w=18 2D sig=0x445 in_image=[] lam={}
+   w=18 2D sig=0x445 in_image=[] lam={}
+   w=18 2D sig=0x5ae in_image=[] lam={}
+   w=18 2D sig=0x5ae in_image=[] lam={}
+   w=18 2D sig=0x5ae in_image=[] lam={}
+   w=18 2D sig=0x5ae in_image=[] lam={}
+   w=18 2D sig=0xd71 in_image=[] lam={}
+   w=18 2D sig=0xd71 in_image=[] lam={}
+   w=18 2D sig=0xd71 in_image=[] lam={}
+   w=18 2D sig=0xd71 in_image=[] lam={}
+   w=18 2D sig=0xf0c in_image=[] lam={}
+   w=18 2D sig=0xf0c in_image=[] lam={}
+   w=18 2D sig=0xf0c in_image=[] lam={}
+   w=18 2D sig=0xf0c in_image=[] lam={}
+   w=18 2D sig=0x7d3 in_image=[] lam={}
+   w=18 2D sig=0x7d3 in_image=[] lam={}
+   w=18 2D sig=0x7d3 in_image=[] lam={}
+   w=18 2D sig=0x7d3 in_image=[] lam={}
+   w=18 2D sig=0x638 in_image=[] lam={}
+   w=18 2D sig=0x638 in_image=[] lam={}
+   w=18 2D sig=0x638 in_image=[] lam={}
+   w=18 2D sig=0x638 in_image=[] lam={}
+   w=18 2D sig=0xee7 in_image=[] lam={}
+   w=18 2D sig=0xee7 in_image=[] lam={}
+   w=18 2D sig=0xee7 in_image=[] lam={}
+   w=18 2D sig=0xee7 in_image=[] lam={}
+[gross(12,6)] images: {'(0, 1)': 6, '(1, 0)': 6, '(1, 1)': 6, '(1, -1)': 6, '(1, 2)': 6, '(1, -2)': 6, '(2, 1)': 6, '(2, -1)': 6, '(1, 3)': 6, '(1, -3)': 6, '(3, 1)': 6, '(3, -1)': 6, '(2, 3)': 6, '(2, -3)': 6, '(3, 2)': 6, '(3, -2)': 6}; Wx+Wy dim 12; covered 189/4095
+   w=12 2D sig=0x2 in_image=[] lam={}
+   w=12 2D sig=0x40 in_image=['(1, 0)', '(1, 2)', '(1, -2)', '(3, 2)', '(3, -2)'] lam={'(1, 0)': None}
+   w=12 2D sig=0x57 in_image=[] lam={}
+   w=12 2D sig=0x5e in_image=[] lam={}
+   w=12 2D sig=0x6d in_image=[] lam={}
+   w=12 2D sig=0x6f in_image=[] lam={}
+   w=12 2D sig=0x80 in_image=['(1, 0)', '(1, 2)', '(1, -2)', '(3, 2)', '(3, -2)'] lam={'(1, 0)': None}
+   w=12 2D sig=0x90 in_image=[] lam={}
+   w=12 2D sig=0xa9 in_image=[] lam={}
+   w=12 2D sig=0xbe in_image=[] lam={}
+   w=12 2D sig=0xc0 in_image=['(1, 0)', '(1, 2)', '(1, -2)', '(3, 2)', '(3, -2)'] lam={'(1, 0)': None}
+   w=12 2D sig=0xd7 in_image=[] lam={}
+   w=12 2D sig=0xe7 in_image=[] lam={}
+   w=12 2D sig=0xfd in_image=[] lam={}
+   w=12 2D sig=0xff in_image=[] lam={}
+   w=12 2D sig=0x100 in_image=['(1, 0)', '(1, 2)', '(1, -2)', '(3, 2)', '(3, -2)'] lam={'(1, 0)': None}
+   w=12 2D sig=0x125 in_image=[] lam={}
+   w=12 2D sig=0x139 in_image=[] lam={}
+   w=12 2D sig=0x13e in_image=[] lam={}
+   w=12 2D sig=0x140 in_image=['(1, 0)', '(1, 2)', '(1, -2)', '(3, 2)', '(3, -2)'] lam={'(1, 0)': None}
+   w=12 2D sig=0x148 in_image=[] lam={}
+   w=12 2D sig=0x14a in_image=[] lam={}
+   w=12 2D sig=0x167 in_image=[] lam={}
+   w=12 2D sig=0x197 in_image=[] lam={}
+   w=12 2D sig=0x1a9 in_image=[] lam={}
+   w=12 2D sig=0x1b7 in_image=[] lam={}
+   w=12 2D sig=0x1c0 in_image=['(1, 0)', '(1, 2)', '(1, -2)', '(3, 2)', '(3, -2)'] lam={'(1, 0)': None}
+   w=12 2D sig=0x1d8 in_image=[] lam={}
+   w=12 2D sig=0x1da in_image=[] lam={}
+   w=12 2D sig=0x1de in_image=[] lam={}
+[tdg432(18,12)] images: {'(0, 1)': 6, '(1, 0)': 6, '(1, 1)': 6, '(1, -1)': 6, '(1, 2)': 6, '(1, -2)': 6, '(2, 1)': 6, '(2, -1)': 6, '(1, 3)': 6, '(1, -3)': 6, '(3, 1)': 6, '(3, -1)': 6, '(2, 3)': 6, '(2, -3)': 6, '(3, 2)': 6, '(3, -2)': 6}; Wx+Wy dim 12; covered 189/4095
+   w=24 W_x sig=0xb80 in_image=['(0, 1)', '(2, 1)', '(2, -1)', '(2, 3)', '(2, -3)'] lam={'(0, 1)': 24}
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s11_surgery.json (922.7 s)

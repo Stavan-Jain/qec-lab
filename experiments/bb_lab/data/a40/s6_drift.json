@@ -1,0 +1,133 @@
+{
+ "footprint": {
+  "x_span": 4,
+  "y_span": 4
+ },
+ "species": {
+  "W7_l18": {
+   "l": 18,
+   "p": 7,
+   "d": 16,
+   "weight": 8,
+   "cover_drift_per_period": -2,
+   "anchor_drift_checks": 15,
+   "one_period_slabs": [
+    7,
+    6,
+    5,
+    4,
+    2,
+    3,
+    5,
+    7
+   ],
+   "all_light": true,
+   "extent_3periods": 10,
+   "window_pruned": false,
+   "deficit_per_period": 6
+  },
+  "W7_l24": {
+   "l": 24,
+   "p": 7,
+   "d": 22,
+   "weight": 8,
+   "cover_drift_per_period": -2,
+   "anchor_drift_checks": 15,
+   "one_period_slabs": [
+    5,
+    7,
+    6,
+    5,
+    4,
+    2,
+    3,
+    5
+   ],
+   "all_light": true,
+   "extent_3periods": 12,
+   "window_pruned": false,
+   "deficit_per_period": 6
+  },
+  "TC63_l18": {
+   "l": 18,
+   "p": 6,
+   "d": 3,
+   "weight": 10,
+   "cover_drift_per_period": 3,
+   "anchor_drift_checks": 13,
+   "one_period_slabs": [
+    9,
+    6,
+    6,
+    6,
+    5,
+    8,
+    9
+   ],
+   "all_light": false,
+   "extent_3periods": 18,
+   "window_pruned": false,
+   "deficit_per_period": 2
+  },
+  "TC63_l24": {
+   "l": 24,
+   "p": 6,
+   "d": 3,
+   "weight": 10,
+   "cover_drift_per_period": 3,
+   "anchor_drift_checks": 13,
+   "one_period_slabs": [
+    5,
+    8,
+    9,
+    6,
+    6,
+    6,
+    5
+   ],
+   "all_light": false,
+   "extent_3periods": 17,
+   "window_pruned": false,
+   "deficit_per_period": 2
+  }
+ },
+ "zero_and_l12": {
+  "a36_witness": {
+   "compact_cover_lift": false,
+   "note": "x-winding, both wraps (gate W)"
+  },
+  "L12": {
+   "drift": 0,
+   "extent": 3
+  },
+  "l12_p4d4_w6": {
+   "compact_cover_lift": false,
+   "note": "both-wraps winding (the witness species); deficit 2/period rides the winding corner at l=12",
+   "deficit_per_period": 2
+  },
+  "l12_p7d10_w8": {
+   "drift_per_period": -2,
+   "extent": 12
+  }
+ },
+ "additivity_checks": [
+  {
+   "name": "W7_l18",
+   "dA": 0,
+   "dB": -2,
+   "dAB": -2
+  },
+  {
+   "name": "TC63_l24",
+   "dA": 4,
+   "dB": 3,
+   "dAB": 7
+  }
+ ],
+ "splitting": {
+  "union_admissible": true,
+  "n_components": 2
+ },
+ "torus_splitting": true,
+ "wall_s": 2.0
+}

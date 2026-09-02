@@ -1,0 +1,50 @@
+{
+ "W": 22,
+ "target": 24,
+ "WNT": 18,
+ "WALL": 16,
+ "phase": "rungs",
+ "architecture": "v2 direct-L2-primary",
+ "structure": {
+  "k": [
+   12,
+   12,
+   8,
+   8
+  ],
+  "seam_dim": 6,
+  "s1prime_classes": 3
+ },
+ "tau_witness": {
+  "w_L0": 24,
+  "w_L1": 12,
+  "class_L1": 2994
+ },
+ "dangerous_rungs": {
+  "rungs": 44093,
+  "verdicts": {
+   "PASS": 44093
+  },
+  "lanes": {
+   "restricted<=0": 34184,
+   "restricted<=1": 7117,
+   "restricted<=2": 2091,
+   "restricted<=3": 589,
+   "restricted<=4": 54,
+   "kernel-shift": 58
+  },
+  "wall_s": 453.2
+ },
+ "seam_rungs": {
+  "rungs": 68,
+  "verdicts": {
+   "PASS": 68
+  }
+ },
+ "verdict": {
+  "floor": 24,
+  "all_pass": true,
+  "exact": 24
+ },
+ "wall_s": 469.9
+}

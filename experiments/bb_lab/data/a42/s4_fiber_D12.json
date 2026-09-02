@@ -1,0 +1,59 @@
+{
+ "D": {
+  "p": 12,
+  "W": 12,
+  "tier": "probe",
+  "any_section": [
+   {
+    "w": "any",
+    "status": "sat",
+    "s": 0.0,
+    "profile": [
+     90,
+     6,
+     0,
+     0
+    ],
+    "weight": 6,
+    "nontrivial": false
+   }
+  ],
+  "nopair": [
+   {
+    "w": 8,
+    "status": "unsat",
+    "s": 3.9
+   },
+   {
+    "w": 10,
+    "status": "unsat",
+    "s": 11.4
+   },
+   {
+    "w": 12,
+    "status": "unsat",
+    "s": 32.0
+   },
+   {
+    "w": 14,
+    "status": "unsat",
+    "s": 67.0
+   },
+   {
+    "w": 16,
+    "status": "unsat",
+    "s": 154.5
+   },
+   {
+    "w": 18,
+    "status": "unsat",
+    "s": 467.2
+   },
+   {
+    "w": 20,
+    "status": "timeout",
+    "s": 601.4
+   }
+  ]
+ }
+}
