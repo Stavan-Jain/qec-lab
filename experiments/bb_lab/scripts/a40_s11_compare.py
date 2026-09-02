@@ -360,6 +360,7 @@ def classify_object(code: TowerCode, v: np.ndarray, dirs=DIRS):
             compact.append(dict(ab=list(ab), u=info["u"], g=info["g"],
                                 X_extent=info["X_extent"]))
     rec["compact_dirs"] = compact
+    rec["cells"] = sorted(cells)
     if any(c["ab"] == [0, 1] for c in compact):
         sec = "W_x"
     elif any(c["ab"] == [1, 0] for c in compact):
@@ -664,8 +665,16 @@ def lane_classify(args):
 
 
 # ------------------------------------------------------------- hunts
+def annihilator(basis, k):
+    """Functionals (as bit-ints over k sig bits) vanishing on span(basis)."""
+    M = np.array([i2v(b, k) for b in basis], dtype=np.uint8) \
+        if basis else np.zeros((0, k), dtype=np.uint8)
+    return [v2i(f) for f in kernel_basis(M)]
+
+
 def hunt(code: TowerCode, Wmax: int, dense_x=True, dense_y=True,
-         nsol=20, time_limit=600.0, extra_block=None, tag=""):
+         nsol=20, time_limit=600.0, extra_block=None, tag="",
+         mixed_only=False):
     """SAT hunt for nontrivial X-logicals of weight <= Wmax that are
     gap-dense (every cyclic 4-window along each dense axis occupied).
     Existence lane only.  Returns the list of verified solutions
@@ -689,6 +698,24 @@ def hunt(code: TowerCode, Wmax: int, dense_x=True, dense_y=True,
         lits = [int(i) + 1 for i in np.nonzero(zr)[0]] + [top]
         xors.append((lits, False))
     clauses.append(pv)
+    if mixed_only:
+        # class outside W_x, W_y, W_d: for each subspace, OR over the
+        # annihilator functionals f of (f(sig(v)) = 1); f(sig) is the XOR
+        # of the zrep pairings in f's support.
+        for ab in [(0, 1), (1, 0), (1, 1)]:
+            basis, _ = image_classes(code, ab, K=4)
+            fs = annihilator(basis, code.k)
+            qs = []
+            for f in fs:
+                top += 1
+                qs.append(top)
+                zsum = np.zeros(n, dtype=np.uint8)
+                for i in range(code.k):
+                    if (f >> i) & 1:
+                        zsum ^= code.zreps[i]
+                lits = [int(i) + 1 for i in np.nonzero(zsum)[0]] + [top]
+                xors.append((lits, False))
+            clauses.append(qs)
     if dense_x:
         for x0 in range(l):
             lits = []
@@ -763,6 +790,37 @@ def lane_hunt(args):
     validate_banked(LAB / "data")
     print("validate_banked: PASS", flush=True)
     out = {"runs": []}
+    if args.mixed:
+        plan = [(12, 12, 18, 3, 300, "control: mixed-class gap-dense at "
+                                     "(12,12) <= 18 (witness family)"),
+                (18, 12, 24, 6, args.t1812, "mixed-class gap-dense at "
+                                            "(18,12) <= 24")]
+        if args.r3:
+            plan.append((24, 18, 35, 1, args.t2418,
+                         "mixed-class gap-dense at (24,18) <= 35"))
+        for l, m, W, nsol, tl, label in plan:
+            code = member_code(l, m)
+            print(f"== {label}: (l,m)=({l},{m}) W<={W}", flush=True)
+            sols, status, wall = hunt(code, W, nsol=nsol, time_limit=tl,
+                                      tag=f"mixed({l},{m})<={W}",
+                                      mixed_only=True)
+            run = dict(lm=[l, m], Wmax=W, label=label, status=status,
+                       n_solutions=len(sols), wall_s=wall, solutions=sols,
+                       mixed_only=True)
+            for sol in sols:
+                v = vec_of(code, [tuple(c) for c in sol["cells"]])
+                rec = classify_object(code, v)
+                sol["classification"] = {k: rec[k] for k in
+                                         ("sector", "gap_sector", "gap_x",
+                                          "gap_y", "ncomp", "compact_dirs")}
+                print(f"   -> w={sol['w']} sector={rec['sector']} "
+                      f"gap={rec['gap_sector']}", flush=True)
+            print(f"   status={status} n={len(sols)} wall={wall} s",
+                  flush=True)
+            out["runs"].append(run)
+            (DATA / "s11_hunt_mixed.json").write_text(json.dumps(out,
+                                                                 indent=1))
+        return
     plan = [
         # (l, m, Wmax, nsol, time_limit, label)
         (12, 12, 17, 1, 300, "control: (12,12) <= 17 must be UNSAT (d = 18)"),
@@ -803,6 +861,255 @@ def lane_hunt(args):
     out["wall_s"] = round(time.time() - t0, 1)
     (DATA / "s11_hunt.json").write_text(json.dumps(out, indent=1))
     print(f"wrote {DATA / 's11_hunt.json'} ({out['wall_s']} s)")
+
+
+# ----------------------------------------------------------- surgery
+def cyl_window(cv: Cover, lm, ab, K):
+    """Cells and checks of C_u inside K deck periods of X.  Returns
+    (cells list [(blk, X, Y)], torus cell of each, check list, and
+    the reading map check -> cell indices)."""
+    w = complement_in_lambda(ab, lm)
+    Xw = cv.w1[0] * w[0] + cv.w1[1] * w[1]
+    Xw = abs(Xw)
+    Xlo, Xhi = 0, K * Xw - 1
+    cells = []
+    for blk in range(2):
+        for X in range(Xlo, Xhi + 1):
+            for Y in range(cv.g):
+                cells.append((blk, X, Y))
+    cidx = {c: i for i, c in enumerate(cells)}
+    tor = [cv.torus_cell(*c, lm) for c in cells]
+    reads: dict = {}
+    for c, i in cidx.items():
+        blk, X, Y = c
+        for rb, sft in READ:
+            if rb != blk:
+                continue
+            dX = cv.w1[0] * sft[0] + cv.w1[1] * sft[1]
+            dY = cv.w2[0] * sft[0] + cv.w2[1] * sft[1]
+            key = (X - dX, (Y - dY) % cv.g)
+            reads.setdefault(key, []).append(i)
+    return cells, tor, reads, Xw
+
+
+def image_classes(code: TowerCode, ab, K=4):
+    """im(pi_u*) in H1(T): classes of pushforwards of compact cycles
+    of C_u supported in K deck periods (exact linear algebra)."""
+    lm = tuple(code.G.orders)
+    u = (ab[0] * lm[0], ab[1] * lm[1])
+    cv = Cover(u)
+    cells, tor, reads, Xw = cyl_window(cv, lm, ab, K)
+    ncell = len(cells)
+    rows = []
+    for key, idxs in reads.items():
+        r = 0
+        for i in idxs:
+            r ^= 1 << i
+        rows.append(r)
+    # kernel of the check matrix (rows as bit-ints over ncell columns)
+    # via RREF on the transpose is heavy; use numpy on a dense matrix
+    M = np.zeros((len(rows), ncell), dtype=np.uint8)
+    for ri, r in enumerate(rows):
+        for i in reads[list(reads.keys())[ri]]:
+            M[ri, i] = 1
+    kb = kernel_basis(M)
+    sigs = []
+    for kv in kb:
+        vt = np.zeros(code.n, dtype=np.uint8)
+        for i in np.nonzero(kv)[0]:
+            blk, x, y = tor[int(i)]
+            vt[blk * code.ng + code.G.index((x, y))] ^= 1
+        assert code.is_cycle(vt)
+        s = v2i(code.sig(vt))
+        if s:
+            sigs.append(s)
+    basis, _ = rref_ints(sigs)
+    return basis, dict(ncells=ncell, nchecks=len(rows), dim_kernel=len(kb),
+                       K=K, Xw=Xw)
+
+
+def lift_min_weight(code: TowerCode, v: np.ndarray, ab, Wmax, K=4,
+                    time_limit=120.0):
+    """lambda_u(v): the least weight of a compact cycle of C_u whose
+    pushforward is EXACTLY v, searched in K deck periods with weight
+    iterated upward from |v| (UNSAT steps are solver observations; the
+    returned lift is re-verified).  None if nothing <= Wmax."""
+    from pycryptosat import Solver
+    from pysat.card import CardEnc, EncType
+    lm = tuple(code.G.orders)
+    u = (ab[0] * lm[0], ab[1] * lm[1])
+    cv = Cover(u)
+    cells, tor, reads, Xw = cyl_window(cv, lm, ab, K)
+    ncell = len(cells)
+    vcells = cells_of(code, v)
+    # parity constraints per torus cell
+    by_tor: dict = {}
+    for i, t in enumerate(tor):
+        by_tor.setdefault(t, []).append(i + 1)
+    xors = []
+    for t, lits in by_tor.items():
+        xors.append((lits, t in vcells))
+    for key, idxs in reads.items():
+        xors.append(([i + 1 for i in idxs], False))
+    w0 = int(v.sum())
+    t0 = time.time()
+    for W in range(w0, Wmax + 1):
+        left = time_limit - (time.time() - t0)
+        if left <= 0:
+            return None, dict(status="timeout", W_reached=W)
+        s = Solver(time_limit=max(1.0, left))
+        card = CardEnc.atmost(lits=list(range(1, ncell + 1)), bound=W,
+                              top_id=ncell, encoding=EncType.seqcounter)
+        for cl in card.clauses:
+            s.add_clause(cl)
+        for lits, rhs in xors:
+            s.add_xor_clause(lits, rhs)
+        sat, sol = s.solve()
+        if sat is None:
+            return None, dict(status="timeout", W_reached=W)
+        if sat:
+            lift = [cells[i] for i in range(ncell) if sol[i + 1]]
+            # verify: cycle on C_u and pushforward == v
+            touched: dict = {}
+            push = np.zeros(code.n, dtype=np.uint8)
+            for blk, X, Y in lift:
+                for rb, sft in READ:
+                    if rb != blk:
+                        continue
+                    dX = cv.w1[0] * sft[0] + cv.w1[1] * sft[1]
+                    dY = cv.w2[0] * sft[0] + cv.w2[1] * sft[1]
+                    key = (X - dX, (Y - dY) % cv.g)
+                    touched[key] = touched.get(key, 0) ^ 1
+                b, x, y = cv.torus_cell(blk, X, Y, lm)
+                push[b * code.ng + code.G.index((x, y))] ^= 1
+            assert not any(touched.values())
+            assert np.array_equal(push, v)
+            Xs = [X for _, X, _ in lift]
+            return len(lift), dict(status="found", W=len(lift),
+                                   X_extent=max(Xs) - min(Xs) + 1,
+                                   unsat_below=W, lift=sorted(lift))
+    return None, dict(status="none<=Wmax", Wmax=Wmax)
+
+
+def build_populations(binp, with_hunt=True):
+    """name -> (code, [(class, v)]) for the banked/recomputed frames."""
+    pops = {}
+    bb72 = member_code(6, 6)
+    pops["bb72(6,6)"] = (bb72, census_all_classes(binp, bb72, 6,
+                                                  "s11_bb72"))
+    tg = member_code(12, 12)
+    wit = a36_witness(tg)
+    objs = [(v2i(tg.sig(wit)), wit)]
+    pb, _ = shear_pullbacks(binp, 12, 4, 4, 6, tg)
+    seen = {v2i(wit)}
+    for c, v in pb:
+        if v2i(v) not in seen:
+            seen.add(v2i(v))
+            objs.append((v2i(tg.sig(v)), v))
+    pops["two-gross(12,12)"] = (tg, objs)
+    gross = member_code(12, 6)
+    pops["gross(12,6)"] = (gross, census_all_classes(binp, gross, 12,
+                                                     "s11_gross"))
+    t21 = member_code(18, 12)
+    objs = [(v2i(t21.sig(l12_stack(t21))), l12_stack(t21))]
+    hf = DATA / "s11_hunt.json"
+    if with_hunt and hf.exists():
+        H = json.loads(hf.read_text())
+        for run in H.get("runs", []):
+            if tuple(run["lm"]) == (18, 12):
+                for sol in run.get("solutions", []):
+                    v = vec_of(t21, [tuple(c) for c in sol["cells"]])
+                    assert t21.is_cycle(v) and not t21.is_stab(v)
+                    objs.append((v2i(t21.sig(v)), v))
+    pops["tdg432(18,12)"] = (t21, objs)
+    return pops
+
+
+def lane_surgery(args):
+    t0 = time.time()
+    validate_banked(LAB / "data")
+    print("validate_banked: PASS", flush=True)
+    binp = cosetbz.build_kernel()
+    pops = build_populations(binp)
+    out = {"frames": {}}
+    frames = [("bb72(6,6)", (6, 6)), ("two-gross(12,12)", (12, 12)),
+              ("gross(12,6)", (12, 6)), ("tdg432(18,12)", (18, 12))]
+    dirs = [tuple(d) for d in DIRS]
+    for name, lm in frames:
+        code, pop = pops[name]
+        rep = dict(lm=list(lm), images={}, objects=[])
+        # 1. the cylinder images per direction
+        images = {}
+        for ab in dirs:
+            basis, info = image_classes(code, ab, K=args.K)
+            basis2, _ = image_classes(code, ab, K=args.K + 2)
+            stable = sorted(basis) == sorted(basis2)
+            images[ab] = basis2
+            rep["images"][str(ab)] = dict(dim=len(basis2), stable=stable,
+                                          **info)
+        # pairwise: which pairs of directions span H1 directly
+        dx, dy = images[(0, 1)], images[(1, 0)]
+        both, _ = rref_ints(list(dx) + list(dy))
+        rep["Wx_plus_Wy_dim"] = len(both)
+        # coverage: how many nonzero classes lie in some image
+        covered = set()
+        per_dir_cover = {}
+        for ab, basis in images.items():
+            pts = set()
+            pts.add(0)
+            for b in basis:
+                pts |= {p ^ b for p in pts}
+            pts.discard(0)
+            per_dir_cover[str(ab)] = len(pts)
+            covered |= pts
+        rep["classes_covered_by_some_direction"] = len(covered)
+        rep["classes_total_nonzero"] = (1 << code.k) - 1
+        print(f"[{name}] images: "
+              f"{ {k: v['dim'] for k, v in rep['images'].items()} }; "
+              f"Wx+Wy dim {len(both)}; covered {len(covered)}/"
+              f"{(1 << code.k) - 1}", flush=True)
+        # 2. objects: class membership per direction + lambda_u
+        objs = []
+        seen_cls = set()
+        for c, v in pop:
+            sec = classify_object(code, v, dirs=[(0, 1), (1, 0)])["sector"]
+            if name == "gross(12,6)":
+                if sec == "W_x" or c in seen_cls:
+                    continue
+                seen_cls.add(c)
+                if len(objs) >= args.gross_sample:
+                    break
+            elif name == "bb72(6,6)" and len(objs) >= args.gross_sample:
+                break
+            objs.append((c, v, sec))
+        for c, v, sec in objs:
+            sig = v2i(code.sig(v))
+            assert sig == c
+            rec = dict(w=int(v.sum()), sector=sec, sig=sig,
+                       in_image={}, lam={})
+            for ab, basis in images.items():
+                bb, pp = rref_ints(list(basis))
+                from bb_lab.tower import in_span
+                inside = in_span(sig, bb, pp)
+                rec["in_image"][str(ab)] = bool(inside)
+                if inside and ab in [(0, 1), (1, 0)] + args.lam_dirs:
+                    W, info = lift_min_weight(code, v, ab,
+                                              int(v.sum()) + args.slack,
+                                              K=args.K,
+                                              time_limit=args.tl)
+                    rec["lam"][str(ab)] = dict(lam=W, **{k: vv for k, vv in
+                                                         info.items()
+                                                         if k != "lift"})
+            rep["objects"].append(rec)
+            print(f"   w={rec['w']} {rec['sector']} sig={sig:#x} "
+                  f"in_image={[k for k, b in rec['in_image'].items() if b]} "
+                  f"lam={ {k: vv['lam'] for k, vv in rec['lam'].items()} }",
+                  flush=True)
+            rss_guard(name)
+        out["frames"][name] = rep
+        out["wall_s"] = round(time.time() - t0, 1)
+        (DATA / "s11_surgery.json").write_text(json.dumps(out, indent=1))
+    print(f"wrote {DATA / 's11_surgery.json'} ({out['wall_s']} s)")
 
 
 # ---------------------------------------------------------- the norm
@@ -886,8 +1193,16 @@ def main():
                    help="keep every object record in the json")
     h = sub.add_parser("hunt")
     h.add_argument("--r3", action="store_true")
+    h.add_argument("--mixed", action="store_true")
     h.add_argument("--t1812", type=float, default=1800.0)
     h.add_argument("--t2418", type=float, default=1800.0)
+    sg = sub.add_parser("surgery")
+    sg.add_argument("--K", type=int, default=4)
+    sg.add_argument("--gross-sample", type=int, default=40)
+    sg.add_argument("--slack", type=int, default=12)
+    sg.add_argument("--tl", type=float, default=120.0)
+    sg.add_argument("--lam-dirs", type=str, default="1,1;1,-1",
+                    help="extra directions for lambda_u as a;b list")
     nrm = sub.add_parser("norm")
     nrm.add_argument("--dirs", nargs="+", required=True,
                      help="directions as t,p (u = (t, p))")
@@ -896,6 +1211,9 @@ def main():
     nrm.add_argument("--max-states", type=int, default=4_000_000)
     nrm.add_argument("--max-paths", type=int, default=400_000)
     args = ap.parse_args()
+    if args.lane == "surgery":
+        args.lam_dirs = [tuple(int(x) for x in d.split(","))
+                         for d in args.lam_dirs.split(";") if d]
     # every lane tees its own log (shell redirection is unavailable in
     # the headless environment — S10 incident ii)
     logname = f"s11_{args.lane}" + (f"_{args.tag}" if args.lane == "norm"
@@ -918,7 +1236,7 @@ def main():
     sys.stderr = Tee(sys.__stderr__, logf)
     print(f"=== {time.strftime('%Y-%m-%d %H:%M:%S')} argv={sys.argv[1:]}")
     {"classify": lane_classify, "hunt": lane_hunt,
-     "norm": lane_norm}[args.lane](args)
+     "norm": lane_norm, "surgery": lane_surgery}[args.lane](args)
 
 
 if __name__ == "__main__":
