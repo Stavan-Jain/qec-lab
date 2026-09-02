@@ -427,27 +427,44 @@ class CorridorJet(JR.JetRacer):
                 for lo in range(0, sts.size, CHUNK):
                     cst = sts[lo:lo + CHUNK]
                     crg = rgs[lo:lo + CHUNK]
-                    outs = self.expand(cst, crg)
-                    per_cost: dict[int, list] = {}
-                    for a in range(1 << self.p):
-                        ns, nreg, co = outs[a]
-                        outs[a] = None
-                        if c == 0 and a == 0:
-                            keep = ns != zstate
-                            ns, nreg, co = ns[keep], nreg[keep], \
-                                co[keep]
-                        for w in np.unique(co):
-                            cw = c + int(w)
-                            if cw > cap:
-                                continue
-                            sel = co == w
-                            zsel = sel & (ns == zstate)
-                            if zsel.any() and cw > 0:
-                                for rv in np.unique(nreg[zsel]):
-                                    returns.setdefault(cw, set()) \
-                                        .add(int(rv))
-                            per_cost.setdefault(cw, []).append(
-                                (ns[sel], nreg[sel]))
+                    if c == cap and c > 0:
+                        # FINAL LEVEL: only zero-cost continuations
+                        # can matter (positive cost exceeds cap), and
+                        # the zero-cost step is deterministic
+                        # (input 0, forced 0).  Expand a = 0 only and
+                        # keep only cost-0 outputs.
+                        ns, nreg, co = self.expand(cst, crg)[0]
+                        sel = co == 0
+                        ns, nreg = ns[sel], nreg[sel]
+                        zsel = ns == zstate
+                        if zsel.any():
+                            for rv in np.unique(nreg[zsel]):
+                                returns.setdefault(c, set()) \
+                                    .add(int(rv))
+                        per_cost = {c: [(ns, nreg)]} if ns.size \
+                            else {}
+                    else:
+                        outs = self.expand(cst, crg)
+                        per_cost = {}
+                        for a in range(1 << self.p):
+                            ns, nreg, co = outs[a]
+                            outs[a] = None
+                            if c == 0 and a == 0:
+                                keep = ns != zstate
+                                ns, nreg, co = ns[keep], nreg[keep], \
+                                    co[keep]
+                            for w in np.unique(co):
+                                cw = c + int(w)
+                                if cw > cap:
+                                    continue
+                                sel = co == w
+                                zsel = sel & (ns == zstate)
+                                if zsel.any() and cw > 0:
+                                    for rv in np.unique(nreg[zsel]):
+                                        returns.setdefault(cw, set()) \
+                                            .add(int(rv))
+                                per_cost.setdefault(cw, []).append(
+                                    (ns[sel], nreg[sel]))
                     for cw, lst in per_cost.items():
                         ms = np.concatenate([x[0] for x in lst])
                         mr = np.concatenate([x[1] for x in lst])
@@ -465,7 +482,7 @@ class CorridorJet(JR.JetRacer):
                         if fr.any():
                             buckets.setdefault(cw, []).append(
                                 (ms[fr], mr[fr]))
-                    del outs, per_cost
+                    del per_cost
                     rss = resource.getrusage(
                         resource.RUSAGE_SELF).ru_maxrss
                     if rss > RSS_CAP:
