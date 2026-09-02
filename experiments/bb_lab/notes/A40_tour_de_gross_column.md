@@ -3577,3 +3577,20 @@ species).
    hand lemmas over the covering-space formalism (a natural
    companion to the BBCover layer); Theorem P's per-member instance
    is a rank computation.
+
+**Session-11 state (for the program map).**  The comparison
+statement min_D ≥ min_W at b = 1 is TRUE at r ≤ 2 (by the certified
+d; with equality at r = 1 through 1,092 two-dimensional minimizers
+in 201 classes) and at r ≥ 3 is EQUIVALENT to the mixed-sector floor
+(M): every class outside the three transfer images W_x, W_y, W_d
+(3,906 of 4,095 classes) has minimum ≥ 2m.  Rank-one classes are
+covered by Lemma U / Prop E with the finite (H1) and the b = 1
+cushion; the b = 0 discount is a mixed-class phenomenon (witness at
+(12,12), all minima at (6,6)) invisible to every cylinder, so no
+surgery — straight or twisted — can reach it, and the b = 1 lower
+half is not shortened by this route: it is relocated to (M), which
+Corollary P1 hands to the three-cover descent (A38's deficit
+machinery).  New certified facts: Theorem P at five frames; ker ρ_u^*
+= W_u at three; gross diagonal-parity minima 16/≥18; N(u) ≥ 12 for
+the r = 1 helix directions.  Open: the (18,12) mixed-sector equality
+question; (H1) at r ≥ 2 (engine-bound); Theorem P ∀r.
