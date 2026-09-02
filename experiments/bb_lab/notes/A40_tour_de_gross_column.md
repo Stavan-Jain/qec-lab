@@ -2555,3 +2555,114 @@ Combined with S7:
    collapse is arithmetic on the slab telescope; the mirror
    closed tables are finite certificates under the same
    layered-march contract as §12.10 item 5.
+
+## §14 SESSION 9 (2026-09-01) — the rightward-relocation inequality
+## DECIDED (census to g <= 40 + the mu-echo lemma), and cashed
+
+Directive: decide S8's named open inequality — does a dil-4
+staircase's forced E-debris charge ~1 weight per column of
+rightward anchor transport, or does a two-strand ghost-carrier
+evade it above g ~ 30 — then cash the two-sided slip control into
+the y-sector assembly.  What happened: the census route ran CLEAN
+to g <= 40 at full production caps (rightward slip: still EMPTY —
+now 21 cost units above the cheapest crossing), and the debris
+hand-argument came back STRONGER than commissioned: its zero-input
+core is a PROVEN three-line lemma (R0, the mu-echo) with a 3.1M-
+pair exhaustive confirmation, so the two-strand carrier is refuted
+outright in the zero-input sector and every rightward unit is
+input-charged.  The same deep run doubles as the u = 1 link-table
+deepening the S7 assembly's free branch needed: r >= 2 lifts 11 ->
+12 (the probe-predicted 96-quarter bc-wall), r = 1 becomes the
+unique binding branch, and the streaming ClosedMarch port (S8's
+rework applied to the closed lane, 3 port controls) reruns the two
+seeds the S7 frontier guard killed.  Engines `a40_s9_slipext.py`
+(census/specimen driver over the UNCHANGED S8 SlipLinkMarch),
+`a40_s9_debris.py` (V0-V5 + R0), `a40_s9_closed.py` (streaming
+ClosedMarch), `a40_s9_probe.py` (DP sensitivity, no claim tier),
+`a40_s9_assemble.py` (glob-shim assembly, output s9_assembly.json;
+the banked s7_assembly.json untouched); data `data/a40/s9_*`;
+`validate_banked` green before every stage.
+
+### §14.1 The census verdict (the measured side, now 4 rungs deep)
+
+The S8 slip census extended with the S8 engine UNCHANGED (my
+driver adds only output naming, the g30 slip-table regression, and
+a strictly additive tab_link_L[(h, L, dlt)] recording — dominance
+key untouched; the s7-g26 pre/link/link_L regressions and the g30
+slip regression pass on every run):
+
+| gcap | hcap | dcap | nodes | wall | classes | positive slips |
+|---|---|---|---|---|---|---|
+| 30 (S8) | 12 | 16 (1272 trunc) | 34M | 203 s | 14 | none |
+| 32 | 13 | 20 (0 trunc) | 42M | 240 s | 16 | none |
+| 34 | 14 | 22 (0 trunc) | 50M | 381 s | 23 | none |
+| **40** | **19** | **30 (0 trunc)** | **79M** | **561 s** | **42** | **NONE** |
+
+- **Rightward block slip does not exist at g <= 40** (u = 1 links,
+  L <= 2, W <= 14, smax 3 / dil 4, extent <= 34; |dlt| <= 30 with
+  ZERO truncations, so the g30 run's dcap-16 scope caveat is
+  DISCHARGED through g <= 40).  The cheapest crossing costs 19;
+  the census now spans 21 units above it with the positive side
+  empty.
+- **The pre-phase wall is frozen at +3 = the borrow radius,
+  absolutely**: at g <= 40, h <= 19 the pre table's rightward rows
+  are exactly dlt +1 at h 2..7 (min-g 2, 3, 4, 6, 20, 28), +2 at
+  h 3..5 (5, 6, 9), +3 at h 3..4 (6, 11) — NOTHING at h >= 8 or
+  dlt >= +4 at ANY cost <= 40.  Holding a +1 relocation for >= 5
+  rows exceeds the whole 40 budget: the holding rows are forced
+  heavy-class (~8/row measured) — "the relocation rows themselves
+  go heavy", S8's debris prediction, photographed in a table.
+- **Whole-link net drift caps at +2** (h 6 g 34, h 7 g 35): the
+  pre transient survives a crossing only in its first two columns.
+- The left side keeps saturating: L = 1 slip -8 = -4(L+1) (S8,
+  tight); L = 2 now realizes slip -8 (g 35) of its -12 allowance.
+
+### §14.2 LEMMA R0 (the mu-echo) and the mechanized debris battery
+
+`a40_s9_debris.py`, `s9_debris.json` — the checkable steps of the
+hand argument, in the pinch style (V1-V4 random-state identities
+on the production bit kernel; V5 an exhaustion):
+
+- **V0 (borrow radius, structural)**: reading E at column c, the
+  only sources strictly right of c are v1[t](c+1) and
+  v2[t-1](c+3); the radius is 3 = the x^-3 term of B (mirror: 4).
+- **V1 (kill set)**: every v2 vacation event is killed by an odd
+  subset of {v1[t](c), v1[t](c+1), v1[t-3](c-1), v2[t-1](c+3)}
+  (151,546 events).  **V2 (leftward spawn)**: a frontier v1 cell
+  forces v2[t+1](c-1) = 1 XOR a borrow at v2[t-1](c+2) (47,683
+  events) — leftward motion is the free direction.  **V3**: an
+  anchor rise is an exiting-row event (10,647 rising steps).
+- **V4 (photos)**: a single v2 cell persists verbatim (1 weight/
+  row); the one-cell K1 input at c+1 kills it and re-seeds
+  EXACTLY at c+1 (retreat <= 1 column/row, >= 1 input/column,
+  killers pairwise distinct by column); the K2 borrow at
+  (c+3, t-1) kills with no re-seed; a 2-row v2 strand sheds x^-3
+  debris LEFTWARD (the B-term powers left motion); and A's x y^3
+  term gives every input a +1-column echo four rows up — the
+  structural germ of S8's "staircase".
+- **V5 (the K2-only channel, EXHAUSTED)**: with v1 == 0 the
+  evolution v2[t+1] = v2[t] + x^-3 v2[t-1] is deterministic, so
+  the zero-input retreat question is FINITE: over all 3,145,728
+  translation-reduced initial pairs (width 11, 12 rows) the max
+  net rise of mu_t := min supp(v2[t] u v2[t+1]) is **0**.
+- **LEMMA R0 (mu-echo; PROVEN, three lines).**  In zero-input
+  dynamics mu never rises: if the min cell c = mu_t lies in
+  v2[t+1] it survives into the next pair; otherwise it is v2[t]-
+  only and E at (t+2, c-3) reads v2[t+2](c-3) = v2[t+1](c-3) +
+  v2[t](c) = 0 + 1 = 1 UNCONDITIONALLY (nothing in v2[t+1] lies
+  below mu_t) — mu_{t+1} <= c - 3, a strict >= 3 DROP.  QED.
+  (53,484 random case-2 events machine-checked.)  Consequence:
+  **every column of rightward anchor transport is input-charged —
+  the two-strand ghost-carrier is REFUTED OUTRIGHT in the
+  zero-input sector**, and an input-financed evader must pay the
+  K1 diagonal (>= 1 input per column, column-distinct) while its
+  borrowed cells recurse onto their own columns' deaths.
+
+**The inequality's S9 status (the honest grade)**: leftward slip
+>= -4(L+1) is S8's lemma (tight); rightward slip <= 0 holds
+CENSUS-EXACT through g <= 40 in-scope; R0 makes the zero-input
+half a THEOREM; the per-input constant of the financed half is
+measured (+1 costs 3-8 g held, wall at +4 absolute <= 40) and
+hand-derived (K1 re-seed diagonal), not yet a theorem — that
+residual constant is the only daylight left in the charter's
+two-sided local lemma, and no assembly claim below consumes it.
