@@ -821,6 +821,11 @@ native u64/u8 lexsort + sort-merge membership, ~2.1x faster/level):
 novel counts match it exactly at levels 0..15, +6 states at 16 —
 the first fiber separation of the finer 8-bit register.)
 
+[S3 pure-half column: pure_floor(p) = 2p EXACTLY at every
+p in {3, 6, 9, 12, 15, 18, 21} — §2.10; the p = 15, 18, 21, 24
+rows' "UB 2p" entries now carry certified PURE-sector floors at
+15, 18, 21 as well.]
+
 ### §2.7 L-pure / L-band after session 2: statements, one new closed
 ### piece, and the honest obstruction
 
@@ -852,6 +857,10 @@ L-band (slots s in [8, 2p-1]) — session-2 split:
 - pure half at s in [8, p-1]: open; DP-enumerable per p in
   principle (needs smax = p - 1; the sigma-pattern count at
   smax >= 8 with gap <= 4 spans is the wall).
+  [S3: CLOSED at every p in {3,...,21}, 3 | p, ALL s — the
+  omega-quotient pure racer dodges the pattern wall entirely
+  (§2.10); the sigma-pattern enumeration is retired as the
+  pure-half instrument.]
 - mixed half (h != 0): open.  Session-2 structure: cost-1 slots
   force h != 0 with MATCHED monomial barren content at the slot;
   the barren pair (B'h, A'h) of any h != 0 has forced nonzero
@@ -902,6 +911,174 @@ is that the b = 1 twist forbids the two-gross wrap discount (A40
 d = 12r must be toroidal.  The measured two-gross minima (12/12
 gap-free, §2.2) are the b = 0 witnesses that the toroidal sector is
 where the -6 discount lives.
+
+## §2.9 SESSION 3 (2026-09-01): the corridor jet racer — sound
+## register-reachability pruning (the p = 12 unrestricted closer)
+
+Charter item: the "register early-exit / earlier-terminating
+argument" of §4.3, implemented as the conservative form of
+register-reachability pruning: a state that cannot CLOSE at all
+within the remaining budget a fortiori cannot reach a
+nonzero-register closure — and closure-feasibility is exactly
+computable from the falsified sandwich's sound remnant.  Script
+`a42_s3_corridor_racer.py`; data `s3_*`.
+
+### §2.9.1 The corridor lemma (soundness, exact)
+
+Ingredients, all mechanically asserted in S2a (354/354 atlas cycles,
+every cut) and re-asserted in this session's battery:
+- the forward state at cut g is the 5-column window
+  (v2[g], v2[g+1], v2[g+2], v1[g-1], v1[g]) at forward cost
+  P_F(g) = |v1[<=g]| + |v2[<=g+2]|;
+- the backward (x -> x^-1) automaton visits, at backward cost
+  Q_B(g) = |v1[>=g-1]| + |v2[>=g]|, the SAME five columns in
+  reversed field order — the state correspondence phi = packed
+  field reversal (asserted per cut);
+- the cut identity P_F(g) + Q_B(g) = w + s(g) with s(g) =
+  POPCOUNT OF THE STATE (asserted per cut in popcount form).
+
+> **Corridor lemma.**  Let G(t) = the backward racer's min arrival
+> cost of backward state t (the true minimum over all closure data;
+> rotation-quotiented, complete through level g_max).  Every compact
+> cycle of weight w <= W through forward state s at forward cost c
+> satisfies  w = c + Q_B - s(g) >= c + G(phi(s)) - popcount(s).
+> Hence a state may be DROPPED whenever
+>     c + G(phi(s)) - popcount(s) > W,
+> and, when phi(s) is absent from a table complete to g_max
+> (i.e. G > g_max), whenever W - c + popcount(s) <= g_max.
+> No state lying on ANY compact cycle of weight <= W is ever
+> dropped; the splice induction (kept representatives lie on spliced
+> cycles of no larger weight, which are themselves corridor-immune)
+> shows the pruned jet run's returns <= W, with their branch
+> register values, are IDENTICAL to the unpruned run's.  The
+> certificate semantics of §2.5b are preserved verbatim.  QED
+
+This is a PRUNE, not a join: the S2 trilemma (§2.4.1 — double-pay,
+zero-cost shell) does not apply.  The double-pay of the shared block
+is exactly compensated by the +popcount(s) slack, and the backward
+racer uses standard charging (no exit-charged shell).
+
+### §2.9.2 The battery (ALL GREEN, `s3_battery.log`)
+
+1. validate_banked PASS.
+2. BackRacer step/canon vs the generic Automaton on the x^-1 pair
+   at p in {3, 6, 9, 12} (derived shape (2, 3, 0 | adv 1, 0 |
+   top_j 3); 500 random state x input steps each + canon
+   commutation).
+3. phi correspondence + popcount cut identity + G <= Q_B asserted at
+   630 cuts (all 39 p = 3 atlas cycles) and 5,829 cuts (all 315
+   p = 6 cycles) against full-depth backward tables; absent states
+   verified absent only where Q_B > g_max (the contrapositive
+   completeness check).
+4. 60 random explicit p = 12 boundaries replay through the backward
+   automaton (forced columns match, cost = weight, return to zero).
+5. Pruned-vs-unpruned RETURN EQUALITY, weights AND register values:
+   p = 6 cap 13 both branches (the nontrivial register sets at
+   w = 12 reproduced exactly: T {0,7,9,14}, V {0,1,4,6,9,10,12,14});
+   p = 9 cap 16 both branches at W in {16, 18} (162,743 states
+   pruned at W = 18, zero return drift) — floor(9)'s certificate
+   reproduced THROUGH the pruned engine end-to-end.
+
+Engine deltas vs the S2 jet: membership by searchsorted against the
+lex-sorted seen store (the stock member() re-merge-sorted the full
+12.9M-pair store once per 1K chunk — the dominant cost of the S2
+level-18 flight); per-level prune stats; per-level counts of
+distinct omega- and barren-window projections of the novel frontier
+(the quotient-growth instrument for the S3 hypothesis).
+
+## §2.10 The omega-quotient pure racer: THE PURE HALF FALLS AT
+## EVERY PERIOD <= 21 (session 3, `a42_s3b_omega_racer.py`)
+
+The register-quotient racer in exact-cost form on the h = 0 sector.
+At p = 3m·2^a the pure-lift cycles (all non-omega content zero) are
+in bijection with compact omega-syzygies over Lambda_a, with true
+weight sum_cols pure(lambda_col); so the S4 automaton rebuilt with
+columns IN Lambda_a (5·dim <= 40 bits of state), per-column cost
+pure(lambda) (CRT-idempotent table; pure >= 2 asserted; rotation-
+invariance asserted), and the S2e branch registers acting on the
+columns themselves, enumerates ALL pure cycles by weight over ALL
+supports — no slot/span/gap scope at all.  Controls: p = 3 pure min
+nontrivial 6; p = 6 all 21 PURE atlas cycles replay column-by-column
+(cost = weight, omega registers == the jet replay registers, class
+verdicts match — the entire p = 6 pure sector sits at weight 12);
+racer returns == pure-atlas spectrum.  m-scaling checked TABLE-WIDE
+at (m, a) = (3, 1): pure_18 = 3·pure_6 on all 16 contents.
+
+> **Pure-half floor theorem (machine certificate, both branches,
+> joint kernel empty — s2_registers).  For every p in {3, 6, 9, 12,
+> 15, 18, 21}: no nontrivial PURE compact cycle of weight < 2p
+> exists, and the racer itself returns nonzero registers at exactly
+> 2p — pure_floor(p) = 2p EXACTLY.**  Caps run: 8/13/20/26/32/42/44.
+> Consequences: the L-band pure half at s in [8, p-1] (§2.7, open)
+> is CLOSED at these periods, s >= p re-derived, and p = 18 — the
+> r = 3 member period, where the full racer's 90-bit state is
+> infeasible — gets its first quantitative floor piece (the omega
+> state is 20 bits; 220 states at level 42).  p = 24 (a = 3) is
+> blocked only by u64 packing (5·16 = 80 bits) — a 2-word state
+> engine reaches it.
+
+Quotient growth (the S3 hypothesis measured): the p = 12 pure
+frontier at level 16 is 1,300 states vs the full racer's 2.17M
+(~1,700x compression); growth ~2.8x per even level; pure levels are
+EVEN-ONLY (every pure column cost is even — the parity lemma's pure
+face).  The p = 12 pure return spectrum: trivial returns at
+{12, 20, 22}, nontrivial from 24 (and 26); the p = 18 spectrum is
+{36, 42} nontrivial only — the pure sector rigidifies as m grows
+(at a = 0, m > 1: every pure column costs exactly 2m, quantizing
+the ladder to multiples of 2m; 3 slots force 6m = 2p on the nose).
+
+## §2.11 The halving lemma + the universal sigma-inequality: the
+## mixed half analytically, up to a factor 2 (session 3)
+
+Write e = e_p for the CRT idempotent of the omega-factor at
+p = 3m·2^a (e ≡ 1 mod (y²+y+1)^{2^a}, ≡ 0 on the complement), and
+for a column with barren content z' and omega-content λ let
+tab(z', λ) = wt(CRT(z', λ)) as in §2.2.1.
+
+> **Halving lemma (m = 1, any a).**  tab(z', λ) >= pure(λ)/2 for
+> every z'.  *Proof.*  e·CRT(z', λ) = CRT(0, λ) (e kills the barren
+> part and fixes the omega part), and multiplication by e spreads
+> each term of a vector to at most wt(e) terms (convolution bound),
+> so pure(λ) = wt(CRT(0, λ)) <= wt(e)·tab(z', λ).  At m = 1,
+> wt(e) = 2 for every a: e is the weight-2 idempotent
+> y^{p/3} + y^{2p/3} (idempotency is one line; machine-checked at
+> p = 3, 6, 12, 24, 48, i.e. a <= 4).  ∎
+> Table-checked at p = 12: min over z' of tab equals pure(λ)/2
+> EXACTLY in all four buckets ({2,4,6,8} -> {1,2,3,4}) — the bound
+> is tight, and finer than the reverse triangle
+> tab >= |pure(λ) − pure'(z')| in the 4- and 8-buckets.
+> (General m: wt(e) = 2m by m-scaling, so the same argument gives
+> tab >= pure/2m — degrading with m; the odd part is semisimple and
+> should be handled by its own CRT instead.)
+
+> **Universal sigma-inequality (the pure racer's theorem, restated).
+> For every class-nontrivial compact omega-syzygy sigma at
+> p in {3, 6, 9, 12, 15, 18, 21}: sum_slots pure(λ_c) >= 2p** —
+> no slot-count, span, or gap scope (§2.10).
+
+> **Corollary (the mixed half, up to a factor 2; m = 1).**  Every
+> class-nontrivial compact cycle (sigma, h) at p = 3·2^a
+> (a <= 2 certified) has
+>     wt = sum_c tab(z'_c, λ_c) >= sum_slots pure(λ_c)/2 >= p,
+> ANY h, ANY support.  With the parity lemma: >= p + (p even? 0 : 1),
+> i.e. >= 12 at p = 12 — analytic, enumeration-free given §2.10.
+
+The remaining factor 2 is exactly the hiding-mass fight, now in a
+sharper form than §2.7's obstruction paragraph.  Reverse-triangle
+per column gives  wt >= sum_S pure(λ) − D(h, S)  with the hiding
+mass  D = sum_{S∩H} pure'(z') − sum_{H\S} pure'(z')  (H = barren-
+active columns; pure' buckets at p = 12: {3, 6, 9, 12} — all
+multiples of the beta-bound 3).  So L-band mixed reduces to: *the
+barren syzygy (B'h, A'h) cannot concentrate more than the sigma-side
+pure-slack of its pure'-mass on the slots.*  The halving lemma
+bounds the per-column concentration at exactly half; columns where
+halving is TIGHT have their barren content FORCED by the omega
+content (the halving partner is determined), so a near-p cycle
+overdetermines h — the rigidity direction to push next.  At p = 12
+the corner is being closed by exhaustion regardless (§2.9); the
+analytic route matters for forall-a: the deformation cascade's
+target (the pure sigma-floor at all a) now yields the MIXED half to
+within the factor 2 for free.
 
 ## §3 Falsified / corrected (running ledger)
 
