@@ -31,31 +31,38 @@ d = 12r = 2m.
 | Momentum-budget machinery: drift calculus, interface tax (τ = 2.0–2.75), pinch, μ-echo Lemma R0, slip caps tight | certificate + 3-line hand lemma | A40 §11–14 |
 | Species classification p ≤ 8 (TC63, W7 only; chiral; never b1-close) | certificate | A40 §10 |
 
-## The assembly (how d(C_{r,1}) = 12r falls)
+## The assembly (2026-09-02, A43 §1: how d(C_{r,b}) = 6(2r+b−1) falls)
 
-Lemma K splits any class-minimal nontrivial logical:
+The conjectured value is ℓ + m − 6 in BOTH rows (ℓ = 6(r+b), m = 6r).
+Lemma K splits any nontrivial logical by its cyclic gaps (threshold 4 =
+the check spread):
 
-1. **Windowed branch** (an x- or y-gap ≥ 4): lifts to a cylinder;
-   **Theorem W** gives ≥ 12r, today modulo **L-band mixed** (+ the
-   p = 12 corner, in flight as A42 S3's register-quotient racer).
-2. **Doubly-spanning (toroidal) branch**: the momentum budget.
-   Per-member DP floors (now 12 at (3,1)); the named ∀r route is the
-   **+3q/slab ladder** (J′ = 3q/slab rate conjecture ⟹ analytic
-   ~7.5r), with the remaining local piece being the **financed-half
-   constant** (net anchor rise ≤ 3 + #K1-inputs; measured+hand).
+1. **x-gap ≥ 4** (x-windowed): lifts to the period-m cylinder;
+   **Theorem W** (A42) gives ≥ floor_cyl(m) = 2m.
+2. **y-gap ≥ 4** (y-windowed): the mirror, ≥ floor_cyl′(ℓ) = 2ℓ.
+3. **gap-dense** (doubly spanning, S11's D sector): **Lemma L3**
+   (A43 §2, the crossing lemma, b-blind): ≥ ℓ + m − 6.
+4. both gaps: trivial (Lemma G/K).
 
-Then d ≥ 12r − C meets UB(r,1) ≤ 12r, and the −C removal strategy is
-staged: discount-event classification killed by the gcd(ℓ,m) = 6
-arithmetic (the b-bit, four independent appearances), then parity
-(C < 2 suffices) or stratum congruences (C < 6) snap the bound.
+Hence d ≥ min(2m, 2ℓ, ℓ + m − 6) = ℓ + m − 6 exactly when ℓ − m ≤ 6,
+i.e. b ∈ {0, 1} — the ONLY place b enters.  Upper bounds: UB(r,1) ≤ 12r
+(A40 §5, ∀r); UB(r,0) ≤ 12r − 6 open beyond r ≤ 2 (A44).  Only the
+shorter period needs Theorem W sharp; the x-period needs 2p − 6.
+The comparison theorem / surgery program (A40 §16) and the −C removal
+staging of the momentum lane are superseded by this assembly (A43 §4);
+the momentum floor 3.625r (A40 §15) stays as the unconditional ∀r bound.
 
 ## The two open lemmas (the whole remaining gap)
 
-- **L-band mixed half** (windowed): the slot-count → 2p scaling
-  mechanism for mixed classes; pure half closed (β-lemma).  Finite
-  first instance: p = 12, weights {20, 22}.
-- **Financed-half constant + ladder rate** (toroidal): extend μ-echo
-  bookkeeping to count K1 inputs; prove J′ = 3q/slab.
+- **Theorem W's residual** (windowed): (R1)+(R2) = the seam-doubling
+  statement (A42 §2.17.4), (HM₉) when 9 | p (A42 §2.17.5); r ≤ 2
+  certified; A42-S6.
+- **L3, the crossing lemma** (toroidal): gap-dense nontrivial logicals
+  weigh ≥ ℓ + m − 6.  Consistent with every banked population
+  (A43 §5: min_D = ℓ + m − 6 at (6,6), (12,12), gross; ≥ 26 at
+  (18,12) by A42 §2.17.2); support-level counting refuted, joint
+  syndrome-level accounting required; covering/LP arguments capped at
+  n/d_Z = ℓ (A43 §3); A43-S2.
 
 ## Falsified-claims discipline
 

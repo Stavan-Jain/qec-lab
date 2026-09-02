@@ -1,0 +1,86 @@
+{
+ "gross(12,6)": {
+  "families": {
+   "W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax3|rmax4": 144,
+   "2D|mixed|w12|nx8|ny5|gx2|gy1|blk(6, 6)|cmax3|rmax5": 144,
+   "2D|mixed|w12|nx8|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3": 72,
+   "2D|mixed|w12|nx7|ny4|gx3|gy2|blk(6, 6)|cmax3|rmax4": 72,
+   "2D|mixed|w12|nx6|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3": 72,
+   "2D|mixed|w12|nx6|ny6|gx3|gy0|blk(4, 8)|cmax4|rmax4": 72,
+   "2D|mixed|w12|nx8|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3": 72,
+   "2D|mixed|w12|nx7|ny6|gx2|gy0|blk(5, 7)|cmax3|rmax3": 72,
+   "2D|mixed|w12|nx7|ny5|gx2|gy1|blk(5, 7)|cmax3|rmax3": 72,
+   "2D|mixed|w12|nx7|ny5|gx2|gy1|blk(4, 8)|cmax3|rmax4": 72,
+   "2D|mixed|w12|nx6|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3": 72,
+   "2D|mixed|w12|nx7|ny6|gx2|gy0|blk(3, 9)|cmax3|rmax3": 72,
+   "W_x|pure-x|w12|nx4|ny6|gx8|gy0|blk(8, 4)|cmax6|rmax3": 72,
+   "W_x|pure-x|w12|nx5|ny5|gx7|gy1|blk(9, 3)|cmax5|rmax4": 72,
+   "W_x|pure-x|w12|nx4|ny5|gx8|gy1|blk(6, 6)|cmax4|rmax4": 72,
+   "W_x|pure-x|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax4": 72,
+   "W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax3": 72,
+   "W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax4": 72,
+   "W_x|pure-x|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax5": 72,
+   "W_x|pure-x|w12|nx6|ny6|gx6|gy0|blk(8, 4)|cmax4|rmax5": 72,
+   "2D|mixed|w12|nx7|ny6|gx3|gy0|blk(6, 6)|cmax5|rmax6": 72,
+   "2D|pure-y|w12|nx10|ny2|gx1|gy2|blk(12, 0)|cmax2|rmax8": 36,
+   "2D|pure-y|w12|nx4|ny5|gx2|gy1|blk(0, 12)|cmax4|rmax4": 36,
+   "2D|mixed|w12|nx8|ny4|gx1|gy1|blk(8, 4)|cmax2|rmax5": 36,
+   "2D|mixed|w12|nx8|ny4|gx1|gy1|blk(4, 8)|cmax2|rmax4": 36,
+   "W_x|pure-x|w12|nx3|ny6|gx9|gy0|blk(8, 4)|cmax4|rmax3": 36,
+   "W_x|pure-x|w12|nx4|ny6|gx6|gy0|blk(4, 8)|cmax6|rmax3": 36,
+   "2D|pure-y|w12|nx12|ny6|gx0|gy0|blk(6, 6)|cmax1|rmax2": 12
+  },
+  "pictures": {
+   "2D|mixed|w12|nx8|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3": "y= 5 ..ba...a....\ny= 4 ......b...b.\ny= 3 .....b...ba.\ny= 2 .....a..bb..\ny= 1 .........a..\ny= 0 ............\n     012345678901",
+   "2D|mixed|w12|nx7|ny4|gx3|gy2|blk(6, 6)|cmax3|rmax4": "y= 5 ..ba...a..b.\ny= 4 ......b...b.\ny= 3 .....ba..ba.\ny= 2 .....a...a..\ny= 1 ............\ny= 0 ............\n     012345678901",
+   "2D|mixed|w12|nx6|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3": "y= 5 ..b....a..b.\ny= 4 .....ba...b.\ny= 3 .....b...ba.\ny= 2 .....a...a..\ny= 1 .......b....\ny= 0 ............\n     012345678901",
+   "2D|mixed|w12|nx6|ny6|gx3|gy0|blk(4, 8)|cmax4|rmax4": "y= 5 ..b....a..b.\ny= 4 .....b....b.\ny= 3 .....b..baa.\ny= 2 .....a......\ny= 1 .......b....\ny= 0 ..........b.\n     012345678901",
+   "2D|mixed|w12|nx8|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3": "y= 5 ..ba........\ny= 4 ......b..ba.\ny= 3 .....b...b..\ny= 2 .....a..bb..\ny= 1 .........a.b\ny= 0 ............\n     012345678901",
+   "2D|mixed|w12|nx7|ny6|gx2|gy0|blk(5, 7)|cmax3|rmax3": "y= 5 ..b.......b.\ny= 4 .....ba...a.\ny= 3 .....b...b..\ny= 2 .........a..\ny= 1 ........*..b\ny= 0 ........a...\n     012345678901",
+   "2D|mixed|w12|nx7|ny5|gx2|gy1|blk(5, 7)|cmax3|rmax3": "y= 5 ..ba......b.\ny= 4 ......b..ba.\ny= 3 .....ba..b..\ny= 2 .....a...a..\ny= 1 ...........b\ny= 0 ............\n     012345678901",
+   "2D|mixed|w12|nx7|ny5|gx2|gy1|blk(4, 8)|cmax3|rmax4": "y= 5 ..b.......b.\ny= 4 .....ba..ba.\ny= 3 .....b...b..\ny= 2 .....a...a..\ny= 1 .......b...b\ny= 0 ............\n     012345678901",
+   "2D|mixed|w12|nx6|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3": "y= 5 ..b.......b.\ny= 4 .....b....a.\ny= 3 .....b..ba..\ny= 2 ............\ny= 1 ........*..b\ny= 0 ........a.b.\n     012345678901",
+   "2D|mixed|w12|nx7|ny6|gx2|gy0|blk(3, 9)|cmax3|rmax3": "y= 5 ..b.......b.\ny= 4 .....b...ba.\ny= 3 .....b..ba..\ny= 2 .....a......\ny= 1 .......b...b\ny= 0 ..........b.\n     012345678901",
+   "W_x|pure-x|w12|nx4|ny6|gx8|gy0|blk(8, 4)|cmax6|rmax3": "y= 5 ..........a.\ny= 4 bb..........\ny= 3 a.........aa\ny= 2 *...........\ny= 1 a..........a\ny= 0 ab..........\n     012345678901",
+   "W_x|pure-x|w12|nx5|ny5|gx7|gy1|blk(9, 3)|cmax5|rmax4": "y= 5 ............\ny= 4 .a..........\ny= 3 aa........aa\ny= 2 *...........\ny= 1 a.b........a\ny= 0 ab..........\n     012345678901",
+   "W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax3|rmax4": "y= 5 ....a.......\ny= 4 ...a........\ny= 3 ....a*b.....\ny= 2 ..aa..b.....\ny= 1 ....b.b.....\ny= 0 .....a......\n     012345678901",
+   "W_x|pure-x|w12|nx4|ny5|gx8|gy1|blk(6, 6)|cmax4|rmax4": "y= 5 ....a.......\ny= 4 ...a..b.....\ny= 3 ....a*b.....\ny= 2 ...a..b.....\ny= 1 .....*b.....\ny= 0 ............\n     012345678901",
+   "W_x|pure-x|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax4": "y= 5 ....a.......\ny= 4 ............\ny= 3 ....aaa.....\ny= 2 ..aa..*.....\ny= 1 ....b.b.....\ny= 0 .....a.b....\n     012345678901",
+   "W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax3": "y= 5 ....a.......\ny= 4 ......b.....\ny= 3 ....aaa.....\ny= 2 ...a..*.....\ny= 1 .....*b.....\ny= 0 .......b....\n     012345678901",
+   "W_x|pure-x|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax4": "y= 5 ....a.......\ny= 4 ...a..bb....\ny= 3 ....a*b.....\ny= 2 ......b.....\ny= 1 .....aa.....\ny= 0 ......a.....\n     012345678901",
+   "W_x|pure-x|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax5": "y= 5 ............\ny= 4 ...a...a....\ny= 3 ....a*ba....\ny= 2 ......b.....\ny= 1 .....aa.b...\ny= 0 ......a.....\n     012345678901",
+   "W_x|pure-x|w12|nx6|ny6|gx6|gy0|blk(8, 4)|cmax4|rmax5": "y= 5 .......b....\ny= 4 .......a....\ny= 3 ...aaaaa....\ny= 2 .....b......\ny= 1 .....a..b...\ny= 0 ......ab....\n     012345678901",
+   "2D|pure-y|w12|nx10|ny2|gx1|gy2|blk(12, 0)|cmax2|rmax8": "y= 5 ............\ny= 4 .a.a...a.a..\ny= 3 ............\ny= 2 ............\ny= 1 aaa..aaaa..a\ny= 0 ............\n     012345678901",
+   "2D|pure-y|w12|nx4|ny5|gx2|gy1|blk(0, 12)|cmax4|rmax4": "y= 5 ............\ny= 4 .b.....b....\ny= 3 ....b.....b.\ny= 2 .b..b..b..b.\ny= 1 ....b.....b.\ny= 0 ....b.....b.\n     012345678901",
+   "2D|mixed|w12|nx8|ny5|gx2|gy1|blk(6, 6)|cmax3|rmax5": "y= 5 aaa.b......a\ny= 4 ....b.......\ny= 3 ............\ny= 2 .a.a...b....\ny= 1 ..........b.\ny= 0 .b........b.\n     012345678901",
+   "2D|mixed|w12|nx7|ny6|gx3|gy0|blk(6, 6)|cmax5|rmax6": "y= 5 .baa*.a.....\ny= 4 ....b.......\ny= 3 ....b.......\ny= 2 ....aa......\ny= 1 ..........b.\ny= 0 .b..........\n     012345678901",
+   "2D|mixed|w12|nx8|ny4|gx1|gy1|blk(8, 4)|cmax2|rmax5": "y= 5 *...a...aa..\ny= 4 ............\ny= 3 ...b........\ny= 2 ..aa..*...a.\ny= 1 ............\ny= 0 .........b..\n     012345678901",
+   "2D|mixed|w12|nx8|ny4|gx1|gy1|blk(4, 8)|cmax2|rmax4": "y= 5 ..b....a..ba\ny= 4 ............\ny= 3 .b...b......\ny= 2 .a..ba..b...\ny= 1 ............\ny= 0 .......b...b\n     012345678901",
+   "2D|pure-y|w12|nx12|ny6|gx0|gy0|blk(6, 6)|cmax1|rmax2": "y= 5 ..a.....a...\ny= 4 .....b.....b\ny= 3 a.....a.....\ny= 2 ...b.....b..\ny= 1 ....a.....a.\ny= 0 .b.....b....\n     012345678901",
+   "W_x|pure-x|w12|nx3|ny6|gx9|gy0|blk(8, 4)|cmax4|rmax3": "y= 5 ..........aa\ny= 4 b.........aa\ny= 3 b...........\ny= 2 ..........aa\ny= 1 b.........aa\ny= 0 b...........\n     012345678901",
+   "W_x|pure-x|w12|nx4|ny6|gx6|gy0|blk(4, 8)|cmax6|rmax3": "y= 5 b..b........\ny= 4 ...b........\ny= 3 ...b......aa\ny= 2 b..b........\ny= 1 ...b........\ny= 0 ...b......aa\n     012345678901"
+  }
+ },
+ "two-gross(12,12)": {
+  "families": {
+   "2D|mixed|w18|nx12|ny12|gx0|gy0|blk(9, 9)|cmax2|rmax2": 48,
+   "2D|mixed|w18|nx11|ny4|gx1|gy2|blk(18, 0)|cmax3|rmax8": 1
+  },
+  "pictures": {
+   "2D|mixed|w18|nx11|ny4|gx1|gy2|blk(18, 0)|cmax3|rmax8": "y=11 ............\ny=10 a...a.......\ny= 9 ............\ny= 8 ............\ny= 7 ..aa......aa\ny= 6 ............\ny= 5 ............\ny= 4 a.a.....a.a.\ny= 3 ............\ny= 2 ............\ny= 1 aa....aaaaaa\ny= 0 ............\n     012345678901",
+   "2D|mixed|w18|nx12|ny12|gx0|gy0|blk(9, 9)|cmax2|rmax2": "y=11 .aa.........\ny=10 .....b.....a\ny= 9 ........b...\ny= 8 ........b...\ny= 7 .........aa.\ny= 6 .b.....a....\ny= 5 ....b.......\ny= 4 ....b.......\ny= 3 .....aa.....\ny= 2 ...a.....b..\ny= 1 b...........\ny= 0 b...........\n     012345678901"
+  }
+ },
+ "bb72(6,6)": {
+  "families": {
+   "2D|mixed|w6|nx5|ny2|gx1|gy2|blk(6, 0)|cmax2|rmax4": 36,
+   "2D|mixed|w6|nx2|ny5|gx2|gy1|blk(0, 6)|cmax4|rmax2": 36,
+   "2D|mixed|w6|nx6|ny6|gx0|gy0|blk(3, 3)|cmax1|rmax1": 12
+  },
+  "pictures": {
+   "2D|mixed|w6|nx5|ny2|gx1|gy2|blk(6, 0)|cmax2|rmax4": "y= 5 aaaa..\ny= 4 ......\ny= 3 ......\ny= 2 ..a.a.\ny= 1 ......\ny= 0 ......\n     012345",
+   "2D|mixed|w6|nx2|ny5|gx2|gy1|blk(0, 6)|cmax4|rmax2": "y= 5 ......\ny= 4 .b....\ny= 3 ....b.\ny= 2 .b..b.\ny= 1 ....b.\ny= 0 ....b.\n     012345",
+   "2D|mixed|w6|nx6|ny6|gx0|gy0|blk(3, 3)|cmax1|rmax1": "y= 5 ....b.\ny= 4 .....a\ny= 3 ..b...\ny= 2 ...a..\ny= 1 b.....\ny= 0 .a....\n     012345"
+  }
+ }
+}

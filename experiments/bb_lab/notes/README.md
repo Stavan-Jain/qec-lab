@@ -7,7 +7,7 @@ had to be renumbered after the fact (the d≥7 hunt is now A17). Branch names do
 not reserve numbers (the branch `claude/a8-literal-lift-criterion` hosts the
 A11 line, not A8).
 
-**Next free number: A43.** (A42 claimed 2026-08-28 — the spectral/module lane
+**Next free number: A45.** (A43 and A44 claimed 2026-09-02 by the orchestrating session — A43 = the crossing-lemma lane, A44 = the b=0 witness family + D-sector taxonomy; A42 claimed 2026-08-28 — the spectral/module lane
 on the tour-de-gross column, sibling to A40 on the same branch. A40 and A41 were claimed 2026-08-25 by parallel
 sessions — A40 here, A41 = the closed-form family-construction charter on its
 own branch; expect a trivial registry merge. A35–A37 rows below were added
@@ -61,6 +61,8 @@ renumber-at-merge is owed per the A15/A28–A29/A34 precedent.)
 | A39 | **Pre-registered falsification test of the descent machinery** (feeds A38 F3/F5): A35 screen extracted bit-exact → 164-row frozen-prediction cohort (96 frontier + anchors/scope/parity strata + 58-code order-144 sweep folded in under a retrodiction rule, manifest-sealed) → closures + SAT ground-truth arm + equal-compute head-to-head. Verdicts: (i) 0 structural violations/381 rungs PASS; (ii) node formula **×1.0000** on 152/152 censuses PASS; (iii) GREEN-closure 39.1% **FAIL as registered** (74 counterexample-exacts below loose G5 ceilings — median gap 4, 0 containment failures; 10 memory-envelope stops = the unpriced storage axis; resolution 92.8%; RED 0/11 ✓, refusals 10/10 ✓); (iv) certificate-vs-SAT **17/17 agree, 0 disagreements** PASS; (v) equal compute **128/154 vs 47/154**, SAT-only uniquely closed 0. Yields: **97 new certificate-tier exacts** (incl. two [[288,4,18]] sandwich joins, [[168,4,16]], nine d=14, wt-3×wt-4 [[120,4,14]] sans parity) + 17 floors; 0/88 prior d_ub tight; 11/58 random order-144 codes double (lower bound); corpus merge script dry-run-clean (79 updates + 67 inserts, first non-solver `d_method` tier), apply owed | `A39_descent_theory_validation.md` | done 2026-08-18 (corpus-merge apply + upstream `_preimage` fix + G5/G6 recalibration = owed; full artifacts `data/descent_theory_test/` + `data/order144_sweep/`) |
 
 | A42 | **Spectral/module lane on the tour-de-gross column** (sibling to A40, same branch): close (part of) ⌈3r/2⌉ ≤ d(C_{r,1}) ≤ 12r algebraically via V(A,B) torsion points/multiplicities, CRT+chain-ring compact-phase floors (∀p target), BCH/footprint species floors | `A42_spectral_floor.md` | claimed 2026-08-28 |
+| A43 | **Crossing-lemma lane** (sibling of A40/A42, same branch): the conjecture d = 6(2r+b−1) is ℓ + m − 6 in both rows and reduces to Theorem W (A42) plus ONE b-blind torus lemma L3 (gap-dense nontrivial logicals weigh ≥ ℓ + m − 6); b enters only in min(2m, 2ℓ, ℓ+m−6); comparison theorem + surgery program superseded; covering/LP no-go (cap n/d_Z = ℓ); S1 falsify-first taxonomy of all banked D-minimizers (bands / double helices / blobs; support counting refuted; joint bound only) | `A43_crossing_lemma.md` | S1 done 2026-09-02; S2 = L3 |
+| A44 | **b = 0 witness family + D-sector taxonomy**: U0 (d ≤ ℓ + m − 6 at b = 0 ∀r, constructive from the band/helix ansätze) and the true min_D at (18,12) (≥ 26 certified), (18,18), (24,18) at GREEN/AMBER prices | `A44_b0_witnesses.md` | claimed 2026-09-02 |
 
 Other prefixes: `S<NN>` = engineering/packaging sessions (e.g. `S39` = pair72
 packaging); `T<N>*` = the May-era Tier-2/Tier-3 classifier and conjecture-mill
