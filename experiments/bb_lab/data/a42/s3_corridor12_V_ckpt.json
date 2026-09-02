@@ -8,13 +8,13 @@
    "c": 0,
    "novel": 1,
    "seen": 2,
-   "rss_mb": 60,
+   "rss_mb": 292,
    "t": 0.0,
    "prune": {
     "gen": 350,
     "pruned_known": 0,
     "pruned_absent": 0,
-    "kept_absent": 323
+    "kept_absent": 312
    },
    "n_omega": 1,
    "n_barren": 1
@@ -23,7 +23,7 @@
    "c": 1,
    "novel": 0,
    "seen": 2,
-   "rss_mb": 60,
+   "rss_mb": 292,
    "t": 0.0,
    "prune": {
     "gen": 0,
@@ -36,13 +36,13 @@
    "c": 2,
    "novel": 1,
    "seen": 3,
-   "rss_mb": 61,
+   "rss_mb": 293,
    "t": 0.1,
    "prune": {
     "gen": 4072,
     "pruned_known": 0,
     "pruned_absent": 0,
-    "kept_absent": 3983
+    "kept_absent": 3930
    },
    "n_omega": 1,
    "n_barren": 1
@@ -51,13 +51,13 @@
    "c": 3,
    "novel": 2,
    "seen": 5,
-   "rss_mb": 61,
+   "rss_mb": 293,
    "t": 0.1,
    "prune": {
     "gen": 8124,
     "pruned_known": 0,
-    "pruned_absent": 0,
-    "kept_absent": 8016
+    "pruned_absent": 7789,
+    "kept_absent": 0
    },
    "n_omega": 2,
    "n_barren": 2
@@ -66,13 +66,13 @@
    "c": 4,
    "novel": 8,
    "seen": 13,
-   "rss_mb": 63,
+   "rss_mb": 295,
    "t": 0.2,
    "prune": {
     "gen": 30385,
     "pruned_known": 0,
-    "pruned_absent": 0,
-    "kept_absent": 30103
+    "pruned_absent": 7684,
+    "kept_absent": 22130
    },
    "n_omega": 8,
    "n_barren": 6
@@ -81,13 +81,13 @@
    "c": 5,
    "novel": 27,
    "seen": 40,
-   "rss_mb": 69,
-   "t": 0.3,
+   "rss_mb": 301,
+   "t": 0.4,
    "prune": {
     "gen": 106511,
-    "pruned_known": 0,
-    "pruned_absent": 0,
-    "kept_absent": 106177
+    "pruned_known": 242,
+    "pruned_absent": 105136,
+    "kept_absent": 0
    },
    "n_omega": 27,
    "n_barren": 16
@@ -96,13 +96,13 @@
    "c": 6,
    "novel": 71,
    "seen": 111,
-   "rss_mb": 82,
+   "rss_mb": 312,
    "t": 0.6,
    "prune": {
     "gen": 259454,
-    "pruned_known": 11,
-    "pruned_absent": 8058,
-    "kept_absent": 250504
+    "pruned_known": 347,
+    "pruned_absent": 188805,
+    "kept_absent": 68266
    },
    "n_omega": 71,
    "n_barren": 35
@@ -111,231 +111,246 @@
    "c": 7,
    "novel": 224,
    "seen": 335,
-   "rss_mb": 114,
-   "t": 1.0,
+   "rss_mb": 339,
+   "t": 1.3,
    "prune": {
     "gen": 797984,
-    "pruned_known": 0,
-    "pruned_absent": 70731,
-    "kept_absent": 726141
+    "pruned_known": 2215,
+    "pruned_absent": 793218,
+    "kept_absent": 0
    },
    "n_omega": 224,
    "n_barren": 87
   },
   {
    "c": 8,
-   "novel": 625,
-   "seen": 960,
-   "rss_mb": 252,
-   "t": 2.1,
+   "novel": 598,
+   "seen": 933,
+   "rss_mb": 463,
+   "t": 3.1,
    "prune": {
-    "gen": 2013938,
-    "pruned_known": 151,
-    "pruned_absent": 629914,
-    "kept_absent": 1381259
+    "gen": 1922002,
+    "pruned_known": 4318,
+    "pruned_absent": 1768949,
+    "kept_absent": 144585
    },
-   "n_omega": 624,
-   "n_barren": 199
+   "n_omega": 597,
+   "n_barren": 188
   },
   {
    "c": 9,
-   "novel": 1693,
-   "seen": 2653,
-   "rss_mb": 454,
-   "t": 4.5,
+   "novel": 1418,
+   "seen": 2351,
+   "rss_mb": 605,
+   "t": 7.1,
    "prune": {
-    "gen": 4683890,
-    "pruned_known": 501,
-    "pruned_absent": 1449415,
-    "kept_absent": 3230996
+    "gen": 3927242,
+    "pruned_known": 9713,
+    "pruned_absent": 3913333,
+    "kept_absent": 0
    },
-   "n_omega": 1680,
-   "n_barren": 412
+   "n_omega": 1408,
+   "n_barren": 364
   },
   {
    "c": 10,
-   "novel": 4622,
-   "seen": 7275,
-   "rss_mb": 623,
-   "t": 10.6,
+   "novel": 2788,
+   "seen": 5139,
+   "rss_mb": 689,
+   "t": 13.4,
    "prune": {
-    "gen": 10356992,
-    "pruned_known": 1578,
-    "pruned_absent": 6549293,
-    "kept_absent": 3801245
+    "gen": 6023126,
+    "pruned_known": 17532,
+    "pruned_absent": 5864748,
+    "kept_absent": 135168
    },
-   "n_omega": 4595,
-   "n_barren": 834
+   "n_omega": 2779,
+   "n_barren": 593
   },
   {
    "c": 11,
-   "novel": 11663,
-   "seen": 18938,
-   "rss_mb": 654,
-   "t": 21.5,
+   "novel": 4704,
+   "seen": 9843,
+   "rss_mb": 723,
+   "t": 21.4,
    "prune": {
-    "gen": 19582626,
-    "pruned_known": 4710,
-    "pruned_absent": 11775567,
-    "kept_absent": 7797558
+    "gen": 7545724,
+    "pruned_known": 27953,
+    "pruned_absent": 7512808,
+    "kept_absent": 0
    },
-   "n_omega": 11437,
-   "n_barren": 1541
+   "n_omega": 4608,
+   "n_barren": 885
   },
   {
    "c": 12,
-   "novel": 28367,
-   "seen": 47305,
-   "rss_mb": 1039,
-   "t": 49.9,
+   "novel": 7092,
+   "seen": 16935,
+   "rss_mb": 727,
+   "t": 29.0,
    "prune": {
-    "gen": 32641910,
-    "pruned_known": 9952,
-    "pruned_absent": 27633878,
-    "kept_absent": 4992025
+    "gen": 7561034,
+    "pruned_known": 43194,
+    "pruned_absent": 7403602,
+    "kept_absent": 108474
    },
-   "n_omega": 27816,
-   "n_barren": 2573
+   "n_omega": 6983,
+   "n_barren": 1205
   },
   {
    "c": 13,
-   "novel": 65143,
-   "seen": 112448,
-   "rss_mb": 1354,
-   "t": 111.8,
+   "novel": 10588,
+   "seen": 27523,
+   "rss_mb": 732,
+   "t": 36.2,
    "prune": {
-    "gen": 45763376,
-    "pruned_known": 14906,
-    "pruned_absent": 36822574,
-    "kept_absent": 8921070
+    "gen": 6812532,
+    "pruned_known": 46974,
+    "pruned_absent": 6761420,
+    "kept_absent": 0
    },
-   "n_omega": 63027,
-   "n_barren": 3742
+   "n_omega": 10117,
+   "n_barren": 1378
   },
   {
    "c": 14,
-   "novel": 142071,
-   "seen": 254519,
-   "rss_mb": 1354,
-   "t": 184.4,
+   "novel": 14844,
+   "seen": 42367,
+   "rss_mb": 732,
+   "t": 42.0,
    "prune": {
-    "gen": 52665674,
-    "pruned_known": 27498,
-    "pruned_absent": 50055610,
-    "kept_absent": 2576968
+    "gen": 5168896,
+    "pruned_known": 64447,
+    "pruned_absent": 5091517,
+    "kept_absent": 8448
    },
-   "n_omega": 135690,
-   "n_barren": 4961
+   "n_omega": 13685,
+   "n_barren": 1542
   },
   {
    "c": 15,
-   "novel": 296362,
-   "seen": 550881,
-   "rss_mb": 1706,
-   "t": 247.9,
+   "novel": 19695,
+   "seen": 62062,
+   "rss_mb": 732,
+   "t": 46.1,
    "prune": {
-    "gen": 49120116,
-    "pruned_known": 30567,
-    "pruned_absent": 45476526,
-    "kept_absent": 3609574
+    "gen": 3091814,
+    "pruned_known": 51868,
+    "pruned_absent": 3037527,
+    "kept_absent": 0
    },
-   "n_omega": 277828,
-   "n_barren": 5513
+   "n_omega": 17645,
+   "n_barren": 1250
   },
   {
    "c": 16,
-   "novel": 594934,
-   "seen": 1145815,
-   "rss_mb": 1716,
-   "t": 321.3,
+   "novel": 28736,
+   "seen": 90798,
+   "rss_mb": 732,
+   "t": 49.5,
    "prune": {
-    "gen": 36298910,
-    "pruned_known": 48211,
-    "pruned_absent": 35869132,
-    "kept_absent": 376992
+    "gen": 1642288,
+    "pruned_known": 62874,
+    "pruned_absent": 1576773,
+    "kept_absent": 0
    },
-   "n_omega": 543133,
-   "n_barren": 6346
+   "n_omega": 23792,
+   "n_barren": 1532
   },
   {
    "c": 17,
-   "novel": 1137619,
-   "seen": 2283434,
-   "rss_mb": 1716,
-   "t": 469.9,
+   "novel": 36979,
+   "seen": 127777,
+   "rss_mb": 732,
+   "t": 52.7,
    "prune": {
-    "gen": 20639788,
-    "pruned_known": 32733,
-    "pruned_absent": 20177124,
-    "kept_absent": 427672
+    "gen": 616028,
+    "pruned_known": 35626,
+    "pruned_absent": 579112,
+    "kept_absent": 0
    },
-   "n_omega": 1003691,
-   "n_barren": 6127
+   "n_omega": 28084,
+   "n_barren": 962
   },
   {
    "c": 18,
-   "novel": 2083778,
-   "seen": 4367212,
-   "rss_mb": 1716,
-   "t": 663.1,
+   "novel": 49415,
+   "seen": 177192,
+   "rss_mb": 732,
+   "t": 56.8,
    "prune": {
-    "gen": 8731897,
-    "pruned_known": 36874,
-    "pruned_absent": 8687737,
-    "kept_absent": 5052
+    "gen": 187226,
+    "pruned_known": 19283,
+    "pruned_absent": 167011,
+    "kept_absent": 0
    },
-   "n_omega": 1756886,
-   "n_barren": 6084
+   "n_omega": 34846,
+   "n_barren": 819
   },
   {
    "c": 19,
-   "novel": 3640379,
-   "seen": 8007591,
-   "rss_mb": 1716,
-   "t": 944.0,
+   "novel": 64311,
+   "seen": 241503,
+   "rss_mb": 732,
+   "t": 61.5,
    "prune": {
-    "gen": 2651876,
-    "pruned_known": 14212,
-    "pruned_absent": 2629001,
-    "kept_absent": 7840
+    "gen": 40320,
+    "pruned_known": 4367,
+    "pruned_absent": 35724,
+    "kept_absent": 0
    },
-   "n_omega": 2897705,
-   "n_barren": 5677
+   "n_omega": 39402,
+   "n_barren": 339
   },
   {
    "c": 20,
-   "novel": 6066882,
-   "seen": 14074473,
-   "rss_mb": 1716,
-   "t": 1492.7,
+   "novel": 80258,
+   "seen": 321761,
+   "rss_mb": 732,
+   "t": 67.9,
    "prune": {
-    "gen": 551808,
-    "pruned_known": 5612,
-    "pruned_absent": 544808,
+    "gen": 6809,
+    "pruned_known": 1716,
+    "pruned_absent": 4633,
     "kept_absent": 0
    },
-   "n_omega": 4498012,
-   "n_barren": 5996
+   "n_omega": 45122,
+   "n_barren": 648
   },
   {
    "c": 21,
-   "novel": 9632587,
-   "seen": 23707060,
-   "rss_mb": 2187,
-   "t": 2080.2,
+   "novel": 94802,
+   "seen": 416563,
+   "rss_mb": 736,
+   "t": 74.5,
    "prune": {
-    "gen": 68604,
-    "pruned_known": 11,
-    "pruned_absent": 68593,
+    "gen": 608,
+    "pruned_known": 0,
+    "pruned_absent": 608,
     "kept_absent": 0
    },
-   "n_omega": 6541973,
-   "n_barren": 5504
+   "n_omega": 46539,
+   "n_barren": 128
+  },
+  {
+   "c": 22,
+   "novel": 112420,
+   "seen": 528983,
+   "rss_mb": 754,
+   "t": 78.9,
+   "prune": {
+    "gen": 72,
+    "pruned_known": 0,
+    "pruned_absent": 10,
+    "kept_absent": 0
+   },
+   "n_omega": 48533,
+   "n_barren": 256
   }
  ],
  "engine": "corridor jet (searchsorted member, corridor prune)",
  "W": 22,
- "gmax": 18,
+ "gmax": 21,
  "lane": "AB (theta'-dual lane by banked duality)",
  "returns": {
   "6": [
@@ -358,9 +373,11 @@
   ],
   "20": [
    0
+  ],
+  "22": [
+   0
   ]
  },
  "nonzero_reg_costs": [],
- "aborted": "RSS",
- "wall_s": 2101.2
+ "wall_s": 78.9
 }
