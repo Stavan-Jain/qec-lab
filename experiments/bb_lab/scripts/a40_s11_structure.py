@@ -173,9 +173,42 @@ def pullback_checks():
     (DATA / "s11_pullback.json").write_text(json.dumps(out, indent=1))
 
 
+def class_kinds():
+    """Sector x class-kind histogram over the classify populations
+    (s11_classify.json --keep): pure-x / pure-y / pure-d / mixed.
+    Output s11_class_kinds.json."""
+    cl = json.loads((DATA / "s11_classify.json").read_text())
+    out = {}
+    for name, lm in [("gross(12,6)", (12, 6)),
+                     ("two-gross(12,12)", (12, 12)), ("bb72(6,6)", (6, 6))]:
+        code = C.member_code(*lm)
+        W = {}
+        for ab, tag in [((0, 1), "x"), ((1, 0), "y"), ((1, 1), "d")]:
+            b, _ = C.image_classes(code, ab, K=4)
+            W[tag] = rref_ints(list(b))
+        hist = {}
+        classes = {}
+        for o in cl["frames"][name]["objects"]:
+            sig = o["class"]
+            kind = "mixed"
+            for tag, (bb, pp) in W.items():
+                if in_span(sig, bb, pp):
+                    kind = "pure-" + tag
+            key = f"{o['sector']}|{kind}|w{o['w']}"
+            hist[key] = hist.get(key, 0) + 1
+            classes.setdefault(kind, set()).add(sig)
+        rec = dict(hist=dict(sorted(hist.items())),
+                   classes={k: len(v) for k, v in classes.items()})
+        out[name] = rec
+        print(name, rec, flush=True)
+    (DATA / "s11_class_kinds.json").write_text(json.dumps(out, indent=1))
+
+
 if __name__ == "__main__":
-    part = sys.argv[1] if len(sys.argv) > 1 else "both"
-    if part in ("parity", "both"):
+    part = sys.argv[1] if len(sys.argv) > 1 else "all"
+    if part in ("parity", "both", "all"):
         parity()
-    if part in ("pullback", "both"):
+    if part in ("pullback", "both", "all"):
         pullback_checks()
+    if part in ("kinds", "all"):
+        class_kinds()

@@ -3425,11 +3425,23 @@ between K = 4 and K = 6) for 22 directions u = (aℓ, bm) at (6,6),
 > nontrivial on all three covers — verified.)
 
 **Where the b = 0 discount lives — decided.**  Every cheap 2D object
-found sits in a MIXED class: all 84 minima of (6,6), all 49 witnesses
-of (12,12), and 24 of the 30 sampled 2D class-minima of gross (the
-other 6 are in PURE-y classes with λ_y(v) > 17 at the 120-s solver
-cap, i.e. closure excess e_y ≥ 3; by Prop E with floor_cyl′(12) = 24
-they need e_y ≥ 6 — the cushion is fully consumed at r = 1).  So
+found sits in a MIXED class: all 84 minima of (6,6) (84 mixed
+classes), all 49 witnesses of (12,12) (13 mixed classes), and the
+full gross census splits (`s11_class_kinds.json`, all 1,884 minima):
+
+| gross w12 minima | sector | classes |
+|---|---|---|
+| 1,008 | 2D, MIXED class | 153 |
+| 84 | 2D, pure-y class | 48 |
+| 792 | W_x (x-windowed), pure-x class | 45 |
+| 0 | any object in a pure-d (diagonal-parity) class | 0 of 63 |
+
+The pure-y 2D minima have λ_y(v) > 17 at the 120-s solver cap
+(closure excess e_y ≥ 3; by Prop E with floor_cyl′(12) = 24 they
+need e_y ≥ 6 — the cushion is fully consumed at r = 1), and the 63
+diagonal-parity classes have NO logical at weight 12: their class
+minima are ≥ 14 at gross (parity lemma), the first sign that the
+(odd, odd) directions are the "long" ones.  So
 (H2) fails at b = 0 inside the mixed sector, where NO cylinder floor
 applies, and the comparison theorem at b = 1 is EQUIVALENT to:
   (M) every class-minimal logical of a MIXED class of the b = 1

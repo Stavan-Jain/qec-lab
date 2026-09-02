@@ -1,0 +1,30 @@
+{
+ "gross(12,6)": {
+  "hist": {
+   "2D|mixed|w12": 1008,
+   "2D|pure-y|w12": 84,
+   "W_x|pure-x|w12": 792
+  },
+  "classes": {
+   "mixed": 153,
+   "pure-x": 45,
+   "pure-y": 48
+  }
+ },
+ "two-gross(12,12)": {
+  "hist": {
+   "2D|mixed|w18": 49
+  },
+  "classes": {
+   "mixed": 13
+  }
+ },
+ "bb72(6,6)": {
+  "hist": {
+   "2D|mixed|w6": 84
+  },
+  "classes": {
+   "mixed": 84
+  }
+ }
+}
