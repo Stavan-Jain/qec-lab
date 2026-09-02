@@ -1,0 +1,11 @@
+=== 2026-09-01 21:55:50 argv=['classify', '--keep']
+validate_banked: PASS
+[bb72(6,6)] 84 objects, k=12, sectors={'2D': (84, 6)}, dirs={}, decomposition={'k': 12, 'dim_Wx': 0, 'dim_Wy': 0, 'dim_sum': 0, 'dim_int': 0, 'direct_sum': False}, 0.8 s
+[two-gross(12,12)] 49 objects, k=12, sectors={'2D': (49, 18)}, dirs={}, decomposition={'k': 12, 'dim_Wx': 6, 'dim_Wy': 6, 'dim_sum': 12, 'dim_int': 0, 'direct_sum': True}, 2.1 s
+[gross(12,6)] 1884 objects, k=12, sectors={'2D': (1092, 12), 'W_x': (792, 12)}, dirs={'(0, 1)': 792}, decomposition={'k': 12, 'dim_Wx': 6, 'dim_Wy': 0, 'dim_sum': 6, 'dim_int': 0, 'direct_sum': False}, 82.7 s
+[gross] class minima: {'w12|2D': 201, 'w12|W_x': 45}
+[tdg432(18,12)] 1 objects, k=12, sectors={'W_x': (1, 24)}, dirs={'(0, 1)': 1}, decomposition={'k': 12, 'dim_Wx': 6, 'dim_Wy': 6, 'dim_sum': 12, 'dim_int': 0, 'direct_sum': True}, 0.1 s
+[decomp (24, 18)] k=12 {'k': 12, 'dim_Wx': 6, 'dim_Wy': 6, 'dim_sum': 12, 'dim_int': 0, 'direct_sum': True}
+[decomp (18, 18)] k=12 {'k': 12, 'dim_Wx': 6, 'dim_Wy': 6, 'dim_sum': 12, 'dim_int': 0, 'direct_sum': True}
+[decomp (30, 24)] k=12 {'k': 12, 'dim_Wx': 6, 'dim_Wy': 6, 'dim_sum': 12, 'dim_int': 0, 'direct_sum': True}
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s11_classify.json (232.6 s)
