@@ -2666,3 +2666,89 @@ measured (+1 costs 3-8 g held, wall at +4 absolute <= 40) and
 hand-derived (K1 re-seed diagonal), not yet a theorem — that
 residual constant is the only daylight left in the charter's
 two-sided local lemma, and no assembly claim below consumes it.
+
+### §14.3 The cash-out machinery (probe -> deepening -> streaming
+### seeds)
+
+- **The DP sensitivity probe** (`a40_s9_probe.py`, offline on
+  banked tables, NO claim tier) located the cheapest sufficient
+  deepening before any big run: S7's binding DP-free composition
+  [(u=2 h=3 fat-loose, 6 q) + (u=1 h=17 at the loose cap, 95 q)]
+  = 101 quarters is DOUBLY fictional — the fat piece violates the
+  proven pinch (exit u=2 seed + entry weight-1 slab = 3 < 8), and
+  the h=17 loose grant sits ~20 q above the real link-cost trend —
+  and u=1 cap-deepening ALONE moves it: at g38 free drops to 97 q
+  (floor 12); at g40 the DP rebalances onto a STABLE two-piece
+  bc-wall [(u1->u1, h=10, loose, 48 q) x 2] = 96 q that no deeper
+  cap, u=2 short-h table, or modeled cert touches.  Floor 13 would
+  need attacking the bc loose grants themselves (pinch-charged
+  splits / delta-resolved closure) — not needed, r=1 binds first.
+- **The deepening = the census run**: one engine pass (g <= 40,
+  hcap 19, dcap 30) serves both Stage 1 (the census of §14.1) and
+  Stage 2 (`s9_link_u1k2g40.json`, an s7_link-schema table:
+  complete_h 19, ZERO dcap/extent truncs, certs 93 buckets).  The
+  real certs stayed under the caps exactly as the probe's J-trend
+  model predicted; the class-16 lane also gains the g40 certs but
+  its own completeness stays at g24 (floor 11 there; the
+  max-over-class-semantics rule takes 14's 12 — each class split
+  is individually complete, so the max is sound, as in S7).
+- **The streaming ClosedMarch port** (`a40_s9_closed.py`): the S8
+  spill-and-recurse rework applied to the closed lane, horizon
+  readout per spilled part (sound: streaming loses only cross-part
+  dominance = over-exploration; zero closures on an over-explored
+  tree is still zero; every part reaching h = m + 1 is read out).
+  The S7 module's ru_maxrss lifetime-peak guard (§13.6) is patched
+  to ps-based current RSS.  Port controls ALL PASS: C1 exact
+  node-count identity vs the banked seed-3 shard (355,673 popped,
+  0 closed, threshold off); C2 spill-stability (threshold 20k,
+  same tree); C3 the L12 (18,6) positive control detected THROUGH
+  forced spills (threshold 64) at exact g = 54, dlt = 0.
+- **The two S7 frontier victims fall in minutes**: seed 1 = 12.0M
+  popped / 115 s, seed 2 = 18.0M / 134 s, both ZERO closures,
+  zero truncs, no aborts, RSS ~0.3 GB throughout
+  (`s9_closed_pk2sh_g46_s1_2/s2_3.json`) — the g46 cover
+  {0..7} is complete and r=1 short_u1 lifts to
+  ceil((46+1-1)/4) = 12.
+
+### §14.4 The floors: d_Y(24,18) >= 12 (T1''), OVERALL
+### d(24,18) >= 12
+
+`a40_s9_assemble.py` (the S7 assembly logic verbatim, inputs =
+banked s7 files + the S9 deepenings via a glob shim; output
+`s9_assembly.json`, the banked `s7_assembly.json` untouched):
+
+| branch | floor | what moved |
+|---|---|---|
+| all-light (r=0) | 14 | unchanged (u=1 EXHAUSTED, u=2 g55) |
+| r=1 | **12** | short_u1 11 -> 12 (the two streamed seeds) |
+| r>=2 | **12** | free 101 q -> 96 q (the g40 deepening) |
+| all-heavy | 36 | pointwise |
+
+**T1'' (certificate-shaped, scope-listed): d_Y(24,18) >= 12** —
++1 over S7's T1'.  Scope: radius-4 / smax-3 prefix-connected
+growth (the 12th unit rests on production scope; the S7 stability
+batteries backed the 11-level), extent <= 34, wrapped corner at
+l = 24 a listed condition, |delta| <= 30 per fragment with every
+truncation counter ZERO in every consumed run, heavy classes
+evaluated at both W<=14 / W<=16 semantics.  Controls re-run TODAY,
+all PASS: (a) S5 stacks admitted (TC63's 60 segments dominated,
+W7 all-light above every cap); (b) (18,12) floor <= 24 with the
+certified minimum in the all-heavy branch at exactly 2m; (c) the
+b=0 witness stays in the wrapped/winding corner (its -6 an
+admitted scope term at l=12); (d) the g40 link table clean; plus
+the full S7-link control (ClosedMarch-vs-LinkMarch cross-check +
+L12 closure at exact cost) and the S8 xlane selftest + control
+battery (L12' theta'-both-tori closure replay, TC63' drift +3/6,
+b=0 Y-sector classification, mirrored member protection
+4 x 3 = 12 != 0 mod 18) re-verified green in today's environment.
+
+> **d(24,18) >= min(d_Y, d_X) = min(12, 12) = 12** —
+> [[864, 12, >= 12]] unconditional (X side; Z by transpose
+> duality as in §3.2), up from 11.  Both sectors now stand at 12
+> with DIFFERENT engines (y: boundary-coupled links + closed
+> marches + the g40 deepening; x: the mirror counting collapse +
+> closed marches) — the first two-sided-instrumented member floor
+> where neither sector is the straggler.  The conjectured value
+> is 36; the next y-unit needs r0/r1 pushes (g >= 49/50) AND a
+> bc-wall attack, the next x-unit needs the u=2 mirror stratum
+> (§13.7 item 2b's pricing).
