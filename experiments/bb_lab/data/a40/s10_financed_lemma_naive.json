@@ -1,0 +1,243 @@
+{
+ "F_exhaustive": {
+  "width": 6,
+  "states": 16515072,
+  "even_kill_states": 227328,
+  "identity_violations": 0,
+  "F_violations": 0,
+  "zero_input_two_step_pairs": 4032,
+  "two_step_violations": 0
+ },
+ "F_random": {
+  "width": 14,
+  "states": 832971,
+  "charged": 157693
+ },
+ "F2_cell_charges": {
+  "2": [
+   4
+  ],
+  "-1": [
+   3,
+   2
+  ]
+ },
+ "mirror_zero_input": {
+  "width": 6,
+  "pairs": 4032,
+  "max_gauge_violations": 0,
+  "pair_min_held_two_rows": 168,
+  "note": "mirror zero-input rows shift by exactly -3 as a whole; the pair-min two-row drop is FALSE there (cancellation holds), the max gauge carries the mirror R0"
+ },
+ "hand_witness": {
+  "rows": [
+   [
+    [],
+    [
+     1,
+     2,
+     12,
+     16,
+     19
+    ]
+   ],
+   [
+    [
+     -1
+    ],
+    [
+     6,
+     9,
+     16
+    ]
+   ],
+   [
+    [],
+    [
+     6,
+     13
+    ]
+   ],
+   [
+    [],
+    [
+     3
+    ]
+   ],
+   [
+    [],
+    [
+     10
+    ]
+   ],
+   [
+    [],
+    [
+     10
+    ]
+   ],
+   [
+    [],
+    [
+     7,
+     10
+    ]
+   ],
+   [
+    [],
+    [
+     10
+    ]
+   ],
+   [
+    [],
+    [
+     4,
+     7,
+     10
+    ]
+   ]
+  ],
+  "slabs": [
+   12,
+   8,
+   5,
+   5,
+   5,
+   7
+  ],
+  "anchors": [
+   -1,
+   -1,
+   3,
+   3,
+   7,
+   4
+  ],
+  "rise": 5,
+  "k1_in_stretch": 0,
+  "window_weight": 12,
+  "admissible": true
+ },
+ "random_zero_input": {
+  "windows": 296940,
+  "by_weight": {
+   "2": {
+    "rise": 12,
+    "tooth_ok": true
+   },
+   "3": {
+    "rise": 12,
+    "tooth_ok": true
+   },
+   "4": {
+    "rise": 12,
+    "tooth_ok": true
+   },
+   "5": {
+    "rise": 12,
+    "tooth_ok": true
+   },
+   "6": {
+    "rise": 12,
+    "tooth_ok": true
+   },
+   "7": {
+    "rise": 12,
+    "tooth_ok": true
+   },
+   "8": {
+    "rise": 11,
+    "tooth_ok": true
+   },
+   "9": {
+    "rise": 11,
+    "tooth_ok": true
+   }
+  },
+  "lightest_weight_with_rise_ge4": 2,
+  "lightest_witness": {
+   "window_weight": 2,
+   "rise": 12,
+   "tooth_ok": true,
+   "rows": [
+    [
+     [],
+     [
+      0
+     ]
+    ],
+    [
+     [
+      11
+     ],
+     []
+    ],
+    [
+     [],
+     []
+    ],
+    [
+     [],
+     []
+    ],
+    [
+     [],
+     []
+    ],
+    [
+     [],
+     [
+      12
+     ]
+    ],
+    [
+     [],
+     [
+      12
+     ]
+    ],
+    [
+     [],
+     [
+      9,
+      12
+     ]
+    ],
+    [
+     [],
+     [
+      12
+     ]
+    ],
+    [
+     [],
+     [
+      6,
+      9,
+      12
+     ]
+    ]
+   ],
+   "slabs": [
+    2,
+    1,
+    1,
+    2,
+    4,
+    5,
+    7
+   ],
+   "anchors": [
+    0,
+    11,
+    12,
+    12,
+    9,
+    9,
+    6
+   ]
+  }
+ },
+ "wall_s": 23.7
+}

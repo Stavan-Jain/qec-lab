@@ -1,0 +1,28 @@
+validate_banked: PASS
+[bwd u=1] popped 200000 pushed 1627357 heap 1427357 g=12 19.7s
+[bwd u=1] popped 400000 pushed 1839301 heap 1439301 g=13 27.2s
+[bwd u=1] popped 600000 pushed 2034526 heap 1434526 g=14 33.9s
+[bwd u=1] popped 800000 pushed 2247549 heap 1447549 g=15 41.4s
+[bwd u=1] popped 1000000 pushed 2550939 heap 1550939 g=16 50.2s
+[bwd u=1] popped 1200000 pushed 2748719 heap 1548719 g=16 57.8s
+[bwd u=1] popped 1400000 pushed 2992107 heap 1592107 g=17 68.5s
+[bwd u=1] popped 1600000 pushed 3378087 heap 1778087 g=18 85.3s
+[bwd u=1] popped 1800000 pushed 3819329 heap 2019329 g=19 103.8s
+[bwd u=1] popped 2000000 pushed 4261500 heap 2261500 g=20 126.2s
+[bwd u=1] popped 2200000 pushed 4626089 heap 2426089 g=21 146.8s
+[bwd u=1] popped 2400000 pushed 4984595 heap 2584595 g=22 173.2s
+[bwd u=1] popped 2600000 pushed 5006037 heap 2406037 g=22 181.3s
+[bwd u=1] popped 2800000 pushed 5021639 heap 2221639 g=23 187.8s
+[bwd u=1] popped 3000000 pushed 5022764 heap 2022764 g=23 194.1s
+[bwd u=1] popped 3200000 pushed 5023750 heap 1823750 g=24 200.2s
+[bwd u=1] popped 3400000 pushed 5023760 heap 1623760 g=24 206.3s
+[bwd u=1] popped 3600000 pushed 5023776 heap 1423776 g=25 212.1s
+[bwd u=1] popped 3800000 pushed 5023776 heap 1223776 g=25 219.3s
+[bwd u=1] popped 4000000 pushed 5023776 heap 1023776 g=26 225.5s
+[bwd u=1] popped 4200000 pushed 5023776 heap 823776 g=26 231.1s
+[bwd u=1] popped 4400000 pushed 5023776 heap 623776 g=27 236.3s
+[bwd u=1] popped 4600000 pushed 5023776 heap 423776 g=27 240.1s
+[bwd u=1] popped 4800000 pushed 5023776 heap 223776 g=28 246.0s
+[bwd u=1] popped 5000000 pushed 5023776 heap 23776 g=28 251.5s
+bwd u=1 gcap 28 hcap 16: {'n_seeds': 8, 'popped': 5023776, 'pushed': 5023776, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': False, 'wall_s': 252.0}; min g by h: {1: (1, 0), 2: (2, 0), 3: (3, 0), 4: (4, 1), 5: (7, 3), 6: (9, 3), 7: (11, 3), 8: (15, 5), 9: (17, 5), 10: (19, 5), 11: (25, 7)}; max h reached 11; EXHAUSTED: False
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s10_bwdprobe_g28.json

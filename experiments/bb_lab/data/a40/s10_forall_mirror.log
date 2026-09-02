@@ -1,0 +1,4 @@
+validate_banked: PASS
+mirror all-light u=1 (extent<=14, gcap 600, m=40): {'n_seeds': 8, 'pushed': 117482, 'popped': 117490, 'trunc_g': False, 'trunc_extent': 3939, 'trunc_dcap': 0, 'aborts': [], 'closed': 0, 'layer_peak': 13839, 'wall_s': 2.4}; max h 10; EXHAUSTED True (2.4 s)
+mirror all-light u=1 (extent<=34, gcap 600, m=40): {'n_seeds': 8, 'pushed': 121421, 'popped': 121429, 'trunc_g': False, 'trunc_extent': 0, 'trunc_dcap': 0, 'aborts': [], 'closed': 0, 'layer_peak': 13953, 'wall_s': 2.4}; max h 10; EXHAUSTED True (4.9 s)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s10_forall_mirror.json (7.2 s)
