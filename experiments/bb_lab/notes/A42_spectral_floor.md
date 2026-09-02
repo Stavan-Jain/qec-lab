@@ -1110,6 +1110,22 @@ within the factor 2 for free.
    empty, machine-checked, and re-certified by the jet engine).
    Repair: the two-branch full-depth jet registers, jointly
    class-complete (§2.5, §2.5b; `s2_registers.json`).
+8b. (S3, hypothesis verdict) The session-3 charter hypothesis "the
+   quotient's growth is subexponential in the omega-direction" is
+   FALSE AS STATED for the mixed frontier: the corridor runs'
+   instrumentation shows the omega-projection nearly INJECTIVE on
+   the frontier (n_omega/novel = 0.84..1.0 at p = 12 levels 8..19 —
+   the exponential growth lives in the omega-direction, 2.9M
+   distinct omega-windows at level 19), while the BARREN projection
+   saturates at ~6.3K windows and then falls.  The compact direction
+   is barren, not omega.  What IS true: the PURE sector's
+   omega-frontier is tiny (1,300 states at level 16 vs the full
+   racer's 2.17M), and the mixed frontier's omega-territory at
+   level c matches the pure racer's at level ~2c - 10 — the halving
+   lemma's factor-2 discount, measured (§2.11).  Engine moral: the
+   profitable quotient is over the barren direction; the omega
+   direction must be enumerated (or theory-collapsed via Theorem H
+   classes, which windows do NOT factor through).
 8. (S2, scope correction) The S1 sigma-enumerations (s1_jointdp,
    s1_omegafloor, s1_classprofile) confined patterns to a 10-column
    window (Wx = 10), but the splitting argument bounds only
@@ -1135,9 +1151,17 @@ within the factor 2 for free.
 1. Independent verification of k = 26 at (762,762) by a second
    method; engage 2503.04699's gcd-law as the cross-check
    (k(762,762) = k(gcd, gcd) consistency).
-2. L-pure forall-a (deformation cascade) and the L-band mixed half
-   (§2.7's obstruction paragraph is the target statement); the
-   pure-half window s in [8, p-1] via a smarter sigma enumeration.
+2. L-pure forall-a (deformation cascade) and the L-band mixed half.
+   [S3 state: the pure-half window is CLOSED at every 3 | p <= 21 by
+   the omega racer (§2.10) — the smarter-enumeration item is
+   retired; the mixed half is reduced to the hiding-mass factor 2
+   (§2.11), and the cascade's forall-a payoff is doubled: pure
+   sigma-floor(3·2^a) = 2p would now yield mixed >= p for free.
+   The concrete next rungs: (i) the p = 24 pure racer (2-word
+   states; register soundness at a = 3 BANKED — s3d joint kernel
+   empty), which with halving gives floor_cyl(24) >= 24 toward
+   r = 4; (ii) the hiding-mass rigidity argument (halving-tight
+   columns determine their barren content).]
 3. The p = 12 remaining corner: weights {18 (transverse-only),
    20, 22} x outside the h-DP envelope.  Per-level jet time grows
    ~x3.2 (level 18 = 44 min): levels 19-22 cost ~2.3/7.5/24/77 h —
