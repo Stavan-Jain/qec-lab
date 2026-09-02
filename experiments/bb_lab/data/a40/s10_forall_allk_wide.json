@@ -1,0 +1,45 @@
+{
+ "allk": {
+  "k2_y": {
+   "k": 2,
+   "lane": "y",
+   "start_windows": 740,
+   "wide": true,
+   "nodes_explored": 783,
+   "cycle_found": false,
+   "longest_path_slabs": 5,
+   "cycle": null
+  },
+  "k2_mirror": {
+   "k": 2,
+   "lane": "mirror",
+   "start_windows": 740,
+   "wide": true,
+   "nodes_explored": 786,
+   "cycle_found": false,
+   "longest_path_slabs": 5,
+   "cycle": null
+  },
+  "k3_y": {
+   "k": 3,
+   "lane": "y",
+   "start_windows": 61532,
+   "wide": true,
+   "nodes_explored": 65713,
+   "cycle_found": false,
+   "longest_path_slabs": 8,
+   "cycle": null
+  },
+  "k3_mirror": {
+   "k": 3,
+   "lane": "mirror",
+   "start_windows": 61532,
+   "wide": true,
+   "nodes_explored": 66079,
+   "cycle_found": false,
+   "longest_path_slabs": 8,
+   "cycle": null
+  }
+ },
+ "wall_s": 9.5
+}

@@ -330,9 +330,325 @@ def lane_all2(args, out):
     out["all2"] = res
 
 
+def lane_allk(args, out):
+    """Generalized: the graph of light windows of weight <= k (starts =
+    every (4,4)-connected full-content window of weight 1..k, the
+    seeds_full convention = the growth scope) with edges keeping the
+    next slab <= k.  If ACYCLIC with longest path P_k slabs, every
+    P_k + 1 consecutive slabs of any walk contain a slab >= k+1 — the
+    discharging input for the light-rate bound
+    Sigma (W - 2) >= (k - 1) * floor(h / (P_k + 1)) on >= 2 stretches."""
+    from a40_s6_frontier import lsb, norm, dilate, tooth_ok
+    from a40_s8_xlane import m_forced, m_tooth_ok
+    from itertools import combinations
+    t0 = time.time()
+    res = {}
+    sys.setrecursionlimit(1_000_000)
+    for k in args.ks:
+        starts = set()
+        if args.wide:
+            # EVERY window of weight <= k inside an 8 x (4k+4) box with
+            # min column 0 — no internal connectivity assumed (a walk
+            # window may consist of clusters bridged outside its rows)
+            span = 4 * k + 4
+            cells = [(r, c) for r in range(8) for c in range(span)]
+            for w in range(1, k + 1):
+                for pick in combinations(cells, w):
+                    if min(c for _, c in pick) != 0:
+                        continue
+                    w8 = [0] * 8
+                    for r, c in pick:
+                        w8[r] |= 1 << c
+                    starts.add(tuple(w8))
+        else:
+            for w in range(1, k + 1):
+                for w8 in seeds_full(w):
+                    starts.add(norm(tuple(w8))[0])
+        for lane in ("y", "mirror"):
+            def succ(w8, _k=k, _lane=lane):
+                outs = []
+                if _lane == "y":
+                    v1a, v1b, v1c, v1d, v2a, v2b, v2c, v2d = w8
+                    M = 8
+                    v1a, v1b, v1c, v1d = (v1a << M, v1b << M, v1c << M,
+                                          v1d << M)
+                    v2a, v2b, v2c, v2d = (v2a << M, v2b << M, v2c << M,
+                                          v2d << M)
+                    v2new = v1d ^ (v1d >> 1) ^ (v1a << 1) ^ v2d ^ (v2c >> 3)
+                    if not tooth_ok(v1a, v1b, v1c, v2b, v2new):
+                        return outs
+                    fixed = (v1b, v1c, v1d, v2b, v2c, v2d, v2new)
+                    allm = (v1a | v1b | v1c | v1d | v2a | v2b | v2c | v2d
+                            | v2new)
+                    mk = lambda s: (v1b, v1c, v1d, s, v2b, v2c, v2d, v2new)
+                else:
+                    p1z, p1a, p1b, p1c, p2z, p2a, p2b, p2c = w8
+                    M = 8
+                    p1z, p1a, p1b, p1c = (p1z << M, p1a << M, p1b << M,
+                                          p1c << M)
+                    p2z, p2a, p2b, p2c = (p2z << M, p2a << M, p2b << M,
+                                          p2c << M)
+                    u1new = m_forced(p1b, p1c, p2z, p2c)
+                    if not m_tooth_ok(p1a, u1new, p2z, p2a, p2b):
+                        return outs
+                    fixed = (p1a, p1b, p1c, u1new, p2a, p2b, p2c)
+                    allm = (p1z | p1a | p1b | p1c | p2z | p2a | p2b | p2c
+                            | u1new)
+                    mk = lambda s: (p1a, p1b, p1c, u1new, p2a, p2b, p2c, s)
+                wbase = sum(wt(x) for x in fixed)
+                if wbase > _k:
+                    return outs
+                allow = dilate(allm, 4)
+                acols = [i for i in range(allow.bit_length())
+                         if allow >> i & 1]
+                for kk in range(0, min(_k - wbase, 3) + 1):
+                    for pick in combinations(acols, kk):
+                        s = 0
+                        for c in pick:
+                            s |= 1 << c
+                        nw = mk(s)
+                        if sum(wt(x) for x in nw) < 1:
+                            continue
+                        outs.append(norm(nw)[0])
+                return outs
+            WHITE, GREY, BLACK = 0, 1, 2
+            colour = {}
+            longest = {}
+            cyc = [None]
+            nodes = [0]
+
+            def dfs(v):
+                # iterative DFS with explicit stack
+                stack = [(v, iter(succ(v)))]
+                colour[v] = GREY
+                nodes[0] += 1
+                best = {v: 0}
+                while stack:
+                    u, it = stack[-1]
+                    adv = False
+                    for w in it:
+                        c = colour.get(w, WHITE)
+                        if c == GREY:
+                            if cyc[0] is None:
+                                cyc[0] = (u, w)
+                            continue
+                        if c == WHITE:
+                            colour[w] = GREY
+                            nodes[0] += 1
+                            best[w] = 0
+                            stack.append((w, iter(succ(w))))
+                            adv = True
+                            break
+                        best[u] = max(best[u], 1 + longest.get(w, 0))
+                    if not adv:
+                        stack.pop()
+                        colour[u] = BLACK
+                        longest[u] = best[u]
+                        if stack:
+                            pu = stack[-1][0]
+                            best[pu] = max(best[pu], 1 + longest[u])
+            for s0 in sorted(starts):
+                if colour.get(s0, WHITE) == WHITE:
+                    dfs(s0)
+            Lmax = max(longest.values()) if longest else 0
+            res[f"k{k}_{lane}"] = dict(
+                k=k, lane=lane, start_windows=len(starts), wide=args.wide,
+                nodes_explored=nodes[0], cycle_found=cyc[0] is not None,
+                longest_path_slabs=Lmax + 1,
+                cycle=[list(x) for x in cyc[0]] if cyc[0] else None)
+            print(f"all<={k} lane {lane}: {len(starts)} start windows, "
+                  f"{nodes[0]} nodes; CYCLE: {cyc[0] is not None}; "
+                  f"longest all-<={k} path = {Lmax + 1} slabs "
+                  f"({round(time.time() - t0, 1)} s)", flush=True)
+    out["allk"] = res
+
+
+# ---------------------------------------------------------------------
+# the discharging automaton: exact minima of Sigma (W - 2) over slab
+# sequences obeying "every P_k + 1 consecutive slabs contain a slab
+# >= k + 1" (k = 2, 3, 4) with every slab >= 2 (open paths) or
+# cyclically (closed walks)
+# ---------------------------------------------------------------------
+
+def automaton(Pk):
+    """States = (d3, d4, d5): slabs since the last slab >= 3, >= 4,
+    >= 5 (capped at the window lengths).  Weights W in {2,3,4,5}
+    (W >= 6 dominated by 5 for the minimum).  Returns (states,
+    transitions[(s, W)] -> s' or None if a window constraint breaks)."""
+    L = {3: Pk[2] + 1, 4: Pk[3] + 1, 5: Pk[4] + 1}   # window lengths
+
+    def step(s, W):
+        d3, d4, d5 = s
+        d3 = 0 if W >= 3 else d3 + 1
+        d4 = 0 if W >= 4 else d4 + 1
+        d5 = 0 if W >= 5 else d5 + 1
+        # a run of L[j] consecutive slabs all < j is forbidden
+        if d3 >= L[3] or d4 >= L[4] or d5 >= L[5]:
+            return None
+        return (d3, d4, d5)
+    states = [(a, b, c) for a in range(L[3]) for b in range(L[4])
+              for c in range(L[5]) if a <= b <= c]
+    return states, step
+
+
+def path_min_table(Pk, hmax):
+    """pm[h] = min Sigma (W-2) over h consecutive slabs (>= 2 each)
+    obeying the window constraints; the constraints are enforced
+    ONLY on windows inside the stretch (sound: a stretch of a walk
+    obeys at least these)."""
+    states, step = automaton(Pk)
+    INF = 10 ** 9
+    # start: any state is possible for the history before the stretch
+    # — to be sound take the most permissive: d's as if the previous
+    # slabs were all heavy (d = 0)... NO: the history is unknown, so
+    # windows straddling the start are NOT enforced; model by
+    # starting from d = 0 (all counters reset), which enforces only
+    # windows fully inside the stretch.
+    cur = {(0, 0, 0): 0}
+    pm = {0: 0}
+    for h in range(1, hmax + 1):
+        nxt = {}
+        for s, v in cur.items():
+            for W in (2, 3, 4, 5):
+                s2 = step(s, W)
+                if s2 is None:
+                    continue
+                v2 = v + (W - 2)
+                if v2 < nxt.get(s2, INF):
+                    nxt[s2] = v2
+        cur = nxt
+        pm[h] = min(cur.values())
+    return pm
+
+
+def cyc_min(Pk, m):
+    """min Sigma (W-2) over CLOSED slab sequences of length m (>= 2
+    each) obeying the window constraints cyclically."""
+    states, step = automaton(Pk)
+    INF = 10 ** 9
+    best = INF
+    for s0 in states:
+        cur = {s0: 0}
+        for h in range(m):
+            nxt = {}
+            for s, v in cur.items():
+                for W in (2, 3, 4, 5):
+                    s2 = step(s, W)
+                    if s2 is None:
+                        continue
+                    v2 = v + (W - 2)
+                    if v2 < nxt.get(s2, INF):
+                        nxt[s2] = v2
+            cur = nxt
+        if s0 in cur and cur[s0] < best:
+            best = cur[s0]
+    return best
+
+
+def lane_rate(args, out):
+    """The assembled for-all-m floor with the discharging constraints
+    (allk) + the u=1 exhaustion tables (preexact / mirror)."""
+    t0 = time.time()
+    ak = json.loads((DATA / "s10_forall_allk.json").read_text())["allk"]
+    pe = json.loads((DATA / "s10_forall_preexact_theorem.json").read_text()
+                    )["preexact"]["smax3_dil4"]
+    mi = json.loads((DATA / "s10_forall_mirror.json").read_text()
+                    )["mirror"]["extent34"]
+    res = {}
+    for lane, rec in (("y", pe), ("mirror", mi)):
+        Pk = {k: ak[f"k{k}_{lane}"]["longest_path_slabs"]
+              for k in (2, 3, 4)}
+        assert all(not ak[f"k{k}_{lane}"]["cycle_found"] for k in (2, 3, 4))
+        fwd = {int(h): g for h, g in rec["fwd_min"].items()}
+        slack = {h: 2 * h - g for h, g in fwd.items()}
+        hmax_tree = max(fwd)
+        pm = path_min_table(Pk, 6 * args.rmax + 2)
+        rows = []
+        for r in range(1, args.rmax + 1):
+            m = 6 * r
+            # B >= 1: one block (>= 8 = 2 + 6), one u=1 run: forward
+            # piece h_f (slack), the rest below the seed (>= 2 stretch)
+            b1 = min(2 * m + 6 - slack[hf] + pm[m - 1 - hf]
+                     for hf in fwd if m - 1 - hf >= 0)
+            # u >= 2 runs only, B >= 1: 2m + 6 + pm[m-1]  (dominated)
+            b1 = min(b1, 2 * m + 6 + pm[m - 1])
+            # all-light u >= 2: a closed walk obeys every window inside
+            # any cut-open stretch of itself, so the open-path minimum
+            # is a sound (slightly weaker, much cheaper) bound
+            al = 2 * m + pm[m]
+            # all-light u = 1: impossible iff m + 1 > longest light path
+            u1open = (m + 1 <= hmax_tree)
+            cands = [b1, al] + ([m] if u1open else [])
+            f = math.ceil(min(cands) / 4)
+            rows.append(dict(r=r, m=m, f=f, branch_B1=b1, branch_all_light=al,
+                             u1_all_light_open=u1open))
+        # asymptotic slope: min-mean cycle of the automaton (Karp)
+        states, step = automaton(Pk)
+        n = len(states)
+        idx = {s: i for i, s in enumerate(states)}
+        INF = float("inf")
+        D = [[INF] * n for _ in range(n + 1)]
+        for i in range(n):
+            D[0][i] = 0
+        for kk in range(1, n + 1):
+            for s in states:
+                if D[kk - 1][idx[s]] == INF:
+                    continue
+                for W in (2, 3, 4, 5):
+                    s2 = step(s, W)
+                    if s2 is None:
+                        continue
+                    v = D[kk - 1][idx[s]] + (W - 2)
+                    if v < D[kk][idx[s2]]:
+                        D[kk][idx[s2]] = v
+        mmc = INF
+        for i in range(n):
+            if D[n][i] == INF:
+                continue
+            worst = max((D[n][i] - D[kk][i]) / (n - kk)
+                        for kk in range(n) if D[kk][i] != INF)
+            mmc = min(mmc, worst)
+        res[lane] = dict(Pk=Pk, S=max(slack.values()), hmax_tree=hmax_tree,
+                         min_mean_excess_per_slab=mmc,
+                         light_rate_per_slab=2 + mmc, rows=rows,
+                         path_min=dict(list(pm.items())[:40]))
+        print(f"{lane}: P_k {Pk}; light >=2 stretches: min mean excess "
+              f"{mmc:.4f} per slab => sustained light rate >= "
+              f"{2 + mmc:.4f} per slab; floors f(r): "
+              + ", ".join(f"r={x['r']}:{x['f']}" for x in rows[:12])
+              + f" ... r={rows[-1]['r']}:{rows[-1]['f']}", flush=True)
+    # overall d floor = min over sectors
+    both = []
+    for i in range(args.rmax):
+        ry, rx = res["y"]["rows"][i], res["mirror"]["rows"][i]
+        both.append(dict(r=ry["r"], m=ry["m"], f_y=ry["f"], f_x=rx["f"],
+                         f=min(ry["f"], rx["f"]),
+                         L1=math.ceil(3 * ry["r"] / 2)))
+    res["overall"] = both
+    print("OVERALL d(C_{r,1}) >= min(f_Y, f_X): "
+          + ", ".join(f"r={x['r']}:{x['f']}(L1 {x['L1']})"
+                      for x in both[:12]), flush=True)
+    # controls: every banked exact member value must sit above the
+    # ell-free floor at its m
+    ctl = {}
+    for (l, m, d) in [(12, 12, 18), (18, 12, 24), (12, 6, 12), (18, 6, 12),
+                      (24, 6, 12), (6, 6, 6), (24, 18, 12)]:
+        r = m // 6
+        f = both[r - 1]["f"]
+        ctl[f"({l},{m})"] = dict(banked=d, f=f, ok=f <= d)
+    print(f"controls (banked member values vs the ell-free floor at "
+          f"their m): {ctl}", flush=True)
+    assert all(v["ok"] for v in ctl.values())
+    res["controls"] = ctl
+    res["wall_s"] = round(time.time() - t0, 1)
+    out["rate"] = res
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("lanes", nargs="*", default=["preexact", "theorem"])
+    ap.add_argument("--ks", type=int, nargs="*", default=[2, 3, 4])
+    ap.add_argument("--wide", action="store_true")
     ap.add_argument("--gcap", type=int, default=600)
     ap.add_argument("--hcap", type=int, default=40)
     ap.add_argument("--rmax", type=int, default=40)
@@ -357,8 +673,12 @@ def main():
         lane_mirror(args, out)
     if "all2" in args.lanes:
         lane_all2(args, out)
+    if "allk" in args.lanes:
+        lane_allk(args, out)
+    if "rate" in args.lanes:
+        lane_rate(args, out)
     out["wall_s"] = round(time.time() - t0, 1)
-    tag = "_".join(args.lanes)
+    tag = "_".join(args.lanes) + ("_wide" if args.wide else "")
     p = DATA / f"s10_forall_{tag}.json"
     p.write_text(json.dumps(out, indent=1))
     print(f"wrote {p} ({out['wall_s']} s)", flush=True)

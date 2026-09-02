@@ -224,9 +224,119 @@ def run_bwdprobe(args):
     print(f"wrote {p}", flush=True)
 
 
+def run_w7fwd(args):
+    """The asymptotic-ladder witness, FORWARD form: the S8
+    SlipLinkMarch (layered, streaming, unchanged) in stratum u = 2
+    seeded at the W7 species' own minimum window (weight 2).  Any
+    completed crossing (POST state at (h0, dlt) with cost g0) is a
+    u = 2 link [W7 seed -> light -> block -> post]; prepending k
+    further W7 periods keeps it a link (the seed stays the run's
+    first weight-2 window) with h = h0 + 7k, g = g0 + 32k, so
+    J(h) grows by 24 quarters per 7 slabs = 3.43 q/slab > 3: the
+    per-slab ladder extrapolation fails in the u = 2 table for every
+    h beyond the first crossing.  The found crossing is replayed and
+    verified (ParentedLinkMarch + CoverFragment) before any claim."""
+    import gc
+    gc.disable()
+    t0 = time.time()
+    from bb_lab.tower import validate_banked
+    validate_banked(LAB / "data")
+    print("validate_banked: PASS", flush=True)
+    from a40_s10_w7link import w7_lift, rows_to_masks
+    from a40_s6_frontier import norm
+    fr = w7_lift(args.l, n_periods=6)
+    sl = fr.slabs()
+    OFF = 64
+    mrows = rows_to_masks(fr.rows, OFF)
+    # the weight-2 windows: slab index j (rows j..j+3 of the lift)
+    seeds = []
+    for j, w in enumerate(sl):
+        if w == 2:
+            w8 = (mrows[j][0], mrows[j + 1][0], mrows[j + 2][0],
+                  mrows[j + 3][0], mrows[j][1], mrows[j + 1][1],
+                  mrows[j + 2][1], mrows[j + 3][1])
+            seeds.append(norm(w8)[0])
+    seeds = sorted(set(seeds))
+    print(f"W7 lift l={args.l}: slabs {sl[:14]}...; {len(seeds)} distinct "
+          f"weight-2 windows (normalized): {seeds}", flush=True)
+    m = SlipLinkMarch(2, kmax=args.kmax, whcap=args.whcap, gcap=args.gcap,
+                      hcap=args.hcap, dcap=args.dcap)
+    info = m.run_byseed(seeds, rss_cap=args.rss_cap)
+    print(f"info: {info}", flush=True)
+    lad = ladder_rows(m.tab_link, m.tab_link_L, args.gcap)
+    prem = {}
+    for (h, dl), g in m.tab_pre.items():
+        if h not in prem or prem[h] > g:
+            prem[h] = g
+    print(f"PRE min_g by h (from the W7 window): {dict(sorted(prem.items()))}",
+          flush=True)
+    print("LINK ladder from the W7 seed (h, min_g, J_q):", flush=True)
+    for r in lad:
+        print(f"  h={r['h']:2d} min_g={r['min_g']:2d} J={r['J_q']:3d}q "
+              f"dg={r['dg']} cap={r['at_cap']} tight={r['tight']}",
+              flush=True)
+    out = dict(params=dict(u=2, kmax=args.kmax, whcap=args.whcap,
+                           gcap=args.gcap, hcap=args.hcap, dcap=args.dcap,
+                           l=args.l, seeds=[list(s) for s in seeds]),
+               info=info, pre_min_by_h=prem, ladder=lad,
+               tab_link={f"{h},{d}": g for (h, d), g in m.tab_link.items()},
+               tab_link_L={f"{h},{L},{d}": g
+                           for (h, L, d), g in m.tab_link_L.items()},
+               w7_period=dict(dh=7, dg=32, dJ_q=24))
+    best = min(lad, key=lambda r: r["min_g"]) if lad else None
+    if best:
+        print(f"\ncheapest crossing from the W7 window: h={best['h']} "
+              f"g={best['min_g']} J={best['J_q']}q; family h+7k, g+32k, "
+              f"J+24k q => asymptotic J' >= 24/7 = 3.43 q/slab in the "
+              f"u=2 table", flush=True)
+        # replay + verify through the S7 parented march (heap-based,
+        # small at this cap) — the crossing must be E-admissible with
+        # the slab profile the table claims
+        from a40_s7_tax import ParentedLinkMarch, replay
+        from a40_s6_drift import CoverFragment
+        pm_ = ParentedLinkMarch(2, kmax=args.kmax, whcap=args.whcap,
+                                gcap=best["min_g"], hcap=best["h"] + 1,
+                                dcap=args.dcap)
+        pm_.run(seeds, log=False)
+        ver = None
+        for key in list(pm_.parents):
+            dyn, anch, phase, L, h, dlt = key
+            if phase != POST or h != best["h"]:
+                continue
+            g = pm_.tab_link_L.get((h, L, dlt))
+            if g != best["min_g"]:
+                continue
+            rows_d, chain = replay(pm_, key, seeds)
+            lo2, hi2 = min(rows_d), max(rows_d)
+            rws = [rows_d[j] for j in range(lo2, hi2 + 1)]
+            frag = CoverFragment(rws, lo2)
+            if not frag.admissible():
+                continue
+            sl2 = frag.slabs()
+            ver = dict(slabs=sl2, g=sum(sl2), h=len(sl2),
+                       anchors=frag.anchors(), weight=frag.weight(),
+                       rows=[[sorted(a), sorted(b)] for a, b in rws],
+                       heavy=[i for i, w in enumerate(sl2) if w >= 8])
+            break
+        out["verified_crossing"] = ver
+        print(f"verified crossing: {ver}", flush=True)
+    out["wall_s"] = round(time.time() - t0, 1)
+    p = DATA / f"s10_w7fwd_g{args.gcap}.json"
+    p.write_text(json.dumps(out, indent=1))
+    print(f"wrote {p}", flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
+    f = sub.add_parser("w7fwd")
+    f.add_argument("--gcap", type=int, default=40)
+    f.add_argument("--hcap", type=int, default=14)
+    f.add_argument("--dcap", type=int, default=30)
+    f.add_argument("--kmax", type=int, default=2)
+    f.add_argument("--whcap", type=int, default=14)
+    f.add_argument("--l", type=int, default=24)
+    f.add_argument("--rss-cap", type=int, default=2500)
     b = sub.add_parser("bwdprobe")
     b.add_argument("--gcap", type=int, default=28)
     b.add_argument("--hcap", type=int, default=16)
@@ -262,6 +372,8 @@ def main():
         run_strat(args)
     elif args.cmd == "bwdprobe":
         run_bwdprobe(args)
+    elif args.cmd == "w7fwd":
+        run_w7fwd(args)
     else:
         from a40_s10_w7link import run_w7link
         run_w7link(args)
