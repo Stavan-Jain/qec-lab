@@ -2837,3 +2837,326 @@ b=0 Y-sector classification, mirrored member protection
    §12.10 layered-march contract extended by one refinement
    lemma: streaming = a sound over-approximation of the layer
    relation (C1's node-identity is its concrete witness).
+
+## §15 SESSION 10 (2026-09-01) — the financed half as a theorem
+## (LEMMA F), the ladder's fifth rung and its asymptotic refutation,
+## and the first analytic for-all-r toroidal floor (~3.6 r, both
+## sectors)
+
+Directive: prove S9's two named pieces (the financed-half constant
+"net anchor rise <= 3 + #K1 inputs" and the ladder rate J' = 3q/slab)
+and cash the for-all-r toroidal statement.  What happened: the
+financed half is a THEOREM — but not in the charter's form.  The
+per-cell count is FALSE as a local lemma (a verified zero-input
+fragment raises the anchor 12 columns with no input cell in the
+stretch); the true statement is LEMMA F, a one-column reading of E
+that charges every non-dropping step of the pair-min to an input cell
+LEFT of the frontier, with R0 as its zero-input case and a holding
+cost of >= 1 input cell per 4 rows as its corollary — verified
+exhaustively over the step alphabet and on every replayed census
+crossing.  The ladder lands its FIFTH rung EXACTLY (g <= 46 census:
+h = 11 at min_g 45 = +5 g / +3 q per slab, zero positive slips
+through 46) and is then REFUTED asymptotically by a verified witness
+family: the W7 species coasts at 32/7 g per slab, and a u = 2 link
+[W7 seed -> light -> block -> post] exists at g = 28 (fragment-
+verified), so J grows 24 quarters per 7 slabs = 3.43 q/slab beyond
+the census — the "~7.5 r" extrapolation is dead.  The prize came
+from a different direction: the u = 1 all-light forward tree is
+FINITE cap-free in BOTH lanes (h <= 10, exact cost tables), the light-
+window graphs of weight <= 2, <= 3, <= 4 are ACYCLIC in both lanes
+(longest paths 5, 8, 13 slabs), and a drift-blind discharging
+assembly turns these into THEOREM S10.3: d(C_{r,1}) >= f(r) with
+f(r) = 11, 14, 18, 22, 25, 29, ... at r = 3, 4, 5, ..., slope 29/48
+per row = 3.625 r — 2.4x the L1 floor, no closure, no ell, both
+sectors, every constant traced.  Engines `a40_s10_financed.py`
+(F: lemma / naive / verify lanes), `a40_s10_ladder.py` (census,
+strat, bwdprobe, w7fwd), `a40_s10_w7link.py` (the backward W7
+search — over-RSS, retired, §15.6), `a40_s10_forall.py` (preexact,
+theorem, mirror, all2, allk, rate); data `data/a40/s10_*`;
+`validate_banked` green before every lane.
+
+### §15.1 LEMMA F (echo-charge) — the financed half, as a theorem
+
+Setting: the y-lane solved recurrence v2[t+1] = (1+x^-1) v1[t]
++ x v1[t-3] + v2[t] + x^-3 v2[t-1]; m_t := min supp v2[t];
+mu_t := min supp(v2[t] u v2[t+1]) (R0's pair-min).  Read E at the
+single cell (t+2, c-3) with c = m_t:
+
+    v2[t+2](c-3) = v1[t+1](c-3) + v1[t+1](c-2) + v1[t-2](c-4)
+                   + v2[t+1](c-3) + v2[t](c),    and v2[t](c) = 1.
+
+**LEMMA F (PROVEN, one line).**  For every t with v2[t] nonempty:
+EITHER mu_{t+1} <= m_t - 3, OR an odd number of the three K1 cells
+(t+1, c-3), (t+1, c-2), (t-2, c-4) is occupied.  Proof: with even
+kill parity v2[t+2](c-3) = v2[t+1](c-3) + 1, so one of v2[t+1],
+v2[t+2] holds c-3.  QED.  The three kill cells sit at columns
+<= c-2, strictly LEFT of the v2 frontier.
+
+Corollaries (all theorem tier):
+- **(F1 = R0, with the rate)**: zero-input, mu_{t+1} <= m_t - 3
+  whenever v2[t] != 0, hence two consecutive free steps drop mu by
+  >= 3 — the free leftward drift is >= 1.5 columns/row.
+- **(F2, holding)**: over T consecutive steps in which mu never
+  drops below its start, no two consecutive steps are free, so
+  >= floor(T/2) are charged; a K1 cell (tau, c') charges at most two
+  steps (t = tau-1 via m_{tau-1} in {c'+2, c'+3}; t = tau+2 via
+  m_{tau+2} = c'+4), so a T-row hold costs >= ceil(T/4) input cells,
+  all left of the frontier.
+- **(F3, window-anchor delay)**: a charging cell at (t+1, <= c-2)
+  lies in the slab windows t+1..t+4, so the WINDOW anchor (v1 u v2)
+  cannot exceed c-2 before slab t+5; a financed pair-min rise is
+  invisible to the slab anchor for four slabs and becomes visible
+  only after the killer's own descendants ((1+x^-1) debris at
+  c-3/c-2, the x-echo at c-1 four rows up) are dealt with — S9's K1
+  diagonal, now a consequence.
+
+Verification (`s10_financed_lemma_naive.json`,
+`s10_financed_verify.json`): the identity and F hold on ALL
+16,515,072 width-6 four-row states (v1[t-2], v1[t+1], v2[t],
+v2[t+1]; 227,328 even-kill states), on 832,971 random width-14
+states (157,693 charged), and the zero-input two-step drop on all
+4,032 width-6 pairs; row by row on the S9 slip -8 witness, on the
+W7 and TC63 lifts at both ell, and on all 14 completed crossings
+replayed from a parented u = 1 link march at g <= 25 (every fragment
+re-verified through CoverFragment first): 28 steps, 21 drops, 14
+charged, ZERO violations, longest no-drop run 2.
+- **Mirror lane** (x-sector, u1[t+1] = x^-3(...)): the two-row
+  pair-min drop is FALSE there — cancellation can hold the min for
+  three rows (({m},{m,m+3}) -> ({m,m+3},{m}) -> ({m},{m}) -> ({m},0);
+  168 of 4,032 width-6 pairs).  The mirror's R0 lives in the MAX
+  gauge instead: every zero-input mirror row lies entirely in
+  [min-3, max-3] of the pair (exhaustive, gauge-free).  The mirror
+  financed half is listed residue (§15.7).
+
+### §15.2 The charter's per-cell form is FALSE locally; the +3
+### wall re-scoped
+
+- **"Net anchor rise <= 3 + #K1 cells in the stretch" — REFUTED
+  (verified witnesses).**  Zero-input continuation of the weight-2
+  window {v2 (t-3, 0), v1 (t-2, 11)}: slabs [2,1,1,2,4,5,7], anchors
+  [0, 11, 12, 12, 9, 9, 6] — the anchor rises 12 with NO input cell
+  in the stretch (the seed strand exits, the right strand's x-echo
+  lands at 12), E-admissible, tooth-clean.  Among 296,940 random
+  windows marched zero-input, rises >= 4 occur at EVERY window
+  weight 2..9 (max rises 11-12).  A hand window of weight 12 (one
+  v1 kill cell at c-1 financing a pair-min jump from c+3 to c+10)
+  rises 5 with zero inputs.  Mechanism: once a right strand exists,
+  ONE echo-kill lets the pair-min jump onto it, and the jump is the
+  strand's DISTANCE, not an input count.  The only local per-cell
+  bound is the max-gauge one (dil-4 scope): from a weight-1 seed,
+  A_t - A_seed <= 4 #K1 + 1.
+- **What the census says instead (cost, not count)**: the pre wall
+  is +3 and the whole-link wall +2 through g <= 46 (this session's
+  census; 57 slip classes, ZERO positive), and on every replayed
+  crossing the from-seed count A_h - A_seed <= 3 + #K1 holds with
+  slack >= 2 — a COST fact (right strands and kills are paid for
+  from the seed), consistent with F, implied by no per-cell lemma.
+- **Re-scoping §14.6 item 1**: the financed half is F + F2 + F3;
+  "the wall's slope" is not a per-cell theorem and the item is
+  CLOSED in this corrected form.  (F2's ceil(T/4) is the provable
+  holding cost; the measured ~8 g/row of holding rows is 4-8x above
+  it — the recursion of the killers' own debris, unquantified.)
+
+### §15.3 The ladder: fifth rung exact, then refuted asymptotically
+
+**Census g <= 46** (`s10_slip_u1_g46.json`, `s10_link_u1k2g46.json`;
+S8 engine UNCHANGED, hcap 19, dcap 30, 115.9M nodes, 1788 s,
+extent/dcap truncs ZERO, regression vs the g40 tables EXACT on pre,
+link, link_L and the collapse identity):
+
+| h | min_g | J (q) | dg | dJ (q) | tight (L, dlt) |
+|---|---|---|---|---|---|
+| 4 | 19 | 13 | – | – | (1,-6),(1,-5) |
+| 6 | 24 | 24 | – | – | (1,-2..0) |
+| 7 | 25 | 31 | +1 | +7 | (1,-2..0) |
+| 8 | 30 | 34 | +5 | +3 | (1,-5..-3) |
+| 9 | 35 | 37 | +5 | +3 | (1,-6..-4) |
+| 10 | 40 | 40 | +5 | +3 | (1,-3) |
+| **11** | **45** | **43** | **+5** | **+3** | (1,-2),(1,-1) |
+
+h = 12 is absent at g <= 46 (+5 predicts 50).  **J(h) = 3h + 10
+quarters EXACTLY at h = 7..11** — five consecutive rungs, all at
+L = 1, none at the cap.  Rightward slip: still EMPTY at g <= 46 (the
+positive side now 27 units above the cheapest crossing); the L = 2
+classes reach slip -10 (within -4(L+1) = -12); pre wall +3 and link
+wall +2 unchanged.
+
+**The asymptotic verdict: REFUTED by a verified witness family.**
+(`a40_s10_ladder.py w7fwd`, `s10_w7fwd_g36.json`.)  The S8 march in
+stratum u = 2, seeded ONLY at the W7 species' own weight-2 window
+(the (24,7,22) lift, drift -2 per 7 rows, slabs [5,4,2,3,5,7,6] =
+32 per period), finds crossings at h = 5 (g 28), 6 (g 29), 7 (g 36,
+cap); the cheapest, slabs [2, 4, 7, 8, 7], g = 28, anchors
+[0,-1,-1,-3,-3], is replayed (ParentedLinkMarch) and E-admissible
+end to end (CoverFragment, weight 9).  Every E straddling the seed
+window reads only rows at or below it, so k further W7 periods glue
+BELOW the seed for every k: a u = 2 link with h = 5 + 7k, g = 28 +
+32k, J = 12 + 24k quarters.  **J grows 24 q per 7 slabs = 3.43 q/slab
+> 3 q/slab**: the per-slab ladder extrapolation fails in the u = 2
+table for every h beyond the first crossing, and with it the
+"analytic ~7.5 r" of §14.6 item 3 (the assembly's DP admits u = 2
+links).  (The u = 1 table's own asymptotics is untouched: its post
+coast would need a block-to-W7 transient, not constructed — the
+backward search over-ran RSS, §15.6.)  Also measured: from the W7
+window the cheapest 8-slab light path costs 34 = W7 itself (PRE
+min_g 2, 5, 10, 14, 19, 25, 31, 34).
+- **Corrected conjecture (C-W7)**: the drift-blind deficit rate of
+  light coasting is 24/7 q/slab (weight 8/7 per row, the W7 rate) —
+  the light-rate wall; any per-slab ladder must have J' >= 24/7.
+  Under C-W7 the drift-blind member floor is ~(8/7) m = 6.86 r, and
+  the conjectured 2m needs the momentum budget (drift) on top.
+- **Bwd u = 1 probe** (`s10_bwdprobe_g28.json`, S6 March bwd, g <=
+  28, hcap 16, 5.0M nodes): min g 1,2,3,4,7,9,11,15,17,19,25 at
+  h = 1..11 — NOT exhausted (trunc_g); the +2/slab of h = 8..10 is a
+  transient (+6 at h = 11).  Not consumed below (the theorem uses
+  the first-minimum convention, §15.5, not the bwd table).
+
+### §15.4 The u = 1 exhaustion, cap-free, both lanes; the light-
+### window graphs are acyclic
+
+- **Forward u = 1 light tree, cap-free** (`a40_s10_forall.py
+  preexact`, `s10_forall_preexact_theorem.json`; S6 March fwd, all 8
+  weight-1 seeds, gcap 600, hcap 40, extent/dcap caps 60, NO node
+  truncation): 50,212 nodes, **longest light path 10 slabs**, max
+  cover extent 16; at smax 4 / dil 6: 171,263 nodes, still 10 slabs,
+  extent 22.  Exact table fwd_min(h) = 1, 2, 3, 4, 6, 10, 15, 22, 33,
+  40 (h = 1..10); slack S := max_h [2h - fwd_min(h)] = 4 (h = 4, 5).
+  (§12.4's "dies before 19 slabs" was the closed march's hcap; the
+  tree in fact dies at 10.)
+- **Mirror lane** (`mirror` lane, MClosedMarch nHmax 0, gcap 600, m
+  40, both extent semantics 14 / 34): 121,421 nodes, **longest 9
+  slabs**, fwd_min 1, 2, 3, 4, 6, 10, 15, 22, 33 (extent 34; 26 at
+  h = 8 under extent 14), S = 4 — §13.7 item 3 ANSWERED: the mirror
+  all-light u = 1 stratum exhausts cap-free like the y-lane's.
+- **Light-window graphs** (`allk` lane, `s10_forall_allk*.json`):
+  nodes = translation-normalized 4-row windows of weight <= k, edges
+  = the forced row plus <= 3 input cells in dil-4 keeping the next
+  window <= k, tooth rule on.  ACYCLIC in both lanes for k = 2, 3, 4
+  with longest paths P = 5, 8, 13 slabs (y: 340 / 13,703 / 543,934
+  nodes; mirror: 340 / 13,573 / 530,821).  For k = 2, 3 the start set
+  was widened to EVERY window of weight <= k in an 8 x (4k+4) box
+  (no internal connectivity assumed; 783 / 65,713 nodes): P
+  unchanged.  Consequence (scope: growth dil-4/smax-3 + tooth rule):
+  **any 6 consecutive slabs of any walk contain a slab >= 3, any 9 a
+  slab >= 4, any 14 a slab >= 5** — in both lanes.  (k = 5 is ~13M
+  windows: not attempted.)
+
+### §15.5 THEOREM S10.3 — the for-all-r toroidal floor (drift-blind)
+
+Sigma_j W_j = 4|v| over the m slabs of a class-minimal doubly-
+spanning walk (each row lies in 4 slabs).  Discharging: write
+4|v| = 2m + Sigma_j (W_j - 2).  Partition the slabs into heavy slabs
+(W >= 8: excess >= 6) and maximal light runs; a run's SEED is its
+lowest minimum-weight slab, of weight u:
+- slabs of the run BELOW the seed have weight >= u+1 >= 2; slabs of a
+  u >= 2 run have weight >= 2: excess >= 0, and on any such stretch of
+  h slabs the window facts of §15.4 force excess >= pm(h) (the exact
+  minimum over the automaton of "slabs since the last >= 3 / >= 4 /
+  >= 5", window lengths 6 / 9 / 14: pm = 0,0,0,0,0,1,1,1,2,2,2,3,3,4,5,
+  5,5,6,6 at h = 1..19; min-mean cycle 5/12 per slab, i.e. **every
+  sustained light coast weighs >= 2 + 5/12 = 2.417 per slab**);
+- the slabs from a u = 1 seed upward form a light path from a weight-
+  1 window: at most 10 slabs, excess >= -S = -4 (exact table);
+- every u = 1 run is followed by a heavy block, so #u1-runs <= B, and
+  each block's excess >= 6 > 4: more blocks never help the adversary;
+- all-light u = 1 is impossible for m + 1 > 10 (a closed light walk is
+  a light path of m + 1 slabs from its seed); all-heavy >= 8m.
+Hence 4|v| >= min( 2m + pm(m) [all-light, u >= 2, open-path bound],
+min_{h_f <= 10} [2m + 6 - (2h_f - fwd_min(h_f)) + pm(m - 1 - h_f)] )
+and, for the family (m = 6r), with identical constants in both
+lanes (`rate` lane, `s10_forall_rate.json`):
+
+| r | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 40 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| f(r) | 7 | **11** | 14 | 18 | 22 | 25 | 29 | 32 | 36 | 40 | 43 | 145 |
+| L1 | 3 | 5 | 6 | 8 | 9 | 11 | 12 | 14 | 15 | 17 | 18 | 60 |
+
+> **THEOREM S10.3 (scope-listed).  d(C_{r,1}) >= f(r) for every
+> r >= 2, both sectors (d_Y and d_X separately), with f(r) as
+> tabulated and f(r) = (29/48) m + O(1) = 3.625 r asymptotically.**
+> Tiers: the arithmetic and the automaton are theorem; the
+> exhaustion tables and the window-graph acyclicity are certificates
+> under the growth scope (dil-4 / smax-3 inputs, stability-checked
+> at 4 / 6 for the tree), the tooth rule (a class-minimality prune),
+> and wrap-free cover semantics (the objects have extent <= 22, so
+> literal for ell >= 24, i.e. r >= 3; r = 2 is the exact 24 anyway).
+> No closure, no drift, no ell enters: it is a statement about every
+> class-minimal y-spanning (resp. x-spanning) walk of m rows.
+
+Controls (all PASS): the ell-free floor at m = 12 is 7 <= 18 (the
+b = 0 (12,12) witness is admitted — its -6 is invisible to a drift-
+blind bound, which is the honest reason it never binds here) and
+7 <= 24 at (18,12); at m = 6 it is 2 <= 12 (r = 1 stays with the
+exact values); at (24,18) it is **11**, below the S9 certified 12 as
+it must be — and only one unit below it, with no closed march and no
+closure: the discharging assembly recovers 11/12 of the S7-S9
+machinery's value at m = 18 from tables that cost seconds.
+
+The conditional forms, for the record: under C-W7 (§15.3) the same
+partition gives 4|v| >= (32/7) m - O(1), i.e. ~6.86 r; the ladder's
+7.5 r is unavailable even conditionally; 12 r needs the momentum
+budget on top of a light-rate wall.  Stage 4 (the h = 5 hole) was
+NOT reached.
+
+### §15.6 Falsified claims and incidents (session 10)
+
+- **FALSIFIED (the charter's, re-scoped)**: "net anchor rise <= 3 +
+  #K1 inputs" as a local lemma — verified zero-input counterexamples
+  at every window weight >= 2 (§15.2).  The theorem in its place is
+  F / F2 / F3.
+- **FALSIFIED (same-session, mine)**: "the mirror lane obeys the
+  same two-row pair-min drop" — exhaustive refutation (168 holding
+  pairs); the mirror R0 is a max-gauge statement (§15.1).
+- **FALSIFIED (§14.6 item 3's extrapolation)**: "J' = 3 q/slab for
+  all h" — the W7-coast link family gives 24/7 q/slab in the u = 2
+  table (§15.3).  The census-range statement (h <= 11) is exact.
+- **Incidents**: (i) the backward W7 search (`a40_s10_w7link.py`,
+  Dijkstra with a parents dict) reached 3.5 GB RSS with < 200k pops —
+  the heavy-entry fan-out from a W7 window (~10^4 children per node)
+  outran a pop-count-gated RSS check; killed by hand, no data
+  consumed, the forward S8-engine form (`w7fwd`, 16 s) replaced it.
+  (ii) the first census launch failed on argparse (a top-level
+  `--log` placed after the subcommand); shell redirection is
+  unavailable in this environment, so every long lane now tees its
+  own log.  (iii) `experiments/bb_lab/data` is git-ignored: S10 data
+  files are force-added like their predecessors.  (iv) the exact
+  cyclic automaton minimum (756 start states x m steps) was too slow
+  at r = 40 and was replaced by the open-path bound (sound, at most
+  a few quarters weaker).  (v) the parented replay lane peaked at
+  2.27 GB RSS on one seed at g <= 25 (under the 3 GB rule; noted for
+  any deeper replay).
+- (Respected: witness weights as upper bounds — the W7 crossing and
+  the naive-form fragments are verified objects; RED/AMBER/GREEN
+  pricing — the g46 census was priced off the g40 growth (1.6x nodes,
+  ran 3.2x wall under a concurrent sibling racer); sequential heavy
+  runs; RSS <= 3 GB per process with one over-run killed; no /tmp; no
+  SAT; every consumed vector re-verified; nothing re-proposed from
+  the §9.8/§10.8/§11.7/§12/§13.6/§14.5 ledgers or A42's.)
+
+### §15.7 Residue / S11
+
+1. **The u = 1 post-coast asymptotics**: a block-to-W7 transient
+   (a u = 1 link whose post phase is a W7 coast) — the S8 forward
+   engine seeded at u = 1 with a W7-window target check in POST, or
+   a LAYERED backward march from W7 (the Dijkstra form is out).
+   Decides whether the u = 1 table's own ladder bends at 24/7 too.
+2. **The light-rate wall (C-W7)**: the k = 5 window graph (~13M
+   windows) is the next discharging rung (+4 per 14+ slabs would
+   lift the slope); the full min-mean cycle over <= 7 windows is
+   the wall itself (2e8 windows, §10.1's non-materializable core).
+   Any proven slope above 29/48 lifts f(r) for every r at once.
+3. **The momentum budget on top of S10.3**: f(r) uses no drift;
+   the census's empty rightward side (g <= 46) and F2's holding cost
+   are the ingredients for a per-column rightward cost c; with the
+   W7 coast drifting -2 per 7 rows, c >= ~3 per column would push
+   the sustained rate above 2 per row.  The quantity to prove is c.
+4. **The mirror financed half** (max-gauge form of F with the u2
+   kill set), and the mirror all-k check under the extent-14 sector
+   semantics (done here at extent 34 and 14 for the tree; the window
+   graphs used the cover).
+5. **The h = 5 hole** (Stage 4, not reached): with the g46 table the
+   two dead 5-slab shapes stand 27 units above the h = 4 optimum.
+6. **Lean**: F is a single-cell E reading (decide over a 4 x 8 window
+   after finitization); the exhaustion tables and the acyclicity
+   certificates are finite DFS certificates; S10.3's arithmetic is a
+   sum-rearrangement lemma over a slab partition.
