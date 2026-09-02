@@ -204,8 +204,57 @@ def class_kinds():
     (DATA / "s11_class_kinds.json").write_text(json.dumps(out, indent=1))
 
 
+def diag_minima():
+    """Exact class minima of the 63 diagonal-parity (pure-d) classes of
+    gross by census_pass at W = 14, 16 (walk kernel, census-complete
+    per class).  Output s11_diag_classes.json."""
+    import time
+    from bb_lab import cosetbz
+    from bb_lab.tower import rep_for, i2v, validate_banked
+    from a38_c37xx_freeze import census_pass
+    validate_banked(LAB / "data")
+    binp = cosetbz.build_kernel()
+    gross = C.member_code(12, 6)
+    Wd, _ = C.image_classes(gross, (1, 1), K=4)
+    pts = {0}
+    for b in Wd:
+        pts |= {p ^ b for p in pts}
+    pts.discard(0)
+    classes = sorted(pts)
+    assert len(classes) == 63
+    out = {}
+    for W in (14, 16):
+        t0 = time.time()
+        mins = {}
+        for lo in range(0, 63, 51):
+            chunk = classes[lo:lo + 51]
+            hits = census_pass(binp, gross,
+                               [(f"C{c}", rep_for(gross, c)) for c in chunk],
+                               W, f"s11_diag_{W}_{lo}")
+            for c in chunk:
+                ws = []
+                for h in hits[f"C{c}"]:
+                    v = i2v(h, gross.n)
+                    assert gross.is_cycle(v) and not gross.is_stab(v)
+                    assert v2i(gross.sig(v)) == c
+                    ws.append(int(v.sum()))
+                if ws:
+                    mins[c] = min(ws)
+        hist = {}
+        for c, w in mins.items():
+            hist[w] = hist.get(w, 0) + 1
+        print(f"W<={W}: {len(mins)}/63 diagonal classes populated; "
+              f"min-weight hist {hist}; {time.time() - t0:.1f} s",
+              flush=True)
+        out[str(W)] = dict(n_populated=len(mins), hist=hist)
+    (DATA / "s11_diag_classes.json").write_text(json.dumps(out, indent=1))
+
+
 if __name__ == "__main__":
     part = sys.argv[1] if len(sys.argv) > 1 else "all"
+    if part == "diag":
+        diag_minima()
+        sys.exit(0)
     if part in ("parity", "both", "all"):
         parity()
     if part in ("pullback", "both", "all"):

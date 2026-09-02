@@ -3439,9 +3439,14 @@ full gross census splits (`s11_class_kinds.json`, all 1,884 minima):
 The pure-y 2D minima have λ_y(v) > 17 at the 120-s solver cap
 (closure excess e_y ≥ 3; by Prop E with floor_cyl′(12) = 24 they
 need e_y ≥ 6 — the cushion is fully consumed at r = 1), and the 63
-diagonal-parity classes have NO logical at weight 12: their class
-minima are ≥ 14 at gross (parity lemma), the first sign that the
-(odd, odd) directions are the "long" ones.  So
+diagonal-parity classes have NO logical at weight 12.  Their exact
+minima (`a40_s11_structure.py diag`, `s11_diag_classes.json`; walk
+kernel, census-complete per class): **48 of the 63 pure-d classes
+have minimum EXACTLY 16, the other 15 have minimum ≥ 18** — at
+r = 1 the (odd, odd) parity is the "long" one, 4 above the member
+distance, the first quantitative sign that diagonal directions are
+expensive at b = 1 (compare b = 0, where the mixed/diagonal witness
+is the CHEAP one).  So
 (H2) fails at b = 0 inside the mixed sector, where NO cylinder floor
 applies, and the comparison theorem at b = 1 is EQUIVALENT to:
   (M) every class-minimal logical of a MIXED class of the b = 1
