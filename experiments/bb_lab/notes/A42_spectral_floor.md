@@ -1463,6 +1463,287 @@ i.e. d(C_1) = 12 and d(C_2) = 24 outright and d(C_r) = 12r for all r
 modulo (R1)+(R2)).  Unconditionally today: d(C_1) ≥ min(12, tor₁),
 d(C_2) ≥ min(24, tor₂) with tor_r the toroidal-sector minimum.
 
+## §2.17 SESSION 5 (2026-09-02): the mixed sector — the (18,12)
+## weight-24 census outside W_x (EMPTY), the coset-leader form of
+## (HM), the fold-kernel law, and the tower dictionary
+## (`a42_s5_*.py`; data `s5_*`)
+
+Charter: close (HM) — the residual of Theorem W's mixed half — or
+sharpen its obstruction; ground-truth the (18,12) weight-24
+minimizers outside W_x; the tower statement at a = 3; the Z₉-fibre
+form for 3 | r.  Two different "mixed"s are in play and are kept
+apart below: **A42-mixed** = a CYCLE with nonzero barren content (a
+property of the representative; every class has pure and mixed
+representatives, §2.17.3); **S11-mixed** = a CLASS outside the three
+transfer images W_x, W_y, W_d of H₁(T) (ledger §3.15).
+
+### §2.17.1 The fold-kernel law: ker p_* = W_transverse at (R) decks
+### (`a42_s5_foldkernel.py`, `s5_foldkernel.json`; machine, five frames)
+
+For a member T = (ℓ, m) and an axis fold p : T → T/⟨deck⟩, compare
+ker(p_* : H₁(T) → H₁(base)) with S11's transfer images W_x (classes
+with an x-windowed representative) and W_y:
+
+| frame | y-fold (base, k, σ_*=id) | ker p_y* | x-fold (base, k, σ_*=id) | ker p_x* |
+|---|---|---|---|---|
+| (18,12) | (18,6), 12, yes — (R) | **= W_x** | (9,12), 8, no | neither |
+| (24,18) | (24,9), 8, no | neither | (12,18), 12, yes — (R) | **= W_y** |
+| (12,12) | (12,6), 12, yes — (R) | **= W_x** | (6,12), 12, yes — (R) | **= W_y** |
+| (12,6) | (12,3), 8, no | neither | (6,6), 12, yes — (R) | **= W_y** |
+| (6,6) | (6,3), 8, no | neither | (3,6), 8, no | neither |
+
+(rank p_* = 6 in every case — the A35 universal rank; dim ker = 6.)
+So **at an (R) deck (k preserved, σ_* = id) the fold kernel IS the
+transverse transfer image**, and at a non-(R) deck it is neither.
+Mechanism (half proven): at an (R) deck im τ_* = ker p_* by the
+sheet-SES (p_*τ_* = 2 = 0, ranks 6 + 6); the identification
+im τ_y = W_x = ker ρ_x^* (Theorem P) is the machine's addition — a
+naturality of the y-transfer against the x-double-cover, not proven
+∀r.  Consequence at (18,12), exact:
+
+> a nontrivial X-logical v of (18,12) has [v] ∉ W_x  ⟺  its y-fold
+> P₀v is a NONTRIVIAL logical of (18,6) in a SEAM class (SEAM =
+> im p₀*, 63 classes), with |P₀v| = |v| − 2c, c = doubled fibres.
+
+The non-W_x sector (S11-mixed ∪ pure-y ∪ pure-d = 4,032 of 4,095
+classes) is therefore EXACTLY the seam-rung sector of the tdg432
+descent tower, and W_x is the dangerous-rung ∪ τ₀ sector.  The
+banked W = 22 seam census (68 orbits, all at 22) says the seam
+classes of (18,6) have minimum 22, hence a weight-24 non-W_x
+logical has c ≤ 1: a SECTION of a weight-24 seam element or a
+one-pair lift of a weight-22 one.  At r = 3 the roles swap: the
+y-fold of (24,18) is not (R) but the x-fold to (12,18) is, so the
+non-W_y sector of the r = 3 member is the seam sector of the x-fold
+to a [[432,12]] code — the same architecture, one level up.
+
+### §2.17.2 Stage 0 — the (18,12) weight-24 census outside W_x is
+### EMPTY: every non-W_x class has minimum ≥ 26 (certificate tier)
+### (`a42_s5_mixed24.py 24`; `s5_mixed24_W24.json`, ckpts `s5_ckpt_W24_*`)
+
+Engine: the tdg432 v2 architecture (L₂ = (9,6) coset-BZ censuses →
+L₁ = (18,6) by fibres → rungs at L₀ = (18,12)) re-targeted to W = 24,
+with the coset-BZ hit streams canonicalized to translation orbits
+chunk-wise (the W = 22 run materialized 3.9M S₁′ elements; at 24 the
+S₁′ census has 35.5M — unstreamed it exceeds the RSS cap).
+**Regression at W = 22** (5 min against the banked 20): L₂ stab
+33,691 / S₁′ 72,977 / all-class-16 7,780 orbits, seam-22 = 68
+orbits, stab₁ histogram identical to the banked run, d(L₁) = 12 with
+12 weight-12 orbits, zero weight-22 L₀ lifts — all EXACT matches
+(`s5_mixed24_W22.json`).  S11's incident (i) is resolved: the missing
+(18,6) checkpoints are re-derivable in 25 s; and the im-p₁* ≤ 12
+control census closes the nontrivial ≤ 12 slice (the seam census
+alone cannot see d(L₁) — ledger §3.13).
+
+**Production, W = 24** (wall 24.8 min, RSS 1.27 GB, 8 threads /
+8 workers):
+- L₂ censuses, certificate (exact node counts 1.72·10¹¹ + 5.1·10¹⁰
+  per pass): stab ≤ 24: 235,817 orbits (202,126 at 24; 12.7M
+  elements; lower slices = banked); S₁′ ≤ 24 (3 classes): 657,395
+  orbits (584,418 at 24; 35.5M elements; slices ≤ 22 = banked);
+  all-class ≤ 16: 7,780; d(L₂) = 10.
+- L₁ SEAM census ≤ 24 by descent (893,212 fibres, lanes deep0..7 +
+  one kernel-shift; 126 s): **1,627 orbits {22: 68, 24: 1,559}**;
+  seam minimum 22 re-certified; stab₁ ≤ 24: 169,261 orbits (125,168
+  at 24); d(L₁) = 12, the 12 weight-12 orbits reproduced.
+- Rungs over the 1,627 seam reps (sections of the weight-24 ones,
+  one-pair lifts of the weight-22 ones; RungCell's exact restricted
+  lane, ALL solutions kept): **ZERO weight-24 L₀ cycles.**
+
+> **Theorem (certificate).**  Every nontrivial X-logical of
+> [[432,12,24]] = member (2,1) of weight 24 lies in a W_x class.
+> Equivalently: all 4,032 classes outside W_x — the 3,906 S11-mixed,
+> the 63 pure-y and the 63 pure-d classes — have minimum weight
+> ≥ 26 (parity).  Ingredients: §2.17.1's equivalence (machine), the
+> seam census complete to 24 (BZ node counts exact; descent
+> completeness by the shadow-class law, the tdg432 lanes), the
+> restricted-lane rungs (exact off-support subset-sum, caps 0/1),
+> every object re-verified.  Z side by transpose duality.
+
+Readings.  (i) **Outcome (ii) of the charter**: the S11 mixed-sector
+floor (M) at r = 2 holds STRICTLY — min over S11-mixed classes ≥ 26
+> 24 = 2m — whereas at r = 1 it holds with equality through 1,092
+objects in 201 classes (A40 §16.2).  The comparison statement
+min_D ≥ min_W at (18,12) is strict: no doubly-spanning logical of
+weight 24 exists; the weight-24 minimizers are all W_x.  (ii) The
+b = 1 cushion of A40 §16.1 is real at r = 2: pure-y and pure-d
+classes sit ≥ 26 (the charter's "positive control: no mixed class
+may show < 24" is met with 2 to spare).  (iii) Calibration table
+for (HM): the only weight-24 objects seen are the τ₀-pullbacks of
+the 12 weight-12 (18,6) orbits — all pure-x, x-windowed (x-gap
+12–15), fibre profiles ε ∈ {0 (4 orbits), 6 (5), 10 (3)} — exactly
+the DOUBLES of the p = 6 tight profiles ε ∈ {0, 3, 5} of §2.12.3
+(pullback closure, §2.17.4); the L12-stack witness is the ε = 0,
+profile (0,12,0), 5-column member of the family.  Whether the W_x
+sector contains further weight-24 objects with a nonzero (stabilizer)
+fold — non-pullback period-12 floor cycles — is the dangerous-rung
+question at target 26 (`a42_s5_dangerous24.py`, §2.17.2b).
+
+### §2.17.3 (HM) in coset-leader form — an exact reformulation, and the
+### syndrome route falsified (`a42_s5_hmtest.py`, `s5_hmtest.json`)
+
+Fix p = 3q, 3 ∤ q, and let 𝔅_q ⊂ F₂^{C′} be the X-CYCLE space of the
+period-q barren cylinder/torus with the SAME pair (A, B): by Theorem A
+(no variety point of order dividing q) it is the X-STABILIZER code,
+generated by the weight-6 check rows, with H₁ = 0 (machine: k(24,2) =
+k(18,4) = 0).
+
+> **Decomposition lemma.**  Every X-cycle v of the period-3q cylinder
+> is v = w + N·s with w PURE (all fibres pairs; the ω-part, in the
+> class of v) and s ∈ 𝔅_q (the fold), N = 1 + y^q + y^{2q} the
+> Z₃-norm (= the barren idempotent e′).  Sheet form: with v =
+> (v₀, v₁, v₂) over the Z₃-quotient, a := v₀ + v₂, b := v₁ + v₂
+> (μ = a + ζb) and s = v₀ + v₁ + v₂:
+>     |v| = |s + a| + |s + b| + |s + a + b|
+> — the sum of the Hamming distances from the barren cycle s to the
+> three F₂-shadows Tr(ζ^k μ) of the ω-content (which sum to zero).
+> The halving lemma (§2.11) is the triangle inequality on this sum.
+
+> **Theorem (coset-leader form of (HM)).**  For a nontrivial ω-cycle
+> μ with support S and excess ε = |S| − 3q, (HM) holds for every
+> barren boundary s  ⟺  for every T ⊆ S,
+>     3·d(1_T, 𝔅_q) ≥ |T| − 2ε,
+> d(1_T, 𝔅_q) = the coset-leader weight of 1_T (the least number of
+> cells to add or remove to turn T into a barren stabilizer).
+> *Proof.*  (⟸) For s ∈ 𝔅_q put T := s ∩ S, x := s ∖ S ∈ 1_T + 𝔅_q;
+> then 3|s ∖ S| ≥ 3d(1_T, 𝔅_q) ≥ |T| − 2ε = |s ∩ S| − 2ε, i.e. (HM).
+> (⟹) For T ⊆ S and a coset leader x ∈ 1_T + 𝔅_q, s := 1_T + x ∈ 𝔅_q
+> has s ∖ S = x ∖ S and |s ∩ S| = |T ∖ x| + |x ∩ (S ∖ T)|; (HM) for s
+> gives 3|x ∖ S| ≥ |T ∖ x| + |x ∩ (S ∖ T)| − 2ε, and adding
+> 3|x ∩ S| ≥ |T ∩ x| gives 3|x| ≥ |T| − 2ε.  ∎
+
+Readings.  (i) T = ∅ is the pure floor |S| ≥ 3q; T = S is the
+halving-tight stratum of §2.12.4 as d(1_S, 𝔅_q) ≥ (6q − |S|)/3 — "the
+ω-support indicator is ≥ (6q − |S|)/3 cells from being a barren
+stabilizer"; (HM) is the interpolation between the two.  (ii)
+Corollary: **a barren stabilizer of weight w contained in the support
+of a nontrivial ω-cycle forces |S| ≥ 3q + w/2** — and every tight
+profile of §2.12.3 is of this kind: (10,1,0) hides a weight-10
+stabilizer (ε = 5), (6,3,0) a check row (ε = 3), while (6,0,2) and
+(3,0,1) have T = S with d = (6q − |S|)/3.  (iii) The SYNDROME route
+— d ≥ |syn′(1_T)|/3 (every cell lies in exactly three Z-checks), so
+|syn′(1_T)| ≥ |T| − 2ε would suffice — is FALSIFIED on the p = 6
+atlas: the 15 pure floor cycles (0,6,0) have |S| = 6 = 3q, ε = 0 and
+barren syndrome weight 2 (need 6), coset leaders 2 and 4 (ledger
+§3.14).  (iv) On all 66 nontrivial weight-12 cycles at p = 6 the
+coset-leader inequality is TIGHT at T = s ∩ S (3d = |T| − 2ε, and the
+S-avoiding leader equals the free one): the barren boundary of a
+floor cycle is a coset LEADER of its in-support part.  (v) Honest
+verdict: the form is the right target (a statement about the barren
+code once S is fixed, sharp on the whole tight family), but it
+supplies no induction — every candidate mechanism examined this
+session (syndrome counting, per-check multiplicities, "stabilizers
+hiding in S cost ε ≥ w/2") is a one-line consequence of the
+Decomposition lemma + the floor and conversely.  (HM) is unproven
+for q ≥ 8; its combinatorial shape is now exact.
+
+### §2.17.4 The tower dictionary (theorem) and pullback closure
+
+For the y-deck Z_{3q} → Z_{3q/2}, a ≥ 2 (π_* = 0 on H, §2.13; machine
+at a = 3, §2.17.6):
+
+> **Lift-structure lemma.**  Every cycle v at level a has fold
+> b = π_*v a BOUNDARY b = ∂h at level a − 1, and v = ∂h̃ + π^*(g) for
+> any chain-lift h̃ of h and some CYCLE g at level a − 1; [v] =
+> π^*[g].  Sheet form: v = EMB₁(b) + π^*(v₀) with |v| = |v₀| +
+> |v₀ + b|.  *Proof.*  π_*(v + ∂h̃) = b + ∂h = 0; ker(π_* on chains)
+> = im(π^*), π^* injective and ∂-equivariant, so v + ∂h̃ = π^*g with
+> ∂g = 0.  ∎
+
+So (R1) ∧ (R2) at level a ⟺ **min_{h̃} |π^*g + ∂h̃| ≥ 2·floor(a−1) for
+every nontrivial g at level a − 1** — the doubling statement, with
+the deficit mechanism explicit: the sheets v₀ and v₀ + b are base
+CHAINS with a common boundary carry(b) supported on the seam checks
+(those straddling the cut of the base), i.e. relative cycles of the
+base cut open along the seam; a cover cycle below 2·floor(a−1) needs
+a relative cycle lighter than floor(a−1) — the boundary-shortening
+the tower calculus certifies rung by rung and which fails in general
+([[576]] anti-instance, the 2d − 2 deficit wall).  The Z₃-fibre
+structure is transverse to the Z₂-seam (fibres are y-cosets of the
+order-3 subgroup, the seam a y-cut), so the Fibre Theorem gives no
+handle on the seam deficit; no uniform proof was found.
+
+**Pullback closure (one line).**  (μ, s) ↦ (π^*μ, π^*s) doubles the
+profile (|S|, |s|, |S ∩ s|, ε, D); (HM)-tight pairs pull back to
+(HM)-tight pairs, so the tight profiles at q = 2^a contain the
+2^{a−1}-fold multiples of the p = 6 family ε ∈ {0, 3, 5}.  At q = 4
+the τ₀ family of §2.17.2 realizes exactly ε ∈ {0, 6, 10}.
+
+### §2.17.5 The Z₉-fibre form (3 | r): weight table and (HM₉)
+### (`a42_s5_z9fibre.py`, `s5_z9fibre.json`; `a42_s5_p18probe.py`)
+
+p = 9q′, 3 ∤ q′: Z_{9q′} = Z₉ × Z_{q′}, F₂[Z₉] = F₂ × F₄ × F₆₄
+(y⁹ + 1 = (y+1)(y²+y+1)(y⁶+y³+1)); per Z₉-fibre the nine bits are
+the DFT triple (s, μ, ν) ∈ F₂ × F₄ × F₆₄ (character orders 1, 3, 9).
+Theorem A puts ALL homology in the μ-factor, so (s, ν) are free
+barren data (boundaries of an exact barren complex over
+F₂[Z_{q′}] × F₆₄[Z_{q′}]); the fold over the order-3 coset to the
+period-3q′ cylinder preserves the ω-content, so **π_* : H(9q′) →
+H(3q′) is an isomorphism** and floor(9q′) ≥ floor(3q′) is trivial —
+the whole question at 3 | r is the factor 3.  Exact per-fibre weight
+table (512 fibres):
+
+| (s, μ ≠ 0, ν ≠ 0) | count | fibre weights |
+|---|---|---|
+| (0,0,0) | 1 | 0 |
+| (0,0,1) | 63 | 2:9, 4:27, 6:27 |
+| (0,1,0) PURE | 3 | **6** |
+| (0,1,1) | 189 | 2:27, 4:99, 6:54, 8:9 |
+| (1,0,0) FULL | 1 | 9 |
+| (1,0,1) | 63 | 3:27, 5:27, 7:9 |
+| (1,1,0) | 3 | 3 |
+| (1,1,1) | 189 | **1**:9, 3:54, 5:99, 7:27 |
+
+So pure(μ) = 6|S|, the pure floor at 9q′ is |S| ≥ 3q′ (certified at
+q′ = 2 as pure_floor(18) = 36, §2.10), a mixed fibre weighs as little
+as 1 (the halving constant 1/6), and
+
+> **(HM₉)**: for every nontrivial μ (support S, ε = |S| − 3q′) and
+> every barren boundary (s, ν):
+>   Σ_{f ∈ S} (6 − w(s_f, μ_f, ν_f)) ≤ Σ_{f ∉ S} w(s_f, 0, ν_f) + 6ε.
+
+The Decomposition lemma and the coset-leader form carry over with
+F₂ × F₆₄ coefficients, but the per-fibre discount is no longer 0/1
+and no p = 18 certificate exists (full racer 90-bit, h-DP state
+2⁴²).  Falsify-first: the CylWindow SAT hunt for a class-nontrivial
+period-18 cycle of weight ≤ 34 in 12 columns (432 variables, 30 min)
+— see the p18 line in §2.17.7 (a witness would have refuted the
+r = 3 row; silence is an observation).
+
+### §2.17.6 The tower statement at a = 3 (machine, exact)
+### (`a42_s5_pullback_a3.py`, `s5_pullback_a3.json`)
+
+On the ω-window engine (Λ_a = F₂[y]/((y²+y+1)^{2^a}), 10 columns):
+rank π^* : H(a−1) → H(a) = 4 / 6 / 6 and rank π_* : H(a) → H(a−1) =
+2 / 0 / 0 for a = 1, 2, 3, with π_*π^* = 0 throughout — §2.13's
+"inclusion M[π^{q/2}] ⊆ M[π^q], isomorphism for a ≥ 2, pushforward
+zero for a ≥ 2" is machine-exact through p = 24.  At p = 24 every
+nontrivial class is the pullback of a p = 12 class and every
+nontrivial cycle is π^*(v₁₂) + ∂h̃ with |π^*v₁₂| ≥ 48: the r = 4 rung
+of Theorem W is the doubling statement of §2.17.4 at a = 3, with no
+enumeration route (§2.14) and no uniform proof.
+
+### §2.17.7 THEOREM W after session 5, and the hand-off to (M)
+
+Theorem W's statement and tiers are UNCHANGED at every r (r = 1, 2
+unconditional; r = 3 pure certified / mixed modulo (HM₉) at q′ = 2;
+r = 4 modulo (R1) + (R2) at a = 3; general r modulo (R1) at 6r and
+(R2)/(HM₉) at q = 2r): no rung was closed and no rung was opened.
+What changed is the shape of the residual and the torus side:
+- (R2) is now the coset-leader statement of §2.17.3 (exact) and, with
+  (R1), the single doubling statement of §2.17.4 (exact); both are
+  saturated by the pullback-closed tight family (§2.17.4).
+- **The (M)-question of A40 §16.6 is answered at r = 2, strictly**:
+  every S11-mixed class of (18,12) has minimum ≥ 26 (§2.17.2); with
+  §2.17.1 the mixed sector of any (R)-fold member is the seam sector
+  of that fold, whose floor is "seam classes of the base are long" —
+  a torus statement (seam min 22 at (18,6) against d = 12) that the
+  cylinder lemmas do not see.  At r = 3 the (R) fold is the x-fold
+  (24,18) → (12,18) (§2.17.1), so the mixed sector at r = 3 is the
+  seam sector of a [[432,12]] base — census-scale n = 432 at the
+  base, beyond the coset-BZ kernel (n ≤ 192) without a further
+  descent.
+- p = 18 solver probe: [filled at close].
+
 ## §3 Falsified / corrected (running ledger)
 
 1. S-law S_ℓ(a) = 3·2^{a−ℓ}: FALSE (S1, exhaustive; min slots = 3
@@ -1554,8 +1835,52 @@ d(C_2) ≥ min(24, tor₂) with tor_r the toroidal-sector minimum.
    classes" (an implicit reading of the deformation-cascade
    paragraph): backwards — π^* is injective (an isomorphism for
    a ≥ 2) and π_* is zero (a ≥ 2), §2.13.
+13. (S5, own assertion) "d(L₁) = 12 is visible from the stab₂ + S₁′
+   fibres alone": FALSE — the weight-12 (18,6) logicals have folds in
+   the im-p₁* cosets, not in stab₂ ∪ S₁′; the first W = 22 regression
+   run asserted d(L₁) = 12 on the seam-side census and died with
+   d = 16.  Fixed by the im-p₁* ≤ 12 control census (25 s); the seam
+   census itself was never wrong.
+14. (S5, mechanism) "The barren SYNDROME of the ω-support carries (HM)"
+   (|syn′(1_T)| ≥ |T| − 2ε would give (HM) through d ≥ |syn|/3):
+   FALSE — the 15 pure floor cycles at p = 6 have |S| = 3q with barren
+   syndrome weight 2 (need 6); their coset leaders are 2–4
+   (§2.17.3(iii)).  (HM) is a coset-leader statement, not a
+   syndrome-count statement.
+15. (S5, framing) The charter's "unified conjecture: every MIXED class
+   of a b = 1 member has minimum ≥ 2m" identifies A42's mixed HALF
+   (cycles with barren content) with S11's mixed CLASSES (outside the
+   transfer images).  They are different objects (§2.17 preamble):
+   (HM) is about representatives in EVERY class of the cylinder
+   (x-windowed sector), (M) about the non-windowed classes of the
+   torus; §2.17.1 shows the S11 non-W_x sector is the seam sector of
+   the (R) fold, whose floor at (18,12) is a torus fact (seam classes
+   of (18,6) have minimum 22) that (HM) does not see — and §2.17.2
+   shows (M) holds STRICTLY at r = 2 (≥ 26), so "= 2m" is not the
+   right conjectural value for the mixed classes at r ≥ 2 either.
+16. (S5, charter hint) "the (18,6) weight-12 minimizers are the natural
+   sources of the mixed-class weight-24 objects": not so — their
+   τ₀-pullbacks are the W_x (pure-x) objects; the non-W_x objects
+   have seam-class folds of weight 22–24 (§2.17.1).
 
 ## §4 Residue / next
+
+[S5 state: (18,12)'s weight-24 minimizers are ALL W_x (the 4,032
+non-W_x classes have minimum ≥ 26, certificate, §2.17.2) — the S11
+mixed-sector floor (M) is strict at r = 2; at (R) folds the
+S11-mixed sector is the seam sector of the fold (§2.17.1), so (M) at
+r ≥ 3 is a seam-floor question one level down the tower, not a
+cylinder question.  (HM) is unproven above q = 4 but is now exactly
+the coset-leader inequality 3·d(1_T, 𝔅_q) ≥ |T| − 2ε ∀ T ⊆ S
+(§2.17.3), and (R1) ∧ (R2) is exactly the seam-doubling statement of
+§2.17.4; the tight family is pullback-closed and the syndrome route
+is dead.  Sharpest next questions: (a) prove the coset-leader
+inequality for T ⊆ S from the ω-cycle equations (the barren code is
+fixed; the unknown is how ω-supports sit against it) — a
+finite-window, F₄-linear statement per q; (b) the r = 3 mixed sector
+= seam classes of the x-fold (24,18) → (12,18): a further descent of
+(12,18) reaching n ≤ 192 would make a weight-36 seam census the r = 3
+analogue of §2.17.2.]
 
 [S4 state: the lane's two open lemmas are now (R1) the pure σ-floor
 ∀a — equivalently "no boundary shortens a pullback" along the
