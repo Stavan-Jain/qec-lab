@@ -3160,3 +3160,81 @@ NOT reached.
    after finitization); the exhaustion tables and the acyclicity
    certificates are finite DFS certificates; S10.3's arithmetic is a
    sum-rearrangement lemma over a slab partition.
+
+## §16 SESSION 11 (2026-09-01) — THE COMPARISON THEOREM: can
+## toroidal minima beat windowed minima at b = 1?
+
+Directive: decide whether, at every b = 1 member, every doubly-
+spanning nontrivial X-logical weighs at least the member's windowed-
+sector minimum — the shortcut that would reduce the b = 1 lower half
+to Theorem W alone.  Load-bearing negative control: the statement is
+FALSE at b = 0 ((12,12): the a36 witness is doubly-spanning at 18
+while floor_cyl(12) = 24; (6,6): d = 6 while floor_cyl(6) = 12), so
+any proof must consume b = 1 arithmetic, and any sweep must reproduce
+the b = 0 violation.  Namespace: `a40_s11_*.py`, `data/a40/s11_*`.
+
+### §16.0 Stage 0 — the pinned statement (before any computation)
+
+**Setting.**  Member (ℓ, m) = (6(r+b), 6r), Λ := ⟨(ℓ,0), (0,m)⟩ ⊂ Z²,
+T := Z²/Λ.  For u ∈ Λ \ {0} write C_u := Z²/⟨u⟩ (a cylinder; by a
+unimodular change of basis C_u ≅ Z × Z_{g(u)}, g(u) = gcd of the
+coordinates of u, and the fixed pair transports to a pair on it —
+the S5 twisted-atlas reduction, §10.4) and π_u : C_u → T the covering.
+
+**Definition (u-compact).**  A torus X-cycle v is *u-compact* if
+v = π_{u*}(w) for a compactly supported X-cycle w of C_u with
+|w| = |v| (the support of w maps bijectively onto that of v: an
+injective compact lift).  Sectors of the nontrivial X-logicals of T:
+- **windowed** W := W_x ∪ W_y, W_x := (0,m)-compact, W_y :=
+  (ℓ,0)-compact.  (Lemma K's gap-defined windowed set — cyclic
+  x-gap ≥ 4, resp. y-gap ≥ 4 — is CONTAINED in W: the gap supplies
+  the lift.  W is the right boundary because Theorem W's proof uses
+  only the existence of the compact lift, so **Theorem W bounds all
+  of W_x by floor_cyl(m)**, and its θ′-mirror bounds W_y by
+  floor_cyl'(ℓ).)
+- **toroidal** D := the complement of W among nontrivial logicals
+  ("doubly-spanning": no injective compact lift to either straight
+  cylinder).  Sub-sectors: **helical** H := u-compact for some
+  u ∈ Λ outside the two axes; **2D** := u-compact for NO u ∈ Λ.
+- min_W(ℓ,m) := min{|v| : v ∈ W}, min_D(ℓ,m) := min{|v| : v ∈ D}.
+
+**COMPARISON STATEMENT (global form, the target).**  For every b = 1
+member (6r+6, 6r), r ≥ 1:   min_D(6r+6, 6r) ≥ min_W(6r+6, 6r).
+
+**Class-wise form (the stronger probe).**  H₁(T) = W_x^cl ⊕ W_y^cl
+where W_x^cl := span of the classes of x-windowed cycles (support in
+an x-window of width ℓ − 4) and W_y^cl likewise, and for every
+nonzero class c, min over c ≥ min_W with the minimum of a class in
+W_x^cl attained in W_x (resp. W_y^cl in W_y).  The decomposition is
+a linear-algebra fact per member (tested below); the attainment
+half is what the b = 0 witness must violate.
+
+**The norm reformulation (Lemma U + the wrapping norm).**  For
+u ∈ Z² \ {0} let N(u) := min weight of a nontrivial compact X-cycle
+of C_u (∞ if H₁(C_u) = 0).  N((0,p)) = floor_cyl(p); N((p,0)) = the
+mirror's floor_cyl'(p); N((3,6)) = 10 (TC63, §10.4).
+> **LEMMA U (free unwinding; proven, one line).**  If v is a
+> nontrivial X-logical of T and v is u-compact, then |v| ≥ N(u).
+> Proof: the lift w is a compact cycle of C_u; a compact trivializer
+> of w would push forward to a trivializer of v; so w is nontrivial
+> on C_u and |v| = |w| ≥ N(u).  ∎
+Hence the comparison statement at a b = 1 member is IMPLIED by
+  (H1) N(u) ≥ min_W(ℓ,m) for every u ∈ Λ \ (Z(0,m) ∪ Z(ℓ,0)), and
+  (H2) every 2D nontrivial logical weighs ≥ min_W(ℓ,m);
+and it is EQUIVALENT to (H1′) ∧ (H2) with (H1′) the same inequality
+restricted to the u realized by class-minimal helical logicals.  The
+b = 0 control must appear as a FAILURE of (H1) or (H2): the question
+"is the (12,12) witness u-compact for some u, and which" is the
+first computation of the session (if it is (12,12)-compact the
+discount is a diagonal-norm fact, N((12,12)) ≤ 18 < 24 = N((0,12)),
+and the b-bit is the period of the diagonal cylinders: g((m,m)) = m
+at b = 0 versus g((aℓ, bm)) = 6·gcd(a(r+1), br) at b = 1).
+
+**What the session will NOT claim.**  Theorem W's conditionality
+(floor_cyl(m) = 12r certified only at r ≤ 2, pure half to p = 21) is
+inherited verbatim; every "min_W = 12r" below is conditional on it
+unless r ≤ 2.  At r ≤ 2 the comparison is TRIVIALLY true (d = 12r is
+certified, so min_D ≥ d = min_W), and the empirical content at
+r ≤ 2 is the EQUALITY question (is min_D = min_W attained?) plus the
+b = 0 violations; the theorem's content lives at r ≥ 3, where no
+b = 1 population is banked and only the floors of §13–15 exist.
