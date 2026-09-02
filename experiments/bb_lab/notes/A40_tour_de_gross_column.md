@@ -3238,3 +3238,87 @@ certified, so min_D ≥ d = min_W), and the empirical content at
 r ≤ 2 is the EQUALITY question (is min_D = min_W attained?) plus the
 b = 0 violations; the theorem's content lives at r ≥ 3, where no
 b = 1 population is banked and only the floors of §13–15 exist.
+
+### §16.1 The structure theorems (hand proofs; the machine checks
+### are in §16.2)
+
+Fix a nontrivial X-logical v of T = Z²/Λ, connected in the footprint
+sense (two cells adjacent iff one Z-check reads both; class-minimal
+logicals are connected by the S6 connectivity lemma, §11.2).  Let
+V ⊂ Z² × {blk} be its plane lift (Λ-periodic), C one footprint-
+component of V, and Π(v) := {λ ∈ Λ : C + λ = C} the PERIOD LATTICE
+of v (well defined up to conjugation; the components of V are the
+Λ/Π-translates of C).
+
+> **THEOREM T (trichotomy by period rank).**  (i) rank Π(v) ≥ 1.
+> (ii) rank Π(v) = 1, Π = Zu, iff v is u-compact; then C/Π ⊂ C_u is
+> the injective compact lift.  (iii) rank Π(v) = 2: Π has finite
+> index in Λ, C/Π is a cycle of the cover torus T′ := Z²/Π (a
+> covering of T of degree [Λ:Π]) projecting bijectively onto v and
+> nontrivial there, so |v| ≥ d(T′); Π = Λ iff V is connected
+> ("fully 2D").
+> *Proof.*  Adjacency lifts through coverings (a check's footprint
+> is a footprint upstairs), so π(C) is closed under adjacency in v
+> and π(C) = v; and c₁, c₂ ∈ C with c₂ = c₁ + λ force C + λ = C, so
+> π|_C is injective modulo Π: C/Π → v is a bijection.  (i) If Π = 0,
+> C is a finite plane cycle (a component of the cycle V splits off
+> by the connectivity lemma), hence a plane boundary by the K2
+> regularity certificate (§8.1), and v = π_*(C) is a torus boundary
+> — contradiction.  (ii) With Π = Zu, C/Π is a compact cycle of C_u
+> bijective onto v (u-compact); conversely an injective compact
+> lift S̃ has plane preimage whose components have stabilizers in
+> Zu, nonzero by (i).  (iii) C/Π ⊂ T′ is bijective onto v and a
+> cycle; a trivializer on T′ would push down to one of v.  ∎
+
+So D = {rank 2} ∪ {rank 1 off the axes}, and the fully-2D objects
+are those whose plane lift is one connected net.  For a twisted
+u = (aℓ, bm) with gcd(a,b) = 1, g(u) = gcd(|a|ℓ, |b|m); a rank-1
+object in direction u must connect c to c + u by footprint steps
+(each ≤ 4 in both coordinates), so |v| ≥ max(|a|ℓ, |b|m)/4: **at a
+member, helices of weight < 12r have |a|, |b| ≤ 7 — (H1) is a FINITE
+computation per member** (N(u) over ≤ ~70 directions).
+
+> **PROPOSITION O (the cut obstruction is the class).**  For any
+> u ∈ Λ and any torus cycle v, the following are equivalent: (a) v
+> = π_{u*}(w) for SOME compact cycle w of C_u (of any weight); (b)
+> [v] ∈ W_u^cl := im(π_{u*} : H₁(C_u) → H₁(T)).  Cut form: for any
+> fundamental-domain chain w_F of the deck action on C_u (|w_F| =
+> |v|), syn(w_F) = (1 + τ)·a with τ the deck generator and a
+> supported at one cut, and every compact w with π_* w = v is
+> w_F + (1 + τ) z with syn(z) = a; the obstruction is the class of
+> a modulo compact syndromes, which vanishes iff (b).
+> *Proof.*  (b)⇒(a): [v] = [π_* w₀] gives v = π_* w₀ + ∂ζ =
+> π_*(w₀ + ∂ζ̃) for any lift ζ̃ of ζ.  (a)⇒(b) trivial.  The kernel
+> of π_* on compact chains is (1 + τ)·(compact chains) (reduction
+> modulo the deck), which gives the cut form.  ∎
+
+Define the **u-lift weight** λ_u(v) := min{|w| : w compact cycle of
+C_u, π_{u*} w = v} (∞ unless [v] ∈ W_u^cl) and the **closure excess**
+e_u(v) := (λ_u(v) − |v|)/2 ∈ Z_{≥0} (parity: |w_F + (1+τ)z| ≡ |v|
+mod 2); e_u(v) = 0 iff v is u-compact.
+
+> **PROPOSITION E (surgery inequality).**  If [v] ∈ W_u^cl then
+> |v| ≥ N(u) − 2 e_u(v).  *Proof.*  The minimizing w is a compact
+> cycle of C_u pushing to the nontrivial v, hence nontrivial on C_u
+> (Lemma U's argument), so |v| + 2e_u = λ_u ≥ N(u).  ∎
+
+**The class decomposition.**  H₁(T) = W_x^cl ⊕ W_y^cl at every
+member tested (r ≤ 4, both columns, §16.2), with both summands
+6-dimensional; so every class is c = c_x + c_y uniquely, and by
+Proposition O: x-surgery is available exactly on the pure-x classes
+(c_y = 0), y-surgery exactly on the pure-y classes, and NEITHER
+straight surgery exists on a mixed class (c_x ≠ 0 ≠ c_y).  For a
+mixed class only twisted directions u with c ∈ W_u^cl can serve.
+
+**The b = 1 cushion (the first place the arithmetic enters).**  At
+a b = 1 member the two straight floors DIFFER: floor_cyl(m) = 12r
+versus floor_cyl′(ℓ) = 12r + 12 (θ′-mirror of floor_cyl at period
+ℓ = 6r + 6; both conditional as in Theorem W).  Hence on a pure-y
+class, Proposition E gives |v| ≥ 12r + 12 − 2e_y(v) ≥ min_W whenever
+e_y(v) ≤ 6 — a 12-unit cushion that does not exist at b = 0, where
+ℓ = m and the two floors coincide.  On a pure-x class the cushion is
+0 and the comparison needs e_x(v) = 0 (i.e. a windowed minimizer) or
+an independent argument.  This is the exact shape of the "surgery
+accounting" the charter asked for: the discount term is 2e_u(v),
+and what b = 1 buys is the mismatch of the two windowed floors plus
+the thinness (g = 6·gcd(a(r+1), br)) of every twisted cylinder.
