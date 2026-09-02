@@ -1,0 +1,8 @@
+== a = 3: full-depth Lambda_3 registers (p = 24 scale) ==
+  constants: zeta=0x101 u=0x78 xt0=0x7800 xt1=0x7878 (A~-roots verified to full depth)
+  class space: dim H = 6 (Theorem H predicts 6)
+  invariance on trivials: block-1 register exact at both roots (40 checks)
+  ker R(xt0) [tangent]: n=3 [26, 47, 53]
+  ker R(xt1) [transverse]: n=15 [6, 8, 14, 19, 21, 27, 29, 35, 37, 43, 45, 48, 54, 56, 62]
+  joint kernel: [] (EMPTY — the two-run engine is class-complete at a=3)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s3d_registers_a3.json
