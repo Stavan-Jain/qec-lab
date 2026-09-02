@@ -1,0 +1,13 @@
+[08:29:59] p=6 atlas: 315 rows; barren torus (24,2) k = 0
+[08:29:59] p=6: 66 nontrivial atlas cycles analysed
+[08:29:59] T = T: {'n': 66, 'HM_fail': 0, 'B1_fail': 0, 'B2_fail': 3, 'HM_tight': 66, 'B1_tight': 66, 'B2_tight': 63}
+[08:29:59]    ('p6w12', 0, 0): n=15 B1_fail=0 B2_fail=0 (|T|,syn,d_free,d_S,need)=[(0, 0, 0, 0, 0)]
+[08:29:59]    ('p6w12', 0, 2): n=3 B1_fail=0 B2_fail=3 (|T|,syn,d_free,d_S,need)=[(6, 2, 2, 2, 6)]
+[08:29:59]    ('p6w12', 3, 0): n=30 B1_fail=0 B2_fail=0 (|T|,syn,d_free,d_S,need)=[(6, 0, 0, 0, 0)]
+[08:29:59]    ('p6w12', 5, 0): n=18 B1_fail=0 B2_fail=0 (|T|,syn,d_free,d_S,need)=[(10, 0, 0, 0, 0)]
+[08:29:59] T = S: {'n': 66, 'HM_fail': 0, 'B1_fail': 0, 'B2_fail': 18, 'HM_tight': 6, 'B1_tight': 6, 'B2_tight': 12}
+[08:29:59]    ('p6w12', 0, 0): n=15 B1_fail=0 B2_fail=15 (|T|,syn,d_free,d_S,need)=[(6, 2, 2, 2, 6), (6, 2, 4, 6, 6)]
+[08:29:59]    ('p6w12', 0, 2): n=3 B1_fail=0 B2_fail=3 (|T|,syn,d_free,d_S,need)=[(6, 2, 2, 2, 6)]
+[08:29:59]    ('p6w12', 3, 0): n=30 B1_fail=0 B2_fail=0 (|T|,syn,d_free,d_S,need)=[(9, 3, 3, 5, 3), (9, 5, 3, 7, 3), (9, 7, 3, 7, 3)]
+[08:29:59]    ('p6w12', 5, 0): n=18 B1_fail=0 B2_fail=0 (|T|,syn,d_free,d_S,need)=[(11, 3, 1, 5, 1)]
+[08:29:59] -> s5_hmtest.json
