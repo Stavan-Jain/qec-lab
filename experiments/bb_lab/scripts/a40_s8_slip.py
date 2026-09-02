@@ -154,6 +154,10 @@ class SlipLinkMarch:
         self.extent_cap, self.dcap = extent_cap, dcap
         self.tab_pre = {}
         self.tab_link = {}
+        self.tab_link_L = {}   # (h, L, dlt) -> min g (S9 additive:
+        #                        assembly-consumable resolution; no
+        #                        dominance-key change, so the S8
+        #                        regressions are unaffected)
         self.tab_slip = {}
         self.nodes = 0
         self.trunc_g = False
@@ -369,6 +373,10 @@ class SlipLinkMarch:
                         if k not in self.tab_link or \
                                 self.tab_link[k] > g2:
                             self.tab_link[k] = g2
+                        kL = (h2, L2, dlt2)
+                        if kL not in self.tab_link_L or \
+                                self.tab_link_L[kL] > g2:
+                            self.tab_link_L[kL] = g2
                     key2 = (nrows, anch_c, cls, L2, dlt2, hin2)
                     cur = nxt.get(key2)
                     if cur is not None and cur[0] <= g2:
