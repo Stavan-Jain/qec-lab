@@ -1,0 +1,12 @@
+validate_banked: PASS
+BackRacer step/canon validated at p in {3,6,9,12} (vs generic Automaton on the x^-1 pair)
+p=3: 39 atlas cycles — phi correspondence, popcount cut identity, G<=Q_B asserted at 630 cuts (bwd table complete to 16)
+p=6: 315 atlas cycles — phi correspondence, popcount cut identity, G<=Q_B asserted at 5829 cuts (bwd table complete to 18)
+p=12: 60 explicit boundaries replay through the backward automaton (forced columns + cost = weight)
+p=6 branch 0 W=13: pruned run returns == stock ({'6': [0], '10': [0], '12': [0, 7, 9, 14]}); 2422 states pruned
+p=6 branch 1 W=13: pruned run returns == stock ({'6': [0], '10': [0], '12': [0, 1, 4, 6, 9, 10, 12, 14]}); 2422 states pruned
+p=9 branch 0 W=16: pruned run returns == stock ({'6': [0], '10': [0], '12': [0], '14': [0], '16': [0]}); 94929 states pruned
+p=9 branch 0 W=18: pruned run returns == stock ({'6': [0], '10': [0], '12': [0], '14': [0], '16': [0]}); 162743 states pruned
+p=9 branch 1 W=16: pruned run returns == stock ({'6': [0], '10': [0], '12': [0], '14': [0], '16': [0]}); 94929 states pruned
+p=9 branch 1 W=18: pruned run returns == stock ({'6': [0], '10': [0], '12': [0], '14': [0], '16': [0]}); 162743 states pruned
+BATTERY GREEN
