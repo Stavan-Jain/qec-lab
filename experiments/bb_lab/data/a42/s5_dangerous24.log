@@ -1,0 +1,27 @@
+[     0.0s] === a42_s5_dangerous24 W=24 TARGET=26 WNT=20 pid=78315
+[     1.4s] tower: k 12/12/8/8, SEAM 63 classes, S1' 3 classes, top rung (R)+exact+sigma*=id; ker p0* == W_x (dim 6) VERIFIED
+[     4.7s] reloaded: stab2 235817, all2<=16 7780, stab1 169261 {'6': 1, '10': 6, '12': 51, '14': 54, '16': 589, '18': 2091, '20': 7117, '22': 34184, '24': 125168}
+[   226.1s]   s5_L2imp1_20_0_w0: kappa 50 r 10 nodes 13,432,735,555 (exact) hits 6,010,473 kernel 221s; streaming ...
+[   269.9s]   s5_L2imp1_20_0_w0: streamed 6,010,473 hits in 44s; reps so far 1056614
+[   313.6s]   s5_L2imp1_20_0_w1: kappa 50 r 9 nodes 3,160,457,385 (exact) hits 4,555,033 kernel 44s; streaming ...
+[   346.3s]   s5_L2imp1_20_0_w1: streamed 4,555,033 hits in 33s; reps so far 1104739
+[   403.0s]   s5_L2imp1_20_51_w0: kappa 50 r 10 nodes 13,432,735,555 (exact) hits 1,442,803 kernel 49s; streaming ...
+[   413.6s]   s5_L2imp1_20_51_w0: streamed 1,442,803 hits in 11s; reps so far 223997
+[   424.4s]   s5_L2imp1_20_51_w1: kappa 50 r 9 nodes 3,160,457,385 (exact) hits 1,074,390 kernel 11s; streaming ...
+[   432.1s]   s5_L2imp1_20_51_w1: streamed 1,074,390 hits in 8s; reps so far 233087
+[   434.3s] L2 im-p1* cosets <= 20: 1337826 orbit reps {'12': 183, '14': 1329, '16': 14067, '18': 127488, '20': 1194759}
+[   751.1s] L1 nontrivial census <= 20: 37820 orbit reps {'12': 12, '14': 74, '16': 660, '18': 4981, '20': 32093} (313s)
+[   751.1s] GATE: nontrivial <= 18 slice == banked 5727 orbits
+[   806.7s] dangerous rungs: 169261 stab1 reps at target 26 on 8 workers
+[   823.3s]   ... rungs 20000/169261 (17s) verdicts {'PASS': 20000} objects 0 RSS 3.22
+[   840.0s]   ... rungs 40000/169261 (33s) verdicts {'PASS': 40000} objects 0 RSS 3.22
+[   856.6s]   ... rungs 60000/169261 (50s) verdicts {'PASS': 60000} objects 0 RSS 3.22
+[   873.9s]   ... rungs 80000/169261 (67s) verdicts {'PASS': 80000} objects 0 RSS 3.22
+[   891.7s]   ... rungs 100000/169261 (85s) verdicts {'PASS': 100000} objects 0 RSS 3.22
+[   909.5s]   ... rungs 120000/169261 (103s) verdicts {'PASS': 120000} objects 0 RSS 3.22
+[   932.1s]   ... rungs 140000/169261 (125s) verdicts {'PASS': 140000} objects 0 RSS 3.22
+[   957.1s]   ... rungs 160000/169261 (150s) verdicts {'PASS': 160000} objects 0 RSS 3.22
+[  1007.6s] dangerous rungs done: {'PASS': 169242, 'VIOLATION': 19}, lanes {'restricted<=0': 125168, 'restricted<=1': 34184, 'restricted<=2': 7117, 'restricted<=3': 2091, 'restricted<=4': 589, 'kernel-shift': 108, 'restricted<=5': 4}, 58 weight-24 chains -> 45 L0 orbits (201s)
+[  1007.7s] W_x sector at weight 24 (non-pullback, fold = stab): orbits {'pure-x|x-gap': 45}, elements {'pure-x|x-gap': 9720}, classes {'pure-x': 6}
+[  1007.7s]   profiles (gap|eps|n3 -> orbits): {'x-gap|eps0|n3=0': 1, 'x-gap|eps10|n3=0': 2, 'x-gap|eps3|n3=0': 9, 'x-gap|eps5|n3=0': 7, 'x-gap|eps6|n3=0': 8, 'x-gap|eps7|n3=0': 3, 'x-gap|eps8|n3=0': 12, 'x-gap|eps9|n3=0': 3}
+[  1007.7s] DONE 1007.7s -> /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s5_dangerous24.json

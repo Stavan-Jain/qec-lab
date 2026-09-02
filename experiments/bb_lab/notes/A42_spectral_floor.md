@@ -1573,10 +1573,65 @@ the 12 weight-12 (18,6) orbits — all pure-x, x-windowed (x-gap
 12–15), fibre profiles ε ∈ {0 (4 orbits), 6 (5), 10 (3)} — exactly
 the DOUBLES of the p = 6 tight profiles ε ∈ {0, 3, 5} of §2.12.3
 (pullback closure, §2.17.4); the L12-stack witness is the ε = 0,
-profile (0,12,0), 5-column member of the family.  Whether the W_x
-sector contains further weight-24 objects with a nonzero (stabilizer)
-fold — non-pullback period-12 floor cycles — is the dangerous-rung
-question at target 26 (`a42_s5_dangerous24.py`, §2.17.2b).
+profile (0,12,0), 5-column member of the family.  The W_x sector's
+further weight-24 objects — non-pullback period-12 floor cycles with
+a stabilizer fold — are enumerated in §2.17.2b: 45 orbits, all
+x-windowed, five new excess values.
+
+### §2.17.2b The W_x sector at weight 24: the complete census — every
+### weight-24 logical of [[432,12,24]] is x-WINDOWED
+### (`a42_s5_dangerous24.py`; `s5_dangerous24.json`, ckpt `s5_ckpt_W24_L1ntrv20`)
+
+The dangerous rungs at TARGET 26 (overflow < (26 − |b|)/2, i.e.
+|v| ≤ 24) over all 169,261 stab₁ orbit reps of (18,6) up to weight
+24, with the nontrivial ≤ 20 census (37,820 orbits; the ≤ 18 slice =
+banked 5,727) feeding the kernel-shift lane (108 cells; restricted
+lanes ≤ 5 elsewhere; 201 s on 8 workers; every violation kept):
+19 violating cells (fold weights 6, 10, 12, 14, 16, 18, 20 — one at
+each of 20 and 6, three or four at the others), **58 weight-24
+chains → 45 L₀ translation orbits (9,720 elements) — all pure-x
+(asserted) and ALL x-windowed (x-gap 11–13)**, in 6 W_x classes among
+the orbit reps.  With §2.17.2 and the τ₀ family:
+
+> **Theorem (certificate).**  The weight-24 nontrivial X-logicals of
+> [[432,12,24]] are exactly the x-windowed ones: every minimum-weight
+> logical of member (2,1) lifts injectively to the period-12
+> cylinder.  Hence min_D(18,12) ≥ 26 > 24 = min_W: the comparison
+> statement of A40 §16.0 holds STRICTLY at r = 2 (equality at r = 1
+> through 1,092 two-dimensional objects; strict at r = 2 through
+> none), and the weight-24 population of (18,12) IS the period-12
+> cylinder floor population (those fitting in 14 columns).
+
+The calibration table for (HM) at q = 4 — the fibre profiles
+(n₁, n₂, n₃) of the 45 non-pullback floor cycles (every one has
+n₃ = 0, i.e. |s ∖ S| = 0 — the hiding boundary sits ENTIRELY inside
+the ω-support, |s| = 2ε exactly: the stabilizer-hiding corollary of
+§2.17.3(ii) is tight for all of them):
+
+| ε | profile (2ε, 12 − ε, 0) | orbits | pullback of p = 6? |
+|---|---|---|---|
+| 0 | (0, 12, 0) pure | 1 (+4 τ₀) | yes (ε = 0) |
+| 3 | (6, 9, 0) | 9 | NO (odd) |
+| 5 | (10, 7, 0) | 7 | NO (odd) |
+| 6 | (12, 6, 0) | 8 (+5 τ₀) | yes (2·3) |
+| 7 | (14, 5, 0) | 3 | NO (odd) |
+| 8 | (16, 4, 0) | 12 | NO (not 2·{0,3,5}) |
+| 9 | (18, 3, 0) | 3 | NO (odd) |
+| 10 | (20, 2, 0) | 2 (+3 τ₀) | yes (2·5) |
+
+So at q = 4 the tight family is NOT just the pullback of the q = 2
+family: five new excess values (3, 5, 7, 8, 9) appear, all realized
+by a barren stabilizer of weight 2ε hidden inside a pure cycle of
+support 12 + ε — the profile (6,0,2)-type with n₃ > 0 (a boundary
+overshooting S) does NOT occur at the q = 4 floor.  Coset-leader test
+(`a42_s5_hmtest.py census`): at T = s ∩ S all 45 have d(1_T, 𝔅₄) = 0
+with |T| = 2ε (tight); at T = S the coset leaders are 2–9 against the
+needs (12 − ε)… (|S| − 2ε)/3 with slack, and the syndrome bound fails
+on 9 of 45 (ε = 0, 3) — the q = 4 data confirms §2.17.3(iii)–(iv).
+
+Ops: the W_x run's parent peaked at RSS 3.22 GB (the kernel-shift
+candidate table over 207k reps × 108 translates) — 0.2 GB over the
+lane cap; it should be built per weight bucket lazily next time.
 
 ### §2.17.3 (HM) in coset-leader form — an exact reformulation, and the
 ### syndrome route falsified (`a42_s5_hmtest.py`, `s5_hmtest.json`)
