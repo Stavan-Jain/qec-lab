@@ -1,0 +1,4 @@
+[08:16:35] p=18 window 12 columns, wmax 34, time limit 1800.0s
+[08:16:36] window: n=432 vars, H (288, 432), class functionals 6 (dim Z 150, dim B 144)
+[08:46:52] timeout after 1816.6s (observation only)
+[08:46:52] done 1817s

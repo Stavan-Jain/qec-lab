@@ -1742,7 +1742,12 @@ What changed is the shape of the residual and the torus side:
   seam sector of a [[432,12]] base — census-scale n = 432 at the
   base, beyond the coset-BZ kernel (n ≤ 192) without a further
   descent.
-- p = 18 solver probe: [filled at close].
+- p = 18 solver probe (`s5_p18probe.json`): CylWindow SAT, 12
+  columns (432 variables, 6 class functionals), weight ≤ 34,
+  nontrivial: TIMEOUT at 1,817 s, no witness — uninformative (the
+  (18,12)-torus controls of A40 §16.2 time out where d is certified),
+  recorded so it is not re-run at this budget.  The r = 3 row's
+  mixed half stays exactly as in §2.16.
 
 ## §3 Falsified / corrected (running ledger)
 
