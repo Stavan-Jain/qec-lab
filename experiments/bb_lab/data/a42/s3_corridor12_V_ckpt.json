@@ -1,0 +1,366 @@
+{
+ "p": 12,
+ "cap": 22,
+ "branch": 1,
+ "xstar": 192,
+ "levels": [
+  {
+   "c": 0,
+   "novel": 1,
+   "seen": 2,
+   "rss_mb": 60,
+   "t": 0.0,
+   "prune": {
+    "gen": 350,
+    "pruned_known": 0,
+    "pruned_absent": 0,
+    "kept_absent": 323
+   },
+   "n_omega": 1,
+   "n_barren": 1
+  },
+  {
+   "c": 1,
+   "novel": 0,
+   "seen": 2,
+   "rss_mb": 60,
+   "t": 0.0,
+   "prune": {
+    "gen": 0,
+    "pruned_known": 0,
+    "pruned_absent": 0,
+    "kept_absent": 0
+   }
+  },
+  {
+   "c": 2,
+   "novel": 1,
+   "seen": 3,
+   "rss_mb": 61,
+   "t": 0.1,
+   "prune": {
+    "gen": 4072,
+    "pruned_known": 0,
+    "pruned_absent": 0,
+    "kept_absent": 3983
+   },
+   "n_omega": 1,
+   "n_barren": 1
+  },
+  {
+   "c": 3,
+   "novel": 2,
+   "seen": 5,
+   "rss_mb": 61,
+   "t": 0.1,
+   "prune": {
+    "gen": 8124,
+    "pruned_known": 0,
+    "pruned_absent": 0,
+    "kept_absent": 8016
+   },
+   "n_omega": 2,
+   "n_barren": 2
+  },
+  {
+   "c": 4,
+   "novel": 8,
+   "seen": 13,
+   "rss_mb": 63,
+   "t": 0.2,
+   "prune": {
+    "gen": 30385,
+    "pruned_known": 0,
+    "pruned_absent": 0,
+    "kept_absent": 30103
+   },
+   "n_omega": 8,
+   "n_barren": 6
+  },
+  {
+   "c": 5,
+   "novel": 27,
+   "seen": 40,
+   "rss_mb": 69,
+   "t": 0.3,
+   "prune": {
+    "gen": 106511,
+    "pruned_known": 0,
+    "pruned_absent": 0,
+    "kept_absent": 106177
+   },
+   "n_omega": 27,
+   "n_barren": 16
+  },
+  {
+   "c": 6,
+   "novel": 71,
+   "seen": 111,
+   "rss_mb": 82,
+   "t": 0.6,
+   "prune": {
+    "gen": 259454,
+    "pruned_known": 11,
+    "pruned_absent": 8058,
+    "kept_absent": 250504
+   },
+   "n_omega": 71,
+   "n_barren": 35
+  },
+  {
+   "c": 7,
+   "novel": 224,
+   "seen": 335,
+   "rss_mb": 114,
+   "t": 1.0,
+   "prune": {
+    "gen": 797984,
+    "pruned_known": 0,
+    "pruned_absent": 70731,
+    "kept_absent": 726141
+   },
+   "n_omega": 224,
+   "n_barren": 87
+  },
+  {
+   "c": 8,
+   "novel": 625,
+   "seen": 960,
+   "rss_mb": 252,
+   "t": 2.1,
+   "prune": {
+    "gen": 2013938,
+    "pruned_known": 151,
+    "pruned_absent": 629914,
+    "kept_absent": 1381259
+   },
+   "n_omega": 624,
+   "n_barren": 199
+  },
+  {
+   "c": 9,
+   "novel": 1693,
+   "seen": 2653,
+   "rss_mb": 454,
+   "t": 4.5,
+   "prune": {
+    "gen": 4683890,
+    "pruned_known": 501,
+    "pruned_absent": 1449415,
+    "kept_absent": 3230996
+   },
+   "n_omega": 1680,
+   "n_barren": 412
+  },
+  {
+   "c": 10,
+   "novel": 4622,
+   "seen": 7275,
+   "rss_mb": 623,
+   "t": 10.6,
+   "prune": {
+    "gen": 10356992,
+    "pruned_known": 1578,
+    "pruned_absent": 6549293,
+    "kept_absent": 3801245
+   },
+   "n_omega": 4595,
+   "n_barren": 834
+  },
+  {
+   "c": 11,
+   "novel": 11663,
+   "seen": 18938,
+   "rss_mb": 654,
+   "t": 21.5,
+   "prune": {
+    "gen": 19582626,
+    "pruned_known": 4710,
+    "pruned_absent": 11775567,
+    "kept_absent": 7797558
+   },
+   "n_omega": 11437,
+   "n_barren": 1541
+  },
+  {
+   "c": 12,
+   "novel": 28367,
+   "seen": 47305,
+   "rss_mb": 1039,
+   "t": 49.9,
+   "prune": {
+    "gen": 32641910,
+    "pruned_known": 9952,
+    "pruned_absent": 27633878,
+    "kept_absent": 4992025
+   },
+   "n_omega": 27816,
+   "n_barren": 2573
+  },
+  {
+   "c": 13,
+   "novel": 65143,
+   "seen": 112448,
+   "rss_mb": 1354,
+   "t": 111.8,
+   "prune": {
+    "gen": 45763376,
+    "pruned_known": 14906,
+    "pruned_absent": 36822574,
+    "kept_absent": 8921070
+   },
+   "n_omega": 63027,
+   "n_barren": 3742
+  },
+  {
+   "c": 14,
+   "novel": 142071,
+   "seen": 254519,
+   "rss_mb": 1354,
+   "t": 184.4,
+   "prune": {
+    "gen": 52665674,
+    "pruned_known": 27498,
+    "pruned_absent": 50055610,
+    "kept_absent": 2576968
+   },
+   "n_omega": 135690,
+   "n_barren": 4961
+  },
+  {
+   "c": 15,
+   "novel": 296362,
+   "seen": 550881,
+   "rss_mb": 1706,
+   "t": 247.9,
+   "prune": {
+    "gen": 49120116,
+    "pruned_known": 30567,
+    "pruned_absent": 45476526,
+    "kept_absent": 3609574
+   },
+   "n_omega": 277828,
+   "n_barren": 5513
+  },
+  {
+   "c": 16,
+   "novel": 594934,
+   "seen": 1145815,
+   "rss_mb": 1716,
+   "t": 321.3,
+   "prune": {
+    "gen": 36298910,
+    "pruned_known": 48211,
+    "pruned_absent": 35869132,
+    "kept_absent": 376992
+   },
+   "n_omega": 543133,
+   "n_barren": 6346
+  },
+  {
+   "c": 17,
+   "novel": 1137619,
+   "seen": 2283434,
+   "rss_mb": 1716,
+   "t": 469.9,
+   "prune": {
+    "gen": 20639788,
+    "pruned_known": 32733,
+    "pruned_absent": 20177124,
+    "kept_absent": 427672
+   },
+   "n_omega": 1003691,
+   "n_barren": 6127
+  },
+  {
+   "c": 18,
+   "novel": 2083778,
+   "seen": 4367212,
+   "rss_mb": 1716,
+   "t": 663.1,
+   "prune": {
+    "gen": 8731897,
+    "pruned_known": 36874,
+    "pruned_absent": 8687737,
+    "kept_absent": 5052
+   },
+   "n_omega": 1756886,
+   "n_barren": 6084
+  },
+  {
+   "c": 19,
+   "novel": 3640379,
+   "seen": 8007591,
+   "rss_mb": 1716,
+   "t": 944.0,
+   "prune": {
+    "gen": 2651876,
+    "pruned_known": 14212,
+    "pruned_absent": 2629001,
+    "kept_absent": 7840
+   },
+   "n_omega": 2897705,
+   "n_barren": 5677
+  },
+  {
+   "c": 20,
+   "novel": 6066882,
+   "seen": 14074473,
+   "rss_mb": 1716,
+   "t": 1492.7,
+   "prune": {
+    "gen": 551808,
+    "pruned_known": 5612,
+    "pruned_absent": 544808,
+    "kept_absent": 0
+   },
+   "n_omega": 4498012,
+   "n_barren": 5996
+  },
+  {
+   "c": 21,
+   "novel": 9632587,
+   "seen": 23707060,
+   "rss_mb": 2187,
+   "t": 2080.2,
+   "prune": {
+    "gen": 68604,
+    "pruned_known": 11,
+    "pruned_absent": 68593,
+    "kept_absent": 0
+   },
+   "n_omega": 6541973,
+   "n_barren": 5504
+  }
+ ],
+ "engine": "corridor jet (searchsorted member, corridor prune)",
+ "W": 22,
+ "gmax": 18,
+ "lane": "AB (theta'-dual lane by banked duality)",
+ "returns": {
+  "6": [
+   0
+  ],
+  "10": [
+   0
+  ],
+  "12": [
+   0
+  ],
+  "14": [
+   0
+  ],
+  "16": [
+   0
+  ],
+  "18": [
+   0
+  ],
+  "20": [
+   0
+  ]
+ },
+ "nonzero_reg_costs": [],
+ "aborted": "RSS",
+ "wall_s": 2101.2
+}

@@ -304,7 +304,7 @@ class BackRacer:
                 for cw in list(buckets.keys()):
                     arrs2 = buckets[cw]
                     tot = sum(x.size for x in arrs2)
-                    if len(arrs2) > 64 or tot > 1 << 22:
+                    if len(arrs2) > 16 or tot > 1 << 20:
                         merged = np.unique(np.concatenate(arrs2))
                         idx = np.searchsorted(seen_s, merged)
                         idx[idx >= seen_s.size] = seen_s.size - 1

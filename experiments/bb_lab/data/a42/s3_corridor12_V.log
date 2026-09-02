@@ -1,0 +1,25 @@
+p=12 corridor branch V (xstar=192): cap 22 W 22 gmax 18 (bwd states 1135415), budget 3.5 h; asserting banked returns {6: [0], 10: [0], 12: [0], 14: [0], 16: [0]}
+  level 0: novel 1 seen 2 rss 60MB t 0s returns [] nonzero-reg@[] prune {'gen': 350, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 323}
+  level 1: novel 0 seen 2 rss 60MB t 0s returns [] nonzero-reg@[] prune {'gen': 0, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 0}
+  level 2: novel 1 seen 3 rss 61MB t 0s returns [] nonzero-reg@[] prune {'gen': 4072, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 3983}
+  level 3: novel 2 seen 5 rss 61MB t 0s returns [] nonzero-reg@[] prune {'gen': 8124, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 8016}
+  level 4: novel 8 seen 13 rss 63MB t 0s returns [] nonzero-reg@[] prune {'gen': 30385, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 30103}
+  level 5: novel 27 seen 40 rss 69MB t 0s returns [] nonzero-reg@[] prune {'gen': 106511, 'pruned_known': 0, 'pruned_absent': 0, 'kept_absent': 106177}
+  level 6: novel 71 seen 111 rss 82MB t 1s returns [6] nonzero-reg@[] prune {'gen': 259454, 'pruned_known': 11, 'pruned_absent': 8058, 'kept_absent': 250504}
+  level 7: novel 224 seen 335 rss 114MB t 1s returns [6] nonzero-reg@[] prune {'gen': 797984, 'pruned_known': 0, 'pruned_absent': 70731, 'kept_absent': 726141}
+  level 8: novel 625 seen 960 rss 252MB t 2s returns [6] nonzero-reg@[] prune {'gen': 2013938, 'pruned_known': 151, 'pruned_absent': 629914, 'kept_absent': 1381259}
+  level 9: novel 1693 seen 2653 rss 454MB t 5s returns [6] nonzero-reg@[] prune {'gen': 4683890, 'pruned_known': 501, 'pruned_absent': 1449415, 'kept_absent': 3230996}
+  level 10: novel 4622 seen 7275 rss 623MB t 11s returns [6, 10] nonzero-reg@[] prune {'gen': 10356992, 'pruned_known': 1578, 'pruned_absent': 6549293, 'kept_absent': 3801245}
+  level 11: novel 11663 seen 18938 rss 654MB t 21s returns [6, 10] nonzero-reg@[] prune {'gen': 19582626, 'pruned_known': 4710, 'pruned_absent': 11775567, 'kept_absent': 7797558}
+  level 12: novel 28367 seen 47305 rss 1039MB t 50s returns [6, 10, 12] nonzero-reg@[] prune {'gen': 32641910, 'pruned_known': 9952, 'pruned_absent': 27633878, 'kept_absent': 4992025}
+  level 13: novel 65143 seen 112448 rss 1354MB t 112s returns [6, 10, 12] nonzero-reg@[] prune {'gen': 45763376, 'pruned_known': 14906, 'pruned_absent': 36822574, 'kept_absent': 8921070}
+  level 14: novel 142071 seen 254519 rss 1354MB t 184s returns [6, 10, 12, 14] nonzero-reg@[] prune {'gen': 52665674, 'pruned_known': 27498, 'pruned_absent': 50055610, 'kept_absent': 2576968}
+  level 15: novel 296362 seen 550881 rss 1706MB t 248s returns [6, 10, 12, 14] nonzero-reg@[] prune {'gen': 49120116, 'pruned_known': 30567, 'pruned_absent': 45476526, 'kept_absent': 3609574}
+  level 16: novel 594934 seen 1145815 rss 1716MB t 321s returns [6, 10, 12, 14, 16] nonzero-reg@[] prune {'gen': 36298910, 'pruned_known': 48211, 'pruned_absent': 35869132, 'kept_absent': 376992}
+  level 17: novel 1137619 seen 2283434 rss 1716MB t 470s returns [6, 10, 12, 14, 16] nonzero-reg@[] prune {'gen': 20639788, 'pruned_known': 32733, 'pruned_absent': 20177124, 'kept_absent': 427672}
+  level 18: novel 2083778 seen 4367212 rss 1716MB t 664s returns [6, 10, 12, 14, 16, 18] nonzero-reg@[] prune {'gen': 8731897, 'pruned_known': 36874, 'pruned_absent': 8687737, 'kept_absent': 5052}
+  level 19: novel 3640379 seen 8007591 rss 1716MB t 945s returns [6, 10, 12, 14, 16, 18] nonzero-reg@[] prune {'gen': 2651876, 'pruned_known': 14212, 'pruned_absent': 2629001, 'kept_absent': 7840}
+  level 20: novel 6066882 seen 14074473 rss 1716MB t 1495s returns [6, 10, 12, 14, 16, 18, 20] nonzero-reg@[] prune {'gen': 551808, 'pruned_known': 5612, 'pruned_absent': 544808, 'kept_absent': 0}
+  level 21: novel 9632587 seen 23707060 rss 2187MB t 2082s returns [6, 10, 12, 14, 16, 18, 20] nonzero-reg@[] prune {'gen': 68604, 'pruned_known': 11, 'pruned_absent': 68593, 'kept_absent': 0}
+  RSS cap (2658MB) — clean abort (completed levels certified)
+p=12 corridor branch V: completed level 21; nonzero-register costs []

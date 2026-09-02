@@ -112,9 +112,12 @@ def main():
                 n_barren=int(np.unique(_proj(sts, evB)).size),
             )
             out[f"{tag}_L{lvl}"] = rec
-            print(f"{tag} L{lvl}: n={rec['n']}  absent-G "
-                  f"{rec['n_absent']}  pcs "
-                  f"{min(rec['pcs_hist'])}..{max(rec['pcs_hist'])}  "
+            med = int(np.median(pcs))
+            print(f"{tag} L{lvl}: n={rec['n']}  known-closers "
+                  f"{rec['n'] - rec['n_absent']}  heavy-window "
+                  f"unknowns {rec['n_absent']}  pcs median {med} "
+                  f"(range {min(rec['pcs_hist'])}.."
+                  f"{max(rec['pcs_hist'])})  "
                   f"joint-cols {rec['slots_joint']}", flush=True)
     out["gmax"] = gmax
     (DATA / "s3c_corner_census.json").write_text(
