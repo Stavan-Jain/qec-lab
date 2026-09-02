@@ -3322,3 +3322,241 @@ an independent argument.  This is the exact shape of the "surgery
 accounting" the charter asked for: the discount term is 2e_u(v),
 and what b = 1 buys is the mismatch of the two windowed floors plus
 the thinness (g = 6·gcd(a(r+1), br)) of every twisted cylinder.
+
+### §16.2 Stage 1 — the empirical verdict (`a40_s11_compare.py
+### classify / surgery / hunt / norm`, `s11_*.json`; validate_banked
+### green before every lane)
+
+The classifier decides u-compactness EXACTLY: an injective lift is
+searched among the preimages in an X-window of C_u wide enough to
+hold every connected compact lift (|v| × the maximal footprint
+X-step, per component), so a positive verdict is a verified compact
+cycle of C_u projecting bijectively onto v and a negative verdict is
+solver-UNSAT over an exhaustive window (descriptive labels; no floor
+consumes a negative verdict).  Gap sectors (Lemma K) are computed
+alongside; conventions (READ/BND offset tables) are asserted against
+the code's own H_Z/H_X rows.  Directions tested: 16 (all
+gcd(a,b) = 1 with |a|, |b| ≤ 3, up to sign).
+
+| frame | population (all re-verified: cycle, non-stab, class) | sector minima (n) | H₁ = W_x ⊕ W_y |
+|---|---|---|---|
+| (6,6) = member (1,0), b = 0 | all 84 nontrivial w ≤ 6 (census-complete) | **2D: 6 (84)**; W_x, W_y, helical: none | (window def. vacuous at ℓ = 6; cylinder images 6+6 ✓) |
+| (12,12) = member (2,0), b = 0 | a36 witness + 48 (12;4,4)-w6 shear pullbacks = 49 distinct w18 | **2D: 18 (49)**; nothing else | ✓ 6 ⊕ 6 |
+| (12,6) = member (1,1), gross | all 1,884 nontrivial w ≤ 12 (census-complete, 246 classes) | **2D: 12 (1,092)**, W_x: 12 (792); W_y, helical: none | ✓ (W_y window-vacuous at m = 6; cylinder images 6+6) |
+| (18,12) = member (2,1) | the L12×2 τ₀-witness (w24) | W_x: 24 (1); 2D at 24: **OPEN** (SAT hunts timed out, below) | ✓ 6 ⊕ 6 |
+| (24,18), (18,18), (30,24) | no population | — | ✓ 6 ⊕ 6 each |
+
+**The b = 0 control (REQUIRED, reproduced twice).**  At (12,12) the
+witness and all 48 shear pullbacks are 2D (no injective compact lift
+in any of 16 directions; gap-dense both axes) at weight 18 <
+24 = floor_cyl(12) = min_W: the comparison statement FAILS at b = 0
+as it must.  At (6,6) all 84 minima are 2D at 6 < 12 = min_W: a
+second b = 0 violation at r = 1.  Both violations are in the 2D
+sector — NOT helical: the diagonal-helix reading of §16.0 is
+REFUTED (the witness is not (12,±12)-compact, and N((12,±12)) ≥ 12,
+N((4,4)) ≥ 12, N((6,6)) ≥ 12 at Wcap 11 by the twisted atlas).
+
+**b = 1, r = 1 (gross): equality, massively.**  min_D = 12 = min_W:
+1,092 of the 1,884 minimum-weight logicals are 2D, and 201 of the
+246 classes that contain a weight-12 logical have ONLY 2D minimizers
+(45 have windowed ones).  The class-wise "attainment" form of §16.0
+is therefore FALSE already at r = 1: the comparison holds globally
+with equality, not class by class.  Consistency: the SAT hunt for
+gap-dense nontrivial logicals of weight ≤ 12 at gross finds them
+immediately (12 translation-orbits, all 2D on re-classification).
+
+**Helices do not exist in any banked population**: zero objects in
+W_y, zero helical, at every frame — every non-windowed minimizer is
+fully 2D.  Twisted-cylinder floors (`norm` lane, Wcap 11, compact
+triviality by the generator march, TC63 control N((3,6)) = 10
+reproduced): N(u) ≥ 12 for u ∈ {(4,4), (6,6), (12,6), (12,−6),
+(24,−6), (12,12), (12,−12)}; (24,6) exceeded the 4M-state cap.
+Cost: (12,6)-lattice directions at Wcap 11 run 3–14 s; the g = 12
+directions 200–290 s; Wcap 23 (the r = 2 helix question) is RED for
+this engine.
+
+**The (18,12) equality question — OPEN.**  SAT existence hunts for
+gap-dense nontrivial logicals (pycryptosat, XOR-native, cardinality
+by sequential counter; nontriviality as an OR over the 12 pairings;
+witnesses verified end to end, UNSAT never consumed): (12,12) ≤ 18
+finds the witness family in 0.2 s and (12,12) ≤ 17 / (18,12) ≤ 23
+time out (300 / 600 s) — the solver cannot certify emptiness where
+d is already certified, so its silence at (18,12) ≤ 24 (1,500 s)
+and in the mixed-class-restricted rerun (§16.3; 1,800 s) is
+uninformative.  Whether min_D(18,12) = 24 or > 24 is listed residue
+(§16.6); the L12-stack minimum is x-windowed and its class is pure-x.
+
+### §16.3 THEOREM P — the parity law of cylinder images, and the
+### mixed sector (`a40_s11_structure.py`, `s11_parity_law.json`,
+### `s11_pullback.json`)
+
+Computing W_u^cl = im(π_{u*}) by exact linear algebra (kernel of the
+cylinder syndrome on a K-period X-window, pushed forward; stable
+between K = 4 and K = 6) for 22 directions u = (aℓ, bm) at (6,6),
+(12,6), (12,12), (18,12), (24,18):
+
+> **THEOREM P (parity law; certificate at the five frames, proof
+> sketch below).**  W_u^cl depends on u only through (a mod 2,
+> b mod 2).  The three subspaces W_x := W_{(0,1)}, W_y := W_{(1,0)},
+> W_d := W_{(1,1)} are each 6-dimensional and PAIRWISE COMPLEMENTARY
+> (every pair spans H₁(T)); W_d is the graph of an isomorphism
+> W_x → W_y (every basis vector of W_d has both components nonzero).
+> Hence H₁(T) ≅ F₄ ⊗_{F₂} U with U 6-dimensional and W_{(a,b)} =
+> (a + bω) ⊗ U: the 3·63 = 189 nonzero classes with a compact
+> cylinder representative in SOME direction are exactly the rank-one
+> tensors, and the remaining 4095 − 189 = **3,906 classes (95.4%)
+> are MIXED: no compact cylinder representative in ANY direction, so
+> no surgery of any kind (straight or twisted) exists for them.**
+> *Why (the structural reason, with one measured input).*  π_u :
+> C_u → T factors through the index-2 cover T_u := Z²/⟨u, 2Λ⟩,
+> which depends only on u mod 2Λ; so W_u^cl ⊂ im(τ_u), the transfer
+> from T_u, whose rank is k/2 = 6 by the A35 sheet-SES (universal).
+> Equality by dimension.  Measured (same script): for each of the
+> three Z₂-covers T_x = (2ℓ, m), T_y = (ℓ, 2m), T_d =
+> Z²/⟨(ℓ,m),(2ℓ,0)⟩ the pullback ρ^* : H₁(T) → H₁(T_u) has rank 6 and
+> **ker ρ_u^* = W_u EXACTLY** at (12,6), (12,12), (18,12) — the
+> sheet-SES with σ_* = id in the form ρ^*τ_* = 1 + σ_* = 0.
+
+> **COROLLARY P1 (mixed classes are seen by every Z₂-cover).**  If
+> [v] is mixed, ρ_u^* v (weight 2|v|) is a nontrivial logical of
+> EACH of T_x, T_y, T_d; hence |v| ≥ ½ max(d(T_x), d(T_y), d(T_d)).
+> If [v] is rank one of parity p, it dies on T_p and is nontrivial on
+> the other two covers.  (The (12,12) witness: pullbacks of weight 36,
+> nontrivial on all three covers — verified.)
+
+**Where the b = 0 discount lives — decided.**  Every cheap 2D object
+found sits in a MIXED class: all 84 minima of (6,6), all 49 witnesses
+of (12,12), and 24 of the 30 sampled 2D class-minima of gross (the
+other 6 are in PURE-y classes with λ_y(v) > 17 at the 120-s solver
+cap, i.e. closure excess e_y ≥ 3; by Prop E with floor_cyl′(12) = 24
+they need e_y ≥ 6 — the cushion is fully consumed at r = 1).  So
+(H2) fails at b = 0 inside the mixed sector, where NO cylinder floor
+applies, and the comparison theorem at b = 1 is EQUIVALENT to:
+  (M) every class-minimal logical of a MIXED class of the b = 1
+      member weighs ≥ min_W = 12r,   plus
+  (R1) the rank-one sector: Prop E with (H1) [finite per member] and
+      the excess control.
+At r = 1, (M) holds with equality (1,092 objects).  At r = 2 it holds
+by d = 24 (certified) and the equality question is open.  At r ≥ 3
+it is the conjecture's lower half, restated: **the shortcut does not
+bypass the closure-aware program — it relocates it exactly to the
+mixed sector**, the 95.4% of classes invisible to every cylinder.
+
+### §16.4 Stage 2 — the surgery attempt: outcome and the precise
+### obstruction
+
+What is PROVEN (hand, with the certificate inputs named):
+1. **Theorem T** (trichotomy: windowed / helical / 2D by the rank of
+   the period lattice), **Lemma U** (u-compact ⟹ |v| ≥ N(u)),
+   **Prop O** (the cut obstruction is the class: surgery in direction
+   u exists iff [v] ∈ W_u^cl), **Prop E** (|v| ≥ N(u) − 2e_u(v)).
+2. **Theorem P** at the five frames (certificate) with the transfer
+   factorization as its mechanism; **Corollary P1**.
+3. **(H1) is finite** per member (helices below 12r have
+   |a|, |b| ≤ 7), and holds at r = 1 for every direction tested
+   (N(u) ≥ 12 = min_W); at r ≤ 2 the whole comparison is implied by
+   the certified d.
+4. **The b = 1 cushion**: on pure-y classes |v| ≥ 12r + 12 − 2e_y(v),
+   conditional on floor_cyl′(6r+6) = 12r + 12.
+
+What the surgery CANNOT do, precisely: a cut-and-close surgery in
+direction u is available exactly on the 63 classes of W_u^cl
+(Prop O), so at most 189 classes admit any surgery at all; the
+b = 0 discount is realized in the 3,906 MIXED classes (witness at
+(12,12); all of (6,6)); and on the rank-one classes the surgery
+inequality carries the excess −2e_u(v) which is NOT small (e_y ≥ 3
+at gross, needing ≥ 6 for the pure-y floor to be met), so even there
+"e = 0 for class-minimal 2D objects" is false in general and the
+comparison on rank-one classes needs the cushion (pure-y, diagonal:
+N ≥ 12r + 12 conjecturally) rather than the excess.  Largest special
+case that falls: **rank-one classes of parity ≠ x at b = 1 with
+excess ≤ 6 (pure-y) — and every helical object at r = 1** (N(u) ≥ 12
+for all tested u).  The obstruction, in one sentence: *the b = 1
+comparison theorem is the statement that MIXED classes of the member
+have no logical below 2m, and mixed classes are exactly those that
+every Z₂-descent detects but no cylinder sees — the doubling-deficit
+problem (A38's F2b lane) in its cleanest form: |v| ≥ ½ d(T_u) for
+all three covers T_u, and d(T_u) itself is a torus distance.*  The
+b-bit enters through the three covers of a b = 1 member: T_x =
+(12r+12, 6r), T_y = (6r+6, 12r), T_d = Z²/⟨(6r+6, 6r), (12r+12, 0)⟩,
+whose shortest lattice vectors in the wrapping norm are all "long"
+(no diagonal (m,m) direction of period m exists, unlike b = 0 where
+T_d contains (m,m) with N((m,m)) ≤ 2m − 6 realized by the witness
+species).
+
+### §16.5 Falsified claims and incidents (session 11)
+
+- **FALSIFIED (mine, §16.0's reading)**: "the b = 0 witness is a
+  diagonal helix, N((12,12)) ≤ 18" — the witness is fully 2D (no
+  injective compact lift in 16 directions), its class is MIXED
+  (outside all three cylinder images, pulls back nontrivially to
+  all three Z₂-covers), and N((12,±12)) ≥ 12 at Wcap 11 with no
+  weight-≤ 11 nontrivial compact cycle; the discount is a
+  mixed-class phenomenon, not a twisted-cylinder one.
+- **FALSIFIED (the class-wise attainment form of §16.0)**: at gross,
+  201 of 246 populated classes have ONLY 2D minimizers at weight 12.
+  The comparison holds globally with equality, never class by class.
+- **NOT a floor: SAT emptiness.**  Every UNSAT/timeout here is an
+  observation; the (12,12) ≤ 17 and (18,12) ≤ 23 controls (where d
+  is certified) TIMED OUT, which calibrates the (18,12) ≤ 24 silence
+  as uninformative.  Witnesses found (gross w12 gap-dense ×12; the
+  (12,12) witness family) are verified objects.
+- **Observation, not claim**: the closure excess is not universally
+  small (e_y ≥ 3 at gross pure-y 2D minima, solver-observed at a
+  120-s cap); Prop E's discount term cannot be bounded by the borrow
+  radius.
+- **Incidents**: (i) the (18,6) ≤ 22 checkpoint files that
+  `a40_s3_l1_gates.py` reads (`tdg432/ckpt_W22_{ntrv1,seam1}.jsonl`)
+  are ABSENT from `data/a40/tdg432/` (only sweeps/rungs are banked) —
+  the (18,6) population could not be re-audited this session and the
+  S3 gate script no longer runs as written (flagged; n = 216 exceeds
+  the walk kernel, so it is not recomputable in-session).  (ii) the
+  twisted-atlas direction (24,6) exceeded the 4M-state cap (RSS
+  guard never tripped; peak < 1 GB); the g = 12 directions cost
+  200–290 s at Wcap 11 — Wcap 23 is RED for this engine.  (iii)
+  shell heredocs and `&` are blocked in this environment; all lanes
+  tee their own logs (S10 rule) and run via the harness's
+  background mode.  (iv) log monitors time out silently at 5 min
+  regardless of the requested timeout; polling by `until` loops
+  replaced them.
+- (Respected: validate_banked green before every lane; every
+  consumed vector re-verified end to end — cycle, non-stabilizer,
+  class, weight; witness weights as upper bounds only; no SAT on any
+  certificate path — SAT appears only as a witness hunter and as the
+  exact decision procedure for the DESCRIPTIVE u-compactness labels,
+  never in a floor; RED/AMBER/GREEN pricing (the norm lane priced
+  Wcap 11 off the S5 twisted atlas; Wcap 23 declared RED without
+  launching); sequential heavy runs, RSS guard 2.5 GB in code, no
+  /tmp; nothing re-proposed from the §9.8/§10.8/§11.7/§12.9/§13.6/
+  §14.5/§15.6 ledgers or A42's.)
+
+### §16.6 Residue / S12
+
+1. **The (18,12) equality question**: does a MIXED class of (18,12)
+   contain a weight-24 logical?  A certificate route: the tdg432
+   descent census restricted to the 3,906 mixed classes at W = 24
+   (the mixed classes are those outside ker ρ^* for all three
+   covers — computable from the rung data), or the S7 closed march at
+   (m,ℓ) = (12,18) with g-cap 96 restricted to all-heavy-8 profiles
+   (the L12 stack's profile) — both priced, neither run.
+2. **Theorem P as a theorem**: the transfer factorization + rank
+   τ* = 6 + σ_* = id gives W_u^cl = ker ρ_u^*; write it out and Lean
+   it (finite linear algebra per member; the ∀r statement needs the
+   A35 sheet-SES).
+3. **(H1) at r = 2, 3**: N(u) for u = (18a, 12b), (24a, 18b),
+   |a|, |b| ≤ 7, needs the corridor-racer engine (A42 §2.9) on the
+   TRANSPORTED pair at period g(u) ∈ {6, 12, 18, …}; the S4 automaton
+   is RED beyond Wcap ~13 at g = 6.
+4. **The mixed-sector floor (M)** — the whole remaining gap, now
+   with a tool: Corollary P1's three-cover descent, |v| ≥ ½ d(T_u),
+   iterated (the pullback class on T_u is again rank-one or mixed
+   there) — the A38 deficit machinery applies verbatim, and the
+   b = 1 arithmetic is visible as the absence of any period-m
+   diagonal in the covers' lattices.  The sharpest question: **at a
+   b = 1 member, is every mixed class's minimum ≥ 2m?**  (True at
+   r = 1 with equality, r = 2 by certificate; the conjecture at
+   r ≥ 3.)
+5. **Lean**: Theorem T / Lemma U / Prop O / Prop E are finite-free
+   hand lemmas over the covering-space formalism (a natural
+   companion to the BBCover layer); Theorem P's per-member instance
+   is a rank computation.

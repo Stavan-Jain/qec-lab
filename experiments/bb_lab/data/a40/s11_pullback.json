@@ -1,0 +1,101 @@
+{
+ "(12, 12)": {
+  "x": {
+   "cover_k": 12,
+   "cover_orders": [
+    12,
+    24
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "x",
+   "witness_pullback_nontrivial": true
+  },
+  "y": {
+   "cover_k": 12,
+   "cover_orders": [
+    12,
+    24
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "y",
+   "witness_pullback_nontrivial": true
+  },
+  "d": {
+   "cover_k": 12,
+   "cover_orders": [
+    12,
+    24
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "d",
+   "witness_pullback_nontrivial": true
+  }
+ },
+ "(12, 6)": {
+  "x": {
+   "cover_k": 12,
+   "cover_orders": [
+    6,
+    24
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "x"
+  },
+  "y": {
+   "cover_k": 12,
+   "cover_orders": [
+    12,
+    12
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "y"
+  },
+  "d": {
+   "cover_k": 12,
+   "cover_orders": [
+    6,
+    24
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "d"
+  }
+ },
+ "(18, 12)": {
+  "x": {
+   "cover_k": 12,
+   "cover_orders": [
+    12,
+    36
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "x"
+  },
+  "y": {
+   "cover_k": 12,
+   "cover_orders": [
+    6,
+    72
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "y"
+  },
+  "d": {
+   "cover_k": 12,
+   "cover_orders": [
+    6,
+    72
+   ],
+   "rank_pullback": 6,
+   "dim_ker": 6,
+   "ker_equals": "d"
+  }
+ }
+}
