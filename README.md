@@ -25,7 +25,8 @@ and everything in flight:
   [gross-code distance proof](docs/gross-distance-proof.md) (+
   [LaTeX](docs/gross-distance-proof.tex)), the
   [doubling-template extensibility program](docs/gross-distance-extensibility.md),
-  the [toric distance proof](docs/distance_proof.md), Lean pattern references,
+  the [toric distance proof](docs/distance_proof.md), the
+  [Steane distance-3 explainer](docs/steane-distance-proof.md), Lean pattern references,
   and the [pipeline architecture](docs/pipeline.md) /
   [operator's manual](docs/pipeline-usage.md).
 - **`dashboard/`** — the static generator behind the
