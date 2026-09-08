@@ -1,0 +1,127 @@
+{
+ "L": 18,
+ "target": 30,
+ "frames": [
+  {
+   "p": 3,
+   "d": 0,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.5,
+   "witnesses": []
+  },
+  {
+   "p": 3,
+   "d": 3,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.1,
+   "witnesses": []
+  },
+  {
+   "p": 3,
+   "d": 6,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.2,
+   "witnesses": []
+  },
+  {
+   "p": 3,
+   "d": 9,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.2,
+   "witnesses": []
+  },
+  {
+   "p": 3,
+   "d": 12,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.2,
+   "witnesses": []
+  },
+  {
+   "p": 3,
+   "d": 15,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.1,
+   "witnesses": []
+  },
+  {
+   "p": 6,
+   "d": 0,
+   "n": 216,
+   "k": 12,
+   "orders": [
+    6,
+    18
+   ],
+   "idx": 3,
+   "W": 10,
+   "status": "timeout",
+   "t": 120.5,
+   "witnesses": []
+  },
+  {
+   "p": 6,
+   "d": 6,
+   "n": 216,
+   "k": 12,
+   "orders": [
+    6,
+    18
+   ],
+   "idx": 3,
+   "W": 10,
+   "status": "timeout",
+   "t": 120.4,
+   "witnesses": []
+  }
+ ],
+ "torus_orbits": {}
+}
