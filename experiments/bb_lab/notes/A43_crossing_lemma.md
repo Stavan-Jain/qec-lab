@@ -1,5 +1,18 @@
 # A43 — The crossing-lemma lane: d = 6(2r+b−1) reduced to Theorem W plus one torus lemma
 
+> **2026-09-08 correction: the all-rectangle L3 in §2.1 is false.**
+> The new `a43_s2_codex_audit.py` verifies a nontrivial weight-48 cycle
+> on `(54,6)` with gaps `(3,1)`, below the claimed floor 54, and a
+> weight-66 example on `(78,6)`, below 78. Both have injective cylinder
+> lifts: gap-density and S11's no-cylinder-lift sector are different.
+> These frames are outside IBM's b-bit family, so this refutes the
+> proposed stronger route, not IBM's distance conjecture. The unproved
+> D-sector restriction must not be conflated with the refuted statement.
+> The axis-mirror argument and blanket exclusion of all LP methods also
+> need the qualifications in `A43_S2_codex_audit.md`. The text below is
+> the historical proposal, not an established replacement for prior
+> routes. See `IBM_EXACT_DISTANCE_PROGRAM.md` for the current program.
+
 Branch `claude/a40-tour-de-gross-column` (PR #27).  Claimed 2026-09-02.
 Sibling of A40 (toroidal/momentum lane) and A42 (spectral/cylinder lane)
 on the same branch; reads both, modifies neither.  Namespace:

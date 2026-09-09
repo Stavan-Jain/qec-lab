@@ -6,6 +6,68 @@ claim below is banked in `A40_tour_de_gross_column.md` (§ refs) or
 `A42_spectral_floor.md` with its tier; this file adds no new claims.
 Last updated: 2026-08-29 (post S9).
 
+> **2026-09-08 audit update.** The all-rectangle, gap-dense L3 proposed
+> in A43 is refuted: `(54,6)` has a verified nontrivial weight-48 example
+> with gaps `(3,1)`, whereas L3 demands 54. It still lifts to a cylinder.
+> Thus the gap-defined and no-cylinder-lift sectors must be distinguished;
+> the assembly below is a conditional historical proposal and does not
+> justify retiring the earlier comparison route. This is not a
+> counterexample to an IBM member. Current proof tracks, sources, and an
+> exact related comparison family are in `IBM_EXACT_DISTANCE_PROGRAM.md`.
+>
+> **Cylinder scope correction.** `A42_S6_codex_residual.md` audits the
+> later original-lane certificates without transferring them through an
+> unproved axis mirror. The rotation produces `(B,bar A)`, a different
+> cylinder pair. Strict primary purity also differs from three-sheet
+> purity when the odd part grows; order-127 and higher-three fibres need
+> their stated qualifications. The historical inventory below must not
+> be read as an unconditional all-orientation, all-period theorem.
+>
+> **Later analytic progress, 2026-09-08.** The original and mirror
+> canonical coset leaders are now proved unique for every `3 ∤ q`
+> (`A42_S7_spatial_equality.md`, `A42_MIRROR_CANONICAL.md`), closing
+> the fixed-support small-hole strata, not full HM. S8 certifies a
+> fixed generator strip and refutes its x-periodic relaxation. The
+> all-size S11 parity law and three-cover kernels, including the
+> order-127 exception, are proved and independently reviewed in
+> `A40_PARITY_TOR_PROOF.md`. These classify homology, not its metric.
+> `GROSS_SURFACE_PRODUCT.md` separately proves the exact LDPC family
+> `[[144(3t^2-3t+1),12,12t]]`; it changes the BB architecture and is
+> not an IBM-conjecture proof. The current scope and falsified
+> shortcuts are summarized in `IBM_EXACT_DISTANCE_PROGRAM.md` §7.
+>
+> **Further scope checks, 2026-09-08.** That program's §8 records
+> safe but restricted tail elimination, a weight-increasing pure
+> normalization counterfamily, an obstruction to fixed-width linear
+> HM recovery, and exact diagonal-invariant sector minima. None
+> closes the unrestricted metric problem. The new all-b=1
+> single-block class theorem is `A43_S4_block_purity.md`; even its
+> class-matched colon relaxation is only six at gross, as proved in
+> `IBM_RELATIVE_COLON_OBSTRUCTION.md`. The original conjecture
+> remains open. These current qualifications supersede any stronger
+> reading of the historical assembly below.
+>
+> **Exact local gap, 2026-09-08.** `IBM_CANONICAL_EXACT_GAP.md`
+> proves that the original dyadic canonical affine problem has
+> unique minimum q and exact next weight q+4 for every q>=2.
+> This closes its fixed-support hole strata through six, not
+> unrestricted HM or IBM distance. The original pure-cylinder
+> Cartier maps and their metric obstructions are recorded in
+> `A42_S15_Cartier_descent.md`. Current details are in
+> `IBM_EXACT_DISTANCE_PROGRAM.md` §§10–11.
+
+> **Exact modified-family theorem, 2026-09-08.** Keeping the original
+> cleared P and changing only Q to (1+x+x^2)(y+x+1) now gives
+> the exact [[72r^2,12,4r]] family for every r>=1 on the original
+> square frames. Check weight becomes eight, while the ordinary
+> primary algebra, including its tangent component, is retained.
+> The full all-class, both-sector proof and matching stripe are in
+> `IBM_MODIFIED_EXACT_DISTANCE_THEOREM.md`; the shorter analytic
+> route uses two physical seam cuts, not full HM. Original IBM
+> distance remains open. Current modified-family results and their
+> exact scope supersede older residual language; see the program's
+> §13. No claim transfers the new code's metric to the old checks.
+
 ## The object
 
 IBM's family (arXiv:2506.03094): BB codes on Z_ℓ × Z_m, ℓ = 6(r+b),
