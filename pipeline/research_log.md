@@ -13,6 +13,13 @@ what was tried and why it didn't work.
 
 ## Entries
 
+- 2026-09-13 — bb-growing-fom — success — Weight-six separable BB family
+  with exact attained seed distance, `3^s ≤ 2s d_s`, and kernel-proved
+  strictly increasing, unbounded actual `kd²/n` on `s=16·4^t`. Packaged as
+  `StabilizerCodeWithDistance`; full validation and standard-axiom audit
+  passed. The closed formula `d_s=3^s-1` remains conjectural.
+  [details](attempts/bb_growing_fom/result.md)
+
 - 2026-07-22 — a20-v7-completeness (A20) — success — **The Y4
   boundary-census completeness gap is closed analytically: band 18 is
   definitively 1,186 classes (the unterminated SAT census had already
