@@ -25,15 +25,15 @@ have Pauli weight exactly six.
 
 All declarations below are in `Quantum.Stabilizer.Homological.BB.Fractal`.
 
-- [Code.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Code.lean): `stabilizerCodeWithDistance` packages all
+- [Code.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Code.lean): `stabilizerCodeWithDistance` packages all
   parameters and the exact distance; `chainComplex_pauli_distance` proves
   the least nontrivial logical Pauli weight.
-- [Family.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Family.lean): `growingCode`,
+- [Family.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Family.lean): `growingCode`,
   `growingEfficiency_eq_kd2_div_n`, `growingEfficiency_strictMono`, and
   `growingEfficiency_unbounded` package the selected family and its metric.
-- [LowerBound.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/LowerBound.lean): `seedSpace_weight_lower`
+- [LowerBound.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/LowerBound.lean): `seedSpace_weight_lower`
   connects the proved open Pascal histories to physical cyclic Hamming weight.
-- [CheckWeight.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/CheckWeight.lean):
+- [CheckWeight.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/CheckWeight.lean):
   `stabilizerCodeWithDistance_has_weight_six_generating_set` proves the physical check-weight claim.
 
 The underlying Lean code index `u` is zero-based, corresponding to
@@ -64,11 +64,13 @@ only `propext`, `Classical.choice`, and `Quot.sound`. See
 [validation.md](validation.md) for commands, timings, and the audit output.
 Pipeline status is `pr-ready`.
 
-## Local delivery
+## Review
 
-The verified Lean development is committed as `1e7f44460ad65e9ec6b1e65a198faf79477f8141` on
-`codex/bb-growing-fom`. The companion research branch is
-`codex/bb-growing-fom-research`. Both are ready for review locally.
-Automatic approval review rejected remote pushes and draft PR creation
-because external publication was not explicitly authorized. No push or
-PR creation ran; publication awaits the user's approval.
+- [QECLean draft PR #86](https://github.com/Stavan-Jain/QECLean/pull/86): the verified Lean development,
+  committed as `1e7f44460ad65e9ec6b1e65a198faf79477f8141` on
+  `codex/bb-growing-fom`.
+- [qec-lab draft PR #32](https://github.com/Stavan-Jain/qec-lab/pull/32): the companion proof notes,
+  independent audit, finite checker, and validation record on
+  `codex/bb-growing-fom-research`.
+
+Both PRs were opened as drafts on 2026-09-14.

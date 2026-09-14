@@ -456,11 +456,11 @@ the isolated worktree `/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growin
 
 | Formal component | Declarations and code |
 |---|---|
-| Actual classical minimum and attainment | `seedDistance`, `exists_seedDistance_word`, `seedDistance_isLeast` in [Distance.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Distance.lean) |
-| Uniform physical weight bound | `functionalWord_weight_lower`, `seedSpace_weight_lower` in [LowerBound.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/LowerBound.lean) |
-| Exact Pauli distance and all-code bundle | `chainComplex_pauli_distance`, `stabilizerCodeWithDistance` in [Code.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Code.lean) |
-| Actual weight-six stabilizer generating set | `stabilizerCodeWithDistance_has_weight_six_generating_set` in [CheckWeight.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/CheckWeight.lean) |
-| Selected bundle and actual ratio growth | `growingCode`, `growingEfficiency_eq_kd2_div_n`, `growingEfficiency_strictMono`, `growingEfficiency_unbounded` in [Family.lean](/Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Family.lean) |
+| Actual classical minimum and attainment | `seedDistance`, `exists_seedDistance_word`, `seedDistance_isLeast` in [Distance.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Distance.lean) |
+| Uniform physical weight bound | `functionalWord_weight_lower`, `seedSpace_weight_lower` in [LowerBound.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/LowerBound.lean) |
+| Exact Pauli distance and all-code bundle | `chainComplex_pauli_distance`, `stabilizerCodeWithDistance` in [Code.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Code.lean) |
+| Actual weight-six stabilizer generating set | `stabilizerCodeWithDistance_has_weight_six_generating_set` in [CheckWeight.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/CheckWeight.lean) |
+| Selected bundle and actual ratio growth | `growingCode`, `growingEfficiency_eq_kd2_div_n`, `growingEfficiency_strictMono`, `growingEfficiency_unbounded` in [Family.lean](https://github.com/Stavan-Jain/QECLean/blob/1e7f44460ad65e9ec6b1e65a198faf79477f8141/QEC/Stabilizer/Codes/BivariateBicycle/Fractal/Family.lean) |
 
 The underlying code definitions use a zero-based Lean index `u`, so
 `stabilizerCodeWithDistance u` has mathematical index `s=u+1` and distance
@@ -471,3 +471,5 @@ The capstones compile and axiom audits report only `propext`,
 `Classical.choice`, and `Quot.sound`. All six required repository checks
 and the umbrella check have passed, with zero new compiler/linter diagnostics.
 See the [validation record](../../../pipeline/attempts/bb_growing_fom/validation.md).
+
+Companion drafts: [QECLean #86](https://github.com/Stavan-Jain/QECLean/pull/86) and [qec-lab #32](https://github.com/Stavan-Jain/qec-lab/pull/32).

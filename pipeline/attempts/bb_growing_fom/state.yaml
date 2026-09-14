@@ -5,7 +5,10 @@ track: moonshot
 started_at: 2026-09-13
 worktree_branch: codex/bb-growing-fom
 library_commit: 1e7f44460ad65e9ec6b1e65a198faf79477f8141
-publication_status: awaiting_explicit_approval
+publication_status: draft_prs_open
+published_at: 2026-09-14
+library_pr: https://github.com/Stavan-Jain/QECLean/pull/86
+research_pr: https://github.com/Stavan-Jain/qec-lab/pull/32
 worktree_path: /Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom
 source_prs:
   - https://github.com/Stavan-Jain/qec-lab/pull/27
