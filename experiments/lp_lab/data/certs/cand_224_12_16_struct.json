@@ -1,0 +1,69 @@
+{
+ "desc": {
+  "orders": [
+   28,
+   2
+  ],
+  "a": 2,
+  "A": {
+   "0,0": "1 + x*y",
+   "0,1": "1",
+   "1,0": "1",
+   "1,1": "x^13 + x^22*y"
+  },
+  "b": "1 + x + x^3*y"
+ },
+ "n": 224,
+ "k": 12,
+ "isd": {
+  "dX_ub": 16,
+  "dZ_ub": 16
+ },
+ "aut": {
+  "order": 56.0,
+  "num_generators": 2,
+  "orbits_X": 2,
+  "orbits_Z": 2,
+  "orbits_qubits": 4,
+  "num_orbits": 8
+ },
+ "aut_swap": {
+  "order": 112.0,
+  "orbits_checks": 2
+ },
+ "not_2bga": true,
+ "thickness2": {
+  "planar_choices": 9,
+  "example": {
+   "A_alone": 0,
+   "B_alone": 0,
+   "planar_A": true,
+   "planar_B": true,
+   "edges": 1344,
+   "degA": [
+    3
+   ],
+   "degB": [
+    3
+   ],
+   "wheelsA": [
+    224,
+    224
+   ],
+   "wheelsB": [
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56
+   ]
+  }
+ },
+ "toric_layouts": {
+  "count": 0,
+  "examples": []
+ }
+}

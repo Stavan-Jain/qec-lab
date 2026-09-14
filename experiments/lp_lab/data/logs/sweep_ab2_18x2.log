@@ -1,0 +1,47 @@
+ab2_18x2: n=144, 44 b-classes × 35 p × 630 q
+  b=(0, 1, 2) (1 + y + x): total=22050 kept=0 t=4s
+  b=(0, 1, 4) (1 + y + x^2): total=44100 kept=0 t=8s
+  b=(0, 1, 6) (1 + y + x^3): total=66150 kept=0 t=11s
+  b=(0, 1, 12) (1 + y + x^6): total=88200 kept=0 t=16s
+  b=(0, 1, 18) (1 + y + x^9): total=110250 kept=0 t=20s
+  b=(0, 2, 4) (1 + x + x^2): total=132300 kept=432 t=28s
+  b=(0, 2, 5) (1 + x + x^2*y): total=154350 kept=1296 t=43s
+  b=(0, 2, 6) (1 + x + x^3): total=176400 kept=1296 t=48s
+  b=(0, 2, 7) (1 + x + x^3*y): total=198450 kept=1296 t=52s
+  b=(0, 2, 8) (1 + x + x^4): total=220500 kept=1296 t=56s
+  b=(0, 2, 9) (1 + x + x^4*y): total=242550 kept=1296 t=60s
+  b=(0, 2, 10) (1 + x + x^5): total=264600 kept=1728 t=72s
+  b=(0, 2, 11) (1 + x + x^5*y): total=286650 kept=2592 t=89s
+  b=(0, 2, 12) (1 + x + x^6): total=308700 kept=2592 t=93s
+  b=(0, 2, 13) (1 + x + x^6*y): total=330750 kept=2592 t=98s
+  b=(0, 2, 15) (1 + x + x^7*y): total=352800 kept=2592 t=102s
+  b=(0, 2, 17) (1 + x + x^8*y): total=374850 kept=3456 t=119s
+  b=(0, 2, 18) (1 + x + x^9): total=396900 kept=3456 t=124s
+  b=(0, 2, 19) (1 + x + x^9*y): total=418950 kept=3456 t=128s
+  b=(0, 3, 4) (1 + x*y + x^2): total=441000 kept=3888 t=137s
+  b=(0, 3, 6) (1 + x*y + x^3): total=463050 kept=3888 t=141s
+  b=(0, 3, 7) (1 + x*y + x^3*y): total=485100 kept=3888 t=146s
+  b=(0, 3, 8) (1 + x*y + x^4): total=507150 kept=3888 t=151s
+  b=(0, 3, 9) (1 + x*y + x^4*y): total=529200 kept=3888 t=155s
+  b=(0, 3, 11) (1 + x*y + x^5*y): total=551250 kept=4320 t=166s
+  b=(0, 3, 12) (1 + x*y + x^6): total=573300 kept=4320 t=169s
+  b=(0, 3, 18) (1 + x*y + x^9): total=595350 kept=4320 t=173s
+  b=(0, 3, 19) (1 + x*y + x^9*y): total=617400 kept=4320 t=177s
+  b=(0, 4, 8) (1 + x^2 + x^4): total=639450 kept=6588 t=187s
+  b=(0, 4, 9) (1 + x^2 + x^4*y): total=661500 kept=7020 t=197s
+  b=(0, 4, 12) (1 + x^2 + x^6): total=683550 kept=7020 t=201s
+  b=(0, 4, 13) (1 + x^2 + x^6*y): total=705600 kept=7020 t=206s
+  b=(0, 4, 17) (1 + x^2 + x^8*y): total=727650 kept=7020 t=210s
+  b=(0, 4, 21) (1 + x^2 + x^10*y): total=749700 kept=7452 t=217s
+  b=(0, 5, 12) (1 + x^2*y + x^6): total=771750 kept=7452 t=221s
+  b=(0, 6, 12) (1 + x^3 + x^6): total=793800 kept=7452 t=225s
+  b=(0, 6, 13) (1 + x^3 + x^6*y): total=815850 kept=7452 t=229s
+  b=(0, 6, 18) (1 + x^3 + x^9): total=837900 kept=7452 t=232s
+  b=(0, 6, 19) (1 + x^3 + x^9*y): total=859950 kept=7452 t=236s
+  b=(0, 7, 12) (1 + x^3*y + x^6): total=882000 kept=7452 t=240s
+  b=(0, 7, 18) (1 + x^3*y + x^9): total=904050 kept=7452 t=244s
+  b=(0, 7, 19) (1 + x^3*y + x^9*y): total=926100 kept=7452 t=248s
+  b=(0, 12, 24) (1 + x^6 + x^12): total=948150 kept=7452 t=251s
+  b=(0, 12, 25) (1 + x^6 + x^12*y): total=970200 kept=7452 t=255s
+done ab2_18x2: 970200 codes, 7452 kept, 255s
+  k=  8 d_ub= 12 (dX 12, dZ 12) fom=  8.00 {"p": [0, 5], "q": [7, 20], "b": [0, 2, 4]}

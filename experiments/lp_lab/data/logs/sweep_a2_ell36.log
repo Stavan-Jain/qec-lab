@@ -1,0 +1,34 @@
+ell=36 n=144: 30 b-classes, 35 p, 630 q
+  b=(0, 1, 2): total=22050 kept=0 elapsed=1s
+  b=(0, 1, 3): total=44100 kept=0 elapsed=3s
+  b=(0, 1, 4): total=66150 kept=0 elapsed=4s
+  b=(0, 1, 5): total=88200 kept=0 elapsed=5s
+  b=(0, 1, 6): total=110250 kept=0 elapsed=6s
+  b=(0, 1, 9): total=132300 kept=0 elapsed=8s
+  b=(0, 1, 10): total=154350 kept=0 elapsed=9s
+  b=(0, 1, 11): total=176400 kept=0 elapsed=10s
+  b=(0, 1, 12): total=198450 kept=0 elapsed=12s
+  b=(0, 1, 15): total=220500 kept=0 elapsed=13s
+  b=(0, 1, 16): total=242550 kept=0 elapsed=14s
+  b=(0, 1, 17): total=264600 kept=0 elapsed=15s
+  b=(0, 1, 18): total=286650 kept=0 elapsed=17s
+  b=(0, 2, 4): total=308700 kept=432 elapsed=23s
+  b=(0, 2, 6): total=330750 kept=432 elapsed=24s
+  b=(0, 2, 8): total=352800 kept=432 elapsed=25s
+  b=(0, 2, 10): total=374850 kept=864 elapsed=32s
+  b=(0, 2, 12): total=396900 kept=864 elapsed=33s
+  b=(0, 2, 18): total=418950 kept=864 elapsed=34s
+  b=(0, 3, 6): total=441000 kept=864 elapsed=36s
+  b=(0, 3, 9): total=463050 kept=864 elapsed=37s
+  b=(0, 3, 12): total=485100 kept=864 elapsed=38s
+  b=(0, 3, 15): total=507150 kept=864 elapsed=40s
+  b=(0, 3, 18): total=529200 kept=864 elapsed=41s
+  b=(0, 4, 8): total=551250 kept=1296 elapsed=47s
+  b=(0, 4, 12): total=573300 kept=1296 elapsed=48s
+  b=(0, 6, 12): total=595350 kept=1296 elapsed=50s
+  b=(0, 6, 18): total=617400 kept=1296 elapsed=51s
+  b=(0, 9, 18): total=639450 kept=1296 elapsed=52s
+  b=(0, 12, 24): total=661500 kept=1296 elapsed=53s
+done: 661500 codes, 1296 with k>=8 & connected, 53s
+  k=  8  d_ub= 12  fom=  8.00  p=[0, 5] q=[3, 16] b=[0, 2, 4]
+  k= 12  d_ub=  6  fom=  3.00  p=[0, 1] q=[2, 9] b=[0, 4, 8]

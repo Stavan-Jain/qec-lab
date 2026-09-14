@@ -1,0 +1,37 @@
+G=28x2 n=224: 13 b-classes with δ∈[3,12]
+   b=1 + x + x^3*y                δ= 6 D=24 cap=30.86
+   b=1 + x + x^5*y                δ= 6 D=24 cap=30.86
+   b=1 + x + x^10*y               δ= 6 D=24 cap=30.86
+   b=1 + x + x^12*y               δ= 6 D=24 cap=30.86
+   b=1 + x^2 + x^6*y              δ=12 D=12 cap=15.43
+   b=1 + x^2 + x^10*y             δ=12 D=12 cap=15.43
+   b=1 + x + x^3                  δ= 6 D=16 cap=13.71
+   b=1 + x + x^5                  δ= 6 D=16 cap=13.71
+   b=1 + x*y + x^3*y              δ= 6 D=16 cap=13.71
+   b=1 + x*y + x^5*y              δ= 6 D=16 cap=13.71
+   b=1 + x^2 + x^6                δ=12 D=8 cap=6.86
+   b=1 + x^2*y + x^6*y            δ=12 D=8 cap=6.86
+   b=1 + x^4 + x^12*y             δ=12 D=8 cap=6.86
+  b=1 + x + x^3*y: 1152 designs, best d_ub=16 (D_b=24) t=68s
+  b=1 + x + x^5*y: 1152 designs, best d_ub=16 (D_b=24) t=52s
+  b=1 + x + x^10*y: 1152 designs, best d_ub=16 (D_b=24) t=47s
+  b=1 + x + x^12*y: 1152 designs, best d_ub=16 (D_b=24) t=41s
+  b=1 + x^2 + x^6*y: 8 designs, best d_ub=4 (D_b=12) t=0s
+  b=1 + x^2 + x^10*y: 8 designs, best d_ub=4 (D_b=12) t=0s
+  b=1 + x + x^3: 384 designs, best d_ub=14 (D_b=16) t=9s
+  b=1 + x + x^5: 384 designs, best d_ub=16 (D_b=16) t=23s
+  b=1 + x*y + x^3*y: 384 designs, best d_ub=14 (D_b=16) t=11s
+  b=1 + x*y + x^5*y: 384 designs, best d_ub=16 (D_b=16) t=22s
+done 28x2: 6160 designs, 274s
+  [[224,12,≤16]] fom≤13.71 b=1 + x + x^3*y p=1 + x*y q=x^13 + x^22*y |Aut|=56 X-orbits=2
+  [[224,12,≤16]] fom≤13.71 b=1 + x + x^5*y p=1 + x*y q=x^7*y + x^12*y |Aut|=56 X-orbits=2
+  [[224,12,≤16]] fom≤13.71 b=1 + x + x^10*y p=1 + x^2*y q=x^17*y + x^22*y |Aut|=56 X-orbits=2
+  [[224,12,≤16]] fom≤13.71 b=1 + x + x^12*y p=1 + x*y q=x^3*y + x^20*y |Aut|=56 X-orbits=2
+  [[224,12,≤16]] fom≤13.71 b=1 + x + x^5 p=1 + x*y q=x + x^16*y |Aut|=112 X-orbits=1
+  [[224,12,≤16]] fom≤13.71 b=1 + x*y + x^5*y p=1 + x q=x*y + x^16*y |Aut|=112 X-orbits=1
+  [[224,12,≤14]] fom≤10.5 b=1 + x + x^3*y p=1 + x*y q=x^4*y + x^12 |Aut|=56 X-orbits=2
+  [[224,12,≤14]] fom≤10.5 b=1 + x + x^5*y p=1 + x*y q=x^3 + x^20*y |Aut|=56 X-orbits=2
+  [[224,12,≤14]] fom≤10.5 b=1 + x + x^10*y p=1 + x*y q=x + x^6 |Aut|=56 X-orbits=2
+  [[224,12,≤14]] fom≤10.5 b=1 + x + x^12*y p=1 + x*y q=y + x^19 |Aut|=56 X-orbits=2
+  [[224,12,≤14]] fom≤10.5 b=1 + x + x^3 p=1 + x^2*y q=x^10*y + x^15 |Aut|=56 X-orbits=2
+  [[224,12,≤14]] fom≤10.5 b=1 + x + x^5 p=1 + x*y q=x^8 + x^16*y |Aut|=56 X-orbits=2

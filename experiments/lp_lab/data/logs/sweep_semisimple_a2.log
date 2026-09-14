@@ -1,0 +1,95 @@
+k formula verified (N=45); n=180
+  b=(0, 1, 2): total=43560 kept=0 t=1s
+  b=(0, 1, 3): total=87120 kept=0 t=2s
+  b=(0, 1, 4): total=130680 kept=0 t=2s
+  b=(0, 1, 5): total=174240 kept=0 t=3s
+  b=(0, 1, 6): total=217800 kept=0 t=4s
+  b=(0, 1, 7): total=261360 kept=0 t=4s
+  b=(0, 1, 8): total=304920 kept=0 t=5s
+  b=(0, 1, 9): total=348480 kept=0 t=6s
+  b=(0, 1, 10): total=392040 kept=0 t=7s
+  b=(0, 1, 15): total=435600 kept=0 t=7s
+  b=(0, 1, 19): total=479160 kept=0 t=8s
+  b=(0, 1, 20): total=522720 kept=0 t=9s
+  b=(0, 1, 21): total=566280 kept=0 t=10s
+  b=(0, 3, 6): total=609840 kept=0 t=11s
+  b=(0, 3, 9): total=653400 kept=0 t=12s
+  b=(0, 3, 12): total=696960 kept=0 t=13s
+  b=(0, 3, 15): total=740520 kept=0 t=14s
+  b=(0, 3, 18): total=784080 kept=0 t=15s
+  b=(0, 5, 10): total=827640 kept=972 t=29s
+  b=(0, 5, 15): total=871200 kept=972 t=29s
+  b=(0, 9, 18): total=914760 kept=972 t=30s
+  b=(0, 15, 30): total=958320 kept=972 t=31s
+done N=45: total=958320 kept=972 31s
+  k= 12 d_ub=  6 fom=  2.40 p=[0, 1] q=[2, 9] b=[0, 5, 10]
+  k= 16 d_ub=  6 fom=  3.20 p=[0, 3] q=[3, 9] b=[0, 5, 10]
+k formula verified (N=51); n=204
+  b=(0, 1, 2): total=63750 kept=0 t=1s
+  b=(0, 1, 3): total=127500 kept=0 t=1s
+  b=(0, 1, 4): total=191250 kept=0 t=2s
+  b=(0, 1, 5): total=255000 kept=0 t=3s
+  b=(0, 1, 6): total=318750 kept=0 t=4s
+  b=(0, 1, 7): total=382500 kept=0 t=4s
+  b=(0, 1, 8): total=446250 kept=0 t=5s
+  b=(0, 1, 9): total=510000 kept=0 t=6s
+  b=(0, 1, 12): total=573750 kept=0 t=7s
+  b=(0, 1, 16): total=637500 kept=0 t=7s
+  b=(0, 1, 17): total=701250 kept=0 t=8s
+  b=(0, 1, 18): total=765000 kept=0 t=9s
+  b=(0, 1, 21): total=828750 kept=0 t=10s
+  b=(0, 3, 6): total=892500 kept=0 t=10s
+  b=(0, 3, 9): total=956250 kept=0 t=11s
+  b=(0, 3, 12): total=1020000 kept=0 t=12s
+  b=(0, 17, 34): total=1083750 kept=1136 t=25s
+done N=51: total=1083750 kept=1136 25s
+  k= 16 d_ub=  2 fom=  0.31 p=[0, 1] q=[2, 41] b=[0, 17, 34]
+  k= 20 d_ub=  2 fom=  0.39 p=[0, 1] q=[11, 33] b=[0, 17, 34]
+  k= 32 d_ub=  2 fom=  0.63 p=[0, 3] q=[18, 30] b=[0, 17, 34]
+k formula verified (N=55); n=220
+  b=(0, 1, 2): total=80190 kept=0 t=1s
+  b=(0, 1, 3): total=160380 kept=0 t=2s
+  b=(0, 1, 4): total=240570 kept=0 t=3s
+  b=(0, 1, 5): total=320760 kept=0 t=4s
+  b=(0, 1, 6): total=400950 kept=0 t=5s
+  b=(0, 1, 7): total=481140 kept=0 t=6s
+  b=(0, 1, 11): total=561330 kept=0 t=7s
+  b=(0, 1, 12): total=641520 kept=0 t=8s
+  b=(0, 1, 13): total=721710 kept=0 t=10s
+  b=(0, 1, 16): total=801900 kept=0 t=11s
+  b=(0, 1, 20): total=882090 kept=0 t=12s
+  b=(0, 1, 21): total=962280 kept=0 t=13s
+  b=(0, 1, 22): total=1042470 kept=0 t=14s
+  b=(0, 5, 10): total=1122660 kept=0 t=16s
+  b=(0, 5, 15): total=1202850 kept=0 t=17s
+  b=(0, 11, 22): total=1283040 kept=0 t=18s
+done N=55: total=1283040 kept=0 18s
+k formula verified (N=57); n=228
+  b=(0, 1, 2): total=89376 kept=0 t=1s
+  b=(0, 1, 3): total=178752 kept=0 t=3s
+  b=(0, 1, 4): total=268128 kept=0 t=4s
+  b=(0, 1, 5): total=357504 kept=0 t=5s
+  b=(0, 1, 6): total=446880 kept=0 t=7s
+  b=(0, 1, 7): total=536256 kept=0 t=8s
+  b=(0, 1, 8): total=625632 kept=0 t=9s
+  b=(0, 1, 10): total=715008 kept=0 t=10s
+  b=(0, 1, 11): total=804384 kept=0 t=12s
+  b=(0, 1, 12): total=893760 kept=0 t=13s
+  b=(0, 1, 13): total=983136 kept=0 t=14s
+  b=(0, 1, 16): total=1072512 kept=0 t=15s
+  b=(0, 1, 19): total=1161888 kept=0 t=17s
+  b=(0, 1, 20): total=1251264 kept=0 t=18s
+  b=(0, 1, 21): total=1340640 kept=0 t=20s
+  b=(0, 3, 6): total=1430016 kept=0 t=21s
+  b=(0, 3, 9): total=1519392 kept=0 t=22s
+  b=(0, 3, 12): total=1608768 kept=0 t=24s
+  b=(0, 3, 24): total=1698144 kept=0 t=25s
+  b=(0, 19, 38): total=1787520 kept=0 t=27s
+done N=57: total=1787520 kept=0 27s
+k formula verified (N=63); n=252
+  b=(0, 1, 2): total=121086 kept=0 t=2s
+  b=(0, 1, 3): total=242172 kept=0 t=5s
+  b=(0, 1, 4): total=363258 kept=0 t=7s
+  b=(0, 1, 5): total=484344 kept=0 t=10s
+  b=(0, 1, 6): total=605430 kept=1922 t=443s
+  b=(0, 1, 7): total=726516 kept=1922 t=446s

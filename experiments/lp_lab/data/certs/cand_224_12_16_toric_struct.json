@@ -1,0 +1,130 @@
+{
+ "desc": {
+  "orders": [
+   28,
+   2
+  ],
+  "a": 2,
+  "A": {
+   "0,0": "1 + x^17",
+   "0,1": "1",
+   "1,0": "1",
+   "1,1": "x^3*y + x^4"
+  },
+  "b": "1 + x + x^12*y"
+ },
+ "n": 224,
+ "k": 12,
+ "isd": {
+  "dX_ub": 16,
+  "dZ_ub": 16
+ },
+ "aut": {
+  "order": 56.0,
+  "num_generators": 2,
+  "orbits_X": 2,
+  "orbits_Z": 2,
+  "orbits_qubits": 4,
+  "num_orbits": 8
+ },
+ "aut_swap": {
+  "order": 112.0,
+  "orbits_checks": 2
+ },
+ "not_2bga": true,
+ "thickness2": {
+  "planar_choices": 9,
+  "example": {
+   "A_alone": 0,
+   "B_alone": 0,
+   "planar_A": true,
+   "planar_B": true,
+   "edges": 1344,
+   "degA": [
+    3
+   ],
+   "degB": [
+    3
+   ],
+   "wheelsA": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32,
+    32
+   ],
+   "wheelsB": [
+    112,
+    112,
+    112,
+    112
+   ]
+  }
+ },
+ "toric_layouts": {
+  "count": 4,
+  "examples": [
+   {
+    "i": 1,
+    "j": 2,
+    "g": 0,
+    "h": 2,
+    "mu": 8,
+    "lam": 14,
+    "torus": [
+     16,
+     28
+    ],
+    "verified": true
+   },
+   {
+    "i": 1,
+    "j": 2,
+    "g": 2,
+    "h": 0,
+    "mu": 8,
+    "lam": 14,
+    "torus": [
+     16,
+     28
+    ],
+    "verified": true
+   },
+   {
+    "i": 2,
+    "j": 1,
+    "g": 0,
+    "h": 2,
+    "mu": 8,
+    "lam": 14,
+    "torus": [
+     16,
+     28
+    ],
+    "verified": true
+   },
+   {
+    "i": 2,
+    "j": 1,
+    "g": 2,
+    "h": 0,
+    "mu": 8,
+    "lam": 14,
+    "torus": [
+     16,
+     28
+    ],
+    "verified": true
+   }
+  ]
+ }
+}

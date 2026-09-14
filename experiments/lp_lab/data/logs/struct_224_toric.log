@@ -1,0 +1,7 @@
+code: {"orders": [28, 2], "a": 2, "A": {"0,0": "1 + x^17", "0,1": "1", "1,0": "1", "1,1": "x^3*y + x^4"}, "b": "1 + x + x^12*y"}
+n=224 k=12 weights={'X_check_weights': [6], 'Z_check_weights': [6], 'qubit_degrees': [6]}
+ISD (300 trials): d_X<= 16, d_Z<= 16  (1.6s)
+Aut(Tanner): {'order': 56.0, 'num_generators': 2, 'orbits_X': 2, 'orbits_Z': 2, 'orbits_qubits': 4, 'num_orbits': 8} | with X<->Z swap: {'order': 112.0, 'orbits_checks': 2}
+thickness-2 wheel layers: 9/9 layer choices planar; e.g. {'A_alone': 0, 'B_alone': 0, 'planar_A': True, 'planar_B': True, 'edges': 1344, 'degA': [3], 'degB': [3], 'wheelsA': [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32], 'wheelsB': [112, 112, 112, 112]}
+toric layouts (generalised Lemma 4): 4 verified; e.g. {'i': 1, 'j': 2, 'g': 0, 'h': 2, 'mu': 8, 'lam': 14, 'torus': (16, 28), 'verified': True}
+saved data/certs/cand_224_12_16_toric_struct.json

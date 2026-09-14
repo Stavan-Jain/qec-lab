@@ -1,0 +1,12 @@
+   trial 0: new best d_circ ≤ 15
+   trial 269: new best d_circ ≤ 14
+   trial 427: new best d_circ ≤ 12
+gross basis Z: d_circ ≤ 12 (8568 mechanisms, 288 detectors, 517s)
+   trial 0: new best d_circ ≤ 48
+   trial 1: new best d_circ ≤ 18
+   trial 4: new best d_circ ≤ 17
+   trial 22: new best d_circ ≤ 15
+   trial 108: new best d_circ ≤ 14
+   trial 117: new best d_circ ≤ 12
+   trial 554: new best d_circ ≤ 11
+gross basis X: d_circ ≤ 11 (8640 mechanisms, 288 detectors, 500s)

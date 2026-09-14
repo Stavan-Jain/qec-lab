@@ -94,3 +94,11 @@ touching `dashboard/`, `catalog/`, or `pipeline/`. See `dashboard/README.md`.
   to judge merge state.
 - Sorry markers in draft Lean: `sorry  -- TODO(<tag>): <one-line note>` so the
   next session can grep for them.
+
+## lp_lab (non-BB lifted-product codes)
+
+`experiments/lp_lab/` is a second uv project (depends on `bb_lab` via a path dependency; run
+`cd experiments/lp_lab && uv sync`). It hosts the LP1 program: weight-6 lifted-product codes
+`LP([[p,1],[1,q]], b⊗I)` that are provably not 2BGA/BB codes yet keep the BB hardware package.
+Read `experiments/lp_lab/README.md`, then `notes/LP1_results.md`. Its notes use the `LP<N>`
+prefix, not the bb_lab `A<N>` registry.

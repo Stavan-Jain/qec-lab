@@ -1,0 +1,23 @@
+ab2_18x4: n=288, 116 b-classes × 71 p × 2556 q
+  b=(0, 1, 2) (1 + y + y^2): total=21704 kept=0 t=19s
+  b=(0, 1, 4) (1 + y + x): total=43629 kept=0 t=38s
+  b=(0, 1, 6) (1 + y + x*y^2): total=65401 kept=0 t=58s
+  b=(0, 1, 8) (1 + y + x^2): total=87221 kept=0 t=81s
+  b=(0, 1, 10) (1 + y + x^2*y^2): total=108940 kept=0 t=107s
+  b=(0, 1, 12) (1 + y + x^3): total=130737 kept=0 t=123s
+  b=(0, 1, 14) (1 + y + x^3*y^2): total=152372 kept=0 t=139s
+  b=(0, 1, 24) (1 + y + x^6): total=174223 kept=0 t=158s
+  b=(0, 1, 26) (1 + y + x^6*y^2): total=196028 kept=0 t=176s
+  b=(0, 1, 36) (1 + y + x^9): total=217860 kept=0 t=201s
+  b=(0, 1, 38) (1 + y + x^9*y^2): total=239408 kept=0 t=228s
+  b=(0, 2, 4) (1 + y^2 + x): total=261341 kept=0 t=247s
+  b=(0, 2, 5) (1 + y^2 + x*y): total=282982 kept=0 t=268s
+  b=(0, 2, 8) (1 + y^2 + x^2): total=304788 kept=0 t=295s
+  b=(0, 2, 9) (1 + y^2 + x^2*y): total=326508 kept=0 t=326s
+  b=(0, 2, 12) (1 + y^2 + x^3): total=348293 kept=0 t=346s
+  b=(0, 2, 13) (1 + y^2 + x^3*y): total=370221 kept=0 t=383s
+  b=(0, 2, 24) (1 + y^2 + x^6): total=391953 kept=0 t=424s
+  b=(0, 2, 25) (1 + y^2 + x^6*y): total=413668 kept=0 t=465s
+  b=(0, 2, 36) (1 + y^2 + x^9): total=435589 kept=0 t=498s
+  b=(0, 2, 37) (1 + y^2 + x^9*y): total=457457 kept=0 t=527s
+  b=(0, 4, 8) (1 + x + x^2): total=479389 kept=405 t=566s
