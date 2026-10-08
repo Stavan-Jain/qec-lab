@@ -13,6 +13,8 @@ docs/*
 !docs/gross-distance-extensibility.md
 !docs/gross-distance-proof.md
 !docs/gross-distance-proof.tex
+!docs/research-status.md
+!docs/repository-maintenance.md
 !docs/teaching/
 !docs/talks/
 
@@ -35,3 +37,19 @@ project_aristotle
 
 # Local-only reference PDFs (not part of the formalization)
 *.pdf
+
+# Rebuildable interpreter/test caches and LaTeX intermediate files.
+__pycache__/
+.pytest_cache/
+*.py[cod]
+docs/**/*.aux
+docs/**/*.log
+docs/**/*.out
+docs/**/*.toc
+docs/**/*.fls
+docs/**/*.fdb_latexmk
+docs/**/*.synctex.gz
+
+# Local compressed research outputs; preserve the manifest with the payloads.
+# See docs/repository-maintenance.md before deleting or moving this directory.
+.research-archive/
