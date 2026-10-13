@@ -1,0 +1,53 @@
+code_id: bb_growing_fom
+display_name: 'Weight-six BB families with increasing kd^2/n'
+status: pr-ready
+track: moonshot
+started_at: 2026-09-13
+worktree_branch: codex/bb-growing-fom
+library_commit: 1e7f44460ad65e9ec6b1e65a198faf79477f8141
+publication_status: draft_prs_open
+published_at: 2026-09-14
+library_pr: https://github.com/Stavan-Jain/QECLean/pull/86
+research_pr: https://github.com/Stavan-Jain/qec-lab/pull/32
+worktree_path: /Users/stavanjain/Code/QECLean/.Codex/worktrees/bb-growing-fom
+source_prs:
+  - https://github.com/Stavan-Jain/qec-lab/pull/27
+  - https://github.com/Stavan-Jain/qec-lab/pull/28
+candidate:
+  q: '2^s, s >= 1'
+  period: 'q^2 - 1'
+  A: '1 + x + x^q'
+  B: '1 + y + y^q'
+  n: '2 (q^2 - 1)^2'
+  k: '2 q^2'
+  distance: 'd_s = attained minimum nonzero classical recurrence-word Hamming weight'
+  formal_distance_bounds: '0 < d_s <= 4^s - 1; 3^s <= 2*s*d_s'
+  analytic_distance_bounds: 'max(2^s, ceil(3^s/(2*s))) <= d_s <= 3^s - 1'
+  formal_increasing_subsequence: 's_t = 16 * 4^t'
+  analytic_increasing_subsequence: 's_t = 16 * 2^t'
+  conjectured_distance: '3^s - 1 (not required by the formal endpoint)'
+  check_weight: 6
+proof_status:
+  cyclic_divisibility: lean_compiled
+  classical_dimension: lean_compiled
+  actual_minimum_and_attainment: lean_compiled
+  distance_upper_bound_by_length: lean_compiled
+  sharper_distance_upper_witness: analytic
+  uniform_distance_lower_bound: lean_compiled_axioms_checked
+  exact_quantum_distance: lean_compiled
+  physical_weight_six_generators: lean_compiled
+  lean_family_packaging: compiled
+  actual_ratio_strict_increase_and_unboundedness: lean_compiled_axioms_checked
+  required_repository_validation: passed
+notes: |
+  The concrete weight-six family is packaged as StabilizerCodeWithDistance
+  at its actual attained distance. The proved Pascal-history, dyadic
+  truncation, and shift-averaging bound drives the formal growth theorem
+  on s_t=16*4^t using only the physical-length upper bound. The stronger
+  analytic bounds and subsequence 16*2^t remain distinct from the formal
+  endpoint. Capstone compilation and standard-axiom audits have passed;
+  all six required repository checks and the umbrella check passed with
+  zero new diagnostics. The exact closed
+  formula is not inferred from finite experiments. No novelty over Yoshida
+  or hypergraph-product codes, and no infinite primitive-trinomial
+  existence claim, is made. Existing unrelated edits are preserved.
