@@ -6,52 +6,44 @@ search can happen before formalization.
 
 ## Status
 
-**v0 — substrate validation: PASSING.**
+See the [research assessment](../../docs/research-status.md) for evidence
+tiers, exact sources, researcher significance, and current limitations.
 
-- All 5 published Bravyi-table `(n, k)` values reproduce exactly.
-- 4 of 5 Bravyi distances confirmed exact with **drat-trim-verified
-  DRAT proofs**:
-  - `[[72,12,6]]`     d=6   ← committed proof bundle (~850 KB)
-  - `[[90,8,10]]`     d=10  ← regenerable (~90 MB)
-  - `[[108,8,10]]`    d=10  ← regenerable (~55 MB)
-  - `[[144,12,12]]` gross  d=12  ← regenerable (~525 MB)
-- `[[288,12,18]]` heroic SAT runs unattended in the background; growth
-  per weight ≈ 3-4×, total ETA on the order of days — not on the CI
-  path. (This is the only Bravyi-table instance without a verified
-  proof bundle yet.)
-- Lean handshake round-trips: `pipeline/attempts/gross/state.yaml →
-  descriptor → JSON → emitted .lean → compile under lake env lean`.
+- **Gross `[[144,12,12]]`:** unconditional distance theorem on QECLean
+  `main`, using only `propext`, `Classical.choice`, and `Quot.sound`.
+  Its proof uses the reusable doubling layer and kernel-checked finite
+  arguments; it does not await an LRAT importer.
+- **Descent and tower certificates:** `[[360,12,24]]`, `[[288,8,20]]`,
+  and `[[432,12,24]]` have end-to-end computational distance certificates.
+  The A39 study records 97 further exact distances. These Python/C
+  certificate results are not automatically Lean theorems.
+- **Research branches:** the weight-six fractal family has a formal
+  lower bound and unbounded actual `k d²/n`; mitten `[[150,30,10]]` has
+  a formal endpoint using native decision procedures. Some older BB
+  instances are parked off `main` pending removal of those procedures.
+- **Analytic work:** original IBM homology/dimension results and exact
+  modified families are proved in the notes. The unchanged IBM all-size
+  distance formula and the fractal closed distance formula remain open.
 
-**v1-track (b) — DRAT proofs verified end-to-end (working).**
-
-- `cadical` CLI subprocess emits per-UNSAT-weight DRAT proofs reliably
-  (the pysat-bundled CaDiCaL has an stdio buffer bug that truncates
-  mid-sized proofs; we shell out instead).
-- Each proof is independently **VERIFIED by `drat-trim`** in the CI test
-  suite. The UNSAT direction of every distance bound is no longer just
-  "the solver said so" — it's accepted by a separate verifier.
-- Each proof is paired with its DIMACS CNF and SHA256-hashed in the
-  certificate JSON — anyone with `cadical` + `drat-trim` can regenerate
-  and verify.
-- Committed evidence: `certificates/bb_72_12_6/` (5 DRAT/CNF pairs,
-  ~850 KB). Larger instances are gitignored but regenerable via
-  `bb-lab bravyi-check --emit-proofs`.
-- Remaining: a Lean-side LRAT consumer (`drat-trim -L` converts our
-  DRAT to LRAT, then a verified LRAT checker in Lean 4 — Mario
-  Carneiro's `lrat-check` is the model — would close the loop into
-  the kernel).
+The solver lane remains useful. CaDiCaL emits DRAT proofs, `drat-trim`
+checks them independently, and the certificate JSON hashes each proof and
+its DIMACS input. The compact `bb_72_12_6` bundle is retained; large proof
+outputs are regenerable with `bb-lab bravyi-check --emit-proofs`.
+The original v0 substrate and proposed LRAT route are historical context,
+not the current gross-proof status. Storage policy and cleanup details are
+in [repository maintenance](../../docs/repository-maintenance.md).
 
 ## Quick start
 
 ```bash
 cd experiments/bb_lab
 uv sync --extra dev
-uv run pytest                                # the v0+ CI gate (82 tests, ~40 s; slow tests deselected)
-uv run pytest -m slow                        # only the heroic SAT tests (gross ~2 min, bb_288 days)
+uv run pytest                                # default test selection
+uv run pytest -m slow                        # optional long-running solver tests
 uv run pytest -o addopts=''                  # everything including slow
 uv run bb-lab bravyi-check --quick           # 3 small SAT distances
 uv run bb-lab bravyi-check --quick --emit-proofs   # +DRAT proofs
-uv run bb-lab bravyi-check --full --emit-proofs    # n=144 (~2 min), n=288 (days)
+uv run bb-lab bravyi-check --full --emit-proofs    # includes expensive larger SAT instances
 uv run bb-lab verify-cert certificates/bb_72_12_6.cert.json   # full re-check
 
 # Build drat-trim once (used by the verify-cert test):
@@ -103,6 +95,10 @@ passed. That check runs server-side on every request.
 | `src/bb_lab/codeparams.py` | `n`, `k` from check matrices |
 | `src/bb_lab/sat_distance.py` | Exact distance via SAT; dual backend (pysat fast / cadical CLI for proofs) |
 | `src/bb_lab/maxsat_distance.py` | WCNF emitters (`naive` / `strengthened`) + the Tandem driver |
+| `src/bb_lab/doubling_certify.py` | Doubling certification front end and hypothesis assembly |
+| `src/bb_lab/tower.py` | Quotient-tower distance machinery |
+| `src/bb_lab/cosetbz.py` | Complete coset censuses from information windows |
+| `src/bb_lab/fibering.py` | Odd-fiber coordinates and safe-floor computations |
 | `src/bb_lab/webui/` | `bb-lab ui`: analysis, flag discovery + premise gating, stdlib HTTP/SSE, static page |
 | `src/bb_lab/certificate.py` | JSON witness + DRAT-reference certificate format `bb-cert/v2` |
 | `src/bb_lab/lean_bridge.py` | `state.yaml` ↔ JSON ↔ `BBChainComplex.lean` skeleton |
@@ -138,7 +134,9 @@ for the round-trip property test (compiles the emitted file under
 pytest experiments/bb_lab/tests/
 ```
 
-passes iff all four suites are green:
+The foundational checks include the suites below; the current test tree
+also covers the later certification and solver machinery. Some tests need
+external solvers or the sibling library, so inspect skips as well as passes.
 
 1. `test_gross_agreement` — Lab `H_X` for gross matches the Lean truth
    bitwise.
@@ -158,14 +156,16 @@ passes iff all four suites are green:
    passes the three-condition logical check, and every committed DRAT
    proof passes `drat-trim`. This is the v1-track (b) soundness gate.
 
-The `bb-lab bravyi-check --full` heroic runs (n=144 and n=288 SAT
-distances) are **not in CI**; they're run manually before v0 is declared
-fully passing.
+The `bb-lab bravyi-check --full` larger SAT runs are **not in CI**. Run
+them deliberately when regenerating that solver lane's artifacts; the
+existence of a later analytic or descent proof does not make this SAT
+workload cheap.
 
-## Where (b) is heading
+## Historical DRAT-to-LRAT proposal
 
-The DRAT proof files are the v1 hand-off. The next step on track (b)
-is plumbing a Lean-side LRAT consumer:
+The original v1 solver-verification roadmap proposed a Lean-side LRAT
+consumer. The following describes that optional route, not unfinished
+work required by the current gross theorem:
 
 - Read `certificates/<code_id>.cert.json` — get `n`, `direction`,
   `witness_support`, `h_check_sha256`, `logical_space_sha256`,
@@ -184,8 +184,7 @@ is plumbing a Lean-side LRAT consumer:
   exact distance.
 
 Mario Carneiro's [LRAT-check project](https://github.com/digama0/mm0)
-contains a verified LRAT checker for MM0; porting it to Lean 4 is the
-remaining significant piece. Once landed, the gross-`[[144,12,12]]`
-distance is the first qLDPC distance bound mechanically verified end-to-end
-inside Lean — a result Lean-QEC ([arXiv:2605.16523](https://arxiv.org/abs/2605.16523))
-explicitly did not reach.
+was a reference for the historical proposal. No LRAT integration or global
+priority claim is asserted here. The current recommended work is a reusable
+descent certificate format with an independent checker, as described in
+the [research assessment](../../docs/research-status.md#recommended-next-research-direction).

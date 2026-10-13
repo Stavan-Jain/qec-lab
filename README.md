@@ -34,6 +34,34 @@ and everything in flight:
 - **`.claude/agents/`** — operating specs for the four pipeline agents
   (prioritizer, skeleton-drafter, formalization-runner, moonshot).
 
+## Research results
+
+Start with the [research assessment](docs/research-status.md) for the strongest
+results, their significance, proof assumptions, and remaining gaps. The main
+outcomes are:
+
+- **Gross distance and cover theory:** `[[144,12,12]]` has an unconditional
+  Lean proof on QECLean `main`, using only its three standard axioms. The
+  reusable doubling theorem has explicit sufficient conditions.
+- **Descent certificates:** exact distances for `[[360,12,24]]`,
+  `[[288,8,20]]`, and `[[432,12,24]]`, plus 97 new exact distances in the
+  recorded A39 study. These computational certificates are distinct from
+  Lean-checked endpoints.
+- **A weight-six fractal family:** a formal lower bound and unbounded actual
+  `k d²/n`, on a QECLean research branch. Its closed distance formula remains
+  conjectural; this is not a hardware-performance claim.
+- **Further results:** a non-abelian mitten distance proof on a branch that
+  uses native decision procedures, an all-size IBM logical-dimension
+  correction, and analytic exact-distance theorems for modified BB families.
+
+The original IBM all-size distance conjecture remains open. Some older
+handoffs report formal instances now parked off `main`; the assessment
+distinguishes those from the current library. The preferred next direction
+is a reusable descent engine with independently checkable certificates.
+
+For local storage and reproduction, see
+[repository maintenance](docs/repository-maintenance.md).
+
 ## Relationship to QECLean
 
 The two repos share git ancestry (qec-lab was seeded from the pre-split QECLean
@@ -54,13 +82,15 @@ history, so all research provenance is in `git log` here) and work as a pair:
 
 ## Reading order
 
-1. [`pipeline/research_log.md`](pipeline/research_log.md) — index of all
+1. [`docs/research-status.md`](docs/research-status.md) — current assessment,
+   evidence tiers, and recommended next work.
+2. [`pipeline/research_log.md`](pipeline/research_log.md) — index of all
    moonshot approach lines (A3…), one rich paragraph each.
-2. [`experiments/bb_lab/notes/A_HANDOFF.md`](experiments/bb_lab/notes/A_HANDOFF.md)
+3. [`experiments/bb_lab/notes/A_HANDOFF.md`](experiments/bb_lab/notes/A_HANDOFF.md)
    — the canonical Phase-A handoff; §0 is the resume-here paragraph.
-3. Per-approach notes `experiments/bb_lab/notes/A<N>_*.md` — approach numbers
+4. Per-approach notes `experiments/bb_lab/notes/A<N>_*.md` — approach numbers
    are claimed in [`experiments/bb_lab/notes/README.md`](experiments/bb_lab/notes/README.md).
-4. [`docs/gross-distance-extensibility.md`](docs/gross-distance-extensibility.md)
+5. [`docs/gross-distance-extensibility.md`](docs/gross-distance-extensibility.md)
    — the generalization program beyond the gross code.
 
 ## License

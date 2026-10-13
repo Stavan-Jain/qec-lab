@@ -80,6 +80,7 @@ static void dfs(targ_t *ta, int start, int depth,
 
 static void *worker(void *arg) {
     targ_t *ta = (targ_t *)arg;
+    if (RMAX == 0) return NULL;
     for (int i0 = ta->tid; i0 < KAPPA; i0 += NTHREADS) {
         uint64_t b0 = R0[i0], b1 = R1[i0], b2 = R2[i0];
         ta->nodes++;
@@ -212,6 +213,9 @@ def disjoint_info_sets(
     R1n, piv0 = rref(Mfull)
     kappa = len(piv0)
     n = Mfull.shape[1]
+    if kappa == 0:
+        # The zero code has the empty information set in both windows.
+        return [], R1n.copy(), [], R1n.copy(), 0
     if 2 * kappa > n:
         raise ValueError(f"2*kappa = {2*kappa} > n = {n}: no disjoint pair")
     rng = np.random.default_rng(seed)
@@ -268,6 +272,8 @@ def run_window(
 
     Enforces `deadline` (time.monotonic) via subprocess timeout; asserts
     the exact node count sum_{s<=r} C(kappa, s)."""
+    if r < 0:
+        raise ValueError("window radius must be nonnegative")
     assert len(bases) <= NOFF_MAX
     kappa, n = Gsys.shape[0], Gsys.shape[1]
     assert n <= NMAX
