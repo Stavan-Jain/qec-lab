@@ -1,0 +1,60 @@
+{
+ "W": 16,
+ "target": 18,
+ "routes": [
+  {
+   "route": "A_x_first",
+   "mid": [
+    9,
+    18
+   ],
+   "k_mid": 8,
+   "ranks": [
+    6,
+    4,
+    2
+   ],
+   "d_L1_window": null,
+   "d_L2_le8": null,
+   "stab1": 1043,
+   "seam1": 0,
+   "dangerous": {
+    "PASS": 1043
+   },
+   "seam": {},
+   "violations": 0,
+   "b0_dead": true,
+   "floor_18": true,
+   "tau_witness": null
+  },
+  {
+   "route": "B_y_first",
+   "mid": [
+    18,
+    9
+   ],
+   "k_mid": 8,
+   "ranks": [
+    6,
+    4,
+    2
+   ],
+   "d_L1_window": null,
+   "d_L2_le8": null,
+   "stab1": 1043,
+   "seam1": 0,
+   "dangerous": {
+    "PASS": 1043
+   },
+   "seam": {},
+   "violations": 0,
+   "b0_dead": true,
+   "floor_18": true,
+   "tau_witness": null
+  }
+ ],
+ "wall_s": 87.7,
+ "verdict": {
+  "floor": 18
+ }
+}

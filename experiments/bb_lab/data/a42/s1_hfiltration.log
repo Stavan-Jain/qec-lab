@@ -1,0 +1,17 @@
+a=0 Wx=8: dim Syz_W=14 classes=4
+  dim H = 4; im(pi^l) dims [4, 0]; ker(pi^l) dims [0, 4]
+a=0 Wx=10: dim Syz_W=18 classes=4
+  dim H = 4; im(pi^l) dims [4, 0]; ker(pi^l) dims [0, 4]
+a=1 Wx=8: dim Syz_W=26 classes=6
+  dim H = 6; im(pi^l) dims [6, 2, 0]; ker(pi^l) dims [0, 4, 6]
+a=1 Wx=11: dim Syz_W=38 classes=6
+  dim H = 6; im(pi^l) dims [6, 2, 0]; ker(pi^l) dims [0, 4, 6]
+a=2 Wx=9: dim Syz_W=54 classes=6
+  dim H = 6; im(pi^l) dims [6, 2, 0, 0, 0]; ker(pi^l) dims [0, 4, 6, 6, 6]
+a=2 Wx=12: dim Syz_W=78 classes=6
+  dim H = 6; im(pi^l) dims [6, 2, 0, 0, 0]; ker(pi^l) dims [0, 4, 6, 6, 6]
+a=3 Wx=10: dim Syz_W=118 classes=6
+  dim H = 6; im(pi^l) dims [6, 2, 0, 0, 0, 0, 0, 0, 0]; ker(pi^l) dims [0, 4, 6, 6, 6, 6, 6, 6, 6]
+a=3 Wx=13: dim Syz_W=166 classes=6
+  dim H = 6; im(pi^l) dims [6, 2, 0, 0, 0, 0, 0, 0, 0]; ker(pi^l) dims [0, 4, 6, 6, 6, 6, 6, 6, 6]
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s1_hfiltration.json (0.1 s)

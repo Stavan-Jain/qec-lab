@@ -1,0 +1,9 @@
+{"species": "dangerous", "w": 6, "M": 9, "verdict": "PASS", "lane": "kernel-shift", "count": 1}
+{"species": "dangerous", "w": 10, "M": 7, "verdict": "PASS", "lane": "kernel-shift", "count": 6}
+{"species": "dangerous", "w": 12, "M": 6, "verdict": "PASS", "lane": "kernel-shift", "count": 51}
+{"species": "dangerous", "w": 14, "M": 5, "verdict": "PASS", "lane": "restricted<=4", "count": 54}
+{"species": "dangerous", "w": 16, "M": 4, "verdict": "PASS", "lane": "restricted<=3", "count": 589}
+{"species": "dangerous", "w": 18, "M": 3, "verdict": "PASS", "lane": "restricted<=2", "count": 2091}
+{"species": "dangerous", "w": 20, "M": 2, "verdict": "PASS", "lane": "restricted<=1", "count": 7117}
+{"species": "dangerous", "w": 22, "M": 1, "verdict": "PASS", "lane": "restricted<=0", "count": 34184}
+{"species": "seam", "w": 22, "M": 1, "verdict": "PASS", "lane": "restricted<=0", "count": 68}

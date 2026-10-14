@@ -1,0 +1,147 @@
+{
+ "(12, 6)": {
+  "k": 12,
+  "dim_Wx": 6,
+  "dim_Wy": 6,
+  "fold_y": {
+   "base": [
+    12,
+    3
+   ],
+   "k_base": 8,
+   "sigma_star_id": false,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wx": false,
+   "ker_eq_Wy": false
+  },
+  "fold_x": {
+   "base": [
+    6,
+    6
+   ],
+   "k_base": 12,
+   "sigma_star_id": true,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wy": true,
+   "ker_eq_Wx": false
+  }
+ },
+ "(18, 12)": {
+  "k": 12,
+  "dim_Wx": 6,
+  "dim_Wy": 6,
+  "fold_y": {
+   "base": [
+    18,
+    6
+   ],
+   "k_base": 12,
+   "sigma_star_id": true,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wx": true,
+   "ker_eq_Wy": false
+  },
+  "fold_x": {
+   "base": [
+    9,
+    12
+   ],
+   "k_base": 8,
+   "sigma_star_id": false,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wy": false,
+   "ker_eq_Wx": false
+  }
+ },
+ "(24, 18)": {
+  "k": 12,
+  "dim_Wx": 6,
+  "dim_Wy": 6,
+  "fold_y": {
+   "base": [
+    24,
+    9
+   ],
+   "k_base": 8,
+   "sigma_star_id": false,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wx": false,
+   "ker_eq_Wy": false
+  },
+  "fold_x": {
+   "base": [
+    12,
+    18
+   ],
+   "k_base": 12,
+   "sigma_star_id": true,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wy": true,
+   "ker_eq_Wx": false
+  }
+ },
+ "(12, 12)": {
+  "k": 12,
+  "dim_Wx": 6,
+  "dim_Wy": 6,
+  "fold_y": {
+   "base": [
+    12,
+    6
+   ],
+   "k_base": 12,
+   "sigma_star_id": true,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wx": true,
+   "ker_eq_Wy": false
+  },
+  "fold_x": {
+   "base": [
+    6,
+    12
+   ],
+   "k_base": 12,
+   "sigma_star_id": true,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wy": true,
+   "ker_eq_Wx": false
+  }
+ },
+ "(6, 6)": {
+  "k": 12,
+  "dim_Wx": 6,
+  "dim_Wy": 6,
+  "fold_y": {
+   "base": [
+    6,
+    3
+   ],
+   "k_base": 8,
+   "sigma_star_id": false,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wx": false,
+   "ker_eq_Wy": false
+  },
+  "fold_x": {
+   "base": [
+    3,
+    6
+   ],
+   "k_base": 8,
+   "sigma_star_id": false,
+   "rank_p": 6,
+   "dim_ker": 6,
+   "ker_eq_Wy": false,
+   "ker_eq_Wx": false
+  }
+ }
+}

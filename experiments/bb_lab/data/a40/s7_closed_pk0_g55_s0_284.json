@@ -1,0 +1,29 @@
+{
+ "params": {
+  "u": 2,
+  "m": 18,
+  "ell": 24,
+  "kmax": 0,
+  "whcap": 14,
+  "gcap": 55,
+  "smax": 3,
+  "dil": 4,
+  "dcap": 30,
+  "seeds": [
+   0,
+   284
+  ]
+ },
+ "info": {
+  "n_seeds": 284,
+  "popped": 1284174,
+  "pushed": 1284174,
+  "trunc_g": true,
+  "trunc_extent": 0,
+  "trunc_dcap": 0,
+  "trunc_nodes": false,
+  "closed": 0,
+  "wall_s": 15.4
+ },
+ "closed": []
+}

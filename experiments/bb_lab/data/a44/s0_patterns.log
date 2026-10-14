@@ -1,0 +1,417 @@
+=== 2026-09-02 10:03:39 s0_patterns.log
+validate_banked: PASS
+Laurent conventions (beta f = alpha g; stab = h(alpha,beta)): PASS at (6,6) (12,12) (12,6) (18,18)
+=== bb72(6,6) (6, 6): 84 objects, 3 families
+  [  36] 2D|n/a|w6|nx2|ny5|gx2|gy1|blk(0, 6)|cmax4|rmax2
+      reading=y-band periods=[]
+      f = 0
+      g = x*y^2 + x*y^4 + x^4 + x^4*y + x^4*y^2 + x^4*y^3
+      y-band cols(weights)=[2, 4] rec=True
+y= 5 ......
+y= 4 .b....
+y= 3 ....b.
+y= 2 .b..b.
+y= 1 ....b.
+y= 0 ....b.
+     012345
+  [  36] 2D|n/a|w6|nx5|ny2|gx1|gy2|blk(6, 0)|cmax2|rmax4
+      reading=x-band periods=[]
+      f = y^5 + x*y^5 + x^2*y^2 + x^2*y^5 + x^3*y^5 + x^4*y^2
+      g = 0
+      x-band rows(weights)=[2, 4] rec=True closure=True
+y= 5 aaaa..
+y= 4 ......
+y= 3 ......
+y= 2 ..a.a.
+y= 1 ......
+y= 0 ......
+     012345
+  [  12] 2D|n/a|w6|nx6|ny6|gx0|gy0|blk(3, 3)|cmax1|rmax1
+      reading=helix/pullback periods=[(2, 2), (4, 4)]
+      f = x + x^3*y^2 + x^5*y^4
+      g = y + x^2*y^3 + x^4*y^5
+      helix relation f = x^-3 y g: {'ok': True, 'extra_shift': (0, 0)}
+y= 5 ....b.
+y= 4 .....a
+y= 3 ..b...
+y= 2 ...a..
+y= 1 b.....
+y= 0 .a....
+     012345
+=== two-gross(12,12) (12, 12): 49 objects, 2 families
+  [  48] 2D|mixed|w18|nx12|ny12|gx0|gy0|blk(9, 9)|cmax2|rmax2
+      reading=helix/pullback periods=[(4, 4), (8, 8)]
+      f = x*y^11 + x^2*y^11 + x^3*y^2 + x^5*y^3 + x^6*y^3 + x^7*y^6 + x^9*y^7 + x^10*y^7 + x^11*y^10
+      g = 1 + y + x*y^6 + x^4*y^4 + x^4*y^5 + x^5*y^10 + x^8*y^8 + x^8*y^9 + x^9*y^2
+      helix relation f = x^-3 y g: {'ok': False}
+y=11 .aa.........
+y=10 .....b.....a
+y= 9 ........b...
+y= 8 ........b...
+y= 7 .........aa.
+y= 6 .b.....a....
+y= 5 ....b.......
+y= 4 ....b.......
+y= 3 .....aa.....
+y= 2 ...a.....b..
+y= 1 b...........
+y= 0 b...........
+     012345678901
+  [   1] 2D|mixed|w18|nx11|ny4|gx1|gy2|blk(18, 0)|cmax3|rmax8
+      reading=x-band periods=[]
+      f = y + y^4 + y^10 + x*y + x^2*y^4 + x^2*y^7 + x^3*y^7 + x^4*y^10 + x^6*y + x^7*y + x^8*y + x^8*y^4 + x^9*y + x^10*y + x^10*y^4 + x^10*y^7 + x^11*y + x^11*y^7
+      g = 0
+      x-band rows(weights)=[8, 4, 4, 2] rec=True closure=True
+y=11 ............
+y=10 a...a.......
+y= 9 ............
+y= 8 ............
+y= 7 ..aa......aa
+y= 6 ............
+y= 5 ............
+y= 4 a.a.....a.a.
+y= 3 ............
+y= 2 ............
+y= 1 aa....aaaaaa
+y= 0 ............
+     012345678901
+=== gross(12,6) (12, 6): 1884 objects, 28 families
+  [ 144] 2D|n/a|w12|nx8|ny5|gx2|gy1|blk(6, 6)|cmax3|rmax5
+      reading=blob periods=[]
+      f = y^5 + x*y^2 + x*y^5 + x^2*y^5 + x^3*y^2 + x^11*y^5
+      g = x + x^4*y^4 + x^4*y^5 + x^7*y^2 + x^10 + x^10*y
+  [ 144] W_x|n/a|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax3|rmax4
+      reading=blob periods=[]
+      f = x^2*y^2 + x^3*y^2 + x^3*y^4 + x^4*y^3 + x^4*y^5 + x^5 + x^5*y^3
+      g = x^4*y + x^5*y^3 + x^6*y + x^6*y^2 + x^6*y^3
+  [  72] 2D|n/a|w12|nx6|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3
+      reading=blob periods=[]
+      f = x^8 + x^8*y + x^9*y^3 + x^10*y^4
+      g = x^2*y^5 + x^5*y^3 + x^5*y^4 + x^8*y + x^8*y^3 + x^10 + x^10*y^5 + x^11*y
+y= 5 ..b.......b.
+y= 4 .....b....a.
+y= 3 .....b..ba..
+y= 2 ............
+y= 1 ........*..b
+y= 0 ........a.b.
+     012345678901
+  [  72] 2D|n/a|w12|nx6|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3
+      reading=blob periods=[]
+      f = x^5*y^2 + x^6*y^4 + x^7*y^5 + x^9*y^2 + x^10*y^3
+      g = x^2*y^5 + x^5*y^3 + x^5*y^4 + x^7*y + x^9*y^3 + x^10*y^4 + x^10*y^5
+y= 5 ..b....a..b.
+y= 4 .....ba...b.
+y= 3 .....b...ba.
+y= 2 .....a...a..
+y= 1 .......b....
+y= 0 ............
+     012345678901
+  [  72] 2D|n/a|w12|nx6|ny6|gx3|gy0|blk(4, 8)|cmax4|rmax4
+      reading=blob periods=[]
+      f = x^5*y^2 + x^7*y^5 + x^9*y^3 + x^10*y^3
+      g = x^2*y^5 + x^5*y^3 + x^5*y^4 + x^7*y + x^8*y^3 + x^10 + x^10*y^4 + x^10*y^5
+y= 5 ..b....a..b.
+y= 4 .....b....b.
+y= 3 .....b..baa.
+y= 2 .....a......
+y= 1 .......b....
+y= 0 ..........b.
+     012345678901
+  [  72] 2D|n/a|w12|nx7|ny4|gx3|gy2|blk(6, 6)|cmax3|rmax4
+      reading=blob periods=[]
+      f = x^3*y^5 + x^5*y^2 + x^6*y^3 + x^7*y^5 + x^9*y^2 + x^10*y^3
+      g = x^2*y^5 + x^5*y^3 + x^6*y^4 + x^9*y^3 + x^10*y^4 + x^10*y^5
+y= 5 ..ba...a..b.
+y= 4 ......b...b.
+y= 3 .....ba..ba.
+y= 2 .....a...a..
+y= 1 ............
+y= 0 ............
+     012345678901
+  [  72] 2D|n/a|w12|nx7|ny5|gx2|gy1|blk(4, 8)|cmax3|rmax4
+      reading=blob periods=[]
+      f = x^5*y^2 + x^6*y^4 + x^9*y^2 + x^10*y^4
+      g = x^2*y^5 + x^5*y^3 + x^5*y^4 + x^7*y + x^9*y^3 + x^9*y^4 + x^10*y^5 + x^11*y
+y= 5 ..b.......b.
+y= 4 .....ba..ba.
+y= 3 .....b...b..
+y= 2 .....a...a..
+y= 1 .......b...b
+y= 0 ............
+     012345678901
+  [  72] 2D|n/a|w12|nx7|ny5|gx2|gy1|blk(5, 7)|cmax3|rmax3
+      reading=blob periods=[]
+      f = x^3*y^5 + x^5*y^2 + x^6*y^3 + x^9*y^2 + x^10*y^4
+      g = x^2*y^5 + x^5*y^3 + x^6*y^4 + x^9*y^3 + x^9*y^4 + x^10*y^5 + x^11*y
+y= 5 ..ba......b.
+y= 4 ......b..ba.
+y= 3 .....ba..b..
+y= 2 .....a...a..
+y= 1 ...........b
+y= 0 ............
+     012345678901
+  [  72] 2D|n/a|w12|nx7|ny6|gx2|gy0|blk(3, 9)|cmax3|rmax3
+      reading=blob periods=[]
+      f = x^5*y^2 + x^9*y^3 + x^10*y^4
+      g = x^2*y^5 + x^5*y^3 + x^5*y^4 + x^7*y + x^8*y^3 + x^9*y^4 + x^10 + x^10*y^5 + x^11*y
+y= 5 ..b.......b.
+y= 4 .....b...ba.
+y= 3 .....b..ba..
+y= 2 .....a......
+y= 1 .......b...b
+y= 0 ..........b.
+     012345678901
+  [  72] 2D|n/a|w12|nx7|ny6|gx2|gy0|blk(5, 7)|cmax3|rmax3
+      reading=blob periods=[]
+      f = x^6*y^4 + x^8 + x^8*y + x^9*y^2 + x^10*y^4
+      g = x^2*y^5 + x^5*y^3 + x^5*y^4 + x^8*y + x^9*y^3 + x^10*y^5 + x^11*y
+y= 5 ..b.......b.
+y= 4 .....ba...a.
+y= 3 .....b...b..
+y= 2 .........a..
+y= 1 ........*..b
+y= 0 ........a...
+     012345678901
+  [  72] 2D|n/a|w12|nx7|ny6|gx3|gy0|blk(6, 6)|cmax5|rmax6
+      reading=blob periods=[]
+      f = x^2*y^5 + x^3*y^5 + x^4*y^2 + x^4*y^5 + x^5*y^2 + x^6*y^5
+      g = x + x*y^5 + x^4*y^3 + x^4*y^4 + x^4*y^5 + x^10*y
+y= 5 .baa*.a.....
+y= 4 ....b.......
+y= 3 ....b.......
+y= 2 ....aa......
+y= 1 ..........b.
+y= 0 .b..........
+     012345678901
+  [  72] 2D|n/a|w12|nx8|ny5|gx2|gy1|blk(4, 8)|cmax4|rmax3
+      reading=blob periods=[]
+      f = x^3*y^5 + x^5*y^2 + x^9*y + x^10*y^4
+      g = x^2*y^5 + x^5*y^3 + x^6*y^4 + x^8*y^2 + x^9*y^2 + x^9*y^3 + x^9*y^4 + x^11*y
+y= 5 ..ba........
+y= 4 ......b..ba.
+y= 3 .....b...b..
+y= 2 .....a..bb..
+y= 1 .........a.b
+y= 0 ............
+     012345678901
+  [  72] 2D|n/a|w12|nx8|ny5|gx3|gy1|blk(5, 7)|cmax3|rmax3
+      reading=blob periods=[]
+      f = x^3*y^5 + x^5*y^2 + x^7*y^5 + x^9*y + x^10*y^3
+      g = x^2*y^5 + x^5*y^3 + x^6*y^4 + x^8*y^2 + x^9*y^2 + x^9*y^3 + x^10*y^4
+y= 5 ..ba...a....
+y= 4 ......b...b.
+y= 3 .....b...ba.
+y= 2 .....a..bb..
+y= 1 .........a..
+y= 0 ............
+     012345678901
+  [  72] W_x|n/a|w12|nx4|ny5|gx8|gy1|blk(6, 6)|cmax4|rmax4
+      reading=blob periods=[]
+      f = x^3*y^2 + x^3*y^4 + x^4*y^3 + x^4*y^5 + x^5*y + x^5*y^3
+      g = x^5*y + x^5*y^3 + x^6*y + x^6*y^2 + x^6*y^3 + x^6*y^4
+y= 5 ....a.......
+y= 4 ...a..b.....
+y= 3 ....a*b.....
+y= 2 ...a..b.....
+y= 1 .....*b.....
+y= 0 ............
+     012345678901
+  [  72] W_x|n/a|w12|nx4|ny6|gx8|gy0|blk(8, 4)|cmax6|rmax3
+      reading=blob periods=[]
+      f = 1 + y + y^2 + y^3 + x^10*y^3 + x^10*y^5 + x^11*y + x^11*y^3
+      g = y^2 + y^4 + x + x*y^4
+y= 5 ..........a.
+y= 4 bb..........
+y= 3 a.........aa
+y= 2 *...........
+y= 1 a..........a
+y= 0 ab..........
+     012345678901
+  [  72] W_x|n/a|w12|nx5|ny5|gx7|gy1|blk(9, 3)|cmax5|rmax4
+      reading=blob periods=[]
+      f = 1 + y + y^2 + y^3 + x*y^3 + x*y^4 + x^10*y^3 + x^11*y + x^11*y^3
+      g = y^2 + x + x^2*y
+y= 5 ............
+y= 4 .a..........
+y= 3 aa........aa
+y= 2 *...........
+y= 1 a.b........a
+y= 0 ab..........
+     012345678901
+  [  72] W_x|n/a|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax3
+      reading=blob periods=[]
+      f = x^3*y^2 + x^4*y^3 + x^4*y^5 + x^5*y + x^5*y^3 + x^6*y^2 + x^6*y^3
+      g = x^5*y + x^6*y + x^6*y^2 + x^6*y^4 + x^7
+y= 5 ....a.......
+y= 4 ......b.....
+y= 3 ....aaa.....
+y= 2 ...a..*.....
+y= 1 .....*b.....
+y= 0 .......b....
+     012345678901
+  [  72] W_x|n/a|w12|nx5|ny6|gx7|gy0|blk(7, 5)|cmax5|rmax4
+      reading=blob periods=[]
+      f = x^3*y^4 + x^4*y^3 + x^4*y^5 + x^5*y + x^5*y^3 + x^6 + x^6*y
+      g = x^5*y^3 + x^6*y^2 + x^6*y^3 + x^6*y^4 + x^7*y^4
+y= 5 ....a.......
+y= 4 ...a..bb....
+y= 3 ....a*b.....
+y= 2 ......b.....
+y= 1 .....aa.....
+y= 0 ......a.....
+     012345678901
+  [  72] W_x|n/a|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax4
+      reading=blob periods=[]
+      f = x^2*y^2 + x^3*y^2 + x^4*y^3 + x^4*y^5 + x^5 + x^5*y^3 + x^6*y^2 + x^6*y^3
+      g = x^4*y + x^6*y + x^6*y^2 + x^7
+y= 5 ....a.......
+y= 4 ............
+y= 3 ....aaa.....
+y= 2 ..aa..*.....
+y= 1 ....b.b.....
+y= 0 .....a.b....
+     012345678901
+  [  72] W_x|n/a|w12|nx6|ny5|gx6|gy1|blk(8, 4)|cmax4|rmax5
+      reading=blob periods=[]
+      f = x^3*y^4 + x^4*y^3 + x^5*y + x^5*y^3 + x^6 + x^6*y + x^7*y^3 + x^7*y^4
+      g = x^5*y^3 + x^6*y^2 + x^6*y^3 + x^8*y
+y= 5 ............
+y= 4 ...a...a....
+y= 3 ....a*ba....
+y= 2 ......b.....
+y= 1 .....aa.b...
+y= 0 ......a.....
+     012345678901
+  [  72] W_x|n/a|w12|nx6|ny6|gx6|gy0|blk(8, 4)|cmax4|rmax5
+      reading=blob periods=[]
+      f = x^3*y^3 + x^4*y^3 + x^5*y + x^5*y^3 + x^6 + x^6*y^3 + x^7*y^3 + x^7*y^4
+      g = x^5*y^2 + x^7 + x^7*y^5 + x^8*y
+y= 5 .......b....
+y= 4 .......a....
+y= 3 ...aaaaa....
+y= 2 .....b......
+y= 1 .....a..b...
+y= 0 ......ab....
+     012345678901
+  [  36] 2D|n/a|w12|nx10|ny2|gx1|gy2|blk(12, 0)|cmax2|rmax8
+      reading=x-band periods=[(6, 0)]
+      f = y + x*y + x*y^4 + x^2*y + x^3*y^4 + x^5*y + x^6*y + x^7*y + x^7*y^4 + x^8*y + x^9*y^4 + x^11*y
+      g = 0
+      x-band rows(weights)=[8, 4] rec=True closure=True
+y= 5 ............
+y= 4 .a.a...a.a..
+y= 3 ............
+y= 2 ............
+y= 1 aaa..aaaa..a
+y= 0 ............
+     012345678901
+  [  36] 2D|n/a|w12|nx4|ny5|gx2|gy1|blk(0, 12)|cmax4|rmax4
+      reading=y-band periods=[(6, 0)]
+      f = 0
+      g = x*y^2 + x*y^4 + x^4 + x^4*y + x^4*y^2 + x^4*y^3 + x^7*y^2 + x^7*y^4 + x^10 + x^10*y + x^10*y^2 + x^10*y^3
+      y-band cols(weights)=[2, 4, 2, 4] rec=True
+y= 5 ............
+y= 4 .b.....b....
+y= 3 ....b.....b.
+y= 2 .b..b..b..b.
+y= 1 ....b.....b.
+y= 0 ....b.....b.
+     012345678901
+  [  36] 2D|n/a|w12|nx8|ny4|gx1|gy1|blk(4, 8)|cmax2|rmax4
+      reading=helix/pullback periods=[(6, 3)]
+      f = x*y^2 + x^5*y^2 + x^7*y^5 + x^11*y^5
+      g = x*y^3 + x^2*y^5 + x^4*y^2 + x^5*y^3 + x^7 + x^8*y^2 + x^10*y^5 + x^11
+      helix relation f = x^-3 y g: {'ok': False}
+y= 5 ..b....a..ba
+y= 4 ............
+y= 3 .b...b......
+y= 2 .a..ba..b...
+y= 1 ............
+y= 0 .......b...b
+     012345678901
+  [  36] 2D|n/a|w12|nx8|ny4|gx1|gy1|blk(8, 4)|cmax2|rmax5
+      reading=helix/pullback periods=[(6, 3)]
+      f = y^5 + x^2*y^2 + x^3*y^2 + x^4*y^5 + x^6*y^2 + x^8*y^5 + x^9*y^5 + x^10*y^2
+      g = y^5 + x^3*y^3 + x^6*y^2 + x^9
+      helix relation f = x^-3 y g: {'ok': False}
+y= 5 *...a...aa..
+y= 4 ............
+y= 3 ...b........
+y= 2 ..aa..*...a.
+y= 1 ............
+y= 0 .........b..
+     012345678901
+  [  36] W_x|n/a|w12|nx3|ny6|gx9|gy0|blk(8, 4)|cmax4|rmax3
+      reading=helix/pullback periods=[(0, 3)]
+      f = x^10*y + x^10*y^2 + x^10*y^4 + x^10*y^5 + x^11*y + x^11*y^2 + x^11*y^4 + x^11*y^5
+      g = 1 + y + y^3 + y^4
+      helix relation f = x^-3 y g: {'ok': False}
+y= 5 ..........aa
+y= 4 b.........aa
+y= 3 b...........
+y= 2 ..........aa
+y= 1 b.........aa
+y= 0 b...........
+     012345678901
+  [  36] W_x|n/a|w12|nx4|ny6|gx6|gy0|blk(4, 8)|cmax6|rmax3
+      reading=helix/pullback periods=[(0, 3)]
+      f = x^10 + x^10*y^3 + x^11 + x^11*y^3
+      g = y^2 + y^5 + x^3 + x^3*y + x^3*y^2 + x^3*y^3 + x^3*y^4 + x^3*y^5
+      helix relation f = x^-3 y g: {'ok': False}
+y= 5 b..b........
+y= 4 ...b........
+y= 3 ...b......aa
+y= 2 b..b........
+y= 1 ...b........
+y= 0 ...b......aa
+     012345678901
+  [  12] 2D|n/a|w12|nx12|ny6|gx0|gy0|blk(6, 6)|cmax1|rmax2
+      reading=helix/pullback periods=[(2, 2), (4, 4), (6, 0), (8, 2), (10, 4)]
+      f = y^3 + x^2*y^5 + x^4*y + x^6*y^3 + x^8*y^5 + x^10*y
+      g = x + x^3*y^2 + x^5*y^4 + x^7 + x^9*y^2 + x^11*y^4
+      helix relation f = x^-3 y g: {'ok': True, 'extra_shift': (0, 0)}
+y= 5 ..a.....a...
+y= 4 .....b.....b
+y= 3 a.....a.....
+y= 2 ...b.....b..
+y= 1 ....a.....a.
+y= 0 .b.....b....
+     012345678901
+=== tdg432(18,12) L12 stack (18, 12): 1 objects, 1 families
+  [   1] W_x|x-only|w24|nx4|ny10|gx14|gy1|blk(12, 12)|cmax8|rmax4
+      reading=helix/pullback periods=[(0, 6)]
+      f = x + x*y^2 + x*y^6 + x*y^8 + x^2*y + x^2*y^3 + x^2*y^7 + x^2*y^9 + x^3*y + x^3*y^5 + x^3*y^7 + x^3*y^11
+      g = x^3*y + x^3*y^5 + x^3*y^7 + x^3*y^11 + x^4 + x^4*y + x^4*y^2 + x^4*y^5 + x^4*y^6 + x^4*y^7 + x^4*y^8 + x^4*y^11
+      helix relation f = x^-3 y g: {'ok': False}
+y=11 ...*b.............
+y=10 ..................
+y= 9 ..a...............
+y= 8 .a..b.............
+y= 7 ..a*b.............
+y= 6 .a..b.............
+y= 5 ...*b.............
+y= 4 ..................
+y= 3 ..a...............
+y= 2 .a..b.............
+y= 1 ..a*b.............
+y= 0 .a..b.............
+     012345678901234567
+=== x-band exact minimum cost at (6r,6r) (min over the closure ideal)
+  r=1 (6,6): target 6, ideal dim 4, min x-band cost 6 rows=[2, 4] p0=[0, 2] cycle=True nontrivial=True
+  r=2 (12,12): target 18, ideal dim 8, min x-band cost 18 rows=[2, 4, 4, 8] p0=[0, 4] cycle=True nontrivial=True
+  r=3 (18,18): target 30, ideal dim 4, min x-band cost 54 rows=[6, 12, 6, 12, 6, 12] p0=[0, 2, 6, 8, 12, 14] cycle=True nontrivial=True
+  r=4 (24,24): target 42, ideal dim 16, min x-band cost 54 rows=[2, 4, 4, 8, 4, 8, 8, 16] p0=[0, 8] cycle=True nontrivial=True
+  r=5 (30,30): target 54, ideal dim 4, min x-band cost 150 rows=[10, 20, 10, 20, 10, 20, 10, 20, 10, 20] p0=[0, 2, 6, 8, 12, 14, 18, 20, 24, 26] cycle=None nontrivial=None
+  r=6 (36,36): target 66, ideal dim 8, min x-band cost 162 rows=[6, 12, 12, 24, 6, 12, 12, 24, 6, 12, 12, 24] p0=[0, 4, 12, 16, 24, 28] cycle=None nontrivial=None
+=== single helix g = x sum_j (x^2y^2)^j, f = x^-3 y g at (6r,6r)
+  r=1: weight 6 cycle=True stab=False
+  r=2: weight 12 cycle=False stab=None
+  r=3: weight 18 cycle=False stab=None
+  r=4: weight 24 cycle=False stab=None
+  r=5: weight 30 cycle=False stab=None
+=== stacking the (6,6) x-band carrier: sum_j y^{6j} (y p + y^4 q), p = 1+x^2, q = (x^-1+x^-2)p, at (6r,6r)
+  r=1: weight 6 cycle=True nontrivial=True closure residual (1+x^2+x^4)p mod x^6+1 = []
+  r=2: weight 12 cycle=False nontrivial=None closure residual (1+x^2+x^4)p mod x^12+1 = [0, 6]
+  r=3: weight 18 cycle=False nontrivial=None closure residual (1+x^2+x^4)p mod x^18+1 = [0, 6]
+  r=4: weight 24 cycle=False nontrivial=None closure residual (1+x^2+x^4)p mod x^24+1 = [0, 6]
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a44/s0_patterns.json (4.2 s, RSS 0.07 GB)

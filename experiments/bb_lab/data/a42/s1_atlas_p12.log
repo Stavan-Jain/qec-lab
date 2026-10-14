@@ -1,0 +1,16 @@
+p=12: validated; run cap 22
+  level 0: novel 1 seen 1 rss 38MB t 1s returns [] nontrivial@[]
+  level 1: novel 0 seen 1 rss 38MB t 1s returns [] nontrivial@[]
+  level 2: novel 1 seen 2 rss 38MB t 2s returns [] nontrivial@[]
+  level 3: novel 2 seen 4 rss 39MB t 3s returns [] nontrivial@[]
+  level 4: novel 8 seen 12 rss 41MB t 6s returns [] nontrivial@[]
+  level 5: novel 27 seen 39 rss 46MB t 11s returns [] nontrivial@[]
+  level 6: novel 71 seen 110 rss 60MB t 17s returns [6] nontrivial@[]
+  level 7: novel 224 seen 334 rss 100MB t 22s returns [6] nontrivial@[]
+  level 8: novel 625 seen 959 rss 262MB t 30s returns [6] nontrivial@[]
+  level 9: novel 1696 seen 2655 rss 684MB t 41s returns [6] nontrivial@[]
+  level 10: novel 4713 seen 7368 rss 1793MB t 70s returns [6, 10] nontrivial@[]
+  level 11: novel 12387 seen 19755 rss 4069MB t 151s returns [6, 10] nontrivial@[]
+  RSS cap — clean abort (levels completed are certified)
+p=12: completed level 11; nontrivial costs []
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s1_atlas_p12.json

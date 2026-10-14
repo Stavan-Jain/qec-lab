@@ -1,0 +1,100 @@
+{
+ "dual": {
+  "h": 1,
+  "cyl_weight": 12,
+  "triples": [
+   [
+    0,
+    0,
+    1
+   ],
+   [
+    0,
+    0,
+    2
+   ],
+   [
+    0,
+    0,
+    3
+   ],
+   [
+    0,
+    1,
+    2
+   ],
+   [
+    0,
+    1,
+    3
+   ],
+   [
+    0,
+    2,
+    2
+   ],
+   [
+    0,
+    3,
+    0
+   ],
+   [
+    0,
+    3,
+    2
+   ],
+   [
+    0,
+    4,
+    1
+   ],
+   [
+    1,
+    0,
+    4
+   ],
+   [
+    1,
+    1,
+    2
+   ],
+   [
+    1,
+    2,
+    3
+   ]
+  ]
+ },
+ "members": {
+  "1": {
+   "z_cycle": true,
+   "pairing": 1,
+   "u_weight": 24
+  },
+  "2": {
+   "z_cycle": true,
+   "pairing": 1,
+   "u_weight": 36
+  },
+  "3": {
+   "z_cycle": true,
+   "pairing": 1,
+   "u_weight": 48
+  },
+  "4": {
+   "z_cycle": true,
+   "pairing": 1,
+   "u_weight": 60
+  },
+  "5": {
+   "z_cycle": true,
+   "pairing": 1,
+   "u_weight": 72
+  },
+  "6": {
+   "z_cycle": true,
+   "pairing": 1,
+   "u_weight": 84
+  }
+ }
+}

@@ -1,0 +1,92 @@
+== G0: validate_banked ==
+validate_banked: PASS (0.8 s)
+
+== G1: resultant ==
+Res_y(A~,B^) = 1+x+x^2+x^4+x^5+x^11+x^13
+matches banked A40 S3 certificate: PASS
+
+== G2: factorization and fiber enumeration ==
+  1+x+x^2  deg=2  exp=3  ord(root)=3
+  1+x^2+x^4+x^6+x^7  deg=7  exp=1  ord(root)=127
+  total deg*exp = 13 = 13: PASS
+  factor 1+x+x^2 (deg 2, exp 3): 2 orbit(s)
+  factor 1+x^2+x^4+x^6+x^7 (deg 7, exp 1): 1 orbit(s)
+
+  3 Frobenius point-orbits on the torus
+  orbit: fx=1+x+x^2 D=2 ord=(3,3) beta_min=1+x+x^2 mult=1
+  orbit: fx=1+x+x^2 D=2 ord=(3,3) beta_min=1+x+x^2 mult=2
+  orbit: fx=1+x^2+x^4+x^6+x^7 D=7 ord=(127,127) beta_min=1+x+x^2+x^4+x^5+x^6+x^7 mult=1
+
+== G3: scheme consistency (Res exponents vs local mults) ==
+  1+x+x^2: exp 3 vs sum 3: PASS
+  1+x^2+x^4+x^6+x^7: exp 1 vs sum 1: PASS
+
+== G4: rectangular member battery ==
+  (l,m)=(6,6) r=1 b=0: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(12,6) r=1 b=1: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(12,12) r=2 b=0: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(18,12) r=2 b=1: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(18,18) r=3 b=0: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(24,18) r=3 b=1: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(24,24) r=4 b=0: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(30,24) r=4 b=1: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(30,30) r=5 b=0: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(36,30) r=5 b=1: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(36,36) r=6 b=0: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(42,36) r=6 b=1: k_spectral=12 k_direct=12 MATCH
+  (l,m)=(42,42) r=7 b=0: k_spectral=12
+  (l,m)=(48,42) r=7 b=1: k_spectral=12
+  (l,m)=(48,48) r=8 b=0: k_spectral=12
+  (l,m)=(54,48) r=8 b=1: k_spectral=12
+
+== G5: banked triage grid (480 frames incl. l=12,18) ==
+  l=12 p=1: all shears spectral==TowerCode (0 s cum)
+  l=12 p=2: all shears spectral==TowerCode (0 s cum)
+  l=12 p=3: all shears spectral==TowerCode (0 s cum)
+  l=12 p=4: all shears spectral==TowerCode (0 s cum)
+  l=12 p=5: all shears spectral==TowerCode (0 s cum)
+  l=12 p=6: all shears spectral==TowerCode (0 s cum)
+  l=12 p=7: all shears spectral==TowerCode (0 s cum)
+  l=12 p=8: all shears spectral==TowerCode (0 s cum)
+  l=18 p=1: all shears spectral==TowerCode (0 s cum)
+  l=18 p=2: all shears spectral==TowerCode (0 s cum)
+  l=18 p=3: all shears spectral==TowerCode (1 s cum)
+  l=18 p=4: all shears spectral==TowerCode (1 s cum)
+  l=18 p=5: all shears spectral==TowerCode (1 s cum)
+  l=18 p=6: all shears spectral==TowerCode (1 s cum)
+  l=18 p=7: all shears spectral==TowerCode (1 s cum)
+  l=18 p=8: all shears spectral==TowerCode (2 s cum)
+  240 frames: spectral == TowerCode everywhere: PASS
+  collision frames encountered: 10
+  banked-vs-true diffs: 10
+    l=12 p=1 d=0: true k=0 banked k=4 collided=True
+    l=12 p=1 d=9: true k=0 banked k=4 collided=True
+    l=12 p=2 d=9: true k=0 banked k=4 collided=True
+    l=12 p=3 d=1: true k=0 banked k=4 collided=True
+    l=12 p=3 d=2: true k=0 banked k=4 collided=True
+    l=18 p=1 d=0: true k=0 banked k=4 collided=True
+    l=18 p=1 d=15: true k=0 banked k=4 collided=True
+    l=18 p=2 d=15: true k=0 banked k=4 collided=True
+    l=18 p=3 d=1: true k=0 banked k=4 collided=True
+    l=18 p=3 d=2: true k=0 banked k=4 collided=True
+
+== G6: spot battery (l in {24,30}) ==
+  l=24: PASS
+  l=30: PASS
+  32 spot frames: spectral == TowerCode: PASS
+
+== W7 frames (l,7,l-2): contributing orbits ==
+  (l,p,d)=(12,7,10): k=4 via [{'fx': '1+x+x^2', 'ord': (3, 3), 'D': 2, 'localdim': 1}]
+  (l,p,d)=(18,7,16): k=4 via [{'fx': '1+x+x^2', 'ord': (3, 3), 'D': 2, 'localdim': 1}]
+  (l,p,d)=(24,7,22): k=4 via [{'fx': '1+x+x^2', 'ord': (3, 3), 'D': 2, 'localdim': 1}]
+
+== G7: non-F4 orbit switch-on arithmetic ==
+  orbit fx=1+x^2+x^4+x^6+x^7 ord=(127,127) D=7: s1=127 t1=127 gcd=127 -> b=0 first r=127, b=1 BLOCKED
+  member (l,m)=(762,762) r=127 b=0: k=26
+  member (l,m)=(768,762) r=127 b=1: k=12
+
+== F4-orbit local dims vs 2-part shape (rect frames) ==
+  orbit fx=1+x+x^2 beta_min=1+x+x^2: dims {'0,0': 1, '0,1': 1, '0,2': 1, '0,3': 1, '1,0': 1, '1,1': 1, '1,2': 1, '1,3': 1, '2,0': 1, '2,1': 1, '2,2': 1, '2,3': 1, '3,0': 1, '3,1': 1, '3,2': 1, '3,3': 1}
+  orbit fx=1+x+x^2 beta_min=1+x+x^2: dims {'0,0': 1, '0,1': 1, '0,2': 1, '0,3': 1, '1,0': 1, '1,1': 2, '1,2': 2, '1,3': 2, '2,0': 1, '2,1': 2, '2,2': 2, '2,3': 2, '3,0': 1, '3,1': 2, '3,2': 2, '3,3': 2}
+
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s0_variety.json (3.7 s)

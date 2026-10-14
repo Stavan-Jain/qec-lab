@@ -1,0 +1,9 @@
+link u=1 kmax=2 whcap=14 gcap=24 smax=3 dil=4: 8 raw seeds
+[link u=1 layers] h=2 states 1171 (cum 1171) rss 21MB 0.0s
+[link u=1 layers] h=3 states 647601 (cum 648772) rss 259MB 0.8s
+[link u=1 layers] h=4 states 6211743 (cum 6860515) rss 2826MB 13.0s
+[link u=1] ABORT RED: RSS 2826 MB > 2048 — tables complete through h=4
+info: {'n_seeds': 8, 'popped': 648780, 'pushed': 6860515, 'trunc_g': True, 'trunc_extent': 0, 'trunc_dcap': 0, 'trunc_nodes': True, 'complete_h': 4, 'aborted': 'RED: RSS 2826 MB > 2048', 'wall_s': 13.0}
+pre buckets 42, link buckets 2
+  link h=4: D=3.25 delta=-6 g=19
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s7_link_u1k2g24.json (13.3 s)

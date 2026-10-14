@@ -1,0 +1,102 @@
+{
+ "p": 12,
+ "cap": 22,
+ "levels": [
+  {
+   "c": 0,
+   "novel": 1,
+   "seen": 1,
+   "rss_mb": 38,
+   "t": 0.8
+  },
+  {
+   "c": 1,
+   "novel": 0,
+   "seen": 1,
+   "rss_mb": 38,
+   "t": 0.8
+  },
+  {
+   "c": 2,
+   "novel": 1,
+   "seen": 2,
+   "rss_mb": 38,
+   "t": 1.7
+  },
+  {
+   "c": 3,
+   "novel": 2,
+   "seen": 4,
+   "rss_mb": 39,
+   "t": 3.3
+  },
+  {
+   "c": 4,
+   "novel": 8,
+   "seen": 12,
+   "rss_mb": 41,
+   "t": 5.9
+  },
+  {
+   "c": 5,
+   "novel": 27,
+   "seen": 39,
+   "rss_mb": 46,
+   "t": 10.9
+  },
+  {
+   "c": 6,
+   "novel": 71,
+   "seen": 110,
+   "rss_mb": 60,
+   "t": 16.7
+  },
+  {
+   "c": 7,
+   "novel": 224,
+   "seen": 334,
+   "rss_mb": 100,
+   "t": 22.2
+  },
+  {
+   "c": 8,
+   "novel": 625,
+   "seen": 959,
+   "rss_mb": 262,
+   "t": 29.7
+  },
+  {
+   "c": 9,
+   "novel": 1696,
+   "seen": 2655,
+   "rss_mb": 684,
+   "t": 41.3
+  },
+  {
+   "c": 10,
+   "novel": 4713,
+   "seen": 7368,
+   "rss_mb": 1793,
+   "t": 69.8
+  },
+  {
+   "c": 11,
+   "novel": 12387,
+   "seen": 19755,
+   "rss_mb": 4069,
+   "t": 150.9
+  }
+ ],
+ "lane": "AB (theta'-dual lane by banked duality)",
+ "returns": {
+  "6": [
+   0
+  ],
+  "10": [
+   0
+  ]
+ },
+ "nontrivial_costs": [],
+ "aborted": "RSS",
+ "wall_s": 150.9
+}

@@ -1,0 +1,646 @@
+{
+ "phase": "l24p8",
+ "frames": [
+  {
+   "p": 8,
+   "d": 1,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 2,
+    "bottom_ntrv": 17952
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 94,
+    "14": 55
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 2,
+   "k": 8,
+   "orders": [
+    2,
+    96
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     2,
+     48
+    ],
+    "bottom_orders": [
+     2,
+     24
+    ],
+    "mid_k": 8,
+    "bottom_k": 8,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 1,
+    "bottom_ntrv": 74268
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 95,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 8.0
+  },
+  {
+   "p": 8,
+   "d": 4,
+   "k": 4,
+   "orders": [
+    4,
+    48
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     2,
+     48
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 64,
+    "bottom_ntrv": 106920
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 95,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 5.1
+  },
+  {
+   "p": 8,
+   "d": 5,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 17232
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 7,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 17952
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 8,
+   "k": 8,
+   "orders": [
+    8,
+    24
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     4,
+     24
+    ],
+    "bottom_orders": [
+     2,
+     24
+    ],
+    "mid_k": 8,
+    "bottom_k": 8,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 142,
+    "bottom_ntrv": 187548
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 95,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 12.0
+  },
+  {
+   "p": 8,
+   "d": 10,
+   "k": 4,
+   "orders": [
+    2,
+    96
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 27408
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.9
+  },
+  {
+   "p": 8,
+   "d": 11,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 17232
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 13,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 2,
+    "bottom_ntrv": 17952
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 14,
+   "k": 8,
+   "orders": [
+    2,
+    96
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     2,
+     48
+    ],
+    "bottom_orders": [
+     2,
+     24
+    ],
+    "mid_k": 8,
+    "bottom_k": 8,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 1,
+    "bottom_ntrv": 74268
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 95,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 8.2
+  },
+  {
+   "p": 8,
+   "d": 16,
+   "k": 4,
+   "orders": [
+    8,
+    24
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     4,
+     24
+    ],
+    "bottom_orders": [
+     2,
+     24
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 28704
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 95,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.9
+  },
+  {
+   "p": 8,
+   "d": 17,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 17232
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 19,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 17952
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  },
+  {
+   "p": 8,
+   "d": 20,
+   "k": 8,
+   "orders": [
+    4,
+    48
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     2,
+     48
+    ],
+    "bottom_orders": [
+     2,
+     24
+    ],
+    "mid_k": 8,
+    "bottom_k": 8,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 3,
+    "bottom_ntrv": 137652
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 95,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 10.4
+  },
+  {
+   "p": 8,
+   "d": 22,
+   "k": 4,
+   "orders": [
+    2,
+    96
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 27744
+   },
+   "n_cover_cycles": 154,
+   "n_trivial": 154,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 93,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 154,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 2.0
+  },
+  {
+   "p": 8,
+   "d": 23,
+   "k": 4,
+   "orders": [
+    1,
+    192
+   ],
+   "W": 15,
+   "route": {
+    "depth": 2,
+    "mid_orders": [
+     1,
+     96
+    ],
+    "bottom_orders": [
+     1,
+     48
+    ],
+    "mid_k": 4,
+    "bottom_k": 4,
+    "mu_stab_mid": 6,
+    "mid_ntrv": 0,
+    "bottom_ntrv": 17232
+   },
+   "n_cover_cycles": 156,
+   "n_trivial": 156,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 94,
+    "14": 55
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 156,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 1.4
+  }
+ ],
+ "wall_s": 63.4
+}

@@ -1,0 +1,201 @@
+{
+ "(2,1)->(1,1)": {
+  "frames_tried": [
+   [
+    6,
+    12
+   ]
+  ],
+  "rows": [
+   {
+    "quotient_frame": [
+     6,
+     12
+    ],
+    "iso_gen_images": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "transported_pair": [
+     "1 + x + x^11*y^3",
+     "1 + y + x^9*y^5"
+    ],
+    "member_pair": [
+     "1 + y + x^3*y^5",
+     "1 + x + x^11*y^3"
+    ],
+    "n_auts": 384,
+    "equivalence": {
+     "variant": "identity",
+     "aut_x": [
+      9,
+      1
+     ],
+     "aut_y": [
+      10,
+      3
+     ],
+     "shift_A": [
+      3,
+      5
+     ],
+     "shift_B": [
+      1,
+      0
+     ],
+     "verified": "HX and HZ rowspaces equal after explicit qubit permutation"
+    }
+   }
+  ],
+  "verdict": "COVER (literal quotient equivalent to the member under monomial moves)",
+  "witness_move": {
+   "frame": [
+    6,
+    12
+   ],
+   "variant": "identity",
+   "aut_x": [
+    9,
+    1
+   ],
+   "aut_y": [
+    10,
+    3
+   ],
+   "shift_A": [
+    3,
+    5
+   ],
+   "shift_B": [
+    1,
+    0
+   ],
+   "verified": "HX and HZ rowspaces equal after explicit qubit permutation"
+  }
+ },
+ "(3,1)->(2,1)": {
+  "frames_tried": [
+   [
+    12,
+    18
+   ]
+  ],
+  "rows": [
+   {
+    "quotient_frame": [
+     12,
+     18
+    ],
+    "iso_gen_images": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "transported_pair": [
+     "1 + x + x^17*y^3",
+     "1 + y + x^15*y^11"
+    ],
+    "member_pair": [
+     "1 + y + x^3*y^11",
+     "1 + x + x^17*y^9"
+    ],
+    "n_auts": 864,
+    "equivalence": null
+   }
+  ],
+  "verdict": "NOT a cover under literal quotients + the standard monomial move set (twisted-descent question left open)",
+  "witness_move": null
+ },
+ "(4,1)->(1,1)": {
+  "frames_tried": [
+   [
+    6,
+    12
+   ]
+  ],
+  "rows": [
+   {
+    "quotient_frame": [
+     6,
+     12
+    ],
+    "iso_gen_images": [
+     [
+      0,
+      1
+     ],
+     [
+      1,
+      0
+     ]
+    ],
+    "transported_pair": [
+     "1 + x + x^11*y^3",
+     "1 + y + x^9*y^5"
+    ],
+    "member_pair": [
+     "1 + y + x^3*y^5",
+     "1 + x + x^11*y^3"
+    ],
+    "n_auts": 384,
+    "equivalence": {
+     "variant": "identity",
+     "aut_x": [
+      9,
+      1
+     ],
+     "aut_y": [
+      10,
+      3
+     ],
+     "shift_A": [
+      3,
+      5
+     ],
+     "shift_B": [
+      1,
+      0
+     ],
+     "verified": "HX and HZ rowspaces equal after explicit qubit permutation"
+    }
+   }
+  ],
+  "verdict": "COVER (literal quotient equivalent to the member under monomial moves)",
+  "witness_move": {
+   "frame": [
+    6,
+    12
+   ],
+   "variant": "identity",
+   "aut_x": [
+    9,
+    1
+   ],
+   "aut_y": [
+    10,
+    3
+   ],
+   "shift_A": [
+    3,
+    5
+   ],
+   "shift_B": [
+    1,
+    0
+   ],
+   "verified": "HX and HZ rowspaces equal after explicit qubit permutation"
+  }
+ },
+ "wall_s": 0.1
+}

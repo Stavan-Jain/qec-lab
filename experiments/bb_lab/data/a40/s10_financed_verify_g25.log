@@ -1,0 +1,16 @@
+validate_banked: PASS
+verify (a) S9 slip -8 witness: {'steps': 2, 'drops': 1, 'charged': 1, 'both': 0, 'identity_fail': 0, 'violations': 0} — F holds on every step
+verify (b) W7_l18: {'steps': 9, 'drops': 6, 'charged': 3, 'both': 0, 'identity_fail': 0, 'violations': 0} — F holds on every step
+verify (b) W7_l24: {'steps': 9, 'drops': 6, 'charged': 3, 'both': 0, 'identity_fail': 0, 'violations': 0} — F holds on every step
+verify (b) TC63_l18: {'steps': 9, 'drops': 6, 'charged': 3, 'both': 0, 'identity_fail': 0, 'violations': 0} — F holds on every step
+verify (b) TC63_l24: {'steps': 9, 'drops': 6, 'charged': 3, 'both': 0, 'identity_fail': 0, 'violations': 0} — F holds on every step
+  seed 0: 1379843 nodes, 0 POST fragments replayed+verified, rss 1008MB; running totals {'fragments': 0, 'steps': 0, 'drops': 0, 'charged': 0, 'both': 0, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': None, 'naive_from_seed_violations': 0}
+  seed 1: 3451000 nodes, 7 POST fragments replayed+verified, rss 2273MB; running totals {'fragments': 7, 'steps': 14, 'drops': 10, 'charged': 9, 'both': 5, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+  seed 2: 4794207 nodes, 3 POST fragments replayed+verified, rss 1202MB; running totals {'fragments': 10, 'steps': 20, 'drops': 14, 'charged': 13, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+  seed 3: 137372 nodes, 0 POST fragments replayed+verified, rss 277MB; running totals {'fragments': 10, 'steps': 20, 'drops': 14, 'charged': 13, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+  seed 4: 1 nodes, 0 POST fragments replayed+verified, rss 226MB; running totals {'fragments': 10, 'steps': 20, 'drops': 14, 'charged': 13, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+  seed 5: 1745916 nodes, 0 POST fragments replayed+verified, rss 1027MB; running totals {'fragments': 10, 'steps': 20, 'drops': 14, 'charged': 13, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+  seed 6: 1123400 nodes, 4 POST fragments replayed+verified, rss 955MB; running totals {'fragments': 14, 'steps': 28, 'drops': 21, 'charged': 14, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+  seed 7: 367317 nodes, 0 POST fragments replayed+verified, rss 429MB; running totals {'fragments': 14, 'steps': 28, 'drops': 21, 'charged': 14, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0}
+verify (c) census replay g<=25: {'fragments': 14, 'steps': 28, 'drops': 21, 'charged': 14, 'both': 7, 'violations': 0, 'identity_fail': 0, 'naive_from_seed_max': 2, 'naive_from_seed_violations': 0, 'longest_no_drop_run': 2} — F holds on every step of every completed crossing; the naive from-seed count holds with min slack 2 (the +3 wall)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s10_financed_verify.json (1185.8 s)

@@ -1,0 +1,35 @@
+{
+ "p": 8,
+ "d": 16,
+ "k": 4,
+ "orders": [
+  2,
+  72
+ ],
+ "W": 15,
+ "route": {
+  "depth": 1,
+  "fold_axis": 0,
+  "base_orders": [
+   1,
+   72
+  ],
+  "base_k": 4,
+  "mu_stab_base": 6,
+  "base_ntrv": 12456
+ },
+ "n_cover_cycles": 201,
+ "n_trivial": 201,
+ "trivial_whist": {
+  "6": 1,
+  "10": 6,
+  "12": 140,
+  "14": 54
+ },
+ "n_nontrivial": 0,
+ "nontrivial_whist": {},
+ "survivors": [],
+ "trivial_yspan_reps": 201,
+ "trivial_yspan_unpruned": 0,
+ "wall_s": 12.5
+}

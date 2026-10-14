@@ -1,0 +1,17 @@
+validate_banked: PASS
+s8 mirror closed: u=1 m=24 ell=18 nHmax=2 whcap=19 gcap=42 smax=3 dil=4 extent<=14: seeds [0, 8) of 8
+[s8 u=1 nH<=2 sid0] h=4 states 1272948 rss 534MB 13.9s
+[s8 u=1 nH<=2 sid1] h=4 states 776271 rss 534MB 13.4s
+[s8 u=1 nH<=2 sid1] h=5 states 1301923 rss 786MB 88.1s
+[s8 u=1 nH<=2 sid1] h=7 states 0 rss 786MB 160.8s
+[s8 u=1 nH<=2 sid4] h=4 states 346952 rss 786MB 13.9s
+[s8 u=1 nH<=2 sid4] h=7 states 0 rss 786MB 48.0s
+[s8 u=1 nH<=2 sid5] h=4 states 819765 rss 786MB 13.4s
+[s8 u=1 nH<=2 sid5] h=5 states 486021 rss 786MB 82.6s
+[s8 u=1 nH<=2 sid5] h=7 states 16 rss 786MB 134.4s
+[s8 u=1 nH<=2 sid6] h=4 states 475785 rss 786MB 12.1s
+[s8 u=1 nH<=2 sid6] h=5 states 823802 rss 786MB 66.9s
+[s8 u=1 nH<=2 sid6] h=6 states 486021 rss 786MB 136.7s
+[s8 u=1 nH<=2 sid6] h=7 states 44980 rss 786MB 180.8s
+info: {'n_seeds': 8, 'pushed': 8291380, 'popped': 8291388, 'trunc_g': True, 'trunc_extent': 7359467, 'trunc_dcap': 329, 'aborts': [], 'closed': 0, 'layer_peak': 1301923, 'wall_s': 684.8}
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s8_prod2418_u1_nh2_g42_s0_8.json (685.6 s)

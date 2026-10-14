@@ -1,0 +1,58 @@
+{
+ "summary": [
+  {
+   "pair": "AB",
+   "p": 7,
+   "Wcap": 13,
+   "n_cycles": 350,
+   "n_nontrivial": 0,
+   "nontrivial_spectrum": {},
+   "states_popped": 254986,
+   "wall_s": 5.8
+  },
+  {
+   "pair": "BAbar",
+   "p": 7,
+   "Wcap": 13,
+   "n_cycles": 350,
+   "n_nontrivial": 0,
+   "nontrivial_spectrum": {},
+   "states_popped": 55576,
+   "wall_s": 1.4
+  },
+  {
+   "pair": "AB",
+   "p": 8,
+   "Wcap": 15,
+   "n_cycles": 884,
+   "n_nontrivial": 0,
+   "nontrivial_spectrum": {},
+   "states_popped": 2245617,
+   "wall_s": 85.5
+  },
+  {
+   "pair": "BAbar",
+   "p": 8,
+   "Wcap": 15,
+   "n_cycles": 884,
+   "n_nontrivial": 0,
+   "nontrivial_spectrum": {},
+   "states_popped": 394935,
+   "wall_s": 15.9
+  },
+  {
+   "pair": "AB",
+   "p": 6,
+   "Wcap": 14,
+   "n_cycles": 1083,
+   "n_nontrivial": 510,
+   "nontrivial_spectrum": {
+    "12": 66,
+    "14": 444
+   },
+   "states_popped": 293058,
+   "wall_s": 5.2
+  }
+ ],
+ "wall_s": 114.6
+}

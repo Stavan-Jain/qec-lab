@@ -1,0 +1,19 @@
+[    0.2s] tower + structure: k 12/12/8/8; SEAM dim 6; rank(p1*p0*) = 2 => S1' = 3 classes; top rung (R)+exact+sigma*=id; tau0(stab)=stab sampled
+[    1.4s] checkpoint reloaded + re-verified: 44093 stab + 68 seam + 5727 nontrivial; d(L1) = 12, d(L2) = 10, d(L3) = 6
+[    1.4s] tau0-witness: nontrivial L0-logical of weight 24 (= 2 x L1 weight 12, non-SEAM class) VERIFIED end-to-end => d([[432,12]]) <= 24
+[   40.8s]   ... dangerous rungs 5000/44093 (24s)
+[   65.5s]   ... dangerous rungs 10000/44093 (49s)
+[   96.9s]   ... dangerous rungs 15000/44093 (80s)
+[  150.3s]   ... dangerous rungs 20000/44093 (134s)
+[  207.4s]   ... dangerous rungs 25000/44093 (191s)
+[  263.8s]   ... dangerous rungs 30000/44093 (247s)
+[  323.1s]   ... dangerous rungs 35000/44093 (307s)
+[  394.6s]   ... dangerous rungs 40000/44093 (378s)
+[  469.6s] dangerous rungs: 44093 at target 24 (453.2s): {'PASS': 44093}, lanes {'restricted<=0': 34184, 'restricted<=1': 7117, 'restricted<=2': 2091, 'restricted<=3': 589, 'restricted<=4': 54, 'kernel-shift': 58}, xval 6
+[  469.8s] seam rungs: 68 at target 24: {'PASS': 68}
+[  469.9s] covariance: 3 translated reps re-rung, verdicts transport
+[  469.9s] ASSEMBLY (W = 22): b = 0 branch dead (|v| = 2|u| >= 2 d(L1) = 24 > 22); dangerous (44093 PASS) + seam (68 PASS) + G-transport => NO nontrivial X-logical of weight <= 22: d([[432,12]]) >= 24 at certificate tier (consuming d(L1) = 12, d(L2) = 10, both measured census-complete in-run). Z side by transpose duality.
+[  469.9s] WITH the tau0-witness at weight 24: d([[432,12]]) = 24 EXACT, certificate tier.
+[  469.9s] X<->Z duality spot-check OK => Z side follows
+[  469.9s] total 469.9s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-aafc19cdb2dd71190/experiments/bb_lab/data/a40/tdg432/sweep_W22.json
+rc=0

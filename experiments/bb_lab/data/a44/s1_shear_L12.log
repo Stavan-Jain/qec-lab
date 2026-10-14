@@ -1,0 +1,31 @@
+=== 2026-09-02 10:04:00 s1_shear_L12.log
+validate_banked: PASS
+=== frame (12,12) n=288 k=12; target l+m-6 = 18
+  (12;0,2) n=48 idx=6 W<=3: k=0, skip
+  (12;2,2) n=48 idx=6 W<=3: k=8 orders=(2, 12) status=unsat witnesses=0 nontrivial-on-torus=0 (0.0 s)
+  (12;4,2) n=48 idx=6 W<=3: k=4 orders=(2, 12) status=unsat witnesses=0 nontrivial-on-torus=0 (0.0 s)
+  (12;6,2) n=48 idx=6 W<=3: k=0, skip
+  (12;8,2) n=48 idx=6 W<=3: k=8 orders=(2, 12) status=unsat witnesses=0 nontrivial-on-torus=0 (0.0 s)
+  (12;10,2) n=48 idx=6 W<=3: k=4 orders=(2, 12) status=unsat witnesses=0 nontrivial-on-torus=0 (0.0 s)
+  (12;0,4) n=96 idx=3 W<=6: k=0, skip
+    NEW torus orbit: w=18 gaps=(0,0) blocks=[9, 9]
+      f = y^4 + x^2*y^5 + x^3*y^5 + x^4*y^8 + x^6*y^9 + x^7*y^9 + x^8 + x^10*y + x^11*y
+      g = x*y^6 + x*y^7 + x^2 + x^5*y^10 + x^5*y^11 + x^6*y^4 + x^9*y^2 + x^9*y^3 + x^10*y^8
+y=11 .....b......
+y=10 .....b......
+y= 9 ......aa....
+y= 8 ....a.....b.
+y= 7 .b..........
+y= 6 .b..........
+y= 5 ..aa........
+y= 4 a.....b.....
+y= 3 .........b..
+y= 2 .........b..
+y= 1 ..........aa
+y= 0 ..b.....a...
+     012345678901
+  (12;4,4) n=96 idx=3 W<=6: k=8 orders=(4, 12) status=exhausted witnesses=1 nontrivial-on-torus=1 (2.6 s)
+  (12;8,4) n=96 idx=3 W<=6: k=4 orders=(4, 12) status=unsat witnesses=0 nontrivial-on-torus=0 (2.4 s)
+  (12;0,6) n=144 idx=2 W<=9: k=12 orders=(6, 12) status=timeout witnesses=0 nontrivial-on-torus=0 (60.4 s)
+  (12;6,6) n=144 idx=2 W<=9: k=12 orders=(6, 12) status=timeout witnesses=0 nontrivial-on-torus=0 (60.2 s)
+=== (12,12): 1 distinct nontrivial torus translation-orbits at weight 18 from shear pullbacks; 126.7 s, RSS 0.16 GB

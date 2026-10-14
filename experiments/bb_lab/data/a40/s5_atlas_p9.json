@@ -1,0 +1,12 @@
+{
+ "summary": [
+  {
+   "pair": "AB",
+   "p": 9,
+   "Wcap": 17,
+   "aborted": "killed by operator at ~11 CPU-min / ~8 GB RSS, pre-cap: the pure-Python BFS+DAG engine exceeds the machine's memory envelope at p = 9, Wcap = 17 (p = 8 took 2.2M states / 85 s; the p = 9 layer needs a compiled or disk-backed engine)",
+   "verdict": "RED for the current engine; matches S4 §9.9's honest-reach note, now measured"
+  }
+ ],
+ "note": "operator-written abort record (the script's own JSON write was preempted by the kill); no atlas claim at p = 9 is made"
+}

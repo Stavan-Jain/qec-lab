@@ -1,0 +1,97 @@
+{
+ "frames": [
+  {
+   "l": 24,
+   "depth": 1,
+   "base": [
+    12,
+    6
+   ],
+   "k": [
+    12,
+    12
+   ],
+   "stab_orbits": 7,
+   "mu_stab": 6,
+   "base_nontrivial_le_W": 0,
+   "rungs": {
+    "PASS": 7
+   },
+   "violations": 0,
+   "floor_12": true
+  },
+  {
+   "l": 30,
+   "depth": 1,
+   "base": [
+    15,
+    6
+   ],
+   "k": [
+    12,
+    8
+   ],
+   "stab_orbits": 7,
+   "mu_stab": 6,
+   "base_nontrivial_le_W": 0,
+   "rungs": {
+    "PASS": 7
+   },
+   "violations": 0,
+   "floor_12": true
+  },
+  {
+   "l": 36,
+   "depth": 2,
+   "base": [
+    18,
+    6
+   ],
+   "bottom": [
+    9,
+    6
+   ],
+   "k": [
+    12,
+    12,
+    8
+   ],
+   "mu_stab_mid": 6,
+   "d_bottom": 10,
+   "stab_orbits": 7,
+   "base_nontrivial_le_W": 0,
+   "rungs": {
+    "PASS": 7
+   },
+   "violations": 0,
+   "floor_12": true
+  },
+  {
+   "l": 42,
+   "depth": 2,
+   "base": [
+    21,
+    6
+   ],
+   "bottom": [
+    21,
+    3
+   ],
+   "k": [
+    12,
+    8,
+    8
+   ],
+   "mu_stab_mid": 6,
+   "d_bottom": 6,
+   "stab_orbits": 7,
+   "base_nontrivial_le_W": 0,
+   "rungs": {
+    "PASS": 7
+   },
+   "violations": 0,
+   "floor_12": true
+  }
+ ],
+ "wall_s": 23.4
+}

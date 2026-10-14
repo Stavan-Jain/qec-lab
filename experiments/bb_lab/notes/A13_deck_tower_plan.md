@@ -237,8 +237,14 @@ with `I_Δ = (1+x⁶)`, so `1+x⁶ ∈ (B) ⊆ (A,B)` **uniformly in j**. By K1
 > **T3.** Along the whole tour-de-gross x-ladder, `k ≡ 12` and the full
 > deck acts trivially on every `H₁(level j)` — one witness, every `r`.
 
-(Consistency: level 2 is the known `[[288,12,18]]` — `k = 12` ✓. The
-witness is R0-shaped — principal in `(B)` — matching A12 §6b.)
+(Consistency: level 2 has `k = 12` ✓. **A40 correction (2026-08-25)**:
+level 2 is `Z₂₄×Z₆`, which is NOT the tour-de-gross `[[288,12,18]]`
+two-gross — that member is `Z₁₂×Z₁₂` (family (r,b) = (2,0), b a BIT in
+the paper's construction), and the literal `Z₂₄×Z₆` x-re-double has
+`d ≤ 12` by A14 §13's SAT witness, so they are provably different
+codes; the x-ladder leaves the family at j = 2. T3's mathematics is
+untouched. The witness is R0-shaped — principal in `(B)` — matching
+A12 §6b.)
 Consequence for sequencing: **the family paper's k-row does not wait on
 Q(r)**; Q(r) upgrades the mechanism from per-instance certificates to a
 clean equivalence. P0 also pins what a Lean certificate looks like (§6).

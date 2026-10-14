@@ -1,0 +1,19 @@
+{
+ "all2": {
+  "y": {
+   "windows": 540,
+   "nodes_explored": 583,
+   "cycle_found": false,
+   "longest_all2_path_slabs": 4,
+   "cycle": null
+  },
+  "mirror": {
+   "windows": 540,
+   "nodes_explored": 586,
+   "cycle_found": false,
+   "longest_all2_path_slabs": 4,
+   "cycle": null
+  }
+ },
+ "wall_s": 2.2
+}

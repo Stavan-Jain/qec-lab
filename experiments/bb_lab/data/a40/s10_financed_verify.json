@@ -1,0 +1,69 @@
+{
+ "verify": {
+  "s9_slipm8_witness": {
+   "steps": 2,
+   "drops": 1,
+   "charged": 1,
+   "both": 0,
+   "identity_fail": 0,
+   "violations": 0
+  },
+  "W7_l18": {
+   "steps": 9,
+   "drops": 6,
+   "charged": 3,
+   "both": 0,
+   "identity_fail": 0,
+   "violations": 0,
+   "drift_per_period": -2
+  },
+  "W7_l24": {
+   "steps": 9,
+   "drops": 6,
+   "charged": 3,
+   "both": 0,
+   "identity_fail": 0,
+   "violations": 0,
+   "drift_per_period": -2
+  },
+  "TC63_l18": {
+   "steps": 9,
+   "drops": 6,
+   "charged": 3,
+   "both": 0,
+   "identity_fail": 0,
+   "violations": 0,
+   "drift_per_period": 3
+  },
+  "TC63_l24": {
+   "steps": 9,
+   "drops": 6,
+   "charged": 3,
+   "both": 0,
+   "identity_fail": 0,
+   "violations": 0,
+   "drift_per_period": 3
+  },
+  "census_replay": {
+   "gcap": 25,
+   "hcap": 10,
+   "dcap": 16,
+   "seeds": [
+    0,
+    8
+   ],
+   "fragments": 14,
+   "steps": 28,
+   "drops": 21,
+   "charged": 14,
+   "both": 7,
+   "violations": 0,
+   "identity_fail": 0,
+   "naive_from_seed_max": 2,
+   "naive_from_seed_violations": 0,
+   "longest_no_drop_run": 2
+  },
+  "wall_s": 1184.1
+ },
+ "wall_s": 1185.8
+}

@@ -1,0 +1,80 @@
+{
+ "caps": {
+  "y_forced_reach": [
+   -3,
+   1
+  ],
+  "m_forced_reach": [
+   -4,
+   -2
+  ],
+  "per_step_caps": {
+   "left_min_gauge": 4,
+   "right_max_gauge": 4,
+   "scope": "dil-4 growth",
+   "note": "one-sided per gauge; strand deaths unbounded by local weight"
+  }
+ },
+ "regression": {
+  "ref": "s7_link_u1k2g26.json",
+  "pre_equal": true,
+  "link_equal": true,
+  "pre_rows": 82,
+  "link_rows": 11
+ },
+ "census": {
+  "n": 3,
+  "max_abs_slip": 3,
+  "argmax": {
+   "L": 1,
+   "gH": 8,
+   "slip": -3,
+   "min_g": 24
+  },
+  "fit_c_half": {
+   "c": 0.5,
+   "c0": 3.0
+  },
+  "fit_c0_one": {
+   "c": 0.0,
+   "c0": 1
+  }
+ },
+ "slip_rows": [
+  {
+   "L": 1,
+   "gH": 8,
+   "slip": -3,
+   "min_g": 24
+  },
+  {
+   "L": 1,
+   "gH": 8,
+   "slip": -1,
+   "min_g": 19
+  },
+  {
+   "L": 1,
+   "gH": 8,
+   "slip": 0,
+   "min_g": 24
+  }
+ ],
+ "info": {
+  "n_seeds": 8,
+  "nodes": 9643370,
+  "trunc_g": true,
+  "trunc_extent": 0,
+  "trunc_dcap": 0,
+  "aborts": [],
+  "wall_s": 55.5
+ },
+ "params": {
+  "u": 1,
+  "kmax": 2,
+  "whcap": 14,
+  "gcap": 24,
+  "hcap": 19,
+  "dcap": 30
+ }
+}

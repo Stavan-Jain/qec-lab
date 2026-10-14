@@ -1,0 +1,22 @@
+== p = 3 (a = 0) ==
+  a=0: window classes 4
+  patterns examined: 8012; LB (sum free) = 3, UB (sum pure) = 6
+  realized pure lift: weight 6, cycle verified (plain-pair, window)
+  p=3: floor in [3, 6]
+== p = 6 (a = 1) ==
+  a=1: window classes 6
+  patterns examined: 66871; LB (sum free) = 6, UB (sum pure) = 12
+  realized pure lift: weight 12, cycle verified (plain-pair, window)
+  p=6: floor in [6, 12]
+== p = 9 (a = 0) ==
+  a=0: window classes 4
+  patterns examined: 8012; LB (sum free) = 3, UB (sum pure) = 18
+  realized pure lift: weight 18, cycle verified (plain-pair, window)
+  p=9: floor in [3, 18]
+== p = 12 (a = 2) ==
+  a=2: window classes 6
+  patterns examined: 66871; LB (sum free) = 12, UB (sum pure) = 24
+  realized pure lift: weight 24, cycle verified (plain-pair, window)
+  p=12: floor in [12, 24]
+
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s1_omegafloor.json (31.0 s)

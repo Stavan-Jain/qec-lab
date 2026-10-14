@@ -1,0 +1,53 @@
+=== 2026-09-01 21:55:51 argv=['hunt', '--t1812', '1500']
+validate_banked: PASS
+== control: (12,12) <= 17 must be UNSAT (d = 18): (l,m)=(12,12) W<=17
+   status=timeout n=0 wall=318.0 s
+== control: (12,12) <= 18 must find the witness family: (l,m)=(12,12) W<=18
+  [(12,12)<=18] solution 1: w=18 (0.0 s)
+  [(12,12)<=18] solution 2: w=18 (0.2 s)
+   -> w=18 sector=2D gap=gap-dense dirs=[]
+   -> w=18 sector=2D gap=gap-dense dirs=[]
+   status=timeout n=2 wall=328.6 s
+== gross gap-dense <= 12 (consistency with the census classification): (l,m)=(12,6) W<=12
+  [(12,6)<=12] solution 1: w=12 (0.0 s)
+  [(12,6)<=12] solution 2: w=12 (0.0 s)
+  [(12,6)<=12] solution 3: w=12 (0.0 s)
+  [(12,6)<=12] solution 4: w=12 (0.1 s)
+  [(12,6)<=12] solution 5: w=12 (0.2 s)
+  [(12,6)<=12] solution 6: w=12 (0.3 s)
+  [(12,6)<=12] solution 7: w=12 (0.4 s)
+  [(12,6)<=12] solution 8: w=12 (0.5 s)
+  [(12,6)<=12] solution 9: w=12 (10.0 s)
+  [(12,6)<=12] solution 10: w=12 (15.9 s)
+  [(12,6)<=12] solution 11: w=12 (23.6 s)
+  [(12,6)<=12] solution 12: w=12 (24.2 s)
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   -> w=12 sector=2D gap=gap-dense dirs=[]
+   status=found n=12 wall=24.2 s
+== control: (18,12) <= 23 must be UNSAT (d = 24): (l,m)=(18,12) W<=23
+   status=timeout n=0 wall=604.2 s
+== THE EQUALITY QUESTION: gap-dense nontrivial at 24 at (18,12): (l,m)=(18,12) W<=24
+   status=timeout n=0 wall=1504.1 s
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s11_hunt.json (2780.8 s)
+=== 2026-09-01 23:37:59 argv=['hunt', '--mixed', '--r3', '--t1812', '1800', '--t2418', '1500']
+validate_banked: PASS
+== control: mixed-class gap-dense at (12,12) <= 18 (witness family): (l,m)=(12,12) W<=18
+  [mixed(12,12)<=18] solution 1: w=18 (0.0 s)
+  [mixed(12,12)<=18] solution 2: w=18 (0.2 s)
+   -> w=18 sector=2D gap=gap-dense
+   -> w=18 sector=2D gap=gap-dense
+   status=timeout n=2 wall=301.1 s
+== mixed-class gap-dense at (18,12) <= 24: (l,m)=(18,12) W<=24
+   status=timeout n=0 wall=1844.5 s
+== mixed-class gap-dense at (24,18) <= 35: (l,m)=(24,18) W<=35
+   status=timeout n=0 wall=1539.0 s

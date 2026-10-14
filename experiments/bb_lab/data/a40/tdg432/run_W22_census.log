@@ -1,0 +1,77 @@
+[    1.0s] validate_banked: PASS (charter s6.0 gate)
+[    1.2s] tower + structure: k 12/12/8/8; SEAM dim 6; rank(p1*p0*) = 2 => S1' = 3 classes; top rung (R)+exact+sigma*=id; tau0(stab)=stab sampled
+[  127.1s] L2 stab <= 22 (direct): 1818297 vectors, 33691 orbit reps {'6': 1, '10': 6, '12': 24, '14': 54, '16': 280, '18': 971, '20': 4704, '22': 27651}, mu2 = 6
+[  426.6s] L2 S1'-cosets <= 22 (direct, 3 classes): 3940758 elements, 72977 orbit reps {'16': 25, '18': 506, '20': 6435, '22': 66011}
+[  565.2s] L2 im-p1*-cosets <= 18 (direct, 63 classes): 1046976 elements, 19411 orbit reps
+[  657.5s] L2 all-class <= 16 (direct, 255 classes): 7780 orbit reps; d(L2) = 10 EXACT
+[  672.5s] L3 censuses <= 14: 193 stab + 1974 im-p2* coset orbit reps; d(L3) = 6 EXACT; tau3 sources 207
+[  672.9s] L2 GATE: descent-from-L3 <= 14 == direct slices EXACTLY (stab 85 orbits, nontrivial 666 orbits; 2167 fibers) — composed fibers census-complete
+[  677.5s] L1 tau2-family: 432 sources (all classes <= 11)
+[  678.4s]   ... L2 fibers 2000/126079
+[  679.2s]   ... L2 fibers 4000/126079
+[  680.0s]   ... L2 fibers 6000/126079
+[  680.8s]   ... L2 fibers 8000/126079
+[  681.5s]   ... L2 fibers 10000/126079
+[  682.1s]   ... L2 fibers 12000/126079
+[  682.9s]   ... L2 fibers 14000/126079
+[  683.6s]   ... L2 fibers 16000/126079
+[  684.4s]   ... L2 fibers 18000/126079
+[  685.1s]   ... L2 fibers 20000/126079
+[  685.7s]   ... L2 fibers 22000/126079
+[  686.4s]   ... L2 fibers 24000/126079
+[  687.1s]   ... L2 fibers 26000/126079
+[  687.8s]   ... L2 fibers 28000/126079
+[  688.4s]   ... L2 fibers 30000/126079
+[  688.9s]   ... L2 fibers 32000/126079
+[  689.5s]   ... L2 fibers 34000/126079
+[  690.1s]   ... L2 fibers 36000/126079
+[  690.7s]   ... L2 fibers 38000/126079
+[  691.3s]   ... L2 fibers 40000/126079
+[  691.8s]   ... L2 fibers 42000/126079
+[  692.4s]   ... L2 fibers 44000/126079
+[  693.0s]   ... L2 fibers 46000/126079
+[  693.5s]   ... L2 fibers 48000/126079
+[  694.1s]   ... L2 fibers 50000/126079
+[  694.7s]   ... L2 fibers 52000/126079
+[  695.2s]   ... L2 fibers 54000/126079
+[  695.8s]   ... L2 fibers 56000/126079
+[  696.4s]   ... L2 fibers 58000/126079
+[  696.9s]   ... L2 fibers 60000/126079
+[  697.5s]   ... L2 fibers 62000/126079
+[  698.1s]   ... L2 fibers 64000/126079
+[  698.7s]   ... L2 fibers 66000/126079
+[  699.3s]   ... L2 fibers 68000/126079
+[  699.9s]   ... L2 fibers 70000/126079
+[  700.4s]   ... L2 fibers 72000/126079
+[  701.0s]   ... L2 fibers 74000/126079
+[  701.6s]   ... L2 fibers 76000/126079
+[  702.2s]   ... L2 fibers 78000/126079
+[  702.8s]   ... L2 fibers 80000/126079
+[  703.3s]   ... L2 fibers 82000/126079
+[  703.9s]   ... L2 fibers 84000/126079
+[  704.5s]   ... L2 fibers 86000/126079
+[  705.1s]   ... L2 fibers 88000/126079
+[  705.6s]   ... L2 fibers 90000/126079
+[  706.2s]   ... L2 fibers 92000/126079
+[  706.9s]   ... L2 fibers 94000/126079
+[  708.2s]   ... L2 fibers 96000/126079
+[  709.5s]   ... L2 fibers 98000/126079
+[  710.2s]   ... L2 fibers 100000/126079
+[  710.9s]   ... L2 fibers 102000/126079
+[  711.5s]   ... L2 fibers 104000/126079
+[  712.8s]   ... L2 fibers 106000/126079
+[  713.3s]   ... L2 fibers 108000/126079
+[  713.8s]   ... L2 fibers 110000/126079
+[  714.4s]   ... L2 fibers 112000/126079
+[  715.2s]   ... L2 fibers 114000/126079
+[  715.7s]   ... L2 fibers 116000/126079
+[  716.2s]   ... L2 fibers 118000/126079
+[  716.8s]   ... L2 fibers 120000/126079
+[  717.4s]   ... L2 fibers 122000/126079
+[  722.6s]   ... L2 fibers 124000/126079
+[  724.4s]   ... L2 fibers 126000/126079
+[  743.5s] L1 descent censuses: stab reps <= 22: 44093 {'6': 1, '10': 6, '12': 51, '14': 54, '16': 589, '18': 2091, '20': 7117, '22': 34184} (mu1 6); SEAM-coset reps <= 22: 68 {'22': 68}; nontrivial reps <= 18: 5727 {'12': 12, '14': 74, '16': 660, '18': 4981}; d(L1) = 12 EXACT; fibers 126078 direct + 1 kernel-shift
+[  743.9s] L1 GATE: <= 12 L1-stab census re-derived through the independent y-quotient (18,3) [[108,8]] (62 fibers) == x-route slice EXACTLY (58 orbits)
+[  744.2s] checkpoint: 44093 stab + 68 seam + 5727 nontrivial orbit reps + meta
+[  744.2s] census phase complete (744.2s)
+rc=0

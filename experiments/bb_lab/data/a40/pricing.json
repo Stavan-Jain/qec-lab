@@ -1,0 +1,1326 @@
+{
+ "when": "2026-08-25 21:12:06",
+ "screens": [
+  {
+   "name": "tdg432_xyy",
+   "tag": "A40",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      18,
+      12
+     ],
+     "n": 432,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 210
+    },
+    {
+     "lm": [
+      9,
+      12
+     ],
+     "n": 216,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 104
+    },
+    {
+     "lm": [
+      9,
+      6
+     ],
+     "n": 108,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 50
+    },
+    {
+     "lm": [
+      9,
+      3
+     ],
+     "n": 54,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 23
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 9,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/6",
+       "1": "0/4",
+       "2": "0/9",
+       "3": "0/11"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/10",
+       "1": "0/3",
+       "2": "0/6",
+       "3": "0/11"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 2,
+      "empty_rate": 0.067,
+      "by_cap": {
+       "0": "2/4",
+       "1": "0/6",
+       "2": "0/12",
+       "3": "0/8"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    },
+    {
+     "i": 1,
+     "dim_S": 4,
+     "dim_K": 4,
+     "dim_SK": 0,
+     "K_in_S": false,
+     "one_branch": true,
+     "dim_W": 4,
+     "reach_preimage_eq_S": false
+    }
+   ],
+   "costs": [
+    {
+     "W": 10,
+     "mu": 6,
+     "cap_max": 2,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      9.5,
+      8.0,
+      6.4,
+      4.7
+     ],
+     "win_factor_vs_top": 61396.1,
+     "mitm_half_subsets_top_rung": 210.0
+    },
+    {
+     "W": 14,
+     "mu": 6,
+     "cap_max": 4,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      12.5,
+      10.4,
+      8.1,
+      5.7
+     ],
+     "win_factor_vs_top": 6450498.3,
+     "mitm_half_subsets_top_rung": 21945.0
+    },
+    {
+     "W": 16,
+     "mu": 6,
+     "cap_max": 5,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      13.9,
+      11.5,
+      8.9,
+      6.1
+     ],
+     "win_factor_vs_top": 69716462.8,
+     "mitm_half_subsets_top_rung": 1521520.0
+    },
+    {
+     "W": 18,
+     "mu": 6,
+     "cap_max": 6,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      15.3,
+      12.5,
+      9.6,
+      6.4
+     ],
+     "win_factor_vs_top": 779436427.6,
+     "mitm_half_subsets_top_rung": 1521520.0
+    },
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      17.9,
+      14.4,
+      10.8,
+      6.8
+     ],
+     "win_factor_vs_top": 106602538824.8,
+     "mitm_half_subsets_top_rung": 78738660.0
+    }
+   ],
+   "notes": "tour-de-gross member, d_conj=24"
+  },
+  {
+   "name": "tdg432_yxy",
+   "tag": "A40",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      18,
+      12
+     ],
+     "n": 432,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 210
+    },
+    {
+     "lm": [
+      18,
+      6
+     ],
+     "n": 216,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 102
+    },
+    {
+     "lm": [
+      9,
+      6
+     ],
+     "n": 108,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 50
+    },
+    {
+     "lm": [
+      9,
+      3
+     ],
+     "n": 54,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 23
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/11",
+       "1": "0/2",
+       "2": "0/7",
+       "3": "0/10"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "x",
+     "fold_to": 9,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/4",
+       "1": "0/6",
+       "2": "0/9",
+       "3": "0/11"
+      },
+      "mu_sampled": 6
+     }
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4,
+     "fibers": {
+      "tried": 30,
+      "empty": 0,
+      "empty_rate": 0.0,
+      "by_cap": {
+       "0": "0/3",
+       "1": "0/5",
+       "2": "0/7",
+       "3": "0/15"
+      },
+      "mu_sampled": 6
+     }
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 4,
+     "K_in_S": false,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 1,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 16,
+     "mu": 6,
+     "cap_max": 5,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      13.9,
+      11.4,
+      8.9,
+      6.1
+     ],
+     "win_factor_vs_top": 69716462.8,
+     "mitm_half_subsets_top_rung": 1521520.0
+    },
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      17.9,
+      14.4,
+      10.8,
+      6.8
+     ],
+     "win_factor_vs_top": 106602538824.8,
+     "mitm_half_subsets_top_rung": 78738660.0
+    }
+   ],
+   "notes": "tour-de-gross member, d_conj=24"
+  },
+  {
+   "name": "tdg648_xy",
+   "tag": "A40",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      18,
+      18
+     ],
+     "n": 648,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 318
+    },
+    {
+     "lm": [
+      9,
+      18
+     ],
+     "n": 324,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 158
+    },
+    {
+     "lm": [
+      9,
+      9
+     ],
+     "n": 162,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 77
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 9,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2
+    },
+    {
+     "axis": "y",
+     "fold_to": 9,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 16,
+     "mu": 6,
+     "cap_max": 5,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      15.4,
+      13.0,
+      10.4
+     ],
+     "win_factor_vs_top": 94742.4,
+     "mitm_half_subsets_top_rung": 5309116.0
+    },
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "AMBER",
+     "log10_nodes_per_level": [
+      19.9,
+      16.5,
+      13.0
+     ],
+     "win_factor_vs_top": 8214365.9,
+     "mitm_half_subsets_top_rung": 418092885.0
+    },
+    {
+     "W": 28,
+     "mu": 6,
+     "cap_max": 11,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      24.0,
+      19.7,
+      15.1
+     ],
+     "win_factor_vs_top": 784049671.1,
+     "mitm_half_subsets_top_rung": 1369700164119.0
+    }
+   ],
+   "notes": "tour-de-gross member, d_conj=30"
+  },
+  {
+   "name": "tdg864_xxxy",
+   "tag": "A40",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      24,
+      18
+     ],
+     "n": 864,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 426
+    },
+    {
+     "lm": [
+      12,
+      18
+     ],
+     "n": 432,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 210
+    },
+    {
+     "lm": [
+      6,
+      18
+     ],
+     "n": 216,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 102
+    },
+    {
+     "lm": [
+      3,
+      18
+     ],
+     "n": 108,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 50
+    },
+    {
+     "lm": [
+      3,
+      9
+     ],
+     "n": 54,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 23
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 12,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "x",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "x",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2
+    },
+    {
+     "axis": "y",
+     "fold_to": 9,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 0,
+     "K_in_S": false,
+     "one_branch": true,
+     "dim_W": 6,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 1,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 2,
+     "K_in_S": false,
+     "one_branch": false,
+     "dim_W": 4,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 2,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 16,
+     "mu": 6,
+     "cap_max": 5,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      16.4,
+      13.9,
+      11.4,
+      8.9,
+      6.1
+     ],
+     "win_factor_vs_top": 20569730314.0,
+     "mitm_half_subsets_top_rung": 12794200.0
+    },
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      21.3,
+      17.9,
+      14.4,
+      10.8,
+      6.8
+     ],
+     "win_factor_vs_top": 276292559790687.4,
+     "mitm_half_subsets_top_rung": 1352986650.0
+    },
+    {
+     "W": 28,
+     "mu": 6,
+     "cap_max": 11,
+     "verdict": "AMBER",
+     "log10_nodes_per_level": [
+      25.8,
+      21.4,
+      16.9,
+      12.3,
+      7.2
+     ],
+     "win_factor_vs_top": 4.515521079623501e+18,
+     "mitm_half_subsets_top_rung": 8012477140410.0
+    },
+    {
+     "W": 34,
+     "mu": 6,
+     "cap_max": 14,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      30.0,
+      24.7,
+      19.2,
+      13.4,
+      7.2
+     ],
+     "win_factor_vs_top": 6.67712536629139e+22,
+     "mitm_half_subsets_top_rung": 480748628424600.0
+    }
+   ],
+   "notes": "tour-de-gross member, d_conj=36"
+  },
+  {
+   "name": "tdg1152_full",
+   "tag": "A40",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      24,
+      24
+     ],
+     "n": 1152,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 570
+    },
+    {
+     "lm": [
+      12,
+      24
+     ],
+     "n": 576,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 282
+    },
+    {
+     "lm": [
+      12,
+      12
+     ],
+     "n": 288,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 138
+    },
+    {
+     "lm": [
+      6,
+      12
+     ],
+     "n": 144,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 66
+    },
+    {
+     "lm": [
+      6,
+      6
+     ],
+     "n": 72,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 30
+    },
+    {
+     "lm": [
+      3,
+      6
+     ],
+     "n": 36,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 14
+    },
+    {
+     "lm": [
+      3,
+      3
+     ],
+     "n": 18,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 5
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "x",
+     "fold_to": 12,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "y",
+     "fold_to": 12,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "x",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "y",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "x",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 6,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    },
+    {
+     "i": 1,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 6,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    },
+    {
+     "i": 2,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 6,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 0,
+     "reach_preimage_eq_S": true
+    },
+    {
+     "i": 3,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 4,
+     "K_in_S": false,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 4,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      22.7,
+      19.3,
+      15.8,
+      12.2,
+      8.2,
+      4.5,
+      1.8
+     ],
+     "win_factor_vs_top": 7.869423754541173e+20,
+     "mitm_half_subsets_top_rung": 4352184270.0
+    },
+    {
+     "W": 28,
+     "mu": 6,
+     "cap_max": 11,
+     "verdict": "AMBER",
+     "log10_nodes_per_level": [
+      27.6,
+      23.3,
+      18.8,
+      14.1,
+      8.9,
+      4.5,
+      1.8
+     ],
+     "win_factor_vs_top": 6.329283235704912e+25,
+     "mitm_half_subsets_top_rung": 46392833590110.0
+    },
+    {
+     "W": 34,
+     "mu": 6,
+     "cap_max": 14,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      32.2,
+      26.9,
+      21.5,
+      15.7,
+      9.2,
+      4.5,
+      1.8
+     ],
+     "win_factor_vs_top": 2.681560198824079e+30,
+     "mitm_half_subsets_top_rung": 3737936877831720.0
+    },
+    {
+     "W": 40,
+     "mu": 6,
+     "cap_max": 17,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      36.6,
+      30.4,
+      23.9,
+      17.0,
+      9.3,
+      4.5,
+      1.8
+     ],
+     "win_factor_vs_top": 6.668323868150339e+34,
+     "mitm_half_subsets_top_rung": 1.6426467441211433e+19
+    }
+   ],
+   "notes": "tour-de-gross member, d_conj=42"
+  },
+  {
+   "name": "tdg1440_yyyx",
+   "tag": "A40",
+   "d_top": null,
+   "levels": [
+    {
+     "lm": [
+      30,
+      24
+     ],
+     "n": 1440,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 714
+    },
+    {
+     "lm": [
+      30,
+      12
+     ],
+     "n": 720,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 354
+    },
+    {
+     "lm": [
+      30,
+      6
+     ],
+     "n": 360,
+     "k": 12,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 174
+    },
+    {
+     "lm": [
+      30,
+      3
+     ],
+     "n": 180,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 86
+    },
+    {
+     "lm": [
+      15,
+      3
+     ],
+     "n": 90,
+     "k": 8,
+     "wA": 3,
+     "wB": 3,
+     "parity_scope": true,
+     "cycles_all_even": true,
+     "kappa": 41
+    }
+   ],
+   "rungs": [
+    {
+     "axis": "y",
+     "fold_to": 12,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "y",
+     "fold_to": 6,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 12,
+     "R_holds": true,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 6
+    },
+    {
+     "axis": "y",
+     "fold_to": 3,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 12,
+     "k_base": 8,
+     "R_holds": false,
+     "rank_p": 6,
+     "rank_tau": 6,
+     "exact_cover": true,
+     "exact_base": false,
+     "sigma_id": false,
+     "codim_lift": 2
+    },
+    {
+     "axis": "x",
+     "fold_to": 15,
+     "lemma1": "PASS (constructor asserts)",
+     "twisted": true,
+     "k_cover": 8,
+     "k_base": 8,
+     "R_holds": true,
+     "rank_p": 4,
+     "rank_tau": 4,
+     "exact_cover": true,
+     "exact_base": true,
+     "sigma_id": true,
+     "codim_lift": 4
+    }
+   ],
+   "pairs": [
+    {
+     "i": 0,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 0,
+     "K_in_S": false,
+     "one_branch": true,
+     "dim_W": 6,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 1,
+     "dim_S": 6,
+     "dim_K": 6,
+     "dim_SK": 2,
+     "K_in_S": false,
+     "one_branch": false,
+     "dim_W": 4,
+     "reach_preimage_eq_S": false
+    },
+    {
+     "i": 2,
+     "dim_S": 6,
+     "dim_K": 4,
+     "dim_SK": 4,
+     "K_in_S": true,
+     "one_branch": false,
+     "dim_W": 2,
+     "reach_preimage_eq_S": true
+    }
+   ],
+   "costs": [
+    {
+     "W": 22,
+     "mu": 6,
+     "cap_max": 8,
+     "verdict": "GREEN",
+     "log10_nodes_per_level": [
+      23.8,
+      20.4,
+      17.0,
+      13.5,
+      9.8
+     ],
+     "win_factor_vs_top": 92628459912560.3,
+     "mitm_half_subsets_top_rung": 10738066626.0
+    },
+    {
+     "W": 34,
+     "mu": 6,
+     "cap_max": 14,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      33.9,
+      28.7,
+      23.3,
+      17.8,
+      11.8
+     ],
+     "win_factor_vs_top": 1.288964363059767e+22,
+     "mitm_half_subsets_top_rung": 1.822403920987807e+16
+    },
+    {
+     "W": 46,
+     "mu": 6,
+     "cap_max": 20,
+     "verdict": "RED",
+     "log10_nodes_per_level": [
+      43.1,
+      36.0,
+      28.6,
+      21.0,
+      12.5
+     ],
+     "win_factor_vs_top": 3.63694677195552e+30,
+     "mitm_half_subsets_top_rung": 8.906875392228274e+21
+    }
+   ],
+   "notes": "tour-de-gross member, d_conj=48"
+  }
+ ],
+ "wall_s": 8.2
+}

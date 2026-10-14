@@ -1,0 +1,21 @@
+p=9: validated; production run cap 16
+  level 0: novel 1 seen 1 rss 36MB t 0s returns [] nontrivial@[]
+  level 1: novel 0 seen 1 rss 36MB t 0s returns [] nontrivial@[]
+  level 2: novel 1 seen 2 rss 36MB t 0s returns [] nontrivial@[]
+  level 3: novel 2 seen 4 rss 36MB t 0s returns [] nontrivial@[]
+  level 4: novel 6 seen 10 rss 36MB t 1s returns [] nontrivial@[]
+  level 5: novel 21 seen 31 rss 37MB t 1s returns [] nontrivial@[]
+  level 6: novel 49 seen 80 rss 38MB t 2s returns [6] nontrivial@[]
+  level 7: novel 143 seen 223 rss 40MB t 2s returns [6] nontrivial@[]
+  level 8: novel 376 seen 599 rss 44MB t 2s returns [6] nontrivial@[]
+  level 9: novel 939 seen 1538 rss 54MB t 3s returns [6] nontrivial@[]
+  level 10: novel 2437 seen 3975 rss 78MB t 3s returns [6, 10] nontrivial@[]
+  level 11: novel 6024 seen 9999 rss 129MB t 3s returns [6, 10] nontrivial@[]
+  level 12: novel 14739 seen 24738 rss 213MB t 4s returns [6, 10, 12] nontrivial@[]
+  level 13: novel 35602 seen 60340 rss 384MB t 4s returns [6, 10, 12] nontrivial@[]
+  level 14: novel 84536 seen 144876 rss 781MB t 4s returns [6, 10, 12, 14] nontrivial@[]
+  level 15: novel 197735 seen 342611 rss 1864MB t 6s returns [6, 10, 12, 14] nontrivial@[]
+  level 16: novel 455964 seen 798575 rss 3214MB t 9s returns [6, 10, 12, 14, 16] nontrivial@[]
+  RSS cap — clean abort (levels completed are certified)
+p=9 cap 16: nontrivial return costs: []
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s1_atlas9.json

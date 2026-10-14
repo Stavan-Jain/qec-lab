@@ -1,0 +1,18 @@
+C p=3 W=12: dimZ=28 dimB=24 classes=4
+  section, weight <= 2: unsat (0.0 s)
+  section, weight <= 4: unsat (0.0 s)
+  section, weight <= 6: unsat (0.0 s)
+  section, weight <= 8: unsat (0.0 s)
+  section, weight <= 10: unsat (0.0 s)
+  section, weight <= 12: unsat (0.0 s)
+  section, weight <= 14: unsat (0.0 s)
+  section, weight <= 16: unsat (0.0 s)
+  section, weight <= 18: unsat (0.0 s)
+  section, weight <= 20: unsat (0.0 s)
+  section, weight <= 22: unsat (0.0 s)
+  section, weight <= 24: unsat (0.0 s)
+  section, weight <= 26: unsat (0.0 s)
+  section, weight <= 28: unsat (0.0 s)
+  section, weight <= 30: unsat (0.0 s)
+  |S| <= 3, weight <= 30: sat (0.0 s) profile [18, 1, 2, 3] |S|=3 |s|=4 wt=14
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s4_fiber_C3.json

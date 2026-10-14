@@ -1,0 +1,36 @@
+link u=2 kmax=2 whcap=14 gcap=26 smax=3 dil=4: 284 raw seeds
+  seed 1/284: pushed 388130 complete_h 19
+  seed 2/284: pushed 1076302 complete_h 19
+  seed 3/284: pushed 648548 complete_h 19
+  seed 4/284: pushed 478044 complete_h 19
+  seed 5/284: pushed 1088340 complete_h 19
+  seed 6/284: pushed 953779 complete_h 19
+  seed 7/284: pushed 253373 complete_h 19
+  seed 8/284: pushed 1744541 complete_h 19
+  seed 9/284: pushed 487821 complete_h 19
+  seed 10/284: pushed 961836 complete_h 19
+  seed 11/284: pushed 749730 complete_h 19
+  seed 12/284: pushed 471642 complete_h 19
+  seed 13/284: pushed 1088340 complete_h 19
+  seed 14/284: pushed 1061156 complete_h 19
+  seed 15/284: pushed 225161 complete_h 19
+  seed 16/284: pushed 141359 complete_h 19
+  seed 17/284: pushed 662393 complete_h 19
+  seed 18/284: pushed 1143208 complete_h 19
+  seed 19/284: pushed 977178 complete_h 19
+  seed 20/284: pushed 73028 complete_h 19
+  seed 21/284: pushed 1088340 complete_h 19
+  seed 22/284: pushed 1197827 complete_h 19
+  seed 23/284: pushed 340884 complete_h 19
+  seed 24/284: pushed 162261 complete_h 19
+  seed 25/284: pushed 732672 complete_h 19
+  seed 26/284: pushed 1404016 complete_h 19
+  seed 27/284: pushed 1288939 complete_h 19
+  seed 28/284: pushed 91852 complete_h 19
+  seed 29/284: pushed 1088340 complete_h 19
+  seed 30/284: pushed 1370348 complete_h 19
+[link u=2] ABORT RED: frontier 3786576 > 3M — tables complete through h=4
+  seed 31/284: pushed 4120127 complete_h 4 ABORT RED: frontier 3786576 > 3M
+  seed 32/284: pushed 384498 complete_h 19
+  seed 33/284: pushed 1134355 complete_h 19
+  seed 34/284: pushed 2607359 complete_h 19

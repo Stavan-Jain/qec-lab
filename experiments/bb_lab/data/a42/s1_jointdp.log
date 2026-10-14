@@ -1,0 +1,15 @@
+p=3 (a=0): window classes 4; joint table 8 keys
+  new best 6 at sigma [(0, 0), (1, 0), (1, 1)]
+p=3: 4170 nontrivial sigmas; exact joint floor over omega-support <= 6 slots: 6  (0.9 s)
+p=6 (a=1): window classes 6; joint table 64 keys
+  new best 12 at sigma [(0, 0), (1, 0), (1, 1)]
+  ... 25000 sigmas, best 12 (10 s)
+  ... 50000 sigmas, best 12 (19 s)
+p=6: 55287 nontrivial sigmas; exact joint floor over omega-support <= 7 slots: 12  (20.7 s)
+p=12 (a=2): window classes 6; joint table 4096 keys
+  new best 24 at sigma [(0, 0), (1, 0), (1, 1)]
+  ... 25000 sigmas, best 24 (97 s)
+  ... 50000 sigmas, best 24 (180 s)
+  ... 75000 sigmas, best 24 (273 s)
+p=12: 99399 nontrivial sigmas; exact joint floor over omega-support <= 7 slots: 24  (363.9 s)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s1_jointdp.json

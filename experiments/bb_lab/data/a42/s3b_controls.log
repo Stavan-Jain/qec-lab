@@ -1,0 +1,3 @@
+p=3 pure racer: branch minima [6, 6], union 6 (expect 6)
+p=6: 21 PURE atlas cycles replay through the omega automaton (cost = weight, registers = jet registers, class verdicts match); weights {12: (6, 15)}
+p=6 pure racer cap 13: nonzero-register returns [12] == pure-atlas nontrivial weights [12] (min 12 = 2p)

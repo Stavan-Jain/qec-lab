@@ -1,0 +1,391 @@
+{
+ "phase": "p8rest",
+ "frames": [
+  {
+   "p": 8,
+   "d": 2,
+   "k": 8,
+   "orders": [
+    2,
+    72
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     2,
+     36
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 5016
+   },
+   "n_cover_cycles": 203,
+   "n_trivial": 203,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 142,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 203,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 123.4
+  },
+  {
+   "p": 8,
+   "d": 4,
+   "k": 4,
+   "orders": [
+    2,
+    72
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 504
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 11.2
+  },
+  {
+   "p": 8,
+   "d": 5,
+   "k": 4,
+   "orders": [
+    1,
+    144
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 216
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 11.3
+  },
+  {
+   "p": 8,
+   "d": 7,
+   "k": 4,
+   "orders": [
+    1,
+    144
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 12456
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 12.2
+  },
+  {
+   "p": 8,
+   "d": 8,
+   "k": 8,
+   "orders": [
+    2,
+    72
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     2,
+     36
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 6204
+   },
+   "n_cover_cycles": 203,
+   "n_trivial": 203,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 142,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 203,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 128.1
+  },
+  {
+   "p": 8,
+   "d": 10,
+   "k": 4,
+   "orders": [
+    2,
+    72
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 432
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 11.5
+  },
+  {
+   "p": 8,
+   "d": 11,
+   "k": 4,
+   "orders": [
+    1,
+    144
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 144
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 11.7
+  },
+  {
+   "p": 8,
+   "d": 13,
+   "k": 4,
+   "orders": [
+    1,
+    144
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 504
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 11.7
+  },
+  {
+   "p": 8,
+   "d": 14,
+   "k": 8,
+   "orders": [
+    2,
+    72
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     2,
+     36
+    ],
+    "base_k": 8,
+    "mu_stab_base": 6,
+    "base_ntrv": 27876
+   },
+   "n_cover_cycles": 203,
+   "n_trivial": 203,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 142,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 203,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 134.2
+  },
+  {
+   "p": 8,
+   "d": 16,
+   "k": 4,
+   "orders": [
+    2,
+    72
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 0,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 12456
+   },
+   "n_cover_cycles": 201,
+   "n_trivial": 201,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 140,
+    "14": 54
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 201,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 12.5
+  },
+  {
+   "p": 8,
+   "d": 17,
+   "k": 4,
+   "orders": [
+    1,
+    144
+   ],
+   "W": 15,
+   "route": {
+    "depth": 1,
+    "fold_axis": 1,
+    "base_orders": [
+     1,
+     72
+    ],
+    "base_k": 4,
+    "mu_stab_base": 6,
+    "base_ntrv": 1440
+   },
+   "n_cover_cycles": 203,
+   "n_trivial": 203,
+   "trivial_whist": {
+    "6": 1,
+    "10": 6,
+    "12": 141,
+    "14": 55
+   },
+   "n_nontrivial": 0,
+   "nontrivial_whist": {},
+   "survivors": [],
+   "trivial_yspan_reps": 203,
+   "trivial_yspan_unpruned": 0,
+   "wall_s": 11.8
+  }
+ ],
+ "wall_s": 480.7
+}

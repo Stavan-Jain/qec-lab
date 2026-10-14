@@ -1,0 +1,29 @@
+{
+ "species_rows": [
+  {
+   "name": "W7_l18",
+   "min_step": -2,
+   "max_step": 2
+  },
+  {
+   "name": "W7_l24",
+   "min_step": -2,
+   "max_step": 2
+  },
+  {
+   "name": "TC63_l18",
+   "min_step": 0,
+   "max_step": 2
+  },
+  {
+   "name": "TC63_l24",
+   "min_step": 0,
+   "max_step": 2
+  },
+  {
+   "name": "TC63p_mirror",
+   "min_step": 0,
+   "max_step": 2
+  }
+ ]
+}

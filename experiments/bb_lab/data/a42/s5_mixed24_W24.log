@@ -1,0 +1,109 @@
+[     0.0s] === a42_s5_mixed24 phase=all W=24 pid=65900 cpus=10
+[     0.9s] validate_banked: PASS
+[     1.4s] tower: k 12/12/8/8, SEAM 63 classes, S1' 3 classes, top rung (R)+exact+sigma*=id; ker p0* == W_x (dim 6) VERIFIED
+[   154.3s]   s5_L2stab24_w0: kappa 50 r 12 nodes 172,186,125,455 (exact) hits 9,811,399 kernel 153s; streaming ...
+[   253.9s]   s5_L2stab24_w0: streamed 9,811,399 hits in 100s; reps so far 234495
+[   297.6s]   s5_L2stab24_w1: kappa 50 r 11 nodes 50,786,474,355 (exact) hits 7,555,889 kernel 44s; streaming ...
+[   374.4s]   s5_L2stab24_w1: streamed 7,555,889 hits in 77s; reps so far 235817
+[   403.4s] L2 stab <= 24: 235817 orbit reps {'6': 1, '10': 6, '12': 24, '14': 54, '16': 280, '18': 971, '20': 4704, '22': 27651, '24': 202126} = 12,724,668 elements; mu2 = 6
+[   663.7s]   s5_L2s1p24_w0: kappa 50 r 12 nodes 172,186,125,455 (exact) hits 27,216,391 kernel 259s; streaming ...
+[   895.6s]   s5_L2s1p24_w0: streamed 27,216,391 hits in 232s; reps so far 1936410
+[   977.4s]   s5_L2s1p24_w1: kappa 50 r 11 nodes 50,786,474,355 (exact) hits 21,051,111 kernel 82s; streaming ...
+[  1150.8s]   s5_L2s1p24_w1: streamed 21,051,111 hits in 173s; reps so far 1972185
+[  1262.1s] L2 S1'-cosets <= 24 (3 classes): 657395 orbit reps {'16': 25, '18': 506, '20': 6435, '22': 66011, '24': 584418} = 35,499,330 elements
+[  1275.8s]   s5_L2all16_0_w0: kappa 50 r 8 nodes 655,023,685 (exact) hits 59,528 kernel 9s; streaming ...
+[  1276.3s]   s5_L2all16_0_w0: streamed 59,528 hits in 1s; reps so far 12402
+[  1278.0s]   s5_L2all16_0_w1: kappa 50 r 7 nodes 118,145,035 (exact) hits 42,168 kernel 2s; streaming ...
+[  1278.4s]   s5_L2all16_0_w1: streamed 42,168 hits in 0s; reps so far 13017
+[  1293.7s]   s5_L2all16_51_w0: kappa 50 r 8 nodes 655,023,685 (exact) hits 67,184 kernel 10s; streaming ...
+[  1294.3s]   s5_L2all16_51_w0: streamed 67,184 hits in 1s; reps so far 13280
+[  1295.9s]   s5_L2all16_51_w1: kappa 50 r 7 nodes 118,145,035 (exact) hits 47,590 kernel 2s; streaming ...
+[  1296.4s]   s5_L2all16_51_w1: streamed 47,590 hits in 0s; reps so far 13860
+[  1312.0s]   s5_L2all16_102_w0: kappa 50 r 8 nodes 655,023,685 (exact) hits 48,844 kernel 10s; streaming ...
+[  1312.4s]   s5_L2all16_102_w0: streamed 48,844 hits in 0s; reps so far 10050
+[  1314.1s]   s5_L2all16_102_w1: kappa 50 r 7 nodes 118,145,035 (exact) hits 40,163 kernel 2s; streaming ...
+[  1314.5s]   s5_L2all16_102_w1: streamed 40,163 hits in 0s; reps so far 10652
+[  1328.7s]   s5_L2all16_153_w0: kappa 50 r 8 nodes 655,023,685 (exact) hits 60,299 kernel 10s; streaming ...
+[  1329.3s]   s5_L2all16_153_w0: streamed 60,299 hits in 1s; reps so far 12139
+[  1330.9s]   s5_L2all16_153_w1: kappa 50 r 7 nodes 118,145,035 (exact) hits 44,928 kernel 2s; streaming ...
+[  1331.4s]   s5_L2all16_153_w1: streamed 44,928 hits in 0s; reps so far 12822
+[  1346.8s]   s5_L2all16_204_w0: kappa 50 r 8 nodes 655,023,685 (exact) hits 60,333 kernel 10s; streaming ...
+[  1347.3s]   s5_L2all16_204_w0: streamed 60,333 hits in 1s; reps so far 11358
+[  1349.1s]   s5_L2all16_204_w1: kappa 50 r 7 nodes 118,145,035 (exact) hits 40,451 kernel 2s; streaming ...
+[  1349.6s]   s5_L2all16_204_w1: streamed 40,451 hits in 0s; reps so far 11860
+[  1354.6s] L2 all-class <= 16: 7780 orbit reps; d(L2) = 10 EXACT (banked: 7780 reps)
+[  1358.2s] reloaded L2 reps: stab 235817, S1' 657395, all<=16 7780
+[  1359.3s] L1 tau2 family: 127 rep sources (2w <= 24)
+[  1361.3s] L2 -> L1 fibres: 893212 (stab2 + S1') on 8 workers
+[  1382.0s]   ... fibres 20000/893212 (21s) seam reps 5 stab reps 12630 RSS 1.01
+[  1396.4s]   ... fibres 40000/893212 (35s) seam reps 5 stab reps 20415 RSS 1.10
+[  1415.5s]   ... fibres 60000/893212 (54s) seam reps 5 stab reps 30396 RSS 1.23
+[  1424.9s]   ... fibres 80000/893212 (64s) seam reps 5 stab reps 35414 RSS 1.27
+[  1430.2s]   ... fibres 100000/893212 (69s) seam reps 6 stab reps 40512 RSS 1.27
+[  1438.5s]   ... fibres 120000/893212 (77s) seam reps 6 stab reps 48728 RSS 1.27
+[  1445.4s]   ... fibres 140000/893212 (84s) seam reps 6 stab reps 55895 RSS 1.27
+[  1450.3s]   ... fibres 160000/893212 (89s) seam reps 6 stab reps 61542 RSS 1.27
+[  1452.7s]   ... fibres 180000/893212 (91s) seam reps 7 stab reps 63570 RSS 1.27
+[  1456.4s]   ... fibres 200000/893212 (95s) seam reps 9 stab reps 67717 RSS 1.27
+[  1457.1s]   ... fibres 220000/893212 (96s) seam reps 13 stab reps 68218 RSS 1.27
+[  1457.1s]   ... fibres 240000/893212 (96s) seam reps 20 stab reps 68218 RSS 1.27
+[  1457.1s]   ... fibres 260000/893212 (96s) seam reps 24 stab reps 68218 RSS 1.27
+[  1457.1s]   ... fibres 280000/893212 (96s) seam reps 36 stab reps 68218 RSS 1.27
+[  1457.1s]   ... fibres 300000/893212 (96s) seam reps 55 stab reps 68218 RSS 1.27
+[  1457.2s]   ... fibres 320000/893212 (96s) seam reps 70 stab reps 68218 RSS 1.27
+[  1457.2s]   ... fibres 340000/893212 (96s) seam reps 96 stab reps 68218 RSS 1.27
+[  1457.2s]   ... fibres 360000/893212 (96s) seam reps 107 stab reps 68218 RSS 1.27
+[  1457.3s]   ... fibres 380000/893212 (96s) seam reps 127 stab reps 68218 RSS 1.27
+[  1457.3s]   ... fibres 400000/893212 (96s) seam reps 137 stab reps 68218 RSS 1.27
+[  1457.3s]   ... fibres 420000/893212 (96s) seam reps 176 stab reps 68218 RSS 1.27
+[  1457.3s]   ... fibres 440000/893212 (96s) seam reps 182 stab reps 68218 RSS 1.27
+[  1457.4s]   ... fibres 460000/893212 (96s) seam reps 194 stab reps 68218 RSS 1.27
+[  1457.4s]   ... fibres 480000/893212 (96s) seam reps 199 stab reps 68218 RSS 1.27
+[  1457.4s]   ... fibres 500000/893212 (96s) seam reps 200 stab reps 68218 RSS 1.27
+[  1457.4s]   ... fibres 520000/893212 (96s) seam reps 208 stab reps 68218 RSS 1.27
+[  1457.4s]   ... fibres 540000/893212 (96s) seam reps 214 stab reps 68218 RSS 1.27
+[  1457.4s]   ... fibres 560000/893212 (96s) seam reps 233 stab reps 68218 RSS 1.27
+[  1457.5s]   ... fibres 580000/893212 (96s) seam reps 235 stab reps 68218 RSS 1.27
+[  1457.5s]   ... fibres 600000/893212 (96s) seam reps 238 stab reps 68218 RSS 1.27
+[  1457.5s]   ... fibres 620000/893212 (96s) seam reps 245 stab reps 68218 RSS 1.27
+[  1457.5s]   ... fibres 640000/893212 (96s) seam reps 265 stab reps 68218 RSS 1.27
+[  1457.5s]   ... fibres 660000/893212 (96s) seam reps 276 stab reps 68218 RSS 1.27
+[  1457.6s]   ... fibres 680000/893212 (96s) seam reps 305 stab reps 68218 RSS 1.27
+[  1457.6s]   ... fibres 700000/893212 (96s) seam reps 317 stab reps 68218 RSS 1.27
+[  1457.6s]   ... fibres 720000/893212 (96s) seam reps 338 stab reps 68218 RSS 1.27
+[  1457.7s]   ... fibres 740000/893212 (96s) seam reps 352 stab reps 68218 RSS 1.27
+[  1457.7s]   ... fibres 760000/893212 (96s) seam reps 359 stab reps 68218 RSS 1.27
+[  1457.7s]   ... fibres 780000/893212 (96s) seam reps 361 stab reps 68218 RSS 1.27
+[  1467.9s]   ... fibres 800000/893212 (107s) seam reps 364 stab reps 103303 RSS 1.27
+[  1476.4s]   ... fibres 820000/893212 (115s) seam reps 411 stab reps 125921 RSS 1.27
+[  1476.7s]   ... fibres 840000/893212 (115s) seam reps 609 stab reps 125921 RSS 1.27
+[  1476.9s]   ... fibres 860000/893212 (116s) seam reps 777 stab reps 125921 RSS 1.27
+[  1477.1s]   ... fibres 880000/893212 (116s) seam reps 986 stab reps 125921 RSS 1.27
+[  1485.4s]   s5_L2imp1_12_0_w0: kappa 50 r 6 nodes 18,260,635 (exact) hits 440 kernel 0s; streaming ...
+[  1485.5s]   s5_L2imp1_12_0_w0: streamed 440 hits in 0s; reps so far 129
+[  1485.5s]   s5_L2imp1_12_0_w1: kappa 50 r 5 nodes 2,369,935 (exact) hits 445 kernel 0s; streaming ...
+[  1485.6s]   s5_L2imp1_12_0_w1: streamed 445 hits in 0s; reps so far 146
+[  1485.7s]   s5_L2imp1_12_51_w0: kappa 50 r 6 nodes 18,260,635 (exact) hits 130 kernel 0s; streaming ...
+[  1485.7s]   s5_L2imp1_12_51_w0: streamed 130 hits in 0s; reps so far 35
+[  1485.7s]   s5_L2imp1_12_51_w1: kappa 50 r 5 nodes 2,369,935 (exact) hits 122 kernel 0s; streaming ...
+[  1485.7s]   s5_L2imp1_12_51_w1: streamed 122 hits in 0s; reps so far 37
+[  1485.7s] L2 im-p1* cosets <= 12 (control census): 183 orbit reps {'12': 183}
+[  1486.0s] L1 SEAM census <= 24: 1627 orbit reps {'22': 68, '24': 1559}; stab reps 169261 {'6': 1, '10': 6, '12': 51, '14': 54, '16': 589, '18': 2091, '20': 7117, '22': 34184, '24': 125168}; nontrivial <= 12: 12 {'12': 12}; d(L1) = 12; lanes {'deep0': 786544, 'deep1': 93662, 'deep2': 11139, 'deep3': 1477, 'deep4': 305, 'deep5': 54, 'deep6': 24, 'deep7': 6, 'ks9': 1}; 125s
+[  1486.0s] GATE: seam weight-22 slice == banked 68 orbits; seam min 22
+[  1486.9s] seam reps reloaded + re-verified: 1627 {'22': 68, '24': 1559}
+[  1487.2s]   ... seam rungs 200/1627: 0 weight-24 lifts so far, 0 L0 orbits (0s)
+[  1487.3s]   ... seam rungs 400/1627: 0 weight-24 lifts so far, 0 L0 orbits (0s)
+[  1487.5s]   ... seam rungs 600/1627: 0 weight-24 lifts so far, 0 L0 orbits (1s)
+[  1487.7s]   ... seam rungs 800/1627: 0 weight-24 lifts so far, 0 L0 orbits (1s)
+[  1487.9s]   ... seam rungs 1000/1627: 0 weight-24 lifts so far, 0 L0 orbits (1s)
+[  1488.1s]   ... seam rungs 1200/1627: 0 weight-24 lifts so far, 0 L0 orbits (1s)
+[  1488.3s]   ... seam rungs 1400/1627: 0 weight-24 lifts so far, 0 L0 orbits (1s)
+[  1488.5s]   ... seam rungs 1600/1627: 0 weight-24 lifts so far, 0 L0 orbits (2s)
+[  1488.5s] L0 weight-24 cycles over seam reps: 0 lifts (of seam orbit reps) -> 0 L0 translation-orbit reps (2s)
+[  1488.5s] class-kind x gap-sector (orbit reps): {}
+[  1488.5s]   elements: {}
+[  1488.5s]   distinct classes: {}
+[  1488.5s]   fibre profiles (kind|eps|n3 -> orbits): {}
+[  1488.5s] CONTROL: L12 stack is pure-x, fold is an L1 stab (weight 0, overflow 12), x-gap 14; profile {'n1': 0, 'n2': 12, 'n3': 0, 'S': 12, 's': 0, 'Ss': 0, 'eps': 0, 'D': 0, 'ncols': 5}
+[  1488.5s] CONTROL: tau0 pullbacks of the 12 weight-12 L1 orbit reps: {'pure-x|gx14|eps0': 2, 'pure-x|gx13|eps6': 5, 'pure-x|gx12|eps10': 3, 'pure-x|gx12|eps0': 1, 'pure-x|gx15|eps0': 1}
+[  1488.5s] DONE total 1488.5s, max RSS 1.27 GB -> /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s5_mixed24_W24.json

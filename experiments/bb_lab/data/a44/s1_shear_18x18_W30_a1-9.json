@@ -1,0 +1,56 @@
+{
+ "L": 18,
+ "M": 18,
+ "target": 30,
+ "frames": [
+  {
+   "a": 3,
+   "p": 18,
+   "d": 0,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.2,
+   "witnesses": []
+  },
+  {
+   "a": 6,
+   "p": 9,
+   "d": 0,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 1.1,
+   "witnesses": []
+  },
+  {
+   "a": 6,
+   "p": 9,
+   "d": 3,
+   "n": 108,
+   "k": 8,
+   "orders": [
+    3,
+    18
+   ],
+   "idx": 6,
+   "W": 5,
+   "status": "unsat",
+   "t": 0.9,
+   "witnesses": []
+  }
+ ],
+ "torus_orbits": {}
+}

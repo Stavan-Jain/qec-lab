@@ -1,0 +1,11 @@
+D p=12 W=12: classes=6
+  ANY nonzero section cycle (no weight cap, trivial allowed): sat (0.0 s)
+    found weight 6 profile [90, 6, 0, 0] nontrivial=False
+  no-pair stratum, weight <= 8: unsat (3.9 s)
+  no-pair stratum, weight <= 10: unsat (11.4 s)
+  no-pair stratum, weight <= 12: unsat (32.0 s)
+  no-pair stratum, weight <= 14: unsat (67.0 s)
+  no-pair stratum, weight <= 16: unsat (154.5 s)
+  no-pair stratum, weight <= 18: unsat (467.2 s)
+  no-pair stratum, weight <= 20: timeout (601.4 s)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a42/s4_fiber_D12.json

@@ -1,0 +1,2 @@
+p=12 branch T: two-word engine reproduces the s3b level table and returns EXACTLY (nonzero@[24, 26])
+p=12 branch V: two-word engine reproduces the s3b level table and returns EXACTLY (nonzero@[24, 26])

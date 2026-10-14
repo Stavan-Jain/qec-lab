@@ -1,0 +1,40 @@
+{
+ "p": 8,
+ "d": 13,
+ "k": 4,
+ "orders": [
+  1,
+  240
+ ],
+ "W": 15,
+ "route": {
+  "depth": 2,
+  "mid_orders": [
+   1,
+   120
+  ],
+  "bottom_orders": [
+   1,
+   60
+  ],
+  "mid_k": 4,
+  "bottom_k": 4,
+  "mu_stab_mid": 6,
+  "mid_ntrv": 0,
+  "bottom_ntrv": 5160
+ },
+ "n_cover_cycles": 178,
+ "n_trivial": 178,
+ "trivial_whist": {
+  "6": 1,
+  "10": 6,
+  "12": 117,
+  "14": 54
+ },
+ "n_nontrivial": 0,
+ "nontrivial_whist": {},
+ "survivors": [],
+ "trivial_yspan_reps": 178,
+ "trivial_yspan_unpruned": 0,
+ "wall_s": 4.3
+}

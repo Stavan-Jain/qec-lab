@@ -1,0 +1,12 @@
+=== 2026-09-01 21:55:52 argv=['norm', '--tag', 'small', '--wcap', '11', '--dirs', '4,4', '6,6', '3,6', '12,6', '12,-6', '24,6', '24,-6', '12,12', '12,-12']
+validate_banked: PASS
+u=(4,4) g=4: 28 compact cycles <= 11, spectrum {'w10': {'n': 24, 'compact_trivial': 24, 'torus_nontrivial': 0}, 'w6': {'n': 4, 'compact_trivial': 4, 'torus_nontrivial': 0}}, N(u) >= 12 (0.2 s, 18012 pops)
+u=(6,6) g=6: 42 compact cycles <= 11, spectrum {'w10': {'n': 36, 'compact_trivial': 36, 'torus_nontrivial': 0}, 'w6': {'n': 6, 'compact_trivial': 6, 'torus_nontrivial': 0}}, N(u) >= 12 (0.8 s, 48633 pops)
+u=(3,6) g=3: 21 compact cycles <= 11, spectrum {'w10': {'n': 15, 'compact_trivial': 12, 'torus_nontrivial': 3}, 'w6': {'n': 3, 'compact_trivial': 3, 'torus_nontrivial': 0}, 'w8': {'n': 3, 'compact_trivial': 3, 'torus_nontrivial': 0}}, N(u) = 10 (0.2 s, 26684 pops)
+u=(12,6) g=6: 42 compact cycles <= 11, spectrum {'w10': {'n': 36, 'compact_trivial': 36, 'torus_nontrivial': 0}, 'w6': {'n': 6, 'compact_trivial': 6, 'torus_nontrivial': 0}}, N(u) >= 12 (13.5 s, 635939 pops)
+u=(12,-6) g=6: 42 compact cycles <= 11, spectrum {'w10': {'n': 36, 'compact_trivial': 36, 'torus_nontrivial': 0}, 'w6': {'n': 6, 'compact_trivial': 6, 'torus_nontrivial': 0}}, N(u) >= 12 (2.8 s, 99021 pops)
+u=(24,6) g=6: cap: state cap exceeded
+u=(24,-6) g=6: 42 compact cycles <= 11, spectrum {'w10': {'n': 36, 'compact_trivial': 36, 'torus_nontrivial': 0}, 'w6': {'n': 6, 'compact_trivial': 6, 'torus_nontrivial': 0}}, N(u) >= 12 (13.6 s, 513459 pops)
+u=(12,12) g=12: 84 compact cycles <= 11, spectrum {'w10': {'n': 72, 'compact_trivial': 72, 'torus_nontrivial': 0}, 'w6': {'n': 12, 'compact_trivial': 12, 'torus_nontrivial': 0}}, N(u) >= 12 (203.6 s, 404580 pops)
+u=(12,-12) g=12: 84 compact cycles <= 11, spectrum {'w10': {'n': 72, 'compact_trivial': 72, 'torus_nontrivial': 0}, 'w6': {'n': 12, 'compact_trivial': 12, 'torus_nontrivial': 0}}, N(u) >= 12 (293.1 s, 404664 pops)
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s11_norm_small.json

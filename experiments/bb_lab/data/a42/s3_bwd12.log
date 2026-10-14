@@ -1,0 +1,21 @@
+p=12 backward table: gmax 18, budget 0.8 h
+  bwd level 0: novel 1 seen 2 rss 37MB t 0s
+  bwd level 1: novel 0 seen 2 rss 37MB t 0s
+  bwd level 2: novel 0 seen 2 rss 37MB t 0s
+  bwd level 3: novel 1 seen 3 rss 37MB t 0s
+  bwd level 4: novel 2 seen 5 rss 37MB t 0s
+  bwd level 5: novel 3 seen 8 rss 37MB t 0s
+  bwd level 6: novel 13 seen 21 rss 37MB t 0s
+  bwd level 7: novel 34 seen 55 rss 42MB t 1s
+  bwd level 8: novel 74 seen 129 rss 50MB t 1s
+  bwd level 9: novel 201 seen 330 rss 69MB t 1s
+  bwd level 10: novel 537 seen 867 rss 116MB t 1s
+  bwd level 11: novel 1288 seen 2155 rss 205MB t 2s
+  bwd level 12: novel 3169 seen 5324 rss 242MB t 2s
+  bwd level 13: novel 7915 seen 13239 rss 292MB t 4s
+  bwd level 14: novel 19454 seen 32693 rss 292MB t 8s
+  bwd level 15: novel 47213 seen 79906 rss 292MB t 17s
+  bwd level 16: novel 114551 seen 194457 rss 292MB t 34s
+  bwd level 17: novel 276653 seen 471110 rss 292MB t 62s
+  bwd level 18: novel 664305 seen 1135415 rss 308MB t 118s
+bwd12 done: completed level 18 states 1135415 (118.7 s)

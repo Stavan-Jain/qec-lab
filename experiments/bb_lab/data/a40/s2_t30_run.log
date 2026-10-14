@@ -1,0 +1,14 @@
+[    0.8s] validate_banked: PASS
+[    1.1s] [A_x_first] k 12/8/8; ranks p0*=6 p1*=4 comp=2; |SEAM|=63 |imp1|=15 |S1'|=3
+[   38.7s] [A_x_first] L2 censuses: stab 522 reps {'6': 1, '10': 6, '12': 36, '14': 54, '16': 425}; S1' 0; imp1<= 12 0; tau sources 81; lightest nontrivial <= 8: None
+[   39.4s] [A_x_first] L1 obligations: stab 1043 {'6': 1, '10': 6, '12': 77, '14': 54, '16': 905}; seam 0 {}; ntrv<= 12 0 {}; d(L1) window value = None; fibers 522
+[   39.4s] [A_x_first] b=0 branch: d(L1) >= 14 -> dead; tau0 witness: None
+[   43.2s] [A_x_first] rungs: dangerous {'PASS': 1043}, seam {}, violations 0
+[   43.5s] [B_y_first] k 12/8/8; ranks p0*=6 p1*=4 comp=2; |SEAM|=63 |imp1|=15 |S1'|=3
+[   83.5s] [B_y_first] L2 censuses: stab 522 reps {'6': 1, '10': 6, '12': 36, '14': 54, '16': 425}; S1' 0; imp1<= 12 0; tau sources 81; lightest nontrivial <= 8: None
+[   84.1s] [B_y_first] L1 obligations: stab 1043 {'6': 1, '10': 6, '12': 77, '14': 54, '16': 905}; seam 0 {}; ntrv<= 12 0 {}; d(L1) window value = None; fibers 522
+[   84.1s] [B_y_first] b=0 branch: d(L1) >= 14 -> dead; tau0 witness: None
+[   87.7s] [B_y_first] rungs: dangerous {'PASS': 1043}, seam {}, violations 0
+[   87.7s] BOTH routes PASS => d([[648,12]]) >= 18 at certificate tier (two independent tower derivations; no SAT). Z side by transpose duality.
+[   87.7s] total 87.7s -> /Users/stavanjain/Code/qec-lab/.claude/worktrees/agent-aafc19cdb2dd71190/experiments/bb_lab/data/a40/s2_t30_W16.json
+rc=0

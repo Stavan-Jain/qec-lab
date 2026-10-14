@@ -1,0 +1,1087 @@
+{
+ "when": "2026-08-25 20:57:03",
+ "gate": "PASS",
+ "members": {
+  "(1,0)": {
+   "lm": [
+    6,
+    6
+   ],
+   "n": 72,
+   "k": 12,
+   "d_conj": 6,
+   "A": "1 + y + x^3*y^5",
+   "B": "1 + x + x^5*y^3",
+   "inventory": {
+    "orders": [
+     6,
+     6
+    ],
+    "card": 36,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     1,
+     1
+    ],
+    "odd_part_per_axis": [
+     3,
+     3
+    ],
+    "odd_part": 9,
+    "two_part": 4,
+    "depth": 2,
+    "fold_chain": [
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  },
+  "(1,1)": {
+   "lm": [
+    12,
+    6
+   ],
+   "n": 144,
+   "k": 12,
+   "d_conj": 12,
+   "A": "1 + y + x^3*y^5",
+   "B": "1 + x + x^11*y^3",
+   "inventory": {
+    "orders": [
+     12,
+     6
+    ],
+    "card": 72,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     2,
+     1
+    ],
+    "odd_part_per_axis": [
+     3,
+     3
+    ],
+    "odd_part": 9,
+    "two_part": 8,
+    "depth": 3,
+    "fold_chain": [
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  },
+  "(2,0)": {
+   "lm": [
+    12,
+    12
+   ],
+   "n": 288,
+   "k": 12,
+   "d_conj": 18,
+   "A": "1 + y + x^3*y^11",
+   "B": "1 + x + x^11*y^9",
+   "inventory": {
+    "orders": [
+     12,
+     12
+    ],
+    "card": 144,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     2,
+     2
+    ],
+    "odd_part_per_axis": [
+     3,
+     3
+    ],
+    "odd_part": 9,
+    "two_part": 16,
+    "depth": 4,
+    "fold_chain": [
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  },
+  "(2,1)": {
+   "lm": [
+    18,
+    12
+   ],
+   "n": 432,
+   "k": 12,
+   "d_conj": 24,
+   "A": "1 + y + x^3*y^11",
+   "B": "1 + x + x^17*y^9",
+   "inventory": {
+    "orders": [
+     18,
+     12
+    ],
+    "card": 216,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     1,
+     2
+    ],
+    "odd_part_per_axis": [
+     9,
+     3
+    ],
+    "odd_part": 27,
+    "two_part": 8,
+    "depth": 3,
+    "fold_chain": [
+     [
+      0,
+      9
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  },
+  "(3,0)": {
+   "lm": [
+    18,
+    18
+   ],
+   "n": 648,
+   "k": 12,
+   "d_conj": 30,
+   "A": "1 + y + x^3*y^17",
+   "B": "1 + x + x^17*y^15",
+   "inventory": {
+    "orders": [
+     18,
+     18
+    ],
+    "card": 324,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     1,
+     1
+    ],
+    "odd_part_per_axis": [
+     9,
+     9
+    ],
+    "odd_part": 81,
+    "two_part": 4,
+    "depth": 2,
+    "fold_chain": [
+     [
+      0,
+      9
+     ],
+     [
+      1,
+      9
+     ]
+    ]
+   }
+  },
+  "(3,1)": {
+   "lm": [
+    24,
+    18
+   ],
+   "n": 864,
+   "k": 12,
+   "d_conj": 36,
+   "A": "1 + y + x^3*y^17",
+   "B": "1 + x + x^23*y^15",
+   "inventory": {
+    "orders": [
+     24,
+     18
+    ],
+    "card": 432,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     3,
+     1
+    ],
+    "odd_part_per_axis": [
+     3,
+     9
+    ],
+    "odd_part": 27,
+    "two_part": 16,
+    "depth": 4,
+    "fold_chain": [
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      9
+     ]
+    ]
+   }
+  },
+  "(4,0)": {
+   "lm": [
+    24,
+    24
+   ],
+   "n": 1152,
+   "k": 12,
+   "d_conj": 42,
+   "A": "1 + y + x^3*y^23",
+   "B": "1 + x + x^23*y^21",
+   "inventory": {
+    "orders": [
+     24,
+     24
+    ],
+    "card": 576,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     3,
+     3
+    ],
+    "odd_part_per_axis": [
+     3,
+     3
+    ],
+    "odd_part": 9,
+    "two_part": 64,
+    "depth": 6,
+    "fold_chain": [
+     [
+      0,
+      12
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      1,
+      12
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  },
+  "(4,1)": {
+   "lm": [
+    30,
+    24
+   ],
+   "n": 1440,
+   "k": 12,
+   "d_conj": 48,
+   "A": "1 + y + x^3*y^23",
+   "B": "1 + x + x^29*y^21",
+   "inventory": {
+    "orders": [
+     30,
+     24
+    ],
+    "card": 720,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     1,
+     3
+    ],
+    "odd_part_per_axis": [
+     15,
+     3
+    ],
+    "odd_part": 45,
+    "two_part": 16,
+    "depth": 4,
+    "fold_chain": [
+     [
+      0,
+      15
+     ],
+     [
+      1,
+      12
+     ],
+     [
+      1,
+      6
+     ],
+     [
+      1,
+      3
+     ]
+    ]
+   }
+  },
+  "(5,0)": {
+   "lm": [
+    30,
+    30
+   ],
+   "n": 1800,
+   "k": 12,
+   "d_conj": 54,
+   "A": "1 + y + x^3*y^29",
+   "B": "1 + x + x^29*y^27",
+   "inventory": {
+    "orders": [
+     30,
+     30
+    ],
+    "card": 900,
+    "C1_two_divides": true,
+    "v2_per_axis": [
+     1,
+     1
+    ],
+    "odd_part_per_axis": [
+     15,
+     15
+    ],
+    "odd_part": 225,
+    "two_part": 4,
+    "depth": 2,
+    "fold_chain": [
+     [
+      0,
+      15
+     ],
+     [
+      1,
+      15
+     ]
+    ]
+   }
+  }
+ },
+ "edges": [
+  {
+   "cover": "(1,1)",
+   "base": "(1,0)",
+   "lm_cover": [
+    12,
+    6
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 2,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z2 x Z1 (x,y)",
+   "deck_two_part": 2,
+   "deck_odd_part": 1,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(2,0)",
+   "base": "(1,0)",
+   "lm_cover": [
+    12,
+    12
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 4,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z2 x Z2 (x,y)",
+   "deck_two_part": 4,
+   "deck_odd_part": 1,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(2,0)",
+   "base": "(1,1)",
+   "lm_cover": [
+    12,
+    12
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "degree": 2,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z1 x Z2 (x,y)",
+   "deck_two_part": 2,
+   "deck_odd_part": 1,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(2,1)",
+   "base": "(1,0)",
+   "lm_cover": [
+    18,
+    12
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 6,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z3 x Z2 (x,y)",
+   "deck_two_part": 2,
+   "deck_odd_part": 3,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(2,1)",
+   "base": "(1,1)",
+   "lm_cover": [
+    18,
+    12
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "degree": 3,
+   "group_quotient_exists": true,
+   "axis_aligned": false,
+   "verdict": "group quotient exists but NOT axis-aligned (no literal lift of the fixed polynomials)"
+  },
+  {
+   "cover": "(2,1)",
+   "base": "(2,0)",
+   "lm_cover": [
+    18,
+    12
+   ],
+   "lm_base": [
+    12,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.5
+  },
+  {
+   "cover": "(3,0)",
+   "base": "(1,0)",
+   "lm_cover": [
+    18,
+    18
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 9,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z3 x Z3 (x,y)",
+   "deck_two_part": 1,
+   "deck_odd_part": 9,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(3,0)",
+   "base": "(1,1)",
+   "lm_cover": [
+    18,
+    18
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 4.5
+  },
+  {
+   "cover": "(3,0)",
+   "base": "(2,0)",
+   "lm_cover": [
+    18,
+    18
+   ],
+   "lm_base": [
+    12,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 2.25
+  },
+  {
+   "cover": "(3,0)",
+   "base": "(2,1)",
+   "lm_cover": [
+    18,
+    18
+   ],
+   "lm_base": [
+    18,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.5
+  },
+  {
+   "cover": "(3,1)",
+   "base": "(1,0)",
+   "lm_cover": [
+    24,
+    18
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 12,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z4 x Z3 (x,y)",
+   "deck_two_part": 4,
+   "deck_odd_part": 3,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(3,1)",
+   "base": "(1,1)",
+   "lm_cover": [
+    24,
+    18
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "degree": 6,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z2 x Z3 (x,y)",
+   "deck_two_part": 2,
+   "deck_odd_part": 3,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(3,1)",
+   "base": "(2,0)",
+   "lm_cover": [
+    24,
+    18
+   ],
+   "lm_base": [
+    12,
+    12
+   ],
+   "degree": 3,
+   "group_quotient_exists": false,
+   "axis_aligned": false,
+   "verdict": "IMPOSSIBLE (no group quotient)"
+  },
+  {
+   "cover": "(3,1)",
+   "base": "(2,1)",
+   "lm_cover": [
+    24,
+    18
+   ],
+   "lm_base": [
+    18,
+    12
+   ],
+   "degree": 2,
+   "group_quotient_exists": true,
+   "axis_aligned": false,
+   "verdict": "group quotient exists but NOT axis-aligned (no literal lift of the fixed polynomials)"
+  },
+  {
+   "cover": "(3,1)",
+   "base": "(3,0)",
+   "lm_cover": [
+    24,
+    18
+   ],
+   "lm_base": [
+    18,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.333
+  },
+  {
+   "cover": "(4,0)",
+   "base": "(1,0)",
+   "lm_cover": [
+    24,
+    24
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 16,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z4 x Z4 (x,y)",
+   "deck_two_part": 16,
+   "deck_odd_part": 1,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(4,0)",
+   "base": "(1,1)",
+   "lm_cover": [
+    24,
+    24
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "degree": 8,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z2 x Z4 (x,y)",
+   "deck_two_part": 8,
+   "deck_odd_part": 1,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(4,0)",
+   "base": "(2,0)",
+   "lm_cover": [
+    24,
+    24
+   ],
+   "lm_base": [
+    12,
+    12
+   ],
+   "degree": 4,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z2 x Z2 (x,y)",
+   "deck_two_part": 4,
+   "deck_odd_part": 1,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(4,0)",
+   "base": "(2,1)",
+   "lm_cover": [
+    24,
+    24
+   ],
+   "lm_base": [
+    18,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 2.667
+  },
+  {
+   "cover": "(4,0)",
+   "base": "(3,0)",
+   "lm_cover": [
+    24,
+    24
+   ],
+   "lm_base": [
+    18,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.778
+  },
+  {
+   "cover": "(4,0)",
+   "base": "(3,1)",
+   "lm_cover": [
+    24,
+    24
+   ],
+   "lm_base": [
+    24,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.333
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(1,0)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 20,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z5 x Z4 (x,y)",
+   "deck_two_part": 4,
+   "deck_odd_part": 5,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(1,1)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "degree": 10,
+   "group_quotient_exists": true,
+   "axis_aligned": false,
+   "verdict": "group quotient exists but NOT axis-aligned (no literal lift of the fixed polynomials)"
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(2,0)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    12,
+    12
+   ],
+   "degree": 5,
+   "group_quotient_exists": false,
+   "axis_aligned": false,
+   "verdict": "IMPOSSIBLE (no group quotient)"
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(2,1)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    18,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 3.333
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(3,0)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    18,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 2.222
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(3,1)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    24,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.667
+  },
+  {
+   "cover": "(4,1)",
+   "base": "(4,0)",
+   "lm_cover": [
+    30,
+    24
+   ],
+   "lm_base": [
+    24,
+    24
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.25
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(1,0)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    6,
+    6
+   ],
+   "degree": 25,
+   "group_quotient_exists": true,
+   "axis_aligned": true,
+   "literal_lift": true,
+   "deck": "Z5 x Z5 (x,y)",
+   "deck_two_part": 1,
+   "deck_odd_part": 25,
+   "verdict": "COVER (literal lift)"
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(1,1)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    12,
+    6
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 12.5
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(2,0)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    12,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 6.25
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(2,1)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    18,
+    12
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 4.167
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(3,0)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    18,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 2.778
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(3,1)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    24,
+    18
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 2.083
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(4,0)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    24,
+    24
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.562
+  },
+  {
+   "cover": "(5,0)",
+   "base": "(4,1)",
+   "lm_cover": [
+    30,
+    30
+   ],
+   "lm_base": [
+    30,
+    24
+   ],
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.25
+  }
+ ],
+ "zigzag": [
+  {
+   "step": "(1, 0) -> (1, 1)",
+   "verdict": "COVER (literal lift)",
+   "degree": 2
+  },
+  {
+   "step": "(1, 1) -> (2, 0)",
+   "verdict": "COVER (literal lift)",
+   "degree": 2
+  },
+  {
+   "step": "(2, 0) -> (2, 1)",
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.5
+  },
+  {
+   "step": "(2, 1) -> (3, 0)",
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.5
+  },
+  {
+   "step": "(3, 0) -> (3, 1)",
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.333
+  },
+  {
+   "step": "(3, 1) -> (4, 0)",
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.333
+  },
+  {
+   "step": "(4, 0) -> (4, 1)",
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.25
+  },
+  {
+   "step": "(4, 1) -> (5, 0)",
+   "verdict": "IMPOSSIBLE (non-integer degree)",
+   "degree": 1.25
+  }
+ ],
+ "known_edges": {
+  "bb72->gross": {
+   "axis": "x",
+   "fold_to": 6,
+   "lemma1": "PASS (constructor asserts)",
+   "twisted": true,
+   "k_cover": 12,
+   "k_base": 12,
+   "R_holds": true,
+   "rank_p": 6,
+   "rank_tau": 6,
+   "exact_cover": true,
+   "exact_base": true,
+   "sigma_id": true,
+   "codim_lift": 6
+  },
+  "gross->two-gross": {
+   "axis": "y",
+   "fold_to": 6,
+   "lemma1": "PASS (constructor asserts)",
+   "twisted": true,
+   "k_cover": 12,
+   "k_base": 12,
+   "R_holds": true,
+   "rank_p": 6,
+   "rank_tau": 6,
+   "exact_cover": true,
+   "exact_base": true,
+   "sigma_id": true,
+   "codim_lift": 6
+  }
+ },
+ "xladder_check": {
+  "lm": [
+   24,
+   6
+  ],
+  "n": 288,
+  "k": 12,
+  "family_member": false,
+  "note": "A14 s13 battery: SAT witness at weight 12 -> d_X <= 12 (witness grade); two-gross has d = 18 (A36 certificate) -> provably different codes"
+ },
+ "wall_s": 4.2
+}

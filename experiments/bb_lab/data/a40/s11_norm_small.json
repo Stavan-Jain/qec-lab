@@ -1,0 +1,551 @@
+{
+ "rows": [
+  {
+   "u": [
+    4,
+    4
+   ],
+   "g": 4,
+   "w1": [
+    1,
+    -1
+   ],
+   "w2": [
+    0,
+    1
+   ],
+   "P": [
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "Q": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 18012,
+   "n_cycles": 28,
+   "spectrum": {
+    "w10": {
+     "n": 24,
+     "compact_trivial": 24,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 4,
+     "compact_trivial": 4,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 0.2
+  },
+  {
+   "u": [
+    6,
+    6
+   ],
+   "g": 6,
+   "w1": [
+    1,
+    -1
+   ],
+   "w2": [
+    0,
+    1
+   ],
+   "P": [
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "Q": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 48633,
+   "n_cycles": 42,
+   "spectrum": {
+    "w10": {
+     "n": 36,
+     "compact_trivial": 36,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 6,
+     "compact_trivial": 6,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 0.8
+  },
+  {
+   "u": [
+    3,
+    6
+   ],
+   "g": 3,
+   "w1": [
+    2,
+    -1
+   ],
+   "w2": [
+    1,
+    0
+   ],
+   "P": [
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     7,
+     0
+    ]
+   ],
+   "Q": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     1
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 26684,
+   "n_cycles": 21,
+   "spectrum": {
+    "w10": {
+     "n": 15,
+     "compact_trivial": 12,
+     "torus_nontrivial": 3
+    },
+    "w6": {
+     "n": 3,
+     "compact_trivial": 3,
+     "torus_nontrivial": 0
+    },
+    "w8": {
+     "n": 3,
+     "compact_trivial": 3,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 10,
+   "N_exact": 10,
+   "wall_s": 0.2
+  },
+  {
+   "u": [
+    12,
+    6
+   ],
+   "g": 6,
+   "w1": [
+    1,
+    -2
+   ],
+   "w2": [
+    0,
+    1
+   ],
+   "P": [
+    [
+     -2,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     5,
+     5
+    ]
+   ],
+   "Q": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 635939,
+   "n_cycles": 42,
+   "spectrum": {
+    "w10": {
+     "n": 36,
+     "compact_trivial": 36,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 6,
+     "compact_trivial": 6,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 13.5
+  },
+  {
+   "u": [
+    12,
+    -6
+   ],
+   "g": 6,
+   "w1": [
+    -1,
+    -2
+   ],
+   "w2": [
+    0,
+    -1
+   ],
+   "P": [
+    [
+     -2,
+     5
+    ],
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "Q": [
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     7,
+     3
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 99021,
+   "n_cycles": 42,
+   "spectrum": {
+    "w10": {
+     "n": 36,
+     "compact_trivial": 36,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 6,
+     "compact_trivial": 6,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 2.8
+  },
+  {
+   "u": [
+    24,
+    6
+   ],
+   "g": 6,
+   "w1": [
+    1,
+    -4
+   ],
+   "w2": [
+    0,
+    1
+   ],
+   "P": [
+    [
+     -4,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     7,
+     5
+    ]
+   ],
+   "Q": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     11,
+     3
+    ]
+   ],
+   "Wcap": 11,
+   "status": "cap: state cap exceeded"
+  },
+  {
+   "u": [
+    24,
+    -6
+   ],
+   "g": 6,
+   "w1": [
+    -1,
+    -4
+   ],
+   "w2": [
+    0,
+    -1
+   ],
+   "P": [
+    [
+     -4,
+     5
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     1
+    ]
+   ],
+   "Q": [
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     13,
+     3
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 513459,
+   "n_cycles": 42,
+   "spectrum": {
+    "w10": {
+     "n": 36,
+     "compact_trivial": 36,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 6,
+     "compact_trivial": 6,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 13.6
+  },
+  {
+   "u": [
+    12,
+    12
+   ],
+   "g": 12,
+   "w1": [
+    1,
+    -1
+   ],
+   "w2": [
+    0,
+    1
+   ],
+   "P": [
+    [
+     -1,
+     1
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     11
+    ]
+   ],
+   "Q": [
+    [
+     0,
+     0
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     2,
+     9
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 404580,
+   "n_cycles": 84,
+   "spectrum": {
+    "w10": {
+     "n": 72,
+     "compact_trivial": 72,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 12,
+     "compact_trivial": 12,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 203.6
+  },
+  {
+   "u": [
+    12,
+    -12
+   ],
+   "g": 12,
+   "w1": [
+    -1,
+    -1
+   ],
+   "w2": [
+    0,
+    -1
+   ],
+   "P": [
+    [
+     -2,
+     1
+    ],
+    [
+     -1,
+     11
+    ],
+    [
+     0,
+     0
+    ]
+   ],
+   "Q": [
+    [
+     -1,
+     0
+    ],
+    [
+     0,
+     0
+    ],
+    [
+     4,
+     3
+    ]
+   ],
+   "Wcap": 11,
+   "status": "complete",
+   "npop": 404664,
+   "n_cycles": 84,
+   "spectrum": {
+    "w10": {
+     "n": 72,
+     "compact_trivial": 72,
+     "torus_nontrivial": 0
+    },
+    "w6": {
+     "n": 12,
+     "compact_trivial": 12,
+     "torus_nontrivial": 0
+    }
+   },
+   "N_lower": 12,
+   "N_exact": null,
+   "wall_s": 293.1
+  }
+ ],
+ "wall_s": 633.4
+}

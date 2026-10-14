@@ -1,0 +1,73 @@
+{
+ "t30": {
+  "k": [
+   12,
+   8,
+   8
+  ],
+  "rank_composite": 2,
+  "rows": [
+   {
+    "W": 14,
+    "floor": 16,
+    "log10_bottom_nodes": 10.1,
+    "cap": 4
+   },
+   {
+    "W": 16,
+    "floor": 18,
+    "log10_bottom_nodes": 11.0,
+    "cap": 5
+   },
+   {
+    "W": 18,
+    "floor": 20,
+    "log10_bottom_nodes": 11.9,
+    "cap": 6
+   },
+   {
+    "W": 20,
+    "floor": 22,
+    "log10_bottom_nodes": 12.8,
+    "cap": 7
+   },
+   {
+    "W": 22,
+    "floor": 24,
+    "log10_bottom_nodes": 13.6,
+    "cap": 8
+   }
+  ]
+ },
+ "t31": {
+  "k": [
+   12,
+   12,
+   8,
+   8,
+   8
+  ],
+  "comps": [
+   6,
+   2,
+   2,
+   2
+  ],
+  "rows": [
+   {
+    "W": 16,
+    "floor": 18,
+    "log10_anchor_nodes": 9.5,
+    "descent_layers_above_anchor": 2,
+    "cap": 5
+   },
+   {
+    "W": 22,
+    "floor": 24,
+    "log10_anchor_nodes": 11.4,
+    "descent_layers_above_anchor": 2,
+    "cap": 8
+   }
+  ]
+ }
+}

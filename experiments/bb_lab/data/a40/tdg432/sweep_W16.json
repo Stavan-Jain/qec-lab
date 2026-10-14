@@ -1,0 +1,89 @@
+{
+ "W": 16,
+ "target": 18,
+ "WC": 12,
+ "phase": "full",
+ "structure": {
+  "k": [
+   12,
+   12,
+   8,
+   8
+  ],
+  "seam_dim": 6,
+  "s1_dim": 6
+ },
+ "L3": {
+  "stab_vecs": 22329,
+  "stab_orbits": 831,
+  "p2cos_elems": 345285,
+  "d_L3": 6
+ },
+ "L2": {
+  "stab_orbits": 365,
+  "stab_whist": {
+   "6": 1,
+   "10": 6,
+   "12": 24,
+   "14": 54,
+   "16": 280
+  },
+  "s1_orbits": 2083,
+  "all_orbits": 96,
+  "d_L2": 10,
+  "mu2": 6
+ },
+ "L2_gate": {
+  "stab_orbits": 85,
+  "ntrv_orbits": 65,
+  "equal": true
+ },
+ "L1": {
+  "stab_orbits": 701,
+  "stab_whist": {
+   "6": 1,
+   "10": 6,
+   "12": 51,
+   "14": 54,
+   "16": 589
+  },
+  "seam_orbits": 0,
+  "seam_whist": {},
+  "ntrv_orbits_WC": 12,
+  "d_L1": 12,
+  "mu1": 6
+ },
+ "L1_gate": {
+  "orbits": 58,
+  "equal": true,
+  "k_LY": 8
+ },
+ "tau_witness": {
+  "w_L0": 24,
+  "w_L1": 12,
+  "class_L1": 887
+ },
+ "dangerous_rungs": {
+  "rungs": 701,
+  "verdicts": {
+   "PASS": 701
+  },
+  "lanes": {
+   "restricted<=0": 589,
+   "restricted<=1": 54,
+   "restricted<=2": 51,
+   "restricted<=3": 6,
+   "kernel-shift": 1
+  },
+  "wall_s": 4.1
+ },
+ "seam_rungs": {
+  "rungs": 0,
+  "verdicts": {}
+ },
+ "verdict": {
+  "floor": 18,
+  "all_pass": true
+ },
+ "wall_s": 48.8
+}

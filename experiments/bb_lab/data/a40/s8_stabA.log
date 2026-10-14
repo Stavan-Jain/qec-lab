@@ -1,0 +1,25 @@
+validate_banked: PASS
+s8 mirror closed: u=1 m=24 ell=18 nHmax=2 whcap=19 gcap=42 smax=4 dil=4 extent<=14: seeds [0, 8) of 8
+[s8 u=1 nH<=2 sid0] h=3 states 577278 rss 247MB 1.1s
+[s8 u=1 nH<=2 sid0] h=4 states 2544350 rss 423MB 137.8s
+[s8 u=1 nH<=2 sid1] h=3 states 579795 rss 293MB 1.1s
+[s8 u=1 nH<=2 sid1] h=4 states 2345605 rss 1062MB 148.3s
+[s8 u=1 nH<=2 sid1] h=5 states 2593059 rss 1003MB 616.8s
+[s8 u=1 nH<=2 sid1] h=7 states 0 rss 211MB 990.8s
+[s8 u=1 nH<=2 sid2] h=3 states 663905 rss 368MB 2.2s
+[s8 u=1 nH<=2 sid2] h=4 states 413616 rss 510MB 158.0s
+[s8 u=1 nH<=2 sid3] h=3 states 567913 rss 241MB 1.8s
+[s8 u=1 nH<=2 sid4] h=3 states 911672 rss 378MB 2.4s
+[s8 u=1 nH<=2 sid4] h=4 states 990190 rss 724MB 121.8s
+[s8 u=1 nH<=2 sid4] h=7 states 0 rss 195MB 324.7s
+[s8 u=1 nH<=2 sid5] h=3 states 545990 rss 302MB 1.0s
+[s8 u=1 nH<=2 sid5] h=4 states 2401489 rss 1102MB 151.2s
+[s8 u=1 nH<=2 sid5] h=5 states 1253616 rss 994MB 610.3s
+[s8 u=1 nH<=2 sid5] h=7 states 16 rss 298MB 941.4s
+[s8 u=1 nH<=2 sid6] h=3 states 475120 rss 353MB 0.9s
+[s8 u=1 nH<=2 sid6] h=4 states 1532492 rss 824MB 137.8s
+[s8 u=1 nH<=2 sid6] h=5 states 2409244 rss 986MB 496.5s
+[s8 u=1 nH<=2 sid6] h=6 states 1253616 rss 1417MB 945.3s
+[s8 u=1 nH<=2 sid6] h=7 states 84750 rss 743MB 1227.9s
+info: {'n_seeds': 8, 'pushed': 22943916, 'popped': 22943924, 'trunc_g': True, 'trunc_extent': 24668543, 'trunc_dcap': 329, 'aborts': [], 'closed': 0, 'layer_peak': 2593059, 'wall_s': 4524.2}
+wrote /Users/stavanjain/Code/qec-lab/experiments/bb_lab/data/a40/s8_stabA_u1_nh2_g42_s0_8.json (4525.1 s)

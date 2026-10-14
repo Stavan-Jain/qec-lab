@@ -1,0 +1,161 @@
+{
+ "mirror": {
+  "extent14": {
+   "info": {
+    "n_seeds": 8,
+    "pushed": 117482,
+    "popped": 117490,
+    "trunc_g": false,
+    "trunc_extent": 3939,
+    "trunc_dcap": 0,
+    "aborts": [],
+    "closed": 0,
+    "layer_peak": 13839,
+    "wall_s": 1.9
+   },
+   "hmax": 9,
+   "exhausted": true,
+   "fwd_min": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 6,
+    "6": 10,
+    "7": 15,
+    "8": 26,
+    "9": 34
+   },
+   "slack": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 4,
+    "6": 2,
+    "7": -1,
+    "8": -10,
+    "9": -16
+   },
+   "S": 4
+  },
+  "extent34": {
+   "info": {
+    "n_seeds": 8,
+    "pushed": 121421,
+    "popped": 121429,
+    "trunc_g": false,
+    "trunc_extent": 0,
+    "trunc_dcap": 0,
+    "aborts": [],
+    "closed": 0,
+    "layer_peak": 13953,
+    "wall_s": 1.9
+   },
+   "hmax": 9,
+   "exhausted": true,
+   "fwd_min": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 6,
+    "6": 10,
+    "7": 15,
+    "8": 22,
+    "9": 33
+   },
+   "slack": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 4,
+    "5": 4,
+    "6": 2,
+    "7": -1,
+    "8": -6,
+    "9": -15
+   },
+   "S": 4
+  }
+ },
+ "mirror_theorem": {
+  "S": 4,
+  "exhaust_h": 9,
+  "rows": [
+   {
+    "r": 1,
+    "m": 6,
+    "f_x": 2,
+    "u1_all_light_open": true
+   },
+   {
+    "r": 2,
+    "m": 12,
+    "f_x": 6,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 3,
+    "m": 18,
+    "f_x": 9,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 4,
+    "m": 24,
+    "f_x": 12,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 5,
+    "m": 30,
+    "f_x": 15,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 6,
+    "m": 36,
+    "f_x": 18,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 7,
+    "m": 42,
+    "f_x": 21,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 8,
+    "m": 48,
+    "f_x": 24,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 9,
+    "m": 54,
+    "f_x": 27,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 10,
+    "m": 60,
+    "f_x": 30,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 11,
+    "m": 66,
+    "f_x": 33,
+    "u1_all_light_open": false
+   },
+   {
+    "r": 12,
+    "m": 72,
+    "f_x": 36,
+    "u1_all_light_open": false
+   }
+  ]
+ },
+ "wall_s": 5.5
+}

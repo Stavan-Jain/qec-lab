@@ -1,0 +1,12 @@
+probe p=12 W=24 wmax=23: building spaces...
+  dimZ=246 dimB=240 classes=6 functionals=6 (0 s)
+  w<=4: UNSAT (0.4 s) — floor > 4
+  w<=5: UNSAT (0.7 s) — floor > 5
+  w<=6: UNSAT (2.7 s) — floor > 6
+  w<=7: UNSAT (6.5 s) — floor > 7
+  w<=8: UNSAT (10.7 s) — floor > 8
+  w<=9: UNSAT (28.9 s) — floor > 9
+  w<=10: UNSAT (59.9 s) — floor > 10
+  w<=11: UNSAT (115.3 s) — floor > 11
+  w<=12: UNSAT (335.3 s) — floor > 12
+  w<=13: UNSAT (1280.2 s) — floor > 13

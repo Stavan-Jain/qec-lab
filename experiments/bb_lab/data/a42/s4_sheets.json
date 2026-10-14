@@ -1,0 +1,1392 @@
+{
+ "p3": [
+  {
+   "weight": 6,
+   "profile": [
+    0,
+    3,
+    0
+   ],
+   "S": 3,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 6,
+   "profile": [
+    0,
+    3,
+    0
+   ],
+   "S": 3,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 6,
+   "profile": [
+    0,
+    3,
+    0
+   ],
+   "S": 3,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 6,
+   "profile": [
+    3,
+    0,
+    1
+   ],
+   "S": 3,
+   "s": 4,
+   "cap": 3,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 6,
+   "profile": [
+    3,
+    0,
+    1
+   ],
+   "S": 3,
+   "s": 4,
+   "cap": 3,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 6,
+   "profile": [
+    3,
+    0,
+    1
+   ],
+   "S": 3,
+   "s": 4,
+   "cap": 3,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 8,
+   "profile": [
+    0,
+    4,
+    0
+   ],
+   "S": 4,
+   "s": 0,
+   "cap": 0,
+   "excess": 1,
+   "discount": 0,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    0,
+    4,
+    0
+   ],
+   "S": 4,
+   "s": 0,
+   "cap": 0,
+   "excess": 1,
+   "discount": 0,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    0,
+    4,
+    0
+   ],
+   "S": 4,
+   "s": 0,
+   "cap": 0,
+   "excess": 1,
+   "discount": 0,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    3,
+    1,
+    1
+   ],
+   "S": 4,
+   "s": 4,
+   "cap": 3,
+   "excess": 1,
+   "discount": 0,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    3,
+    1,
+    1
+   ],
+   "S": 4,
+   "s": 4,
+   "cap": 3,
+   "excess": 1,
+   "discount": 0,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    3,
+    1,
+    1
+   ],
+   "S": 4,
+   "s": 4,
+   "cap": 3,
+   "excess": 1,
+   "discount": 0,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  },
+  {
+   "weight": 8,
+   "profile": [
+    4,
+    2,
+    0
+   ],
+   "S": 6,
+   "s": 4,
+   "cap": 4,
+   "excess": 3,
+   "discount": 4,
+   "slack": 2
+  }
+ ],
+ "p6": [
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    0,
+    6,
+    0
+   ],
+   "S": 6,
+   "s": 0,
+   "cap": 0,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    10,
+    1,
+    0
+   ],
+   "S": 11,
+   "s": 10,
+   "cap": 10,
+   "excess": 5,
+   "discount": 10,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    3,
+    0
+   ],
+   "S": 9,
+   "s": 6,
+   "cap": 6,
+   "excess": 3,
+   "discount": 6,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    0,
+    2
+   ],
+   "S": 6,
+   "s": 8,
+   "cap": 6,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    0,
+    2
+   ],
+   "S": 6,
+   "s": 8,
+   "cap": 6,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  },
+  {
+   "weight": 12,
+   "profile": [
+    6,
+    0,
+    2
+   ],
+   "S": 6,
+   "s": 8,
+   "cap": 6,
+   "excess": 0,
+   "discount": 0,
+   "slack": 0
+  }
+ ]
+}
