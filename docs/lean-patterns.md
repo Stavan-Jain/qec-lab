@@ -47,6 +47,68 @@ interval_cases w; rcases (IsNontrivialLogicalOperator_iff …).mp …; exact …
 boilerplate. Use sites: `Codes/Small/FourQubit_4_2_2.lean`,
 `Codes/Small/CSS_4_1_2.lean`, `Codes/Iceberg/N.lean` (T18 in each).
 
+### Distance-3 packaging via the column condition (`hasCodeDistance_three_of_columns`)
+
+The distance-3 sibling of the closer above, for CSS codes whose check
+matrices come from **classical codes of distance ≥ 3**. Instead of a
+weight-1 *and* a weight-2 anti-witness table (the `[[5,1,3]]` route below,
+105 `decide` cases; the parked Steane7 version needed `native_decide` on
+784), hand the closer the check rows as `Finset`s and prove two facts about
+the columns. Defined in `Framework/Core/CSS/CSSDistance.lean`; canonical
+signature:
+
+```lean
+theorem hasCodeDistance_three_of_columns
+    (zRow : ι → Finset (Fin n)) (xRow : κ → Finset (Fin n))
+    (genSet : Set (NQubitPauliGroupElement n)) {k : ℕ} (C : StabilizerCode n k)
+    (h_closure : C.toStabilizerGroup.toSubgroup = Subgroup.closure genSet)
+    (hz : ∀ r, zOn (zRow r) ∈ genSet) (hx : ∀ c, xOn (xRow c) ∈ genSet)
+    (hz_cover : ∀ i, ∃ r, i ∈ zRow r) (hx_cover : ∀ i, ∃ c, i ∈ xRow c)
+    (hz_sep : ∀ i j, i ≠ j → ∃ r, (i ∈ zRow r ↔ j ∉ zRow r))
+    (hx_sep : ∀ i j, i ≠ j → ∃ c, (i ∈ xRow c ↔ j ∉ xRow c))
+    (h_witness : ∃ g, IsNontrivialLogicalOperator g C.toStabilizerGroup ∧ weight g = 3) :
+    HasCodeDistance C 3
+```
+
+`zOn S` / `xOn S` are the phase-0 `Z`- / `X`-checks supported on `S`.
+`_cover` says no column of the check matrix is zero; `_sep` says the
+columns are pairwise distinct — together, classical distance ≥ 3. The
+math is the textbook one: a weight-≤ 2 Pauli whose `X`-part is a codeword
+of the `Z`-check code has empty `X`-part, likewise for its `Z`-part.
+
+The per-code obligations are all small and mechanical:
+
+```lean
+def row : Fin 3 → Finset (Fin 7) := ![{0, 1, 2, 4}, {0, 1, 3, 5}, {0, 2, 3, 6}]
+
+-- generator ↔ support bridge, one per check (phase by `rfl`, operators pointwise)
+lemma Z1_eq_zOn : Z1 = zOn {0, 1, 2, 4} :=
+  NQubitPauliGroupElement.ext _ _ rfl (funext fun i => by fin_cases i <;> rfl)
+lemma zOn_row_mem (r : Fin 3) : zOn (row r) ∈ generators := by
+  fin_cases r <;> simp [row, generators, ZGenerators, Z1_eq_zOn, Z2_eq_zOn, Z3_eq_zOn]
+
+-- the two column facts close by kernel `decide` on `Fin n`
+lemma row_cover : ∀ i : Fin 7, ∃ r, i ∈ row r := by decide
+lemma row_separate : ∀ i j : Fin 7, i ≠ j → ∃ r, (i ∈ row r ↔ j ∉ row r) := by decide
+```
+
+For the weight-3 witness take `X̄ · s` for a stabilizer `s` overlapping
+`X̄` heavily (Steane: `X̄ · X₁ = X` on `{3,5,6}`), define it as a
+`σ[…]` literal so `weight … = 3` is `decide`, prove it equals the product
+by `ext`/`fin_cases`, and certify nontriviality with
+`isNontrivialLogicalOperator_of_anticommute_centralizer` (it is in the
+centralizer as a product of centralizer elements, and anticommutes with
+`Z̄` — `rw [anticommutes_iff_symplectic_inner_one]; decide`). No
+`Decidable (Anticommute _ _)` local instance is needed anywhere.
+
+Self-dual CSS codes pass the same `row` family for both sides. Canonical
+use site: `Codes/Small/Steane7Distance.lean` (`code_has_distance_three`,
+QECLean PR #78). Next candidate: `Codes/Small/QuantumHamming.lean`. If the
+classical codes have distance 2 on one side only (`_sep` fails), fall back
+to the distance-2 closer above; if a check mixes `X` and `Z` on one qubit,
+the code is not CSS and this closer does not apply — see the non-CSS
+section.
+
 ### Multiple Z-generators (or X-generators) covering disjoint qubit subsets
 
 When a CSS code has multiple Z-stabilizers whose supports partition (or

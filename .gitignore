@@ -5,6 +5,7 @@
 # the formalization pipeline docs, and the agent-facing reference docs.
 docs/*
 !docs/distance_proof.md
+!docs/steane-distance-proof.md
 !docs/pipeline.md
 !docs/pipeline-usage.md
 !docs/lean-patterns.md
