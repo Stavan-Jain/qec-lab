@@ -1,0 +1,493 @@
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,1 --q 20,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x q=x^20 + x^45
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,1 --q 26,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x q=x^26 + x^57
+  d_ub(3000)=22 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 21,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^5 q=x^21 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 22,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^5 q=x^22 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 28,39 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^5 q=x^28 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 39,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^5 q=x^39 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 14,27 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^14 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,7 --q 20,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^20 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 21,32 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^21 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=1 |Aut|=144 --orders 72 --p 0,7 --q 27,56 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^27 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 27,62 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^27 + x^62
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 32,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^32 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 33,38 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^33 + x^38
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 39,56 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^7 q=x^39 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 9,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^11 q=x^9 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 15,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^11 q=x^15 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,11 --q 16,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^11 q=x^16 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 21,28 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^11 q=x^21 + x^28
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 27,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^11 q=x^27 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 28,33 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^11 q=x^28 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 9,50 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^13 q=x^9 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 9,56 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^13 q=x^9 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 20,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^13 q=x^20 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 27,32 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^13 q=x^27 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 38,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^13 q=x^38 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 39,56 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^13 q=x^39 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 3,10 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^3 + x^10
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 3,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^3 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 4,15 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^4 + x^15
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 10,21 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^10 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 21,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^21 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 27,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 27,40 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^27 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 28,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^28 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 39,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^39 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 39,52 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^39 + x^52
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 46,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^17 q=x^46 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 8,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^19 q=x^8 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 14,27 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^19 q=x^14 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 15,44 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^19 q=x^15 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 27,32 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^19 q=x^27 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 9,52 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^23 q=x^9 + x^52
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 22,33 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^23 q=x^22 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 27,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^23 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 34,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^23 q=x^34 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 40,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^23 q=x^40 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 46,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^23 q=x^46 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 3,26 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^3 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 8,15 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^8 + x^15
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 15,38 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^15 + x^38
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 20,21 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^20 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 32,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^32 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 38,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^38 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 44,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^44 + x^57
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 44,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^25 q=x^44 + x^63
+  d_ub(3000)=20 screen=24 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 3,52 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^3 + x^52
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 3,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^3 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 9,40 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^9 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 15,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^15 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=1 |Aut|=144 --orders 72 --p 0,29 --q 27,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 27,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^27 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 40,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^29 q=x^40 + x^63
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 26,27 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^31 q=x^26 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 44,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^31 q=x^44 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,35 --q 21,22 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^35 q=x^21 + x^22
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 27,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^35 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 40,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^35 q=x^40 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 46,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^35 q=x^46 + x^57
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 58,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^35 q=x^58 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,37 --q 3,20 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^37 q=x^3 + x^20
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,37 --q 9,20 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^37 q=x^9 + x^20
+  d_ub(3000)=22 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,37 --q 21,26 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^37 q=x^21 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 3,28 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^41 q=x^3 + x^28
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 9,22 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^41 q=x^9 + x^22
+  d_ub(3000)=22 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 57,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^41 q=x^57 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 15,26 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^15 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 20,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^20 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 32,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^32 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 38,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^38 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 44,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^44 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,43 --q 56,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^56 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 62,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^43 q=x^62 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 4,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^4 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,47 --q 16,27 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^16 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 21,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^21 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 28,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^28 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 28,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^28 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 33,40 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^33 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 40,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^40 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 45,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^45 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 51,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^51 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 52,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^47 q=x^52 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 14,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^49 q=x^14 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 26,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^49 q=x^26 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 45,50 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^49 q=x^45 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 45,56 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^49 q=x^45 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 3,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^3 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 4,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^4 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,53 --q 16,33 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^16 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 33,40 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^33 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 34,39 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^34 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 34,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^34 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 46,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^53 q=x^46 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 8,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^55 q=x^8 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 14,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^55 q=x^14 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 32,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^55 q=x^32 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 44,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^55 q=x^44 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=1 |Aut|=144 --orders 72 --p 0,59 --q 9,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^9 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 22,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^22 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 22,69 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^22 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 27,34 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 28,39 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^28 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 40,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^40 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 51,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^59 q=x^51 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 15,32 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^61 q=x^15 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 20,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^61 q=x^20 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 21,38 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^61 q=x^21 + x^38
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 27,32 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^61 q=x^27 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 32,39 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^61 q=x^32 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 39,44 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^61 q=x^39 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 28,39 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^28 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 33,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^33 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 34,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^34 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 34,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^34 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,65 --q 34,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^34 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 39,52 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^39 + x^52
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 45,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^45 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 45,64 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^45 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 46,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^65 q=x^46 + x^63
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 26,63 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^67 q=x^26 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 32,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^67 q=x^32 + x^51
+  d_ub(3000)=20 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 33,44 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^67 q=x^33 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 38,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^67 q=x^38 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 44,51 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^67 q=x^44 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 15,40 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^15 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 21,40 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^21 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 21,46 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^21 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,71 --q 22,57 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^22 + x^57
+  d_ub(3000)=22 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 27,58 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^27 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=4 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 27,70 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^27 + x^70
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 34,45 --b 0,2,10  b=1 + x^2 + x^10 p=1 + x^71 q=x^34 + x^45
+  d_ub(3000)=22 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 3,16 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^3 + x^16
+  d_ub(3000)=20 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 4,21 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^4 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 4,33 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^4 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 4,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^4 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 4,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^4 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 9,52 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^9 + x^52
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 16,27 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^16 + x^27
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 21,34 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^21 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 28,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^28 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 34,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^34 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 39,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^5 q=x^39 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 14,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^14 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 14,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^14 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,7 --q 26,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^26 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 27,44 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^27 + x^44
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 33,50 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^33 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,7 --q 39,68 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^39 + x^68
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,7 --q 45,62 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^7 q=x^45 + x^62
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 4,27 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^11 q=x^4 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 16,39 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^11 q=x^16 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,11 --q 21,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^11 q=x^21 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 46,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^11 q=x^46 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 64,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^11 q=x^64 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 2,3 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^13 q=x^2 + x^3
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 3,8 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^13 q=x^3 + x^8
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 3,50 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^13 q=x^3 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 32,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^13 q=x^32 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,13 --q 45,68 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^13 q=x^45 + x^68
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 4,9 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^4 + x^9
+  d_ub(3000)=20 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 4,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^4 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 15,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^15 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 27,34 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 28,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^28 + x^57
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 39,70 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^39 + x^70
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,17 --q 63,70 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^17 q=x^63 + x^70
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 9,14 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^19 q=x^9 + x^14
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 14,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^19 q=x^14 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 15,44 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^19 q=x^15 + x^44
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 21,50 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^19 q=x^21 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 26,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^19 q=x^26 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,19 --q 32,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^19 q=x^32 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 9,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^23 q=x^9 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 16,27 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^23 q=x^16 + x^27
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 16,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^23 q=x^16 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 33,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^23 q=x^33 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 40,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^23 q=x^40 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 46,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^23 q=x^46 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 3,62 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^3 + x^62
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 8,21 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^8 + x^21
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,25 --q 9,26 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^9 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,25 --q 15,26 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^15 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,25 --q 21,32 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^21 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,25 --q 51,62 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^51 + x^62
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,25 --q 57,68 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^25 q=x^57 + x^68
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 4,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^29 q=x^4 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 15,34 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^29 q=x^15 + x^34
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 45,58 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^29 q=x^45 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,29 --q 52,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^29 q=x^52 + x^57
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 3,26 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^3 + x^26
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 8,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^8 + x^57
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 15,44 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^15 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 26,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^26 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 32,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^32 + x^57
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 32,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^32 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,31 --q 38,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^38 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,31 --q 63,68 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^31 q=x^63 + x^68
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 3,28 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^35 q=x^3 + x^28
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 3,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^35 q=x^3 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 9,58 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^35 q=x^9 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,35 --q 21,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^35 q=x^21 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,37 --q 21,44 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^37 q=x^21 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 3,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^3 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 4,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^4 + x^57
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 15,70 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^15 + x^70
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 16,39 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^16 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 16,63 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^16 + x^63
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 21,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^21 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,41 --q 22,27 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^22 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 28,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^28 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 34,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^34 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,41 --q 39,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^41 q=x^39 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 3,44 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^43 q=x^3 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 9,14 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^43 q=x^9 + x^14
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,43 --q 14,33 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^43 q=x^14 + x^33
+  d_ub(3000)=20 screen=24 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,43 --q 26,33 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^43 q=x^26 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 15,34 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^47 q=x^15 + x^34
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 21,40 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^47 q=x^21 + x^40
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 22,63 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^47 q=x^22 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,47 --q 33,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^47 q=x^33 + x^46
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 8,39 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^49 q=x^8 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,49 --q 9,68 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^49 q=x^9 + x^68
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 15,32 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^49 q=x^15 + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 15,56 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^49 q=x^15 + x^56
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 20,39 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^49 q=x^20 + x^39
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,49 --q 39,50 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^49 q=x^39 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 4,33 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^4 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 4,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^4 + x^45
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 10,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^10 + x^45
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 16,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^16 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 27,40 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^27 + x^40
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 46,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^46 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,53 --q 51,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^53 q=x^51 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 14,21 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^55 q=x^14 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 14,45 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^55 q=x^14 + x^45
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 21,26 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^55 q=x^21 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,55 --q 44,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^55 q=x^44 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 3,58 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^59 q=x^3 + x^58
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 3,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^59 q=x^3 + x^64
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 16,21 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^59 q=x^16 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 21,40 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^59 q=x^21 + x^40
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 21,46 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^59 q=x^21 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,59 --q 27,58 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^59 q=x^27 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 8,57 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^8 + x^57
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 14,27 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^14 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,61 --q 15,62 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^15 + x^62
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,61 --q 26,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^26 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 27,32 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^27 + x^32
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 27,44 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^27 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,61 --q 27,50 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^27 + x^50
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,61 --q 44,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^61 q=x^44 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 4,21 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^4 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,65 --q 10,39 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^10 + x^39
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 21,70 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^21 + x^70
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 28,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^28 + x^69
+  d_ub(3000)=20 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 34,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^34 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 46,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^46 + x^51
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,65 --q 51,64 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^65 q=x^51 + x^64
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 8,21 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^8 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 8,69 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^8 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 9,26 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^9 + x^26
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 9,38 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^9 + x^38
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 27,38 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^27 + x^38
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 72 --p 0,67 --q 27,68 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^27 + x^68
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 44,51 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^44 + x^51
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,67 --q 51,62 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^67 q=x^51 + x^62
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 10,27 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^71 q=x^10 + x^27
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 27,34 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^71 q=x^27 + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,71 --q 45,58 --b 0,2,22  b=1 + x^2 + x^22 p=1 + x^71 q=x^45 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 3,16 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^5 q=x^3 + x^16
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=1 |Aut|=144 --orders 72 --p 0,5 --q 9,22 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^5 q=x^9 + x^22
+  d_ub(3000)=20 screen=22 k=8 toric=8 (32, 18) orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 9,58 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^5 q=x^9 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 28,51 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^5 q=x^28 + x^51
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,5 --q 51,64 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^5 q=x^51 + x^64
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 3,46 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^11 q=x^3 + x^46
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,11 --q 15,58 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^11 q=x^15 + x^58
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 3,44 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^13 q=x^3 + x^44
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 15,56 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^13 q=x^15 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,13 --q 51,56 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^13 q=x^51 + x^56
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 16,21 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^23 q=x^16 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 28,33 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^23 q=x^28 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 28,69 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^23 q=x^28 + x^69
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 72 --p 0,23 --q 58,63 --b 0,2,34  b=1 + x^2 + x^34 p=1 + x^23 q=x^58 + x^63
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=144 --orders 36,2 --p 0,4 --q 27,42 --b 0,2,5  b=1 + x + x^2*y p=1 + x^2 q=x^13*y + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 12,38 --b 0,2,5  b=1 + x + x^2*y p=1 + x^2*y q=x^6 + x^19
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,8 --q 25,35 --b 0,2,5  b=1 + x + x^2*y p=1 + x^4 q=x^12*y + x^17*y
+  d_ub(3000)=20 screen=22 k=8 toric=16 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,9 --q 1,28 --b 0,2,5  b=1 + x + x^2*y p=1 + x^4*y q=y + x^14
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,9 --q 7,29 --b 0,2,5  b=1 + x + x^2*y p=1 + x^4*y q=x^3*y + x^14*y
+  d_ub(3000)=20 screen=22 k=8 toric=16 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,9 --q 37,64 --b 0,2,5  b=1 + x + x^2*y p=1 + x^4*y q=x^18*y + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=12 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,11 --q 18,62 --b 0,2,5  b=1 + x + x^2*y p=1 + x^5*y q=x^9 + x^31
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,11 --q 24,69 --b 0,2,5  b=1 + x + x^2*y p=1 + x^5*y q=x^12 + x^34*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,11 --q 30,38 --b 0,2,5  b=1 + x + x^2*y p=1 + x^5*y q=x^15 + x^19
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,14 --q 10,49 --b 0,2,5  b=1 + x + x^2*y p=1 + x^7 q=x^5 + x^24*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,14 --q 36,65 --b 0,2,5  b=1 + x + x^2*y p=1 + x^7 q=x^18 + x^32*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 10,48 --b 0,2,5  b=1 + x + x^2*y p=1 + x^7*y q=x^5 + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 11,54 --b 0,2,5  b=1 + x + x^2*y p=1 + x^7*y q=x^5*y + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 23,66 --b 0,2,5  b=1 + x + x^2*y p=1 + x^7*y q=x^11*y + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 31,52 --b 0,2,5  b=1 + x + x^2*y p=1 + x^7*y q=x^15*y + x^26
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,16 --q 15,66 --b 0,2,5  b=1 + x + x^2*y p=1 + x^8 q=x^7*y + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,16 --q 26,61 --b 0,2,5  b=1 + x + x^2*y p=1 + x^8 q=x^13 + x^30*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,16 --q 31,69 --b 0,2,5  b=1 + x + x^2*y p=1 + x^8 q=x^15*y + x^34*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 6,33 --b 0,2,5  b=1 + x + x^2*y p=1 + x^8*y q=x^3 + x^16*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 21,66 --b 0,2,5  b=1 + x + x^2*y p=1 + x^8*y q=x^10*y + x^33
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 36,62 --b 0,2,5  b=1 + x + x^2*y p=1 + x^8*y q=x^18 + x^31
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 17,31 --b 0,2,5  b=1 + x + x^2*y p=1 + x^10*y q=x^8*y + x^15*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 23,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^10*y q=x^11*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 7,14 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^3*y + x^7
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 13,57 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^6*y + x^28*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 14,43 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^7 + x^21*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 36,2 --p 0,22 --q 15,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^7*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 27,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^13*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 38,67 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^19 + x^33*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 39,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11 q=x^19*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 12,57 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11*y q=x^6 + x^28*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 36,2 --p 0,23 --q 15,37 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11*y q=x^7*y + x^18*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 31,44 --b 0,2,5  b=1 + x + x^2*y p=1 + x^11*y q=x^15*y + x^22
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 36,2 --p 0,26 --q 10,37 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13 q=x^5 + x^18*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 24,65 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13 q=x^12 + x^32*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 36,53 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13 q=x^18 + x^26*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 41,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13 q=x^20*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,27 --q 6,23 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^3 + x^11*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=1 |Aut|=144 --orders 36,2 --p 0,27 --q 10,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^5 + x^18
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,27 --q 11,66 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^5*y + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,27 --q 18,59 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^9 + x^29*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,27 --q 23,54 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^11*y + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,27 --q 35,54 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^17*y + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,27 --q 46,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^13*y q=x^23 + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,28 --q 6,63 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14 q=x^3 + x^31*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 6,21 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^3 + x^10*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 6,57 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^3 + x^28*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 9,66 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^4*y + x^33
+  d_ub(3000)=22 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 18,57 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^9 + x^28*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 24,62 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^12 + x^31
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 26,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^13 + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,29 --q 36,50 --b 0,2,5  b=1 + x + x^2*y p=1 + x^14*y q=x^18 + x^25
+  d_ub(3000)=20 screen=22 k=8 toric=8 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,32 --q 19,58 --b 0,2,5  b=1 + x + x^2*y p=1 + x^16 q=x^9*y + x^29
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,33 --q 12,59 --b 0,2,5  b=1 + x + x^2*y p=1 + x^16*y q=x^6 + x^29*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,33 --q 19,65 --b 0,2,5  b=1 + x + x^2*y p=1 + x^16*y q=x^9*y + x^32*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,33 --q 23,48 --b 0,2,5  b=1 + x + x^2*y p=1 + x^16*y q=x^11*y + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,33 --q 30,46 --b 0,2,5  b=1 + x + x^2*y p=1 + x^16*y q=x^15 + x^23
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,33 --q 47,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^16*y q=x^23*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,34 --q 13,69 --b 0,2,5  b=1 + x + x^2*y p=1 + x^17 q=x^6*y + x^34*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,34 --q 19,62 --b 0,2,5  b=1 + x + x^2*y p=1 + x^17 q=x^9*y + x^31
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,34 --q 26,55 --b 0,2,5  b=1 + x + x^2*y p=1 + x^17 q=x^13 + x^27*y
+  d_ub(3000)=22 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,35 --q 12,57 --b 0,2,5  b=1 + x + x^2*y p=1 + x^17*y q=x^6 + x^28*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,35 --q 21,48 --b 0,2,5  b=1 + x + x^2*y p=1 + x^17*y q=x^10*y + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,35 --q 49,63 --b 0,2,5  b=1 + x + x^2*y p=1 + x^17*y q=x^24*y + x^31*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,38 --q 10,25 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19 q=x^5 + x^12*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,38 --q 17,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19 q=x^8*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,38 --q 24,53 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19 q=x^12 + x^26*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,38 --q 31,47 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19 q=x^15*y + x^23*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,39 --q 5,61 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19*y q=x^2*y + x^30*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,39 --q 10,24 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19*y q=x^5 + x^12
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,39 --q 11,54 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19*y q=x^5*y + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,39 --q 12,58 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19*y q=x^6 + x^29
+  d_ub(3000)=22 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,39 --q 18,47 --b 0,2,5  b=1 + x + x^2*y p=1 + x^19*y q=x^9 + x^23*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,41 --q 9,54 --b 0,2,5  b=1 + x + x^2*y p=1 + x^20*y q=x^4*y + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,41 --q 12,26 --b 0,2,5  b=1 + x + x^2*y p=1 + x^20*y q=x^6 + x^13
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,41 --q 15,31 --b 0,2,5  b=1 + x + x^2*y p=1 + x^20*y q=x^7*y + x^15*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,41 --q 24,50 --b 0,2,5  b=1 + x + x^2*y p=1 + x^20*y q=x^12 + x^25
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,45 --q 7,65 --b 0,2,5  b=1 + x + x^2*y p=1 + x^22*y q=x^3*y + x^32*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,45 --q 11,48 --b 0,2,5  b=1 + x + x^2*y p=1 + x^22*y q=x^5*y + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,45 --q 12,35 --b 0,2,5  b=1 + x + x^2*y p=1 + x^22*y q=x^6 + x^17*y
+  d_ub(3000)=22 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,45 --q 12,47 --b 0,2,5  b=1 + x + x^2*y p=1 + x^22*y q=x^6 + x^23*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,45 --q 17,55 --b 0,2,5  b=1 + x + x^2*y p=1 + x^22*y q=x^8*y + x^27*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,45 --q 28,37 --b 0,2,5  b=1 + x + x^2*y p=1 + x^22*y q=x^14 + x^18*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,46 --q 2,19 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23 q=x + x^9*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,46 --q 7,62 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23 q=x^3*y + x^31
+  d_ub(3000)=20 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,46 --q 12,27 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23 q=x^6 + x^13*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,46 --q 19,38 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23 q=x^9*y + x^19
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,46 --q 19,50 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23 q=x^9*y + x^25
+  d_ub(3000)=20 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,47 --q 1,15 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23*y q=y + x^7*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,47 --q 9,48 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23*y q=x^4*y + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,47 --q 9,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23*y q=x^4*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,47 --q 12,45 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23*y q=x^6 + x^22*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,47 --q 21,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23*y q=x^10*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,47 --q 49,63 --b 0,2,5  b=1 + x + x^2*y p=1 + x^23*y q=x^24*y + x^31*y
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,50 --q 7,35 --b 0,2,5  b=1 + x + x^2*y p=1 + x^25 q=x^3*y + x^17*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,50 --q 10,61 --b 0,2,5  b=1 + x + x^2*y p=1 + x^25 q=x^5 + x^30*y
+  d_ub(3000)=22 screen=22 k=8 toric=8 (8, 72) orbitsX=1 |Aut|=144 --orders 36,2 --p 0,50 --q 37,58 --b 0,2,5  b=1 + x + x^2*y p=1 + x^25 q=x^18*y + x^29
+  d_ub(3000)=22 screen=24 k=8 toric=8 (8, 72) orbitsX=1 |Aut|=144 --orders 36,2 --p 0,51 --q 36,58 --b 0,2,5  b=1 + x + x^2*y p=1 + x^25*y q=x^18 + x^29
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,56 --q 13,47 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28 q=x^6*y + x^23*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,56 --q 47,61 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28 q=x^23*y + x^30*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,57 --q 7,53 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28*y q=x^3*y + x^26*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,57 --q 10,54 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28*y q=x^5 + x^27
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,57 --q 11,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28*y q=x^5*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,57 --q 31,53 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28*y q=x^15*y + x^26*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,57 --q 41,67 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28*y q=x^20*y + x^33*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=144 --orders 36,2 --p 0,57 --q 42,46 --b 0,2,5  b=1 + x + x^2*y p=1 + x^28*y q=x^21 + x^23
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,58 --q 15,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29 q=x^7*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,58 --q 24,63 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29 q=x^12 + x^31*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,58 --q 26,67 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29 q=x^13 + x^33*y
+  d_ub(3000)=20 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,59 --q 1,27 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29*y q=y + x^13*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,59 --q 9,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29*y q=x^4*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,59 --q 21,60 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29*y q=x^10*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,59 --q 25,63 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29*y q=x^12*y + x^31*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,59 --q 26,42 --b 0,2,5  b=1 + x + x^2*y p=1 + x^29*y q=x^13 + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,62 --q 5,48 --b 0,2,5  b=1 + x + x^2*y p=1 + x^31 q=x^2*y + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,63 --q 6,35 --b 0,2,5  b=1 + x + x^2*y p=1 + x^31*y q=x^3 + x^17*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,63 --q 41,49 --b 0,2,5  b=1 + x + x^2*y p=1 + x^31*y q=x^20*y + x^24*y
+  d_ub(3000)=20 screen=22 k=8 toric=16 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,65 --q 1,44 --b 0,2,5  b=1 + x + x^2*y p=1 + x^32*y q=y + x^22
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,65 --q 14,36 --b 0,2,5  b=1 + x + x^2*y p=1 + x^32*y q=x^7 + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,65 --q 27,67 --b 0,2,5  b=1 + x + x^2*y p=1 + x^32*y q=x^13*y + x^33*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,65 --q 33,42 --b 0,2,5  b=1 + x + x^2*y p=1 + x^32*y q=x^16*y + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,65 --q 45,66 --b 0,2,5  b=1 + x + x^2*y p=1 + x^32*y q=x^22*y + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 1,23 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=y + x^11*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 7,40 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^3*y + x^20
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 22,66 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^11 + x^33
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 23,49 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^11*y + x^24*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 25,35 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^12*y + x^17*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 29,48 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^14*y + x^24
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 31,64 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^15*y + x^32
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 34,54 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^17 + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,3 --q 37,59 --b 0,2,11  b=1 + x + x^5*y p=1 + x*y q=x^18*y + x^29*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,4 --q 15,49 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2 q=x^7*y + x^24*y
+  d_ub(3000)=20 screen=22 k=8 toric=16 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 1,32 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=y + x^16
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 7,33 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=x^3*y + x^16*y
+  d_ub(3000)=20 screen=22 k=8 toric=8 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 18,50 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=x^9 + x^25
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 18,62 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=x^9 + x^31
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 21,67 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=x^10*y + x^33*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 31,45 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=x^15*y + x^22*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,5 --q 31,57 --b 0,2,11  b=1 + x + x^5*y p=1 + x^2*y q=x^15*y + x^28*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,8 --q 7,41 --b 0,2,11  b=1 + x + x^5*y p=1 + x^4 q=x^3*y + x^20*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,8 --q 13,34 --b 0,2,11  b=1 + x + x^5*y p=1 + x^4 q=x^6*y + x^17
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,8 --q 23,42 --b 0,2,11  b=1 + x + x^5*y p=1 + x^4 q=x^11*y + x^21
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,8 --q 25,46 --b 0,2,11  b=1 + x + x^5*y p=1 + x^4 q=x^12*y + x^23
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,8 --q 30,59 --b 0,2,11  b=1 + x + x^5*y p=1 + x^4 q=x^15 + x^29*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 13,26 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^6*y + x^13
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 15,55 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^7*y + x^27*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 19,39 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^9*y + x^19*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 21,24 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^10*y + x^12
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 21,36 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^10*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 25,26 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^12*y + x^13
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 27,67 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^13*y + x^33*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 38,61 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^19 + x^30*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,10 --q 39,55 --b 0,2,11  b=1 + x + x^5*y p=1 + x^5 q=x^19*y + x^27*y
+  d_ub(3000)=22 screen=22 k=8 toric=12 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,14 --q 1,41 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7 q=y + x^20*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,14 --q 10,31 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7 q=x^5 + x^15*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,14 --q 31,34 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7 q=x^15*y + x^17
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,14 --q 35,36 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7 q=x^17*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 12,53 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7*y q=x^6 + x^26*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 23,49 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7*y q=x^11*y + x^24*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 25,47 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7*y q=x^12*y + x^23*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 25,71 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7*y q=x^12*y + x^35*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,15 --q 29,60 --b 0,2,11  b=1 + x + x^5*y p=1 + x^7*y q=x^14*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,16 --q 3,61 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8 q=x*y + x^30*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,16 --q 39,49 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8 q=x^19*y + x^24*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 3,48 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8*y q=x*y + x^24
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 13,32 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8*y q=x^6*y + x^16
+  d_ub(3000)=22 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 33,67 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8*y q=x^16*y + x^33*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 39,60 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8*y q=x^19*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 45,67 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8*y q=x^22*y + x^33*y
+  d_ub(3000)=18 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,17 --q 49,68 --b 0,2,11  b=1 + x + x^5*y p=1 + x^8*y q=x^24*y + x^34
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,20 --q 17,55 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10 q=x^8*y + x^27*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,20 --q 34,37 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10 q=x^17 + x^18*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 5,30 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^2*y + x^15
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 7,59 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^3*y + x^29*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 10,48 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^5 + x^24
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 13,28 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^6*y + x^14
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 23,31 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^11*y + x^15*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 24,46 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^12 + x^23
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,21 --q 29,30 --b 0,2,11  b=1 + x + x^5*y p=1 + x^10*y q=x^14*y + x^15
+  d_ub(3000)=22 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 1,38 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11 q=y + x^19
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 24,45 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11 q=x^12 + x^22*y
+  d_ub(3000)=22 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 25,38 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11 q=x^12*y + x^19
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,22 --q 25,62 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11 q=x^12*y + x^31
+  d_ub(3000)=20 screen=22 k=8 toric=8 (8, 72) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 1,45 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=y + x^22*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 3,18 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x*y + x^9
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 3,54 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x*y + x^27
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 6,39 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x^3 + x^19*y
+  d_ub(3000)=20 screen=22 k=8 toric=4 (16, 36) orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 25,33 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x^12*y + x^16*y
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 38,48 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x^19 + x^24
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 39,54 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x^19*y + x^27
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,23 --q 43,56 --b 0,2,11  b=1 + x + x^5*y p=1 + x^11*y q=x^21*y + x^28
+  d_ub(3000)=22 screen=24 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 7,10 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^3*y + x^5
+  d_ub(3000)=22 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 12,71 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^6 + x^35*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 22,43 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^11 + x^21*y
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 23,24 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^11*y + x^12
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 23,36 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^11*y + x^18
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 23,60 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^11*y + x^30
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 31,34 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^15*y + x^17
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 31,58 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^15*y + x^29
+  d_ub(3000)=20 screen=22 k=8 toric=0 orbitsX=2 |Aut|=72 --orders 36,2 --p 0,26 --q 43,70 --b 0,2,11  b=1 + x + x^5*y p=1 + x^13 q=x^21*y + x^35

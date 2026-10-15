@@ -1,0 +1,7 @@
+[[224,12,?]] G=(28, 2) p=1 + x*y q=x^13 + x^22*y b=1 + x + x^3*y; ladder 10..16
+  [w ≤  10] UNSAT (30.2s)
+  [w ≤  11] UNSAT (104.3s)
+  [w ≤  12] UNSAT (187.7s)
+  [w ≤  13] UNSAT (930.9s)
+/Users/stavanjain/.local/share/uv/python/cpython-3.11.14-macos-aarch64-none/lib/python3.11/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

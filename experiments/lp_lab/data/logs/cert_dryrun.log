@@ -1,0 +1,10 @@
+code: {"orders": [18, 2], "a": 2, "A": {"0,0": "1 + x^2*y", "0,1": "1", "1,0": "1", "1,1": "x^3*y + x^10"}, "b": "1 + x + x^2"}
+n=144 k=8 weights={'X_check_weights': [6], 'Z_check_weights': [6], 'qubit_degrees': [6]}
+ISD (300 trials): d_X<= 12, d_Z<= 12  (0.7s)
+Aut(Tanner): {'order': 72.0, 'num_generators': 3, 'orbits_X': 1, 'orbits_Z': 1, 'orbits_qubits': 2, 'num_orbits': 4} | with X<->Z swap: {'order': 144.0, 'orbits_checks': 1}
+thickness-2 wheel layers: 9/9 layer choices planar; e.g. {'A_alone': 0, 'B_alone': 0, 'planar_A': True, 'planar_B': True, 'edges': 864, 'degA': [3], 'degB': [3], 'wheelsA': [48, 48, 48, 48, 48, 48], 'wheelsB': [72, 72, 72, 72]}
+  [w ≤   8]  UNSAT  (   9.92s)
+  [w ≤   9]  UNSAT  (  32.16s)
+  [w ≤  10]  UNSAT  (  98.24s)
+  [w ≤  11]  UNSAT  ( 348.16s)
+  [w ≤  12]  SAT  ✓  (   0.30s)

@@ -1,0 +1,51 @@
+{
+ "n": 224,
+ "k": 12,
+ "orders": [
+  28,
+  2
+ ],
+ "p": [
+  0,
+  34
+ ],
+ "q": [
+  7,
+  8
+ ],
+ "b": [
+  0,
+  2,
+  25
+ ],
+ "d_X": 16,
+ "A_symmetric_so_dZ_equals_dX": true,
+ "unsat_weights": [],
+ "log": [
+  [
+   16,
+   "SAT",
+   121.10805034637451
+  ]
+ ],
+ "witness_support": [
+  32,
+  43,
+  55,
+  56,
+  58,
+  66,
+  81,
+  90,
+  101,
+  112,
+  122,
+  146,
+  157,
+  179,
+  211,
+  223
+ ],
+ "seconds": 121.10886788368225,
+ "method": "CryptoMiniSat ladder, native XOR rows, seqcounter cardinality, translation-orbit symmetry breaking (4 reps)"
+}

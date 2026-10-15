@@ -1,0 +1,16 @@
+ab2_36x2: n=288, 116 b-classes × 71 p × 2556 q
+  b=(0, 1, 2) (1 + y + x): total=21704 kept=0 t=19s
+  b=(0, 1, 4) (1 + y + x^2): total=43629 kept=0 t=40s
+  b=(0, 1, 6) (1 + y + x^3): total=65401 kept=0 t=60s
+  b=(0, 1, 8) (1 + y + x^4): total=87221 kept=0 t=84s
+  b=(0, 1, 12) (1 + y + x^6): total=108940 kept=0 t=109s
+  b=(0, 1, 18) (1 + y + x^9): total=130737 kept=0 t=125s
+  b=(0, 1, 24) (1 + y + x^12): total=152372 kept=0 t=142s
+  b=(0, 1, 36) (1 + y + x^18): total=174223 kept=0 t=161s
+  b=(0, 2, 4) (1 + x + x^2): total=196028 kept=411 t=230s
+  b=(0, 2, 5) (1 + x + x^2*y): total=217860 kept=1244 t=480s
+  b=(0, 2, 6) (1 + x + x^3): total=239408 kept=1244 t=510s
+  b=(0, 2, 7) (1 + x + x^3*y): total=261341 kept=1244 t=537s
+  b=(0, 2, 8) (1 + x + x^4): total=282982 kept=1244 t=563s
+  b=(0, 2, 9) (1 + x + x^4*y): total=304788 kept=1244 t=588s
+  b=(0, 2, 10) (1 + x + x^5): total=326508 kept=1644 t=732s

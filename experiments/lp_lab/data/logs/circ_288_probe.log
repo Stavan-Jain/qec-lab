@@ -1,0 +1,11 @@
+Z: deterministic=True qubits=576 depth(ticks)=33 detectors=1152 DEM errors=41040
+Traceback (most recent call last):
+  File "/Users/stavanjain/Code/qec-lab/.claude/worktrees/stabilizer-code-lifted-product-784b9e/experiments/lp_lab/scripts/c3_circuit.py", line 39, in <module>
+    main()
+  File "/Users/stavanjain/Code/qec-lab/.claude/worktrees/stabilizer-code-lifted-product-784b9e/experiments/lp_lab/scripts/c3_circuit.py", line 31, in main
+    t = time.time(); w, errs = circuit_distance_upper_bound(circ, max_set_size=args.set_size)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/stavanjain/Code/qec-lab/.claude/worktrees/stabilizer-code-lifted-product-784b9e/experiments/lp_lab/src/lp_lab/circuit.py", line 171, in circuit_distance_upper_bound
+    errs = circ.search_for_undetectable_logical_errors(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Failed to find any logical errors.

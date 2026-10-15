@@ -1,0 +1,70 @@
+G=18x2x2 n=288: 35 b-classes with δ∈[3,12]
+   b=1 + x + x^2*z                δ= 8 D=18 cap=18.00
+   b=1 + x + x^2*y                δ= 8 D=18 cap=18.00
+   b=1 + x + x^2*y*z              δ= 8 D=18 cap=18.00
+   b=1 + x + x^5*z                δ= 8 D=18 cap=18.00
+   b=1 + x + x^5*y                δ= 8 D=18 cap=18.00
+   b=1 + x + x^5*y*z              δ= 8 D=18 cap=18.00
+   b=1 + x + x^8*z                δ= 8 D=18 cap=18.00
+   b=1 + x + x^8*y                δ= 8 D=18 cap=18.00
+   b=1 + x + x^8*y*z              δ= 8 D=18 cap=18.00
+   b=1 + x*z + x^2*y              δ= 8 D=18 cap=18.00
+   b=1 + x*z + x^2*y*z            δ= 8 D=18 cap=18.00
+   b=1 + x*z + x^5*y              δ= 8 D=18 cap=18.00
+   b=1 + x*z + x^5*y*z            δ= 8 D=18 cap=18.00
+   b=1 + x*z + x^8*y              δ= 8 D=18 cap=18.00
+   b=1 + x*z + x^8*y*z            δ= 8 D=18 cap=18.00
+   b=1 + x*y + x^2*z              δ= 8 D=18 cap=18.00
+   b=1 + x*y + x^5*y*z            δ= 8 D=18 cap=18.00
+   b=1 + x*y + x^8*z              δ= 8 D=18 cap=18.00
+   b=1 + x^2*z + x^4*y            δ= 8 D=18 cap=18.00
+   b=1 + x^2*z + x^4*y*z          δ= 8 D=18 cap=18.00
+   b=1 + x^2*z + x^10*y           δ= 8 D=18 cap=18.00
+   b=1 + x + x^2                  δ= 8 D=12 cap=8.00
+   b=1 + x + x^5                  δ= 8 D=12 cap=8.00
+   b=1 + x*z + x^2                δ= 8 D=12 cap=8.00
+   b=1 + x*z + x^5*z              δ= 8 D=12 cap=8.00
+   b=1 + x*y + x^2                δ= 8 D=12 cap=8.00
+   b=1 + x*y + x^5*y              δ= 8 D=12 cap=8.00
+   b=1 + x*y*z + x^2              δ= 8 D=12 cap=8.00
+   b=1 + x*y*z + x^5*y*z          δ= 8 D=12 cap=8.00
+   b=1 + x^2 + x^4*z              δ= 8 D=12 cap=8.00
+   b=1 + x^2 + x^4*y              δ= 8 D=12 cap=8.00
+   b=1 + x^2 + x^4*y*z            δ= 8 D=12 cap=8.00
+   b=1 + x^2 + x^10*z             δ= 8 D=12 cap=8.00
+   b=1 + x^2 + x^10*y             δ= 8 D=12 cap=8.00
+   b=1 + x^2 + x^10*y*z           δ= 8 D=12 cap=8.00
+  b=1 + x + x^2*z: 216 designs, best d_ub=16 (D_b=18) t=11s
+  b=1 + x + x^2*y: 216 designs, best d_ub=16 (D_b=18) t=10s
+  b=1 + x + x^2*y*z: 216 designs, best d_ub=16 (D_b=18) t=10s
+  b=1 + x + x^5*z: 216 designs, best d_ub=16 (D_b=18) t=9s
+  b=1 + x + x^5*y: 216 designs, best d_ub=16 (D_b=18) t=8s
+  b=1 + x + x^5*y*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x + x^8*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x + x^8*y: 216 designs, best d_ub=16 (D_b=18) t=8s
+  b=1 + x + x^8*y*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*z + x^2*y: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*z + x^2*y*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*z + x^5*y: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*z + x^5*y*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*z + x^8*y: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*z + x^8*y*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*y + x^2*z: 216 designs, best d_ub=16 (D_b=18) t=8s
+  b=1 + x*y + x^5*y*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x*y + x^8*z: 216 designs, best d_ub=16 (D_b=18) t=7s
+  b=1 + x^2*z + x^4*y: 216 designs, best d_ub=16 (D_b=18) t=6s
+  b=1 + x^2*z + x^4*y*z: 216 designs, best d_ub=16 (D_b=18) t=6s
+  b=1 + x^2*z + x^10*y: 216 designs, best d_ub=16 (D_b=18) t=6s
+done 18x2x2: 4536 designs, 159s
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^2*z p=1 + x*y q=x^3*y + x^8 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^2*y p=1 + x*z q=x^3*z + x^8 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^2*y*z p=1 + x*z q=x^3*z + x^8 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^5*z p=1 + x^4*y q=x^12*y + x^14 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^5*y p=1 + x*z q=x^9*z + x^14 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^5*y*z p=1 + x^2*z q=x^12*z + x^16 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^8*z p=1 + x*y q=x^3*y + x^8 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^8*y p=1 + x*z q=x^3*z + x^8 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x + x^8*y*z p=1 + x*y q=x^9*y + x^14 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x*z + x^2*y p=1 + x q=x^3 + x^8 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x*z + x^2*y*z p=1 + x q=x^9 + x^14 |Aut|=72 X-orbits=2
+  [[288,16,≤16]] fom≤14.22 b=1 + x*z + x^5*y p=1 + x^2*y q=y + x^4 |Aut|=72 X-orbits=2

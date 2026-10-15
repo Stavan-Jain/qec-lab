@@ -1,0 +1,49 @@
+G=14x2x2 n=224: 21 b-classes with δ∈[3,12]
+   b=1 + x + x^3*z                δ=12 D=12 cap=15.43
+   b=1 + x + x^3*y                δ=12 D=12 cap=15.43
+   b=1 + x + x^3*y*z              δ=12 D=12 cap=15.43
+   b=1 + x + x^5*z                δ=12 D=12 cap=15.43
+   b=1 + x + x^5*y                δ=12 D=12 cap=15.43
+   b=1 + x + x^5*y*z              δ=12 D=12 cap=15.43
+   b=1 + x*z + x^3*y              δ=12 D=12 cap=15.43
+   b=1 + x*z + x^3*y*z            δ=12 D=12 cap=15.43
+   b=1 + x*z + x^5*y              δ=12 D=12 cap=15.43
+   b=1 + x*z + x^5*y*z            δ=12 D=12 cap=15.43
+   b=1 + x*y + x^3*y*z            δ=12 D=12 cap=15.43
+   b=1 + x*y + x^5*y*z            δ=12 D=12 cap=15.43
+   b=1 + x^2*z + x^6*y            δ=12 D=12 cap=15.43
+   b=1 + x^2*z + x^6*y*z          δ=12 D=12 cap=15.43
+   b=1 + x + x^3                  δ=12 D=8 cap=6.86
+   b=1 + x*z + x^3*z              δ=12 D=8 cap=6.86
+   b=1 + x*y + x^3*y              δ=12 D=8 cap=6.86
+   b=1 + x*y*z + x^3*y*z          δ=12 D=8 cap=6.86
+   b=1 + x^2 + x^6*z              δ=12 D=8 cap=6.86
+   b=1 + x^2 + x^6*y              δ=12 D=8 cap=6.86
+   b=1 + x^2 + x^6*y*z            δ=12 D=8 cap=6.86
+  b=1 + x + x^3*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x + x^3*y: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x + x^3*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x + x^5*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x + x^5*y: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x + x^5*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x*z + x^3*y: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x*z + x^3*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x*z + x^5*y: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x*z + x^5*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x*y + x^3*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x*y + x^5*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x^2*z + x^6*y: 24 designs, best d_ub=6 (D_b=12) t=1s
+  b=1 + x^2*z + x^6*y*z: 24 designs, best d_ub=6 (D_b=12) t=1s
+done 14x2x2: 336 designs, 14s
+  [[224,24,≤6]] fom≤3.86 b=1 + x + x^3*z p=1 + x*y q=x^4 + x^5*y |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x + x^3*y p=1 + x*z q=x^4 + x^5*z |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x + x^3*y*z p=1 + x*z q=x^4 + x^5*z |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x + x^5*z p=1 + x*y q=x^8 + x^9*y |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x + x^5*y p=1 + x*z q=x^8 + x^9*z |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x + x^5*y*z p=1 + x*z q=x^8 + x^9*z |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x*z + x^3*y p=1 + x q=x^4 + x^5 |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x*z + x^3*y*z p=1 + x q=x^4 + x^5 |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x*z + x^5*y p=1 + x q=x^8 + x^9 |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x*z + x^5*y*z p=1 + x q=x^8 + x^9 |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x*y + x^3*y*z p=1 + x q=x^4 + x^5 |Aut|=672 X-orbits=1
+  [[224,24,≤6]] fom≤3.86 b=1 + x*y + x^5*y*z p=1 + x q=x^8 + x^9 |Aut|=672 X-orbits=1

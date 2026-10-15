@@ -1,0 +1,21 @@
+G=28 n=224: 36 c_B classes with δ∈[3,10]
+   c_B=1 + x^4 + x^6                      (r=1 + x, s=x^4 + x^5) δ= 6 D_B=24 k=12 cap=30.86
+   c_B=1 + x^4 + x^5 + x^19 + x^20        (r=1 + x, s=x^4 + x^19) δ= 6 D_B=24 k=12 cap=30.86
+   c_B=1 + x^5 + x^6 + x^18 + x^19        (r=1 + x, s=x^5 + x^18) δ= 6 D_B=24 k=12 cap=30.86
+   c_B=x + x^3 + x^4                      (r=1 + x, s=1 + x^3) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=x + x^5 + x^6                      (r=1 + x, s=1 + x^5) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x + x^2 + x^6 + x^7            (r=1 + x, s=x + x^6) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x + x^2 + x^9 + x^10           (r=1 + x, s=x + x^9) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x + x^2 + x^13 + x^14          (r=1 + x, s=x + x^13) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^2 + x^3 + x^8 + x^9          (r=1 + x, s=x^2 + x^8) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^2 + x^3 + x^22 + x^23        (r=1 + x, s=x^2 + x^22) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^3 + x^4 + x^7 + x^8          (r=1 + x, s=x^3 + x^7) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^3 + x^4 + x^13 + x^14        (r=1 + x, s=x^3 + x^13) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^3 + x^4 + x^14 + x^15        (r=1 + x, s=x^3 + x^14) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^3 + x^4 + x^20 + x^21        (r=1 + x, s=x^3 + x^20) δ= 3 D_B=32 k=6 cap=27.43
+   c_B=1 + x^3 + x^4 + x^21 + x^22        (r=1 + x, s=x^3 + x^21) δ= 3 D_B=32 k=6 cap=27.43
+  c_B=1 + x^4 + x^6: 192 designs, best d_ub=12 (D_B=24) t=2s
+  c_B=1 + x^4 + x^5 + x^19 + x^20: 192 designs, best d_ub=12 (D_B=24) t=2s
+  c_B=1 + x^5 + x^6 + x^18 + x^19: 192 designs, best d_ub=12 (D_B=24) t=2s
+  c_B=x + x^3 + x^4: 1152 designs, best d_ub=18 (D_B=32) t=186s
+  c_B=x + x^5 + x^6: 1152 designs, best d_ub=18 (D_B=32) t=199s
