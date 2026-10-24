@@ -1,0 +1,31 @@
+import TrellisBasisBridge
+
+namespace Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90
+
+/-- The reachable frame's first forty-one directions and their stabilizer-span coefficients. -/
+def reachableStableChecks : List (Nat × Nat) := @@reachableStableChecks@@
+
+/-- The stabilizer part of the reachable frame lies in the counted stabilizer span. -/
+theorem reachable_stable_checks : reachableStableChecks.all (fun gc =>
+    decide (reconX stabPermutation gc.1 = reconX stabWindow gc.2)) = true := by
+  decide +kernel
+
+/-- Every combination of the reachable frame's stabilizer directions is counted. -/
+theorem reachable_stable_span {word : Nat}
+    (hword : XorSpan (reachableStableChecks.map Prod.fst) word) :
+    XorSpan stabGenerators (reconX stabPermutation word) := by
+  rw [← stab_window_generators]
+  exact reconX_span_of_checks reachableStableChecks stabWindow stabPermutation
+    reachable_stable_checks hword
+
+/-- Reachable nonzero affine class 1 is exactly a counted coset offset. -/
+theorem reachable_offset_1 : reconX stabPermutation 1065874952622347 = 154747230380280876349985376 := by decide +kernel
+
+/-- Reachable nonzero affine class 2 is exactly a counted coset offset. -/
+theorem reachable_offset_2 : reconX stabPermutation 1518104189649061 = 773714314175997197296277888 := by decide +kernel
+
+/-- Reachable nonzero affine class 3 is exactly a counted coset offset. -/
+theorem reachable_offset_3 : reconX stabPermutation 1880016524267950 = 618976534734651495043042272 := by decide +kernel
+
+#print axioms reachable_stable_span
+end Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90

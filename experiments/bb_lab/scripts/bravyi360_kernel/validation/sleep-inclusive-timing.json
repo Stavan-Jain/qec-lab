@@ -1,0 +1,23 @@
+{
+  "clock": "mach_continuous_time",
+  "conservative_elapsed_nanoseconds": 807916599834,
+  "conservative_elapsed_seconds": 807.916599834,
+  "end_utc": "2026-10-24T02:56:41.787807+00:00",
+  "includes_system_sleep": true,
+  "measurement": "Conservative external enclosure of the complete checker process.",
+  "poll_seconds": 0.1,
+  "power_log_review": {
+    "events": [],
+    "no_sleep_events": true,
+    "status": "checked",
+    "timestamp_margin_seconds": 1
+  },
+  "start_utc": "2026-10-24T02:43:13.934821+00:00",
+  "status": "measured",
+  "strictly_under_900_seconds": true,
+  "validator_as_run": {
+    "file": "validate-as-run.py",
+    "sha256": "6b6edcaff6a1a39504fad379defb61aad0d59e4815a99a1e0c765f5628f359e2"
+  },
+  "validator_replay_active_monotonic_seconds": 807.805
+}

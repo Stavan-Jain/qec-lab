@@ -1,0 +1,70 @@
+{
+  "base_revision": "9dced20836a1e868d20a4cad109e56bdf0ccdaf2",
+  "capstones": [
+    "Quantum.Stabilizer.Homological.BB.Bravyi360.distance_lower_bound",
+    "Quantum.Stabilizer.Homological.BB.Bravyi360.stabilizerCode_hasDistance24"
+  ],
+  "cpu": "Apple M4",
+  "input_hashes": "input-hashes.json",
+  "integrity_checks": [
+    {
+      "phase": "after-source-build",
+      "seconds": 0.18
+    },
+    {
+      "phase": "before-replay",
+      "seconds": 0.325
+    },
+    {
+      "phase": "after-replay",
+      "seconds": 0.582
+    }
+  ],
+  "lake_artifact_cache": false,
+  "lean_num_threads": 1,
+  "machine": "arm64",
+  "memory_bytes": 17179869184,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "replay_active_monotonic_seconds": 807.805,
+  "replay_limit_seconds": 900,
+  "replay_profile": true,
+  "replay_summary": "replay-summary.json",
+  "required_checks": "required-checks.json",
+  "source_check_active_monotonic_seconds": 2799.737,
+  "started_at": 1792799530.150041,
+  "status": "passed",
+  "steps": [
+    {
+      "exit_code": 0,
+      "label": "baseline-build",
+      "seconds": 4.488,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "fresh-library-build",
+      "seconds": 2799.719,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "checker-compile",
+      "seconds": 0.46,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "checker-link",
+      "seconds": 3.282,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "kernel-replay",
+      "seconds": 807.805,
+      "timeout": false
+    }
+  ],
+  "timing_basis": "active monotonic elapsed; excludes macOS sleep",
+  "toolchain": "leanprover/lean4:v4.30.0-rc2"
+}

@@ -1,0 +1,22 @@
+{
+  "exporter_sha256": "1dbad9473a3eebc51286e5b955f2b31ca3b5d867721c6db8be51db5aed2c49df",
+  "published_file_sha256": {
+    "input-hashes.json": "a6200c84e9a2b476c5ad231e1b33c410849902afb0c046244601b0fe0436af29",
+    "kernel-replay.log.gz": "58d771250ce0324ad66cfafb7e379b6c92a4bdfc95da8df3fdb19a3c0a4cd7bd",
+    "replay-summary.json": "a2343ef8c6557484a701e3749b0554fccfc0396b84baf0c0d24f806a3ea209a4",
+    "required-checks.json": "a2f8e4b338f80765583ce1ab50ae4ce36dbca2df90f5c9deb870f57cc4e8b819",
+    "sleep-inclusive-timing.json": "98ee5c0e7707985e27962733886ff813c0075f3295e4a1e2f9712338169ef2b7",
+    "validate-as-run.py": "6b6edcaff6a1a39504fad379defb61aad0d59e4815a99a1e0c765f5628f359e2",
+    "validation.json": "0fec7a9791348863ed9746b7f5eb969cde3d713eaacd17f5371cffffd8e9a608"
+  },
+  "schema_version": 1,
+  "scope": "One successful fresh-source build and complete kernel replay; prior attempts excluded.",
+  "source_evidence_sha256": {
+    "fresh-library-build.log": "c82364d0b1b9ea4ec162117f21625ed5cb7fe0d0719ee1a553e5fe11af9491cb",
+    "kernel-replay.log": "3bc40507b587518aeef27d8ceaad667cef1afddc6adc9171437f77cb87bf9f48",
+    "required-checks.json": "685572a4e75c631ae5deba140121bfc92cd1f8166c3b69e4c3429df4ebfaf93a",
+    "sleep-inclusive-timing.json": "30aac6f46bfb3601028be8362209b2f45cccd562e1f3f100fee6426ff390d74b",
+    "validation.json": "6cda113a39e53952cbb803467ba4cdfbd47ce4800ded6f85548aab23215a505c"
+  },
+  "trust_boundary": "The Lean kernel, pinned baseline libraries, toolchain, and validation harness."
+}

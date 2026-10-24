@@ -1,0 +1,259 @@
+{
+  "description": "Portable rank, orbit-census and cap-two certificate emitters. Inputs are untrusted certificates; each resulting fact is independently checked by the Lean kernel. Steps run in listed order; QEC360_STAGE is a writable staging directory.",
+  "inputs": [
+    {
+      "path": "rank174_reflected_cert.json",
+      "compressed": "certificates/rank174_reflected_cert.json.gz",
+      "sha256": "c50e7933f4cfc185e45f0db6a8fc86608545f8a3990d253089bd9150e4150706",
+      "bytes": 70683
+    },
+    {
+      "path": "cycles10_normalization.json",
+      "compressed": "certificates/cycles10_normalization.json.gz",
+      "sha256": "2aa0e158652aef9fb7e0374fb739018f386339ae537f6be962ac59a888353bfe",
+      "bytes": 165653
+    },
+    {
+      "path": "qec360-certprobe/gb_orbit_certificates.jsonl",
+      "compressed": "certificates/qec360-certprobe/gb_orbit_certificates.jsonl.gz",
+      "sha256": "82599037c4d12deb2e6626c795f32b60c825de08d8fad055581022a2519f373f",
+      "bytes": 21650178
+    },
+    {
+      "path": "qec360-certprobe/gb_orbit_metadata.json",
+      "compressed": "certificates/qec360-certprobe/gb_orbit_metadata.json.gz",
+      "sha256": "e5f4fdccc491b09ac367757d85d6f5b69fbb3d7eed7fc2df4183131f79714cef",
+      "bytes": 8142
+    },
+    {
+      "path": "census_translation_closure.json",
+      "compressed": "certificates/census_translation_closure.json.gz",
+      "sha256": "7388fd7f5c467f35cbdcf5f8ee90c70fe33031c33f74a90687a1cbf029303add",
+      "bytes": 25459
+    },
+    {
+      "path": "qec360-certprobe/cap2_pairplanes_top.jsonl",
+      "compressed": "certificates/qec360-certprobe/cap2_pairplanes_top.jsonl.gz",
+      "sha256": "9a2d67b27d0fefa1984ba70853e90af9dfc1234cc11626a1738c11159250a746",
+      "bytes": 131769
+    },
+    {
+      "path": "qec360-certprobe/nonempty_peel_certificates.jsonl",
+      "compressed": "certificates/qec360-certprobe/nonempty_peel_certificates.jsonl.gz",
+      "sha256": "7d8fa317646e06b13a23ad77f99eec61f6836dea2cad0be19807fab0276b54c0",
+      "bytes": 11722763
+    },
+    {
+      "path": "qec360-certprobe/gb_frame.json",
+      "compressed": "certificates/qec360-certprobe/gb_frame.json.gz",
+      "sha256": "d94e1458b49d971f55c40f0b2f5f17da33ed9b87266711af9fbd8c8ae4821e5d",
+      "bytes": 7355
+    },
+    {
+      "path": "qec360-certprobe/cap2_pairplanes_bottom.jsonl",
+      "compressed": "certificates/qec360-certprobe/cap2_pairplanes_bottom.jsonl.gz",
+      "sha256": "6733f89944e07980d817dad132839660aa55aecc7bac3e2abbe5c8f74bfc4d20",
+      "bytes": 6394451
+    },
+    {
+      "path": "OrbitBatchProbe.lean",
+      "compressed": "certificates/OrbitBatchProbe.lean.gz",
+      "sha256": "96331ca1222e287884826186259d622bcab8cd7ee2e0f9086022c0289a912548",
+      "bytes": 843
+    },
+    {
+      "path": "Bravyi360TopEmpty2.lean",
+      "compressed": "certificates/Bravyi360TopEmpty2.lean.gz",
+      "sha256": "0a3c21400be84a063cb15c58d1eb80c28f3bd2b066663e49af461f64fd6a0377",
+      "bytes": 1496
+    },
+    {
+      "path": "OrbitMetadataTail.lean.in",
+      "compressed": "certificates/OrbitMetadataTail.lean.in.gz",
+      "sha256": "c61650d0d325e2f8242755118df90cc414e4568d55086ec75459e35e0afec738",
+      "bytes": 1406
+    }
+  ],
+  "steps": [
+    {
+      "script": "emitters/emit_rank_data.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360RankData.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_cycles10_normalization.py",
+      "args": [],
+      "outputs": [
+        "LowCycleNormalization.lean"
+      ]
+    },
+    {
+      "script": "emitters/orbit_batch_full.py",
+      "args": [],
+      "outputs": [
+        "OrbitBatchFull1024.lean"
+      ],
+      "intermediate_only": true
+    },
+    {
+      "script": "emitters/orbit_batch_enrich.py",
+      "args": [],
+      "outputs": [
+        "OrbitBatchComplete1024.lean"
+      ],
+      "intermediate_only": true
+    },
+    {
+      "script": "emitters/split_orbit_batch_data.py",
+      "args": [],
+      "outputs": [
+        "OrbitBatchData.lean",
+        "OrbitBatchCheck.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_orbit_metadata.py",
+      "args": [],
+      "outputs": [
+        "OrbitBatchMetadata.lean"
+      ]
+    },
+    {
+      "script": "emitters/revise_orbit_metadata.py",
+      "args": [],
+      "outputs": [
+        "OrbitBatchMetadata.lean"
+      ]
+    },
+    {
+      "script": "emitters/split_orbit_metadata.py",
+      "args": [],
+      "outputs": [
+        "OrbitBatchMetadataChecks.lean",
+        "OrbitBatchMetadata.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_translation_closure.py",
+      "args": [],
+      "outputs": [
+        "ReachableTranslation.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_cap2_empty.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360TopEmpty2Data.lean",
+        "Bravyi360TopEmpty2.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_positive_cap2.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360PairTables.lean",
+        "qec360-certprobe/BottomPositiveTwoPart0.lean",
+        "qec360-certprobe/BottomPositiveTwoPart1.lean",
+        "qec360-certprobe/BottomPositiveTwoPart2.lean",
+        "qec360-certprobe/BottomPositiveTwoPart3.lean",
+        "qec360-certprobe/BottomPositiveTwoPart4.lean",
+        "qec360-certprobe/BottomPositiveTwoPart5.lean",
+        "qec360-certprobe/BottomPositiveTwoPart6.lean",
+        "qec360-certprobe/BottomPositiveTwoPart7.lean",
+        "qec360-certprobe/BottomPositiveTwoPart8.lean",
+        "qec360-certprobe/BottomPositiveTwoPart9.lean",
+        "qec360-certprobe/BottomPositiveTwoPart10.lean",
+        "qec360-certprobe/BottomPositiveTwoPart11.lean",
+        "qec360-certprobe/BottomPositiveTwoPart12.lean",
+        "qec360-certprobe/BottomPositiveTwoPart13.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_bottom_empty2_batch.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360BottomEmpty2BatchData0.lean",
+        "Bravyi360BottomEmpty2BatchData1.lean",
+        "Bravyi360BottomEmpty2BatchData2.lean",
+        "Bravyi360BottomEmpty2BatchData3.lean",
+        "Bravyi360BottomEmpty2BatchData4.lean",
+        "Bravyi360BottomEmpty2BatchData5.lean",
+        "Bravyi360BottomEmpty2BatchData6.lean",
+        "Bravyi360BottomEmpty2BatchData7.lean",
+        "Bravyi360BottomEmpty2BatchData8.lean",
+        "Bravyi360BottomEmpty2Batch.lean",
+        "Bravyi360BottomEmpty2.lean"
+      ]
+    },
+    {
+      "script": "emitters/emit_pair_global_wrappers.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360BottomPositiveTwo.lean"
+      ]
+    },
+    {
+      "script": "emitters/mark_research_noncomputable.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360RankData.lean",
+        "LowCycleNormalization.lean",
+        "OrbitBatchData.lean",
+        "OrbitBatchMetadata.lean",
+        "OrbitBatchMetadataChecks.lean",
+        "ReachableTranslation.lean",
+        "Bravyi360TopEmpty2Data.lean",
+        "Bravyi360TopEmpty2.lean",
+        "Bravyi360PairTables.lean",
+        "qec360-certprobe/BottomPositiveTwoPart0.lean",
+        "qec360-certprobe/BottomPositiveTwoPart1.lean",
+        "qec360-certprobe/BottomPositiveTwoPart2.lean",
+        "qec360-certprobe/BottomPositiveTwoPart3.lean",
+        "qec360-certprobe/BottomPositiveTwoPart4.lean",
+        "qec360-certprobe/BottomPositiveTwoPart5.lean",
+        "qec360-certprobe/BottomPositiveTwoPart6.lean",
+        "qec360-certprobe/BottomPositiveTwoPart7.lean",
+        "qec360-certprobe/BottomPositiveTwoPart8.lean",
+        "qec360-certprobe/BottomPositiveTwoPart9.lean",
+        "qec360-certprobe/BottomPositiveTwoPart10.lean",
+        "qec360-certprobe/BottomPositiveTwoPart11.lean",
+        "qec360-certprobe/BottomPositiveTwoPart12.lean",
+        "qec360-certprobe/BottomPositiveTwoPart13.lean",
+        "Bravyi360BottomEmpty2BatchData0.lean",
+        "Bravyi360BottomEmpty2BatchData1.lean",
+        "Bravyi360BottomEmpty2BatchData2.lean",
+        "Bravyi360BottomEmpty2BatchData3.lean",
+        "Bravyi360BottomEmpty2BatchData4.lean",
+        "Bravyi360BottomEmpty2BatchData5.lean",
+        "Bravyi360BottomEmpty2BatchData6.lean",
+        "Bravyi360BottomEmpty2BatchData7.lean",
+        "Bravyi360BottomEmpty2BatchData8.lean",
+        "Bravyi360BottomEmpty2Batch.lean",
+        "Bravyi360BottomEmpty2.lean",
+        "Bravyi360BottomPositiveTwo.lean"
+      ]
+    }
+  ],
+  "helpers": [
+    "emitters/balanced_nat_literal.py",
+    "emitters/balance_literals.py",
+    "emitters/compact_literals.py"
+  ],
+  "verification": "Rank/orbit, all top and bottom empty cap-two fibers, and all 2501 positive bottom cap-two fibers with global completeness have compiled with standard axioms. High-cap fibers use the separate parity-search certificates in the audit manifest.",
+  "manual_templates_note": "OrbitBatchProbe.lean contains only the authored packed-checker prefix; Bravyi360TopEmpty2.lean contains the authored generic wrapper prefix. Emitters replace both before installation.",
+  "regeneration_verification": "All 36 active generated outputs reproduce the current scratch proof tokens; 33 reproduce byte-for-byte. Remaining differences are comments, whitespace and optional #print axioms diagnostics. The obsolete high-cap pair route is excluded.",
+  "noncomputable_data_note": "Every generated data/accessor definition is explicitly noncomputable to avoid duplicating large data in compiler IR. Kernel reduction and proofs are unchanged. Generic packed-checker functions remain computable.",
+  "bottom_cap2_implementation": "Certified batched dual reconstruction: nine bounded numeric groups cover all859 empty fibers. Scalar fallback emitters remain only in the research scratch directory and are excluded from the deliverable package.",
+  "compact_pair_data_note": "Positive cap-two packed coefficient caches use computed repeated-one constants and compact zero-padding expressions. Exact record values and checks are unchanged.",
+  "kernel_compile_measurements_seconds": {
+    "bottom_empty_cap2_numeric_parts": 33.88,
+    "bottom_empty_cap2_generic": 3.46,
+    "bottom_empty_cap2_global": 3.93,
+    "positive_cap2_numeric_parts": 83.64,
+    "positive_cap2_global": 3.08
+  },
+  "compile_timing_note": "These are observed Lean source-compilation wall times, including parsing, import loading, elaboration, and kernel checking. They are not the final independent whole-cone kernel replay measurement."
+}

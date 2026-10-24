@@ -1,0 +1,1332 @@
+{
+  "modules": {
+    "Bravyi360Distance": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Distance",
+      "existing": false
+    },
+    "Bravyi360Witness": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Witness",
+      "existing": false
+    },
+    "Bravyi360Packaging": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Packaging",
+      "existing": false
+    },
+    "Bravyi360Sparse": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Sparse",
+      "existing": false
+    },
+    "Bravyi360Defs": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Defs",
+      "existing": false
+    },
+    "MaskLinear": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskLinear",
+      "existing": false
+    },
+    "Bravyi360RankData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.RankData",
+      "existing": false
+    },
+    "TrimChecks": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.TrimChecks",
+      "existing": false
+    },
+    "PresentationScratch": {
+      "target": "QEC.Stabilizer.Framework.Homological.Presentation",
+      "existing": true
+    },
+    "Bravyi360OrbitCensus": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitCensus",
+      "existing": false
+    },
+    "OrbitGlobalProperties": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitGlobalProperties",
+      "existing": false
+    },
+    "OrbitBatchMetadata": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchMetadata",
+      "existing": false
+    },
+    "OrbitBatchMetadataChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchMetadataChecks",
+      "existing": false
+    },
+    "OrbitBatchData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchData",
+      "existing": false
+    },
+    "PackedDigits": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedDigits",
+      "existing": false
+    },
+    "OrbitBatchCheck": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchCheck",
+      "existing": false
+    },
+    "OrbitBatchConcreteSoundness": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchConcreteSoundness",
+      "existing": false
+    },
+    "OrbitBatchSoundness": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchSoundness",
+      "existing": false
+    },
+    "OrbitBatchSemantics": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitBatchSemantics",
+      "existing": false
+    },
+    "PackedLaneShifts": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedLaneShifts",
+      "existing": false
+    },
+    "OrbitPackedExtra": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.OrbitPackedExtra",
+      "existing": false
+    },
+    "GBOrbitAction": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.GBOrbitAction",
+      "existing": false
+    },
+    "OrbitPackSemantics": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitPackSemantics",
+      "existing": false
+    },
+    "OrbitCensus": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.OrbitCensus",
+      "existing": false
+    },
+    "OrbitFixedSum": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.OrbitFixedSum",
+      "existing": false
+    },
+    "PackedEquality": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedEquality",
+      "existing": false
+    },
+    "PackedSequence": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedSequence",
+      "existing": false
+    },
+    "PackedPopcount": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedPopcount",
+      "existing": false
+    },
+    "BatchLinear": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchLinear",
+      "existing": false
+    },
+    "FiniteSumExceptions": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.FiniteSumExceptions",
+      "existing": false
+    },
+    "GBReflectedAction": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.GBReflectedAction",
+      "existing": false
+    },
+    "OrbitIndexedCensus": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.OrbitIndexedCensus",
+      "existing": false
+    },
+    "ReachableCensusBound": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ReachableCensusBound",
+      "existing": false
+    },
+    "ReachableBasisChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ReachableBasisChecks",
+      "existing": false
+    },
+    "TrellisBasisBridge": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TrellisBasisBridge",
+      "existing": false
+    },
+    "ConcreteTrellis": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ConcreteTrellis",
+      "existing": false
+    },
+    "FastTrellis": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.FastTrellis",
+      "existing": false
+    },
+    "PackedSwapPermutation": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedSwapPermutation",
+      "existing": false
+    },
+    "PackedProgram": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedProgram",
+      "existing": false
+    },
+    "TrellisProgram": {
+      "target": "QEC.Stabilizer.Framework.Homological.Trellis",
+      "existing": false
+    },
+    "SwapNumeric": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SwapNumeric",
+      "existing": false
+    },
+    "SwapTransport": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SwapTransport",
+      "existing": false
+    },
+    "SwapGeneric": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SwapGeneric",
+      "existing": false
+    },
+    "ConcreteCensusBounds": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ConcreteCensusBounds",
+      "existing": false
+    },
+    "TrellisSpanCensus": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.TrellisSpanCensus",
+      "existing": false
+    },
+    "TrellisCensus": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.TrellisCensus",
+      "existing": false
+    },
+    "WeightCount": {
+      "target": "QEC.Stabilizer.Framework.Homological.WeightCensus",
+      "existing": false
+    },
+    "Censusstab": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Censusstab",
+      "existing": false
+    },
+    "CensusW121": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.CensusW121",
+      "existing": false
+    },
+    "CensusW151": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.CensusW151",
+      "existing": false
+    },
+    "CensusW238": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.CensusW238",
+      "existing": false
+    },
+    "Censuscycle": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Censuscycle",
+      "existing": false
+    },
+    "ConcretePermutations": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ConcretePermutations",
+      "existing": false
+    },
+    "MaskPermutation": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskPermutation",
+      "existing": false
+    },
+    "KernelSpan": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.KernelSpan",
+      "existing": false
+    },
+    "Bravyi360ReachabilityData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ReachabilityData",
+      "existing": false
+    },
+    "ReachableTranslation": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ReachableTranslation",
+      "existing": false
+    },
+    "Bravyi360Membership": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Membership",
+      "existing": false
+    },
+    "TranslationNormalization": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TranslationNormalization",
+      "existing": false
+    },
+    "MaskFiber": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskFiber",
+      "existing": false
+    },
+    "Bravyi360BottomComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomComplete",
+      "existing": false
+    },
+    "Bravyi360BottomFiberBridge": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomFiberBridge",
+      "existing": false
+    },
+    "Bravyi360BottomCaseChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomCaseChecks",
+      "existing": false
+    },
+    "Bravyi360BottomCaseData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomCaseData",
+      "existing": false
+    },
+    "Bravyi360Fibers": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Fibers",
+      "existing": false
+    },
+    "Bravyi360FiberData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.FiberData",
+      "existing": false
+    },
+    "Bravyi360MiddleSparse": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.MiddleSparse",
+      "existing": false
+    },
+    "Bravyi360DeckJoin": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeckJoin",
+      "existing": false
+    },
+    "Bravyi360Join": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Join",
+      "existing": false
+    },
+    "MaskJoin": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskJoin",
+      "existing": false
+    },
+    "Bravyi360TopBank": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopBank",
+      "existing": false
+    },
+    "SearchInitial": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SearchInitial",
+      "existing": false
+    },
+    "SearchSoundness": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SearchSoundness",
+      "existing": false
+    },
+    "SearchBits": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SearchBits",
+      "existing": false
+    },
+    "SearchTree": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SearchTree",
+      "existing": false
+    },
+    "ParityFold": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.ParityFold",
+      "existing": false
+    },
+    "BitsetTrie": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BitsetTrie",
+      "existing": false
+    },
+    "SparsePopBound": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SparsePopBound",
+      "existing": false
+    },
+    "MaskedAffine": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskedAffine",
+      "existing": false
+    },
+    "Bravyi360DeepNormalization": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepNormalization",
+      "existing": false
+    },
+    "DeepFiberData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFiberData",
+      "existing": false
+    },
+    "Bravyi360BottomShallow": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallow",
+      "existing": false
+    },
+    "BottomShallowAssembly": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowAssembly",
+      "existing": false
+    },
+    "BottomShallowLinks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinks",
+      "existing": false
+    },
+    "BottomShallowLinkPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart0",
+      "existing": false
+    },
+    "BottomShallowCacheCheck": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowCacheCheck",
+      "existing": false
+    },
+    "BottomShallowChunkCheck": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowChunkCheck",
+      "existing": false
+    },
+    "BottomShallowLinkCheck": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkCheck",
+      "existing": false
+    },
+    "Bravyi360BottomBetaCache": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomBetaCache",
+      "existing": false
+    },
+    "Bravyi360BottomForest": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForest",
+      "existing": false
+    },
+    "BottomForestGroup": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestGroup",
+      "existing": false
+    },
+    "BottomForestSound": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestSound",
+      "existing": false
+    },
+    "BottomForestCheck": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestCheck",
+      "existing": false
+    },
+    "Bravyi360Adjoints": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Adjoints",
+      "existing": false
+    },
+    "Bravyi360BottomEAdjoint": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEAdjoint",
+      "existing": false
+    },
+    "MaskAdjoint": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskAdjoint",
+      "existing": false
+    },
+    "MaskDual": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskDual",
+      "existing": false
+    },
+    "DualCover": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.DualCover",
+      "existing": false
+    },
+    "ReconWindow": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.ReconWindow",
+      "existing": false
+    },
+    "Bravyi360BottomRAdjoint": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomRAdjoint",
+      "existing": false
+    },
+    "Bravyi360TopEAdjoint": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopEAdjoint",
+      "existing": false
+    },
+    "Bravyi360TopRAdjoint": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopRAdjoint",
+      "existing": false
+    },
+    "MaskPeel": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskPeel",
+      "existing": false
+    },
+    "PackedListCertificate": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedListCertificate",
+      "existing": false
+    },
+    "MaskRowEval": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskRowEval",
+      "existing": false
+    },
+    "ForestReconstruct": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.ForestReconstruct",
+      "existing": false
+    },
+    "ReconWalk": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.ReconWalk",
+      "existing": false
+    },
+    "SmallMaskPair": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SmallMaskPair",
+      "existing": false
+    },
+    "TaggedReconstruction": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.TaggedReconstruction",
+      "existing": false
+    },
+    "ReconComposition": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.ReconComposition",
+      "existing": false
+    },
+    "BatchListBinary": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchListBinary",
+      "existing": false
+    },
+    "BatchReconLane": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchReconLane",
+      "existing": false
+    },
+    "BottomForestFastPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart0",
+      "existing": false
+    },
+    "BottomForestPacked": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestPacked",
+      "existing": false
+    },
+    "PackedDataExpand": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.PackedDataExpand",
+      "existing": false
+    },
+    "BottomForestFastPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart1",
+      "existing": false
+    },
+    "BottomForestFastPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart2",
+      "existing": false
+    },
+    "BottomForestFastPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart3",
+      "existing": false
+    },
+    "BottomForestFastPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart4",
+      "existing": false
+    },
+    "BottomForestFastPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart5",
+      "existing": false
+    },
+    "BottomForestFastPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart6",
+      "existing": false
+    },
+    "BottomForestFastPart7": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart7",
+      "existing": false
+    },
+    "BottomForestFastPart8": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart8",
+      "existing": false
+    },
+    "BottomForestFastPart9": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart9",
+      "existing": false
+    },
+    "BottomForestFastPart10": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart10",
+      "existing": false
+    },
+    "BottomForestFastPart11": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart11",
+      "existing": false
+    },
+    "BottomForestFastPart12": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart12",
+      "existing": false
+    },
+    "BottomForestFastPart13": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomForestFastPart13",
+      "existing": false
+    },
+    "PackedListLookup": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedListLookup",
+      "existing": false
+    },
+    "Bravyi360BottomEmptyData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmptyData",
+      "existing": false
+    },
+    "BottomShallowLinkPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart1",
+      "existing": false
+    },
+    "BottomShallowLinkPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart2",
+      "existing": false
+    },
+    "BottomShallowLinkPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart3",
+      "existing": false
+    },
+    "BottomShallowLinkPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart4",
+      "existing": false
+    },
+    "BottomShallowLinkPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart5",
+      "existing": false
+    },
+    "BottomShallowLinkPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart6",
+      "existing": false
+    },
+    "BottomShallowLinkPart7": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart7",
+      "existing": false
+    },
+    "BottomShallowLinkPart8": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomShallowLinkPart8",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty0",
+      "existing": false
+    },
+    "Bravyi360DualData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DualData",
+      "existing": false
+    },
+    "BatchDualRaw": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchDualRaw",
+      "existing": false
+    },
+    "BatchDualSemantics": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchDualSemantics",
+      "existing": false
+    },
+    "BatchParity": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchParity",
+      "existing": false
+    },
+    "OutsideMaskBounds": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.OutsideMaskBounds",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty1",
+      "existing": false
+    },
+    "BatchCap1Raw": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BatchCap1Raw",
+      "existing": false
+    },
+    "BatchCap1": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchCap1",
+      "existing": false
+    },
+    "Cap1Scalar": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.Cap1Scalar",
+      "existing": false
+    },
+    "DualConstraints": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DualConstraints",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2Batch": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2Batch",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData0",
+      "existing": false
+    },
+    "BottomEmptyTwoBatch": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmptyTwoBatch",
+      "existing": false
+    },
+    "BottomCap1Cover": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomCap1Cover",
+      "existing": false
+    },
+    "Cap1List": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Cap1List",
+      "existing": false
+    },
+    "DualPlaneCertificate": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DualPlaneCertificate",
+      "existing": false
+    },
+    "PairPlaneCoverage": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PairPlaneCoverage",
+      "existing": false
+    },
+    "PairMaskBasics": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PairMaskBasics",
+      "existing": false
+    },
+    "BitDilation": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BitDilation",
+      "existing": false
+    },
+    "BitPlaneFilter": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BitPlaneFilter",
+      "existing": false
+    },
+    "CapTwoFast": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.CapTwoFast",
+      "existing": false
+    },
+    "Bravyi360PairTables": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.PairTables",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData1",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData2",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData3",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData4",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData5",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData6",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData7": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData7",
+      "existing": false
+    },
+    "Bravyi360BottomEmpty2BatchData8": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmpty2BatchData8",
+      "existing": false
+    },
+    "Bravyi360BottomEmptyWeights": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomEmptyWeights",
+      "existing": false
+    },
+    "BatchWidePopcount": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.BatchWidePopcount",
+      "existing": false
+    },
+    "Bravyi360BottomPositiveComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveComplete",
+      "existing": false
+    },
+    "Bravyi360BottomPositiveOne": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOne",
+      "existing": false
+    },
+    "BottomPositiveOnePart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart0",
+      "existing": false
+    },
+    "BottomPositiveOnePart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart1",
+      "existing": false
+    },
+    "BottomPositiveOnePart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart2",
+      "existing": false
+    },
+    "BottomPositiveOnePart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart3",
+      "existing": false
+    },
+    "BottomPositiveOnePart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart4",
+      "existing": false
+    },
+    "BottomPositiveOnePart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart5",
+      "existing": false
+    },
+    "BottomPositiveOnePart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart6",
+      "existing": false
+    },
+    "BottomPositiveOnePart7": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart7",
+      "existing": false
+    },
+    "BottomPositiveOnePart8": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart8",
+      "existing": false
+    },
+    "BottomPositiveOnePart9": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart9",
+      "existing": false
+    },
+    "BottomPositiveOnePart10": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart10",
+      "existing": false
+    },
+    "BottomPositiveOnePart11": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart11",
+      "existing": false
+    },
+    "BottomPositiveOnePart12": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart12",
+      "existing": false
+    },
+    "BottomPositiveOnePart13": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveOnePart13",
+      "existing": false
+    },
+    "Bravyi360BottomPositiveTwo": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwo",
+      "existing": false
+    },
+    "BottomPositiveTwoPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart0",
+      "existing": false
+    },
+    "BottomCap2Cover": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomCap2Cover",
+      "existing": false
+    },
+    "BottomPositiveTwoPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart1",
+      "existing": false
+    },
+    "BottomPositiveTwoPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart2",
+      "existing": false
+    },
+    "BottomPositiveTwoPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart3",
+      "existing": false
+    },
+    "BottomPositiveTwoPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart4",
+      "existing": false
+    },
+    "BottomPositiveTwoPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart5",
+      "existing": false
+    },
+    "BottomPositiveTwoPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart6",
+      "existing": false
+    },
+    "BottomPositiveTwoPart7": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart7",
+      "existing": false
+    },
+    "BottomPositiveTwoPart8": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart8",
+      "existing": false
+    },
+    "BottomPositiveTwoPart9": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart9",
+      "existing": false
+    },
+    "BottomPositiveTwoPart10": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart10",
+      "existing": false
+    },
+    "BottomPositiveTwoPart11": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart11",
+      "existing": false
+    },
+    "BottomPositiveTwoPart12": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart12",
+      "existing": false
+    },
+    "BottomPositiveTwoPart13": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomPositiveTwoPart13",
+      "existing": false
+    },
+    "Bravyi360BottomHighSearchComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchComplete",
+      "existing": false
+    },
+    "BottomHighSearchPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart0",
+      "existing": false
+    },
+    "BottomHighSearchSupport": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchSupport",
+      "existing": false
+    },
+    "SearchCertificate": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SearchCertificate",
+      "existing": false
+    },
+    "BottomHighSearchPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart1",
+      "existing": false
+    },
+    "BottomHighSearchPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart2",
+      "existing": false
+    },
+    "BottomHighSearchPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart3",
+      "existing": false
+    },
+    "BottomHighSearchPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart4",
+      "existing": false
+    },
+    "BottomHighSearchPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart5",
+      "existing": false
+    },
+    "BottomHighSearchPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart6",
+      "existing": false
+    },
+    "BottomHighSearchPart7": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart7",
+      "existing": false
+    },
+    "BottomHighSearchPart8": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart8",
+      "existing": false
+    },
+    "BottomHighSearchPart9": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart9",
+      "existing": false
+    },
+    "BottomHighSearchPart10": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart10",
+      "existing": false
+    },
+    "BottomHighSearchPart11": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart11",
+      "existing": false
+    },
+    "BottomHighSearchPart12": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart12",
+      "existing": false
+    },
+    "BottomHighSearchPart13": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomHighSearchPart13",
+      "existing": false
+    },
+    "DeepFiberComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFiberComplete",
+      "existing": false
+    },
+    "DeepFlatComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatComplete",
+      "existing": false
+    },
+    "DeepFlatBridge": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatBridge",
+      "existing": false
+    },
+    "DeepFlatReduction": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatReduction",
+      "existing": false
+    },
+    "FlatLift": {
+      "target": "QEC.Stabilizer.Framework.Homological.BBFlatLift",
+      "existing": false
+    },
+    "Bravyi360BaseFloor": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BaseFloor",
+      "existing": false
+    },
+    "Bravyi360BaseFloorChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BaseFloorChecks",
+      "existing": false
+    },
+    "Bravyi360BaseSparse": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BaseSparse",
+      "existing": false
+    },
+    "BaseCycleCensus": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BaseCycleCensus",
+      "existing": false
+    },
+    "ConcreteKernelSpan": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ConcreteKernelSpan",
+      "existing": false
+    },
+    "SortedCensus": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.SortedCensus",
+      "existing": false
+    },
+    "MaskSpan": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskSpan",
+      "existing": false
+    },
+    "LowCycleCensusNormalization": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.LowCycleCensusNormalization",
+      "existing": false
+    },
+    "LowCycleNormalization": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.LowCycleNormalization",
+      "existing": false
+    },
+    "Bravyi360BottomBoundarySheets": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomBoundarySheets",
+      "existing": false
+    },
+    "Bravyi360BottomBoundarySheetsData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.BottomBoundarySheetsData",
+      "existing": false
+    },
+    "MaskSparseSheets": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.MaskSparseSheets",
+      "existing": false
+    },
+    "Bravyi360DeepFlatData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatData",
+      "existing": false
+    },
+    "Bravyi360DeepFlatChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatChecks",
+      "existing": false
+    },
+    "Bravyi360DeepFlatPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatPart0",
+      "existing": false
+    },
+    "Bravyi360DeepFlatBatch": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatBatch",
+      "existing": false
+    },
+    "Bravyi360DeepFlatPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatPart1",
+      "existing": false
+    },
+    "Bravyi360DeepFlatPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatPart2",
+      "existing": false
+    },
+    "Bravyi360DeepFlatPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatPart3",
+      "existing": false
+    },
+    "Bravyi360DeepFlatPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepFlatPart4",
+      "existing": false
+    },
+    "DeepExceptionalBridge": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepExceptionalBridge",
+      "existing": false
+    },
+    "DeepBank": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepBank",
+      "existing": false
+    },
+    "DeepCensusData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DeepCensusData",
+      "existing": false
+    },
+    "AffineMaskCheck": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.AffineMaskCheck",
+      "existing": false
+    },
+    "AffineExceptions": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineExceptions",
+      "existing": false
+    },
+    "AffineInitialExceptions": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialExceptions",
+      "existing": false
+    },
+    "AffineInitialCommon": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialCommon",
+      "existing": false
+    },
+    "AffineSearchExceptions": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchExceptions",
+      "existing": false
+    },
+    "Bravyi360TopComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopComplete",
+      "existing": false
+    },
+    "Bravyi360TopAssembly": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopAssembly",
+      "existing": false
+    },
+    "Bravyi360TopCaseChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCaseChecks",
+      "existing": false
+    },
+    "Bravyi360TopCasePart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCasePart0",
+      "existing": false
+    },
+    "Bravyi360TopCaseCheck": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCaseCheck",
+      "existing": false
+    },
+    "Bravyi360TopCaseData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCaseData",
+      "existing": false
+    },
+    "Bravyi360TopFlatChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopFlatChecks",
+      "existing": false
+    },
+    "Bravyi360TopBoundarySheetsData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopBoundarySheetsData",
+      "existing": false
+    },
+    "Bravyi360TopEmptyData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopEmptyData",
+      "existing": false
+    },
+    "Bravyi360TopCasePart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCasePart1",
+      "existing": false
+    },
+    "Bravyi360TopCasePart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCasePart2",
+      "existing": false
+    },
+    "Bravyi360TopCasePart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCasePart3",
+      "existing": false
+    },
+    "Bravyi360TopCasePart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCasePart4",
+      "existing": false
+    },
+    "Bravyi360TopCasePart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopCasePart5",
+      "existing": false
+    },
+    "Bravyi360TopFlat": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopFlat",
+      "existing": false
+    },
+    "Bravyi360TopBoundarySheets": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopBoundarySheets",
+      "existing": false
+    },
+    "Bravyi360TopFiberBridge": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopFiberBridge",
+      "existing": false
+    },
+    "TopFiberBoundary": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopFiberBoundary",
+      "existing": false
+    },
+    "AffineFastMaps": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineFastMaps",
+      "existing": false
+    },
+    "Bravyi360MiddleFloor": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.MiddleFloor",
+      "existing": false
+    },
+    "Bravyi360MiddleEmpty": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.MiddleEmpty",
+      "existing": false
+    },
+    "Bravyi360MiddleFloorData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.MiddleFloorData",
+      "existing": false
+    },
+    "Bravyi360MiddleFlat": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.MiddleFlat",
+      "existing": false
+    },
+    "Bravyi360Assembly": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Assembly",
+      "existing": false
+    },
+    "TopNonempty": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonempty",
+      "existing": false
+    },
+    "TopNonemptyPart0Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart0Cached",
+      "existing": false
+    },
+    "AffineInitialPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart0",
+      "existing": false
+    },
+    "AffineSearchPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart0",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart0",
+      "existing": false
+    },
+    "AffineColumnCache": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineColumnCache",
+      "existing": false
+    },
+    "AffineCachedColumns": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.AffineCachedColumns",
+      "existing": false
+    },
+    "AffineBatchBoundary": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.AffineBatchBoundary",
+      "existing": false
+    },
+    "Bravyi360DiagonalData": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DiagonalData",
+      "existing": false
+    },
+    "AffineBoundaryGroup0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup0",
+      "existing": false
+    },
+    "AffineBoundaryMaps": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryMaps",
+      "existing": false
+    },
+    "PackedSlice": {
+      "target": "QEC.Stabilizer.Framework.Homological.Certificate.PackedSlice",
+      "existing": false
+    },
+    "TopNonemptyPart1Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart1Cached",
+      "existing": false
+    },
+    "AffineInitialPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart1",
+      "existing": false
+    },
+    "AffineSearchPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart1",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart1",
+      "existing": false
+    },
+    "AffineBoundaryGroup1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup1",
+      "existing": false
+    },
+    "TopNonemptyPart2Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart2Cached",
+      "existing": false
+    },
+    "AffineInitialPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart2",
+      "existing": false
+    },
+    "AffineSearchPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart2",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart2",
+      "existing": false
+    },
+    "AffineBoundaryGroup2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup2",
+      "existing": false
+    },
+    "TopNonemptyPart3Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart3Cached",
+      "existing": false
+    },
+    "AffineInitialPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart3",
+      "existing": false
+    },
+    "AffineSearchPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart3",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart3",
+      "existing": false
+    },
+    "AffineBoundaryGroup3": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup3",
+      "existing": false
+    },
+    "TopNonemptyPart4Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart4Cached",
+      "existing": false
+    },
+    "AffineInitialPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart4",
+      "existing": false
+    },
+    "AffineSearchPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart4",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart4",
+      "existing": false
+    },
+    "AffineBoundaryGroup4": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup4",
+      "existing": false
+    },
+    "TopNonemptyPart5Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart5Cached",
+      "existing": false
+    },
+    "AffineInitialPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart5",
+      "existing": false
+    },
+    "AffineSearchPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart5",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart5",
+      "existing": false
+    },
+    "AffineBoundaryGroup5": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup5",
+      "existing": false
+    },
+    "TopNonemptyPart6Cached": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopNonemptyPart6Cached",
+      "existing": false
+    },
+    "AffineInitialPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineInitialPart6",
+      "existing": false
+    },
+    "AffineSearchPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineSearchPart6",
+      "existing": false
+    },
+    "AffineBoundaryCachedPart6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryCachedPart6",
+      "existing": false
+    },
+    "AffineBoundaryGroup6": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.AffineBoundaryGroup6",
+      "existing": false
+    },
+    "Bravyi360TopEmpty0": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopEmpty0",
+      "existing": false
+    },
+    "Bravyi360TopEmpty1": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopEmpty1",
+      "existing": false
+    },
+    "Bravyi360TopEmpty2": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopEmpty2",
+      "existing": false
+    },
+    "Bravyi360TopEmpty2Data": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.TopEmpty2Data",
+      "existing": false
+    },
+    "Bravyi360DiagonalComplete": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DiagonalComplete",
+      "existing": false
+    },
+    "Bravyi360Diagonal": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Diagonal",
+      "existing": false
+    },
+    "Bravyi360DiagonalEmpty": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DiagonalEmpty",
+      "existing": false
+    },
+    "Bravyi360DiagonalBatch": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DiagonalBatch",
+      "existing": false
+    },
+    "Bravyi360DiagonalFlat": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.DiagonalFlat",
+      "existing": false
+    },
+    "Bravyi360NonzeroAssembly": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.NonzeroAssembly",
+      "existing": false
+    },
+    "Bravyi360Reachability": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.Reachability",
+      "existing": false
+    },
+    "Bravyi360ReachabilityChecks": {
+      "target": "QEC.Stabilizer.Codes.BivariateBicycle.Bravyi360.ReachabilityChecks",
+      "existing": false
+    }
+  }
+}

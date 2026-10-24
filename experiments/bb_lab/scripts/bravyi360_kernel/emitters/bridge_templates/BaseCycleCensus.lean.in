@@ -1,0 +1,100 @@
+import ConcreteKernelSpan
+import ConcretePermutations
+import ConcreteCensusBounds
+import SortedCensus
+
+set_option maxRecDepth 100000
+set_option maxHeartbeats 0
+
+namespace Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90
+
+/-- All laboratory base-code cycles of weight at most ten, in increasing mask order. -/
+def allBaseCycles10 : List Nat := @@allBaseCycles10@@
+
+/-- The finite target set characterized by the base syndrome and weight bound. -/
+def baseCycle10Target : Finset Nat := (Finset.range (2 ^ 90)).filter fun word =>
+  reconX cycleSyndrome word = 0 ∧ bitCount 90 word ≤ 10
+
+/-- The trellis census bounds the entire base-cycle target. -/
+theorem baseCycle10Target_card_le : baseCycle10Target.card ≤ 1954 := by
+  have hc := cycle_card_le (baseCycle10Target.image (reconX cyclePermutation))
+    (by
+      intro m hm
+      obtain ⟨word, hw, rfl⟩ := Finset.mem_image.mp hm
+      simp only [baseCycle10Target, Finset.mem_filter, Finset.mem_range] at hw
+      exact cycle_kernel_to_trellis hw.1 hw.2.1)
+    (by
+      intro m hm
+      obtain ⟨word, hw, rfl⟩ := Finset.mem_image.mp hm
+      simp only [baseCycle10Target, Finset.mem_filter, Finset.mem_range] at hw
+      rw [cycle_permutation_weight hw.1]
+      exact hw.2.2)
+  have hinj : Set.InjOn (reconX cyclePermutation) (↑baseCycle10Target : Set Nat) := by
+    intro a ha b hb heq
+    have ha' : a < 2 ^ 90 := (Finset.mem_filter.mp ha).1 |> Finset.mem_range.mp
+    have hb' : b < 2 ^ 90 := (Finset.mem_filter.mp hb).1 |> Finset.mem_range.mp
+    exact cycle_permutation_injective ha' hb' heq
+  rw [Finset.card_image_iff.mpr hinj] at hc
+  exact hc
+
+/-- A compact predicate checks membership in the base-cycle target. -/
+def baseCycle10Valid (word : Nat) : Bool :=
+  decide (word < 2 ^ 90) && decide (reconX cycleSyndrome word = 0) &&
+    decide (bitCount 90 word ≤ 10)
+
+/-- The complete candidate list contains exactly 1954 distinct valid masks. -/
+theorem allBaseCycles10_checked : checkOrdered baseCycle10Valid 1954 0 allBaseCycles10 = true := by
+  decide +kernel
+
+/-- The candidate list has the full certified target cardinality. -/
+theorem allBaseCycles10_length : allBaseCycles10.length = 1954 :=
+  (checkOrdered_sound baseCycle10Valid allBaseCycles10 1954 0 allBaseCycles10_checked).1
+
+/-- Every base-code mask of weight at most ten occurs in the explicit census. -/
+theorem baseCycle10_complete {word : Nat} (hword : word < 2 ^ 90)
+    (hcycle : reconX cycleSyndrome word = 0) (hweight : bitCount 90 word ≤ 10) :
+    word ∈ allBaseCycles10 := by
+  obtain ⟨hlen, hsort, hall, _⟩ :=
+    checkOrdered_sound baseCycle10Valid allBaseCycles10 1954 0 allBaseCycles10_checked
+  have hvalid : ∀ k ∈ allBaseCycles10, id k ∈ baseCycle10Target := by
+    intro k hk
+    have hv := (List.all_eq_true.mp hall) k hk
+    simp only [baseCycle10Valid, Bool.and_eq_true, decide_eq_true_eq] at hv
+    exact Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hv.1.1, hv.1.2, hv.2⟩
+  have hm : word ∈ baseCycle10Target :=
+    Finset.mem_filter.mpr ⟨Finset.mem_range.mpr hword, hcycle, hweight⟩
+  obtain ⟨k, hk, heq⟩ := ordered_census_complete baseCycle10Target allBaseCycles10 id
+    hsort hvalid (fun _ _ _ _ h => h) (by rw [hlen]; exact baseCycle10Target_card_le) word hm
+  change k = word at heq
+  exact heq ▸ hk
+
+/-- The forty-five elementary base-code boundary masks. -/
+def baseBoundaryWindow : List (Nat × Nat) := @@baseBoundaryWindow@@
+
+/-- Boundary witnesses for the forty-six census masks lighter than eight. -/
+def baseFloorPairs : List (Nat × Nat) := @@baseFloorPairs@@
+
+/-- Read a stored boundary witness, with zero as the harmless default. -/
+def baseFloorCoefficient (word : Nat) : Nat :=
+  ((baseFloorPairs.find? (fun p => p.1 == word)).getD (0, 0)).2
+
+/-- Every census mask lighter than eight reconstructs as a boundary. -/
+theorem baseFloor_checked : allBaseCycles10.all (fun word =>
+    decide (8 ≤ bitCount 90 word) ||
+      decide (reconX baseBoundaryWindow (baseFloorCoefficient word) = word)) = true := by
+  decide +kernel
+
+/-- Every base-code cycle of weight less than eight has an explicit boundary witness. -/
+theorem base_floor_eight {word : Nat} (hword : word < 2 ^ 90)
+    (hcycle : reconX cycleSyndrome word = 0) (hweight : bitCount 90 word < 8) :
+    ∃ coefficient : Nat, reconX baseBoundaryWindow coefficient = word := by
+  have hm := baseCycle10_complete hword hcycle (by omega)
+  have hc := (List.all_eq_true.mp baseFloor_checked) word hm
+  simp only [Bool.or_eq_true, decide_eq_true_eq] at hc
+  rcases hc with hn | hb
+  · omega
+  · exact ⟨baseFloorCoefficient word, hb⟩
+
+#print axioms baseCycle10_complete
+#print axioms base_floor_eight
+end Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90

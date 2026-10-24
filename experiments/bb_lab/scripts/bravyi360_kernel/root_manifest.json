@@ -1,0 +1,192 @@
+{
+  "description": "Inputs and emitters for the two-cover proof; candidates are independently checked by Lean.",
+  "inputs": [
+    {
+      "path": "basefloor_certificates.json",
+      "compressed": "certificates/basefloor_certificates.json.gz",
+      "sha256": "3493b2bfc775c9888773786ef2a2e7ca96208d5aaa8231a783f2dbc09d32e78f",
+      "bytes": 4893
+    },
+    {
+      "path": "qec360-certprobe/gb_frame.json",
+      "compressed": "certificates/qec360-certprobe/gb_frame.json.gz",
+      "sha256": "d94e1458b49d971f55c40f0b2f5f17da33ed9b87266711af9fbd8c8ae4821e5d",
+      "bytes": 7355
+    },
+    {
+      "path": "qec360-certprobe/top_frame.json",
+      "compressed": "certificates/qec360-certprobe/top_frame.json.gz",
+      "sha256": "2c4e3c7361653c6195ba21ca1bbed7304c373cf5658057e4e9daf66cd44a9687",
+      "bytes": 14242
+    },
+    {
+      "path": "all_top_rung_certificates.jsonl",
+      "compressed": "certificates/all_top_rung_certificates.jsonl.gz",
+      "sha256": "ec19e7ae84c8376bf93db60aeca19a9f6b77d68f76517a45973f41639801f4c6",
+      "bytes": 42122526
+    },
+    {
+      "path": "cycles10_normalization.json",
+      "compressed": "certificates/cycles10_normalization.json.gz",
+      "sha256": "2aa0e158652aef9fb7e0374fb739018f386339ae537f6be962ac59a888353bfe",
+      "bytes": 165653
+    },
+    {
+      "path": "deep_bottom_certificates.json",
+      "compressed": "certificates/deep_bottom_certificates.json.gz",
+      "sha256": "23a04bfe8e2c775d8a49e5d63837a06c6670cf13943d6b0ca695060f09f2daf9",
+      "bytes": 185500
+    },
+    {
+      "path": "top_case_partition.json",
+      "compressed": "certificates/top_case_partition.json.gz",
+      "sha256": "43fe578c953abc73b97152270309423ff6c6f78321ac1c7c57fd56f821185b98",
+      "bytes": 466436
+    },
+    {
+      "path": "qec360-certprobe/bottom_partition.jsonl",
+      "compressed": "certificates/qec360-certprobe/bottom_partition.jsonl.gz",
+      "sha256": "fdaffd568f1a71947e5a1568848d27a39246f94c324421d65ef1b535882cc6e9",
+      "bytes": 25232180
+    },
+    {
+      "path": "qec360-certprobe/bottom_deep_order.json",
+      "compressed": "certificates/qec360-certprobe/bottom_deep_order.json.gz",
+      "sha256": "39c111c5951db36ff3fc249eeaa7510878a2210e16b46ee5c5093d7d807da349",
+      "bytes": 664
+    },
+    {
+      "path": "diagonal_cap_one_duals.json",
+      "compressed": "certificates/diagonal_cap_one_duals.json.gz",
+      "sha256": "eda0953107c50aacdff8c8bd12f0ab49784df625dadc8fe1dccbb1ee85e31401",
+      "bytes": 19395
+    },
+    {
+      "path": "diagonal_certificates.json",
+      "compressed": "certificates/diagonal_certificates.json.gz",
+      "sha256": "cbc1af012f500f1eb753b2e6426fbc38bce99a3e8388e11548a1d6d9e0e26c02",
+      "bytes": 82123
+    },
+    {
+      "path": "tower_direct43_cert.json",
+      "compressed": "certificates/tower_direct43_cert.json.gz",
+      "sha256": "3be2b06983345672c9bdc66a6d3b6268d15c736665386e41315727d55afbaa29",
+      "bytes": 6805
+    }
+  ],
+  "emitters": [
+    "emitters/generate_middle_floor.py",
+    "emitters/generate_top_flat.py",
+    "emitters/generate_deep_flat.py",
+    "emitters/split_deep_flat_checks.py",
+    "emitters/generate_deep_flat_batch.py",
+    "emitters/generate_top_case.py",
+    "emitters/generate_bottom_case.py",
+    "emitters/generate_deep_normalization.py",
+    "emitters/generate_diagonal_batch.py",
+    "emitters/generate_diagonal_data.py",
+    "emitters/generate_tower_data.py"
+  ],
+  "steps": [
+    {
+      "script": "emitters/generate_middle_floor.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360MiddleFloorData.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_top_flat.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360TopBoundarySheetsData.lean",
+        "Bravyi360TopFlatChecks.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_deep_flat.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360BottomBoundarySheetsData.lean"
+      ]
+    },
+    {
+      "script": "emitters/split_deep_flat_checks.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360DeepFlatData.lean",
+        "Bravyi360DeepFlatChecks.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_deep_flat_batch.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360DeepFlatBatch.lean",
+        "Bravyi360DeepFlatPart0.lean",
+        "Bravyi360DeepFlatPart1.lean",
+        "Bravyi360DeepFlatPart2.lean",
+        "Bravyi360DeepFlatPart3.lean",
+        "Bravyi360DeepFlatPart4.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_top_case.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360TopCaseData.lean",
+        "Bravyi360TopCaseCheck.lean",
+        "Bravyi360TopCaseChecks.lean",
+        "Bravyi360TopCasePart0.lean",
+        "Bravyi360TopCasePart1.lean",
+        "Bravyi360TopCasePart2.lean",
+        "Bravyi360TopCasePart3.lean",
+        "Bravyi360TopCasePart4.lean",
+        "Bravyi360TopCasePart5.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_bottom_case.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360BottomCaseData.lean",
+        "Bravyi360BottomCaseChecks.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_deep_normalization.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360DeepNormalization.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_diagonal_batch.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360DiagonalBatch.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_diagonal_data.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360DiagonalData.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_tower_data.py",
+      "args": [],
+      "outputs": [
+        "Bravyi360FiberData.lean",
+        "Bravyi360ReachabilityData.lean"
+      ]
+    }
+  ],
+  "copies": [
+    {
+      "source": "emitters/balance_literals.py",
+      "stage": "qec360-certprobe/balance_literals.py"
+    }
+  ]
+}
