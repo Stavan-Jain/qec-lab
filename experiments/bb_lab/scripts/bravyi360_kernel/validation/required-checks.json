@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "exit_code": 0,
+      "label": "light",
+      "seconds": 21.186,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "blueprint",
+      "seconds": 7.328,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "widgets",
+      "seconds": 10.537,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "playground",
+      "seconds": 2.867,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "axiom-audit",
+      "seconds": 2.773,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "doubling-regressions",
+      "seconds": 3.058,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "umbrellas",
+      "seconds": 1.979,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "diff-whitespace",
+      "seconds": 0.024,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "staged-whitespace",
+      "seconds": 0.445,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "regeneration",
+      "seconds": 43.24,
+      "timeout": false
+    },
+    {
+      "exit_code": 0,
+      "label": "validator-clock-tests",
+      "seconds": 0.151,
+      "timeout": false
+    }
+  ],
+  "status": "passed"
+}

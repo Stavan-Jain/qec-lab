@@ -1,0 +1,77 @@
+import ConcreteTrellis
+import MaskLinear
+
+namespace Quantum.Stabilizer.Homological.F2Mask
+
+/-- Reconstruction checks on generators transport their entire XOR-span into a target span. -/
+theorem reconX_span_of_checks (sourceChecks targetWindow permutationWindow : List (Nat × Nat))
+    (hchecks : sourceChecks.all (fun gc =>
+      decide (reconX permutationWindow gc.1 = reconX targetWindow gc.2)) = true)
+    {word : Nat} (hword : XorSpan (sourceChecks.map Prod.fst) word) :
+    XorSpan (targetWindow.map Prod.snd) (reconX permutationWindow word) := by
+  induction hword with
+  | zero => simpa [reconX_zero] using (XorSpan.zero (gens := targetWindow.map Prod.snd))
+  | @step g word hg hw ih =>
+    obtain ⟨gc, hgc, rfl⟩ := List.mem_map.mp hg
+    have hc := of_decide_eq_true ((List.all_eq_true.mp hchecks) gc hgc)
+    rw [reconX_xor, hc]
+    exact (reconX_mem_span targetWindow gc.2).xor ih
+
+end Quantum.Stabilizer.Homological.F2Mask
+
+namespace Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90
+/-- Physical laboratory generators and their certified target coefficients. -/
+def stabLabChecks : List (Nat × Nat) := @@stabLabChecks@@
+
+/-- Optimized trellis generators indexed by coefficient bit. -/
+def stabWindow : List (Nat × Nat) := @@stabWindow@@
+
+/-- Coordinate permutation from laboratory masks to trellis masks. -/
+def stabPermutation : List (Nat × Nat) := @@stabPermutation@@
+
+/-- Every laboratory generator maps to its certified combination of trellis generators. -/
+theorem stab_basis_checks : stabLabChecks.all (fun gc =>
+    decide (reconX stabPermutation gc.1 = reconX stabWindow gc.2)) = true := by
+  decide +kernel
+
+/-- The reconstruction outputs are exactly the trellis's certified generator list. -/
+theorem stab_window_generators : stabWindow.map Prod.snd = stabGenerators := by
+  decide +kernel
+
+/-- Coordinate permutation takes the laboratory generator span into the certified trellis span. -/
+theorem stab_lab_span_to_trellis {word : Nat}
+    (hword : XorSpan (stabLabChecks.map Prod.fst) word) :
+    XorSpan stabGenerators (reconX stabPermutation word) := by
+  rw [← stab_window_generators]
+  exact reconX_span_of_checks stabLabChecks stabWindow stabPermutation stab_basis_checks hword
+
+#print axioms stab_lab_span_to_trellis
+
+/-- Physical laboratory generators and their certified target coefficients. -/
+def cycleLabChecks : List (Nat × Nat) := @@cycleLabChecks@@
+
+/-- Optimized trellis generators indexed by coefficient bit. -/
+def cycleWindow : List (Nat × Nat) := @@cycleWindow@@
+
+/-- Coordinate permutation from laboratory masks to trellis masks. -/
+def cyclePermutation : List (Nat × Nat) := @@cyclePermutation@@
+
+/-- Every laboratory generator maps to its certified combination of trellis generators. -/
+theorem cycle_basis_checks : cycleLabChecks.all (fun gc =>
+    decide (reconX cyclePermutation gc.1 = reconX cycleWindow gc.2)) = true := by
+  decide +kernel
+
+/-- The reconstruction outputs are exactly the trellis's certified generator list. -/
+theorem cycle_window_generators : cycleWindow.map Prod.snd = cycleGenerators := by
+  decide +kernel
+
+/-- Coordinate permutation takes the laboratory generator span into the certified trellis span. -/
+theorem cycle_lab_span_to_trellis {word : Nat}
+    (hword : XorSpan (cycleLabChecks.map Prod.fst) word) :
+    XorSpan cycleGenerators (reconX cyclePermutation word) := by
+  rw [← cycle_window_generators]
+  exact reconX_span_of_checks cycleLabChecks cycleWindow cyclePermutation cycle_basis_checks hword
+
+#print axioms cycle_lab_span_to_trellis
+
+end Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90

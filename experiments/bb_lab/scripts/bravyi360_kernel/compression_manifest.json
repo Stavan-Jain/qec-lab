@@ -1,0 +1,264 @@
+{
+  "description": "Portable packed linear, shallow-fiber, dual obstruction and family-linkage certificates. Inputs are candidate witnesses, independently checked by Lean; no generator output is trusted. Run steps in order with QEC360_STAGE set to a writable staging directory.",
+  "inputs": [
+    {
+      "path": "qec360-certprobe/gb_orbit_membership.jsonl",
+      "compressed": "certificates/qec360-certprobe/gb_orbit_membership.jsonl.gz",
+      "sha256": "a0cf9a38c192fe0ad36e3efa94ab84df794bec2cbf9691bbeb234a248a1f7865",
+      "bytes": 28706643
+    },
+    {
+      "path": "qec360-certprobe/gb_orbit_certificates.jsonl",
+      "compressed": "certificates/qec360-certprobe/gb_orbit_certificates.jsonl.gz",
+      "sha256": "82599037c4d12deb2e6626c795f32b60c825de08d8fad055581022a2519f373f",
+      "bytes": 21650178
+    },
+    {
+      "path": "qec360-certprobe/gb_frame.json",
+      "compressed": "certificates/qec360-certprobe/gb_frame.json.gz",
+      "sha256": "d94e1458b49d971f55c40f0b2f5f17da33ed9b87266711af9fbd8c8ae4821e5d",
+      "bytes": 7355
+    },
+    {
+      "path": "qec360-certprobe/top_frame.json",
+      "compressed": "certificates/qec360-certprobe/top_frame.json.gz",
+      "sha256": "2c4e3c7361653c6195ba21ca1bbed7304c373cf5658057e4e9daf66cd44a9687",
+      "bytes": 14242
+    },
+    {
+      "path": "qec360-certprobe/top_frame90.json",
+      "compressed": "certificates/qec360-certprobe/top_frame90.json.gz",
+      "sha256": "13ae1c30ee3e7cf64e1eff11860ef53898a0633d88cdca0caa05f890655f3096",
+      "bytes": 6678
+    },
+    {
+      "path": "qec360-certprobe/top_empty_dual90_certificates.jsonl",
+      "compressed": "certificates/qec360-certprobe/top_empty_dual90_certificates.jsonl.gz",
+      "sha256": "35cce22553228cf70f3926fe09fb925a1dc762ef0e1a52057197418fe8c362d0",
+      "bytes": 2746443
+    },
+    {
+      "path": "qec360-certprobe/emptycap45_short5.tsv",
+      "compressed": "certificates/qec360-certprobe/emptycap45_short5.tsv.gz",
+      "sha256": "963dd5ad569dbab389f49825adb8863ceac43cd97c695d3ec2d18079cbdc15a5",
+      "bytes": 9250859
+    },
+    {
+      "path": "qec360-certprobe/emptycap45_1.tsv",
+      "compressed": "certificates/qec360-certprobe/emptycap45_1.tsv.gz",
+      "sha256": "dde5b02645bc5666d7419f1b1879bffca4ff9d923447cf2179f4af43f7028a10",
+      "bytes": 1799325
+    },
+    {
+      "path": "qec360-certprobe/emptycap45_2.tsv",
+      "compressed": "certificates/qec360-certprobe/emptycap45_2.tsv.gz",
+      "sha256": "b94d05e754f59af85fe7d9f656baf18225db17d94f9de19c8506fc94b10dbe96",
+      "bytes": 141266
+    },
+    {
+      "path": "qec360-certprobe/bottom_top_links.jsonl",
+      "compressed": "certificates/qec360-certprobe/bottom_top_links.jsonl.gz",
+      "sha256": "d0265b3fd42f6ce1fb4e22f3883a1b3629c0cae814469f15e1665e2f010c8d5e",
+      "bytes": 7339702
+    },
+    {
+      "path": "qec360-certprobe/fibers_le4.tsv",
+      "compressed": "certificates/qec360-certprobe/fibers_le4.tsv.gz",
+      "sha256": "043bfb233480e2253405fa68d41c42f090e5460774964f9a143766e3c45d1df8",
+      "bytes": 2381987
+    },
+    {
+      "path": "qec360-certprobe/nonempty_peel_certificates.jsonl",
+      "compressed": "certificates/qec360-certprobe/nonempty_peel_certificates.jsonl.gz",
+      "sha256": "7d8fa317646e06b13a23ad77f99eec61f6836dea2cad0be19807fab0276b54c0",
+      "bytes": 11722763
+    },
+    {
+      "path": "qec360-certprobe/nonempty_dual_covers.jsonl",
+      "compressed": "certificates/qec360-certprobe/nonempty_dual_covers.jsonl.gz",
+      "sha256": "c1f9d51594d45b38d996820d9d76a1aad109f29a6104a48ab9d69761a7818f20",
+      "bytes": 2060728
+    },
+    {
+      "path": "tower_direct43_cert.json",
+      "compressed": "certificates/tower_direct43_cert.json.gz",
+      "sha256": "3be2b06983345672c9bdc66a6d3b6268d15c736665386e41315727d55afbaa29",
+      "bytes": 6805
+    },
+    {
+      "path": "all_top_rung_certificates.jsonl",
+      "compressed": "certificates/all_top_rung_certificates.jsonl.gz",
+      "sha256": "ec19e7ae84c8376bf93db60aeca19a9f6b77d68f76517a45973f41639801f4c6",
+      "bytes": 42122526
+    }
+  ],
+  "copies": [
+    {
+      "source": "emitters/compression_balance_literals.py",
+      "stage": "qec360-certprobe/balance_literals.py"
+    },
+    {
+      "source": "emitters/compression_compact_literals.py",
+      "stage": "qec360-certprobe/compact_literals.py"
+    },
+    {
+      "source": "emitters/compression_final_forest_data.py",
+      "stage": "qec360-certprobe/final_forest_data.py"
+    }
+  ],
+  "steps": [
+    {
+      "script": "emitters/compression_membership_batch.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360Membership.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_top_bank.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360TopBank.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_make_adjoints.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomEAdjoint.lean",
+        "qec360-certprobe/Bravyi360BottomRAdjoint.lean",
+        "qec360-certprobe/Bravyi360TopEAdjoint.lean",
+        "qec360-certprobe/Bravyi360TopRAdjoint.lean",
+        "qec360-certprobe/Bravyi360Adjoints.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_dual_matrix_bridge.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360DualData.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_top_empty_data.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360TopEmptyData.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_top_empty_zero.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360TopEmpty0.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_bottom_empty_data.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomEmptyData.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_bottom_empty_zero.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomEmpty0.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_empty_one.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360TopEmpty1.lean",
+        "qec360-certprobe/Bravyi360BottomEmpty1.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_bottom_empty_weights.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomEmptyWeights.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_forest_fast_data.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/BottomForestFastPart0.lean",
+        "qec360-certprobe/BottomForestFastPart1.lean",
+        "qec360-certprobe/BottomForestFastPart2.lean",
+        "qec360-certprobe/BottomForestFastPart3.lean",
+        "qec360-certprobe/BottomForestFastPart4.lean",
+        "qec360-certprobe/BottomForestFastPart5.lean",
+        "qec360-certprobe/BottomForestFastPart6.lean",
+        "qec360-certprobe/BottomForestFastPart7.lean",
+        "qec360-certprobe/BottomForestFastPart8.lean",
+        "qec360-certprobe/BottomForestFastPart9.lean",
+        "qec360-certprobe/BottomForestFastPart10.lean",
+        "qec360-certprobe/BottomForestFastPart11.lean",
+        "qec360-certprobe/BottomForestFastPart12.lean",
+        "qec360-certprobe/BottomForestFastPart13.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_forest_global.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomForest.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_forest_beta_cache.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomBetaCache.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_positive_one_data.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/BottomPositiveOnePart0.lean",
+        "qec360-certprobe/BottomPositiveOnePart1.lean",
+        "qec360-certprobe/BottomPositiveOnePart2.lean",
+        "qec360-certprobe/BottomPositiveOnePart3.lean",
+        "qec360-certprobe/BottomPositiveOnePart4.lean",
+        "qec360-certprobe/BottomPositiveOnePart5.lean",
+        "qec360-certprobe/BottomPositiveOnePart6.lean",
+        "qec360-certprobe/BottomPositiveOnePart7.lean",
+        "qec360-certprobe/BottomPositiveOnePart8.lean",
+        "qec360-certprobe/BottomPositiveOnePart9.lean",
+        "qec360-certprobe/BottomPositiveOnePart10.lean",
+        "qec360-certprobe/BottomPositiveOnePart11.lean",
+        "qec360-certprobe/BottomPositiveOnePart12.lean",
+        "qec360-certprobe/BottomPositiveOnePart13.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_positive_one_global.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/Bravyi360BottomPositiveOne.lean"
+      ]
+    },
+    {
+      "script": "emitters/compression_shallow_links.py",
+      "args": [],
+      "outputs": [
+        "qec360-certprobe/BottomShallowLinkCheck.lean",
+        "qec360-certprobe/BottomShallowLinkPart0.lean",
+        "qec360-certprobe/BottomShallowLinkPart1.lean",
+        "qec360-certprobe/BottomShallowLinkPart2.lean",
+        "qec360-certprobe/BottomShallowLinkPart3.lean",
+        "qec360-certprobe/BottomShallowLinkPart4.lean",
+        "qec360-certprobe/BottomShallowLinkPart5.lean",
+        "qec360-certprobe/BottomShallowLinkPart6.lean",
+        "qec360-certprobe/BottomShallowLinkPart7.lean",
+        "qec360-certprobe/BottomShallowLinkPart8.lean",
+        "qec360-certprobe/BottomShallowLinks.lean"
+      ]
+    }
+  ]
+}

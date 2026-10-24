@@ -1,0 +1,225 @@
+{
+  "description": "Portable trellis and affine-certificate emitters; explicit certificates are checked independently by the Lean kernel. Steps run in the listed order. Expand {stage} and {package} to absolute directories.",
+  "inputs": [
+    {
+      "path": "gb_trellis_dp_result.json",
+      "compressed": "certificates/gb_trellis_dp_result.json.gz",
+      "sha256": "7f988748d6fdac0330f95556e94bc948251519e2c1d5a45a3664d78d534b35ea",
+      "bytes": 4483
+    },
+    {
+      "path": "qec-cluster-audit/extra-cosets.json",
+      "compressed": "certificates/qec-cluster-audit/extra-cosets.json.gz",
+      "sha256": "ee824475be461177dcbd9b495473a58a1e8ff231531d463f6efdca478f502193",
+      "bytes": 258
+    },
+    {
+      "path": "qec-cluster-audit/trellis_bridge_data.json",
+      "compressed": "certificates/qec-cluster-audit/trellis_bridge_data.json.gz",
+      "sha256": "310c2002a3f5641ce5f6d537a28a926fe66253d9a686a680de7969b92e869d80",
+      "bytes": 82649
+    },
+    {
+      "path": "qec360-certprobe/top_frame.json",
+      "compressed": "certificates/qec360-certprobe/top_frame.json.gz",
+      "sha256": "2c4e3c7361653c6195ba21ca1bbed7304c373cf5658057e4e9daf66cd44a9687",
+      "bytes": 14242
+    },
+    {
+      "path": "qec360-certprobe/gb_frame.json",
+      "compressed": "certificates/qec360-certprobe/gb_frame.json.gz",
+      "sha256": "d94e1458b49d971f55c40f0b2f5f17da33ed9b87266711af9fbd8c8ae4821e5d",
+      "bytes": 7355
+    },
+    {
+      "path": "all_top_rung_certificates.jsonl",
+      "compressed": "certificates/all_top_rung_certificates.jsonl.gz",
+      "sha256": "ec19e7ae84c8376bf93db60aeca19a9f6b77d68f76517a45973f41639801f4c6",
+      "bytes": 42122526
+    },
+    {
+      "path": "deep_bottom_certificates.json",
+      "compressed": "certificates/deep_bottom_certificates.json.gz",
+      "sha256": "23a04bfe8e2c775d8a49e5d63837a06c6670cf13943d6b0ca695060f09f2daf9",
+      "bytes": 185500
+    },
+    {
+      "path": "diagonal_certificates.json",
+      "compressed": "certificates/diagonal_certificates.json.gz",
+      "sha256": "cbc1af012f500f1eb753b2e6426fbc38bce99a3e8388e11548a1d6d9e0e26c02",
+      "bytes": 82123
+    },
+    {
+      "path": "qec360-certprobe/nonempty_peel_certificates.jsonl",
+      "compressed": "certificates/qec360-certprobe/nonempty_peel_certificates.jsonl.gz",
+      "sha256": "7d8fa317646e06b13a23ad77f99eec61f6836dea2cad0be19807fab0276b54c0",
+      "bytes": 11722763
+    }
+  ],
+  "steps": [
+    {
+      "script": "emitters/generate_trellis_censuses.py",
+      "args": [
+        "--trellis-data",
+        "{stage}/gb_trellis_dp_result.json",
+        "--extra-cosets",
+        "{stage}/qec-cluster-audit/extra-cosets.json",
+        "--out",
+        "{stage}/qec-cluster-audit"
+      ],
+      "outputs": [
+        "qec-cluster-audit/ConcreteTrellis.lean",
+        "qec-cluster-audit/Censusstab.lean",
+        "qec-cluster-audit/CensusW121.lean",
+        "qec-cluster-audit/CensusW151.lean",
+        "qec-cluster-audit/CensusW238.lean",
+        "qec-cluster-audit/Censuscycle.lean",
+        "qec-cluster-audit/ConcreteCensusBounds.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_trellis_bridges.py",
+      "args": [
+        "--data",
+        "{stage}/qec-cluster-audit/trellis_bridge_data.json",
+        "--templates",
+        "{package}/emitters/bridge_templates",
+        "--out",
+        "{stage}/qec-cluster-audit"
+      ],
+      "outputs": [
+        "qec-cluster-audit/TrellisBasisBridge.lean",
+        "qec-cluster-audit/ConcreteKernelSpan.lean",
+        "qec-cluster-audit/ReachableBasisChecks.lean",
+        "qec-cluster-audit/BaseCycleCensus.lean",
+        "qec-cluster-audit/ConcretePermutations.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_affine_maps.py",
+      "args": [
+        "--out",
+        "{stage}/qec-cluster-audit"
+      ],
+      "outputs": [
+        "qec-cluster-audit/AffineFastMaps.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_affine_search.py",
+      "args": [
+        "--top-certificates",
+        "{stage}/all_top_rung_certificates.jsonl",
+        "--deep-certificates",
+        "{stage}/deep_bottom_certificates.json",
+        "--diagonal-certificates",
+        "{stage}/diagonal_certificates.json",
+        "--top-frame",
+        "{stage}/qec360-certprobe/top_frame.json",
+        "--bottom-frame",
+        "{stage}/qec360-certprobe/gb_frame.json",
+        "--out",
+        "{stage}/qec-cluster-audit"
+      ],
+      "outputs": [
+        "qec-cluster-audit/AffineSearchExceptions.lean",
+        "qec-cluster-audit/AffineSearchPart0.lean",
+        "qec-cluster-audit/AffineSearchPart1.lean",
+        "qec-cluster-audit/AffineSearchPart2.lean",
+        "qec-cluster-audit/AffineSearchPart3.lean",
+        "qec-cluster-audit/AffineSearchPart4.lean",
+        "qec-cluster-audit/AffineSearchPart5.lean",
+        "qec-cluster-audit/AffineSearchPart6.lean",
+        "qec-cluster-audit/AffineInitialCommon.lean",
+        "qec-cluster-audit/AffineInitialExceptions.lean",
+        "qec-cluster-audit/AffineInitialPart0.lean",
+        "qec-cluster-audit/AffineInitialPart1.lean",
+        "qec-cluster-audit/AffineInitialPart2.lean",
+        "qec-cluster-audit/AffineInitialPart3.lean",
+        "qec-cluster-audit/AffineInitialPart4.lean",
+        "qec-cluster-audit/AffineInitialPart5.lean",
+        "qec-cluster-audit/AffineInitialPart6.lean",
+        "qec-cluster-audit/AffineExceptions.lean",
+        "qec-cluster-audit/DeepCensusData.lean",
+        "qec-cluster-audit/DeepBank.lean",
+        "qec-cluster-audit/DeepFiberData.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_affine_boundaries.py",
+      "args": [
+        "--top-certificates",
+        "{stage}/all_top_rung_certificates.jsonl",
+        "--top-frame",
+        "{stage}/qec360-certprobe/top_frame.json",
+        "--out",
+        "{stage}/qec-cluster-audit"
+      ],
+      "outputs": [
+        "qec-cluster-audit/AffineBoundaryGroup0.lean",
+        "qec-cluster-audit/AffineBoundaryGroup1.lean",
+        "qec-cluster-audit/AffineBoundaryGroup2.lean",
+        "qec-cluster-audit/AffineBoundaryGroup3.lean",
+        "qec-cluster-audit/AffineBoundaryGroup4.lean",
+        "qec-cluster-audit/AffineBoundaryGroup5.lean",
+        "qec-cluster-audit/AffineBoundaryGroup6.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart0.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart1.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart2.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart3.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart4.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart5.lean",
+        "qec-cluster-audit/AffineBoundaryCachedPart6.lean",
+        "qec-cluster-audit/TopNonemptyPart0Cached.lean",
+        "qec-cluster-audit/TopNonemptyPart1Cached.lean",
+        "qec-cluster-audit/TopNonemptyPart2Cached.lean",
+        "qec-cluster-audit/TopNonemptyPart3Cached.lean",
+        "qec-cluster-audit/TopNonemptyPart4Cached.lean",
+        "qec-cluster-audit/TopNonemptyPart5Cached.lean",
+        "qec-cluster-audit/TopNonemptyPart6Cached.lean",
+        "qec-cluster-audit/TopNonempty.lean"
+      ]
+    },
+    {
+      "script": "emitters/generate_highcap_search.py",
+      "args": [
+        "--bottom-frame",
+        "{stage}/qec360-certprobe/gb_frame.json",
+        "--forest-certificates",
+        "{stage}/qec360-certprobe/nonempty_peel_certificates.jsonl",
+        "--out",
+        "{stage}/qec-cluster-audit"
+      ],
+      "outputs": [
+        "qec-cluster-audit/BottomHighSearchPart0.lean",
+        "qec-cluster-audit/BottomHighSearchPart1.lean",
+        "qec-cluster-audit/BottomHighSearchPart2.lean",
+        "qec-cluster-audit/BottomHighSearchPart3.lean",
+        "qec-cluster-audit/BottomHighSearchPart4.lean",
+        "qec-cluster-audit/BottomHighSearchPart5.lean",
+        "qec-cluster-audit/BottomHighSearchPart6.lean",
+        "qec-cluster-audit/BottomHighSearchPart7.lean",
+        "qec-cluster-audit/BottomHighSearchPart8.lean",
+        "qec-cluster-audit/BottomHighSearchPart9.lean",
+        "qec-cluster-audit/BottomHighSearchPart10.lean",
+        "qec-cluster-audit/BottomHighSearchPart11.lean",
+        "qec-cluster-audit/BottomHighSearchPart12.lean",
+        "qec-cluster-audit/BottomHighSearchPart13.lean",
+        "qec-cluster-audit/Bravyi360BottomHighSearchComplete.lean"
+      ]
+    }
+  ],
+  "helpers": [
+    "emitters/balanced_nat_literal.py",
+    "emitters/kernel_only_data.py"
+  ],
+  "templates": [
+    "emitters/bridge_templates/BaseCycleCensus.lean.in",
+    "emitters/bridge_templates/ConcreteKernelSpan.lean.in",
+    "emitters/bridge_templates/ConcretePermutations.lean.in",
+    "emitters/bridge_templates/ReachableBasisChecks.lean.in",
+    "emitters/bridge_templates/TrellisBasisBridge.lean.in"
+  ],
+  "verification": "All 71 generated outputs reproduce byte-for-byte from the six packaged emitters and manifest inputs. All five trellis censuses, base cycle completeness and floor, 657 top/deep/diagonal search cases, 649 top nonempty fiber boundaries, 28 deep physical fibers, and 471 bottom high-cap search fibers have compiled. TopNonempty.boundary_of_mem, deepFiber_complete, and BottomForest.highFiberAt_complete depend exactly on propext, Classical.choice, and Quot.sound. The final bottom search cleanup only prefixes unused hypothesis names with underscores; the integrated fresh build verifies the frozen sources. All generated definitions and accessors are explicitly noncomputable.",
+  "kernel_data_policy": "All generated data and accessors are explicit noncomputable definitions: kernel terms and reducibility are retained; unused native compiler copies are omitted."
+}

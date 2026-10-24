@@ -1,0 +1,38 @@
+import KernelSpan
+import TrellisBasisBridge
+
+namespace Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90
+
+/-- Certified columns of the base-code kernel reconstruction. -/
+def cycleKernel : List (Nat × Nat) := @@cycleKernel@@
+
+/-- Certified columns of the base-code kernel reconstruction. -/
+def cycleDecoder : List (Nat × Nat) := @@cycleDecoder@@
+
+/-- Certified columns of the base-code kernel reconstruction. -/
+def cycleSection : List (Nat × Nat) := @@cycleSection@@
+
+/-- Certified columns of the base-code kernel reconstruction. -/
+def cycleSyndrome : List (Nat × Nat) := @@cycleSyndrome@@
+
+/-- Every coordinate is recovered from its free coordinates and syndrome. -/
+theorem cycle_reconstruct_checks : (List.range 90).all (fun i => decide
+    (reconX cycleKernel (reconX cycleDecoder (2 ^ i)) ^^^
+      reconX cycleSection (reconX cycleSyndrome (2 ^ i)) = 2 ^ i)) = true := by
+  decide +kernel
+
+/-- The certified free directions are the laboratory cycle generators used by the trellis. -/
+theorem cycle_kernel_generators : cycleKernel.map Prod.snd = cycleLabChecks.map Prod.fst := by
+  decide +kernel
+
+/-- Every bounded zero-syndrome laboratory mask maps into the optimized cycle trellis span. -/
+theorem cycle_kernel_to_trellis {word : Nat} (hword : word < 2 ^ 90)
+    (hcycle : reconX cycleSyndrome word = 0) :
+    XorSpan cycleGenerators (reconX cyclePermutation word) := by
+  apply cycle_lab_span_to_trellis
+  rw [← cycle_kernel_generators]
+  exact kernel_span_of_columns 90 cycleKernel cycleDecoder cycleSection cycleSyndrome
+    cycle_reconstruct_checks hword hcycle
+
+#print axioms cycle_kernel_to_trellis
+end Quantum.Stabilizer.Homological.F2Mask.Trellis.Bravyi90

@@ -1,0 +1,41 @@
+{
+  "all_safe_declarations_retained": true,
+  "audited_baseline_dependencies": 1702,
+  "checker_total_milliseconds": 806008,
+  "excluded_unsafe_or_partial_runtime_declarations": 30,
+  "fresh_build_capstone_axioms": {
+    "Quantum.Stabilizer.Homological.BB.Bravyi360.distance_lower_bound": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "Quantum.Stabilizer.Homological.BB.Bravyi360.stabilizerCode_hasDistance24": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "identical_safe_theorem_exports_coalesced": 4,
+  "kernel_replay_milliseconds": 802948,
+  "new_modules": 331,
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "replay_profile": true,
+  "required_capstone_count": 2,
+  "retained_capstones": [
+    "Quantum.Stabilizer.Homological.BB.Bravyi360.distance_lower_bound",
+    "Quantum.Stabilizer.Homological.BB.Bravyi360.stabilizerCode_hasDistance24"
+  ],
+  "safe_declarations": 39227,
+  "sleep_inclusive_elapsed_upper_bound_seconds": 807.916599834,
+  "sleep_inclusive_evidence": "sleep-inclusive-timing.json",
+  "status": "passed",
+  "strict_limit_seconds": 900,
+  "unchanged_inputs_verified_before_and_after_replay": true,
+  "validator_clock_basis": "Python time.monotonic; excludes macOS system sleep",
+  "validator_elapsed_includes_system_sleep": false,
+  "validator_replay_elapsed_seconds": 807.805
+}
