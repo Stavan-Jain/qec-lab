@@ -33,7 +33,23 @@ as cross-referencing PRs.
 | `scripts/gen_pair72_packaging_data.py` | `Z3Z6/StabilizerCodeData.lean` | 15-check ALL-PASS validation gate + `--force` guard; NOTE: the Lean-side split is done but the generator still emits the pre-split full file — retarget to data-only before the next regen |
 | `scripts/gen_base_floor_lean.py` | `BaseFloors/<Name>.lean` | class-member small-cycle bundles (A15/T2) |
 | `scripts/gen_f2a6_z5z30_data.py` | data feed for `Z5Z15F2A6/` | A17 line |
-| `scripts/m150_gen_lean_data.py` | A32 mitten [[150,30,10]]: `rehearsal` mode = budget probe (scratchpad); `instance` mode = **`Codes/Mitten/M150/Data.lean`** (Class G: GAP dictionary, sets, pivot/packed-inverse tables both sides, 30+30 symplectic logical supports, weight-10 witness pair) | falsify-first: dictionary hom + closed-form H vs `a26.mitten_code` + pivot inverses + symplectic conditions + witness all validated in numpy before emission; carrier `Multiplicative (ZMod 5) × DihedralGroup 3`; `Defs.lean` is hand-maintained |
+| `scripts/m150_gen_lean_data.py` | Historical A32 rehearsal and research bridge routines | Production generator moved to [mitten-distance-lean](https://github.com/Stavan-Jain/mitten-distance-lean/tree/main/scripts/mitten); retained here for `a32_m4_bridge_check.py` |
+
+## Mitten production certificates
+
+The maintained mitten formalization, production generators, required inputs,
+and bounded build launcher live together in
+[mitten-distance-lean](https://github.com/Stavan-Jain/mitten-distance-lean).
+From that checkout, run `python3 scripts/mitten/generate.py --verify` to
+reproduce all 43 generated Lean modules without changing them.
+
+The standalone generators use NumPy and pinned input certificates; they do
+not depend on this research checkout or rerun the original SAT search.
+QECLean supplies only the reusable lifted-product and packed-arithmetic
+foundations. The historical `m150_gen_lean_data.py` remains here because the
+research bridge checker imports its routines; it is not the production
+emitter. Attempt history and original measurements remain under
+`pipeline/attempts/mitten_150_30_10/`.
 
 ## Retired (`scripts/attic/`)
 

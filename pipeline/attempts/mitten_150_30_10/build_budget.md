@@ -8,7 +8,22 @@ added modules; parallelism across independent files may be counted, but
 each allocation below is written as if serial so parallel build is pure
 margin.
 
-## Allocations (target tier: 5 min = 300 s)
+## Kernel port (2026-11-04)
+
+The current port replaces every compiler-trusted leaf with kernel-checked
+certificates and symbolic proofs. Only `propext`, `Classical.choice`, and
+`Quot.sound` are permitted. The historical measurements below describe the
+parked implementation and do not validate the new port. The five-minute
+target and ten-minute ceiling remain in force. The 2026-11-06 measurement below
+meets the added-module fallback; the five-minute target remains missed.
+
+The certificate checker borrows the packed arithmetic approach from the
+parallel `[[360,12,24]]` formalization. It uses 32-bit lanes for the mitten
+code's 30-bit masks, broadcasts rectangular blocks of candidate pairs, and
+checks census membership through explicit indices. Joins group triples by
+their common block before checking the remaining pairs.
+
+## Historical allocations (target tier: 5 min = 300 s)
 
 | Layer | Files | Allocation | Notes |
 |---|---|---:|---|
@@ -37,19 +52,60 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
 
 ## Binding design rules
 
-1. Enumeration lives offline (Python emitter, falsify-first); Lean
-   checks **certificates** (pivot/rank/left-inverse tables).
-2. Few `native_decide` invocations, each a table-driven ∀-goal over
-   packed-Nat data; never per-case invocations in a case tree.
-3. Kernel `decide` for sub-second facts; `maxRecDepth` bumps local.
-4. One heavy leaf per file so lake parallelism turns leaves into margin;
-   leaf files import-minimal so they never rebuild on upstream edits.
-5. Every session touching Lean re-measures its files and updates the
-   ledger below; a PR is not opened while Measured-Total > 300 s
-   (> 600 s: work does not merge, full stop — fallback is the
-   hypothesis-backed conditional tier for the offending piece).
+1. Python proposes data; Lean proves coverage and checks every certificate.
+2. No `native_decide`, `sorry`, or custom axioms in library proofs. Audit the
+   final public declarations and run the repository-wide axiom check.
+3. Use symbolic identities to reduce finite checks to sparse tables and
+   packed arithmetic; avoid re-enumerating full matrix sums in the kernel.
+4. Keep certificate modules independent where possible so the build can
+   check them concurrently.
+5. Measure the full added-source build. Above 300 seconds, report the target
+   miss; above 600 seconds, do not merge the implementation.
 
 ## Measured ledger
+
+### Kernel-only port validation (2026-11-06)
+
+The unconditional distance theorem and logical basis now pass kernel checking.
+All 76 added Lean modules were rebuilt from source with dependencies cached,
+one Lean process at a time, one worker, and a 4608 MB Lean allocation guard.
+The guard is not a hard limit on resident memory.
+
+| Measurement | Result |
+|---|---:|
+| Added-module serial Lean time | 479.65 s |
+| Peak resident memory | 4.47 GiB |
+| Five-minute added-build target | Missed |
+| Ten-minute added-module fallback | Met |
+| Whole affected-repository run | Timed out at 600.07 s, after the port completed |
+| Continuation of remaining existing imports | Passed in 21.93 s |
+
+The whole-repository run includes existing downstream modules rebuilt after
+the framework imports changed. It is not interchangeable with the added-module
+measurement, and no uninterrupted whole-repository build under 600 seconds is
+claimed. Both the timeout and continuation are retained in
+`kernel_build_measurement.json`, alongside per-module measurements and source
+hashes.
+
+The full library, light import surface, blueprint target, widget target,
+Playground, and umbrella checks pass. The repository-wide axiom audit passes
+for 17,494 declarations across 272 modules with only `propext`,
+`Classical.choice`, and `Quot.sound`. The final capstones have no remaining
+floor or classifier hypotheses.
+
+The final certificates use 24 independent classifier parts, 380 splits,
+1,241 grids, 104 small mask-enumeration leaves, and four packed censuses.
+Packed input/census lookups avoid repeated list traversal; shift-based packing
+avoids multiplication by wide powers of two. Generators and elaboration propose
+data, while independent kernel proofs verify it.
+
+The standalone proof and its launcher now live in
+[mitten-distance-lean](https://github.com/Stavan-Jain/mitten-distance-lean).
+From that checkout, use `python3 scripts/build_bounded.py --root . build`.
+The numbers above remain historical measurements of QECLean revision
+`03a4023`; standalone validation is recorded in the new repository.
+The detailed historical native-check measurements below are preserved as
+history and do not describe the kernel-only port.
 
 | Date | File | Wall (s) | Method | Notes |
 |---|---|---:|---|---|
@@ -132,11 +188,11 @@ at 10⁷ scale.
 
 ## Measurement protocol
 
-```
-cd $QECLEAN_WORKTREE
-touch QEC/Stabilizer/Codes/Mitten/M150/*.lean QEC/Stabilizer/Framework/Homological/LiftedProduct.lean
-time lake build QEC.Stabilizer.Codes.Mitten
-```
+Use a fresh build directory with existing dependencies cached, or remove only
+this port's module artifacts before rebuilding. Merely touching sources does
+not invalidate Lake's content hashes. Measure one `lake build` with the mitten
+umbrella enabled and record both wall time and peak memory. Keep other heavy
+proof checks idle during the measurement.
 
 Record wall + user CPU; once per phase also measure the cold delta of a
 full `lake build` with and without the mitten umbrella imported from
