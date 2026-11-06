@@ -14,8 +14,8 @@ The current port replaces every compiler-trusted leaf with kernel-checked
 certificates and symbolic proofs. Only `propext`, `Classical.choice`, and
 `Quot.sound` are permitted. The historical measurements below describe the
 parked implementation and do not validate the new port. The five-minute
-target and ten-minute ceiling remain in force; record the complete added-source
-build measurement before treating the port as ready to merge.
+target and ten-minute ceiling remain in force. The 2026-11-06 measurement below
+meets the added-module fallback; the five-minute target remains missed.
 
 The certificate checker borrows the packed arithmetic approach from the
 parallel `[[360,12,24]]` formalization. It uses 32-bit lanes for the mitten
@@ -63,6 +63,46 @@ The 10-minute fallback, if invoked, is spent **only** on the M4 lines
    miss; above 600 seconds, do not merge the implementation.
 
 ## Measured ledger
+
+### Kernel-only port validation (2026-11-06)
+
+The unconditional distance theorem and logical basis now pass kernel checking.
+All 76 added Lean modules were rebuilt from source with dependencies cached,
+one Lean process at a time, one worker, and a 4608 MB Lean allocation guard.
+The guard is not a hard limit on resident memory.
+
+| Measurement | Result |
+|---|---:|
+| Added-module serial Lean time | 479.65 s |
+| Peak resident memory | 4.47 GiB |
+| Five-minute added-build target | Missed |
+| Ten-minute added-module fallback | Met |
+| Whole affected-repository run | Timed out at 600.07 s, after the port completed |
+| Continuation of remaining existing imports | Passed in 21.93 s |
+
+The whole-repository run includes existing downstream modules rebuilt after
+the framework imports changed. It is not interchangeable with the added-module
+measurement, and no uninterrupted whole-repository build under 600 seconds is
+claimed. Both the timeout and continuation are retained in
+`kernel_build_measurement.json`, alongside per-module measurements and source
+hashes.
+
+The full library, light import surface, blueprint target, widget target,
+Playground, and umbrella checks pass. The repository-wide axiom audit passes
+for 17,494 declarations across 272 modules with only `propext`,
+`Classical.choice`, and `Quot.sound`. The final capstones have no remaining
+floor or classifier hypotheses.
+
+The final certificates use 24 independent classifier parts, 380 splits,
+1,241 grids, 104 small mask-enumeration leaves, and four packed censuses.
+Packed input/census lookups avoid repeated list traversal; shift-based packing
+avoids multiplication by wide powers of two. Generators and elaboration propose
+data, while independent kernel proofs verify it.
+
+Reproduce the bounded build with
+`experiments/bb_lab/scripts/mitten_kernel/build_bounded.py --root <QECLean> build`.
+The detailed historical native-check measurements below are preserved as
+history and do not describe the kernel-only port.
 
 | Date | File | Wall (s) | Method | Notes |
 |---|---|---:|---|---|

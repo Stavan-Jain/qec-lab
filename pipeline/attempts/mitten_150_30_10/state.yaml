@@ -7,22 +7,36 @@ parameters:
 status: complete
 track: engineering          # M1–M3/M5; the M4 floors carried a moonshot-grade core
 started_at: 2026-08-10T00:00:00Z
-completed_at: 2026-08-11T00:00:00Z
-worktree_branch: claude/a32-lifted-product   # QECLean worktree a32-mitten150
-qec_lab_branch: claude/mitten-codes-work-ed68db
-estimated_loc: 4500          # across LiftedProduct framework + Mitten/M150 instance
-phase: complete              # CERTIFICATION COMPLETE @ QECLean 2440ec8:
-                             # M4 chain plumbing (FloorBridge + FloorZSide/
-                             # FloorXSide: maskOf/maskOf_op transfer, equation
-                             # transfer, mode dispatch, t-join, row
-                             # reconstruction) -> floorZ/floorX; M5 Distance.lean
-                             # -> m150StabilizerCode_hasCodeDistance_10 ->
-                             # mitten150StabilizerCodeWithDistance :
-                             # StabilizerCodeWithDistance 150 30 10.
-                             # Axioms: 3 std + native_decide; no sorries.
-                             # Forced full re-elab of all 14 modules: 125.8 s
-                             # serial / 67.5 s wall vs 300 s cap. Pushed to lab.
-covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean   # planned umbrella
+completed_at: 2026-11-06T00:00:00Z
+worktree_branch: codex/mitten-kernel
+qec_lab_branch: codex/mitten-kernel-certificates
+phase: complete              # Kernel-only distance and logical-basis certification.
+covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean
+native_predecessor:
+  qeclean_branch: claude/a32-lifted-product
+  qeclean_revision: 2440ec8
+  completed_at: 2026-08-11T00:00:00Z
+  native_leaves: 18
+  serial_build_seconds: 125.8
+  wall_build_seconds: 67.5
+kernel_port:
+  status: verified
+  qeclean_revision: 03a4023a77b45f2728ee1d2e6522c56c14ca0847
+  started_at: 2026-11-04T00:00:00Z
+  completed_at: 2026-11-06T00:00:00Z
+  allowed_axioms: [propext, Classical.choice, Quot.sound]
+  remaining_certificate_hypotheses: 0
+  added_modules: 76
+  classifier_parts: 24
+  splits: 380
+  grids: 1241
+  added_module_lean_seconds: 479.649
+  peak_rss_bytes: 4799168512
+  five_minute_target_met: false
+  ten_minute_added_module_fallback_met: true
+  whole_repository_uninterrupted_under_600_seconds_verified: false
+  validation: kernel_build_measurement.json
+  build_launcher: experiments/bb_lab/scripts/mitten_kernel/build_bounded.py
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0
 sorries_closed: 0

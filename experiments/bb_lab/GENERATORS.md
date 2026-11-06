@@ -53,6 +53,29 @@ for all four packed grid classifiers. The source census is
 classification and join is rechecked by Lean's kernel; the generators are
 not part of the proof's trust base.
 
+Mask coverage is split by weight and proved by small enumeration leaves
+joined symbolically. Classifier parts contain sixteen splits by default;
+`--splits-per-module` controls this partition without changing the checks.
+Generated proof elaboration is synchronous to limit retained proof state.
+`CensusTables.lean` certifies ninety-bit packed copies of the census lists;
+exceptional candidates use checked bit lookups instead of repeated list
+traversals. The packed numbers are emitted as readable 256-bit limbs.
+
+For memory-constrained machines, run the companion launcher (Python standard
+library only):
+
+```sh
+python3 experiments/bb_lab/scripts/mitten_kernel/build_bounded.py \
+  --root ../QECLean build
+python3 experiments/bb_lab/scripts/mitten_kernel/build_bounded.py \
+  --root ../QECLean env lean scripts/AxiomCheck.lean
+```
+
+It serializes Lean processes, applies a configurable allocation guard
+(4608 MB by default), and records timing and peak resident memory in the
+library checkout's `.lake/mitten-bounded/lean-processes.jsonl`. The guard
+does not impose a hard resident-memory limit.
+
 ## Retired (`scripts/attic/`)
 
 | Script | Why retired |

@@ -4,13 +4,16 @@
 Regenerate all classifier modules from the exported FloorData tables with::
 
     python3 experiments/bb_lab/scripts/mitten_kernel/generate_sweeps.py \\
-        --root /path/to/QECLean --all --force
+        --root /path/to/QECLean --all --force --splits-per-module 16
 
 The Python computations only propose certificate data.  Lean checks the exact
 mask coverage, linear maps, packed weight flags, and every surviving candidate.
 """
-import argparse, ast, hashlib, itertools, json, re, time
+import argparse, ast, hashlib, itertools, json, re, sys, time
+from math import comb
 from pathlib import Path
+
+sys.set_int_max_str_digits(0)
 
 NS='Quantum.Stabilizer.Homological.LP.M150'
 MOD='QEC.Stabilizer.Codes.Mitten.M150.'
@@ -20,16 +23,23 @@ Generator: qec-lab:experiments/bb_lab/scripts/mitten_kernel/generate_sweeps.py
 Data source: QEC/Stabilizer/Codes/Mitten/M150/FloorData.lean
 Regenerate: python3 experiments/bb_lab/scripts/mitten_kernel/generate_sweeps.py
   --root /path/to/QECLean --all --force
+  --splits-per-module {splits_per_module}
 All candidate coverage and packed computations are checked by Lean's kernel.
 -/
 '''
 def header(imports,packed=True):
  opens='PackedDigits F2Mask' if packed else 'F2Mask'
- return BANNER+'\n'+''.join('import '+MOD+x+'\n' for x in imports)+'\nnamespace '+NS+'\nopen '+opens+'\nset_option maxRecDepth 100000\n\n'
-def decl(name,typ,value,doc='Generated certificate data.'):
- return 'set_option maxHeartbeats 0 in\n-- Elaborating this generated certificate can exceed the default heartbeat budget.\n'+f'/-- {doc} -/\ndef {name} : {typ} := {value}\n\n'
+ return BANNER+'\n'+''.join('import '+MOD+x+'\n' for x in imports)+'\nnamespace '+NS+'\nopen '+opens+'\n-- Synchronous certificate elaboration bounds live proof state.\nset_option Elab.async false\nset_option maxRecDepth 100000\n\n'
+def decl(name,typ,value,doc='Generated certificate data.',where=False):
+ statement=f'def {name} : {typ}'+(' where\n' if where else ' := ')+value
+ if len(statement.splitlines()[0])>100:
+  statement=f'def {name} : {typ} :=\n  {value}'
+ return 'set_option maxHeartbeats 0 in\n-- Elaborating this generated certificate can exceed the default\n-- heartbeat budget.\n'+f'/-- {doc} -/\n{statement}\n\n'
 def theorem(name,typ,proof):
- return 'set_option maxHeartbeats 0 in\n-- Elaborating this generated certificate can exceed the default heartbeat budget.\n'+f'/-- Kernel-checked certificate for {name}. -/\ntheorem {name} : {typ} := by\n{proof}\n\n'
+ statement=f'theorem {name} : {typ} := by'
+ if len(statement.splitlines()[0])>100:
+  statement=f'theorem {name} :\n    {typ} := by'
+ return 'set_option maxHeartbeats 0 in\n-- Elaborating this generated certificate can exceed the default\n-- heartbeat budget.\n'+f'/-- Kernel-checked certificate for {name}. -/\n{statement}\n{proof}\n\n'
 def natlist(vals):
  if not vals:return '[]'
  size=5 if isinstance(vals[0],tuple) else 6
@@ -50,14 +60,48 @@ def weights(split):
  return (q if m==2 else p), (r if m in [0,2] else q), [q,r,p,r][m]
 
 def chunk_caps(outer_weight,inner_weight,outer_cap,inner_cap):
- return (32768 if inner_weight==0 else 4096 if inner_weight==1 else outer_cap), \
-   (32768 if outer_weight==0 else 4096 if outer_weight==1 else inner_cap)
+ return (2048 if inner_weight <= 1 else outer_cap), \
+   (2048 if outer_weight <= 1 else inner_cap)
+
+def mask_partition(weight,cap):
+ """Split the recursive enumeration until each certified leaf fits the cap."""
+ leaves=[]
+ def split(n,k,prefix):
+  if comb(n,k)<=cap:
+   values=sorted(prefix | sum(1<<i for i in c)
+     for c in itertools.combinations(range(n),k))
+   index=len(leaves);leaves.append((n,k,prefix,values))
+   return index
+  assert n>0 and k>0
+  return split(n-1,k,prefix),split(n-1,k-1,prefix | (1<<(n-1)))
+ tree=split(30,weight,0)
+ return leaves,tree
+
+def coalesce_leaves(leaves,cap):
+ """Greedily combine adjacent certified leaves without changing their order."""
+ groups=[];group=[];size=0
+ for i,(_,_,_,values) in enumerate(leaves):
+  if group and size+len(values)>cap:
+   groups.append(group);group=[];size=0
+  group.append(i);size+=len(values)
+ if group:groups.append(group)
+ return groups
+
+def cover_term(tree,family,indent=2):
+ """Render only symbolic splits and references to the checked leaves."""
+ if isinstance(tree,int):
+  name=f'{family}Leaf{tree}'
+  return f'MaskCover.leaf {name}\n'+(' '*indent)+f'{name}_enumerates'
+ pad=' '*indent
+ return 'MaskCover.split\n'+pad+'('+cover_term(tree[0],family,indent+2)+')\n'+pad+'('+cover_term(tree[1],family,indent+2)+')'
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);ap.add_argument('--instance',default='X0');ap.add_argument('--split',type=int,default=69);ap.add_argument('--chunk',type=int,default=512);ap.add_argument('--outer-chunk',type=int,default=256);ap.add_argument('--all',action='store_true');ap.add_argument('--force',action='store_true');args=ap.parse_args()
+ global BANNER
+ ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);ap.add_argument('--instance',default='X0');ap.add_argument('--split',type=int,default=69);ap.add_argument('--chunk',type=int,default=512);ap.add_argument('--outer-chunk',type=int,default=256);ap.add_argument('--all',action='store_true');ap.add_argument('--force',action='store_true');ap.add_argument('--splits-per-module',type=int,default=16,help='consecutive splits per classifier part (default: 16)');args=ap.parse_args()
+ if min(args.chunk,args.outer_chunk,args.splits_per_module)<1:
+  ap.error('chunk sizes and splits per module must be positive')
+ BANNER=BANNER.format(splits_per_module=args.splits_per_module)
  out=args.root/'QEC/Stabilizer/Codes/Mitten/M150';s=(out/'FloorData.lean').read_text()
- if not args.force and any((out/name).exists() for name in ['MaskChunks.lean','SweepMaps.lean']):
-  ap.error('generated data already exists; pass --force to regenerate')
  lists={k:ast.literal_eval(v) for k,v in re.findall(r'def (\w+) : List Nat := (\[[\s\S]*?\])',s)}
  for key,parts in re.findall(r'def (\w+) : List Nat := (\w+(?: \+\+ \w+)+)',s):
   lists[key]=[v for part in parts.split(' ++ ') for v in lists[part]]
@@ -68,6 +112,35 @@ def main():
   for k,v in re.findall(r'  (\w+) := (\w+|\[\])',b):fields[k]=lists[v] if v in lists else int(v) if v.isdigit() else []
   tables[n]=fields
   splits[n]=ast.literal_eval(re.search(r'def splits'+n+r' : List \(Nat × Nat × Nat × Nat\) := (\[[\s\S]*?\])',s).group(1))
+ part_modules={n:[f'ClassifierParts.{n}Part{i}'
+   for i in range((len(splits[n])+args.splits_per_module-1)//args.splits_per_module)]
+   for n in tables}
+ mask_modules=[f'MaskChunks.Weight{k}' for k in range(5)]
+ modules=mask_modules+['MaskChunks','SweepMaps','CensusTables']
+ if args.all:
+  modules+=[name for names in part_modules.values() for name in names]
+  modules+=['ClassifierParts']+['Classifier'+n for n in tables]+['FloorSweepX','FloorSweepZ']
+ else:
+  modules+=[f'{args.instance}Split{args.split}']
+ paths={name:out/(name.replace('.','/')+'.lean') for name in modules}
+ owner='Generator: qec-lab:experiments/bb_lab/scripts/mitten_kernel/generate_sweeps.py'
+ def owned(path):
+  return owner in path.read_text()[:1024]
+ for path in paths.values():
+  if path.exists():
+   if not args.force:
+    ap.error('generated data already exists; pass --force to regenerate')
+   if not owned(path):
+    ap.error(f'refusing to replace a file without this generator\'s banner: {path}')
+ mask_dir=out/'MaskChunks';mask_dir.mkdir(exist_ok=True)
+ stale_files=[path for path in mask_dir.glob('*.lean')
+   if re.fullmatch(r'Weight\d+\.lean',path.name)
+   and path not in paths.values() and owned(path)]
+ if args.all:
+  part_dir=out/'ClassifierParts';part_dir.mkdir(exist_ok=True)
+  stale_files += [path for path in part_dir.glob('*.lean')
+    if re.fullmatch(r'[XZ][01]Part\d+\.lean',path.name)
+    and path not in paths.values() and owned(path)]
  def images(n,m):
   t=tables[n]
   if m==0:return t['tUW'],t['tTW'],[0]
@@ -80,32 +153,49 @@ def main():
   for split in family:
    ow,iw,_=weights(split);ocap,icap=chunk_caps(ow,iw,args.outer_chunk,args.chunk)
    outer_needed.add((ow,ocap));inner_needed.add((iw,icap))
- chunks={(k,cap):[masks[k][i:i+cap] for i in range(0,len(masks[k]),cap)]
-   for k,cap in sorted(inner_needed)}
- outer_chunks={(k,cap):[masks[k][i:i+cap] for i in range(0,len(masks[k]),cap)]
-   for k,cap in sorted(outer_needed)}
- md=header(['SweepAdapters'],packed=False)
- base_for_weight={};family_for_cap={}
+ partitions={(k,cap):mask_partition(k,cap) for k,cap in sorted(inner_needed | outer_needed)}
+ groupings={key:coalesce_leaves(leaves,key[1]) for key,(leaves,_) in partitions.items()}
+ grouped_values={key:[[v for i in group for v in partitions[key][0][i][3]]
+   for group in groups] for key,groups in groupings.items()}
+ for (k,cap),(leaves,_) in partitions.items():
+  assert all(len(vs)<=cap for _,_,_,vs in leaves)
+  assert [v for _,_,_,vs in leaves for v in vs]==masks[k]
+  assert all(len(vs)<=cap for vs in grouped_values[k,cap])
+  assert [v for vs in grouped_values[k,cap] for v in vs]==masks[k]
+ chunks={key:grouped_values[key] for key in sorted(inner_needed)}
+ outer_chunks={key:grouped_values[key] for key in sorted(outer_needed)}
+ mask_code={k:header(['SweepAdapters','MaskEnumeration'],packed=False) for k in range(5)}
+ family_for_partition={}
  for prefix,chunk_map in [('masks',chunks),('outerMasks',outer_chunks)]:
   for (k,cap),cs in chunk_map.items():
+   md=mask_code[k]
    family=f'{prefix}{k}S{cap}'
-   previous=family_for_cap.get((k,cap));base=base_for_weight.get(k)
+   leaves,tree=partitions[k,cap]
+   partition_key=(k,tuple(tuple(vs) for vs in cs))
+   previous=family_for_partition.get(partition_key)
+   if not previous:
+    for i,(leaf_n,leaf_k,leaf_prefix,values) in enumerate(leaves):
+     name=f'{family}Leaf{i}'
+     md+=decl(name,'List Nat',natlist(values),
+       'One bounded leaf of the recursive fixed-weight mask enumeration.')
+     md+=theorem(name+'_enumerates',
+       f'{name} = (masksOfWt {leaf_n} {leaf_k}).map (fun m => m ||| {leaf_prefix})',
+       '  decide +kernel')
    for i,vs in enumerate(cs):
     name=f'{family}Chunk{i}'
     if previous:
      value=f'{previous}Chunk{i}'
-    elif cap==32768 and base:
-     value=f'{base}Chunks.flatten'
     else:
-     value=natlist(vs)
+     value=' ++\n  '.join(f'{family}Leaf{j}' for j in groupings[k,cap][i])
     md+=decl(name,'List Nat',value,'An ascending block of fixed-weight thirty-bit masks.')
    names=',\n'.join('  '+', '.join(f'{family}Chunk{i}' for i in range(j,min(j+3,len(cs))))
      for j in range(0,len(cs),3))
    md+=decl(f'{family}Chunks','List (List Nat)','[\n'+names+'\n]',
      'Blocks covering all masks of the specified weight.')
-   proof='  decide +kernel' if base is None else f'''  calc
-    {family}Chunks.flatten = {base}Chunks.flatten := by decide +kernel
-    _ = masksOfWt 30 {k} := {base}_cover'''
+   md+=decl(f'{family}Cover',f'MaskCover 30 {k} 0',
+     f'{previous}Cover' if previous else cover_term(tree,family),
+     'A recursive certificate combining the bounded enumeration leaves.')
+   proof=f'  exact MaskCover.cover_zero {family}Cover'
    md+=theorem(f'{family}_cover',f'{family}Chunks.flatten = masksOfWt 30 {k}',proof)
    for i in range(len(cs)):
     name=f'{family}Chunk{i}'
@@ -116,8 +206,12 @@ def main():
   rw [← {family}_cover]
   exact List.mem_flatten.mpr ⟨{name},
     {member}, hx⟩''')
-   base_for_weight.setdefault(k,family);family_for_cap.setdefault((k,cap),family)
- (out/'MaskChunks.lean').write_text(md+'end '+NS+'\n')
+   family_for_partition.setdefault(partition_key,family)
+   mask_code[k]=md
+ for k,code in mask_code.items():
+  paths[f'MaskChunks.Weight{k}'].write_text(code+'end '+NS+'\n')
+ paths['MaskChunks'].write_text(BANNER+'\n'+''.join(
+   'import '+MOD+name+'\n' for name in mask_modules))
  sm=header(['FloorData','PackedClassification'])
  for n in tables:
   for m in sorted(set(t[3] for t in splits[n])):
@@ -130,9 +224,26 @@ def main():
     sm+=theorem(name+'_bound',f'∀ x < 2 ^ 30, sweep{side} m4T{n} {m} x < 2 ^ 30',f'  intro x hx\n  rw [← {name}_eq x hx]\n  exact reconX_lt _ _ _ (fun p hp => ({name}_columns_bound p hp).2)')
    sm+=theorem(f'{n}M{m}_ann_bound',f'∀ a ∈ sweepAnn m4T{n} {m}, a < 2 ^ 30','  decide +kernel')
  (out/'SweepMaps.lean').write_text(sm+'end '+NS+'\n')
+ census_code=header(['FloorData','PackedClassification'])
+ for n in tables:
+  cls=tables[n]['cls']
+  assert all(0<=value<1<<90 for value in cls)
+  packed=sum(value<<(90*i) for i,value in enumerate(cls))
+  assert [(packed>>(90*i))&((1<<90)-1) for i in range(len(cls))]==cls
+  limbs=[(packed>>offset)&((1<<256)-1) for offset in range(0,packed.bit_length(),256)]
+  assert sum(value<<(256*i) for i,value in enumerate(limbs))==packed
+  data=f'  count := {len(cls)}\n  data := by_elab\n'
+  data+='    return Lean.mkNatLit (Nat.ofDigits (2 ^ 256) [\n'
+  data+=',\n'.join('      '+hex(value) for value in limbs)+'\n    ])'
+  census_code+=decl(f'census{n}','PackedCensus',data,
+    'The classified triples packed into disjoint ninety-bit lanes.',where=True)
+  census_code+=theorem(f'census{n}_valid',f'PackedCensus.Valid cls{n} census{n}',
+    '  decide +kernel')
+ paths['CensusTables'].write_text(census_code+'end '+NS+'\n')
  targets=[(n,i) for n in tables for i in range(len(splits[n]))] if args.all else [(args.instance,args.split)]
- imports=['MaskChunks','SweepMaps','PackedGridSweep']
- manifest=[]; instance_code={n:header(imports) for n in tables}; started=time.monotonic()
+ imports=['MaskChunks','SweepMaps','PackedGridSweep','CensusTables']
+ manifest=[];part_code={name:header(imports) for names in part_modules.values() for name in names}
+ started=time.monotonic()
  for n,si in targets:
   p,q,r,m=splits[n][si];ow,iw,tw=weights(splits[n][si])
   ocap,icap=chunk_caps(ow,iw,args.outer_chunk,args.chunk)
@@ -167,13 +278,16 @@ def main():
      code+=decl(tag+'Certs','List (Nat × Nat)',natlist(cert),
        'Grid-lane indices and census witnesses for every matching weight.')
      words=f'gridWords {xname} {yname}\n      {n}M{m}LeftColumns {n}M{m}RightColumns'
-     code+=theorem(tag+'_check',f'checkGrid m4T{n} {m} {a} {tw}\n    {xname} {yname}\n    ({words}) {tag}Certs = true','  decide +kernel')
-     code+=theorem(tag+'_pairs',f'∀ x ∈ {xname}, ∀ y ∈ {yname},\n    popCntGo 30 (sweepOutput m4T{n} {m} x y {a}) = {tw} →\n      sweepAccept m4T{n} {m} x y {a} = true',f'''  apply checkGrid_sound m4T{n} {m} {a} {tw}
+     code+=theorem(tag+'_check',f'checkGrid m4T{n} census{n} {m} {a} {tw}\n    {xname} {yname}\n    ({words}) {tag}Certs = true','  decide +kernel')
+     code+=theorem(tag+'_pairs',f'∀ x ∈ {xname}, ∀ y ∈ {yname},\n    popCntGo 30 (sweepOutput m4T{n} {m} x y {a}) = {tw} →\n      sweepAccept m4T{n} {m} x y {a} = true',f'''  apply checkGrid_sound m4T{n} census{n} {m} {a} {tw}
     {xname} {yname}
     ({words}) {tag}Certs
+  · exact census{n}_valid
   · decide
   · decide
   · decide
+  · exact {xname}_bound
+  · exact {yname}_bound
   · intro x hx
     exact {n}M{m}Left_bound x ({xname}_bound x hx)
   · intro y hy
@@ -219,13 +333,18 @@ def main():
     simp only [List.mem_cons, List.not_mem_nil, or_false] at hann
     rcases hann with '''+' | '.join('rfl' for _ in ann)+''.join(f'\n    · exact {nm}A{ai}_pairs x hx y hy hw' for ai in range(len(ann))))
   if args.all:
-   instance_code[n]+=code
+   part_code[part_modules[n][si//args.splits_per_module]]+=code
   else:
    (out/(nm+'.lean')).write_text(header(imports)+code+'end '+NS+'\n')
   manifest.append(nm)
   print(nm,(p,q,r,m),'outer',len(masks[ow]),'inner',len(masks[iw]),'ann',len(ann),flush=True)
  if args.all:
-  for n,code in instance_code.items():
+  for name,code in part_code.items():
+   paths[name].write_text(code+'end '+NS+'\n')
+  paths['ClassifierParts'].write_text(BANNER+'\n'+''.join(
+    'import '+MOD+name+'\n' for names in part_modules.values() for name in names))
+  for n in tables:
+   code=header(part_modules[n])
    names=[f'{n}Split{i}_check' for i in range(len(splits[n]))]
    proof='  simp only [checkAll, splits'+n+', List.all_cons, List.all_nil,\n    '+',\n    '.join(', '.join(names[i:i+4]) for i in range(0,len(names),4))+', Bool.and_true]'
    code+=theorem('checkAll_'+n,f'checkAll m4T{n} splits{n} = true',proof)
@@ -233,13 +352,15 @@ def main():
    (out/('Classifier'+n+'.lean')).write_text(code+'end '+NS+'\n')
   for side in ['X','Z']:
    (out/('FloorSweep'+side+'.lean')).write_text(BANNER+'\n'+''.join('import '+MOD+name+'\n' for name in ['Classifier'+side+'0','Classifier'+side+'1','Join'+side]))
- modules=['Classifier'+n for n in tables] if args.all else manifest
- generated=['MaskChunks','SweepMaps']+modules+(['FloorSweepX','FloorSweepZ'] if args.all else [])
+ for path in stale_files:
+  path.unlink()
  metadata={'modules':modules,'splits':manifest,'chunk_size':args.chunk,
    'outer_chunk_size':args.outer_chunk,
+   'splits_per_module':args.splits_per_module,
+   'thin_chunk_size':2048,'mask_partition':'recursive-combinatorial-coalesced',
    'source_sha256':hashlib.sha256((out/'FloorData.lean').read_bytes()).hexdigest(),
-   'generated_sha256':{name+'.lean':hashlib.sha256((out/(name+'.lean')).read_bytes()).hexdigest()
-     for name in generated}}
+   'generated_sha256':{str(path.relative_to(out)):hashlib.sha256(path.read_bytes()).hexdigest()
+     for path in paths.values()}}
  (out/'sweep-manifest.json').write_text(json.dumps(metadata,indent=2)+'\n')
  print('Generated',len(manifest),'splits in',round(time.monotonic()-started,2),'seconds',flush=True)
 if __name__=='__main__': main()
