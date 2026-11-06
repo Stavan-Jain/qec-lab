@@ -99,8 +99,11 @@ Packed input/census lookups avoid repeated list traversal; shift-based packing
 avoids multiplication by wide powers of two. Generators and elaboration propose
 data, while independent kernel proofs verify it.
 
-Reproduce the bounded build with
-`experiments/bb_lab/scripts/mitten_kernel/build_bounded.py --root <QECLean> build`.
+The standalone proof and its launcher now live in
+[mitten-distance-lean](https://github.com/Stavan-Jain/mitten-distance-lean).
+From that checkout, use `python3 scripts/build_bounded.py --root . build`.
+The numbers above remain historical measurements of QECLean revision
+`03a4023`; standalone validation is recorded in the new repository.
 The detailed historical native-check measurements below are preserved as
 history and do not describe the kernel-only port.
 

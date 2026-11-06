@@ -8,10 +8,13 @@ status: complete
 track: engineering          # M1–M3/M5; the M4 floors carried a moonshot-grade core
 started_at: 2026-08-10T00:00:00Z
 completed_at: 2026-11-06T00:00:00Z
-worktree_branch: codex/mitten-kernel
+worktree_branch: main
+formalization_repository: https://github.com/Stavan-Jain/mitten-distance-lean
+qeclean_foundations_pr: https://github.com/Stavan-Jain/QECLean/pull/102
+qeclean_foundations_revision: b5a9f13d17b656091bf95024be8ebaf457d2c3a6
 qec_lab_branch: codex/mitten-kernel-certificates
 phase: complete              # Kernel-only distance and logical-basis certification.
-covering_lean_file: QEC/Stabilizer/Codes/Mitten/M150.lean
+covering_lean_file: MittenDistance/M150/Distance.lean
 native_predecessor:
   qeclean_branch: claude/a32-lifted-product
   qeclean_revision: 2440ec8
@@ -36,7 +39,17 @@ kernel_port:
   ten_minute_added_module_fallback_met: true
   whole_repository_uninterrupted_under_600_seconds_verified: false
   validation: kernel_build_measurement.json
-  build_launcher: experiments/bb_lab/scripts/mitten_kernel/build_bounded.py
+  build_launcher: mitten-distance-lean:scripts/build_bounded.py
+standalone:
+  repository: https://github.com/Stavan-Jain/mitten-distance-lean
+  revision: bc0329a2ac763006645db867bf2b3c7f892fe7ab
+  local_modules: 64
+  generated_modules: 43
+  source_build_seconds: 493.7
+  local_lean_seconds: 483.575
+  axiom_audit_declarations: 11119
+  axiom_audit_modules: 137
+  validation: provenance/standalone-validation.json
 family: non-abelian lifted product (mitten, arXiv:2607.28795)
 sorries_total: 0
 sorries_closed: 0

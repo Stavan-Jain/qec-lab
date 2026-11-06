@@ -33,48 +33,23 @@ as cross-referencing PRs.
 | `scripts/gen_pair72_packaging_data.py` | `Z3Z6/StabilizerCodeData.lean` | 15-check ALL-PASS validation gate + `--force` guard; NOTE: the Lean-side split is done but the generator still emits the pre-split full file — retarget to data-only before the next regen |
 | `scripts/gen_base_floor_lean.py` | `BaseFloors/<Name>.lean` | class-member small-cycle bundles (A15/T2) |
 | `scripts/gen_f2a6_z5z30_data.py` | data feed for `Z5Z15F2A6/` | A17 line |
-| `scripts/m150_gen_lean_data.py` | A32 mitten [[150,30,10]]: `rehearsal` mode = budget probe (scratchpad); `instance` mode = **`Codes/Mitten/M150/Data.lean`** (Class G: GAP dictionary, sets, pivot/packed-inverse tables both sides, 30+30 symplectic logical supports, weight-10 witness pair) | falsify-first: dictionary hom + closed-form H vs `a26.mitten_code` + pivot inverses + symplectic conditions + witness all validated in numpy before emission; carrier `Multiplicative (ZMod 5) × DihedralGroup 3`; `Defs.lean` is hand-maintained |
+| `scripts/m150_gen_lean_data.py` | Historical A32 rehearsal and research bridge routines | Production generator moved to [mitten-distance-lean](https://github.com/Stavan-Jain/mitten-distance-lean/tree/main/scripts/mitten); retained here for `a32_m4_bridge_check.py` |
 
-## Mitten kernel certificates
+## Mitten production certificates
 
-Run the complete mitten export from the qec-lab root:
+The maintained mitten formalization, production generators, required inputs,
+and bounded build launcher live together in
+[mitten-distance-lean](https://github.com/Stavan-Jain/mitten-distance-lean).
+From that checkout, run `python3 scripts/mitten/generate.py --verify` to
+reproduce all 43 generated Lean modules without changing them.
 
-```sh
-uv run --project experiments/bb_lab python \
-  experiments/bb_lab/scripts/mitten_kernel/generate.py \
-  --root ../QECLean --force
-```
-
-The wrapper regenerates `Data.lean` and `FloorData.lean`, then calls
-`generate_joins.py` for grouped join certificates and `generate_sweeps.py`
-for all four packed grid classifiers. The source census is
-`data-a32/m4_triples.json`; the sweep generator reads the exported
-`FloorData.lean`. The manifest records source and output hashes. Every
-classification and join is rechecked by Lean's kernel; the generators are
-not part of the proof's trust base.
-
-Mask coverage is split by weight and proved by small enumeration leaves
-joined symbolically. Classifier parts contain sixteen splits by default;
-`--splits-per-module` controls this partition without changing the checks.
-Generated proof elaboration is synchronous to limit retained proof state.
-`CensusTables.lean` certifies ninety-bit packed copies of the census lists;
-exceptional candidates use checked bit lookups instead of repeated list
-traversals. The packed numbers are emitted as readable 256-bit limbs.
-
-For memory-constrained machines, run the companion launcher (Python standard
-library only):
-
-```sh
-python3 experiments/bb_lab/scripts/mitten_kernel/build_bounded.py \
-  --root ../QECLean build
-python3 experiments/bb_lab/scripts/mitten_kernel/build_bounded.py \
-  --root ../QECLean env lean scripts/AxiomCheck.lean
-```
-
-It serializes Lean processes, applies a configurable allocation guard
-(4608 MB by default), and records timing and peak resident memory in the
-library checkout's `.lake/mitten-bounded/lean-processes.jsonl`. The guard
-does not impose a hard resident-memory limit.
+The standalone generators use NumPy and pinned input certificates; they do
+not depend on this research checkout or rerun the original SAT search.
+QECLean supplies only the reusable lifted-product and packed-arithmetic
+foundations. The historical `m150_gen_lean_data.py` remains here because the
+research bridge checker imports its routines; it is not the production
+emitter. Attempt history and original measurements remain under
+`pipeline/attempts/mitten_150_30_10/`.
 
 ## Retired (`scripts/attic/`)
 
