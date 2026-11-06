@@ -608,8 +608,10 @@ and the exhaustive light-triple censuses data-a32/m4_triples.json
 (a32_m4_collect.py).  Every table and every split sweep (all four
 instances, all modes) plus both t-joins are simulated bit-for-bit in
 python against the Lean driver semantics before emission; the
-native_decide obligations in FloorSweeps*.lean re-verify all of it inside
-the build.  Regen: uv run python scripts/m150_gen_lean_data.py m4 --out <M150 dir> --force
+kernel-checked classification and grouped-join certificates re-verify
+all of it inside the build.
+Regen: uv run python scripts/m150_gen_lean_data.py m4
+  --out <M150 dir> --force
 Attempt state: qec-lab:pipeline/attempts/mitten_150_30_10/.
 -/"""
 

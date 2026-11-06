@@ -35,6 +35,24 @@ as cross-referencing PRs.
 | `scripts/gen_f2a6_z5z30_data.py` | data feed for `Z5Z15F2A6/` | A17 line |
 | `scripts/m150_gen_lean_data.py` | A32 mitten [[150,30,10]]: `rehearsal` mode = budget probe (scratchpad); `instance` mode = **`Codes/Mitten/M150/Data.lean`** (Class G: GAP dictionary, sets, pivot/packed-inverse tables both sides, 30+30 symplectic logical supports, weight-10 witness pair) | falsify-first: dictionary hom + closed-form H vs `a26.mitten_code` + pivot inverses + symplectic conditions + witness all validated in numpy before emission; carrier `Multiplicative (ZMod 5) × DihedralGroup 3`; `Defs.lean` is hand-maintained |
 
+## Mitten kernel certificates
+
+Run the complete mitten export from the qec-lab root:
+
+```sh
+uv run --project experiments/bb_lab python \
+  experiments/bb_lab/scripts/mitten_kernel/generate.py \
+  --root ../QECLean --force
+```
+
+The wrapper regenerates `Data.lean` and `FloorData.lean`, then calls
+`generate_joins.py` for grouped join certificates and `generate_sweeps.py`
+for all four packed grid classifiers. The source census is
+`data-a32/m4_triples.json`; the sweep generator reads the exported
+`FloorData.lean`. The manifest records source and output hashes. Every
+classification and join is rechecked by Lean's kernel; the generators are
+not part of the proof's trust base.
+
 ## Retired (`scripts/attic/`)
 
 | Script | Why retired |
